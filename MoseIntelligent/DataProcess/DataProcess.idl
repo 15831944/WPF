@@ -1,0 +1,62 @@
+// DataProcess.idl : DataProcess 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(DataProcess.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(3D16CD44-877C-4E89-ACAF-B6FFA126B1BA),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IProcessData : IDispatch{
+	[id(1)] HRESULT ProcessData([in] ULONG flag, VARIANT data);
+	[id(2)] HRESULT GetProcessWorkPath32_64([in] LONG processID, [out, retval] BSTR* path);
+};
+[
+	object,
+	uuid(6CB666A1-2C04-4360-B16E-8F4EBA7F053F),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IFrameCreator : IDispatch{
+};
+[
+	uuid(EEF2CF26-241C-43E2-8BD4-A82A4D887BB1),
+	version(1.0),
+]
+library DataProcessLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(A7B3D01B-B471-4058-A9A3-23213A7B8318)		
+	]
+	dispinterface _IProcessDataEvents
+	{
+		properties:
+		methods:
+			[id(1)] HRESULT OnProcessDataComplete([in] ULONG flag, VARIANT result);
+	};
+	[
+		uuid(1297C3CC-2D15-4A6A-89CB-ADE3445D760D)		
+	]
+	coclass ProcessData
+	{
+		[default] interface IProcessData;
+		[default, source] dispinterface _IProcessDataEvents;
+	};
+	[
+		uuid(CBE8A8EA-050C-4000-96B6-549A4DEEAB02)		
+	]
+	coclass FrameCreator
+	{
+		[default] interface IFrameCreator;
+	};
+};
+

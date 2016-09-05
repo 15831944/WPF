@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="MoseIntelligent.SerialPortCnt"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="650"
+             xmlns:IOClass="clr-namespace:System.IO.Ports;assembly=System">
+    <UserControl.Resources>
+        <IOClass:SerialPort x:Key="_serialPort" BaudRate="115200" ReadTimeout="500" ReceivedBytesThreshold="20" WriteTimeout="500" DataReceived="_serialPort_DataReceived"/>
+    </UserControl.Resources>
+    
+    <Grid Name="_listGrid" MinWidth="650" ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" MinWidth="488"/>
+            <ColumnDefinition Width="162" MinWidth="162"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ListView Name="_listViewPorts" Grid.Row="0" Grid.Column="0" ItemsSource="{Binding}" MinHeight="200" Margin="10" IsSynchronizedWithCurrentItem="True">
+            <ListView.View>
+                <GridView>
+                    <!--数据模板绑定SerialPortInfo-->  
+                  <GridViewColumn Header="端口" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=SerialPortName}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    
+                    <GridViewColumn Header="状态" Width="200">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Path=bConnect}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Grid Grid.Row="0" Grid.Column="1" ShowGridLines="True" DataContext="{Binding}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="125" Height="40" Margin="0" Click="_buttonCheck_Click">检测端口</Button>
+            <Button Grid.Row="1" Name="_buttonConnect" IsEnabled="{Binding Path=bConnect, Converter={StaticResource ConnectEnableConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" Width="125" Height="40" Margin="0" Click="_buttonConnect_Click">连接选中端口</Button>
+        </Grid>
+        <TextBox Name="_textBoxLog" Margin="10" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" AcceptsReturn="True" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible"></TextBox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,148 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:MoseIntelligent">
+
+    <ObjectDataProvider x:Key="DATA_TreeViewList" ObjectType="{x:Type local:SerialUIDataFactory}" MethodName="GetSeiralTreeData"/>
+    <HierarchicalDataTemplate DataType="{x:Type local:TreeKey}" ItemsSource="{Binding Path=Children}">
+        <TextBlock Text="{Binding Path=Text}"/>
+    </HierarchicalDataTemplate>
+
+    <local:KeyCfgListViewHeader x:Key="DATA_KeyCfgListViewHeader"/>
+    <!--<local:ShortCutInfoConvert x:Key="ShortCutInfoConvert"/>-->
+    <local:ShortCutInfoImageConvert x:Key="ShortCutInfoImageConvert"/>
+    <local:ConnectBtnEnableConverter x:Key="ConnectEnableConverter"/>
+
+
+    <ObjectDataProvider x:Key="DATA_ButtonKey" ObjectType="{x:Type local:SerialUIDataFactory}" MethodName="GetButtonSeiralTreeData"/>
+    <ImageBrush x:Key="KeyMidImage_Uselected" ImageSource="Images/KeyMid - Uselected.png"/>
+    <ImageBrush x:Key="KeyMidImage_Selected" ImageSource="Images/KeyMid - Selected.png"/>
+    <ImageBrush x:Key="KeyLeftImage_0_Uselected" ImageSource="Images/KeyLeft - Uselected.png"/>
+    <ImageBrush x:Key="KeyLeftImage_0_Selected" ImageSource="Images/KeyLeft - Selected.png"/>
+    <ImageBrush x:Key="KeyLeftImage_90_Uselected" ImageSource="Images/KeyLeft - Uselected.png">
+        <ImageBrush.RelativeTransform>
+            <TransformGroup>
+                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </ImageBrush.RelativeTransform>
+    </ImageBrush>
+    <ImageBrush x:Key="KeyLeftImage_90_Selected" ImageSource="Images/KeyLeft - Selected.png">
+        <ImageBrush.RelativeTransform>
+            <TransformGroup>
+                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </ImageBrush.RelativeTransform>
+    </ImageBrush>
+    <ImageBrush x:Key="KeyLeftImage_180_Uselected" ImageSource="Images/KeyLeft - Uselected.png">
+        <ImageBrush.RelativeTransform>
+            <TransformGroup>
+                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="180" CenterY="0.5" CenterX="0.5"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </ImageBrush.RelativeTransform>
+    </ImageBrush>
+    <ImageBrush x:Key="KeyLeftImage_180_Selected" ImageSource="Images/KeyLeft - Selected.png">
+        <ImageBrush.RelativeTransform>
+            <TransformGroup>
+                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="180" CenterY="0.5" CenterX="0.5"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </ImageBrush.RelativeTransform>
+    </ImageBrush>
+    <ImageBrush x:Key="KeyLeftImage_270_Uselected" ImageSource="Images/KeyLeft - Uselected.png">
+        <ImageBrush.RelativeTransform>
+            <TransformGroup>
+                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="270" CenterY="0.5" CenterX="0.5"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </ImageBrush.RelativeTransform>
+    </ImageBrush>
+    <ImageBrush x:Key="KeyLeftImage_270_Selected" ImageSource="Images/KeyLeft - Selected.png">
+        <ImageBrush.RelativeTransform>
+            <TransformGroup>
+                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                <RotateTransform Angle="270" CenterY="0.5" CenterX="0.5"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </ImageBrush.RelativeTransform>
+    </ImageBrush>
+    <!--以下定义触发按钮的模板-->
+    <ControlTemplate x:Key="KeyMidImage_Template" TargetType="{x:Type ToggleButton}">
+        <Border CornerRadius="3" Background="{TemplateBinding Background}">
+            <ContentPresenter Margin="3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Background" Value="{StaticResource KeyMidImage_Uselected}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{StaticResource KeyMidImage_Selected}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="KeyLeftImage_0_Template" TargetType="{x:Type ToggleButton}">
+        <Border CornerRadius="3" Background="{TemplateBinding Background}">
+            <ContentPresenter Margin="3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Background" Value="{StaticResource KeyLeftImage_0_Uselected}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{StaticResource KeyLeftImage_0_Selected}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="KeyLeftImage_90_Template" TargetType="{x:Type ToggleButton}">
+        <Border CornerRadius="3" Background="{TemplateBinding Background}">
+            <ContentPresenter Margin="3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Background" Value="{StaticResource KeyLeftImage_90_Uselected}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{StaticResource KeyLeftImage_90_Selected}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="KeyLeftImage_180_Template" TargetType="{x:Type ToggleButton}">
+        <Border CornerRadius="3" Background="{TemplateBinding Background}">
+            <ContentPresenter Margin="3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Background" Value="{StaticResource KeyLeftImage_180_Uselected}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{StaticResource KeyLeftImage_180_Selected}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    <ControlTemplate x:Key="KeyLeftImage_270_Template" TargetType="{x:Type ToggleButton}">
+        <Border CornerRadius="3" Background="{TemplateBinding Background}">
+            <ContentPresenter Margin="3" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsChecked" Value="False">
+                <Setter Property="Background" Value="{StaticResource KeyLeftImage_270_Uselected}"/>
+            </Trigger>
+            <Trigger Property="IsChecked" Value="True">
+                <Setter Property="Background" Value="{StaticResource KeyLeftImage_270_Selected}"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+</ResourceDictionary>
