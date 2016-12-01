@@ -172,7 +172,9 @@ namespace MoseIntelligent
                     unsafe
                     {
                         byte[] byteAry = result as byte[];
-                        fixed (byte* pBuffer = &(byteAry[0]))
+                        ////垃圾回收过程中可能会把某个对象移动到其它新单元上，垃圾回收器只维护引用信息
+                        ////fixed 关键字告诉垃圾回收器，可能有引用某些对象的成员指针，所以这些实例不能移动。变量作用域是fixed块
+                        fixed (byte* pBuffer = &(byteAry[0]))       
                         {
                             ushort keyType = *((ushort*)(pBuffer + 4));
                             ushort KeyLastTime = *((ushort*)(pBuffer + 6));
