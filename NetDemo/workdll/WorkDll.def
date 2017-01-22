@@ -1,0 +1,10 @@
+LIBRARY         "NetDll"
+
+DESCRIPTION     '(c)2017 zhangyong'
+
+EXPORTS
+;		startServer
+;		stopServer
+
+;		startClient
+;		stopClient

@@ -1,0 +1,23 @@
+﻿<Window x:Class="NetDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="600" Width="800">
+    <Canvas Background="Gray" >
+        <TextBlock Canvas.Left="50" Canvas.Top="20" HorizontalAlignment="Right" VerticalAlignment="Center">BindPort:</TextBlock>
+        <TextBox x:Name="bindPortBox" Canvas.Left="120" Canvas.Top="20"  HorizontalAlignment="Left" VerticalAlignment="Center">60000</TextBox>
+        <TextBox x:Name="serverReceivebox" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden" Canvas.Left="50" Canvas.Top="64"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="" Height="284" Width="718"/>
+        <Button Canvas.Left="170" Canvas.Top="14" Width="100" Height="30" Name="butStartServer" Content="butStartServer" Click="butStart_Click"/>
+        <Button Canvas.Left="290" Canvas.Top="13" Width="100" Height="30" Name="butStopServer"  Content="butStopServer" Click="butStop_Click"/>
+
+        <Button Canvas.Left="328" Canvas.Top="422" Width="100" Height="30" Name="butStartClient"  Content="butStartClient" Click="butStartClient_Click"/>
+        <Button Canvas.Left="328" Canvas.Top="472" Width="100" Height="30" Name="butStopClient"  Content="butStopClient" Click="butStopClient_Click"/>
+        <Button Canvas.Left="328" Canvas.Top="522" Width="100" Height="30" Name="butSendDataClient"  Content="butSendDataClient" Click="butSendDataClient_Click"/>
+        <TextBox x:Name="serverIP" Canvas.Left="121" Canvas.Top="423"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="127.0.0.1" Width="84"/>
+        <TextBox x:Name="serverPort" Canvas.Left="121" Canvas.Top="467"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="60000" Width="84"/>
+        <TextBox x:Name="senddatabox" Canvas.Left="50" Canvas.Top="528"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="要发送的数据abc" Width="253"/>
+        <TextBlock Canvas.Left="50" Canvas.Top="423" HorizontalAlignment="Right" VerticalAlignment="Center" Width="66"><Run Text="ServerIP:"/></TextBlock>
+        <TextBlock Canvas.Left="50" Canvas.Top="467" HorizontalAlignment="Right" VerticalAlignment="Center" Width="66"><Run Text="ServerPort:"/></TextBlock>
+
+
+    </Canvas>
+</Window>
