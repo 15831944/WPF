@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace ManageSystem.ViewModel
 {
@@ -16,6 +17,8 @@ namespace ManageSystem.ViewModel
         public DelegateCommand<object>                  ElectronicMapCommand { get; set; }
         public DelegateCommand<object>                  OptionCommand { get; set; }
         public DelegateCommand<object>                  ResListCommand { get; set; }
+
+        public DelegateCommand<object>                  DragWndCommand { get; set; }
 
         public HomePageViewModel                        _HomePageViewModel { get; set; }
         public StatisticsViewModel                      _StatisticsViewModel { get; set; }
@@ -34,6 +37,7 @@ namespace ManageSystem.ViewModel
             ElectronicMapCommand                        = new DelegateCommand<object>(new Action<object>(this.ElectronicMapShow));
             ResListCommand                              = new DelegateCommand<object>(new Action<object>(this.ResListShow));
             OptionCommand                               = new DelegateCommand<object>(new Action<object>(this.OptionShow));
+            DragWndCommand                              = new DelegateCommand<object>(new Action<object>(this.DragWnd));
 
             _HomePageViewModel                          = new HomePageViewModel();
             _StatisticsViewModel                        = new StatisticsViewModel();
@@ -122,6 +126,13 @@ namespace ManageSystem.ViewModel
             _ElectronicMapViewModel.bShowPage           = Visibility.Hidden;
             _ResListViewModel.bShowPage                 = Visibility.Hidden;
             _OptionViewModel.bShowPage                  = Visibility.Visible;
+        }
+        private void DragWnd(object obj)
+        {
+            Window wnd = obj as Window;
+            System.Windows.Point pp = Mouse.GetPosition(wnd);//WPF方法
+            //if (pp.X > 0 && pp.X < windowWidth && pp.Y > 0 && pp.Y < 18)
+                wnd.DragMove();
         }
     }
 }

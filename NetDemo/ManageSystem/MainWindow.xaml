@@ -3,9 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
         DataContext="{StaticResource MainWindowViewModelKey}"
-        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" 
         Title="MainWindow" Height="600" Width="800">
-
+    <Window.InputBindings>
+        <MouseBinding MouseAction="LeftClick" Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"></RowDefinition>

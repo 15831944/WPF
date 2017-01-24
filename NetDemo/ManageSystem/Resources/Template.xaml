@@ -4,9 +4,34 @@
                     xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
                     >
     <DataTemplate DataType="{x:Type viewModel:HomePageViewModel}">
-        <Border Background="Red" Visibility="{Binding Path=bShowPage, Mode=TwoWay}">
-            
-        </Border>
+        <Grid Visibility="{Binding Path=bShowPage, Mode=TwoWay}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">本月设备故障数量</Button>
+                <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">本月办理业务数量</Button>
+                <Button Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">往来港澳通行证数量</Button>
+            </Grid>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">设备在线数量</Button>
+                <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">平台管理次数</Button>
+                <Button Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">往来台湾通行证数量</Button>
+            </Grid>
+            <Grid Grid.Row="2" Background="Red"></Grid>
+        </Grid>
     </DataTemplate>
     <DataTemplate DataType="{x:Type viewModel:StatisticsViewModel}">
         <Border Background="Black" Visibility="{Binding Path=bShowPage, Mode=TwoWay}">
