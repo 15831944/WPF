@@ -7,6 +7,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Template.xaml" />
                 <ResourceDictionary Source="Resources/Res.xaml" />
+                <ResourceDictionary Source="Resources/QueryTemplate.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

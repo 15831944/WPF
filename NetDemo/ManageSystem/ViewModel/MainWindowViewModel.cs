@@ -47,9 +47,9 @@ namespace ManageSystem.ViewModel
             _ResListViewModel                           = new ResListViewModel();
             _OptionViewModel                            = new OptionViewModel();
 
-            _HomePageViewModel.bShowPage                = Visibility.Visible;
+            _HomePageViewModel.bShowPage                = Visibility.Hidden;
             _StatisticsViewModel.bShowPage              = Visibility.Hidden;
-            _QueryViewModel.bShowPage                   = Visibility.Hidden;
+            _QueryViewModel.bShowPage                   = Visibility.Visible;
             _DeviceManagementViewModel.bShowPage        = Visibility.Hidden;
             _ElectronicMapViewModel.bShowPage           = Visibility.Hidden;
             _ResListViewModel.bShowPage                 = Visibility.Hidden;

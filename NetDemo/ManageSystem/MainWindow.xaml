@@ -4,43 +4,43 @@
         xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
         DataContext="{StaticResource MainWindowViewModelKey}"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None" 
-        Title="MainWindow" Height="600" Width="800">
+        WindowStyle="None" AllowsTransparency="False" ResizeMode="NoResize"
+        Title="MainWindow" Height="720" Width="1280">
     <Window.InputBindings>
         <MouseBinding MouseAction="LeftClick" Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
     </Window.InputBindings>
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+    <Grid Margin="0,0,0,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Path=HomePageCommand}">首页</Button>
-            <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Path=StatisticsCommand}">统计</Button>
-            <Button Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Path=QueryCommand}">查询</Button>
-            <Button Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Path=DeviceManagementCommand}">设备管理</Button>
-            <Button Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Path=ElectronicMapCommand}">电子地图</Button>
-            <Button Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Path=ResListCommand}">资源列表</Button>
-            <Button Grid.Column="6" HorizontalAlignment="Center" VerticalAlignment="Center" Command="{Binding Path=OptionCommand}">选项</Button>
-            <Button Grid.Column="7" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click">test</Button>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Button Grid.Row="0"  Margin="0,0,0,0" Command="{Binding Path=HomePageCommand}">首页</Button>
+            <Button Grid.Row="1"  Command="{Binding Path=StatisticsCommand}">统计</Button>
+            <Button Grid.Row="2"  Command="{Binding Path=QueryCommand}">查询</Button>
+            <Button Grid.Row="3"  Command="{Binding Path=DeviceManagementCommand}">设备管理</Button>
+            <Button Grid.Row="4"  Command="{Binding Path=ElectronicMapCommand}">电子地图</Button>
+            <Button Grid.Row="5"  Command="{Binding Path=ResListCommand}">资源列表</Button>
+            <Button Grid.Row="6"  Command="{Binding Path=OptionCommand}">选项</Button>
+            <Button Grid.Row="7"  Click="Button_Click">test</Button>
         </Grid>
-        <ContentControl Grid.Row="1" Content="{Binding _HomePageViewModel}" x:Name="content1" />
-        <ContentControl Grid.Row="1" Content="{Binding _StatisticsViewModel}"/>
-        <ContentControl Grid.Row="1" Content="{Binding _QueryViewModel}"/>
-        <ContentControl Grid.Row="1" Content="{Binding _DeviceManagementViewModel}"/>
-        <ContentControl Grid.Row="1" Content="{Binding _ElectronicMapViewModel}"/>
-        <ContentControl Grid.Row="1" Content="{Binding _ResListViewModel}"/>
-        <ContentControl Grid.Row="1" Content="{Binding _OptionViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _HomePageViewModel}" x:Name="content1" />
+        <ContentControl Grid.Column="1" Content="{Binding _StatisticsViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _QueryViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _DeviceManagementViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _ElectronicMapViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _ResListViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _OptionViewModel}"/>
     </Grid>
 </Window>

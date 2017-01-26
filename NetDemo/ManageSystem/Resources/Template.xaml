@@ -2,7 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                     xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
+                    xmlns:Model="clr-namespace:ManageSystem.Model"
                     >
+    <HierarchicalDataTemplate DataType="{x:Type Model:DeviceModel}" ItemsSource="{Binding Path=Children}">
+        <TextBlock Text="{Binding Path=Text}"/>
+    </HierarchicalDataTemplate>
+    
     <DataTemplate DataType="{x:Type viewModel:HomePageViewModel}">
         <Grid Visibility="{Binding Path=bShowPage, Mode=TwoWay}">
             <Grid.RowDefinitions>
@@ -38,11 +43,7 @@
 
         </Border>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModel:QueryViewModel}">
-        <Border Background="Gray" Visibility="{Binding Path=bShowPage, Mode=TwoWay}">
-
-        </Border>
-    </DataTemplate>
+   
     <DataTemplate DataType="{x:Type viewModel:DeviceManagementViewModel}">
         <Border Background="Blue"  Visibility="{Binding Path=bShowPage, Mode=TwoWay}">
 
