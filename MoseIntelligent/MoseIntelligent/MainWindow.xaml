@@ -22,8 +22,8 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <!--<TreeView x:Name="_mainTreeView" ItemsSource="{Binding}" Grid.Column="0" Grid.Row="0" 
-                  Width="150" Margin="2,2,2,2" Background="{x:Null}" SelectedItemChanged="_mainTreeView_SelectedItemChanged" Foreground="White"/>-->
+        <TreeView x:Name="_mainTreeView" ItemsSource="{Binding}" Grid.Column="0" Grid.Row="0" 
+                  Width="150" Margin="2,2,2,2" Background="{x:Null}" SelectedItemChanged="_mainTreeView_SelectedItemChanged" Foreground="White"/>
         <Grid  x:Name="_GraidFirst" Grid.Row="0" Grid.Column="0" Width="150" ShowGridLines="True">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
