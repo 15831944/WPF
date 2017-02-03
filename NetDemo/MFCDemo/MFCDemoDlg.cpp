@@ -75,6 +75,8 @@ END_MESSAGE_MAP()
 
 
 // CMFCDemoDlg 消息处理程序
+typedef bool(*_AddIDCARDAPPLY)(tagIDCARDAPPLY  station, string &strError);
+typedef bool(*_QueryIDCARDAPPLY)(string QuerySql, std::vector<tagIDCARDAPPLY> &lcArray, string &strError);
 
 BOOL CMFCDemoDlg::OnInitDialog()
 {
@@ -111,10 +113,41 @@ BOOL CMFCDemoDlg::OnInitDialog()
 	SetDlgItemText(IDE_Port, _T("60000"));
 
 
-	HMODULE hNetDll		= LoadLibrary(_T("NetDll.dll"));
+	HMODULE hNetDll					= LoadLibrary(_T("NetDll.dll"));
 
-	_startClient	= (_startClientType)GetProcAddress(hNetDll, "startClient");
-	_stopClient		= (_stopClientType)GetProcAddress(hNetDll, "stopClient");
+	_startClient					= (_startClientType)GetProcAddress(hNetDll, "startClient");
+	_stopClient						= (_stopClientType)GetProcAddress(hNetDll, "stopClient");
+
+	HMODULE hDatabase				= LoadLibrary(_T("database.dll"));
+	_AddIDCARDAPPLY addidcardapply	= (_AddIDCARDAPPLY)GetProcAddress(hDatabase, "AddIDCARDAPPLY");
+	tagIDCARDAPPLY tagidcardapply;
+
+	tagidcardapply.name				= "1";
+	tagidcardapply.gender			= "2";
+	tagidcardapply.Nation			= "3";
+	tagidcardapply.Birthday			= "4";
+	tagidcardapply.Address			= "5";
+	tagidcardapply.IdNumber			= "6";
+	tagidcardapply.SigDepart		= "7";
+	tagidcardapply.SLH				= "99";
+	tagidcardapply.fpData			= "9";
+	tagidcardapply.fpFeature		= "10";
+	tagidcardapply.XCZP				= "11";
+	tagidcardapply.XZQH				= "12";
+	tagidcardapply.sannerId 		= "13";
+	tagidcardapply.scannerName		= "14";
+	tagidcardapply.legal			= false;
+	tagidcardapply.operatorID		= "15";
+	tagidcardapply.operatorName		= "16";
+	tagidcardapply.opDate			= "17";
+
+	string strError = "";
+	//addidcardapply(tagidcardapply, strError);
+
+	vector<tagIDCARDAPPLY> array;
+	_QueryIDCARDAPPLY queryidcardapply	= (_QueryIDCARDAPPLY)GetProcAddress(hDatabase, "QueryIDCARDAPPLY");
+	queryidcardapply("select * from idcardapply", array, strError);
+
 
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
