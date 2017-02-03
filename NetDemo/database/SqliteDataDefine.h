@@ -9,6 +9,7 @@
 #pragma once
 
 /*******************************/
+#pragma region macrodefinition
 
 /** 自助设备本地数据库（业务审核） */
 #define T_IDCARDAPPLY															"idCardApply"
@@ -200,8 +201,61 @@
 	"<device name=\"\" >\n"\
 	"</device>\n"\
 	"</config>"
-////////////////////////////////////////////////////////结构定义BEGIN////////////////////////////////////////////////////////
 
+#pragma endregion macrodefinition
+
+////////////////////////////////////////////////////////结构定义BEGIN////////////////////////////////////////////////////////
+//typedef class tagBUFFER
+//{
+//public:
+//	//tagBUFFER()
+//	//{
+//	//	byteLen				=  0;
+//	//	pBuffer				= NULL
+//	//}
+//
+//	tagBUFFER(LPBYTE buffer, long bufLen)
+//	{
+//		if (buffer == NULL)
+//		{
+//			m_pBuffer		= NULL;
+//			m_byteLen		= 0;
+//		}
+//		else
+//		{
+//			m_pBuffer		= new BYTE[bufLen];
+//			m_byteLen		= bufLen;
+//			memcpy(m_pBuffer, buffer, bufLen);
+//		}
+//	}
+//
+//	tagBUFFER(const tagBUFFER& ob)
+//	{
+//		*this = ob;
+//	}
+//	tagBUFFER& operator=(const tagBUFFER& ob)
+//	{
+//		if (m_pBuffer)
+//			delete[] m_pBuffer;
+//
+//		m_pBuffer		= new BYTE[ob.m_byteLen];
+//		m_byteLen		= ob.m_byteLen;
+//		memcpy(m_pBuffer, buffer, bufLen);
+//
+//		return *this;
+//	}
+//	~tagBUFFER()
+//	{
+//		if (m_pBuffer)
+//			delete[] m_pBuffer;
+//
+//		m_pBuffer		= NULL;
+//		m_byteLen		= 0;
+//	}
+//
+//	long				m_byteLen;
+//	LPBYTE				m_pBuffer;
+//}BUFFER, *LPBUFFER;
 /**
 * @class  tagIDCARDAPPLY 
 *
@@ -233,708 +287,471 @@ public:
 		opDate				= "";
 	}
 
-	std::string  			name;
-	std::string  			gender;
-	std::string  			Nation;
-	std::string  			Birthday;
-	std::string  			Address;
-	std::string  			IdNumber;
-	std::string  			SigDepart;
-	std::string  			SLH;
-	std::string  			fpData;
-	std::string  			fpFeature;
-	std::string  			XCZP;
-	std::string  			XZQH;
-	std::string  			sannerId;
-	std::string  			scannerName;
-	bool		  			legal;
-	std::string  			operatorID;
-	std::string  			operatorName;
-	std::string  			opDate;
+	std::string  			name;						//姓名
+	std::string  			gender;						//性别
+	std::string  			Nation;						//民族
+	std::string  			Birthday;					//出生日期
+	std::string  			Address;					//地址
+	std::string  			IdNumber;					//身份证号码
+	std::string  			SigDepart;					//签发机关
+	std::string  			SLH;						//受理号
+	std::string  			fpData;						//lob 指纹数据
+	std::string  			fpFeature;					//lob 指纹特征数据
+	std::string  			XCZP;						//lob 现场照片
+	std::string  			XZQH;						//行政区划
+	std::string  			sannerId;					//指纹仪编号
+	std::string  			scannerName;				//指纹仪名称
+	bool		  			legal;						//是否合法
+	std::string  			operatorID;					//审核员编号
+	std::string  			operatorName;				//审核员姓名
+	std::string  			opDate;						//操作日期
 
 }IDCARDAPPLY, *LPIDCARDAPPLY;
 /**
-* @class  RTKDEVICE
+* @class  tagONLINESTATUS
 *
-* @brief 
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMDEVICE
+typedef class tagONLINESTATUS
 {
 public:
-	tagRTMDEVICE()
+	tagONLINESTATUS::tagONLINESTATUS()
 	{
-		sStationNO			= "";	         
-		sDeviceNO			= "";	         
-		sDeviceModel		= "";	       
-		sName 				= "";	             
-		sDesc 				= "";	             
-		nDeviceType			= 0;	       
-		nBuyTime			= 0;	           
-		sSupplier			= "";	         
-		sRepairTel			= "";	         
-		sDeviceCurAddress	= "";	 
-		nStatus				= 0;	           
-		sResponer			= "";	         
-		nMaxRunNUM			= 0;	           
-		sDriverIP			= "";	         
-		nDriverPort			= 0;	       
-		nDeviceProtocol		= 0;	
-		bIsintegrated		= 0;
+		machineId				= "";
+		machineName				= "";
+		machineIP				= "";
+		machineLongi			= "";
+		machineLat				= "";
+		currentBusiness			= "";
+		businessStartTime		= "";
+		businessEndTime			= "";
+		businessDone			= false;
 	}
-	
 
-	std::string 			sStationNO;	         
-	std::string 			sDeviceNO;	         
-	std::string 			sDeviceModel;	       
-	std::string 			sName;	             
-	std::string 			sDesc;	             
-	long					nDeviceType;	               
-	LONG64					nBuyTime;	               
-	std::string 			sSupplier;	         
-	std::string 			sRepairTel;	         
-	std::string 			sDeviceCurAddress;	 
-	long					nStatus;	                   
-	std::string				sResponer;	         
-	long					nMaxRunNUM;	               
-	std::string				sDriverIP;	         
-	short					nDriverPort;	             
-	long 					nDeviceProtocol;	
-	bool 					bIsintegrated ;
-}RTMDEVICE, *LPRTMDEVICE;
+	std::string  			machineId;					//自助设备编号
+	std::string  			machineName;				//自助设备名称
+	std::string  			machineIP;					//自助设备IP地址
+	std::string  			machineLongi;				//自助设备经度
+	std::string  			machineLat;					//自助设备纬度
+	std::string  			currentBusiness;			//当前办理业务环节
+	std::string  			businessStartTime;			//开始办理业务时间
+	std::string  			businessEndTime;			//结束办理业务时间
+	bool		  			businessDone;				//业务是否办理成功
+
+}ONLINESTATUS, *LPONLINESTATUS;
 
 /**
-* @class  tagSTATIONDEVICEFUNC 
+* @class  tagSHULIANGHUIZONG
 *
-* @brief 
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMDEVICEFUNC
+typedef class tagSHULIANGHUIZONG
 {
 public:
-	tagRTMDEVICEFUNC()
+	tagSHULIANGHUIZONG::tagSHULIANGHUIZONG()
 	{
-		sStationNO			=  "";	         
-		sDeviceNO			=  "";	         
-		nFunNO				=  0;	       
+		Xuhao					= 0;
+		Shiyongdanwei			= 0;
+		Shebeizongshuliang		= 0;
+		Qiyongshebei			= 0;
+		Yuyueyewu				= 0;
+		Yushouliyewu			= 0;
+		Jiaofeiyewu				= 0;
+		Chaxunyewu				= 0;
+		Shebeishouzheng			= 0;
+		Xuqianyewu				= 0;
+		Benshitongxingzheng		= 0;
+		Dianzitongxingzheng		= 0;
+		Tongxingzhengzhika		= 0;
+		Lidengkequ				= 0;
+		Feilidengkequ			= 0;
 	}
-	tagRTMDEVICEFUNC(const tagRTMDEVICEFUNC& ob)
-	{
-		*this = ob;
-	}
-	tagRTMDEVICEFUNC& operator=(const tagRTMDEVICEFUNC& ob)
-	{
-		sStationNO			= ob.sStationNO;	            
-		sDeviceNO			= ob.sDeviceNO;	         	       
-		nFunNO				= ob.nFunNO;		            
 
-		return *this;
-	}
+	int  						Xuhao;					//序号
+	int  						Shiyongdanwei;			//使用单位数量
+	int  						Shebeizongshuliang;		//设备总数量
+	int  						Qiyongshebei;			//设备在线数量
+	int  						Yuyueyewu;				//预约业务
+	int  						Yushouliyewu;			//预受理业务
+	int  						Jiaofeiyewu;			//缴费业务
+	int  						Chaxunyewu;				//查询业务
+	int		  					Shebeishouzheng;		//设备收证
+	int		  					Xuqianyewu;				//续签业务总数
+	int		  					Benshitongxingzheng;	//本式通行证
+	int		  					Dianzitongxingzheng;	//电子通行证
+	int		  					Tongxingzhengzhika;		//通行证制卡总数
+	int		  					Lidengkequ;				//立等可取
+	int		  					Feilidengkequ;			//非立等可取
 
-	std::string 			sStationNO;	         
-	std::string 			sDeviceNO;	         
-	long					nFunNO;		
-}RTMDEVICEFUNC, *LPRTMDEVICEFUNC;
-
+}SHULIANGHUIZONG, *LPSHULIANGHUIZONG;
 /**
-* @class  tagRTMREFDEVICEFUNC 
+* @class  tagXIANGXITONGJI
 *
-* @brief 
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMREFDEVICEFUNC
+typedef class tagXIANGXITONGJI
 {
 public:
-	tagRTMREFDEVICEFUNC()
+	tagXIANGXITONGJI::tagXIANGXITONGJI()
 	{
-		nFuncID				=  0;	         
-		sFuncName			=  "";	         
-		sFuncKey			=  "";	       
+		
+		Xuhao					= 0;
+		Nian					= 0;
+		Yue						= 0;
+		Ri						= 0;
+		Xiaoshi					= 0;
+		Fenzhong				= 0;
+		Shiyongdanwei			= 0;
+		Qiyongshebei			= 0;
+		Yuyueyewu				= 0;
+		Yushouliyewu			= 0;
+		Jiaofeiyewu				= 0;
+		Chaxunyewu				= 0;
+		Shebeishouzheng			= 0;
+		Xuqianyewu				= 0;
+		Benshitongxingzheng		= 0;
+		Dianzitongxingzheng		= 0;
+		Tongxingzhengzhika		= 0;
+		Lidengkequ				= 0;
+		Feilidengkequ			= 0;	
 	}
-	tagRTMREFDEVICEFUNC(const tagRTMREFDEVICEFUNC& ob)
-	{
-		*this = ob;
-	}
-	tagRTMREFDEVICEFUNC& operator=(const tagRTMREFDEVICEFUNC& ob)
-	{
-		nFuncID				= ob.nFuncID;	        
-		sFuncName			= ob.sFuncName;	 	       
-		sFuncKey			= ob.sFuncKey;	        
 
-		return *this;
-	}
+	int  						Xuhao;					//序号
+	int  						Nian;					//年份
+	int  						Yue;					//月
+	int  						Ri;						//日
+	int  						Xiaoshi;				//小时
+	int  						Fenzhong;				//分钟
+	int  						Shiyongdanwei;			//使用单位数量
+	int  						Qiyongshebei;			//设备在线数量
+	int		  					Yuyueyewu;				//预约业务
+	int		  					Yushouliyewu;			//预受理业务
+	int		  					Jiaofeiyewu;			//缴费业务
+	int		  					Chaxunyewu;				//查询业务
+	int		  					Shebeishouzheng;		//设备收证
+	int		  					Xuqianyewu;				//续签业务总数
+	int		  					Benshitongxingzheng;	//本式通行证
+	int		  					Dianzitongxingzheng;	//电子通行证
+	int		  					Tongxingzhengzhika;		//通行证制卡总数
+	int		  					Lidengkequ;				//立等可取
+	int		  					Feilidengkequ;			//非立等可取
 
-	long        			nFuncID;	
-	std::string 			sFuncName;	
-	std::string 			sFuncKey;	
-}RTMREFDEVICEFUNC, *LPRTMREFDEVICEFUNC;
-
+}XIANGXITONGJI, *LPXIANGXITONGJI;
 /**
-* @class  tagCOMREGIONNO 
+* @class  tagZHIQIANSHUJU
 *
-* @brief 
+* @brief
 ****************************************************************************
 */
-typedef class tagCOMREGIONNO
+typedef class tagZHIQIANSHUJU
 {
 public:
-	tagCOMREGIONNO()
+	tagZHIQIANSHUJU::tagZHIQIANSHUJU()
 	{
-		sRegionNo			=  "";	         
-		sRegionName			=  "";	       
-	}
-	tagCOMREGIONNO(const tagCOMREGIONNO& ob)
-	{
-		*this = ob;
-	}
-	tagCOMREGIONNO& operator=(const tagCOMREGIONNO& ob)
-	{
-		sRegionNo			= ob.sRegionNo;	 	       
-		sRegionName			= ob.sRegionName;	        
-
-		return *this;
+		Xuhao					= 0;
+		Riqi					= "";
+		ShebeiIP				= "";
+		Yewubianhao				= "";
+		YuanZhengjianhaoma		= "";
+		Xingming				= "";
+		Qianzhuzhonglei			= "";
+		ZhikaZhuangtai			= "";
+		Zhengjianhaoma			= "";
+		Jiekoufanhuijieguo		= "";
+		Lianxidianhua			= "";
 	}
 
-	std::string 			sRegionNo;	
-	std::string 			sRegionName;	
-}COMREGIONNO, *LPCOMREGIONNO;
+	int  						Xuhao;					//序号
+	string  					Riqi;					//日期
+	string  					ShebeiIP;				//设备IP地址
+	string  					Yewubianhao;			//业务编号
+	string  					YuanZhengjianhaoma;		//原证件号码
+	string  					Xingming;				//姓名
+	string  					Qianzhuzhonglei;		//签注种类
+	string  					ZhikaZhuangtai;			//制卡状态
+	string		  				Zhengjianhaoma;			//证件号码
+	string		  				Jiekoufanhuijieguo;		//接口返回结果
+	string		  				Lianxidianhua;			//联系电话
 
+}ZHIQIANSHUJU, *LPZHIQIANSHUJU;
 /**
-* @class  tagRTMREFDEVICEPROTOCOL 
+* @class  tagSHOUZHENGSHUJU
 *
-* @brief 
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMREFDEVICEPROTOCOL
+typedef class tagSHOUZHENGSHUJU
 {
 public:
-	tagRTMREFDEVICEPROTOCOL()
+	tagSHOUZHENGSHUJU::tagSHOUZHENGSHUJU()
 	{
-		nNoID				=  0;	         
-		sName				=  "";	         
-		sNote				=  "";	       
-	}
-	tagRTMREFDEVICEPROTOCOL(const tagRTMREFDEVICEPROTOCOL& ob)
-	{
-		*this = ob;
-	}
-	tagRTMREFDEVICEPROTOCOL& operator=(const tagRTMREFDEVICEPROTOCOL& ob)
-	{
-		nNoID				= ob.nNoID;	        
-		sName				= ob.sName;	 	       
-		sNote				= ob.sNote;	        
-
-		return *this;
+		Xuhao;					= 0;
+		Riqi;					= "";
+		ShebeiIP;				= "";
+		Zhengjianleixing;		= "";
+		Zhengjianhaoma;			= "";
+		Xingming;				= "";
+		Shoulibianhao;			= "";
+		Shifoujiaofei;			= "";
 	}
 
-	long        			nNoID;	
-	std::string 			sName;	
-	std::string 			sNote;	
-}RTMREFDEVICEPROTOCOL, *LPRTMREFDEVICEPROTOCOL;
+	int  						Xuhao;					//序号
+	string  					Riqi;					//日期
+	string  					ShebeiIP;				//设备IP地址
+	string  					Zhengjianleixing;		//证件类型
+	string  					Zhengjianhaoma;			//证件号码
+	string  					Xingming;				//姓名
+	string  					Shoulibianhao;			//受理编号
+	string  					Shifoujiaofei;			//是否缴费
 
+}SHOUZHENGSHUJU, *LPSHOUZHENGSHUJU;
 /**
-* @class  tagRTMREFSTATIONTYPE 
+* @class  tagQIANZHUSHUJU
 *
-* @brief 
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMREFSTATIONTYPE
+typedef class tagQIANZHUSHUJU
 {
 public:
-	tagRTMREFSTATIONTYPE()
+	tagQIANZHUSHUJU::tagQIANZHUSHUJU()
 	{
-		nTypeNo				=  0;	         
-		sTypeName			=  "";	       
-	}
-	tagRTMREFSTATIONTYPE(const tagRTMREFSTATIONTYPE& ob)
-	{
-		*this = ob;
-	}
-	tagRTMREFSTATIONTYPE& operator=(const tagRTMREFSTATIONTYPE& ob)
-	{
-		nTypeNo				= ob.nTypeNo;	 	       
-		sTypeName			= ob.sTypeName;	        
-
-		return *this;
+		Xuhao					= 0;
+		Riqi					= "";
+		ShebeiIP				= "";
+		YuanZhengjianhaoma		= "";
+		Xingming				= "";
+		Xingbie					= "";
+		Chushengriqi			= "";
+		Lianxidianhua			= "";
+		Yewuleixing				= "";
+		Shouliren				= "";
 	}
 
-	long					nTypeNo;	
-	std::string 			sTypeName;	
-}RTMREFSTATIONTYPE, *LPRTMREFSTATIONTYPE;
+	int  						Xuhao;					//序号
+	string  					Riqi;					//日期
+	string  					ShebeiIP;				//设备IP地址
+	string  					YuanZhengjianhaoma;		//原证件号码
+	string  					Xingming;				//姓名
+	string  					Xingbie;				//性别
+	string  					Chushengriqi;			//出生日期
+	string  					Lianxidianhua;			//联系电话
+	string  					Yewuleixing;			//业务类型
+	string  					Shouliren;				//受理人
 
+}QIANZHUSHUJU, *LPQIANZHUSHUJU;
 /**
-* @class  tagRTMREFDEVICETYPE 
+* @class  tagJIAOKUANSHUJU
 *
-* @brief 
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMREFDEVICETYPE
+typedef class tagJIAOKUANSHUJU
 {
 public:
-	tagRTMREFDEVICETYPE()
+	tagJIAOKUANSHUJU::tagJIAOKUANSHUJU()
 	{
-		nTypeNo				=  0;	         
-		sTypeName			=  "";	       
-	}
-	tagRTMREFDEVICETYPE(const tagRTMREFDEVICETYPE& ob)
-	{
-		*this = ob;
-	}
-	tagRTMREFDEVICETYPE& operator=(const tagRTMREFDEVICETYPE& ob)
-	{
-		nTypeNo				= ob.nTypeNo;	 	       
-		sTypeName			= ob.sTypeName;	        
-
-		return *this;
+		Xuhao					= 0;
+		Riqi					= "";
+		ShebeiIP				= "";
+		Zhishoudanweidaima		= "";
+		Jiaokuantongzhishuhaoma = "";
+		Jiaokuanrenxingming		= "";
+		Yingkoukuanheji			= 0.0;
+		Jiaoyiriqi				= "";
 	}
 
-	long					nTypeNo;	
-	std::string 			sTypeName;	
-}RTMREFDEVICETYPE, *LPRTMREFDEVICETYPE;
+	int  						Xuhao;					//序号
+	string  					Riqi;					//日期
+	string  					ShebeiIP;				//设备IP地址
+	string  					Zhishoudanweidaima;		//执收单位代码
+	string  					Jiaokuantongzhishuhaoma;//缴款通知书号码
+	string  					Jiaokuanrenxingming;	//缴款人姓名
+	float  						Yingkoukuanheji;		//应扣款合计
+	string  					Jiaoyiriqi;				//交易日期
 
+}JIAOKUANSHUJU, *LPJIAOKUANSHUJU;
 /**
-* @class  tagRTMMONORG 
+* @class  tagCHAXUNSHUJU
 *
-* @brief 
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMMONORG
+typedef class tagCHAXUNSHUJU
 {
 public:
-	tagRTMMONORG()
+	tagCHAXUNSHUJU::tagCHAXUNSHUJU()
 	{
-		sOrgNO	 			=  "";	       
-		sName	 			=  "";	       
-		sAddress	 		=  "";	       
-		sPost				=  "";	       
-		sResponpersion		=  "";	       
-		sContact	 		=  "";	       
-		sBrief 				=  "";	       
-		sNote	 			=  "";	       
+		Xuhao					= 0;
+		Riqi					= "";
+		ShebeiIP				= "";
+		Chaxunhaoma				= "";
+		Chaxunleixing			= "";
+		Shifouchaxunchenggong	= false;
 	}
-	tagRTMMONORG(const tagRTMMONORG& ob)
-	{
-		*this = ob;
-	}
-	tagRTMMONORG& operator=(const tagRTMMONORG& ob)
-	{
-		sOrgNO	 			= ob.sOrgNO;	   
-		sName	 			= ob.sName;	 
-		sAddress	 		= ob.sAddress;	   
-		sPost				= ob.sPost; 
-		sResponpersion		= ob.sResponpersion;	  
-		sContact	 		= ob.sContact;	 
-		sBrief 				= ob.sBrief;	   
-		sNote	 			= ob.sNote;	 
 
-		return *this;
-	}
-	std::string 			sOrgNO;	 
-	std::string 			sName;	 
-	std::string 			sAddress;	 
-	std::string 			sPost; 
-	std::string 			sResponpersion;	 
-	std::string 			sContact;	 
-	std::string 			sBrief;	 
-	std::string 			sNote;	 
-}RTMMONORG, *LPRTMMONORG;
+	int  						Xuhao;					//序号
+	string  					Riqi;					//日期
+	string  					ShebeiIP;				//设备IP地址
+	string  					Chaxunhaoma;			//查询号码
+	string  					Chaxunleixing;			//查询类型
+	bool  						Shifouchaxunchenggong;	//是否查询成功
 
+}CHAXUNSHUJU, *LPCHAXUNSHUJU;
 /**
-* @class  tagRTMMONCTRLCENTER 
+* @class  tagYUSHOULISHUJU
 *
-* @brief 
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMMONCTRLCENTER
+typedef class tagYUSHOULISHUJU
 {
 public:
-	tagRTMMONCTRLCENTER()
+	tagYUSHOULISHUJU::tagYUSHOULISHUJU()
 	{
-		sCenterNO			=  "";	       
-		sName	 			=  "";	       
-		sAddress			=  "";	       
-		fLong 				=  0;	       
-		fLati	 			=  0;	       
-		sNote	 			=  "";	       
+		Xuhao					= 0;
+		Riqi					= "";
+		ShebeiIP				= "";
+		Yewubianhao				= "";
+		Xingming				= "";
+		Lianxidianhua			= "";
+		Chuguoshiyou			= "";
+		YuanZhengjianhaoma		= "";
+		Qianzhuzhonglei			= "";
+		Xingbie					= "";
+		Hukousuozaidi			= "";
+		Minzu					= "";
 	}
-	tagRTMMONCTRLCENTER(const tagRTMMONCTRLCENTER& ob)
-	{
-		*this = ob;
-	}
-	tagRTMMONCTRLCENTER& operator=(const tagRTMMONCTRLCENTER& ob)
-	{
-		sCenterNO 			= ob.sCenterNO; 
-		sName	 			= ob.sName;	 
-		sAddress	 		= ob.sAddress;	 
-		fLong 				= ob.fLong; 
-		fLati	 			= ob.fLati;	  
-		sNote	 			= ob.sNote;	 
 
-		return *this;
-	}
-	std::string 			sCenterNO; 
-	std::string 			sName;	 
-	std::string 			sAddress;	 
-	double 					fLong; 
-	double 					fLati;	 
-	std::string 			sNote;	 
-}RTMMONCTRLCENTER, *LPRTMMONCTRLCENTER;
+	int  						Xuhao;					//序号
+	string  					Riqi;					//日期
+	string  					ShebeiIP;				//设备IP地址
+	string  					Yewubianhao;			//业务编号
+	string  					Xingming;				//姓名
+	string  					Lianxidianhua;			//联系电话
+	string  					Chuguoshiyou;			//出国事由
+	string  					YuanZhengjianhaoma;		//原证件号码
+	string  					Qianzhuzhonglei;		//签注种类
+	string  					Xingbie;				//性别
+	string  					Hukousuozaidi;			//户口所在地
+	string  					Minzu;					//民族
 
+}YUSHOULISHUJU, *LPYUSHOULISHUJU;
 /**
-* @class  tagRTMSTATIONDEVICEFUNCANT
+* @class  tagSHEBEIYICHANGSHUJU
 *
-* @brief  
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMSTATIONDEVICEFUNCANT
+typedef class tagSHEBEIYICHANGSHUJU
 {
 public:
-	tagRTMSTATIONDEVICEFUNCANT()
+	tagSHEBEIYICHANGSHUJU::tagSHEBEIYICHANGSHUJU()
 	{
-		sStationNO 			=  "";	       
-		sDeviceNO  			=  "";	       
-		nFunNO   			=  0;	       
-		sAnt 				=  "";	       
-		sDes 				=  "";	       
+		Xuhao					= 0;
+		Riqi					= "";
+		Shiyongdanwei			= "";
+		Yichangshejimokuai		= "";
+		Yichangyuanyin			= "";
+		Yichangxiangxineirong	= "";
 	}
-	tagRTMSTATIONDEVICEFUNCANT(const tagRTMSTATIONDEVICEFUNCANT& ob)
-	{
-		*this = ob;
-	}
-	tagRTMSTATIONDEVICEFUNCANT& operator=(const tagRTMSTATIONDEVICEFUNCANT& ob)
-	{
-		sStationNO 			= ob.sStationNO;	      
-		sDeviceNO  			= ob.sDeviceNO;	      
-		nFunNO   			= ob.nFunNO;	  
-		sAnt 				= ob.sAnt ;
-		sDes 				= ob.sDes ;
 
-		return *this;
-	}
-	std::string 			sStationNO;	         
-	std::string 			sDeviceNO;	         
-	long        			nFunNO;	  
-	std::string 			sAnt ;
-	std::string 			sDes ;
-}RTMSTATIONDEVICEFUNCANT, *LPRTMSTATIONDEVICEFUNCANT;
+	int  						Xuhao;					//序号
+	string  					Riqi;					//日期
+	string  					Shiyongdanwei;			//使用单位
+	string  					Yichangshejimokuai;		//异常涉及模块
+	string  					Yichangyuanyin;			//异常原因
+	string  					Yichangxiangxineirong;	//异常详细内容
 
+}SHEBEIYICHANGSHUJU, *LPSHEBEIYICHANGSHUJU;
 /**
-* @class  tagRTMANT
+* @class  tagGUANLIYUAN
 *
-* @brief  
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMANT
+typedef class tagGUANLIYUAN
 {
 public:
-	tagRTMANT()
+	tagGUANLIYUAN::tagGUANLIYUAN()
 	{
-		sStationNO			=  "";	       
-		sAntName			=  "";	       
-		sAntFactor			=  "";	       
-		nBeginFreq			=  0;	       
-		nEndFreq			=  0;	       
-		nAntHeight			=  0;	       
+		Xuhao					= 0;
+		Yonghuming				= "";
+		Mima					= "";
+		Youxiaoqi				= "";
+		Quanxianjibie			= "";
 	}
-	tagRTMANT(const tagRTMANT& ob)
-	{
-		*this = ob;
-	}
-	tagRTMANT& operator=(const tagRTMANT& ob)
-	{
-		sStationNO			= ob.sStationNO;	    
-		sAntName			= ob.sAntName;	
-		sAntFactor			= ob.sAntFactor;	
-		nBeginFreq			= ob.nBeginFreq; 
-		nEndFreq			= ob.nEndFreq;	
-		nAntHeight			= ob.nAntHeight;	
 
-		return *this;
-	}
-	std::string 			sStationNO;	 
-	std::string 			sAntName;	 
-	std::string 			sAntFactor;	 
-	LONG64      			nBeginFreq; 
-	LONG64      			nEndFreq;	 
-	long        			nAntHeight;	  
-}RTMANT, *LPRTMANT;
+	int  						Xuhao;					//序号
+	string  					Yonghuming;				//用户名
+	string  					Mima;					//密码
+	string  					Youxiaoqi;				//有效期
+	int  						Quanxianjibie;			//权限级别
 
+}GUANLIYUAN, *LPGUANLIYUAN;
 /**
-* @class  tagRTMDEVICEMODELFUNC
+* @class  tagGUANLIYUANCAOZUOJILU
 *
-* @brief  
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMREFDEVICEMODEL
+typedef class tagGUANLIYUANCAOZUOJILU
 {
 public:
-	tagRTMREFDEVICEMODEL()
+	tagGUANLIYUANCAOZUOJILU::tagGUANLIYUANCAOZUOJILU()
 	{
-		sNoId				=  "";	       
-		sName				=  "";	       
-		sNote				=  "";	        
-	}
-	tagRTMREFDEVICEMODEL(const tagRTMREFDEVICEMODEL& ob)
-	{
-		*this = ob;
-	}
-	tagRTMREFDEVICEMODEL& operator=(const tagRTMREFDEVICEMODEL& ob)
-	{
-		sNoId				= ob.sNoId;	    
-		sName				= ob.sName;	
-		sNote				= ob.sNote;	
-
-		return *this;
+		Xuhao					= 0;
+		Yonghuming				= "";
+		Mima					= "";
+		Youxiaoqi				= "";
+		Quanxianjibie			= "";
 	}
 
-	std::string				sNoId;	
-	std::string 			sName;	
-	std::string 			sNote;	
-}RTMREFDEVICEMODEL, *LPRTMREFDEVICEMODEL;
+	int  						Xuhao;					//序号
+	string  					Yonghuming;				//用户名
+	string  					Riqi;					//操作日期
+	string  					Caozuoleibie;			//操作类别
+	string  					Caozuoneirong;			//操作内容
 
+}GUANLIYUANCAOZUOJILU, *LPGUANLIYUANCAOZUOJILU;
 /**
-* @class  tagRTMREFDEVICEMODELPARAM
+* @class  tagSHEBEIGUANLI
 *
-* @brief  
+* @brief
 ****************************************************************************
 */
-typedef class tagRTMREFDEVICEMODELFUNCPARAM
+typedef class tagSHEBEIGUANLI
 {
 public:
-	tagRTMREFDEVICEMODELFUNCPARAM()
+	tagSHEBEIGUANLI::tagSHEBEIGUANLI()
 	{
-		sModel				=  "";	       
-		nFuncID				=  0;	       
-		sParam				=  "";	        
-	}
-	tagRTMREFDEVICEMODELFUNCPARAM(const tagRTMREFDEVICEMODELFUNCPARAM& ob)
-	{
-		*this = ob;
-	}
-	tagRTMREFDEVICEMODELFUNCPARAM& operator=(const tagRTMREFDEVICEMODELFUNCPARAM& ob)
-	{
-		sModel				= ob.sModel;	
-		nFuncID				= ob.nFuncID;	    
-		sParam				= ob.sParam;	
+		Xuhao					= 0;
+		Sheng					= "";
+		Shi						= "";
+		Qu						= "";
+		Shiyongdanwei			= "";
+		IP						= "";
+		Shebeileixing			= "";
+		Jingdu					= "";
+		Weidu					= "";
+		Chuangjianshijian		= "";
+	}	
 
-		return *this;
-	}
+	int  						Xuhao;					//序号
+	string  					Sheng;					//所属省份
+	string  					Shi;					//所属市
+	string  					Qu;						//所属区
+	string  					Shiyongdanwei;			//使用单位
+	string  					IP;						//设备IP地址
+	string  					Shebeileixing;			//设备类型
+	string  					Jingdu;					//经度
+	string  					Weidu;					//纬度
+	string  					Chuangjianshijian;		//创建时间
 
-	std::string 			sModel;	
-	long					nFuncID;	
-	std::string 			sParam;	
-}RTMREFDEVICEMODELFUNCPARAM, *LPRTMREFDEVICEMODELFUNCPARAM;
-
-/**
-* @class  tagRIM30RTMRNC
-*
-* @brief  
-****************************************************************************
-*/
-typedef class tagRIM30RTMRNC
-{
-public:
-	tagRIM30RTMRNC()
-	{
-		sSTATNo             =  "";             
-		sRncName            =  "";             
-		sRncAddr            =  "";             
-		nRncPort			=  0;               
-		sDevName            =  "";             
-		sCtrlPort           =  0;               
-		bHasOS              =  0;               
-		sOSIP				=  "";             
-		nOSPort             =  0;               
-		nType				=  0;               
-	}
-	tagRIM30RTMRNC(const tagRIM30RTMRNC& ob)
-	{
-		*this = ob;
-	}
-	tagRIM30RTMRNC& operator=(const tagRIM30RTMRNC& ob)
-	{
-		sSTATNo             = ob.sSTATNo;     
-		sRncName            = ob.sRncName;      
-		sRncAddr            = ob.sRncAddr;         
-		nRncPort            = ob.nRncPort; 
-		sDevName            = ob.sDevName;      
-		sCtrlPort           = ob.sCtrlPort;          
-		bHasOS              = ob.bHasOS;   
-		sOSIP               = ob.sOSIP;       
-		nOSPort             = ob.nOSPort;  
-		nType				= ob.nType;  
-
-		return *this;
-	}
-	std::string          	sSTATNo; 
-	std::string          	sRncName;      
-	std::string          	sRncAddr;         
-	short                   nRncPort; 
-	std::string             sDevName;      
-	short                   sCtrlPort;          
-	bool                    bHasOS;   
-	std::string             sOSIP;       
-	short                   nOSPort;    
-	short                   nType;    
-}RIM30RTMRNC, *LPRIM30RTMRNC;
-
-/**
-* @class  tagRIM30COMAUTHSYSDATASTATION
-*
-* @brief  
-****************************************************************************
-*/
-typedef class tagRIM30COMAUTHSYSDATASTATION
-{
-public:
-	tagRIM30COMAUTHSYSDATASTATION()
-	{
-		sSTATNo             =  "";             
-		sNote				=  "";                        
-	}
-	tagRIM30COMAUTHSYSDATASTATION(const tagRIM30COMAUTHSYSDATASTATION& ob)
-	{
-		*this = ob;
-	}
-	tagRIM30COMAUTHSYSDATASTATION& operator=(const tagRIM30COMAUTHSYSDATASTATION& ob)
-	{
-		sSTATNo             = ob.sSTATNo;     
-		sNote				= ob.sNote;      
-
-		return *this;
-	}
-	std::string          	sSTATNo; 
-	std::string          	sNote;         
-}RIM30COMAUTHSYSDATASTATION, *LPRIM30COMAUTHSYSDATASTATION;
-
-/**
-* @class  tagRIM30COMAUTHSYSFUNC
-*
-* @brief  
-****************************************************************************
-*/
-typedef class tagRIM30COMAUTHSYSFUNC
-{
-public:
-	tagRIM30COMAUTHSYSFUNC()
-	{
-		sSysFuncNo          =  "";             
-		sNote				=  "";                        
-	}
-	tagRIM30COMAUTHSYSFUNC(const tagRIM30COMAUTHSYSFUNC& ob)
-	{
-		*this = ob;
-	}
-	tagRIM30COMAUTHSYSFUNC& operator=(const tagRIM30COMAUTHSYSFUNC& ob)
-	{
-		sSysFuncNo           = ob.sSysFuncNo;     
-		sNote				= ob.sNote;      
-
-		return *this;
-	}
-	std::string          	sSysFuncNo; 
-	std::string          	sNote;         
-}RIM30COMAUTHSYSFUNC, *LPRIM30COMAUTHSYSFUNC;
-
-/**
-* @class  tagRIM30USERINFO
-*
-* @brief  
-****************************************************************************
-*/
-typedef class tagRIM30USERINFO
-{
-public:
-	tagRIM30USERINFO()
-	{
-		UserID				=  "";	       
-		UserName			=  "";	       
-		EmpNO				=  "";	       
-		AreaCode			=  "";	       
-		DeptID				=  "";	       
-		DeptName			=  "";	       
-	}
-	tagRIM30USERINFO(const tagRIM30USERINFO& ob)
-	{
-		*this = ob;
-	}
-	tagRIM30USERINFO& operator=(const tagRIM30USERINFO& ob)
-	{
-		UserID				= ob.UserID;
-		UserName			= ob.UserName;
-		EmpNO				= ob.EmpNO;	
-		AreaCode			= ob.AreaCode;
-		DeptID				= ob.DeptID;
-		DeptName			= ob.DeptName;
-
-		return *this;
-	}
-
-	std::string 			UserID;
-	std::string 			UserName;	
-	std::string 			EmpNO;	
-	std::string 			AreaCode;	
-	std::string 			DeptID;
-	std::string 			DeptName;	
-
-}RIM30USERINFO, *LPRIM30USERINFO;
-
-
-/**
-* @class  tagRIM30BRANCHINFO
-*
-* @brief  
-****************************************************************************
-*/
-typedef class tagRIM30BRANCHINFO
-{
-public:
-	tagRIM30BRANCHINFO()
-	{
-		Deptname			=  "";	       
-		Parentid			=  "";	       
-		Tel					=  "";	       
-		Fax					=  "";	       
-		Email				=  "";	       
-		Manager				=  "";	       
-		Note				=  "";	       
-		Deptlevel			=  "";	       
-		Deptid				=  "";	       
-		Delflag				=  "";	       
-	}
-	tagRIM30BRANCHINFO(const tagRIM30BRANCHINFO& ob)
-	{
-		*this = ob;
-	}
-	tagRIM30BRANCHINFO& operator=(const tagRIM30BRANCHINFO& ob)
-	{
-		Deptname			= ob.Deptname;
-		Parentid			= ob.Parentid;
-		Tel					= ob.Tel;	
-		Fax					= ob.Fax;	
-		Email				= ob.Email;	
-		Manager				= ob.Manager;
-		Note				= ob.Note;	
-		Deptlevel			= ob.Deptlevel;
-		Deptid				= ob.Deptid;	
-		Delflag				= ob.Delflag;
-
-		return *this;
-	}
-
-	std::string 			Deptname;
-	std::string 			Parentid;
-	std::string 			Tel;	
-	std::string 			Fax;	
-	std::string 			Email;	
-	std::string 			Manager;
-	std::string 			Note;	
-	std::string 			Deptlevel;
-	std::string 			Deptid;	
-	std::string 			Delflag;
-
-}RIM30BRANCHINFO, *LPRIM30BRANCHINFO;
-
+}SHEBEIGUANLI, *LPSHEBEIGUANLI;
 /**
 * @class  tagRIMCOMFREQLAYOUT
 *
