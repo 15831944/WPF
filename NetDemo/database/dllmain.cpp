@@ -11,12 +11,14 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 	{
 	case DLL_PROCESS_ATTACH:
 	{
-		char szPath[MAX_PATH] ={ 0 };
-		GetModuleFileNameA(hModule, szPath, MAX_PATH);
-		*(strrchr(szPath, '\\')) = NULL;
-		*(strrchr(szPath, '\\')) = NULL;
-		RIM_RTK_BSD_DB_FILE = szPath;
-		RIM_RTK_BSD_DB_FILE += "\\data\\BOSD.SDB";
+		//char szPath[MAX_PATH] ={ 0 };
+		//GetModuleFileNameA(hModule, szPath, MAX_PATH);
+		//*(strrchr(szPath, '\\')) = NULL;
+		//*(strrchr(szPath, '\\')) = NULL;
+		//RIM_RTK_BSD_DB_FILE = szPath;
+		//RIM_RTK_BSD_DB_FILE += "\\data\\BOSD.SDB";
+
+		RIM_RTK_BSD_DB_FILE = "e:\\gitcode\\zhangyong\\WPF\\NetDemo\\设计资料\\test.db";
 	}
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:

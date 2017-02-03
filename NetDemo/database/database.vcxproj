@@ -110,7 +110,8 @@ xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\MFCDemo\$(Configuration
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
       </PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Function.cpp" />
+    <ClCompile Include="FunctionAdd.cpp" />
+    <ClCompile Include="FunctionQuery.cpp" />
     <ClCompile Include="Sqlite.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

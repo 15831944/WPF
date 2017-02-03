@@ -56,7 +56,10 @@
     <ClCompile Include="Sqlite.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Function.cpp">
+    <ClCompile Include="FunctionQuery.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FunctionAdd.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

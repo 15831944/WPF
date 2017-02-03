@@ -24,7 +24,7 @@
 #define T_IDCARDAPPLY_FPFEATURE													"fpFeature"
 #define T_IDCARDAPPLY_XCZP														"XCZP"
 #define T_IDCARDAPPLY_XZQH														"XZQH"
-#define T_IDCARDAPPLY_SANNERID													"sannerId
+#define T_IDCARDAPPLY_SANNERID													"sannerId"
 #define T_IDCARDAPPLY_SCANNERNAME												"scannerName"
 #define T_IDCARDAPPLY_LEGAL														"legal"
 #define T_IDCARDAPPLY_OPERATORID												"operatorID"
@@ -269,19 +269,19 @@ public:
 	{
 		name				= "";
 		gender				= "";
-		Nation				= 0;
+		Nation				= "";
 		Birthday			= "";
-		Address				= 0;
-		IdNumber			= 0;
-		SigDepart			= 0;
-		SLH					= 0;
+		Address				= "";
+		IdNumber			= "";
+		SigDepart			= "";
+		SLH					= "";
 		fpData				= "";
 		fpFeature			= "";
 		XCZP				= "";
-		XZQH				= 0;
+		XZQH				= "";
 		sannerId 			= "";
-		scannerName			= 0;
-		legal				= 0;
+		scannerName			= "";
+		legal				= false;
 		operatorID			= "";
 		operatorName		= "";
 		opDate				= "";
@@ -488,14 +488,14 @@ typedef class tagSHOUZHENGSHUJU
 public:
 	tagSHOUZHENGSHUJU::tagSHOUZHENGSHUJU()
 	{
-		Xuhao;					= 0;
-		Riqi;					= "";
-		ShebeiIP;				= "";
-		Zhengjianleixing;		= "";
-		Zhengjianhaoma;			= "";
-		Xingming;				= "";
-		Shoulibianhao;			= "";
-		Shifoujiaofei;			= "";
+		Xuhao					= 0;
+		Riqi					= "";
+		ShebeiIP				= "";
+		Zhengjianleixing		= "";
+		Zhengjianhaoma			= "";
+		Xingming				= "";
+		Shoulibianhao			= "";
+		Shifoujiaofei			= "";
 	}
 
 	int  						Xuhao;					//ÐòºÅ
@@ -682,7 +682,7 @@ public:
 		Yonghuming				= "";
 		Mima					= "";
 		Youxiaoqi				= "";
-		Quanxianjibie			= "";
+		Quanxianjibie			= 0;
 	}
 
 	int  						Xuhao;					//ÐòºÅ
@@ -705,9 +705,9 @@ public:
 	{
 		Xuhao					= 0;
 		Yonghuming				= "";
-		Mima					= "";
-		Youxiaoqi				= "";
-		Quanxianjibie			= "";
+		Riqi					= "";
+		Caozuoleibie			= "";
+		Caozuoneirong			= "";
 	}
 
 	int  						Xuhao;					//ÐòºÅ

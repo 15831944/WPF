@@ -14,6 +14,10 @@
 
 
 // TODO:  在此处引用程序需要的其他头文件
+#include <vector>
+#include <string>
+using namespace std;
+
 #include <tchar.h>
 #include <stdlib.h>
 #include <io.h>
@@ -26,5 +30,7 @@
 #pragma comment(lib,"../../output/database/Realease/sqlite3.lib")
 #endif
 
+#include "SqliteDataDefine.h"
 #include "CommonFuntion.h"
+#include "Sqlite.h"
 extern string RIM_RTK_BSD_DB_FILE;
