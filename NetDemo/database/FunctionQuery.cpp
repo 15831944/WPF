@@ -28,7 +28,7 @@ bool QueryIDCARDAPPLY(string QuerySql, std::vector<tagIDCARDAPPLY> &lcArray, str
 
 		while (sqlite3_step(lpStmt) == SQLITE_ROW)
 		{
-			if (sqlite3_column_count(lpStmt) == 16)
+			if (sqlite3_column_count(lpStmt) == 18)
 			{
 				lcArray.push_back(tagIDCARDAPPLY());
 				tagIDCARDAPPLY &lc	= lcArray.back();

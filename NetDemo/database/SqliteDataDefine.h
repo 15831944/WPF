@@ -19,6 +19,7 @@
 #define T_IDCARDAPPLY_BIRTHDAY													"Birthday"
 #define T_IDCARDAPPLY_ADDRESS													"Address"
 #define T_IDCARDAPPLY_IDNUMBER													"IdNumber"
+#define T_IDCARDAPPLY_SIGDEPART													"SigDepart"
 #define T_IDCARDAPPLY_SLH														"SLH"
 #define T_IDCARDAPPLY_FPDATA													"fpData"
 #define T_IDCARDAPPLY_FPFEATURE													"fpFeature"

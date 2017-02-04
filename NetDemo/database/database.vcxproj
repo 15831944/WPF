@@ -60,6 +60,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ModuleDefinitionFile>database.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
@@ -81,6 +82,7 @@ xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\MFCDemo\$(Configuration
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <ModuleDefinitionFile>database.def</ModuleDefinitionFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
@@ -117,6 +119,9 @@ xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\MFCDemo\$(Configuration
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="database.def" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
