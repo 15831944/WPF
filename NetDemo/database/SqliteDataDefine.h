@@ -753,48 +753,6 @@ public:
 	string  					Chuangjianshijian;		//创建时间
 
 }SHEBEIGUANLI, *LPSHEBEIGUANLI;
-/**
-* @class  tagRIMCOMFREQLAYOUT
-*
-* @brief  
-****************************************************************************
-*/
-typedef class tagRIMCOMFREQLAYOUT
-{
-public:
-	tagRIMCOMFREQLAYOUT()
-	{
-		sName				=  "";	       
-		nStartFreq			=  0;	       
-		nEndFreq			=  0;	       
-		sGroupName			=  "";	       
-		nDistince			=  0;	       
-		nEmitWidth			=  0;	              
-	}
-	tagRIMCOMFREQLAYOUT(const tagRIMCOMFREQLAYOUT& ob)
-	{
-		*this = ob;
-	}
-	tagRIMCOMFREQLAYOUT& operator=(const tagRIMCOMFREQLAYOUT& ob)
-	{
-		sName				= ob.sName;
-		nStartFreq			= ob.nStartFreq;
-		nEndFreq			= ob.nEndFreq;	
-		sGroupName			= ob.sGroupName;	
-		nDistince			= ob.nDistince;	
-		nEmitWidth			= ob.nEmitWidth;	
-
-		return *this;
-	}
-
-	std::string 			sName;
-	int 					nStartFreq;
-	int 					nEndFreq;	
-	std::string 			sGroupName;	
-	int 					nDistince;	
-	int 					nEmitWidth;	
-
-}RIMCOMFREQLAYOUT, *LPRIMCOMFREQLAYOUT;
 
 ////////////////////////////////////////////////////////结构定义END////////////////////////////////////////////////////////
 

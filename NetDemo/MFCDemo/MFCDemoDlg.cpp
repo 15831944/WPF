@@ -148,8 +148,6 @@ BOOL CMFCDemoDlg::OnInitDialog()
 	_QueryIDCARDAPPLY queryidcardapply	= (_QueryIDCARDAPPLY)GetProcAddress(hDatabase, "QueryIDCARDAPPLY");
 	queryidcardapply("select * from idcardapply", array, strError);
 
-
-
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
 
