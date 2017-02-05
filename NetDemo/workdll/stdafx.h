@@ -15,6 +15,12 @@
 
 // TODO:  在此处引用程序需要的其他头文件
 
+#ifdef _DEBUG
+#pragma comment( lib, "libprotobuf.lib" )
+#else
+#pragma comment( lib, "libprotobuf.lib" )
+#endif
+
 #include <tchar.h>
 
 #include "../NetDll/NetDll.h"

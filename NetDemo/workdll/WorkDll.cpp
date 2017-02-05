@@ -36,3 +36,8 @@ bool isClientStoped()
 {
 	return CClient::GetInstance()->ClientStoped();
 }
+
+void QueryIDCARDAPPLY()
+{
+
+}

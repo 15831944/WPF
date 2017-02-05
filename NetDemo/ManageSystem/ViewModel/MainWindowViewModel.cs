@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-
+using ManageSystem.Server;
 namespace ManageSystem.ViewModel
 {
     class MainWindowViewModel : NotificationObject

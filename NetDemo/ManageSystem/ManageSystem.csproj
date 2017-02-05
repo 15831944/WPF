@@ -59,6 +59,7 @@
     </ApplicationDefinition>
     <Compile Include="Dameer.cs" />
     <Compile Include="Model\DeviceModel.cs" />
+    <Compile Include="Server\WorkServer.cs" />
     <Compile Include="ViewModel\DeviceManagementViewModel.cs" />
     <Compile Include="ViewModel\ElectronicMapViewModel.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />

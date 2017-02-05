@@ -36,6 +36,9 @@
     <ClInclude Include="SqliteData.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="netmsg.pb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -54,6 +57,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="SqliteData.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="netmsg.pb.cc">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
