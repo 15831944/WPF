@@ -125,3 +125,8 @@ void server::send(long userID, BYTE* SendBuf, int dataLen)
 	{
 	}
 }
+
+bool server::stoped()
+{
+	return m_io_service.stopped();
+}

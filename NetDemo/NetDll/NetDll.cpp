@@ -38,6 +38,13 @@ bool stopServer()
 
 	return true;
 }
+bool isServerStoped()
+{
+	if (g_serverPtr != nullptr)
+		g_serverPtr->stoped();
+
+	return true;
+}
 
 boost::mutex									m_sockMutexclient;				//asio::socket不是线程安全的，一把大锁解决问题
 boost::asio::io_service							g_io_service_client;
@@ -67,7 +74,6 @@ bool startClient(char *ip, int port, OnReceiveCallBack callback, OUT ClientSendD
 
 	return true;
 }
-
 bool stopClient()
 {
 	boost::mutex::scoped_lock Lock(m_sockMutexclient);
@@ -80,6 +86,13 @@ bool stopClient()
 	return true;
 }
 
+bool isClientStoped()
+{
+	if (g_clientPtr != nullptr)
+		return g_clientPtr->stoped();
+
+	return true;
+}
 //std::string geterrormessage(int ev)
 //{
 //	LPVOID lpMsgBuf = 0;

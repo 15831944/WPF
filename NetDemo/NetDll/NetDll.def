@@ -5,6 +5,7 @@ DESCRIPTION     '(c)2017 zhangyong'
 EXPORTS
 		startServer
 		stopServer
-
+		isServerStoped
 		startClient
 		stopClient
+		isClientStoped

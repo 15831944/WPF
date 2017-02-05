@@ -23,4 +23,5 @@ public:
 	static void										send(long userID, BYTE* SendBuf, int dataLen);
 	void											run();
 	void											stop();
+	bool											stoped();
 };

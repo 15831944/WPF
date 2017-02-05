@@ -19,5 +19,6 @@ public:
 	void											run();
 	void											stop();
 	static void										send(BYTE* SendBuf, int dataLen);
+	bool											stoped();
 };
 extern unique_ptr<client>							g_clientPtr;

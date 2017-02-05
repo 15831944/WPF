@@ -66,3 +66,8 @@ void client::send(BYTE* SendBuf, int dataLen)
 		g_clientPtr->m_pSession->send(SendBuf, dataLen);
 	}
 }
+
+bool client::stoped()
+{
+	return m_io_service.stopped();
+}
