@@ -2,24 +2,37 @@
 //
 #include "stdafx.h"
 #include "WorkDll.h"
+#include "Client.h"
+#include "Server.h"
 
-//
-//bool				startServer(char *ip, int port, IN OnReceiveCallBack callback)
-//{
-//
-//}
-//
-//bool				stopServer()
-//{
-//
-//}
-//
-//bool				startClient(char *ip, int port, IN OnReceiveCallBack callback)
-//{
-//
-//}
-//
-//bool				stopClient()
-//{
-//
-//}
+/***************************************Server*******************************************/
+bool startServer(char *ip, int port)
+{
+	return CServer::GetInstance()->StartServer(ip, port);
+}
+
+bool stopServer()
+{
+	return CServer::GetInstance()->StopServer();
+}
+bool isServerStoped()
+{
+	return CServer::GetInstance()->ServerStoped();
+}
+
+
+/***************************************Client*******************************************/
+bool startClient(char *ip, int port)
+{
+	return CClient::GetInstance()->StartClient(ip, port);
+}
+
+bool stopClient()
+{
+	return CClient::GetInstance()->StopClient();
+}
+
+bool isClientStoped()
+{
+	return CClient::GetInstance()->ClientStoped();
+}
