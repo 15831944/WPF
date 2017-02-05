@@ -44,15 +44,15 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)..\..\output\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
-    <IncludePath>E:\gitcode\zhangyong\WPF\NetDemo\protobuf-2.6.1\src;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\gitcode\zhangyong\WPF\NetDemo\protobuf-2.6.1\vsprojects\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\protobuf-2.6.1\src;$(IncludePath)</IncludePath>
+    <LibraryPath>..\protobuf-2.6.1\Lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)..\..\output\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
-    <IncludePath>E:\gitcode\zhangyong\WPF\NetDemo\protobuf-2.6.1\src;$(IncludePath)</IncludePath>
-    <LibraryPath>E:\gitcode\zhangyong\WPF\NetDemo\protobuf-2.6.1\vsprojects\Debug;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\protobuf-2.6.1\src;$(IncludePath)</IncludePath>
+    <LibraryPath>..\protobuf-2.6.1\Lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
