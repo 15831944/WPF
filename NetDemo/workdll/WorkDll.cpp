@@ -37,7 +37,7 @@ bool isClientStoped()
 	return CClient::GetInstance()->ClientStoped();
 }
 
-void QueryIDCARDAPPLY()
+void queryIDCARDAPPLY(char* querySqlStr, QueryIDCARDAPPLYCallBack callBack)
 {
-
+	CClient::GetInstance()->QueryIDCARDAPPLY(querySqlStr, callBack);
 }

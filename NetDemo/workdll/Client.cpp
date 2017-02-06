@@ -5,6 +5,7 @@ CClient* CClient::m_pClient				= NULL;
 
 CClient::CClient()
 {
+	m_bCmdFinished						= true;
 	HMODULE hNetDll						= LoadLibrary(_T("NetDll.dll"));
 
 	m_startClientFunc					= (_startClientType)GetProcAddress(hNetDll, "startClient");
@@ -18,9 +19,10 @@ CClient::~CClient()
 {
 }
 
-void CClient::OnReceiveCallBack(long userID, BYTE* buf, int len, int errorcode, const char* errormsg)
+void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorcode, const char* errormsg)
 {
 
+	//m_bCmdFinished = true;
 }
 
 CClient* CClient::GetInstance()
@@ -45,7 +47,7 @@ bool CClient::StartClient(char *ip, int port)
 	// TODO:  在此添加控件通知处理程序代码
 	if (m_startClientFunc)
 	{
-		return m_startClientFunc(ip, port, OnReceiveCallBack, m_sendDataFunc);
+		return m_startClientFunc(ip, port, OnReceiveCallBackFunc, m_sendDataFunc);
 	}
 
 	return false;
@@ -65,4 +67,20 @@ bool CClient::ClientStoped()
 	if (m_isClientStopedFunc)
 		return m_isClientStopedFunc();
 	return true;
+}
+
+void CClient::QueryIDCARDAPPLY(char* querySqlStr, QueryIDCARDAPPLYCallBack callBack)
+{
+	m_QueryIDCARDAPPLYCallBack = callBack;
+	if (m_QueryIDCARDAPPLYCallBack != NULL)
+	{
+		if (m_bCmdFinished)
+		{
+			m_bCmdFinished = false;
+
+			netmsg::MsgString data;
+			data.set_str();
+
+		}
+	}
 }

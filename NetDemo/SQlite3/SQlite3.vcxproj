@@ -72,11 +72,10 @@
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
+xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
 xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\MFCDemo\$(Configuration)\" /Y
 xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\database\$(Configuration)\" /Y
 
-xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
-xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\MFCDemo\$(Configuration)\" /Y
 xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\database\$(Configuration)\" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -103,11 +102,10 @@ xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\database\$(Configuration)\
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
+xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
 xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\MFCDemo\$(Configuration)\" /Y
 xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\database\$(Configuration)\" /Y
 
-xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
-xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\MFCDemo\$(Configuration)\" /Y
 xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\database\$(Configuration)\" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

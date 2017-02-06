@@ -172,7 +172,7 @@
                             <DatePicker Grid.Column="1" IsTodayHighlighted="True" Height="25" SelectedDateFormat="Long"></DatePicker>
                         </Grid>
                     </Grid>
-                    <Button Grid.Column="4" Width="50" Height="50">查询</Button>
+                    <Button Grid.Column="4" Width="50" Command="{Binding Path=QueryCommand}" Height="50">查询</Button>
                 </Grid>
             </Grid>
         </Grid>

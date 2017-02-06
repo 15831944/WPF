@@ -1,10 +1,11 @@
-LIBRARY         "NetDll"
+LIBRARY         "WorkDll"
 
 DESCRIPTION     '(c)2017 zhangyong'
 
 EXPORTS
-;		startServer
-;		stopServer
+		startServer
+		stopServer
 
-;		startClient
-;		stopClient
+		startClient
+		stopClient
+		queryIDCARDAPPLY

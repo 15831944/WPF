@@ -25,4 +25,5 @@
 
 #include "../NetDll/NetDll.h"
 #include "../database/database.h"
+#include "netmsg.pb.h"
 

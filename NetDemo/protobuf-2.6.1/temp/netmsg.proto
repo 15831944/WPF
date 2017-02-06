@@ -26,7 +26,7 @@ message MsgHead{
 message MsgString{
 
 	required	MsgHead				head					= 1;
-	required	string				Str						= 2;
+	required	string				Cmd						= 2;
 }
 
 message MsgIdCardApplyData{

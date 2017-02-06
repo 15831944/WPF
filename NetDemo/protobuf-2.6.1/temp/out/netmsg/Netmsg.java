@@ -766,18 +766,18 @@ public final class Netmsg {
     netmsg.Netmsg.MsgHeadOrBuilder getHeadOrBuilder();
 
     /**
-     * <code>required string Str = 2;</code>
+     * <code>required string Cmd = 2;</code>
      */
-    boolean hasStr();
+    boolean hasCmd();
     /**
-     * <code>required string Str = 2;</code>
+     * <code>required string Cmd = 2;</code>
      */
-    java.lang.String getStr();
+    java.lang.String getCmd();
     /**
-     * <code>required string Str = 2;</code>
+     * <code>required string Cmd = 2;</code>
      */
     com.google.protobuf.ByteString
-        getStrBytes();
+        getCmdBytes();
   }
   /**
    * Protobuf type {@code netmsg.MsgString}
@@ -847,7 +847,7 @@ public final class Netmsg {
             case 18: {
               com.google.protobuf.ByteString bs = input.readBytes();
               bitField0_ |= 0x00000002;
-              str_ = bs;
+              cmd_ = bs;
               break;
             }
           }
@@ -911,19 +911,19 @@ public final class Netmsg {
       return head_;
     }
 
-    public static final int STR_FIELD_NUMBER = 2;
-    private java.lang.Object str_;
+    public static final int CMD_FIELD_NUMBER = 2;
+    private java.lang.Object cmd_;
     /**
-     * <code>required string Str = 2;</code>
+     * <code>required string Cmd = 2;</code>
      */
-    public boolean hasStr() {
+    public boolean hasCmd() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required string Str = 2;</code>
+     * <code>required string Cmd = 2;</code>
      */
-    public java.lang.String getStr() {
-      java.lang.Object ref = str_;
+    public java.lang.String getCmd() {
+      java.lang.Object ref = cmd_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -931,22 +931,22 @@ public final class Netmsg {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          str_ = s;
+          cmd_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string Str = 2;</code>
+     * <code>required string Cmd = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getStrBytes() {
-      java.lang.Object ref = str_;
+        getCmdBytes() {
+      java.lang.Object ref = cmd_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        str_ = b;
+        cmd_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -955,7 +955,7 @@ public final class Netmsg {
 
     private void initFields() {
       head_ = netmsg.Netmsg.MsgHead.getDefaultInstance();
-      str_ = "";
+      cmd_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -967,7 +967,7 @@ public final class Netmsg {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasStr()) {
+      if (!hasCmd()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -986,7 +986,7 @@ public final class Netmsg {
         output.writeMessage(1, head_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getStrBytes());
+        output.writeBytes(2, getCmdBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1003,7 +1003,7 @@ public final class Netmsg {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getStrBytes());
+          .computeBytesSize(2, getCmdBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1129,7 +1129,7 @@ public final class Netmsg {
           headBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000001);
-        str_ = "";
+        cmd_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -1170,7 +1170,7 @@ public final class Netmsg {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.str_ = str_;
+        result.cmd_ = cmd_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1190,9 +1190,9 @@ public final class Netmsg {
         if (other.hasHead()) {
           mergeHead(other.getHead());
         }
-        if (other.hasStr()) {
+        if (other.hasCmd()) {
           bitField0_ |= 0x00000002;
-          str_ = other.str_;
+          cmd_ = other.cmd_;
           onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
@@ -1204,7 +1204,7 @@ public final class Netmsg {
           
           return false;
         }
-        if (!hasStr()) {
+        if (!hasCmd()) {
           
           return false;
         }
@@ -1350,24 +1350,24 @@ public final class Netmsg {
         return headBuilder_;
       }
 
-      private java.lang.Object str_ = "";
+      private java.lang.Object cmd_ = "";
       /**
-       * <code>required string Str = 2;</code>
+       * <code>required string Cmd = 2;</code>
        */
-      public boolean hasStr() {
+      public boolean hasCmd() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required string Str = 2;</code>
+       * <code>required string Cmd = 2;</code>
        */
-      public java.lang.String getStr() {
-        java.lang.Object ref = str_;
+      public java.lang.String getCmd() {
+        java.lang.Object ref = cmd_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
-            str_ = s;
+            cmd_ = s;
           }
           return s;
         } else {
@@ -1375,53 +1375,53 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>required string Str = 2;</code>
+       * <code>required string Cmd = 2;</code>
        */
       public com.google.protobuf.ByteString
-          getStrBytes() {
-        java.lang.Object ref = str_;
+          getCmdBytes() {
+        java.lang.Object ref = cmd_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          str_ = b;
+          cmd_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string Str = 2;</code>
+       * <code>required string Cmd = 2;</code>
        */
-      public Builder setStr(
+      public Builder setCmd(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000002;
-        str_ = value;
+        cmd_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string Str = 2;</code>
+       * <code>required string Cmd = 2;</code>
        */
-      public Builder clearStr() {
+      public Builder clearCmd() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        str_ = getDefaultInstance().getStr();
+        cmd_ = getDefaultInstance().getCmd();
         onChanged();
         return this;
       }
       /**
-       * <code>required string Str = 2;</code>
+       * <code>required string Cmd = 2;</code>
        */
-      public Builder setStrBytes(
+      public Builder setCmdBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000002;
-        str_ = value;
+        cmd_ = value;
         onChanged();
         return this;
       }
@@ -33321,7 +33321,7 @@ public final class Netmsg {
       "alPack\030\001 \002(\005:\0011\022\024\n\tpackIndex\030\002 \002(\005:\0011\0228\n" +
       "\010packtype\030\003 \002(\0162\022.netmsg.NetMsgType:\022Net" +
       "MsgType_Unknown\"7\n\tMsgString\022\035\n\004head\030\001 \002" +
-      "(\0132\017.netmsg.MsgHead\022\013\n\003Str\030\002 \002(\t\"\345\002\n\022Msg" +
+      "(\0132\017.netmsg.MsgHead\022\013\n\003Cmd\030\002 \002(\t\"\345\002\n\022Msg" +
       "IdCardApplyData\022\035\n\004head\030\001 \002(\0132\017.netmsg.M" +
       "sgHead\022\014\n\004name\030\002 \001(\t\022\016\n\006gender\030\003 \001(\t\022\016\n\006" +
       "Nation\030\004 \001(\t\022\020\n\010Birthday\030\005 \001(\t\022\017\n\007Addres" +
@@ -33446,7 +33446,7 @@ public final class Netmsg {
     internal_static_netmsg_MsgString_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_MsgString_descriptor,
-        new java.lang.String[] { "Head", "Str", });
+        new java.lang.String[] { "Head", "Cmd", });
     internal_static_netmsg_MsgIdCardApplyData_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_netmsg_MsgIdCardApplyData_fieldAccessorTable = new
