@@ -20,15 +20,15 @@ void client::handle_connect(session_ptr new_session, const boost::system::error_
 {
 	if (ec)
 	{
+		if (m_pReceiveCallBack)
+			m_pReceiveCallBack((long)m_pSession.get(), NULL, 0, ec.value(), ec.message().c_str());
+
 		string str = string("\nhandle_connect:") + ec.message();
 		OutputDebugStringA(str.c_str());
 		return;
 	}
 
 	new_session->start();
-
-	if (m_pReceiveCallBack)
-		m_pReceiveCallBack((long)m_pSession.get(), NULL, 0, ec.value(), ec.message().c_str());
 }
 
 void client::run() {

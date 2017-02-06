@@ -24,6 +24,8 @@ protected:
 
 
 	bool								m_bCmdFinished;
+	void								SendMsgBuf(::google::protobuf::Message& msg);
+
 	QueryIDCARDAPPLYCallBack			m_QueryIDCARDAPPLYCallBack;
 public:
 	static CClient* 					GetInstance();

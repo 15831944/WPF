@@ -20,12 +20,15 @@ namespace netmsg {
 
 namespace {
 
+const ::google::protobuf::Descriptor* MsgPack_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  MsgPack_reflection_ = NULL;
 const ::google::protobuf::Descriptor* MsgHead_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgHead_reflection_ = NULL;
-const ::google::protobuf::Descriptor* MsgString_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* MsgCmd_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  MsgString_reflection_ = NULL;
+  MsgCmd_reflection_ = NULL;
 const ::google::protobuf::Descriptor* MsgIdCardApplyData_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   MsgIdCardApplyData_reflection_ = NULL;
@@ -79,7 +82,37 @@ void protobuf_AssignDesc_netmsg_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "netmsg.proto");
   GOOGLE_CHECK(file != NULL);
-  MsgHead_descriptor_ = file->message_type(0);
+  MsgPack_descriptor_ = file->message_type(0);
+  static const int MsgPack_offsets_[16] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, head_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgcmd_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgidcardapplydata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgonlinestatusdata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgshulianghuizongdata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgxiangxitongjidata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgzhiqianshujudata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgshouzhengshujudata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgqianzhushujudata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgjiaokuanshujudata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgchaxunshujudata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgyushoulishujudata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgshebeiyichangshujudata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgguanliyuandata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgguanliyuancaozuojiludata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, msgshebeiguanlidata_),
+  };
+  MsgPack_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      MsgPack_descriptor_,
+      MsgPack::default_instance_,
+      MsgPack_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(MsgPack));
+  MsgHead_descriptor_ = file->message_type(1);
   static const int MsgHead_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgHead, totalpack_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgHead, packindex_),
@@ -96,25 +129,23 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgHead));
-  MsgString_descriptor_ = file->message_type(1);
-  static const int MsgString_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgString, head_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgString, cmd_),
+  MsgCmd_descriptor_ = file->message_type(2);
+  static const int MsgCmd_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgCmd, cmd_),
   };
-  MsgString_reflection_ =
+  MsgCmd_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      MsgString_descriptor_,
-      MsgString::default_instance_,
-      MsgString_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgString, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgString, _unknown_fields_),
+      MsgCmd_descriptor_,
+      MsgCmd::default_instance_,
+      MsgCmd_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgCmd, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgCmd, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(MsgString));
-  MsgIdCardApplyData_descriptor_ = file->message_type(2);
-  static const int MsgIdCardApplyData_offsets_[19] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgIdCardApplyData, head_),
+      sizeof(MsgCmd));
+  MsgIdCardApplyData_descriptor_ = file->message_type(3);
+  static const int MsgIdCardApplyData_offsets_[18] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgIdCardApplyData, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgIdCardApplyData, gender_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgIdCardApplyData, nation_),
@@ -145,9 +176,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgIdCardApplyData));
-  MsgOnlineStatusData_descriptor_ = file->message_type(3);
-  static const int MsgOnlineStatusData_offsets_[10] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgOnlineStatusData, head_),
+  MsgOnlineStatusData_descriptor_ = file->message_type(4);
+  static const int MsgOnlineStatusData_offsets_[9] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgOnlineStatusData, machineid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgOnlineStatusData, machinename_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgOnlineStatusData, machineip_),
@@ -169,9 +199,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgOnlineStatusData));
-  MsgShuLiangHuiZongData_descriptor_ = file->message_type(4);
-  static const int MsgShuLiangHuiZongData_offsets_[16] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgShuLiangHuiZongData, head_),
+  MsgShuLiangHuiZongData_descriptor_ = file->message_type(5);
+  static const int MsgShuLiangHuiZongData_offsets_[15] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgShuLiangHuiZongData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgShuLiangHuiZongData, shiyongdanwei_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgShuLiangHuiZongData, shebeizongshuliang_),
@@ -199,9 +228,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgShuLiangHuiZongData));
-  MsgXiangXiTongJiData_descriptor_ = file->message_type(5);
-  static const int MsgXiangXiTongJiData_offsets_[20] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgXiangXiTongJiData, head_),
+  MsgXiangXiTongJiData_descriptor_ = file->message_type(6);
+  static const int MsgXiangXiTongJiData_offsets_[19] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgXiangXiTongJiData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgXiangXiTongJiData, nian_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgXiangXiTongJiData, yue_),
@@ -233,9 +261,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgXiangXiTongJiData));
-  MsgZhiQianShuJuData_descriptor_ = file->message_type(6);
-  static const int MsgZhiQianShuJuData_offsets_[12] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgZhiQianShuJuData, head_),
+  MsgZhiQianShuJuData_descriptor_ = file->message_type(7);
+  static const int MsgZhiQianShuJuData_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgZhiQianShuJuData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgZhiQianShuJuData, riqi_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgZhiQianShuJuData, shebeiip_),
@@ -259,9 +286,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgZhiQianShuJuData));
-  MsgShouZhengShuJuData_descriptor_ = file->message_type(7);
-  static const int MsgShouZhengShuJuData_offsets_[9] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgShouZhengShuJuData, head_),
+  MsgShouZhengShuJuData_descriptor_ = file->message_type(8);
+  static const int MsgShouZhengShuJuData_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgShouZhengShuJuData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgShouZhengShuJuData, riqi_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgShouZhengShuJuData, shebeiip_),
@@ -282,9 +308,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgShouZhengShuJuData));
-  MsgQianZhuShuJuData_descriptor_ = file->message_type(8);
-  static const int MsgQianZhuShuJuData_offsets_[11] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgQianZhuShuJuData, head_),
+  MsgQianZhuShuJuData_descriptor_ = file->message_type(9);
+  static const int MsgQianZhuShuJuData_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgQianZhuShuJuData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgQianZhuShuJuData, riqi_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgQianZhuShuJuData, shebeiip_),
@@ -307,9 +332,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgQianZhuShuJuData));
-  MsgJiaoKuanShuJuData_descriptor_ = file->message_type(9);
-  static const int MsgJiaoKuanShuJuData_offsets_[9] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgJiaoKuanShuJuData, head_),
+  MsgJiaoKuanShuJuData_descriptor_ = file->message_type(10);
+  static const int MsgJiaoKuanShuJuData_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgJiaoKuanShuJuData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgJiaoKuanShuJuData, riqi_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgJiaoKuanShuJuData, shebeiip_),
@@ -330,9 +354,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgJiaoKuanShuJuData));
-  MsgChaXunShuJuData_descriptor_ = file->message_type(10);
-  static const int MsgChaXunShuJuData_offsets_[7] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgChaXunShuJuData, head_),
+  MsgChaXunShuJuData_descriptor_ = file->message_type(11);
+  static const int MsgChaXunShuJuData_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgChaXunShuJuData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgChaXunShuJuData, riqi_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgChaXunShuJuData, shebeiip_),
@@ -351,9 +374,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgChaXunShuJuData));
-  MsgYuShouLiShuJuData_descriptor_ = file->message_type(11);
-  static const int MsgYuShouLiShuJuData_offsets_[13] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgYuShouLiShuJuData, head_),
+  MsgYuShouLiShuJuData_descriptor_ = file->message_type(12);
+  static const int MsgYuShouLiShuJuData_offsets_[12] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgYuShouLiShuJuData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgYuShouLiShuJuData, riqi_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgYuShouLiShuJuData, shebeiip_),
@@ -378,9 +400,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgYuShouLiShuJuData));
-  MsgSheBeiYiChangShuJuData_descriptor_ = file->message_type(12);
-  static const int MsgSheBeiYiChangShuJuData_offsets_[7] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSheBeiYiChangShuJuData, head_),
+  MsgSheBeiYiChangShuJuData_descriptor_ = file->message_type(13);
+  static const int MsgSheBeiYiChangShuJuData_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSheBeiYiChangShuJuData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSheBeiYiChangShuJuData, riqi_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSheBeiYiChangShuJuData, shiyongdanwei_),
@@ -399,9 +420,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgSheBeiYiChangShuJuData));
-  MsgGuanLiYuanData_descriptor_ = file->message_type(13);
-  static const int MsgGuanLiYuanData_offsets_[6] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgGuanLiYuanData, head_),
+  MsgGuanLiYuanData_descriptor_ = file->message_type(14);
+  static const int MsgGuanLiYuanData_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgGuanLiYuanData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgGuanLiYuanData, yonghuming_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgGuanLiYuanData, mima_),
@@ -419,9 +439,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgGuanLiYuanData));
-  MsgGuanLiYuanCaoZuoJiLuData_descriptor_ = file->message_type(14);
-  static const int MsgGuanLiYuanCaoZuoJiLuData_offsets_[6] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgGuanLiYuanCaoZuoJiLuData, head_),
+  MsgGuanLiYuanCaoZuoJiLuData_descriptor_ = file->message_type(15);
+  static const int MsgGuanLiYuanCaoZuoJiLuData_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgGuanLiYuanCaoZuoJiLuData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgGuanLiYuanCaoZuoJiLuData, yonghuming_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgGuanLiYuanCaoZuoJiLuData, riqi_),
@@ -439,9 +458,8 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgGuanLiYuanCaoZuoJiLuData));
-  MsgSheBeiGuanLiData_descriptor_ = file->message_type(15);
-  static const int MsgSheBeiGuanLiData_offsets_[11] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSheBeiGuanLiData, head_),
+  MsgSheBeiGuanLiData_descriptor_ = file->message_type(16);
+  static const int MsgSheBeiGuanLiData_offsets_[10] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSheBeiGuanLiData, xuhao_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSheBeiGuanLiData, sheng_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgSheBeiGuanLiData, shi_),
@@ -478,9 +496,11 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    MsgPack_descriptor_, &MsgPack::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     MsgHead_descriptor_, &MsgHead::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    MsgString_descriptor_, &MsgString::default_instance());
+    MsgCmd_descriptor_, &MsgCmd::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     MsgIdCardApplyData_descriptor_, &MsgIdCardApplyData::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -514,10 +534,12 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_netmsg_2eproto() {
+  delete MsgPack::default_instance_;
+  delete MsgPack_reflection_;
   delete MsgHead::default_instance_;
   delete MsgHead_reflection_;
-  delete MsgString::default_instance_;
-  delete MsgString_reflection_;
+  delete MsgCmd::default_instance_;
+  delete MsgCmd_reflection_;
   delete MsgIdCardApplyData::default_instance_;
   delete MsgIdCardApplyData_reflection_;
   delete MsgOnlineStatusData::default_instance_;
@@ -555,115 +577,128 @@ void protobuf_AddDesc_netmsg_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\014netmsg.proto\022\006netmsg\"o\n\007MsgHead\022\024\n\ttot"
-    "alPack\030\001 \002(\005:\0011\022\024\n\tpackIndex\030\002 \002(\005:\0011\0228\n"
-    "\010packtype\030\003 \002(\0162\022.netmsg.NetMsgType:\022Net"
-    "MsgType_Unknown\"7\n\tMsgString\022\035\n\004head\030\001 \002"
-    "(\0132\017.netmsg.MsgHead\022\013\n\003Cmd\030\002 \002(\t\"\345\002\n\022Msg"
-    "IdCardApplyData\022\035\n\004head\030\001 \002(\0132\017.netmsg.M"
-    "sgHead\022\014\n\004name\030\002 \001(\t\022\016\n\006gender\030\003 \001(\t\022\016\n\006"
-    "Nation\030\004 \001(\t\022\020\n\010Birthday\030\005 \001(\t\022\017\n\007Addres"
-    "s\030\006 \001(\t\022\020\n\010IdNumber\030\007 \001(\t\022\021\n\tSigDepart\030\010"
-    " \001(\t\022\013\n\003SLH\030\t \001(\t\022\016\n\006fpData\030\n \001(\t\022\021\n\tfpF"
-    "eature\030\013 \001(\t\022\014\n\004XCZP\030\014 \001(\t\022\014\n\004XZQH\030\r \001(\t"
-    "\022\020\n\010sannerId\030\016 \001(\t\022\023\n\013scannerName\030\017 \001(\t\022"
-    "\r\n\005legal\030\020 \001(\010\022\022\n\noperatorID\030\021 \001(\t\022\024\n\014op"
-    "eratorName\030\022 \001(\t\022\016\n\006opDate\030\023 \001(\t\"\374\001\n\023Msg"
-    "OnlineStatusData\022\035\n\004head\030\001 \002(\0132\017.netmsg."
-    "MsgHead\022\021\n\tmachineId\030\002 \001(\t\022\023\n\013machineNam"
-    "e\030\003 \001(\t\022\021\n\tmachineIP\030\004 \001(\t\022\024\n\014machineLon"
-    "gi\030\005 \001(\t\022\022\n\nmachineLat\030\006 \001(\t\022\027\n\017currentB"
-    "usiness\030\007 \001(\t\022\031\n\021businessStartTime\030\010 \001(\t"
-    "\022\027\n\017businessEndTime\030\t \001(\t\022\024\n\014businessDon"
-    "e\030\n \001(\010\"\217\003\n\026MsgShuLiangHuiZongData\022\035\n\004he"
-    "ad\030\001 \002(\0132\017.netmsg.MsgHead\022\r\n\005Xuhao\030\002 \001(\005"
-    "\022\025\n\rShiyongdanwei\030\003 \001(\005\022\032\n\022Shebeizongshu"
-    "liang\030\004 \001(\005\022\024\n\014Qiyongshebei\030\005 \001(\005\022\021\n\tYuy"
-    "ueyewu\030\006 \001(\005\022\024\n\014Yushouliyewu\030\007 \001(\005\022\023\n\013Ji"
-    "aofeiyewu\030\010 \001(\005\022\022\n\nChaxunyewu\030\t \001(\005\022\027\n\017S"
-    "hebeishouzheng\030\n \001(\005\022\022\n\nXuqianyewu\030\013 \001(\005"
-    "\022\033\n\023Benshitongxingzheng\030\014 \001(\005\022\033\n\023Dianzit"
-    "ongxingzheng\030\r \001(\005\022\032\n\022Tongxingzhengzhika"
-    "\030\016 \001(\005\022\022\n\nLidengkequ\030\017 \001(\005\022\025\n\rFeilidengk"
-    "equ\030\020 \001(\005\"\273\003\n\024MsgXiangXiTongJiData\022\035\n\004he"
-    "ad\030\001 \002(\0132\017.netmsg.MsgHead\022\r\n\005Xuhao\030\002 \001(\005"
-    "\022\014\n\004Nian\030\003 \001(\005\022\013\n\003Yue\030\004 \001(\005\022\n\n\002Ri\030\005 \001(\005\022"
-    "\017\n\007Xiaoshi\030\006 \001(\005\022\020\n\010Fenzhong\030\007 \001(\005\022\025\n\rSh"
-    "iyongdanwei\030\010 \001(\005\022\024\n\014Qiyongshebei\030\t \001(\005\022"
-    "\021\n\tYuyueyewu\030\n \001(\005\022\024\n\014Yushouliyewu\030\013 \001(\005"
-    "\022\023\n\013Jiaofeiyewu\030\014 \001(\005\022\022\n\nChaxunyewu\030\r \001("
-    "\005\022\027\n\017Shebeishouzheng\030\016 \001(\005\022\022\n\nXuqianyewu"
-    "\030\017 \001(\005\022\033\n\023Benshitongxingzheng\030\020 \001(\005\022\033\n\023D"
-    "ianzitongxingzheng\030\021 \001(\005\022\032\n\022Tongxingzhen"
-    "gzhika\030\022 \001(\005\022\022\n\nLidengkequ\030\023 \001(\005\022\025\n\rFeil"
-    "idengkequ\030\024 \001(\005\"\242\002\n\023MsgZhiQianShuJuData\022"
-    "\035\n\004head\030\001 \002(\0132\017.netmsg.MsgHead\022\r\n\005Xuhao\030"
-    "\002 \001(\005\022\014\n\004Riqi\030\003 \001(\t\022\020\n\010ShebeiIP\030\004 \001(\t\022\023\n"
-    "\013Yewubianhao\030\005 \001(\t\022\032\n\022YuanZhengjianhaoma"
-    "\030\006 \001(\t\022\020\n\010Xingming\030\007 \001(\t\022\027\n\017Qianzhuzhong"
-    "lei\030\010 \001(\t\022\026\n\016ZhikaZhuangtai\030\t \001(\t\022\026\n\016Zhe"
-    "ngjianhaoma\030\n \001(\t\022\032\n\022Jiekoufanhuijieguo\030"
-    "\013 \001(\t\022\025\n\rLianxidianhua\030\014 \001(\t\"\327\001\n\025MsgShou"
-    "ZhengShuJuData\022\035\n\004head\030\001 \002(\0132\017.netmsg.Ms"
-    "gHead\022\r\n\005Xuhao\030\002 \001(\005\022\014\n\004Riqi\030\003 \001(\t\022\020\n\010Sh"
-    "ebeiIP\030\004 \001(\t\022\030\n\020Zhengjianleixing\030\005 \001(\t\022\026"
-    "\n\016Zhengjianhaoma\030\006 \001(\t\022\020\n\010Xingming\030\007 \001(\t"
-    "\022\025\n\rShoulibianhao\030\010 \001(\t\022\025\n\rShifoujiaofei"
-    "\030\t \001(\t\"\367\001\n\023MsgQianZhuShuJuData\022\035\n\004head\030\001"
-    " \002(\0132\017.netmsg.MsgHead\022\r\n\005Xuhao\030\002 \001(\005\022\014\n\004"
-    "Riqi\030\003 \001(\t\022\020\n\010ShebeiIP\030\004 \001(\t\022\032\n\022YuanZhen"
-    "gjianhaoma\030\005 \001(\t\022\020\n\010Xingming\030\006 \001(\t\022\017\n\007Xi"
-    "ngbie\030\007 \001(\t\022\024\n\014Chushengriqi\030\010 \001(\t\022\025\n\rLia"
-    "nxidianhua\030\t \001(\t\022\023\n\013Yewuleixing\030\n \001(\t\022\021\n"
-    "\tShouliren\030\013 \001(\t\"\353\001\n\024MsgJiaoKuanShuJuDat"
-    "a\022\035\n\004head\030\001 \002(\0132\017.netmsg.MsgHead\022\r\n\005Xuha"
-    "o\030\002 \001(\005\022\014\n\004Riqi\030\003 \001(\t\022\020\n\010ShebeiIP\030\004 \001(\t\022"
-    "\032\n\022Zhishoudanweidaima\030\005 \001(\t\022\037\n\027Jiaokuant"
-    "ongzhishuhaoma\030\006 \001(\t\022\033\n\023Jiaokuanrenxingm"
-    "ing\030\007 \001(\t\022\027\n\017Yingkoukuanheji\030\010 \001(\002\022\022\n\nJi"
-    "aoyiriqi\030\t \001(\t\"\255\001\n\022MsgChaXunShuJuData\022\035\n"
-    "\004head\030\001 \002(\0132\017.netmsg.MsgHead\022\r\n\005Xuhao\030\002 "
-    "\001(\005\022\014\n\004Riqi\030\003 \001(\t\022\020\n\010ShebeiIP\030\004 \001(\t\022\023\n\013C"
-    "haxunhaoma\030\005 \001(\t\022\025\n\rChaxunleixing\030\006 \001(\t\022"
-    "\035\n\025Shifouchaxunchenggong\030\007 \001(\010\"\244\002\n\024MsgYu"
-    "ShouLiShuJuData\022\035\n\004head\030\001 \002(\0132\017.netmsg.M"
-    "sgHead\022\r\n\005Xuhao\030\002 \001(\005\022\014\n\004Riqi\030\003 \001(\t\022\020\n\010S"
-    "hebeiIP\030\004 \001(\t\022\023\n\013Yewubianhao\030\005 \001(\t\022\020\n\010Xi"
-    "ngming\030\006 \001(\t\022\025\n\rLianxidianhua\030\007 \001(\t\022\024\n\014C"
-    "huguoshiyou\030\010 \001(\t\022\032\n\022YuanZhengjianhaoma\030"
-    "\t \001(\t\022\027\n\017Qianzhuzhonglei\030\n \001(\t\022\017\n\007Xingbi"
-    "e\030\013 \001(\t\022\025\n\rHukousuozaidi\030\014 \001(\t\022\r\n\005Minzu\030"
-    "\r \001(\t\"\301\001\n\031MsgSheBeiYiChangShuJuData\022\035\n\004h"
-    "ead\030\001 \002(\0132\017.netmsg.MsgHead\022\r\n\005Xuhao\030\002 \001("
-    "\005\022\014\n\004Riqi\030\003 \001(\t\022\025\n\rShiyongdanwei\030\004 \001(\t\022\032"
-    "\n\022Yichangshejimokuai\030\005 \001(\t\022\026\n\016Yichangyua"
-    "nyin\030\006 \001(\t\022\035\n\025Yichangxiangxineirong\030\007 \001("
-    "\t\"\215\001\n\021MsgGuanLiYuanData\022\035\n\004head\030\001 \002(\0132\017."
-    "netmsg.MsgHead\022\r\n\005Xuhao\030\002 \001(\005\022\022\n\nYonghum"
-    "ing\030\003 \001(\t\022\014\n\004Mima\030\004 \001(\t\022\021\n\tYouxiaoqi\030\005 \001"
-    "(\t\022\025\n\rQuanxianjibie\030\006 \001(\005\"\232\001\n\033MsgGuanLiY"
-    "uanCaoZuoJiLuData\022\035\n\004head\030\001 \002(\0132\017.netmsg"
-    ".MsgHead\022\r\n\005Xuhao\030\002 \001(\005\022\022\n\nYonghuming\030\003 "
-    "\001(\t\022\014\n\004Riqi\030\004 \001(\t\022\024\n\014Caozuoleibie\030\005 \001(\t\022"
-    "\025\n\rCaozuoneirong\030\006 \001(\t\"\337\001\n\023MsgSheBeiGuan"
-    "LiData\022\035\n\004head\030\001 \002(\0132\017.netmsg.MsgHead\022\r\n"
-    "\005Xuhao\030\002 \001(\005\022\r\n\005Sheng\030\003 \001(\t\022\013\n\003Shi\030\004 \001(\t"
-    "\022\n\n\002Qu\030\005 \001(\t\022\025\n\rShiyongdanwei\030\006 \001(\t\022\n\n\002I"
-    "P\030\007 \001(\t\022\025\n\rShebeileixing\030\010 \001(\t\022\016\n\006Jingdu"
-    "\030\t \001(\t\022\r\n\005Weidu\030\n \001(\t\022\031\n\021Chuangjianshiji"
-    "an\030\013 \001(\t*\334\002\n\nNetMsgType\022\026\n\022NetMsgType_Un"
-    "known\020\000\022\035\n\031NetMsgType_DatabaseAddAsk\020\001\022!"
-    "\n\035NetMsgType_DatabaseAddSuccess\020\002\022\037\n\033Net"
-    "MsgType_DatabaseAddError\020\003\022 \n\034NetMsgType"
-    "_DatabaseDeleteAsk\020\004\022$\n NetMsgType_Datab"
-    "aseDeleteSuccess\020\005\022\"\n\036NetMsgType_Databas"
-    "eDeleteError\020\006\022\037\n\033NetMsgType_DatabaseQue"
-    "ryAsk\020\007\022#\n\037NetMsgType_DatabaseQuerySucce"
-    "ss\020\010\022!\n\035NetMsgType_DatabaseQueryError\020\t", 4199);
+    "\n\014netmsg.proto\022\006netmsg\"\230\007\n\007MsgPack\022\035\n\004he"
+    "ad\030\001 \002(\0132\017.netmsg.MsgHead\022\036\n\006msgcmd\030\002 \001("
+    "\0132\016.netmsg.MsgCmd\0226\n\022msgidcardapplydata\030"
+    "\003 \001(\0132\032.netmsg.MsgIdCardApplyData\0228\n\023msg"
+    "onlinestatusdata\030\004 \001(\0132\033.netmsg.MsgOnlin"
+    "eStatusData\022>\n\026msgshulianghuizongdata\030\005 "
+    "\001(\0132\036.netmsg.MsgShuLiangHuiZongData\022:\n\024m"
+    "sgxiangxitongjidata\030\006 \001(\0132\034.netmsg.MsgXi"
+    "angXiTongJiData\0228\n\023msgzhiqianshujudata\030\007"
+    " \001(\0132\033.netmsg.MsgZhiQianShuJuData\022<\n\025msg"
+    "shouzhengshujudata\030\010 \001(\0132\035.netmsg.MsgSho"
+    "uZhengShuJuData\0228\n\023msgqianzhushujudata\030\t"
+    " \001(\0132\033.netmsg.MsgQianZhuShuJuData\022:\n\024msg"
+    "jiaokuanshujudata\030\n \001(\0132\034.netmsg.MsgJiao"
+    "KuanShuJuData\0226\n\022msgchaxunshujudata\030\013 \001("
+    "\0132\032.netmsg.MsgChaXunShuJuData\022:\n\024msgyush"
+    "oulishujudata\030\014 \001(\0132\034.netmsg.MsgYuShouLi"
+    "ShuJuData\022D\n\031msgshebeiyichangshujudata\030\r"
+    " \001(\0132!.netmsg.MsgSheBeiYiChangShuJuData\022"
+    "4\n\021msgguanliyuandata\030\016 \001(\0132\031.netmsg.MsgG"
+    "uanLiYuanData\022H\n\033msgguanliyuancaozuojilu"
+    "data\030\017 \001(\0132#.netmsg.MsgGuanLiYuanCaoZuoJ"
+    "iLuData\0228\n\023msgshebeiguanlidata\030\020 \001(\0132\033.n"
+    "etmsg.MsgSheBeiGuanLiData\"o\n\007MsgHead\022\024\n\t"
+    "totalPack\030\001 \002(\005:\0011\022\024\n\tpackIndex\030\002 \002(\005:\0011"
+    "\0228\n\010packtype\030\003 \002(\0162\022.netmsg.NetMsgType:\022"
+    "NetMsgType_Unknown\"\025\n\006MsgCmd\022\013\n\003Cmd\030\002 \002("
+    "\t\"\306\002\n\022MsgIdCardApplyData\022\014\n\004name\030\001 \001(\t\022\016"
+    "\n\006gender\030\002 \001(\t\022\016\n\006Nation\030\003 \001(\t\022\020\n\010Birthd"
+    "ay\030\004 \001(\t\022\017\n\007Address\030\005 \001(\t\022\020\n\010IdNumber\030\006 "
+    "\001(\t\022\021\n\tSigDepart\030\007 \001(\t\022\013\n\003SLH\030\010 \001(\t\022\016\n\006f"
+    "pData\030\t \001(\t\022\021\n\tfpFeature\030\n \001(\t\022\014\n\004XCZP\030\013"
+    " \001(\t\022\014\n\004XZQH\030\014 \001(\t\022\020\n\010sannerId\030\r \001(\t\022\023\n\013"
+    "scannerName\030\016 \001(\t\022\r\n\005legal\030\017 \001(\010\022\022\n\noper"
+    "atorID\030\020 \001(\t\022\024\n\014operatorName\030\021 \001(\t\022\016\n\006op"
+    "Date\030\022 \001(\t\"\335\001\n\023MsgOnlineStatusData\022\021\n\tma"
+    "chineId\030\001 \001(\t\022\023\n\013machineName\030\002 \001(\t\022\021\n\tma"
+    "chineIP\030\003 \001(\t\022\024\n\014machineLongi\030\004 \001(\t\022\022\n\nm"
+    "achineLat\030\005 \001(\t\022\027\n\017currentBusiness\030\006 \001(\t"
+    "\022\031\n\021businessStartTime\030\007 \001(\t\022\027\n\017businessE"
+    "ndTime\030\010 \001(\t\022\024\n\014businessDone\030\t \001(\010\"\360\002\n\026M"
+    "sgShuLiangHuiZongData\022\r\n\005Xuhao\030\001 \001(\005\022\025\n\r"
+    "Shiyongdanwei\030\002 \001(\005\022\032\n\022Shebeizongshulian"
+    "g\030\003 \001(\005\022\024\n\014Qiyongshebei\030\004 \001(\005\022\021\n\tYuyueye"
+    "wu\030\005 \001(\005\022\024\n\014Yushouliyewu\030\006 \001(\005\022\023\n\013Jiaofe"
+    "iyewu\030\007 \001(\005\022\022\n\nChaxunyewu\030\010 \001(\005\022\027\n\017Shebe"
+    "ishouzheng\030\t \001(\005\022\022\n\nXuqianyewu\030\n \001(\005\022\033\n\023"
+    "Benshitongxingzheng\030\013 \001(\005\022\033\n\023Dianzitongx"
+    "ingzheng\030\014 \001(\005\022\032\n\022Tongxingzhengzhika\030\r \001"
+    "(\005\022\022\n\nLidengkequ\030\016 \001(\005\022\025\n\rFeilidengkequ\030"
+    "\017 \001(\005\"\234\003\n\024MsgXiangXiTongJiData\022\r\n\005Xuhao\030"
+    "\001 \001(\005\022\014\n\004Nian\030\002 \001(\005\022\013\n\003Yue\030\003 \001(\005\022\n\n\002Ri\030\004"
+    " \001(\005\022\017\n\007Xiaoshi\030\005 \001(\005\022\020\n\010Fenzhong\030\006 \001(\005\022"
+    "\025\n\rShiyongdanwei\030\007 \001(\005\022\024\n\014Qiyongshebei\030\010"
+    " \001(\005\022\021\n\tYuyueyewu\030\t \001(\005\022\024\n\014Yushouliyewu\030"
+    "\n \001(\005\022\023\n\013Jiaofeiyewu\030\013 \001(\005\022\022\n\nChaxunyewu"
+    "\030\014 \001(\005\022\027\n\017Shebeishouzheng\030\r \001(\005\022\022\n\nXuqia"
+    "nyewu\030\016 \001(\005\022\033\n\023Benshitongxingzheng\030\017 \001(\005"
+    "\022\033\n\023Dianzitongxingzheng\030\020 \001(\005\022\032\n\022Tongxin"
+    "gzhengzhika\030\021 \001(\005\022\022\n\nLidengkequ\030\022 \001(\005\022\025\n"
+    "\rFeilidengkequ\030\023 \001(\005\"\203\002\n\023MsgZhiQianShuJu"
+    "Data\022\r\n\005Xuhao\030\001 \001(\005\022\014\n\004Riqi\030\002 \001(\t\022\020\n\010She"
+    "beiIP\030\003 \001(\t\022\023\n\013Yewubianhao\030\004 \001(\t\022\032\n\022Yuan"
+    "Zhengjianhaoma\030\005 \001(\t\022\020\n\010Xingming\030\006 \001(\t\022\027"
+    "\n\017Qianzhuzhonglei\030\007 \001(\t\022\026\n\016ZhikaZhuangta"
+    "i\030\010 \001(\t\022\026\n\016Zhengjianhaoma\030\t \001(\t\022\032\n\022Jieko"
+    "ufanhuijieguo\030\n \001(\t\022\025\n\rLianxidianhua\030\013 \001"
+    "(\t\"\270\001\n\025MsgShouZhengShuJuData\022\r\n\005Xuhao\030\001 "
+    "\001(\005\022\014\n\004Riqi\030\002 \001(\t\022\020\n\010ShebeiIP\030\003 \001(\t\022\030\n\020Z"
+    "hengjianleixing\030\004 \001(\t\022\026\n\016Zhengjianhaoma\030"
+    "\005 \001(\t\022\020\n\010Xingming\030\006 \001(\t\022\025\n\rShoulibianhao"
+    "\030\007 \001(\t\022\025\n\rShifoujiaofei\030\010 \001(\t\"\330\001\n\023MsgQia"
+    "nZhuShuJuData\022\r\n\005Xuhao\030\001 \001(\005\022\014\n\004Riqi\030\002 \001"
+    "(\t\022\020\n\010ShebeiIP\030\003 \001(\t\022\032\n\022YuanZhengjianhao"
+    "ma\030\004 \001(\t\022\020\n\010Xingming\030\005 \001(\t\022\017\n\007Xingbie\030\006 "
+    "\001(\t\022\024\n\014Chushengriqi\030\007 \001(\t\022\025\n\rLianxidianh"
+    "ua\030\010 \001(\t\022\023\n\013Yewuleixing\030\t \001(\t\022\021\n\tShoulir"
+    "en\030\n \001(\t\"\314\001\n\024MsgJiaoKuanShuJuData\022\r\n\005Xuh"
+    "ao\030\001 \001(\005\022\014\n\004Riqi\030\002 \001(\t\022\020\n\010ShebeiIP\030\003 \001(\t"
+    "\022\032\n\022Zhishoudanweidaima\030\004 \001(\t\022\037\n\027Jiaokuan"
+    "tongzhishuhaoma\030\005 \001(\t\022\033\n\023Jiaokuanrenxing"
+    "ming\030\006 \001(\t\022\027\n\017Yingkoukuanheji\030\007 \001(\002\022\022\n\nJ"
+    "iaoyiriqi\030\010 \001(\t\"\216\001\n\022MsgChaXunShuJuData\022\r"
+    "\n\005Xuhao\030\001 \001(\005\022\014\n\004Riqi\030\002 \001(\t\022\020\n\010ShebeiIP\030"
+    "\003 \001(\t\022\023\n\013Chaxunhaoma\030\004 \001(\t\022\025\n\rChaxunleix"
+    "ing\030\005 \001(\t\022\035\n\025Shifouchaxunchenggong\030\006 \001(\010"
+    "\"\205\002\n\024MsgYuShouLiShuJuData\022\r\n\005Xuhao\030\001 \001(\005"
+    "\022\014\n\004Riqi\030\002 \001(\t\022\020\n\010ShebeiIP\030\003 \001(\t\022\023\n\013Yewu"
+    "bianhao\030\004 \001(\t\022\020\n\010Xingming\030\005 \001(\t\022\025\n\rLianx"
+    "idianhua\030\006 \001(\t\022\024\n\014Chuguoshiyou\030\007 \001(\t\022\032\n\022"
+    "YuanZhengjianhaoma\030\010 \001(\t\022\027\n\017Qianzhuzhong"
+    "lei\030\t \001(\t\022\017\n\007Xingbie\030\n \001(\t\022\025\n\rHukousuoza"
+    "idi\030\013 \001(\t\022\r\n\005Minzu\030\014 \001(\t\"\242\001\n\031MsgSheBeiYi"
+    "ChangShuJuData\022\r\n\005Xuhao\030\001 \001(\005\022\014\n\004Riqi\030\002 "
+    "\001(\t\022\025\n\rShiyongdanwei\030\003 \001(\t\022\032\n\022Yichangshe"
+    "jimokuai\030\004 \001(\t\022\026\n\016Yichangyuanyin\030\005 \001(\t\022\035"
+    "\n\025Yichangxiangxineirong\030\006 \001(\t\"n\n\021MsgGuan"
+    "LiYuanData\022\r\n\005Xuhao\030\001 \001(\005\022\022\n\nYonghuming\030"
+    "\002 \001(\t\022\014\n\004Mima\030\003 \001(\t\022\021\n\tYouxiaoqi\030\004 \001(\t\022\025"
+    "\n\rQuanxianjibie\030\005 \001(\005\"{\n\033MsgGuanLiYuanCa"
+    "oZuoJiLuData\022\r\n\005Xuhao\030\001 \001(\005\022\022\n\nYonghumin"
+    "g\030\002 \001(\t\022\014\n\004Riqi\030\003 \001(\t\022\024\n\014Caozuoleibie\030\004 "
+    "\001(\t\022\025\n\rCaozuoneirong\030\005 \001(\t\"\300\001\n\023MsgSheBei"
+    "GuanLiData\022\r\n\005Xuhao\030\001 \001(\005\022\r\n\005Sheng\030\002 \001(\t"
+    "\022\013\n\003Shi\030\003 \001(\t\022\n\n\002Qu\030\004 \001(\t\022\025\n\rShiyongdanw"
+    "ei\030\005 \001(\t\022\n\n\002IP\030\006 \001(\t\022\025\n\rShebeileixing\030\007 "
+    "\001(\t\022\016\n\006Jingdu\030\010 \001(\t\022\r\n\005Weidu\030\t \001(\t\022\031\n\021Ch"
+    "uangjianshijian\030\n \001(\t*\334\002\n\nNetMsgType\022\026\n\022"
+    "NetMsgType_Unknown\020\000\022\035\n\031NetMsgType_Datab"
+    "aseAddAsk\020\001\022!\n\035NetMsgType_DatabaseAddSuc"
+    "cess\020\002\022\037\n\033NetMsgType_DatabaseAddError\020\003\022"
+    " \n\034NetMsgType_DatabaseDeleteAsk\020\004\022$\n Net"
+    "MsgType_DatabaseDeleteSuccess\020\005\022\"\n\036NetMs"
+    "gType_DatabaseDeleteError\020\006\022\037\n\033NetMsgTyp"
+    "e_DatabaseQueryAsk\020\007\022#\n\037NetMsgType_Datab"
+    "aseQuerySuccess\020\010\022!\n\035NetMsgType_Database"
+    "QueryError\020\t", 4652);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "netmsg.proto", &protobuf_RegisterTypes);
+  MsgPack::default_instance_ = new MsgPack();
   MsgHead::default_instance_ = new MsgHead();
-  MsgString::default_instance_ = new MsgString();
+  MsgCmd::default_instance_ = new MsgCmd();
   MsgIdCardApplyData::default_instance_ = new MsgIdCardApplyData();
   MsgOnlineStatusData::default_instance_ = new MsgOnlineStatusData();
   MsgShuLiangHuiZongData::default_instance_ = new MsgShuLiangHuiZongData();
@@ -678,8 +713,9 @@ void protobuf_AddDesc_netmsg_2eproto() {
   MsgGuanLiYuanData::default_instance_ = new MsgGuanLiYuanData();
   MsgGuanLiYuanCaoZuoJiLuData::default_instance_ = new MsgGuanLiYuanCaoZuoJiLuData();
   MsgSheBeiGuanLiData::default_instance_ = new MsgSheBeiGuanLiData();
+  MsgPack::default_instance_->InitAsDefaultInstance();
   MsgHead::default_instance_->InitAsDefaultInstance();
-  MsgString::default_instance_->InitAsDefaultInstance();
+  MsgCmd::default_instance_->InitAsDefaultInstance();
   MsgIdCardApplyData::default_instance_->InitAsDefaultInstance();
   MsgOnlineStatusData::default_instance_->InitAsDefaultInstance();
   MsgShuLiangHuiZongData::default_instance_->InitAsDefaultInstance();
@@ -723,6 +759,908 @@ bool NetMsgType_IsValid(int value) {
     default:
       return false;
   }
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int MsgPack::kHeadFieldNumber;
+const int MsgPack::kMsgcmdFieldNumber;
+const int MsgPack::kMsgidcardapplydataFieldNumber;
+const int MsgPack::kMsgonlinestatusdataFieldNumber;
+const int MsgPack::kMsgshulianghuizongdataFieldNumber;
+const int MsgPack::kMsgxiangxitongjidataFieldNumber;
+const int MsgPack::kMsgzhiqianshujudataFieldNumber;
+const int MsgPack::kMsgshouzhengshujudataFieldNumber;
+const int MsgPack::kMsgqianzhushujudataFieldNumber;
+const int MsgPack::kMsgjiaokuanshujudataFieldNumber;
+const int MsgPack::kMsgchaxunshujudataFieldNumber;
+const int MsgPack::kMsgyushoulishujudataFieldNumber;
+const int MsgPack::kMsgshebeiyichangshujudataFieldNumber;
+const int MsgPack::kMsgguanliyuandataFieldNumber;
+const int MsgPack::kMsgguanliyuancaozuojiludataFieldNumber;
+const int MsgPack::kMsgshebeiguanlidataFieldNumber;
+#endif  // !_MSC_VER
+
+MsgPack::MsgPack()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:netmsg.MsgPack)
+}
+
+void MsgPack::InitAsDefaultInstance() {
+  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
+  msgcmd_ = const_cast< ::netmsg::MsgCmd*>(&::netmsg::MsgCmd::default_instance());
+  msgidcardapplydata_ = const_cast< ::netmsg::MsgIdCardApplyData*>(&::netmsg::MsgIdCardApplyData::default_instance());
+  msgonlinestatusdata_ = const_cast< ::netmsg::MsgOnlineStatusData*>(&::netmsg::MsgOnlineStatusData::default_instance());
+  msgshulianghuizongdata_ = const_cast< ::netmsg::MsgShuLiangHuiZongData*>(&::netmsg::MsgShuLiangHuiZongData::default_instance());
+  msgxiangxitongjidata_ = const_cast< ::netmsg::MsgXiangXiTongJiData*>(&::netmsg::MsgXiangXiTongJiData::default_instance());
+  msgzhiqianshujudata_ = const_cast< ::netmsg::MsgZhiQianShuJuData*>(&::netmsg::MsgZhiQianShuJuData::default_instance());
+  msgshouzhengshujudata_ = const_cast< ::netmsg::MsgShouZhengShuJuData*>(&::netmsg::MsgShouZhengShuJuData::default_instance());
+  msgqianzhushujudata_ = const_cast< ::netmsg::MsgQianZhuShuJuData*>(&::netmsg::MsgQianZhuShuJuData::default_instance());
+  msgjiaokuanshujudata_ = const_cast< ::netmsg::MsgJiaoKuanShuJuData*>(&::netmsg::MsgJiaoKuanShuJuData::default_instance());
+  msgchaxunshujudata_ = const_cast< ::netmsg::MsgChaXunShuJuData*>(&::netmsg::MsgChaXunShuJuData::default_instance());
+  msgyushoulishujudata_ = const_cast< ::netmsg::MsgYuShouLiShuJuData*>(&::netmsg::MsgYuShouLiShuJuData::default_instance());
+  msgshebeiyichangshujudata_ = const_cast< ::netmsg::MsgSheBeiYiChangShuJuData*>(&::netmsg::MsgSheBeiYiChangShuJuData::default_instance());
+  msgguanliyuandata_ = const_cast< ::netmsg::MsgGuanLiYuanData*>(&::netmsg::MsgGuanLiYuanData::default_instance());
+  msgguanliyuancaozuojiludata_ = const_cast< ::netmsg::MsgGuanLiYuanCaoZuoJiLuData*>(&::netmsg::MsgGuanLiYuanCaoZuoJiLuData::default_instance());
+  msgshebeiguanlidata_ = const_cast< ::netmsg::MsgSheBeiGuanLiData*>(&::netmsg::MsgSheBeiGuanLiData::default_instance());
+}
+
+MsgPack::MsgPack(const MsgPack& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:netmsg.MsgPack)
+}
+
+void MsgPack::SharedCtor() {
+  _cached_size_ = 0;
+  head_ = NULL;
+  msgcmd_ = NULL;
+  msgidcardapplydata_ = NULL;
+  msgonlinestatusdata_ = NULL;
+  msgshulianghuizongdata_ = NULL;
+  msgxiangxitongjidata_ = NULL;
+  msgzhiqianshujudata_ = NULL;
+  msgshouzhengshujudata_ = NULL;
+  msgqianzhushujudata_ = NULL;
+  msgjiaokuanshujudata_ = NULL;
+  msgchaxunshujudata_ = NULL;
+  msgyushoulishujudata_ = NULL;
+  msgshebeiyichangshujudata_ = NULL;
+  msgguanliyuandata_ = NULL;
+  msgguanliyuancaozuojiludata_ = NULL;
+  msgshebeiguanlidata_ = NULL;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+MsgPack::~MsgPack() {
+  // @@protoc_insertion_point(destructor:netmsg.MsgPack)
+  SharedDtor();
+}
+
+void MsgPack::SharedDtor() {
+  if (this != default_instance_) {
+    delete head_;
+    delete msgcmd_;
+    delete msgidcardapplydata_;
+    delete msgonlinestatusdata_;
+    delete msgshulianghuizongdata_;
+    delete msgxiangxitongjidata_;
+    delete msgzhiqianshujudata_;
+    delete msgshouzhengshujudata_;
+    delete msgqianzhushujudata_;
+    delete msgjiaokuanshujudata_;
+    delete msgchaxunshujudata_;
+    delete msgyushoulishujudata_;
+    delete msgshebeiyichangshujudata_;
+    delete msgguanliyuandata_;
+    delete msgguanliyuancaozuojiludata_;
+    delete msgshebeiguanlidata_;
+  }
+}
+
+void MsgPack::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* MsgPack::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return MsgPack_descriptor_;
+}
+
+const MsgPack& MsgPack::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_netmsg_2eproto();
+  return *default_instance_;
+}
+
+MsgPack* MsgPack::default_instance_ = NULL;
+
+MsgPack* MsgPack::New() const {
+  return new MsgPack;
+}
+
+void MsgPack::Clear() {
+  if (_has_bits_[0 / 32] & 255) {
+    if (has_head()) {
+      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
+    }
+    if (has_msgcmd()) {
+      if (msgcmd_ != NULL) msgcmd_->::netmsg::MsgCmd::Clear();
+    }
+    if (has_msgidcardapplydata()) {
+      if (msgidcardapplydata_ != NULL) msgidcardapplydata_->::netmsg::MsgIdCardApplyData::Clear();
+    }
+    if (has_msgonlinestatusdata()) {
+      if (msgonlinestatusdata_ != NULL) msgonlinestatusdata_->::netmsg::MsgOnlineStatusData::Clear();
+    }
+    if (has_msgshulianghuizongdata()) {
+      if (msgshulianghuizongdata_ != NULL) msgshulianghuizongdata_->::netmsg::MsgShuLiangHuiZongData::Clear();
+    }
+    if (has_msgxiangxitongjidata()) {
+      if (msgxiangxitongjidata_ != NULL) msgxiangxitongjidata_->::netmsg::MsgXiangXiTongJiData::Clear();
+    }
+    if (has_msgzhiqianshujudata()) {
+      if (msgzhiqianshujudata_ != NULL) msgzhiqianshujudata_->::netmsg::MsgZhiQianShuJuData::Clear();
+    }
+    if (has_msgshouzhengshujudata()) {
+      if (msgshouzhengshujudata_ != NULL) msgshouzhengshujudata_->::netmsg::MsgShouZhengShuJuData::Clear();
+    }
+  }
+  if (_has_bits_[8 / 32] & 65280) {
+    if (has_msgqianzhushujudata()) {
+      if (msgqianzhushujudata_ != NULL) msgqianzhushujudata_->::netmsg::MsgQianZhuShuJuData::Clear();
+    }
+    if (has_msgjiaokuanshujudata()) {
+      if (msgjiaokuanshujudata_ != NULL) msgjiaokuanshujudata_->::netmsg::MsgJiaoKuanShuJuData::Clear();
+    }
+    if (has_msgchaxunshujudata()) {
+      if (msgchaxunshujudata_ != NULL) msgchaxunshujudata_->::netmsg::MsgChaXunShuJuData::Clear();
+    }
+    if (has_msgyushoulishujudata()) {
+      if (msgyushoulishujudata_ != NULL) msgyushoulishujudata_->::netmsg::MsgYuShouLiShuJuData::Clear();
+    }
+    if (has_msgshebeiyichangshujudata()) {
+      if (msgshebeiyichangshujudata_ != NULL) msgshebeiyichangshujudata_->::netmsg::MsgSheBeiYiChangShuJuData::Clear();
+    }
+    if (has_msgguanliyuandata()) {
+      if (msgguanliyuandata_ != NULL) msgguanliyuandata_->::netmsg::MsgGuanLiYuanData::Clear();
+    }
+    if (has_msgguanliyuancaozuojiludata()) {
+      if (msgguanliyuancaozuojiludata_ != NULL) msgguanliyuancaozuojiludata_->::netmsg::MsgGuanLiYuanCaoZuoJiLuData::Clear();
+    }
+    if (has_msgshebeiguanlidata()) {
+      if (msgshebeiguanlidata_ != NULL) msgshebeiguanlidata_->::netmsg::MsgSheBeiGuanLiData::Clear();
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool MsgPack::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:netmsg.MsgPack)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(16383);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // required .netmsg.MsgHead head = 1;
+      case 1: {
+        if (tag == 10) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_head()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_msgcmd;
+        break;
+      }
+
+      // optional .netmsg.MsgCmd msgcmd = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_msgcmd:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgcmd()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_msgidcardapplydata;
+        break;
+      }
+
+      // optional .netmsg.MsgIdCardApplyData msgidcardapplydata = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_msgidcardapplydata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgidcardapplydata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_msgonlinestatusdata;
+        break;
+      }
+
+      // optional .netmsg.MsgOnlineStatusData msgonlinestatusdata = 4;
+      case 4: {
+        if (tag == 34) {
+         parse_msgonlinestatusdata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgonlinestatusdata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(42)) goto parse_msgshulianghuizongdata;
+        break;
+      }
+
+      // optional .netmsg.MsgShuLiangHuiZongData msgshulianghuizongdata = 5;
+      case 5: {
+        if (tag == 42) {
+         parse_msgshulianghuizongdata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgshulianghuizongdata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(50)) goto parse_msgxiangxitongjidata;
+        break;
+      }
+
+      // optional .netmsg.MsgXiangXiTongJiData msgxiangxitongjidata = 6;
+      case 6: {
+        if (tag == 50) {
+         parse_msgxiangxitongjidata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgxiangxitongjidata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(58)) goto parse_msgzhiqianshujudata;
+        break;
+      }
+
+      // optional .netmsg.MsgZhiQianShuJuData msgzhiqianshujudata = 7;
+      case 7: {
+        if (tag == 58) {
+         parse_msgzhiqianshujudata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgzhiqianshujudata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(66)) goto parse_msgshouzhengshujudata;
+        break;
+      }
+
+      // optional .netmsg.MsgShouZhengShuJuData msgshouzhengshujudata = 8;
+      case 8: {
+        if (tag == 66) {
+         parse_msgshouzhengshujudata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgshouzhengshujudata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(74)) goto parse_msgqianzhushujudata;
+        break;
+      }
+
+      // optional .netmsg.MsgQianZhuShuJuData msgqianzhushujudata = 9;
+      case 9: {
+        if (tag == 74) {
+         parse_msgqianzhushujudata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgqianzhushujudata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(82)) goto parse_msgjiaokuanshujudata;
+        break;
+      }
+
+      // optional .netmsg.MsgJiaoKuanShuJuData msgjiaokuanshujudata = 10;
+      case 10: {
+        if (tag == 82) {
+         parse_msgjiaokuanshujudata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgjiaokuanshujudata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(90)) goto parse_msgchaxunshujudata;
+        break;
+      }
+
+      // optional .netmsg.MsgChaXunShuJuData msgchaxunshujudata = 11;
+      case 11: {
+        if (tag == 90) {
+         parse_msgchaxunshujudata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgchaxunshujudata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(98)) goto parse_msgyushoulishujudata;
+        break;
+      }
+
+      // optional .netmsg.MsgYuShouLiShuJuData msgyushoulishujudata = 12;
+      case 12: {
+        if (tag == 98) {
+         parse_msgyushoulishujudata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgyushoulishujudata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(106)) goto parse_msgshebeiyichangshujudata;
+        break;
+      }
+
+      // optional .netmsg.MsgSheBeiYiChangShuJuData msgshebeiyichangshujudata = 13;
+      case 13: {
+        if (tag == 106) {
+         parse_msgshebeiyichangshujudata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgshebeiyichangshujudata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(114)) goto parse_msgguanliyuandata;
+        break;
+      }
+
+      // optional .netmsg.MsgGuanLiYuanData msgguanliyuandata = 14;
+      case 14: {
+        if (tag == 114) {
+         parse_msgguanliyuandata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgguanliyuandata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(122)) goto parse_msgguanliyuancaozuojiludata;
+        break;
+      }
+
+      // optional .netmsg.MsgGuanLiYuanCaoZuoJiLuData msgguanliyuancaozuojiludata = 15;
+      case 15: {
+        if (tag == 122) {
+         parse_msgguanliyuancaozuojiludata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgguanliyuancaozuojiludata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(130)) goto parse_msgshebeiguanlidata;
+        break;
+      }
+
+      // optional .netmsg.MsgSheBeiGuanLiData msgshebeiguanlidata = 16;
+      case 16: {
+        if (tag == 130) {
+         parse_msgshebeiguanlidata:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_msgshebeiguanlidata()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectAtEnd()) goto success;
+        break;
+      }
+
+      default: {
+      handle_unusual:
+        if (tag == 0 ||
+            ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          goto success;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+success:
+  // @@protoc_insertion_point(parse_success:netmsg.MsgPack)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:netmsg.MsgPack)
+  return false;
+#undef DO_
+}
+
+void MsgPack::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:netmsg.MsgPack)
+  // required .netmsg.MsgHead head = 1;
+  if (has_head()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      1, this->head(), output);
+  }
+
+  // optional .netmsg.MsgCmd msgcmd = 2;
+  if (has_msgcmd()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      2, this->msgcmd(), output);
+  }
+
+  // optional .netmsg.MsgIdCardApplyData msgidcardapplydata = 3;
+  if (has_msgidcardapplydata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->msgidcardapplydata(), output);
+  }
+
+  // optional .netmsg.MsgOnlineStatusData msgonlinestatusdata = 4;
+  if (has_msgonlinestatusdata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, this->msgonlinestatusdata(), output);
+  }
+
+  // optional .netmsg.MsgShuLiangHuiZongData msgshulianghuizongdata = 5;
+  if (has_msgshulianghuizongdata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, this->msgshulianghuizongdata(), output);
+  }
+
+  // optional .netmsg.MsgXiangXiTongJiData msgxiangxitongjidata = 6;
+  if (has_msgxiangxitongjidata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, this->msgxiangxitongjidata(), output);
+  }
+
+  // optional .netmsg.MsgZhiQianShuJuData msgzhiqianshujudata = 7;
+  if (has_msgzhiqianshujudata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->msgzhiqianshujudata(), output);
+  }
+
+  // optional .netmsg.MsgShouZhengShuJuData msgshouzhengshujudata = 8;
+  if (has_msgshouzhengshujudata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      8, this->msgshouzhengshujudata(), output);
+  }
+
+  // optional .netmsg.MsgQianZhuShuJuData msgqianzhushujudata = 9;
+  if (has_msgqianzhushujudata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      9, this->msgqianzhushujudata(), output);
+  }
+
+  // optional .netmsg.MsgJiaoKuanShuJuData msgjiaokuanshujudata = 10;
+  if (has_msgjiaokuanshujudata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      10, this->msgjiaokuanshujudata(), output);
+  }
+
+  // optional .netmsg.MsgChaXunShuJuData msgchaxunshujudata = 11;
+  if (has_msgchaxunshujudata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      11, this->msgchaxunshujudata(), output);
+  }
+
+  // optional .netmsg.MsgYuShouLiShuJuData msgyushoulishujudata = 12;
+  if (has_msgyushoulishujudata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      12, this->msgyushoulishujudata(), output);
+  }
+
+  // optional .netmsg.MsgSheBeiYiChangShuJuData msgshebeiyichangshujudata = 13;
+  if (has_msgshebeiyichangshujudata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      13, this->msgshebeiyichangshujudata(), output);
+  }
+
+  // optional .netmsg.MsgGuanLiYuanData msgguanliyuandata = 14;
+  if (has_msgguanliyuandata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      14, this->msgguanliyuandata(), output);
+  }
+
+  // optional .netmsg.MsgGuanLiYuanCaoZuoJiLuData msgguanliyuancaozuojiludata = 15;
+  if (has_msgguanliyuancaozuojiludata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      15, this->msgguanliyuancaozuojiludata(), output);
+  }
+
+  // optional .netmsg.MsgSheBeiGuanLiData msgshebeiguanlidata = 16;
+  if (has_msgshebeiguanlidata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      16, this->msgshebeiguanlidata(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:netmsg.MsgPack)
+}
+
+::google::protobuf::uint8* MsgPack::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgPack)
+  // required .netmsg.MsgHead head = 1;
+  if (has_head()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        1, this->head(), target);
+  }
+
+  // optional .netmsg.MsgCmd msgcmd = 2;
+  if (has_msgcmd()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        2, this->msgcmd(), target);
+  }
+
+  // optional .netmsg.MsgIdCardApplyData msgidcardapplydata = 3;
+  if (has_msgidcardapplydata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->msgidcardapplydata(), target);
+  }
+
+  // optional .netmsg.MsgOnlineStatusData msgonlinestatusdata = 4;
+  if (has_msgonlinestatusdata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        4, this->msgonlinestatusdata(), target);
+  }
+
+  // optional .netmsg.MsgShuLiangHuiZongData msgshulianghuizongdata = 5;
+  if (has_msgshulianghuizongdata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        5, this->msgshulianghuizongdata(), target);
+  }
+
+  // optional .netmsg.MsgXiangXiTongJiData msgxiangxitongjidata = 6;
+  if (has_msgxiangxitongjidata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        6, this->msgxiangxitongjidata(), target);
+  }
+
+  // optional .netmsg.MsgZhiQianShuJuData msgzhiqianshujudata = 7;
+  if (has_msgzhiqianshujudata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        7, this->msgzhiqianshujudata(), target);
+  }
+
+  // optional .netmsg.MsgShouZhengShuJuData msgshouzhengshujudata = 8;
+  if (has_msgshouzhengshujudata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        8, this->msgshouzhengshujudata(), target);
+  }
+
+  // optional .netmsg.MsgQianZhuShuJuData msgqianzhushujudata = 9;
+  if (has_msgqianzhushujudata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        9, this->msgqianzhushujudata(), target);
+  }
+
+  // optional .netmsg.MsgJiaoKuanShuJuData msgjiaokuanshujudata = 10;
+  if (has_msgjiaokuanshujudata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        10, this->msgjiaokuanshujudata(), target);
+  }
+
+  // optional .netmsg.MsgChaXunShuJuData msgchaxunshujudata = 11;
+  if (has_msgchaxunshujudata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        11, this->msgchaxunshujudata(), target);
+  }
+
+  // optional .netmsg.MsgYuShouLiShuJuData msgyushoulishujudata = 12;
+  if (has_msgyushoulishujudata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        12, this->msgyushoulishujudata(), target);
+  }
+
+  // optional .netmsg.MsgSheBeiYiChangShuJuData msgshebeiyichangshujudata = 13;
+  if (has_msgshebeiyichangshujudata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        13, this->msgshebeiyichangshujudata(), target);
+  }
+
+  // optional .netmsg.MsgGuanLiYuanData msgguanliyuandata = 14;
+  if (has_msgguanliyuandata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        14, this->msgguanliyuandata(), target);
+  }
+
+  // optional .netmsg.MsgGuanLiYuanCaoZuoJiLuData msgguanliyuancaozuojiludata = 15;
+  if (has_msgguanliyuancaozuojiludata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        15, this->msgguanliyuancaozuojiludata(), target);
+  }
+
+  // optional .netmsg.MsgSheBeiGuanLiData msgshebeiguanlidata = 16;
+  if (has_msgshebeiguanlidata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        16, this->msgshebeiguanlidata(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:netmsg.MsgPack)
+  return target;
+}
+
+int MsgPack::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // required .netmsg.MsgHead head = 1;
+    if (has_head()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->head());
+    }
+
+    // optional .netmsg.MsgCmd msgcmd = 2;
+    if (has_msgcmd()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgcmd());
+    }
+
+    // optional .netmsg.MsgIdCardApplyData msgidcardapplydata = 3;
+    if (has_msgidcardapplydata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgidcardapplydata());
+    }
+
+    // optional .netmsg.MsgOnlineStatusData msgonlinestatusdata = 4;
+    if (has_msgonlinestatusdata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgonlinestatusdata());
+    }
+
+    // optional .netmsg.MsgShuLiangHuiZongData msgshulianghuizongdata = 5;
+    if (has_msgshulianghuizongdata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgshulianghuizongdata());
+    }
+
+    // optional .netmsg.MsgXiangXiTongJiData msgxiangxitongjidata = 6;
+    if (has_msgxiangxitongjidata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgxiangxitongjidata());
+    }
+
+    // optional .netmsg.MsgZhiQianShuJuData msgzhiqianshujudata = 7;
+    if (has_msgzhiqianshujudata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgzhiqianshujudata());
+    }
+
+    // optional .netmsg.MsgShouZhengShuJuData msgshouzhengshujudata = 8;
+    if (has_msgshouzhengshujudata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgshouzhengshujudata());
+    }
+
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional .netmsg.MsgQianZhuShuJuData msgqianzhushujudata = 9;
+    if (has_msgqianzhushujudata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgqianzhushujudata());
+    }
+
+    // optional .netmsg.MsgJiaoKuanShuJuData msgjiaokuanshujudata = 10;
+    if (has_msgjiaokuanshujudata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgjiaokuanshujudata());
+    }
+
+    // optional .netmsg.MsgChaXunShuJuData msgchaxunshujudata = 11;
+    if (has_msgchaxunshujudata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgchaxunshujudata());
+    }
+
+    // optional .netmsg.MsgYuShouLiShuJuData msgyushoulishujudata = 12;
+    if (has_msgyushoulishujudata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgyushoulishujudata());
+    }
+
+    // optional .netmsg.MsgSheBeiYiChangShuJuData msgshebeiyichangshujudata = 13;
+    if (has_msgshebeiyichangshujudata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgshebeiyichangshujudata());
+    }
+
+    // optional .netmsg.MsgGuanLiYuanData msgguanliyuandata = 14;
+    if (has_msgguanliyuandata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgguanliyuandata());
+    }
+
+    // optional .netmsg.MsgGuanLiYuanCaoZuoJiLuData msgguanliyuancaozuojiludata = 15;
+    if (has_msgguanliyuancaozuojiludata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgguanliyuancaozuojiludata());
+    }
+
+    // optional .netmsg.MsgSheBeiGuanLiData msgshebeiguanlidata = 16;
+    if (has_msgshebeiguanlidata()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->msgshebeiguanlidata());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void MsgPack::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const MsgPack* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgPack*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void MsgPack::MergeFrom(const MsgPack& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_head()) {
+      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
+    }
+    if (from.has_msgcmd()) {
+      mutable_msgcmd()->::netmsg::MsgCmd::MergeFrom(from.msgcmd());
+    }
+    if (from.has_msgidcardapplydata()) {
+      mutable_msgidcardapplydata()->::netmsg::MsgIdCardApplyData::MergeFrom(from.msgidcardapplydata());
+    }
+    if (from.has_msgonlinestatusdata()) {
+      mutable_msgonlinestatusdata()->::netmsg::MsgOnlineStatusData::MergeFrom(from.msgonlinestatusdata());
+    }
+    if (from.has_msgshulianghuizongdata()) {
+      mutable_msgshulianghuizongdata()->::netmsg::MsgShuLiangHuiZongData::MergeFrom(from.msgshulianghuizongdata());
+    }
+    if (from.has_msgxiangxitongjidata()) {
+      mutable_msgxiangxitongjidata()->::netmsg::MsgXiangXiTongJiData::MergeFrom(from.msgxiangxitongjidata());
+    }
+    if (from.has_msgzhiqianshujudata()) {
+      mutable_msgzhiqianshujudata()->::netmsg::MsgZhiQianShuJuData::MergeFrom(from.msgzhiqianshujudata());
+    }
+    if (from.has_msgshouzhengshujudata()) {
+      mutable_msgshouzhengshujudata()->::netmsg::MsgShouZhengShuJuData::MergeFrom(from.msgshouzhengshujudata());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_msgqianzhushujudata()) {
+      mutable_msgqianzhushujudata()->::netmsg::MsgQianZhuShuJuData::MergeFrom(from.msgqianzhushujudata());
+    }
+    if (from.has_msgjiaokuanshujudata()) {
+      mutable_msgjiaokuanshujudata()->::netmsg::MsgJiaoKuanShuJuData::MergeFrom(from.msgjiaokuanshujudata());
+    }
+    if (from.has_msgchaxunshujudata()) {
+      mutable_msgchaxunshujudata()->::netmsg::MsgChaXunShuJuData::MergeFrom(from.msgchaxunshujudata());
+    }
+    if (from.has_msgyushoulishujudata()) {
+      mutable_msgyushoulishujudata()->::netmsg::MsgYuShouLiShuJuData::MergeFrom(from.msgyushoulishujudata());
+    }
+    if (from.has_msgshebeiyichangshujudata()) {
+      mutable_msgshebeiyichangshujudata()->::netmsg::MsgSheBeiYiChangShuJuData::MergeFrom(from.msgshebeiyichangshujudata());
+    }
+    if (from.has_msgguanliyuandata()) {
+      mutable_msgguanliyuandata()->::netmsg::MsgGuanLiYuanData::MergeFrom(from.msgguanliyuandata());
+    }
+    if (from.has_msgguanliyuancaozuojiludata()) {
+      mutable_msgguanliyuancaozuojiludata()->::netmsg::MsgGuanLiYuanCaoZuoJiLuData::MergeFrom(from.msgguanliyuancaozuojiludata());
+    }
+    if (from.has_msgshebeiguanlidata()) {
+      mutable_msgshebeiguanlidata()->::netmsg::MsgSheBeiGuanLiData::MergeFrom(from.msgshebeiguanlidata());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void MsgPack::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void MsgPack::CopyFrom(const MsgPack& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool MsgPack::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+
+  if (has_head()) {
+    if (!this->head().IsInitialized()) return false;
+  }
+  if (has_msgcmd()) {
+    if (!this->msgcmd().IsInitialized()) return false;
+  }
+  return true;
+}
+
+void MsgPack::Swap(MsgPack* other) {
+  if (other != this) {
+    std::swap(head_, other->head_);
+    std::swap(msgcmd_, other->msgcmd_);
+    std::swap(msgidcardapplydata_, other->msgidcardapplydata_);
+    std::swap(msgonlinestatusdata_, other->msgonlinestatusdata_);
+    std::swap(msgshulianghuizongdata_, other->msgshulianghuizongdata_);
+    std::swap(msgxiangxitongjidata_, other->msgxiangxitongjidata_);
+    std::swap(msgzhiqianshujudata_, other->msgzhiqianshujudata_);
+    std::swap(msgshouzhengshujudata_, other->msgshouzhengshujudata_);
+    std::swap(msgqianzhushujudata_, other->msgqianzhushujudata_);
+    std::swap(msgjiaokuanshujudata_, other->msgjiaokuanshujudata_);
+    std::swap(msgchaxunshujudata_, other->msgchaxunshujudata_);
+    std::swap(msgyushoulishujudata_, other->msgyushoulishujudata_);
+    std::swap(msgshebeiyichangshujudata_, other->msgshebeiyichangshujudata_);
+    std::swap(msgguanliyuandata_, other->msgguanliyuandata_);
+    std::swap(msgguanliyuancaozuojiludata_, other->msgguanliyuancaozuojiludata_);
+    std::swap(msgshebeiguanlidata_, other->msgshebeiguanlidata_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata MsgPack::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = MsgPack_descriptor_;
+  metadata.reflection = MsgPack_reflection_;
+  return metadata;
 }
 
 
@@ -1038,111 +1976,89 @@ void MsgHead::Swap(MsgHead* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgString::kHeadFieldNumber;
-const int MsgString::kCmdFieldNumber;
+const int MsgCmd::kCmdFieldNumber;
 #endif  // !_MSC_VER
 
-MsgString::MsgString()
+MsgCmd::MsgCmd()
   : ::google::protobuf::Message() {
   SharedCtor();
-  // @@protoc_insertion_point(constructor:netmsg.MsgString)
+  // @@protoc_insertion_point(constructor:netmsg.MsgCmd)
 }
 
-void MsgString::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
+void MsgCmd::InitAsDefaultInstance() {
 }
 
-MsgString::MsgString(const MsgString& from)
+MsgCmd::MsgCmd(const MsgCmd& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
-  // @@protoc_insertion_point(copy_constructor:netmsg.MsgString)
+  // @@protoc_insertion_point(copy_constructor:netmsg.MsgCmd)
 }
 
-void MsgString::SharedCtor() {
+void MsgCmd::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   cmd_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-MsgString::~MsgString() {
-  // @@protoc_insertion_point(destructor:netmsg.MsgString)
+MsgCmd::~MsgCmd() {
+  // @@protoc_insertion_point(destructor:netmsg.MsgCmd)
   SharedDtor();
 }
 
-void MsgString::SharedDtor() {
+void MsgCmd::SharedDtor() {
   if (cmd_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete cmd_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
-void MsgString::SetCachedSize(int size) const {
+void MsgCmd::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* MsgString::descriptor() {
+const ::google::protobuf::Descriptor* MsgCmd::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return MsgString_descriptor_;
+  return MsgCmd_descriptor_;
 }
 
-const MsgString& MsgString::default_instance() {
+const MsgCmd& MsgCmd::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_netmsg_2eproto();
   return *default_instance_;
 }
 
-MsgString* MsgString::default_instance_ = NULL;
+MsgCmd* MsgCmd::default_instance_ = NULL;
 
-MsgString* MsgString::New() const {
-  return new MsgString;
+MsgCmd* MsgCmd::New() const {
+  return new MsgCmd;
 }
 
-void MsgString::Clear() {
-  if (_has_bits_[0 / 32] & 3) {
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
-    if (has_cmd()) {
-      if (cmd_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-        cmd_->clear();
-      }
+void MsgCmd::Clear() {
+  if (has_cmd()) {
+    if (cmd_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+      cmd_->clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool MsgString::MergePartialFromCodedStream(
+bool MsgCmd::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
   ::google::protobuf::uint32 tag;
-  // @@protoc_insertion_point(parse_start:netmsg.MsgString)
+  // @@protoc_insertion_point(parse_start:netmsg.MsgCmd)
   for (;;) {
     ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
-      case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(18)) goto parse_Cmd;
-        break;
-      }
-
       // required string Cmd = 2;
       case 2: {
         if (tag == 18) {
-         parse_Cmd:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_cmd()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -1170,23 +2086,17 @@ bool MsgString::MergePartialFromCodedStream(
     }
   }
 success:
-  // @@protoc_insertion_point(parse_success:netmsg.MsgString)
+  // @@protoc_insertion_point(parse_success:netmsg.MsgCmd)
   return true;
 failure:
-  // @@protoc_insertion_point(parse_failure:netmsg.MsgString)
+  // @@protoc_insertion_point(parse_failure:netmsg.MsgCmd)
   return false;
 #undef DO_
 }
 
-void MsgString::SerializeWithCachedSizes(
+void MsgCmd::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // @@protoc_insertion_point(serialize_start:netmsg.MsgString)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
+  // @@protoc_insertion_point(serialize_start:netmsg.MsgCmd)
   // required string Cmd = 2;
   if (has_cmd()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -1201,19 +2111,12 @@ void MsgString::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
   }
-  // @@protoc_insertion_point(serialize_end:netmsg.MsgString)
+  // @@protoc_insertion_point(serialize_end:netmsg.MsgCmd)
 }
 
-::google::protobuf::uint8* MsgString::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* MsgCmd::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgString)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
+  // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgCmd)
   // required string Cmd = 2;
   if (has_cmd()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -1229,21 +2132,14 @@ void MsgString::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:netmsg.MsgString)
+  // @@protoc_insertion_point(serialize_to_array_end:netmsg.MsgCmd)
   return target;
 }
 
-int MsgString::ByteSize() const {
+int MsgCmd::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
     // required string Cmd = 2;
     if (has_cmd()) {
       total_size += 1 +
@@ -1263,10 +2159,10 @@ int MsgString::ByteSize() const {
   return total_size;
 }
 
-void MsgString::MergeFrom(const ::google::protobuf::Message& from) {
+void MsgCmd::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const MsgString* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const MsgString*>(
+  const MsgCmd* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const MsgCmd*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1275,12 +2171,9 @@ void MsgString::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void MsgString::MergeFrom(const MsgString& from) {
+void MsgCmd::MergeFrom(const MsgCmd& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_cmd()) {
       set_cmd(from.cmd());
     }
@@ -1288,30 +2181,26 @@ void MsgString::MergeFrom(const MsgString& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void MsgString::CopyFrom(const ::google::protobuf::Message& from) {
+void MsgCmd::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void MsgString::CopyFrom(const MsgString& from) {
+void MsgCmd::CopyFrom(const MsgCmd& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool MsgString::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+bool MsgCmd::IsInitialized() const {
+  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
-void MsgString::Swap(MsgString* other) {
+void MsgCmd::Swap(MsgCmd* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(cmd_, other->cmd_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -1319,11 +2208,11 @@ void MsgString::Swap(MsgString* other) {
   }
 }
 
-::google::protobuf::Metadata MsgString::GetMetadata() const {
+::google::protobuf::Metadata MsgCmd::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = MsgString_descriptor_;
-  metadata.reflection = MsgString_reflection_;
+  metadata.descriptor = MsgCmd_descriptor_;
+  metadata.reflection = MsgCmd_reflection_;
   return metadata;
 }
 
@@ -1331,7 +2220,6 @@ void MsgString::Swap(MsgString* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgIdCardApplyData::kHeadFieldNumber;
 const int MsgIdCardApplyData::kNameFieldNumber;
 const int MsgIdCardApplyData::kGenderFieldNumber;
 const int MsgIdCardApplyData::kNationFieldNumber;
@@ -1359,7 +2247,6 @@ MsgIdCardApplyData::MsgIdCardApplyData()
 }
 
 void MsgIdCardApplyData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgIdCardApplyData::MsgIdCardApplyData(const MsgIdCardApplyData& from)
@@ -1372,7 +2259,6 @@ MsgIdCardApplyData::MsgIdCardApplyData(const MsgIdCardApplyData& from)
 void MsgIdCardApplyData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   gender_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   nation_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -1452,7 +2338,6 @@ void MsgIdCardApplyData::SharedDtor() {
     delete opdate_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -1479,9 +2364,6 @@ MsgIdCardApplyData* MsgIdCardApplyData::New() const {
 
 void MsgIdCardApplyData::Clear() {
   if (_has_bits_[0 / 32] & 255) {
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
     if (has_name()) {
       if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         name_->clear();
@@ -1517,13 +2399,13 @@ void MsgIdCardApplyData::Clear() {
         sigdepart_->clear();
       }
     }
-  }
-  if (_has_bits_[8 / 32] & 65280) {
     if (has_slh()) {
       if (slh_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         slh_->clear();
       }
     }
+  }
+  if (_has_bits_[8 / 32] & 65280) {
     if (has_fpdata()) {
       if (fpdata_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         fpdata_->clear();
@@ -1555,13 +2437,13 @@ void MsgIdCardApplyData::Clear() {
       }
     }
     legal_ = false;
-  }
-  if (_has_bits_[16 / 32] & 458752) {
     if (has_operatorid()) {
       if (operatorid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         operatorid_->clear();
       }
     }
+  }
+  if (_has_bits_[16 / 32] & 196608) {
     if (has_operatorname()) {
       if (operatorname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         operatorname_->clear();
@@ -1587,22 +2469,9 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional string name = 1;
       case 1: {
         if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(18)) goto parse_name;
-        break;
-      }
-
-      // optional string name = 2;
-      case 2: {
-        if (tag == 18) {
-         parse_name:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_name()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -1612,13 +2481,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_gender;
+        if (input->ExpectTag(18)) goto parse_gender;
         break;
       }
 
-      // optional string gender = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string gender = 2;
+      case 2: {
+        if (tag == 18) {
          parse_gender:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_gender()));
@@ -1629,13 +2498,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_Nation;
+        if (input->ExpectTag(26)) goto parse_Nation;
         break;
       }
 
-      // optional string Nation = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string Nation = 3;
+      case 3: {
+        if (tag == 26) {
          parse_Nation:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_nation()));
@@ -1646,13 +2515,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_Birthday;
+        if (input->ExpectTag(34)) goto parse_Birthday;
         break;
       }
 
-      // optional string Birthday = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string Birthday = 4;
+      case 4: {
+        if (tag == 34) {
          parse_Birthday:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_birthday()));
@@ -1663,13 +2532,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_Address;
+        if (input->ExpectTag(42)) goto parse_Address;
         break;
       }
 
-      // optional string Address = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string Address = 5;
+      case 5: {
+        if (tag == 42) {
          parse_Address:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_address()));
@@ -1680,13 +2549,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_IdNumber;
+        if (input->ExpectTag(50)) goto parse_IdNumber;
         break;
       }
 
-      // optional string IdNumber = 7;
-      case 7: {
-        if (tag == 58) {
+      // optional string IdNumber = 6;
+      case 6: {
+        if (tag == 50) {
          parse_IdNumber:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_idnumber()));
@@ -1697,13 +2566,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_SigDepart;
+        if (input->ExpectTag(58)) goto parse_SigDepart;
         break;
       }
 
-      // optional string SigDepart = 8;
-      case 8: {
-        if (tag == 66) {
+      // optional string SigDepart = 7;
+      case 7: {
+        if (tag == 58) {
          parse_SigDepart:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_sigdepart()));
@@ -1714,13 +2583,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_SLH;
+        if (input->ExpectTag(66)) goto parse_SLH;
         break;
       }
 
-      // optional string SLH = 9;
-      case 9: {
-        if (tag == 74) {
+      // optional string SLH = 8;
+      case 8: {
+        if (tag == 66) {
          parse_SLH:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_slh()));
@@ -1731,13 +2600,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(82)) goto parse_fpData;
+        if (input->ExpectTag(74)) goto parse_fpData;
         break;
       }
 
-      // optional string fpData = 10;
-      case 10: {
-        if (tag == 82) {
+      // optional string fpData = 9;
+      case 9: {
+        if (tag == 74) {
          parse_fpData:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_fpdata()));
@@ -1748,13 +2617,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(90)) goto parse_fpFeature;
+        if (input->ExpectTag(82)) goto parse_fpFeature;
         break;
       }
 
-      // optional string fpFeature = 11;
-      case 11: {
-        if (tag == 90) {
+      // optional string fpFeature = 10;
+      case 10: {
+        if (tag == 82) {
          parse_fpFeature:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_fpfeature()));
@@ -1765,13 +2634,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(98)) goto parse_XCZP;
+        if (input->ExpectTag(90)) goto parse_XCZP;
         break;
       }
 
-      // optional string XCZP = 12;
-      case 12: {
-        if (tag == 98) {
+      // optional string XCZP = 11;
+      case 11: {
+        if (tag == 90) {
          parse_XCZP:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_xczp()));
@@ -1782,13 +2651,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(106)) goto parse_XZQH;
+        if (input->ExpectTag(98)) goto parse_XZQH;
         break;
       }
 
-      // optional string XZQH = 13;
-      case 13: {
-        if (tag == 106) {
+      // optional string XZQH = 12;
+      case 12: {
+        if (tag == 98) {
          parse_XZQH:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_xzqh()));
@@ -1799,13 +2668,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(114)) goto parse_sannerId;
+        if (input->ExpectTag(106)) goto parse_sannerId;
         break;
       }
 
-      // optional string sannerId = 14;
-      case 14: {
-        if (tag == 114) {
+      // optional string sannerId = 13;
+      case 13: {
+        if (tag == 106) {
          parse_sannerId:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_sannerid()));
@@ -1816,13 +2685,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(122)) goto parse_scannerName;
+        if (input->ExpectTag(114)) goto parse_scannerName;
         break;
       }
 
-      // optional string scannerName = 15;
-      case 15: {
-        if (tag == 122) {
+      // optional string scannerName = 14;
+      case 14: {
+        if (tag == 114) {
          parse_scannerName:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_scannername()));
@@ -1833,13 +2702,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(128)) goto parse_legal;
+        if (input->ExpectTag(120)) goto parse_legal;
         break;
       }
 
-      // optional bool legal = 16;
-      case 16: {
-        if (tag == 128) {
+      // optional bool legal = 15;
+      case 15: {
+        if (tag == 120) {
          parse_legal:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -1848,13 +2717,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(138)) goto parse_operatorID;
+        if (input->ExpectTag(130)) goto parse_operatorID;
         break;
       }
 
-      // optional string operatorID = 17;
-      case 17: {
-        if (tag == 138) {
+      // optional string operatorID = 16;
+      case 16: {
+        if (tag == 130) {
          parse_operatorID:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_operatorid()));
@@ -1865,13 +2734,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(146)) goto parse_operatorName;
+        if (input->ExpectTag(138)) goto parse_operatorName;
         break;
       }
 
-      // optional string operatorName = 18;
-      case 18: {
-        if (tag == 146) {
+      // optional string operatorName = 17;
+      case 17: {
+        if (tag == 138) {
          parse_operatorName:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_operatorname()));
@@ -1882,13 +2751,13 @@ bool MsgIdCardApplyData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(154)) goto parse_opDate;
+        if (input->ExpectTag(146)) goto parse_opDate;
         break;
       }
 
-      // optional string opDate = 19;
-      case 19: {
-        if (tag == 154) {
+      // optional string opDate = 18;
+      case 18: {
+        if (tag == 146) {
          parse_opDate:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_opdate()));
@@ -1928,185 +2797,179 @@ failure:
 void MsgIdCardApplyData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgIdCardApplyData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional string name = 2;
+  // optional string name = 1;
   if (has_name()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->name().data(), this->name().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "name");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->name(), output);
+      1, this->name(), output);
   }
 
-  // optional string gender = 3;
+  // optional string gender = 2;
   if (has_gender()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->gender().data(), this->gender().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "gender");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->gender(), output);
+      2, this->gender(), output);
   }
 
-  // optional string Nation = 4;
+  // optional string Nation = 3;
   if (has_nation()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->nation().data(), this->nation().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "nation");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->nation(), output);
+      3, this->nation(), output);
   }
 
-  // optional string Birthday = 5;
+  // optional string Birthday = 4;
   if (has_birthday()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->birthday().data(), this->birthday().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "birthday");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->birthday(), output);
+      4, this->birthday(), output);
   }
 
-  // optional string Address = 6;
+  // optional string Address = 5;
   if (has_address()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->address().data(), this->address().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "address");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->address(), output);
+      5, this->address(), output);
   }
 
-  // optional string IdNumber = 7;
+  // optional string IdNumber = 6;
   if (has_idnumber()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->idnumber().data(), this->idnumber().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "idnumber");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->idnumber(), output);
+      6, this->idnumber(), output);
   }
 
-  // optional string SigDepart = 8;
+  // optional string SigDepart = 7;
   if (has_sigdepart()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->sigdepart().data(), this->sigdepart().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "sigdepart");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->sigdepart(), output);
+      7, this->sigdepart(), output);
   }
 
-  // optional string SLH = 9;
+  // optional string SLH = 8;
   if (has_slh()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->slh().data(), this->slh().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "slh");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      9, this->slh(), output);
+      8, this->slh(), output);
   }
 
-  // optional string fpData = 10;
+  // optional string fpData = 9;
   if (has_fpdata()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->fpdata().data(), this->fpdata().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "fpdata");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      10, this->fpdata(), output);
+      9, this->fpdata(), output);
   }
 
-  // optional string fpFeature = 11;
+  // optional string fpFeature = 10;
   if (has_fpfeature()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->fpfeature().data(), this->fpfeature().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "fpfeature");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      11, this->fpfeature(), output);
+      10, this->fpfeature(), output);
   }
 
-  // optional string XCZP = 12;
+  // optional string XCZP = 11;
   if (has_xczp()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xczp().data(), this->xczp().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "xczp");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      12, this->xczp(), output);
+      11, this->xczp(), output);
   }
 
-  // optional string XZQH = 13;
+  // optional string XZQH = 12;
   if (has_xzqh()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xzqh().data(), this->xzqh().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "xzqh");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      13, this->xzqh(), output);
+      12, this->xzqh(), output);
   }
 
-  // optional string sannerId = 14;
+  // optional string sannerId = 13;
   if (has_sannerid()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->sannerid().data(), this->sannerid().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "sannerid");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      14, this->sannerid(), output);
+      13, this->sannerid(), output);
   }
 
-  // optional string scannerName = 15;
+  // optional string scannerName = 14;
   if (has_scannername()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->scannername().data(), this->scannername().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "scannername");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      15, this->scannername(), output);
+      14, this->scannername(), output);
   }
 
-  // optional bool legal = 16;
+  // optional bool legal = 15;
   if (has_legal()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(16, this->legal(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(15, this->legal(), output);
   }
 
-  // optional string operatorID = 17;
+  // optional string operatorID = 16;
   if (has_operatorid()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->operatorid().data(), this->operatorid().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "operatorid");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      17, this->operatorid(), output);
+      16, this->operatorid(), output);
   }
 
-  // optional string operatorName = 18;
+  // optional string operatorName = 17;
   if (has_operatorname()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->operatorname().data(), this->operatorname().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "operatorname");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      18, this->operatorname(), output);
+      17, this->operatorname(), output);
   }
 
-  // optional string opDate = 19;
+  // optional string opDate = 18;
   if (has_opdate()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->opdate().data(), this->opdate().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "opdate");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      19, this->opdate(), output);
+      18, this->opdate(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2119,14 +2982,7 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgIdCardApplyData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgIdCardApplyData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional string name = 2;
+  // optional string name = 1;
   if (has_name()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->name().data(), this->name().length(),
@@ -2134,10 +2990,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "name");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->name(), target);
+        1, this->name(), target);
   }
 
-  // optional string gender = 3;
+  // optional string gender = 2;
   if (has_gender()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->gender().data(), this->gender().length(),
@@ -2145,10 +3001,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "gender");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->gender(), target);
+        2, this->gender(), target);
   }
 
-  // optional string Nation = 4;
+  // optional string Nation = 3;
   if (has_nation()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->nation().data(), this->nation().length(),
@@ -2156,10 +3012,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "nation");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->nation(), target);
+        3, this->nation(), target);
   }
 
-  // optional string Birthday = 5;
+  // optional string Birthday = 4;
   if (has_birthday()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->birthday().data(), this->birthday().length(),
@@ -2167,10 +3023,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "birthday");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->birthday(), target);
+        4, this->birthday(), target);
   }
 
-  // optional string Address = 6;
+  // optional string Address = 5;
   if (has_address()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->address().data(), this->address().length(),
@@ -2178,10 +3034,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "address");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->address(), target);
+        5, this->address(), target);
   }
 
-  // optional string IdNumber = 7;
+  // optional string IdNumber = 6;
   if (has_idnumber()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->idnumber().data(), this->idnumber().length(),
@@ -2189,10 +3045,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "idnumber");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->idnumber(), target);
+        6, this->idnumber(), target);
   }
 
-  // optional string SigDepart = 8;
+  // optional string SigDepart = 7;
   if (has_sigdepart()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->sigdepart().data(), this->sigdepart().length(),
@@ -2200,10 +3056,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "sigdepart");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        8, this->sigdepart(), target);
+        7, this->sigdepart(), target);
   }
 
-  // optional string SLH = 9;
+  // optional string SLH = 8;
   if (has_slh()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->slh().data(), this->slh().length(),
@@ -2211,10 +3067,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "slh");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        9, this->slh(), target);
+        8, this->slh(), target);
   }
 
-  // optional string fpData = 10;
+  // optional string fpData = 9;
   if (has_fpdata()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->fpdata().data(), this->fpdata().length(),
@@ -2222,10 +3078,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "fpdata");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        10, this->fpdata(), target);
+        9, this->fpdata(), target);
   }
 
-  // optional string fpFeature = 11;
+  // optional string fpFeature = 10;
   if (has_fpfeature()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->fpfeature().data(), this->fpfeature().length(),
@@ -2233,10 +3089,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "fpfeature");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        11, this->fpfeature(), target);
+        10, this->fpfeature(), target);
   }
 
-  // optional string XCZP = 12;
+  // optional string XCZP = 11;
   if (has_xczp()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xczp().data(), this->xczp().length(),
@@ -2244,10 +3100,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "xczp");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        12, this->xczp(), target);
+        11, this->xczp(), target);
   }
 
-  // optional string XZQH = 13;
+  // optional string XZQH = 12;
   if (has_xzqh()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xzqh().data(), this->xzqh().length(),
@@ -2255,10 +3111,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "xzqh");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        13, this->xzqh(), target);
+        12, this->xzqh(), target);
   }
 
-  // optional string sannerId = 14;
+  // optional string sannerId = 13;
   if (has_sannerid()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->sannerid().data(), this->sannerid().length(),
@@ -2266,10 +3122,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "sannerid");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        14, this->sannerid(), target);
+        13, this->sannerid(), target);
   }
 
-  // optional string scannerName = 15;
+  // optional string scannerName = 14;
   if (has_scannername()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->scannername().data(), this->scannername().length(),
@@ -2277,15 +3133,15 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "scannername");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        15, this->scannername(), target);
+        14, this->scannername(), target);
   }
 
-  // optional bool legal = 16;
+  // optional bool legal = 15;
   if (has_legal()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(16, this->legal(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(15, this->legal(), target);
   }
 
-  // optional string operatorID = 17;
+  // optional string operatorID = 16;
   if (has_operatorid()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->operatorid().data(), this->operatorid().length(),
@@ -2293,10 +3149,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "operatorid");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        17, this->operatorid(), target);
+        16, this->operatorid(), target);
   }
 
-  // optional string operatorName = 18;
+  // optional string operatorName = 17;
   if (has_operatorname()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->operatorname().data(), this->operatorname().length(),
@@ -2304,10 +3160,10 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "operatorname");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        18, this->operatorname(), target);
+        17, this->operatorname(), target);
   }
 
-  // optional string opDate = 19;
+  // optional string opDate = 18;
   if (has_opdate()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->opdate().data(), this->opdate().length(),
@@ -2315,7 +3171,7 @@ void MsgIdCardApplyData::SerializeWithCachedSizes(
       "opdate");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        19, this->opdate(), target);
+        18, this->opdate(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2330,135 +3186,128 @@ int MsgIdCardApplyData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional string name = 2;
+    // optional string name = 1;
     if (has_name()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->name());
     }
 
-    // optional string gender = 3;
+    // optional string gender = 2;
     if (has_gender()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->gender());
     }
 
-    // optional string Nation = 4;
+    // optional string Nation = 3;
     if (has_nation()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->nation());
     }
 
-    // optional string Birthday = 5;
+    // optional string Birthday = 4;
     if (has_birthday()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->birthday());
     }
 
-    // optional string Address = 6;
+    // optional string Address = 5;
     if (has_address()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->address());
     }
 
-    // optional string IdNumber = 7;
+    // optional string IdNumber = 6;
     if (has_idnumber()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->idnumber());
     }
 
-    // optional string SigDepart = 8;
+    // optional string SigDepart = 7;
     if (has_sigdepart()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->sigdepart());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional string SLH = 9;
+    // optional string SLH = 8;
     if (has_slh()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->slh());
     }
 
-    // optional string fpData = 10;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional string fpData = 9;
     if (has_fpdata()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->fpdata());
     }
 
-    // optional string fpFeature = 11;
+    // optional string fpFeature = 10;
     if (has_fpfeature()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->fpfeature());
     }
 
-    // optional string XCZP = 12;
+    // optional string XCZP = 11;
     if (has_xczp()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->xczp());
     }
 
-    // optional string XZQH = 13;
+    // optional string XZQH = 12;
     if (has_xzqh()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->xzqh());
     }
 
-    // optional string sannerId = 14;
+    // optional string sannerId = 13;
     if (has_sannerid()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->sannerid());
     }
 
-    // optional string scannerName = 15;
+    // optional string scannerName = 14;
     if (has_scannername()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->scannername());
     }
 
-    // optional bool legal = 16;
+    // optional bool legal = 15;
     if (has_legal()) {
-      total_size += 2 + 1;
+      total_size += 1 + 1;
     }
 
-  }
-  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
-    // optional string operatorID = 17;
+    // optional string operatorID = 16;
     if (has_operatorid()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->operatorid());
     }
 
-    // optional string operatorName = 18;
+  }
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
+    // optional string operatorName = 17;
     if (has_operatorname()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->operatorname());
     }
 
-    // optional string opDate = 19;
+    // optional string opDate = 18;
     if (has_opdate()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -2492,9 +3341,6 @@ void MsgIdCardApplyData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgIdCardApplyData::MergeFrom(const MsgIdCardApplyData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_name()) {
       set_name(from.name());
     }
@@ -2516,11 +3362,11 @@ void MsgIdCardApplyData::MergeFrom(const MsgIdCardApplyData& from) {
     if (from.has_sigdepart()) {
       set_sigdepart(from.sigdepart());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_slh()) {
       set_slh(from.slh());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_fpdata()) {
       set_fpdata(from.fpdata());
     }
@@ -2542,11 +3388,11 @@ void MsgIdCardApplyData::MergeFrom(const MsgIdCardApplyData& from) {
     if (from.has_legal()) {
       set_legal(from.legal());
     }
-  }
-  if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     if (from.has_operatorid()) {
       set_operatorid(from.operatorid());
     }
+  }
+  if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     if (from.has_operatorname()) {
       set_operatorname(from.operatorname());
     }
@@ -2570,17 +3416,12 @@ void MsgIdCardApplyData::CopyFrom(const MsgIdCardApplyData& from) {
 }
 
 bool MsgIdCardApplyData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgIdCardApplyData::Swap(MsgIdCardApplyData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(name_, other->name_);
     std::swap(gender_, other->gender_);
     std::swap(nation_, other->nation_);
@@ -2617,7 +3458,6 @@ void MsgIdCardApplyData::Swap(MsgIdCardApplyData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgOnlineStatusData::kHeadFieldNumber;
 const int MsgOnlineStatusData::kMachineIdFieldNumber;
 const int MsgOnlineStatusData::kMachineNameFieldNumber;
 const int MsgOnlineStatusData::kMachineIPFieldNumber;
@@ -2636,7 +3476,6 @@ MsgOnlineStatusData::MsgOnlineStatusData()
 }
 
 void MsgOnlineStatusData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgOnlineStatusData::MsgOnlineStatusData(const MsgOnlineStatusData& from)
@@ -2649,7 +3488,6 @@ MsgOnlineStatusData::MsgOnlineStatusData(const MsgOnlineStatusData& from)
 void MsgOnlineStatusData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   machineid_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   machinename_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   machineip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -2693,7 +3531,6 @@ void MsgOnlineStatusData::SharedDtor() {
     delete businessendtime_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -2720,9 +3557,6 @@ MsgOnlineStatusData* MsgOnlineStatusData::New() const {
 
 void MsgOnlineStatusData::Clear() {
   if (_has_bits_[0 / 32] & 255) {
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
     if (has_machineid()) {
       if (machineid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         machineid_->clear();
@@ -2758,15 +3592,13 @@ void MsgOnlineStatusData::Clear() {
         businessstarttime_->clear();
       }
     }
-  }
-  if (_has_bits_[8 / 32] & 768) {
     if (has_businessendtime()) {
       if (businessendtime_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         businessendtime_->clear();
       }
     }
-    businessdone_ = false;
   }
+  businessdone_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -2781,22 +3613,9 @@ bool MsgOnlineStatusData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional string machineId = 1;
       case 1: {
         if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(18)) goto parse_machineId;
-        break;
-      }
-
-      // optional string machineId = 2;
-      case 2: {
-        if (tag == 18) {
-         parse_machineId:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_machineid()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
@@ -2806,13 +3625,13 @@ bool MsgOnlineStatusData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_machineName;
+        if (input->ExpectTag(18)) goto parse_machineName;
         break;
       }
 
-      // optional string machineName = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string machineName = 2;
+      case 2: {
+        if (tag == 18) {
          parse_machineName:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_machinename()));
@@ -2823,13 +3642,13 @@ bool MsgOnlineStatusData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_machineIP;
+        if (input->ExpectTag(26)) goto parse_machineIP;
         break;
       }
 
-      // optional string machineIP = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string machineIP = 3;
+      case 3: {
+        if (tag == 26) {
          parse_machineIP:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_machineip()));
@@ -2840,13 +3659,13 @@ bool MsgOnlineStatusData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_machineLongi;
+        if (input->ExpectTag(34)) goto parse_machineLongi;
         break;
       }
 
-      // optional string machineLongi = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string machineLongi = 4;
+      case 4: {
+        if (tag == 34) {
          parse_machineLongi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_machinelongi()));
@@ -2857,13 +3676,13 @@ bool MsgOnlineStatusData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_machineLat;
+        if (input->ExpectTag(42)) goto parse_machineLat;
         break;
       }
 
-      // optional string machineLat = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string machineLat = 5;
+      case 5: {
+        if (tag == 42) {
          parse_machineLat:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_machinelat()));
@@ -2874,13 +3693,13 @@ bool MsgOnlineStatusData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_currentBusiness;
+        if (input->ExpectTag(50)) goto parse_currentBusiness;
         break;
       }
 
-      // optional string currentBusiness = 7;
-      case 7: {
-        if (tag == 58) {
+      // optional string currentBusiness = 6;
+      case 6: {
+        if (tag == 50) {
          parse_currentBusiness:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_currentbusiness()));
@@ -2891,13 +3710,13 @@ bool MsgOnlineStatusData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_businessStartTime;
+        if (input->ExpectTag(58)) goto parse_businessStartTime;
         break;
       }
 
-      // optional string businessStartTime = 8;
-      case 8: {
-        if (tag == 66) {
+      // optional string businessStartTime = 7;
+      case 7: {
+        if (tag == 58) {
          parse_businessStartTime:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_businessstarttime()));
@@ -2908,13 +3727,13 @@ bool MsgOnlineStatusData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_businessEndTime;
+        if (input->ExpectTag(66)) goto parse_businessEndTime;
         break;
       }
 
-      // optional string businessEndTime = 9;
-      case 9: {
-        if (tag == 74) {
+      // optional string businessEndTime = 8;
+      case 8: {
+        if (tag == 66) {
          parse_businessEndTime:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_businessendtime()));
@@ -2925,13 +3744,13 @@ bool MsgOnlineStatusData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(80)) goto parse_businessDone;
+        if (input->ExpectTag(72)) goto parse_businessDone;
         break;
       }
 
-      // optional bool businessDone = 10;
-      case 10: {
-        if (tag == 80) {
+      // optional bool businessDone = 9;
+      case 9: {
+        if (tag == 72) {
          parse_businessDone:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -2969,95 +3788,89 @@ failure:
 void MsgOnlineStatusData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgOnlineStatusData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional string machineId = 2;
+  // optional string machineId = 1;
   if (has_machineid()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->machineid().data(), this->machineid().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "machineid");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->machineid(), output);
+      1, this->machineid(), output);
   }
 
-  // optional string machineName = 3;
+  // optional string machineName = 2;
   if (has_machinename()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->machinename().data(), this->machinename().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "machinename");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->machinename(), output);
+      2, this->machinename(), output);
   }
 
-  // optional string machineIP = 4;
+  // optional string machineIP = 3;
   if (has_machineip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->machineip().data(), this->machineip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "machineip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->machineip(), output);
+      3, this->machineip(), output);
   }
 
-  // optional string machineLongi = 5;
+  // optional string machineLongi = 4;
   if (has_machinelongi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->machinelongi().data(), this->machinelongi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "machinelongi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->machinelongi(), output);
+      4, this->machinelongi(), output);
   }
 
-  // optional string machineLat = 6;
+  // optional string machineLat = 5;
   if (has_machinelat()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->machinelat().data(), this->machinelat().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "machinelat");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->machinelat(), output);
+      5, this->machinelat(), output);
   }
 
-  // optional string currentBusiness = 7;
+  // optional string currentBusiness = 6;
   if (has_currentbusiness()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->currentbusiness().data(), this->currentbusiness().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "currentbusiness");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->currentbusiness(), output);
+      6, this->currentbusiness(), output);
   }
 
-  // optional string businessStartTime = 8;
+  // optional string businessStartTime = 7;
   if (has_businessstarttime()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->businessstarttime().data(), this->businessstarttime().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "businessstarttime");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->businessstarttime(), output);
+      7, this->businessstarttime(), output);
   }
 
-  // optional string businessEndTime = 9;
+  // optional string businessEndTime = 8;
   if (has_businessendtime()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->businessendtime().data(), this->businessendtime().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "businessendtime");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      9, this->businessendtime(), output);
+      8, this->businessendtime(), output);
   }
 
-  // optional bool businessDone = 10;
+  // optional bool businessDone = 9;
   if (has_businessdone()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(10, this->businessdone(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(9, this->businessdone(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -3070,14 +3883,7 @@ void MsgOnlineStatusData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgOnlineStatusData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgOnlineStatusData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional string machineId = 2;
+  // optional string machineId = 1;
   if (has_machineid()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->machineid().data(), this->machineid().length(),
@@ -3085,10 +3891,10 @@ void MsgOnlineStatusData::SerializeWithCachedSizes(
       "machineid");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->machineid(), target);
+        1, this->machineid(), target);
   }
 
-  // optional string machineName = 3;
+  // optional string machineName = 2;
   if (has_machinename()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->machinename().data(), this->machinename().length(),
@@ -3096,10 +3902,10 @@ void MsgOnlineStatusData::SerializeWithCachedSizes(
       "machinename");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->machinename(), target);
+        2, this->machinename(), target);
   }
 
-  // optional string machineIP = 4;
+  // optional string machineIP = 3;
   if (has_machineip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->machineip().data(), this->machineip().length(),
@@ -3107,10 +3913,10 @@ void MsgOnlineStatusData::SerializeWithCachedSizes(
       "machineip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->machineip(), target);
+        3, this->machineip(), target);
   }
 
-  // optional string machineLongi = 5;
+  // optional string machineLongi = 4;
   if (has_machinelongi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->machinelongi().data(), this->machinelongi().length(),
@@ -3118,10 +3924,10 @@ void MsgOnlineStatusData::SerializeWithCachedSizes(
       "machinelongi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->machinelongi(), target);
+        4, this->machinelongi(), target);
   }
 
-  // optional string machineLat = 6;
+  // optional string machineLat = 5;
   if (has_machinelat()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->machinelat().data(), this->machinelat().length(),
@@ -3129,10 +3935,10 @@ void MsgOnlineStatusData::SerializeWithCachedSizes(
       "machinelat");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->machinelat(), target);
+        5, this->machinelat(), target);
   }
 
-  // optional string currentBusiness = 7;
+  // optional string currentBusiness = 6;
   if (has_currentbusiness()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->currentbusiness().data(), this->currentbusiness().length(),
@@ -3140,10 +3946,10 @@ void MsgOnlineStatusData::SerializeWithCachedSizes(
       "currentbusiness");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->currentbusiness(), target);
+        6, this->currentbusiness(), target);
   }
 
-  // optional string businessStartTime = 8;
+  // optional string businessStartTime = 7;
   if (has_businessstarttime()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->businessstarttime().data(), this->businessstarttime().length(),
@@ -3151,10 +3957,10 @@ void MsgOnlineStatusData::SerializeWithCachedSizes(
       "businessstarttime");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        8, this->businessstarttime(), target);
+        7, this->businessstarttime(), target);
   }
 
-  // optional string businessEndTime = 9;
+  // optional string businessEndTime = 8;
   if (has_businessendtime()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->businessendtime().data(), this->businessendtime().length(),
@@ -3162,12 +3968,12 @@ void MsgOnlineStatusData::SerializeWithCachedSizes(
       "businessendtime");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        9, this->businessendtime(), target);
+        8, this->businessendtime(), target);
   }
 
-  // optional bool businessDone = 10;
+  // optional bool businessDone = 9;
   if (has_businessdone()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(10, this->businessdone(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(9, this->businessdone(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3182,72 +3988,65 @@ int MsgOnlineStatusData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional string machineId = 2;
+    // optional string machineId = 1;
     if (has_machineid()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->machineid());
     }
 
-    // optional string machineName = 3;
+    // optional string machineName = 2;
     if (has_machinename()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->machinename());
     }
 
-    // optional string machineIP = 4;
+    // optional string machineIP = 3;
     if (has_machineip()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->machineip());
     }
 
-    // optional string machineLongi = 5;
+    // optional string machineLongi = 4;
     if (has_machinelongi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->machinelongi());
     }
 
-    // optional string machineLat = 6;
+    // optional string machineLat = 5;
     if (has_machinelat()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->machinelat());
     }
 
-    // optional string currentBusiness = 7;
+    // optional string currentBusiness = 6;
     if (has_currentbusiness()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->currentbusiness());
     }
 
-    // optional string businessStartTime = 8;
+    // optional string businessStartTime = 7;
     if (has_businessstarttime()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->businessstarttime());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional string businessEndTime = 9;
+    // optional string businessEndTime = 8;
     if (has_businessendtime()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->businessendtime());
     }
 
-    // optional bool businessDone = 10;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional bool businessDone = 9;
     if (has_businessdone()) {
       total_size += 1 + 1;
     }
@@ -3279,9 +4078,6 @@ void MsgOnlineStatusData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgOnlineStatusData::MergeFrom(const MsgOnlineStatusData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_machineid()) {
       set_machineid(from.machineid());
     }
@@ -3303,11 +4099,11 @@ void MsgOnlineStatusData::MergeFrom(const MsgOnlineStatusData& from) {
     if (from.has_businessstarttime()) {
       set_businessstarttime(from.businessstarttime());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_businessendtime()) {
       set_businessendtime(from.businessendtime());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_businessdone()) {
       set_businessdone(from.businessdone());
     }
@@ -3328,17 +4124,12 @@ void MsgOnlineStatusData::CopyFrom(const MsgOnlineStatusData& from) {
 }
 
 bool MsgOnlineStatusData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgOnlineStatusData::Swap(MsgOnlineStatusData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(machineid_, other->machineid_);
     std::swap(machinename_, other->machinename_);
     std::swap(machineip_, other->machineip_);
@@ -3366,7 +4157,6 @@ void MsgOnlineStatusData::Swap(MsgOnlineStatusData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgShuLiangHuiZongData::kHeadFieldNumber;
 const int MsgShuLiangHuiZongData::kXuhaoFieldNumber;
 const int MsgShuLiangHuiZongData::kShiyongdanweiFieldNumber;
 const int MsgShuLiangHuiZongData::kShebeizongshuliangFieldNumber;
@@ -3391,7 +4181,6 @@ MsgShuLiangHuiZongData::MsgShuLiangHuiZongData()
 }
 
 void MsgShuLiangHuiZongData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgShuLiangHuiZongData::MsgShuLiangHuiZongData(const MsgShuLiangHuiZongData& from)
@@ -3403,7 +4192,6 @@ MsgShuLiangHuiZongData::MsgShuLiangHuiZongData(const MsgShuLiangHuiZongData& fro
 
 void MsgShuLiangHuiZongData::SharedCtor() {
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   shiyongdanwei_ = 0;
   shebeizongshuliang_ = 0;
@@ -3429,7 +4217,6 @@ MsgShuLiangHuiZongData::~MsgShuLiangHuiZongData() {
 
 void MsgShuLiangHuiZongData::SharedDtor() {
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -3466,13 +4253,10 @@ void MsgShuLiangHuiZongData::Clear() {
   } while (0)
 
   if (_has_bits_[0 / 32] & 255) {
-    ZR_(xuhao_, jiaofeiyewu_);
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
+    ZR_(xuhao_, chaxunyewu_);
   }
-  if (_has_bits_[8 / 32] & 65280) {
-    ZR_(chaxunyewu_, feilidengkequ_);
+  if (_has_bits_[8 / 32] & 32512) {
+    ZR_(shebeishouzheng_, feilidengkequ_);
   }
 
 #undef OFFSET_OF_FIELD_
@@ -3488,26 +4272,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   // @@protoc_insertion_point(parse_start:netmsg.MsgShuLiangHuiZongData)
   for (;;) {
-    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(16383);
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -3515,13 +4286,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(24)) goto parse_Shiyongdanwei;
+        if (input->ExpectTag(16)) goto parse_Shiyongdanwei;
         break;
       }
 
-      // optional int32 Shiyongdanwei = 3;
-      case 3: {
-        if (tag == 24) {
+      // optional int32 Shiyongdanwei = 2;
+      case 2: {
+        if (tag == 16) {
          parse_Shiyongdanwei:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3530,13 +4301,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(32)) goto parse_Shebeizongshuliang;
+        if (input->ExpectTag(24)) goto parse_Shebeizongshuliang;
         break;
       }
 
-      // optional int32 Shebeizongshuliang = 4;
-      case 4: {
-        if (tag == 32) {
+      // optional int32 Shebeizongshuliang = 3;
+      case 3: {
+        if (tag == 24) {
          parse_Shebeizongshuliang:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3545,13 +4316,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(40)) goto parse_Qiyongshebei;
+        if (input->ExpectTag(32)) goto parse_Qiyongshebei;
         break;
       }
 
-      // optional int32 Qiyongshebei = 5;
-      case 5: {
-        if (tag == 40) {
+      // optional int32 Qiyongshebei = 4;
+      case 4: {
+        if (tag == 32) {
          parse_Qiyongshebei:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3560,13 +4331,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(48)) goto parse_Yuyueyewu;
+        if (input->ExpectTag(40)) goto parse_Yuyueyewu;
         break;
       }
 
-      // optional int32 Yuyueyewu = 6;
-      case 6: {
-        if (tag == 48) {
+      // optional int32 Yuyueyewu = 5;
+      case 5: {
+        if (tag == 40) {
          parse_Yuyueyewu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3575,13 +4346,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(56)) goto parse_Yushouliyewu;
+        if (input->ExpectTag(48)) goto parse_Yushouliyewu;
         break;
       }
 
-      // optional int32 Yushouliyewu = 7;
-      case 7: {
-        if (tag == 56) {
+      // optional int32 Yushouliyewu = 6;
+      case 6: {
+        if (tag == 48) {
          parse_Yushouliyewu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3590,13 +4361,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(64)) goto parse_Jiaofeiyewu;
+        if (input->ExpectTag(56)) goto parse_Jiaofeiyewu;
         break;
       }
 
-      // optional int32 Jiaofeiyewu = 8;
-      case 8: {
-        if (tag == 64) {
+      // optional int32 Jiaofeiyewu = 7;
+      case 7: {
+        if (tag == 56) {
          parse_Jiaofeiyewu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3605,13 +4376,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(72)) goto parse_Chaxunyewu;
+        if (input->ExpectTag(64)) goto parse_Chaxunyewu;
         break;
       }
 
-      // optional int32 Chaxunyewu = 9;
-      case 9: {
-        if (tag == 72) {
+      // optional int32 Chaxunyewu = 8;
+      case 8: {
+        if (tag == 64) {
          parse_Chaxunyewu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3620,13 +4391,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(80)) goto parse_Shebeishouzheng;
+        if (input->ExpectTag(72)) goto parse_Shebeishouzheng;
         break;
       }
 
-      // optional int32 Shebeishouzheng = 10;
-      case 10: {
-        if (tag == 80) {
+      // optional int32 Shebeishouzheng = 9;
+      case 9: {
+        if (tag == 72) {
          parse_Shebeishouzheng:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3635,13 +4406,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(88)) goto parse_Xuqianyewu;
+        if (input->ExpectTag(80)) goto parse_Xuqianyewu;
         break;
       }
 
-      // optional int32 Xuqianyewu = 11;
-      case 11: {
-        if (tag == 88) {
+      // optional int32 Xuqianyewu = 10;
+      case 10: {
+        if (tag == 80) {
          parse_Xuqianyewu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3650,13 +4421,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(96)) goto parse_Benshitongxingzheng;
+        if (input->ExpectTag(88)) goto parse_Benshitongxingzheng;
         break;
       }
 
-      // optional int32 Benshitongxingzheng = 12;
-      case 12: {
-        if (tag == 96) {
+      // optional int32 Benshitongxingzheng = 11;
+      case 11: {
+        if (tag == 88) {
          parse_Benshitongxingzheng:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3665,13 +4436,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(104)) goto parse_Dianzitongxingzheng;
+        if (input->ExpectTag(96)) goto parse_Dianzitongxingzheng;
         break;
       }
 
-      // optional int32 Dianzitongxingzheng = 13;
-      case 13: {
-        if (tag == 104) {
+      // optional int32 Dianzitongxingzheng = 12;
+      case 12: {
+        if (tag == 96) {
          parse_Dianzitongxingzheng:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3680,13 +4451,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(112)) goto parse_Tongxingzhengzhika;
+        if (input->ExpectTag(104)) goto parse_Tongxingzhengzhika;
         break;
       }
 
-      // optional int32 Tongxingzhengzhika = 14;
-      case 14: {
-        if (tag == 112) {
+      // optional int32 Tongxingzhengzhika = 13;
+      case 13: {
+        if (tag == 104) {
          parse_Tongxingzhengzhika:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3695,13 +4466,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(120)) goto parse_Lidengkequ;
+        if (input->ExpectTag(112)) goto parse_Lidengkequ;
         break;
       }
 
-      // optional int32 Lidengkequ = 15;
-      case 15: {
-        if (tag == 120) {
+      // optional int32 Lidengkequ = 14;
+      case 14: {
+        if (tag == 112) {
          parse_Lidengkequ:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3710,13 +4481,13 @@ bool MsgShuLiangHuiZongData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(128)) goto parse_Feilidengkequ;
+        if (input->ExpectTag(120)) goto parse_Feilidengkequ;
         break;
       }
 
-      // optional int32 Feilidengkequ = 16;
-      case 16: {
-        if (tag == 128) {
+      // optional int32 Feilidengkequ = 15;
+      case 15: {
+        if (tag == 120) {
          parse_Feilidengkequ:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -3754,85 +4525,79 @@ failure:
 void MsgShuLiangHuiZongData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgShuLiangHuiZongData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional int32 Shiyongdanwei = 3;
+  // optional int32 Shiyongdanwei = 2;
   if (has_shiyongdanwei()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->shiyongdanwei(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->shiyongdanwei(), output);
   }
 
-  // optional int32 Shebeizongshuliang = 4;
+  // optional int32 Shebeizongshuliang = 3;
   if (has_shebeizongshuliang()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->shebeizongshuliang(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->shebeizongshuliang(), output);
   }
 
-  // optional int32 Qiyongshebei = 5;
+  // optional int32 Qiyongshebei = 4;
   if (has_qiyongshebei()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->qiyongshebei(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->qiyongshebei(), output);
   }
 
-  // optional int32 Yuyueyewu = 6;
+  // optional int32 Yuyueyewu = 5;
   if (has_yuyueyewu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->yuyueyewu(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->yuyueyewu(), output);
   }
 
-  // optional int32 Yushouliyewu = 7;
+  // optional int32 Yushouliyewu = 6;
   if (has_yushouliyewu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->yushouliyewu(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->yushouliyewu(), output);
   }
 
-  // optional int32 Jiaofeiyewu = 8;
+  // optional int32 Jiaofeiyewu = 7;
   if (has_jiaofeiyewu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->jiaofeiyewu(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->jiaofeiyewu(), output);
   }
 
-  // optional int32 Chaxunyewu = 9;
+  // optional int32 Chaxunyewu = 8;
   if (has_chaxunyewu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->chaxunyewu(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->chaxunyewu(), output);
   }
 
-  // optional int32 Shebeishouzheng = 10;
+  // optional int32 Shebeishouzheng = 9;
   if (has_shebeishouzheng()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->shebeishouzheng(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->shebeishouzheng(), output);
   }
 
-  // optional int32 Xuqianyewu = 11;
+  // optional int32 Xuqianyewu = 10;
   if (has_xuqianyewu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->xuqianyewu(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->xuqianyewu(), output);
   }
 
-  // optional int32 Benshitongxingzheng = 12;
+  // optional int32 Benshitongxingzheng = 11;
   if (has_benshitongxingzheng()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->benshitongxingzheng(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->benshitongxingzheng(), output);
   }
 
-  // optional int32 Dianzitongxingzheng = 13;
+  // optional int32 Dianzitongxingzheng = 12;
   if (has_dianzitongxingzheng()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(13, this->dianzitongxingzheng(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->dianzitongxingzheng(), output);
   }
 
-  // optional int32 Tongxingzhengzhika = 14;
+  // optional int32 Tongxingzhengzhika = 13;
   if (has_tongxingzhengzhika()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(14, this->tongxingzhengzhika(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(13, this->tongxingzhengzhika(), output);
   }
 
-  // optional int32 Lidengkequ = 15;
+  // optional int32 Lidengkequ = 14;
   if (has_lidengkequ()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(15, this->lidengkequ(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(14, this->lidengkequ(), output);
   }
 
-  // optional int32 Feilidengkequ = 16;
+  // optional int32 Feilidengkequ = 15;
   if (has_feilidengkequ()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(16, this->feilidengkequ(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(15, this->feilidengkequ(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -3845,86 +4610,79 @@ void MsgShuLiangHuiZongData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgShuLiangHuiZongData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgShuLiangHuiZongData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional int32 Shiyongdanwei = 3;
+  // optional int32 Shiyongdanwei = 2;
   if (has_shiyongdanwei()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->shiyongdanwei(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->shiyongdanwei(), target);
   }
 
-  // optional int32 Shebeizongshuliang = 4;
+  // optional int32 Shebeizongshuliang = 3;
   if (has_shebeizongshuliang()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->shebeizongshuliang(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->shebeizongshuliang(), target);
   }
 
-  // optional int32 Qiyongshebei = 5;
+  // optional int32 Qiyongshebei = 4;
   if (has_qiyongshebei()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->qiyongshebei(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->qiyongshebei(), target);
   }
 
-  // optional int32 Yuyueyewu = 6;
+  // optional int32 Yuyueyewu = 5;
   if (has_yuyueyewu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->yuyueyewu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->yuyueyewu(), target);
   }
 
-  // optional int32 Yushouliyewu = 7;
+  // optional int32 Yushouliyewu = 6;
   if (has_yushouliyewu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->yushouliyewu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->yushouliyewu(), target);
   }
 
-  // optional int32 Jiaofeiyewu = 8;
+  // optional int32 Jiaofeiyewu = 7;
   if (has_jiaofeiyewu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->jiaofeiyewu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->jiaofeiyewu(), target);
   }
 
-  // optional int32 Chaxunyewu = 9;
+  // optional int32 Chaxunyewu = 8;
   if (has_chaxunyewu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->chaxunyewu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->chaxunyewu(), target);
   }
 
-  // optional int32 Shebeishouzheng = 10;
+  // optional int32 Shebeishouzheng = 9;
   if (has_shebeishouzheng()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->shebeishouzheng(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->shebeishouzheng(), target);
   }
 
-  // optional int32 Xuqianyewu = 11;
+  // optional int32 Xuqianyewu = 10;
   if (has_xuqianyewu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->xuqianyewu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->xuqianyewu(), target);
   }
 
-  // optional int32 Benshitongxingzheng = 12;
+  // optional int32 Benshitongxingzheng = 11;
   if (has_benshitongxingzheng()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->benshitongxingzheng(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->benshitongxingzheng(), target);
   }
 
-  // optional int32 Dianzitongxingzheng = 13;
+  // optional int32 Dianzitongxingzheng = 12;
   if (has_dianzitongxingzheng()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(13, this->dianzitongxingzheng(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->dianzitongxingzheng(), target);
   }
 
-  // optional int32 Tongxingzhengzhika = 14;
+  // optional int32 Tongxingzhengzhika = 13;
   if (has_tongxingzhengzhika()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(14, this->tongxingzhengzhika(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(13, this->tongxingzhengzhika(), target);
   }
 
-  // optional int32 Lidengkequ = 15;
+  // optional int32 Lidengkequ = 14;
   if (has_lidengkequ()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(15, this->lidengkequ(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(14, this->lidengkequ(), target);
   }
 
-  // optional int32 Feilidengkequ = 16;
+  // optional int32 Feilidengkequ = 15;
   if (has_feilidengkequ()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(16, this->feilidengkequ(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(15, this->feilidengkequ(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3939,116 +4697,109 @@ int MsgShuLiangHuiZongData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional int32 Shiyongdanwei = 3;
+    // optional int32 Shiyongdanwei = 2;
     if (has_shiyongdanwei()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->shiyongdanwei());
     }
 
-    // optional int32 Shebeizongshuliang = 4;
+    // optional int32 Shebeizongshuliang = 3;
     if (has_shebeizongshuliang()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->shebeizongshuliang());
     }
 
-    // optional int32 Qiyongshebei = 5;
+    // optional int32 Qiyongshebei = 4;
     if (has_qiyongshebei()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->qiyongshebei());
     }
 
-    // optional int32 Yuyueyewu = 6;
+    // optional int32 Yuyueyewu = 5;
     if (has_yuyueyewu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->yuyueyewu());
     }
 
-    // optional int32 Yushouliyewu = 7;
+    // optional int32 Yushouliyewu = 6;
     if (has_yushouliyewu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->yushouliyewu());
     }
 
-    // optional int32 Jiaofeiyewu = 8;
+    // optional int32 Jiaofeiyewu = 7;
     if (has_jiaofeiyewu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->jiaofeiyewu());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional int32 Chaxunyewu = 9;
+    // optional int32 Chaxunyewu = 8;
     if (has_chaxunyewu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->chaxunyewu());
     }
 
-    // optional int32 Shebeishouzheng = 10;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional int32 Shebeishouzheng = 9;
     if (has_shebeishouzheng()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->shebeishouzheng());
     }
 
-    // optional int32 Xuqianyewu = 11;
+    // optional int32 Xuqianyewu = 10;
     if (has_xuqianyewu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuqianyewu());
     }
 
-    // optional int32 Benshitongxingzheng = 12;
+    // optional int32 Benshitongxingzheng = 11;
     if (has_benshitongxingzheng()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->benshitongxingzheng());
     }
 
-    // optional int32 Dianzitongxingzheng = 13;
+    // optional int32 Dianzitongxingzheng = 12;
     if (has_dianzitongxingzheng()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->dianzitongxingzheng());
     }
 
-    // optional int32 Tongxingzhengzhika = 14;
+    // optional int32 Tongxingzhengzhika = 13;
     if (has_tongxingzhengzhika()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->tongxingzhengzhika());
     }
 
-    // optional int32 Lidengkequ = 15;
+    // optional int32 Lidengkequ = 14;
     if (has_lidengkequ()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->lidengkequ());
     }
 
-    // optional int32 Feilidengkequ = 16;
+    // optional int32 Feilidengkequ = 15;
     if (has_feilidengkequ()) {
-      total_size += 2 +
+      total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->feilidengkequ());
     }
@@ -4080,9 +4831,6 @@ void MsgShuLiangHuiZongData::MergeFrom(const ::google::protobuf::Message& from) 
 void MsgShuLiangHuiZongData::MergeFrom(const MsgShuLiangHuiZongData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -4104,11 +4852,11 @@ void MsgShuLiangHuiZongData::MergeFrom(const MsgShuLiangHuiZongData& from) {
     if (from.has_jiaofeiyewu()) {
       set_jiaofeiyewu(from.jiaofeiyewu());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_chaxunyewu()) {
       set_chaxunyewu(from.chaxunyewu());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_shebeishouzheng()) {
       set_shebeishouzheng(from.shebeishouzheng());
     }
@@ -4147,17 +4895,12 @@ void MsgShuLiangHuiZongData::CopyFrom(const MsgShuLiangHuiZongData& from) {
 }
 
 bool MsgShuLiangHuiZongData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgShuLiangHuiZongData::Swap(MsgShuLiangHuiZongData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(shiyongdanwei_, other->shiyongdanwei_);
     std::swap(shebeizongshuliang_, other->shebeizongshuliang_);
@@ -4191,7 +4934,6 @@ void MsgShuLiangHuiZongData::Swap(MsgShuLiangHuiZongData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgXiangXiTongJiData::kHeadFieldNumber;
 const int MsgXiangXiTongJiData::kXuhaoFieldNumber;
 const int MsgXiangXiTongJiData::kNianFieldNumber;
 const int MsgXiangXiTongJiData::kYueFieldNumber;
@@ -4220,7 +4962,6 @@ MsgXiangXiTongJiData::MsgXiangXiTongJiData()
 }
 
 void MsgXiangXiTongJiData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgXiangXiTongJiData::MsgXiangXiTongJiData(const MsgXiangXiTongJiData& from)
@@ -4232,7 +4973,6 @@ MsgXiangXiTongJiData::MsgXiangXiTongJiData(const MsgXiangXiTongJiData& from)
 
 void MsgXiangXiTongJiData::SharedCtor() {
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   nian_ = 0;
   yue_ = 0;
@@ -4262,7 +5002,6 @@ MsgXiangXiTongJiData::~MsgXiangXiTongJiData() {
 
 void MsgXiangXiTongJiData::SharedDtor() {
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -4299,15 +5038,12 @@ void MsgXiangXiTongJiData::Clear() {
   } while (0)
 
   if (_has_bits_[0 / 32] & 255) {
-    ZR_(xuhao_, shiyongdanwei_);
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
+    ZR_(xuhao_, qiyongshebei_);
   }
   if (_has_bits_[8 / 32] & 65280) {
-    ZR_(qiyongshebei_, benshitongxingzheng_);
+    ZR_(yuyueyewu_, dianzitongxingzheng_);
   }
-  ZR_(dianzitongxingzheng_, feilidengkequ_);
+  ZR_(tongxingzhengzhika_, feilidengkequ_);
 
 #undef OFFSET_OF_FIELD_
 #undef ZR_
@@ -4326,22 +5062,9 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -4349,13 +5072,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(24)) goto parse_Nian;
+        if (input->ExpectTag(16)) goto parse_Nian;
         break;
       }
 
-      // optional int32 Nian = 3;
-      case 3: {
-        if (tag == 24) {
+      // optional int32 Nian = 2;
+      case 2: {
+        if (tag == 16) {
          parse_Nian:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4364,13 +5087,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(32)) goto parse_Yue;
+        if (input->ExpectTag(24)) goto parse_Yue;
         break;
       }
 
-      // optional int32 Yue = 4;
-      case 4: {
-        if (tag == 32) {
+      // optional int32 Yue = 3;
+      case 3: {
+        if (tag == 24) {
          parse_Yue:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4379,13 +5102,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(40)) goto parse_Ri;
+        if (input->ExpectTag(32)) goto parse_Ri;
         break;
       }
 
-      // optional int32 Ri = 5;
-      case 5: {
-        if (tag == 40) {
+      // optional int32 Ri = 4;
+      case 4: {
+        if (tag == 32) {
          parse_Ri:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4394,13 +5117,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(48)) goto parse_Xiaoshi;
+        if (input->ExpectTag(40)) goto parse_Xiaoshi;
         break;
       }
 
-      // optional int32 Xiaoshi = 6;
-      case 6: {
-        if (tag == 48) {
+      // optional int32 Xiaoshi = 5;
+      case 5: {
+        if (tag == 40) {
          parse_Xiaoshi:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4409,13 +5132,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(56)) goto parse_Fenzhong;
+        if (input->ExpectTag(48)) goto parse_Fenzhong;
         break;
       }
 
-      // optional int32 Fenzhong = 7;
-      case 7: {
-        if (tag == 56) {
+      // optional int32 Fenzhong = 6;
+      case 6: {
+        if (tag == 48) {
          parse_Fenzhong:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4424,13 +5147,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(64)) goto parse_Shiyongdanwei;
+        if (input->ExpectTag(56)) goto parse_Shiyongdanwei;
         break;
       }
 
-      // optional int32 Shiyongdanwei = 8;
-      case 8: {
-        if (tag == 64) {
+      // optional int32 Shiyongdanwei = 7;
+      case 7: {
+        if (tag == 56) {
          parse_Shiyongdanwei:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4439,13 +5162,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(72)) goto parse_Qiyongshebei;
+        if (input->ExpectTag(64)) goto parse_Qiyongshebei;
         break;
       }
 
-      // optional int32 Qiyongshebei = 9;
-      case 9: {
-        if (tag == 72) {
+      // optional int32 Qiyongshebei = 8;
+      case 8: {
+        if (tag == 64) {
          parse_Qiyongshebei:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4454,13 +5177,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(80)) goto parse_Yuyueyewu;
+        if (input->ExpectTag(72)) goto parse_Yuyueyewu;
         break;
       }
 
-      // optional int32 Yuyueyewu = 10;
-      case 10: {
-        if (tag == 80) {
+      // optional int32 Yuyueyewu = 9;
+      case 9: {
+        if (tag == 72) {
          parse_Yuyueyewu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4469,13 +5192,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(88)) goto parse_Yushouliyewu;
+        if (input->ExpectTag(80)) goto parse_Yushouliyewu;
         break;
       }
 
-      // optional int32 Yushouliyewu = 11;
-      case 11: {
-        if (tag == 88) {
+      // optional int32 Yushouliyewu = 10;
+      case 10: {
+        if (tag == 80) {
          parse_Yushouliyewu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4484,13 +5207,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(96)) goto parse_Jiaofeiyewu;
+        if (input->ExpectTag(88)) goto parse_Jiaofeiyewu;
         break;
       }
 
-      // optional int32 Jiaofeiyewu = 12;
-      case 12: {
-        if (tag == 96) {
+      // optional int32 Jiaofeiyewu = 11;
+      case 11: {
+        if (tag == 88) {
          parse_Jiaofeiyewu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4499,13 +5222,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(104)) goto parse_Chaxunyewu;
+        if (input->ExpectTag(96)) goto parse_Chaxunyewu;
         break;
       }
 
-      // optional int32 Chaxunyewu = 13;
-      case 13: {
-        if (tag == 104) {
+      // optional int32 Chaxunyewu = 12;
+      case 12: {
+        if (tag == 96) {
          parse_Chaxunyewu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4514,13 +5237,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(112)) goto parse_Shebeishouzheng;
+        if (input->ExpectTag(104)) goto parse_Shebeishouzheng;
         break;
       }
 
-      // optional int32 Shebeishouzheng = 14;
-      case 14: {
-        if (tag == 112) {
+      // optional int32 Shebeishouzheng = 13;
+      case 13: {
+        if (tag == 104) {
          parse_Shebeishouzheng:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4529,13 +5252,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(120)) goto parse_Xuqianyewu;
+        if (input->ExpectTag(112)) goto parse_Xuqianyewu;
         break;
       }
 
-      // optional int32 Xuqianyewu = 15;
-      case 15: {
-        if (tag == 120) {
+      // optional int32 Xuqianyewu = 14;
+      case 14: {
+        if (tag == 112) {
          parse_Xuqianyewu:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4544,13 +5267,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(128)) goto parse_Benshitongxingzheng;
+        if (input->ExpectTag(120)) goto parse_Benshitongxingzheng;
         break;
       }
 
-      // optional int32 Benshitongxingzheng = 16;
-      case 16: {
-        if (tag == 128) {
+      // optional int32 Benshitongxingzheng = 15;
+      case 15: {
+        if (tag == 120) {
          parse_Benshitongxingzheng:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4559,13 +5282,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(136)) goto parse_Dianzitongxingzheng;
+        if (input->ExpectTag(128)) goto parse_Dianzitongxingzheng;
         break;
       }
 
-      // optional int32 Dianzitongxingzheng = 17;
-      case 17: {
-        if (tag == 136) {
+      // optional int32 Dianzitongxingzheng = 16;
+      case 16: {
+        if (tag == 128) {
          parse_Dianzitongxingzheng:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4574,13 +5297,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(144)) goto parse_Tongxingzhengzhika;
+        if (input->ExpectTag(136)) goto parse_Tongxingzhengzhika;
         break;
       }
 
-      // optional int32 Tongxingzhengzhika = 18;
-      case 18: {
-        if (tag == 144) {
+      // optional int32 Tongxingzhengzhika = 17;
+      case 17: {
+        if (tag == 136) {
          parse_Tongxingzhengzhika:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4589,13 +5312,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(152)) goto parse_Lidengkequ;
+        if (input->ExpectTag(144)) goto parse_Lidengkequ;
         break;
       }
 
-      // optional int32 Lidengkequ = 19;
-      case 19: {
-        if (tag == 152) {
+      // optional int32 Lidengkequ = 18;
+      case 18: {
+        if (tag == 144) {
          parse_Lidengkequ:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4604,13 +5327,13 @@ bool MsgXiangXiTongJiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(160)) goto parse_Feilidengkequ;
+        if (input->ExpectTag(152)) goto parse_Feilidengkequ;
         break;
       }
 
-      // optional int32 Feilidengkequ = 20;
-      case 20: {
-        if (tag == 160) {
+      // optional int32 Feilidengkequ = 19;
+      case 19: {
+        if (tag == 152) {
          parse_Feilidengkequ:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -4648,105 +5371,99 @@ failure:
 void MsgXiangXiTongJiData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgXiangXiTongJiData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional int32 Nian = 3;
+  // optional int32 Nian = 2;
   if (has_nian()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->nian(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->nian(), output);
   }
 
-  // optional int32 Yue = 4;
+  // optional int32 Yue = 3;
   if (has_yue()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->yue(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->yue(), output);
   }
 
-  // optional int32 Ri = 5;
+  // optional int32 Ri = 4;
   if (has_ri()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->ri(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->ri(), output);
   }
 
-  // optional int32 Xiaoshi = 6;
+  // optional int32 Xiaoshi = 5;
   if (has_xiaoshi()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->xiaoshi(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->xiaoshi(), output);
   }
 
-  // optional int32 Fenzhong = 7;
+  // optional int32 Fenzhong = 6;
   if (has_fenzhong()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->fenzhong(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->fenzhong(), output);
   }
 
-  // optional int32 Shiyongdanwei = 8;
+  // optional int32 Shiyongdanwei = 7;
   if (has_shiyongdanwei()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->shiyongdanwei(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->shiyongdanwei(), output);
   }
 
-  // optional int32 Qiyongshebei = 9;
+  // optional int32 Qiyongshebei = 8;
   if (has_qiyongshebei()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->qiyongshebei(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->qiyongshebei(), output);
   }
 
-  // optional int32 Yuyueyewu = 10;
+  // optional int32 Yuyueyewu = 9;
   if (has_yuyueyewu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->yuyueyewu(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->yuyueyewu(), output);
   }
 
-  // optional int32 Yushouliyewu = 11;
+  // optional int32 Yushouliyewu = 10;
   if (has_yushouliyewu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->yushouliyewu(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->yushouliyewu(), output);
   }
 
-  // optional int32 Jiaofeiyewu = 12;
+  // optional int32 Jiaofeiyewu = 11;
   if (has_jiaofeiyewu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->jiaofeiyewu(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->jiaofeiyewu(), output);
   }
 
-  // optional int32 Chaxunyewu = 13;
+  // optional int32 Chaxunyewu = 12;
   if (has_chaxunyewu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(13, this->chaxunyewu(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->chaxunyewu(), output);
   }
 
-  // optional int32 Shebeishouzheng = 14;
+  // optional int32 Shebeishouzheng = 13;
   if (has_shebeishouzheng()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(14, this->shebeishouzheng(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(13, this->shebeishouzheng(), output);
   }
 
-  // optional int32 Xuqianyewu = 15;
+  // optional int32 Xuqianyewu = 14;
   if (has_xuqianyewu()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(15, this->xuqianyewu(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(14, this->xuqianyewu(), output);
   }
 
-  // optional int32 Benshitongxingzheng = 16;
+  // optional int32 Benshitongxingzheng = 15;
   if (has_benshitongxingzheng()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(16, this->benshitongxingzheng(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(15, this->benshitongxingzheng(), output);
   }
 
-  // optional int32 Dianzitongxingzheng = 17;
+  // optional int32 Dianzitongxingzheng = 16;
   if (has_dianzitongxingzheng()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(17, this->dianzitongxingzheng(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(16, this->dianzitongxingzheng(), output);
   }
 
-  // optional int32 Tongxingzhengzhika = 18;
+  // optional int32 Tongxingzhengzhika = 17;
   if (has_tongxingzhengzhika()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(18, this->tongxingzhengzhika(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(17, this->tongxingzhengzhika(), output);
   }
 
-  // optional int32 Lidengkequ = 19;
+  // optional int32 Lidengkequ = 18;
   if (has_lidengkequ()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(19, this->lidengkequ(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(18, this->lidengkequ(), output);
   }
 
-  // optional int32 Feilidengkequ = 20;
+  // optional int32 Feilidengkequ = 19;
   if (has_feilidengkequ()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(20, this->feilidengkequ(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(19, this->feilidengkequ(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -4759,106 +5476,99 @@ void MsgXiangXiTongJiData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgXiangXiTongJiData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgXiangXiTongJiData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional int32 Nian = 3;
+  // optional int32 Nian = 2;
   if (has_nian()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->nian(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->nian(), target);
   }
 
-  // optional int32 Yue = 4;
+  // optional int32 Yue = 3;
   if (has_yue()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->yue(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->yue(), target);
   }
 
-  // optional int32 Ri = 5;
+  // optional int32 Ri = 4;
   if (has_ri()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->ri(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->ri(), target);
   }
 
-  // optional int32 Xiaoshi = 6;
+  // optional int32 Xiaoshi = 5;
   if (has_xiaoshi()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->xiaoshi(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->xiaoshi(), target);
   }
 
-  // optional int32 Fenzhong = 7;
+  // optional int32 Fenzhong = 6;
   if (has_fenzhong()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->fenzhong(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->fenzhong(), target);
   }
 
-  // optional int32 Shiyongdanwei = 8;
+  // optional int32 Shiyongdanwei = 7;
   if (has_shiyongdanwei()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->shiyongdanwei(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->shiyongdanwei(), target);
   }
 
-  // optional int32 Qiyongshebei = 9;
+  // optional int32 Qiyongshebei = 8;
   if (has_qiyongshebei()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->qiyongshebei(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->qiyongshebei(), target);
   }
 
-  // optional int32 Yuyueyewu = 10;
+  // optional int32 Yuyueyewu = 9;
   if (has_yuyueyewu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->yuyueyewu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->yuyueyewu(), target);
   }
 
-  // optional int32 Yushouliyewu = 11;
+  // optional int32 Yushouliyewu = 10;
   if (has_yushouliyewu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->yushouliyewu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->yushouliyewu(), target);
   }
 
-  // optional int32 Jiaofeiyewu = 12;
+  // optional int32 Jiaofeiyewu = 11;
   if (has_jiaofeiyewu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->jiaofeiyewu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->jiaofeiyewu(), target);
   }
 
-  // optional int32 Chaxunyewu = 13;
+  // optional int32 Chaxunyewu = 12;
   if (has_chaxunyewu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(13, this->chaxunyewu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->chaxunyewu(), target);
   }
 
-  // optional int32 Shebeishouzheng = 14;
+  // optional int32 Shebeishouzheng = 13;
   if (has_shebeishouzheng()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(14, this->shebeishouzheng(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(13, this->shebeishouzheng(), target);
   }
 
-  // optional int32 Xuqianyewu = 15;
+  // optional int32 Xuqianyewu = 14;
   if (has_xuqianyewu()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(15, this->xuqianyewu(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(14, this->xuqianyewu(), target);
   }
 
-  // optional int32 Benshitongxingzheng = 16;
+  // optional int32 Benshitongxingzheng = 15;
   if (has_benshitongxingzheng()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(16, this->benshitongxingzheng(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(15, this->benshitongxingzheng(), target);
   }
 
-  // optional int32 Dianzitongxingzheng = 17;
+  // optional int32 Dianzitongxingzheng = 16;
   if (has_dianzitongxingzheng()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(17, this->dianzitongxingzheng(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(16, this->dianzitongxingzheng(), target);
   }
 
-  // optional int32 Tongxingzhengzhika = 18;
+  // optional int32 Tongxingzhengzhika = 17;
   if (has_tongxingzhengzhika()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(18, this->tongxingzhengzhika(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(17, this->tongxingzhengzhika(), target);
   }
 
-  // optional int32 Lidengkequ = 19;
+  // optional int32 Lidengkequ = 18;
   if (has_lidengkequ()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(19, this->lidengkequ(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(18, this->lidengkequ(), target);
   }
 
-  // optional int32 Feilidengkequ = 20;
+  // optional int32 Feilidengkequ = 19;
   if (has_feilidengkequ()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(20, this->feilidengkequ(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(19, this->feilidengkequ(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -4873,144 +5583,137 @@ int MsgXiangXiTongJiData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional int32 Nian = 3;
+    // optional int32 Nian = 2;
     if (has_nian()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->nian());
     }
 
-    // optional int32 Yue = 4;
+    // optional int32 Yue = 3;
     if (has_yue()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->yue());
     }
 
-    // optional int32 Ri = 5;
+    // optional int32 Ri = 4;
     if (has_ri()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->ri());
     }
 
-    // optional int32 Xiaoshi = 6;
+    // optional int32 Xiaoshi = 5;
     if (has_xiaoshi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xiaoshi());
     }
 
-    // optional int32 Fenzhong = 7;
+    // optional int32 Fenzhong = 6;
     if (has_fenzhong()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->fenzhong());
     }
 
-    // optional int32 Shiyongdanwei = 8;
+    // optional int32 Shiyongdanwei = 7;
     if (has_shiyongdanwei()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->shiyongdanwei());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional int32 Qiyongshebei = 9;
+    // optional int32 Qiyongshebei = 8;
     if (has_qiyongshebei()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->qiyongshebei());
     }
 
-    // optional int32 Yuyueyewu = 10;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional int32 Yuyueyewu = 9;
     if (has_yuyueyewu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->yuyueyewu());
     }
 
-    // optional int32 Yushouliyewu = 11;
+    // optional int32 Yushouliyewu = 10;
     if (has_yushouliyewu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->yushouliyewu());
     }
 
-    // optional int32 Jiaofeiyewu = 12;
+    // optional int32 Jiaofeiyewu = 11;
     if (has_jiaofeiyewu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->jiaofeiyewu());
     }
 
-    // optional int32 Chaxunyewu = 13;
+    // optional int32 Chaxunyewu = 12;
     if (has_chaxunyewu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->chaxunyewu());
     }
 
-    // optional int32 Shebeishouzheng = 14;
+    // optional int32 Shebeishouzheng = 13;
     if (has_shebeishouzheng()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->shebeishouzheng());
     }
 
-    // optional int32 Xuqianyewu = 15;
+    // optional int32 Xuqianyewu = 14;
     if (has_xuqianyewu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuqianyewu());
     }
 
-    // optional int32 Benshitongxingzheng = 16;
+    // optional int32 Benshitongxingzheng = 15;
     if (has_benshitongxingzheng()) {
-      total_size += 2 +
+      total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->benshitongxingzheng());
     }
 
-  }
-  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
-    // optional int32 Dianzitongxingzheng = 17;
+    // optional int32 Dianzitongxingzheng = 16;
     if (has_dianzitongxingzheng()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->dianzitongxingzheng());
     }
 
-    // optional int32 Tongxingzhengzhika = 18;
+  }
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
+    // optional int32 Tongxingzhengzhika = 17;
     if (has_tongxingzhengzhika()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->tongxingzhengzhika());
     }
 
-    // optional int32 Lidengkequ = 19;
+    // optional int32 Lidengkequ = 18;
     if (has_lidengkequ()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->lidengkequ());
     }
 
-    // optional int32 Feilidengkequ = 20;
+    // optional int32 Feilidengkequ = 19;
     if (has_feilidengkequ()) {
       total_size += 2 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -5044,9 +5747,6 @@ void MsgXiangXiTongJiData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgXiangXiTongJiData::MergeFrom(const MsgXiangXiTongJiData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -5068,11 +5768,11 @@ void MsgXiangXiTongJiData::MergeFrom(const MsgXiangXiTongJiData& from) {
     if (from.has_shiyongdanwei()) {
       set_shiyongdanwei(from.shiyongdanwei());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_qiyongshebei()) {
       set_qiyongshebei(from.qiyongshebei());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_yuyueyewu()) {
       set_yuyueyewu(from.yuyueyewu());
     }
@@ -5094,11 +5794,11 @@ void MsgXiangXiTongJiData::MergeFrom(const MsgXiangXiTongJiData& from) {
     if (from.has_benshitongxingzheng()) {
       set_benshitongxingzheng(from.benshitongxingzheng());
     }
-  }
-  if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     if (from.has_dianzitongxingzheng()) {
       set_dianzitongxingzheng(from.dianzitongxingzheng());
     }
+  }
+  if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
     if (from.has_tongxingzhengzhika()) {
       set_tongxingzhengzhika(from.tongxingzhengzhika());
     }
@@ -5125,17 +5825,12 @@ void MsgXiangXiTongJiData::CopyFrom(const MsgXiangXiTongJiData& from) {
 }
 
 bool MsgXiangXiTongJiData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgXiangXiTongJiData::Swap(MsgXiangXiTongJiData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(nian_, other->nian_);
     std::swap(yue_, other->yue_);
@@ -5173,7 +5868,6 @@ void MsgXiangXiTongJiData::Swap(MsgXiangXiTongJiData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgZhiQianShuJuData::kHeadFieldNumber;
 const int MsgZhiQianShuJuData::kXuhaoFieldNumber;
 const int MsgZhiQianShuJuData::kRiqiFieldNumber;
 const int MsgZhiQianShuJuData::kShebeiIPFieldNumber;
@@ -5194,7 +5888,6 @@ MsgZhiQianShuJuData::MsgZhiQianShuJuData()
 }
 
 void MsgZhiQianShuJuData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgZhiQianShuJuData::MsgZhiQianShuJuData(const MsgZhiQianShuJuData& from)
@@ -5207,7 +5900,6 @@ MsgZhiQianShuJuData::MsgZhiQianShuJuData(const MsgZhiQianShuJuData& from)
 void MsgZhiQianShuJuData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   riqi_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   shebeiip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -5259,7 +5951,6 @@ void MsgZhiQianShuJuData::SharedDtor() {
     delete lianxidianhua_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -5286,9 +5977,6 @@ MsgZhiQianShuJuData* MsgZhiQianShuJuData::New() const {
 
 void MsgZhiQianShuJuData::Clear() {
   if (_has_bits_[0 / 32] & 255) {
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
     xuhao_ = 0;
     if (has_riqi()) {
       if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -5320,13 +6008,13 @@ void MsgZhiQianShuJuData::Clear() {
         qianzhuzhonglei_->clear();
       }
     }
-  }
-  if (_has_bits_[8 / 32] & 3840) {
     if (has_zhikazhuangtai()) {
       if (zhikazhuangtai_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         zhikazhuangtai_->clear();
       }
     }
+  }
+  if (_has_bits_[8 / 32] & 1792) {
     if (has_zhengjianhaoma()) {
       if (zhengjianhaoma_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         zhengjianhaoma_->clear();
@@ -5357,22 +6045,9 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -5380,13 +6055,13 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_Riqi;
+        if (input->ExpectTag(18)) goto parse_Riqi;
         break;
       }
 
-      // optional string Riqi = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string Riqi = 2;
+      case 2: {
+        if (tag == 18) {
          parse_Riqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_riqi()));
@@ -5397,13 +6072,13 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_ShebeiIP;
+        if (input->ExpectTag(26)) goto parse_ShebeiIP;
         break;
       }
 
-      // optional string ShebeiIP = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string ShebeiIP = 3;
+      case 3: {
+        if (tag == 26) {
          parse_ShebeiIP:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shebeiip()));
@@ -5414,13 +6089,13 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_Yewubianhao;
+        if (input->ExpectTag(34)) goto parse_Yewubianhao;
         break;
       }
 
-      // optional string Yewubianhao = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string Yewubianhao = 4;
+      case 4: {
+        if (tag == 34) {
          parse_Yewubianhao:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yewubianhao()));
@@ -5431,13 +6106,13 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_YuanZhengjianhaoma;
+        if (input->ExpectTag(42)) goto parse_YuanZhengjianhaoma;
         break;
       }
 
-      // optional string YuanZhengjianhaoma = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string YuanZhengjianhaoma = 5;
+      case 5: {
+        if (tag == 42) {
          parse_YuanZhengjianhaoma:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yuanzhengjianhaoma()));
@@ -5448,13 +6123,13 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_Xingming;
+        if (input->ExpectTag(50)) goto parse_Xingming;
         break;
       }
 
-      // optional string Xingming = 7;
-      case 7: {
-        if (tag == 58) {
+      // optional string Xingming = 6;
+      case 6: {
+        if (tag == 50) {
          parse_Xingming:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_xingming()));
@@ -5465,13 +6140,13 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_Qianzhuzhonglei;
+        if (input->ExpectTag(58)) goto parse_Qianzhuzhonglei;
         break;
       }
 
-      // optional string Qianzhuzhonglei = 8;
-      case 8: {
-        if (tag == 66) {
+      // optional string Qianzhuzhonglei = 7;
+      case 7: {
+        if (tag == 58) {
          parse_Qianzhuzhonglei:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_qianzhuzhonglei()));
@@ -5482,13 +6157,13 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_ZhikaZhuangtai;
+        if (input->ExpectTag(66)) goto parse_ZhikaZhuangtai;
         break;
       }
 
-      // optional string ZhikaZhuangtai = 9;
-      case 9: {
-        if (tag == 74) {
+      // optional string ZhikaZhuangtai = 8;
+      case 8: {
+        if (tag == 66) {
          parse_ZhikaZhuangtai:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_zhikazhuangtai()));
@@ -5499,13 +6174,13 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(82)) goto parse_Zhengjianhaoma;
+        if (input->ExpectTag(74)) goto parse_Zhengjianhaoma;
         break;
       }
 
-      // optional string Zhengjianhaoma = 10;
-      case 10: {
-        if (tag == 82) {
+      // optional string Zhengjianhaoma = 9;
+      case 9: {
+        if (tag == 74) {
          parse_Zhengjianhaoma:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_zhengjianhaoma()));
@@ -5516,13 +6191,13 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(90)) goto parse_Jiekoufanhuijieguo;
+        if (input->ExpectTag(82)) goto parse_Jiekoufanhuijieguo;
         break;
       }
 
-      // optional string Jiekoufanhuijieguo = 11;
-      case 11: {
-        if (tag == 90) {
+      // optional string Jiekoufanhuijieguo = 10;
+      case 10: {
+        if (tag == 82) {
          parse_Jiekoufanhuijieguo:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_jiekoufanhuijieguo()));
@@ -5533,13 +6208,13 @@ bool MsgZhiQianShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(98)) goto parse_Lianxidianhua;
+        if (input->ExpectTag(90)) goto parse_Lianxidianhua;
         break;
       }
 
-      // optional string Lianxidianhua = 12;
-      case 12: {
-        if (tag == 98) {
+      // optional string Lianxidianhua = 11;
+      case 11: {
+        if (tag == 90) {
          parse_Lianxidianhua:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_lianxidianhua()));
@@ -5579,115 +6254,109 @@ failure:
 void MsgZhiQianShuJuData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgZhiQianShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "riqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->riqi(), output);
+      2, this->riqi(), output);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shebeiip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->shebeiip(), output);
+      3, this->shebeiip(), output);
   }
 
-  // optional string Yewubianhao = 5;
+  // optional string Yewubianhao = 4;
   if (has_yewubianhao()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yewubianhao().data(), this->yewubianhao().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yewubianhao");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->yewubianhao(), output);
+      4, this->yewubianhao(), output);
   }
 
-  // optional string YuanZhengjianhaoma = 6;
+  // optional string YuanZhengjianhaoma = 5;
   if (has_yuanzhengjianhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yuanzhengjianhaoma().data(), this->yuanzhengjianhaoma().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yuanzhengjianhaoma");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->yuanzhengjianhaoma(), output);
+      5, this->yuanzhengjianhaoma(), output);
   }
 
-  // optional string Xingming = 7;
+  // optional string Xingming = 6;
   if (has_xingming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingming().data(), this->xingming().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "xingming");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->xingming(), output);
+      6, this->xingming(), output);
   }
 
-  // optional string Qianzhuzhonglei = 8;
+  // optional string Qianzhuzhonglei = 7;
   if (has_qianzhuzhonglei()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->qianzhuzhonglei().data(), this->qianzhuzhonglei().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "qianzhuzhonglei");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->qianzhuzhonglei(), output);
+      7, this->qianzhuzhonglei(), output);
   }
 
-  // optional string ZhikaZhuangtai = 9;
+  // optional string ZhikaZhuangtai = 8;
   if (has_zhikazhuangtai()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->zhikazhuangtai().data(), this->zhikazhuangtai().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "zhikazhuangtai");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      9, this->zhikazhuangtai(), output);
+      8, this->zhikazhuangtai(), output);
   }
 
-  // optional string Zhengjianhaoma = 10;
+  // optional string Zhengjianhaoma = 9;
   if (has_zhengjianhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->zhengjianhaoma().data(), this->zhengjianhaoma().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "zhengjianhaoma");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      10, this->zhengjianhaoma(), output);
+      9, this->zhengjianhaoma(), output);
   }
 
-  // optional string Jiekoufanhuijieguo = 11;
+  // optional string Jiekoufanhuijieguo = 10;
   if (has_jiekoufanhuijieguo()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->jiekoufanhuijieguo().data(), this->jiekoufanhuijieguo().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "jiekoufanhuijieguo");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      11, this->jiekoufanhuijieguo(), output);
+      10, this->jiekoufanhuijieguo(), output);
   }
 
-  // optional string Lianxidianhua = 12;
+  // optional string Lianxidianhua = 11;
   if (has_lianxidianhua()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->lianxidianhua().data(), this->lianxidianhua().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "lianxidianhua");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      12, this->lianxidianhua(), output);
+      11, this->lianxidianhua(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -5700,19 +6369,12 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgZhiQianShuJuData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgZhiQianShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
@@ -5720,10 +6382,10 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
       "riqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->riqi(), target);
+        2, this->riqi(), target);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
@@ -5731,10 +6393,10 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
       "shebeiip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->shebeiip(), target);
+        3, this->shebeiip(), target);
   }
 
-  // optional string Yewubianhao = 5;
+  // optional string Yewubianhao = 4;
   if (has_yewubianhao()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yewubianhao().data(), this->yewubianhao().length(),
@@ -5742,10 +6404,10 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
       "yewubianhao");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->yewubianhao(), target);
+        4, this->yewubianhao(), target);
   }
 
-  // optional string YuanZhengjianhaoma = 6;
+  // optional string YuanZhengjianhaoma = 5;
   if (has_yuanzhengjianhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yuanzhengjianhaoma().data(), this->yuanzhengjianhaoma().length(),
@@ -5753,10 +6415,10 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
       "yuanzhengjianhaoma");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->yuanzhengjianhaoma(), target);
+        5, this->yuanzhengjianhaoma(), target);
   }
 
-  // optional string Xingming = 7;
+  // optional string Xingming = 6;
   if (has_xingming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingming().data(), this->xingming().length(),
@@ -5764,10 +6426,10 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
       "xingming");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->xingming(), target);
+        6, this->xingming(), target);
   }
 
-  // optional string Qianzhuzhonglei = 8;
+  // optional string Qianzhuzhonglei = 7;
   if (has_qianzhuzhonglei()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->qianzhuzhonglei().data(), this->qianzhuzhonglei().length(),
@@ -5775,10 +6437,10 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
       "qianzhuzhonglei");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        8, this->qianzhuzhonglei(), target);
+        7, this->qianzhuzhonglei(), target);
   }
 
-  // optional string ZhikaZhuangtai = 9;
+  // optional string ZhikaZhuangtai = 8;
   if (has_zhikazhuangtai()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->zhikazhuangtai().data(), this->zhikazhuangtai().length(),
@@ -5786,10 +6448,10 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
       "zhikazhuangtai");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        9, this->zhikazhuangtai(), target);
+        8, this->zhikazhuangtai(), target);
   }
 
-  // optional string Zhengjianhaoma = 10;
+  // optional string Zhengjianhaoma = 9;
   if (has_zhengjianhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->zhengjianhaoma().data(), this->zhengjianhaoma().length(),
@@ -5797,10 +6459,10 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
       "zhengjianhaoma");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        10, this->zhengjianhaoma(), target);
+        9, this->zhengjianhaoma(), target);
   }
 
-  // optional string Jiekoufanhuijieguo = 11;
+  // optional string Jiekoufanhuijieguo = 10;
   if (has_jiekoufanhuijieguo()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->jiekoufanhuijieguo().data(), this->jiekoufanhuijieguo().length(),
@@ -5808,10 +6470,10 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
       "jiekoufanhuijieguo");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        11, this->jiekoufanhuijieguo(), target);
+        10, this->jiekoufanhuijieguo(), target);
   }
 
-  // optional string Lianxidianhua = 12;
+  // optional string Lianxidianhua = 11;
   if (has_lianxidianhua()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->lianxidianhua().data(), this->lianxidianhua().length(),
@@ -5819,7 +6481,7 @@ void MsgZhiQianShuJuData::SerializeWithCachedSizes(
       "lianxidianhua");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        12, this->lianxidianhua(), target);
+        11, this->lianxidianhua(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -5834,86 +6496,79 @@ int MsgZhiQianShuJuData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional string Riqi = 3;
+    // optional string Riqi = 2;
     if (has_riqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->riqi());
     }
 
-    // optional string ShebeiIP = 4;
+    // optional string ShebeiIP = 3;
     if (has_shebeiip()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shebeiip());
     }
 
-    // optional string Yewubianhao = 5;
+    // optional string Yewubianhao = 4;
     if (has_yewubianhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yewubianhao());
     }
 
-    // optional string YuanZhengjianhaoma = 6;
+    // optional string YuanZhengjianhaoma = 5;
     if (has_yuanzhengjianhaoma()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yuanzhengjianhaoma());
     }
 
-    // optional string Xingming = 7;
+    // optional string Xingming = 6;
     if (has_xingming()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->xingming());
     }
 
-    // optional string Qianzhuzhonglei = 8;
+    // optional string Qianzhuzhonglei = 7;
     if (has_qianzhuzhonglei()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->qianzhuzhonglei());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional string ZhikaZhuangtai = 9;
+    // optional string ZhikaZhuangtai = 8;
     if (has_zhikazhuangtai()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->zhikazhuangtai());
     }
 
-    // optional string Zhengjianhaoma = 10;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional string Zhengjianhaoma = 9;
     if (has_zhengjianhaoma()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->zhengjianhaoma());
     }
 
-    // optional string Jiekoufanhuijieguo = 11;
+    // optional string Jiekoufanhuijieguo = 10;
     if (has_jiekoufanhuijieguo()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->jiekoufanhuijieguo());
     }
 
-    // optional string Lianxidianhua = 12;
+    // optional string Lianxidianhua = 11;
     if (has_lianxidianhua()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -5947,9 +6602,6 @@ void MsgZhiQianShuJuData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgZhiQianShuJuData::MergeFrom(const MsgZhiQianShuJuData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -5971,11 +6623,11 @@ void MsgZhiQianShuJuData::MergeFrom(const MsgZhiQianShuJuData& from) {
     if (from.has_qianzhuzhonglei()) {
       set_qianzhuzhonglei(from.qianzhuzhonglei());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_zhikazhuangtai()) {
       set_zhikazhuangtai(from.zhikazhuangtai());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_zhengjianhaoma()) {
       set_zhengjianhaoma(from.zhengjianhaoma());
     }
@@ -6002,17 +6654,12 @@ void MsgZhiQianShuJuData::CopyFrom(const MsgZhiQianShuJuData& from) {
 }
 
 bool MsgZhiQianShuJuData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgZhiQianShuJuData::Swap(MsgZhiQianShuJuData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(riqi_, other->riqi_);
     std::swap(shebeiip_, other->shebeiip_);
@@ -6042,7 +6689,6 @@ void MsgZhiQianShuJuData::Swap(MsgZhiQianShuJuData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgShouZhengShuJuData::kHeadFieldNumber;
 const int MsgShouZhengShuJuData::kXuhaoFieldNumber;
 const int MsgShouZhengShuJuData::kRiqiFieldNumber;
 const int MsgShouZhengShuJuData::kShebeiIPFieldNumber;
@@ -6060,7 +6706,6 @@ MsgShouZhengShuJuData::MsgShouZhengShuJuData()
 }
 
 void MsgShouZhengShuJuData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgShouZhengShuJuData::MsgShouZhengShuJuData(const MsgShouZhengShuJuData& from)
@@ -6073,7 +6718,6 @@ MsgShouZhengShuJuData::MsgShouZhengShuJuData(const MsgShouZhengShuJuData& from)
 void MsgShouZhengShuJuData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   riqi_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   shebeiip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -6113,7 +6757,6 @@ void MsgShouZhengShuJuData::SharedDtor() {
     delete shifoujiaofei_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -6140,9 +6783,6 @@ MsgShouZhengShuJuData* MsgShouZhengShuJuData::New() const {
 
 void MsgShouZhengShuJuData::Clear() {
   if (_has_bits_[0 / 32] & 255) {
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
     xuhao_ = 0;
     if (has_riqi()) {
       if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -6174,10 +6814,10 @@ void MsgShouZhengShuJuData::Clear() {
         shoulibianhao_->clear();
       }
     }
-  }
-  if (has_shifoujiaofei()) {
-    if (shifoujiaofei_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-      shifoujiaofei_->clear();
+    if (has_shifoujiaofei()) {
+      if (shifoujiaofei_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        shifoujiaofei_->clear();
+      }
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -6194,22 +6834,9 @@ bool MsgShouZhengShuJuData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -6217,13 +6844,13 @@ bool MsgShouZhengShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_Riqi;
+        if (input->ExpectTag(18)) goto parse_Riqi;
         break;
       }
 
-      // optional string Riqi = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string Riqi = 2;
+      case 2: {
+        if (tag == 18) {
          parse_Riqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_riqi()));
@@ -6234,13 +6861,13 @@ bool MsgShouZhengShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_ShebeiIP;
+        if (input->ExpectTag(26)) goto parse_ShebeiIP;
         break;
       }
 
-      // optional string ShebeiIP = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string ShebeiIP = 3;
+      case 3: {
+        if (tag == 26) {
          parse_ShebeiIP:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shebeiip()));
@@ -6251,13 +6878,13 @@ bool MsgShouZhengShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_Zhengjianleixing;
+        if (input->ExpectTag(34)) goto parse_Zhengjianleixing;
         break;
       }
 
-      // optional string Zhengjianleixing = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string Zhengjianleixing = 4;
+      case 4: {
+        if (tag == 34) {
          parse_Zhengjianleixing:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_zhengjianleixing()));
@@ -6268,13 +6895,13 @@ bool MsgShouZhengShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_Zhengjianhaoma;
+        if (input->ExpectTag(42)) goto parse_Zhengjianhaoma;
         break;
       }
 
-      // optional string Zhengjianhaoma = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string Zhengjianhaoma = 5;
+      case 5: {
+        if (tag == 42) {
          parse_Zhengjianhaoma:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_zhengjianhaoma()));
@@ -6285,13 +6912,13 @@ bool MsgShouZhengShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_Xingming;
+        if (input->ExpectTag(50)) goto parse_Xingming;
         break;
       }
 
-      // optional string Xingming = 7;
-      case 7: {
-        if (tag == 58) {
+      // optional string Xingming = 6;
+      case 6: {
+        if (tag == 50) {
          parse_Xingming:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_xingming()));
@@ -6302,13 +6929,13 @@ bool MsgShouZhengShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_Shoulibianhao;
+        if (input->ExpectTag(58)) goto parse_Shoulibianhao;
         break;
       }
 
-      // optional string Shoulibianhao = 8;
-      case 8: {
-        if (tag == 66) {
+      // optional string Shoulibianhao = 7;
+      case 7: {
+        if (tag == 58) {
          parse_Shoulibianhao:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shoulibianhao()));
@@ -6319,13 +6946,13 @@ bool MsgShouZhengShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_Shifoujiaofei;
+        if (input->ExpectTag(66)) goto parse_Shifoujiaofei;
         break;
       }
 
-      // optional string Shifoujiaofei = 9;
-      case 9: {
-        if (tag == 74) {
+      // optional string Shifoujiaofei = 8;
+      case 8: {
+        if (tag == 66) {
          parse_Shifoujiaofei:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shifoujiaofei()));
@@ -6365,85 +6992,79 @@ failure:
 void MsgShouZhengShuJuData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgShouZhengShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "riqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->riqi(), output);
+      2, this->riqi(), output);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shebeiip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->shebeiip(), output);
+      3, this->shebeiip(), output);
   }
 
-  // optional string Zhengjianleixing = 5;
+  // optional string Zhengjianleixing = 4;
   if (has_zhengjianleixing()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->zhengjianleixing().data(), this->zhengjianleixing().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "zhengjianleixing");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->zhengjianleixing(), output);
+      4, this->zhengjianleixing(), output);
   }
 
-  // optional string Zhengjianhaoma = 6;
+  // optional string Zhengjianhaoma = 5;
   if (has_zhengjianhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->zhengjianhaoma().data(), this->zhengjianhaoma().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "zhengjianhaoma");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->zhengjianhaoma(), output);
+      5, this->zhengjianhaoma(), output);
   }
 
-  // optional string Xingming = 7;
+  // optional string Xingming = 6;
   if (has_xingming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingming().data(), this->xingming().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "xingming");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->xingming(), output);
+      6, this->xingming(), output);
   }
 
-  // optional string Shoulibianhao = 8;
+  // optional string Shoulibianhao = 7;
   if (has_shoulibianhao()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shoulibianhao().data(), this->shoulibianhao().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shoulibianhao");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->shoulibianhao(), output);
+      7, this->shoulibianhao(), output);
   }
 
-  // optional string Shifoujiaofei = 9;
+  // optional string Shifoujiaofei = 8;
   if (has_shifoujiaofei()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shifoujiaofei().data(), this->shifoujiaofei().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shifoujiaofei");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      9, this->shifoujiaofei(), output);
+      8, this->shifoujiaofei(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -6456,19 +7077,12 @@ void MsgShouZhengShuJuData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgShouZhengShuJuData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgShouZhengShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
@@ -6476,10 +7090,10 @@ void MsgShouZhengShuJuData::SerializeWithCachedSizes(
       "riqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->riqi(), target);
+        2, this->riqi(), target);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
@@ -6487,10 +7101,10 @@ void MsgShouZhengShuJuData::SerializeWithCachedSizes(
       "shebeiip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->shebeiip(), target);
+        3, this->shebeiip(), target);
   }
 
-  // optional string Zhengjianleixing = 5;
+  // optional string Zhengjianleixing = 4;
   if (has_zhengjianleixing()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->zhengjianleixing().data(), this->zhengjianleixing().length(),
@@ -6498,10 +7112,10 @@ void MsgShouZhengShuJuData::SerializeWithCachedSizes(
       "zhengjianleixing");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->zhengjianleixing(), target);
+        4, this->zhengjianleixing(), target);
   }
 
-  // optional string Zhengjianhaoma = 6;
+  // optional string Zhengjianhaoma = 5;
   if (has_zhengjianhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->zhengjianhaoma().data(), this->zhengjianhaoma().length(),
@@ -6509,10 +7123,10 @@ void MsgShouZhengShuJuData::SerializeWithCachedSizes(
       "zhengjianhaoma");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->zhengjianhaoma(), target);
+        5, this->zhengjianhaoma(), target);
   }
 
-  // optional string Xingming = 7;
+  // optional string Xingming = 6;
   if (has_xingming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingming().data(), this->xingming().length(),
@@ -6520,10 +7134,10 @@ void MsgShouZhengShuJuData::SerializeWithCachedSizes(
       "xingming");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->xingming(), target);
+        6, this->xingming(), target);
   }
 
-  // optional string Shoulibianhao = 8;
+  // optional string Shoulibianhao = 7;
   if (has_shoulibianhao()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shoulibianhao().data(), this->shoulibianhao().length(),
@@ -6531,10 +7145,10 @@ void MsgShouZhengShuJuData::SerializeWithCachedSizes(
       "shoulibianhao");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        8, this->shoulibianhao(), target);
+        7, this->shoulibianhao(), target);
   }
 
-  // optional string Shifoujiaofei = 9;
+  // optional string Shifoujiaofei = 8;
   if (has_shifoujiaofei()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shifoujiaofei().data(), this->shifoujiaofei().length(),
@@ -6542,7 +7156,7 @@ void MsgShouZhengShuJuData::SerializeWithCachedSizes(
       "shifoujiaofei");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        9, this->shifoujiaofei(), target);
+        8, this->shifoujiaofei(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -6557,65 +7171,56 @@ int MsgShouZhengShuJuData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional string Riqi = 3;
+    // optional string Riqi = 2;
     if (has_riqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->riqi());
     }
 
-    // optional string ShebeiIP = 4;
+    // optional string ShebeiIP = 3;
     if (has_shebeiip()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shebeiip());
     }
 
-    // optional string Zhengjianleixing = 5;
+    // optional string Zhengjianleixing = 4;
     if (has_zhengjianleixing()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->zhengjianleixing());
     }
 
-    // optional string Zhengjianhaoma = 6;
+    // optional string Zhengjianhaoma = 5;
     if (has_zhengjianhaoma()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->zhengjianhaoma());
     }
 
-    // optional string Xingming = 7;
+    // optional string Xingming = 6;
     if (has_xingming()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->xingming());
     }
 
-    // optional string Shoulibianhao = 8;
+    // optional string Shoulibianhao = 7;
     if (has_shoulibianhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shoulibianhao());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional string Shifoujiaofei = 9;
+    // optional string Shifoujiaofei = 8;
     if (has_shifoujiaofei()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -6649,9 +7254,6 @@ void MsgShouZhengShuJuData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgShouZhengShuJuData::MergeFrom(const MsgShouZhengShuJuData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -6673,8 +7275,6 @@ void MsgShouZhengShuJuData::MergeFrom(const MsgShouZhengShuJuData& from) {
     if (from.has_shoulibianhao()) {
       set_shoulibianhao(from.shoulibianhao());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_shifoujiaofei()) {
       set_shifoujiaofei(from.shifoujiaofei());
     }
@@ -6695,17 +7295,12 @@ void MsgShouZhengShuJuData::CopyFrom(const MsgShouZhengShuJuData& from) {
 }
 
 bool MsgShouZhengShuJuData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgShouZhengShuJuData::Swap(MsgShouZhengShuJuData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(riqi_, other->riqi_);
     std::swap(shebeiip_, other->shebeiip_);
@@ -6732,7 +7327,6 @@ void MsgShouZhengShuJuData::Swap(MsgShouZhengShuJuData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgQianZhuShuJuData::kHeadFieldNumber;
 const int MsgQianZhuShuJuData::kXuhaoFieldNumber;
 const int MsgQianZhuShuJuData::kRiqiFieldNumber;
 const int MsgQianZhuShuJuData::kShebeiIPFieldNumber;
@@ -6752,7 +7346,6 @@ MsgQianZhuShuJuData::MsgQianZhuShuJuData()
 }
 
 void MsgQianZhuShuJuData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgQianZhuShuJuData::MsgQianZhuShuJuData(const MsgQianZhuShuJuData& from)
@@ -6765,7 +7358,6 @@ MsgQianZhuShuJuData::MsgQianZhuShuJuData(const MsgQianZhuShuJuData& from)
 void MsgQianZhuShuJuData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   riqi_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   shebeiip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -6813,7 +7405,6 @@ void MsgQianZhuShuJuData::SharedDtor() {
     delete shouliren_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -6840,9 +7431,6 @@ MsgQianZhuShuJuData* MsgQianZhuShuJuData::New() const {
 
 void MsgQianZhuShuJuData::Clear() {
   if (_has_bits_[0 / 32] & 255) {
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
     xuhao_ = 0;
     if (has_riqi()) {
       if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -6874,13 +7462,13 @@ void MsgQianZhuShuJuData::Clear() {
         chushengriqi_->clear();
       }
     }
-  }
-  if (_has_bits_[8 / 32] & 1792) {
     if (has_lianxidianhua()) {
       if (lianxidianhua_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         lianxidianhua_->clear();
       }
     }
+  }
+  if (_has_bits_[8 / 32] & 768) {
     if (has_yewuleixing()) {
       if (yewuleixing_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         yewuleixing_->clear();
@@ -6906,22 +7494,9 @@ bool MsgQianZhuShuJuData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -6929,13 +7504,13 @@ bool MsgQianZhuShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_Riqi;
+        if (input->ExpectTag(18)) goto parse_Riqi;
         break;
       }
 
-      // optional string Riqi = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string Riqi = 2;
+      case 2: {
+        if (tag == 18) {
          parse_Riqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_riqi()));
@@ -6946,13 +7521,13 @@ bool MsgQianZhuShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_ShebeiIP;
+        if (input->ExpectTag(26)) goto parse_ShebeiIP;
         break;
       }
 
-      // optional string ShebeiIP = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string ShebeiIP = 3;
+      case 3: {
+        if (tag == 26) {
          parse_ShebeiIP:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shebeiip()));
@@ -6963,13 +7538,13 @@ bool MsgQianZhuShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_YuanZhengjianhaoma;
+        if (input->ExpectTag(34)) goto parse_YuanZhengjianhaoma;
         break;
       }
 
-      // optional string YuanZhengjianhaoma = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string YuanZhengjianhaoma = 4;
+      case 4: {
+        if (tag == 34) {
          parse_YuanZhengjianhaoma:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yuanzhengjianhaoma()));
@@ -6980,13 +7555,13 @@ bool MsgQianZhuShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_Xingming;
+        if (input->ExpectTag(42)) goto parse_Xingming;
         break;
       }
 
-      // optional string Xingming = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string Xingming = 5;
+      case 5: {
+        if (tag == 42) {
          parse_Xingming:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_xingming()));
@@ -6997,13 +7572,13 @@ bool MsgQianZhuShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_Xingbie;
+        if (input->ExpectTag(50)) goto parse_Xingbie;
         break;
       }
 
-      // optional string Xingbie = 7;
-      case 7: {
-        if (tag == 58) {
+      // optional string Xingbie = 6;
+      case 6: {
+        if (tag == 50) {
          parse_Xingbie:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_xingbie()));
@@ -7014,13 +7589,13 @@ bool MsgQianZhuShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_Chushengriqi;
+        if (input->ExpectTag(58)) goto parse_Chushengriqi;
         break;
       }
 
-      // optional string Chushengriqi = 8;
-      case 8: {
-        if (tag == 66) {
+      // optional string Chushengriqi = 7;
+      case 7: {
+        if (tag == 58) {
          parse_Chushengriqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_chushengriqi()));
@@ -7031,13 +7606,13 @@ bool MsgQianZhuShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_Lianxidianhua;
+        if (input->ExpectTag(66)) goto parse_Lianxidianhua;
         break;
       }
 
-      // optional string Lianxidianhua = 9;
-      case 9: {
-        if (tag == 74) {
+      // optional string Lianxidianhua = 8;
+      case 8: {
+        if (tag == 66) {
          parse_Lianxidianhua:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_lianxidianhua()));
@@ -7048,13 +7623,13 @@ bool MsgQianZhuShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(82)) goto parse_Yewuleixing;
+        if (input->ExpectTag(74)) goto parse_Yewuleixing;
         break;
       }
 
-      // optional string Yewuleixing = 10;
-      case 10: {
-        if (tag == 82) {
+      // optional string Yewuleixing = 9;
+      case 9: {
+        if (tag == 74) {
          parse_Yewuleixing:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yewuleixing()));
@@ -7065,13 +7640,13 @@ bool MsgQianZhuShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(90)) goto parse_Shouliren;
+        if (input->ExpectTag(82)) goto parse_Shouliren;
         break;
       }
 
-      // optional string Shouliren = 11;
-      case 11: {
-        if (tag == 90) {
+      // optional string Shouliren = 10;
+      case 10: {
+        if (tag == 82) {
          parse_Shouliren:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shouliren()));
@@ -7111,105 +7686,99 @@ failure:
 void MsgQianZhuShuJuData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgQianZhuShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "riqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->riqi(), output);
+      2, this->riqi(), output);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shebeiip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->shebeiip(), output);
+      3, this->shebeiip(), output);
   }
 
-  // optional string YuanZhengjianhaoma = 5;
+  // optional string YuanZhengjianhaoma = 4;
   if (has_yuanzhengjianhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yuanzhengjianhaoma().data(), this->yuanzhengjianhaoma().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yuanzhengjianhaoma");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->yuanzhengjianhaoma(), output);
+      4, this->yuanzhengjianhaoma(), output);
   }
 
-  // optional string Xingming = 6;
+  // optional string Xingming = 5;
   if (has_xingming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingming().data(), this->xingming().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "xingming");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->xingming(), output);
+      5, this->xingming(), output);
   }
 
-  // optional string Xingbie = 7;
+  // optional string Xingbie = 6;
   if (has_xingbie()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingbie().data(), this->xingbie().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "xingbie");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->xingbie(), output);
+      6, this->xingbie(), output);
   }
 
-  // optional string Chushengriqi = 8;
+  // optional string Chushengriqi = 7;
   if (has_chushengriqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->chushengriqi().data(), this->chushengriqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "chushengriqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->chushengriqi(), output);
+      7, this->chushengriqi(), output);
   }
 
-  // optional string Lianxidianhua = 9;
+  // optional string Lianxidianhua = 8;
   if (has_lianxidianhua()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->lianxidianhua().data(), this->lianxidianhua().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "lianxidianhua");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      9, this->lianxidianhua(), output);
+      8, this->lianxidianhua(), output);
   }
 
-  // optional string Yewuleixing = 10;
+  // optional string Yewuleixing = 9;
   if (has_yewuleixing()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yewuleixing().data(), this->yewuleixing().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yewuleixing");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      10, this->yewuleixing(), output);
+      9, this->yewuleixing(), output);
   }
 
-  // optional string Shouliren = 11;
+  // optional string Shouliren = 10;
   if (has_shouliren()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shouliren().data(), this->shouliren().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shouliren");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      11, this->shouliren(), output);
+      10, this->shouliren(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -7222,19 +7791,12 @@ void MsgQianZhuShuJuData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgQianZhuShuJuData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgQianZhuShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
@@ -7242,10 +7804,10 @@ void MsgQianZhuShuJuData::SerializeWithCachedSizes(
       "riqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->riqi(), target);
+        2, this->riqi(), target);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
@@ -7253,10 +7815,10 @@ void MsgQianZhuShuJuData::SerializeWithCachedSizes(
       "shebeiip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->shebeiip(), target);
+        3, this->shebeiip(), target);
   }
 
-  // optional string YuanZhengjianhaoma = 5;
+  // optional string YuanZhengjianhaoma = 4;
   if (has_yuanzhengjianhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yuanzhengjianhaoma().data(), this->yuanzhengjianhaoma().length(),
@@ -7264,10 +7826,10 @@ void MsgQianZhuShuJuData::SerializeWithCachedSizes(
       "yuanzhengjianhaoma");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->yuanzhengjianhaoma(), target);
+        4, this->yuanzhengjianhaoma(), target);
   }
 
-  // optional string Xingming = 6;
+  // optional string Xingming = 5;
   if (has_xingming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingming().data(), this->xingming().length(),
@@ -7275,10 +7837,10 @@ void MsgQianZhuShuJuData::SerializeWithCachedSizes(
       "xingming");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->xingming(), target);
+        5, this->xingming(), target);
   }
 
-  // optional string Xingbie = 7;
+  // optional string Xingbie = 6;
   if (has_xingbie()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingbie().data(), this->xingbie().length(),
@@ -7286,10 +7848,10 @@ void MsgQianZhuShuJuData::SerializeWithCachedSizes(
       "xingbie");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->xingbie(), target);
+        6, this->xingbie(), target);
   }
 
-  // optional string Chushengriqi = 8;
+  // optional string Chushengriqi = 7;
   if (has_chushengriqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->chushengriqi().data(), this->chushengriqi().length(),
@@ -7297,10 +7859,10 @@ void MsgQianZhuShuJuData::SerializeWithCachedSizes(
       "chushengriqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        8, this->chushengriqi(), target);
+        7, this->chushengriqi(), target);
   }
 
-  // optional string Lianxidianhua = 9;
+  // optional string Lianxidianhua = 8;
   if (has_lianxidianhua()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->lianxidianhua().data(), this->lianxidianhua().length(),
@@ -7308,10 +7870,10 @@ void MsgQianZhuShuJuData::SerializeWithCachedSizes(
       "lianxidianhua");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        9, this->lianxidianhua(), target);
+        8, this->lianxidianhua(), target);
   }
 
-  // optional string Yewuleixing = 10;
+  // optional string Yewuleixing = 9;
   if (has_yewuleixing()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yewuleixing().data(), this->yewuleixing().length(),
@@ -7319,10 +7881,10 @@ void MsgQianZhuShuJuData::SerializeWithCachedSizes(
       "yewuleixing");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        10, this->yewuleixing(), target);
+        9, this->yewuleixing(), target);
   }
 
-  // optional string Shouliren = 11;
+  // optional string Shouliren = 10;
   if (has_shouliren()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shouliren().data(), this->shouliren().length(),
@@ -7330,7 +7892,7 @@ void MsgQianZhuShuJuData::SerializeWithCachedSizes(
       "shouliren");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        11, this->shouliren(), target);
+        10, this->shouliren(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -7345,79 +7907,72 @@ int MsgQianZhuShuJuData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional string Riqi = 3;
+    // optional string Riqi = 2;
     if (has_riqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->riqi());
     }
 
-    // optional string ShebeiIP = 4;
+    // optional string ShebeiIP = 3;
     if (has_shebeiip()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shebeiip());
     }
 
-    // optional string YuanZhengjianhaoma = 5;
+    // optional string YuanZhengjianhaoma = 4;
     if (has_yuanzhengjianhaoma()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yuanzhengjianhaoma());
     }
 
-    // optional string Xingming = 6;
+    // optional string Xingming = 5;
     if (has_xingming()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->xingming());
     }
 
-    // optional string Xingbie = 7;
+    // optional string Xingbie = 6;
     if (has_xingbie()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->xingbie());
     }
 
-    // optional string Chushengriqi = 8;
+    // optional string Chushengriqi = 7;
     if (has_chushengriqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->chushengriqi());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional string Lianxidianhua = 9;
+    // optional string Lianxidianhua = 8;
     if (has_lianxidianhua()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->lianxidianhua());
     }
 
-    // optional string Yewuleixing = 10;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional string Yewuleixing = 9;
     if (has_yewuleixing()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yewuleixing());
     }
 
-    // optional string Shouliren = 11;
+    // optional string Shouliren = 10;
     if (has_shouliren()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -7451,9 +8006,6 @@ void MsgQianZhuShuJuData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgQianZhuShuJuData::MergeFrom(const MsgQianZhuShuJuData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -7475,11 +8027,11 @@ void MsgQianZhuShuJuData::MergeFrom(const MsgQianZhuShuJuData& from) {
     if (from.has_chushengriqi()) {
       set_chushengriqi(from.chushengriqi());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_lianxidianhua()) {
       set_lianxidianhua(from.lianxidianhua());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_yewuleixing()) {
       set_yewuleixing(from.yewuleixing());
     }
@@ -7503,17 +8055,12 @@ void MsgQianZhuShuJuData::CopyFrom(const MsgQianZhuShuJuData& from) {
 }
 
 bool MsgQianZhuShuJuData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgQianZhuShuJuData::Swap(MsgQianZhuShuJuData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(riqi_, other->riqi_);
     std::swap(shebeiip_, other->shebeiip_);
@@ -7542,7 +8089,6 @@ void MsgQianZhuShuJuData::Swap(MsgQianZhuShuJuData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgJiaoKuanShuJuData::kHeadFieldNumber;
 const int MsgJiaoKuanShuJuData::kXuhaoFieldNumber;
 const int MsgJiaoKuanShuJuData::kRiqiFieldNumber;
 const int MsgJiaoKuanShuJuData::kShebeiIPFieldNumber;
@@ -7560,7 +8106,6 @@ MsgJiaoKuanShuJuData::MsgJiaoKuanShuJuData()
 }
 
 void MsgJiaoKuanShuJuData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgJiaoKuanShuJuData::MsgJiaoKuanShuJuData(const MsgJiaoKuanShuJuData& from)
@@ -7573,7 +8118,6 @@ MsgJiaoKuanShuJuData::MsgJiaoKuanShuJuData(const MsgJiaoKuanShuJuData& from)
 void MsgJiaoKuanShuJuData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   riqi_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   shebeiip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -7610,7 +8154,6 @@ void MsgJiaoKuanShuJuData::SharedDtor() {
     delete jiaoyiriqi_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -7648,9 +8191,6 @@ void MsgJiaoKuanShuJuData::Clear() {
 
   if (_has_bits_[0 / 32] & 255) {
     ZR_(xuhao_, yingkoukuanheji_);
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
     if (has_riqi()) {
       if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         riqi_->clear();
@@ -7676,10 +8216,10 @@ void MsgJiaoKuanShuJuData::Clear() {
         jiaokuanrenxingming_->clear();
       }
     }
-  }
-  if (has_jiaoyiriqi()) {
-    if (jiaoyiriqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
-      jiaoyiriqi_->clear();
+    if (has_jiaoyiriqi()) {
+      if (jiaoyiriqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        jiaoyiriqi_->clear();
+      }
     }
   }
 
@@ -7700,22 +8240,9 @@ bool MsgJiaoKuanShuJuData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -7723,13 +8250,13 @@ bool MsgJiaoKuanShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_Riqi;
+        if (input->ExpectTag(18)) goto parse_Riqi;
         break;
       }
 
-      // optional string Riqi = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string Riqi = 2;
+      case 2: {
+        if (tag == 18) {
          parse_Riqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_riqi()));
@@ -7740,13 +8267,13 @@ bool MsgJiaoKuanShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_ShebeiIP;
+        if (input->ExpectTag(26)) goto parse_ShebeiIP;
         break;
       }
 
-      // optional string ShebeiIP = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string ShebeiIP = 3;
+      case 3: {
+        if (tag == 26) {
          parse_ShebeiIP:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shebeiip()));
@@ -7757,13 +8284,13 @@ bool MsgJiaoKuanShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_Zhishoudanweidaima;
+        if (input->ExpectTag(34)) goto parse_Zhishoudanweidaima;
         break;
       }
 
-      // optional string Zhishoudanweidaima = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string Zhishoudanweidaima = 4;
+      case 4: {
+        if (tag == 34) {
          parse_Zhishoudanweidaima:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_zhishoudanweidaima()));
@@ -7774,13 +8301,13 @@ bool MsgJiaoKuanShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_Jiaokuantongzhishuhaoma;
+        if (input->ExpectTag(42)) goto parse_Jiaokuantongzhishuhaoma;
         break;
       }
 
-      // optional string Jiaokuantongzhishuhaoma = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string Jiaokuantongzhishuhaoma = 5;
+      case 5: {
+        if (tag == 42) {
          parse_Jiaokuantongzhishuhaoma:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_jiaokuantongzhishuhaoma()));
@@ -7791,13 +8318,13 @@ bool MsgJiaoKuanShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_Jiaokuanrenxingming;
+        if (input->ExpectTag(50)) goto parse_Jiaokuanrenxingming;
         break;
       }
 
-      // optional string Jiaokuanrenxingming = 7;
-      case 7: {
-        if (tag == 58) {
+      // optional string Jiaokuanrenxingming = 6;
+      case 6: {
+        if (tag == 50) {
          parse_Jiaokuanrenxingming:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_jiaokuanrenxingming()));
@@ -7808,13 +8335,13 @@ bool MsgJiaoKuanShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(69)) goto parse_Yingkoukuanheji;
+        if (input->ExpectTag(61)) goto parse_Yingkoukuanheji;
         break;
       }
 
-      // optional float Yingkoukuanheji = 8;
-      case 8: {
-        if (tag == 69) {
+      // optional float Yingkoukuanheji = 7;
+      case 7: {
+        if (tag == 61) {
          parse_Yingkoukuanheji:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
@@ -7823,13 +8350,13 @@ bool MsgJiaoKuanShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_Jiaoyiriqi;
+        if (input->ExpectTag(66)) goto parse_Jiaoyiriqi;
         break;
       }
 
-      // optional string Jiaoyiriqi = 9;
-      case 9: {
-        if (tag == 74) {
+      // optional string Jiaoyiriqi = 8;
+      case 8: {
+        if (tag == 66) {
          parse_Jiaoyiriqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_jiaoyiriqi()));
@@ -7869,80 +8396,74 @@ failure:
 void MsgJiaoKuanShuJuData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgJiaoKuanShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "riqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->riqi(), output);
+      2, this->riqi(), output);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shebeiip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->shebeiip(), output);
+      3, this->shebeiip(), output);
   }
 
-  // optional string Zhishoudanweidaima = 5;
+  // optional string Zhishoudanweidaima = 4;
   if (has_zhishoudanweidaima()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->zhishoudanweidaima().data(), this->zhishoudanweidaima().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "zhishoudanweidaima");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->zhishoudanweidaima(), output);
+      4, this->zhishoudanweidaima(), output);
   }
 
-  // optional string Jiaokuantongzhishuhaoma = 6;
+  // optional string Jiaokuantongzhishuhaoma = 5;
   if (has_jiaokuantongzhishuhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->jiaokuantongzhishuhaoma().data(), this->jiaokuantongzhishuhaoma().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "jiaokuantongzhishuhaoma");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->jiaokuantongzhishuhaoma(), output);
+      5, this->jiaokuantongzhishuhaoma(), output);
   }
 
-  // optional string Jiaokuanrenxingming = 7;
+  // optional string Jiaokuanrenxingming = 6;
   if (has_jiaokuanrenxingming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->jiaokuanrenxingming().data(), this->jiaokuanrenxingming().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "jiaokuanrenxingming");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->jiaokuanrenxingming(), output);
+      6, this->jiaokuanrenxingming(), output);
   }
 
-  // optional float Yingkoukuanheji = 8;
+  // optional float Yingkoukuanheji = 7;
   if (has_yingkoukuanheji()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->yingkoukuanheji(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(7, this->yingkoukuanheji(), output);
   }
 
-  // optional string Jiaoyiriqi = 9;
+  // optional string Jiaoyiriqi = 8;
   if (has_jiaoyiriqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->jiaoyiriqi().data(), this->jiaoyiriqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "jiaoyiriqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      9, this->jiaoyiriqi(), output);
+      8, this->jiaoyiriqi(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -7955,19 +8476,12 @@ void MsgJiaoKuanShuJuData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgJiaoKuanShuJuData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgJiaoKuanShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
@@ -7975,10 +8489,10 @@ void MsgJiaoKuanShuJuData::SerializeWithCachedSizes(
       "riqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->riqi(), target);
+        2, this->riqi(), target);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
@@ -7986,10 +8500,10 @@ void MsgJiaoKuanShuJuData::SerializeWithCachedSizes(
       "shebeiip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->shebeiip(), target);
+        3, this->shebeiip(), target);
   }
 
-  // optional string Zhishoudanweidaima = 5;
+  // optional string Zhishoudanweidaima = 4;
   if (has_zhishoudanweidaima()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->zhishoudanweidaima().data(), this->zhishoudanweidaima().length(),
@@ -7997,10 +8511,10 @@ void MsgJiaoKuanShuJuData::SerializeWithCachedSizes(
       "zhishoudanweidaima");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->zhishoudanweidaima(), target);
+        4, this->zhishoudanweidaima(), target);
   }
 
-  // optional string Jiaokuantongzhishuhaoma = 6;
+  // optional string Jiaokuantongzhishuhaoma = 5;
   if (has_jiaokuantongzhishuhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->jiaokuantongzhishuhaoma().data(), this->jiaokuantongzhishuhaoma().length(),
@@ -8008,10 +8522,10 @@ void MsgJiaoKuanShuJuData::SerializeWithCachedSizes(
       "jiaokuantongzhishuhaoma");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->jiaokuantongzhishuhaoma(), target);
+        5, this->jiaokuantongzhishuhaoma(), target);
   }
 
-  // optional string Jiaokuanrenxingming = 7;
+  // optional string Jiaokuanrenxingming = 6;
   if (has_jiaokuanrenxingming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->jiaokuanrenxingming().data(), this->jiaokuanrenxingming().length(),
@@ -8019,15 +8533,15 @@ void MsgJiaoKuanShuJuData::SerializeWithCachedSizes(
       "jiaokuanrenxingming");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->jiaokuanrenxingming(), target);
+        6, this->jiaokuanrenxingming(), target);
   }
 
-  // optional float Yingkoukuanheji = 8;
+  // optional float Yingkoukuanheji = 7;
   if (has_yingkoukuanheji()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(8, this->yingkoukuanheji(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(7, this->yingkoukuanheji(), target);
   }
 
-  // optional string Jiaoyiriqi = 9;
+  // optional string Jiaoyiriqi = 8;
   if (has_jiaoyiriqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->jiaoyiriqi().data(), this->jiaoyiriqi().length(),
@@ -8035,7 +8549,7 @@ void MsgJiaoKuanShuJuData::SerializeWithCachedSizes(
       "jiaoyiriqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        9, this->jiaoyiriqi(), target);
+        8, this->jiaoyiriqi(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -8050,63 +8564,54 @@ int MsgJiaoKuanShuJuData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional string Riqi = 3;
+    // optional string Riqi = 2;
     if (has_riqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->riqi());
     }
 
-    // optional string ShebeiIP = 4;
+    // optional string ShebeiIP = 3;
     if (has_shebeiip()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shebeiip());
     }
 
-    // optional string Zhishoudanweidaima = 5;
+    // optional string Zhishoudanweidaima = 4;
     if (has_zhishoudanweidaima()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->zhishoudanweidaima());
     }
 
-    // optional string Jiaokuantongzhishuhaoma = 6;
+    // optional string Jiaokuantongzhishuhaoma = 5;
     if (has_jiaokuantongzhishuhaoma()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->jiaokuantongzhishuhaoma());
     }
 
-    // optional string Jiaokuanrenxingming = 7;
+    // optional string Jiaokuanrenxingming = 6;
     if (has_jiaokuanrenxingming()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->jiaokuanrenxingming());
     }
 
-    // optional float Yingkoukuanheji = 8;
+    // optional float Yingkoukuanheji = 7;
     if (has_yingkoukuanheji()) {
       total_size += 1 + 4;
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional string Jiaoyiriqi = 9;
+    // optional string Jiaoyiriqi = 8;
     if (has_jiaoyiriqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -8140,9 +8645,6 @@ void MsgJiaoKuanShuJuData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgJiaoKuanShuJuData::MergeFrom(const MsgJiaoKuanShuJuData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -8164,8 +8666,6 @@ void MsgJiaoKuanShuJuData::MergeFrom(const MsgJiaoKuanShuJuData& from) {
     if (from.has_yingkoukuanheji()) {
       set_yingkoukuanheji(from.yingkoukuanheji());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_jiaoyiriqi()) {
       set_jiaoyiriqi(from.jiaoyiriqi());
     }
@@ -8186,17 +8686,12 @@ void MsgJiaoKuanShuJuData::CopyFrom(const MsgJiaoKuanShuJuData& from) {
 }
 
 bool MsgJiaoKuanShuJuData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgJiaoKuanShuJuData::Swap(MsgJiaoKuanShuJuData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(riqi_, other->riqi_);
     std::swap(shebeiip_, other->shebeiip_);
@@ -8223,7 +8718,6 @@ void MsgJiaoKuanShuJuData::Swap(MsgJiaoKuanShuJuData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgChaXunShuJuData::kHeadFieldNumber;
 const int MsgChaXunShuJuData::kXuhaoFieldNumber;
 const int MsgChaXunShuJuData::kRiqiFieldNumber;
 const int MsgChaXunShuJuData::kShebeiIPFieldNumber;
@@ -8239,7 +8733,6 @@ MsgChaXunShuJuData::MsgChaXunShuJuData()
 }
 
 void MsgChaXunShuJuData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgChaXunShuJuData::MsgChaXunShuJuData(const MsgChaXunShuJuData& from)
@@ -8252,7 +8745,6 @@ MsgChaXunShuJuData::MsgChaXunShuJuData(const MsgChaXunShuJuData& from)
 void MsgChaXunShuJuData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   riqi_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   shebeiip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -8281,7 +8773,6 @@ void MsgChaXunShuJuData::SharedDtor() {
     delete chaxunleixing_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -8317,11 +8808,8 @@ void MsgChaXunShuJuData::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 127) {
+  if (_has_bits_[0 / 32] & 63) {
     ZR_(xuhao_, shifouchaxunchenggong_);
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
     if (has_riqi()) {
       if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         riqi_->clear();
@@ -8361,22 +8849,9 @@ bool MsgChaXunShuJuData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -8384,13 +8859,13 @@ bool MsgChaXunShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_Riqi;
+        if (input->ExpectTag(18)) goto parse_Riqi;
         break;
       }
 
-      // optional string Riqi = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string Riqi = 2;
+      case 2: {
+        if (tag == 18) {
          parse_Riqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_riqi()));
@@ -8401,13 +8876,13 @@ bool MsgChaXunShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_ShebeiIP;
+        if (input->ExpectTag(26)) goto parse_ShebeiIP;
         break;
       }
 
-      // optional string ShebeiIP = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string ShebeiIP = 3;
+      case 3: {
+        if (tag == 26) {
          parse_ShebeiIP:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shebeiip()));
@@ -8418,13 +8893,13 @@ bool MsgChaXunShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_Chaxunhaoma;
+        if (input->ExpectTag(34)) goto parse_Chaxunhaoma;
         break;
       }
 
-      // optional string Chaxunhaoma = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string Chaxunhaoma = 4;
+      case 4: {
+        if (tag == 34) {
          parse_Chaxunhaoma:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_chaxunhaoma()));
@@ -8435,13 +8910,13 @@ bool MsgChaXunShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_Chaxunleixing;
+        if (input->ExpectTag(42)) goto parse_Chaxunleixing;
         break;
       }
 
-      // optional string Chaxunleixing = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string Chaxunleixing = 5;
+      case 5: {
+        if (tag == 42) {
          parse_Chaxunleixing:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_chaxunleixing()));
@@ -8452,13 +8927,13 @@ bool MsgChaXunShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(56)) goto parse_Shifouchaxunchenggong;
+        if (input->ExpectTag(48)) goto parse_Shifouchaxunchenggong;
         break;
       }
 
-      // optional bool Shifouchaxunchenggong = 7;
-      case 7: {
-        if (tag == 56) {
+      // optional bool Shifouchaxunchenggong = 6;
+      case 6: {
+        if (tag == 48) {
          parse_Shifouchaxunchenggong:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
@@ -8496,60 +8971,54 @@ failure:
 void MsgChaXunShuJuData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgChaXunShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "riqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->riqi(), output);
+      2, this->riqi(), output);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shebeiip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->shebeiip(), output);
+      3, this->shebeiip(), output);
   }
 
-  // optional string Chaxunhaoma = 5;
+  // optional string Chaxunhaoma = 4;
   if (has_chaxunhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->chaxunhaoma().data(), this->chaxunhaoma().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "chaxunhaoma");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->chaxunhaoma(), output);
+      4, this->chaxunhaoma(), output);
   }
 
-  // optional string Chaxunleixing = 6;
+  // optional string Chaxunleixing = 5;
   if (has_chaxunleixing()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->chaxunleixing().data(), this->chaxunleixing().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "chaxunleixing");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->chaxunleixing(), output);
+      5, this->chaxunleixing(), output);
   }
 
-  // optional bool Shifouchaxunchenggong = 7;
+  // optional bool Shifouchaxunchenggong = 6;
   if (has_shifouchaxunchenggong()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(7, this->shifouchaxunchenggong(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteBool(6, this->shifouchaxunchenggong(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -8562,19 +9031,12 @@ void MsgChaXunShuJuData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgChaXunShuJuData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgChaXunShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
@@ -8582,10 +9044,10 @@ void MsgChaXunShuJuData::SerializeWithCachedSizes(
       "riqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->riqi(), target);
+        2, this->riqi(), target);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
@@ -8593,10 +9055,10 @@ void MsgChaXunShuJuData::SerializeWithCachedSizes(
       "shebeiip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->shebeiip(), target);
+        3, this->shebeiip(), target);
   }
 
-  // optional string Chaxunhaoma = 5;
+  // optional string Chaxunhaoma = 4;
   if (has_chaxunhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->chaxunhaoma().data(), this->chaxunhaoma().length(),
@@ -8604,10 +9066,10 @@ void MsgChaXunShuJuData::SerializeWithCachedSizes(
       "chaxunhaoma");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->chaxunhaoma(), target);
+        4, this->chaxunhaoma(), target);
   }
 
-  // optional string Chaxunleixing = 6;
+  // optional string Chaxunleixing = 5;
   if (has_chaxunleixing()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->chaxunleixing().data(), this->chaxunleixing().length(),
@@ -8615,12 +9077,12 @@ void MsgChaXunShuJuData::SerializeWithCachedSizes(
       "chaxunleixing");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->chaxunleixing(), target);
+        5, this->chaxunleixing(), target);
   }
 
-  // optional bool Shifouchaxunchenggong = 7;
+  // optional bool Shifouchaxunchenggong = 6;
   if (has_shifouchaxunchenggong()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(7, this->shifouchaxunchenggong(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(6, this->shifouchaxunchenggong(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -8635,49 +9097,42 @@ int MsgChaXunShuJuData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional string Riqi = 3;
+    // optional string Riqi = 2;
     if (has_riqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->riqi());
     }
 
-    // optional string ShebeiIP = 4;
+    // optional string ShebeiIP = 3;
     if (has_shebeiip()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shebeiip());
     }
 
-    // optional string Chaxunhaoma = 5;
+    // optional string Chaxunhaoma = 4;
     if (has_chaxunhaoma()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->chaxunhaoma());
     }
 
-    // optional string Chaxunleixing = 6;
+    // optional string Chaxunleixing = 5;
     if (has_chaxunleixing()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->chaxunleixing());
     }
 
-    // optional bool Shifouchaxunchenggong = 7;
+    // optional bool Shifouchaxunchenggong = 6;
     if (has_shifouchaxunchenggong()) {
       total_size += 1 + 1;
     }
@@ -8709,9 +9164,6 @@ void MsgChaXunShuJuData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgChaXunShuJuData::MergeFrom(const MsgChaXunShuJuData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -8747,17 +9199,12 @@ void MsgChaXunShuJuData::CopyFrom(const MsgChaXunShuJuData& from) {
 }
 
 bool MsgChaXunShuJuData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgChaXunShuJuData::Swap(MsgChaXunShuJuData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(riqi_, other->riqi_);
     std::swap(shebeiip_, other->shebeiip_);
@@ -8782,7 +9229,6 @@ void MsgChaXunShuJuData::Swap(MsgChaXunShuJuData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgYuShouLiShuJuData::kHeadFieldNumber;
 const int MsgYuShouLiShuJuData::kXuhaoFieldNumber;
 const int MsgYuShouLiShuJuData::kRiqiFieldNumber;
 const int MsgYuShouLiShuJuData::kShebeiIPFieldNumber;
@@ -8804,7 +9250,6 @@ MsgYuShouLiShuJuData::MsgYuShouLiShuJuData()
 }
 
 void MsgYuShouLiShuJuData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgYuShouLiShuJuData::MsgYuShouLiShuJuData(const MsgYuShouLiShuJuData& from)
@@ -8817,7 +9262,6 @@ MsgYuShouLiShuJuData::MsgYuShouLiShuJuData(const MsgYuShouLiShuJuData& from)
 void MsgYuShouLiShuJuData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   riqi_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   shebeiip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -8873,7 +9317,6 @@ void MsgYuShouLiShuJuData::SharedDtor() {
     delete minzu_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -8900,9 +9343,6 @@ MsgYuShouLiShuJuData* MsgYuShouLiShuJuData::New() const {
 
 void MsgYuShouLiShuJuData::Clear() {
   if (_has_bits_[0 / 32] & 255) {
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
     xuhao_ = 0;
     if (has_riqi()) {
       if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8934,13 +9374,13 @@ void MsgYuShouLiShuJuData::Clear() {
         chuguoshiyou_->clear();
       }
     }
-  }
-  if (_has_bits_[8 / 32] & 7936) {
     if (has_yuanzhengjianhaoma()) {
       if (yuanzhengjianhaoma_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         yuanzhengjianhaoma_->clear();
       }
     }
+  }
+  if (_has_bits_[8 / 32] & 3840) {
     if (has_qianzhuzhonglei()) {
       if (qianzhuzhonglei_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         qianzhuzhonglei_->clear();
@@ -8976,22 +9416,9 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -8999,13 +9426,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_Riqi;
+        if (input->ExpectTag(18)) goto parse_Riqi;
         break;
       }
 
-      // optional string Riqi = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string Riqi = 2;
+      case 2: {
+        if (tag == 18) {
          parse_Riqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_riqi()));
@@ -9016,13 +9443,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_ShebeiIP;
+        if (input->ExpectTag(26)) goto parse_ShebeiIP;
         break;
       }
 
-      // optional string ShebeiIP = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string ShebeiIP = 3;
+      case 3: {
+        if (tag == 26) {
          parse_ShebeiIP:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shebeiip()));
@@ -9033,13 +9460,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_Yewubianhao;
+        if (input->ExpectTag(34)) goto parse_Yewubianhao;
         break;
       }
 
-      // optional string Yewubianhao = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string Yewubianhao = 4;
+      case 4: {
+        if (tag == 34) {
          parse_Yewubianhao:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yewubianhao()));
@@ -9050,13 +9477,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_Xingming;
+        if (input->ExpectTag(42)) goto parse_Xingming;
         break;
       }
 
-      // optional string Xingming = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string Xingming = 5;
+      case 5: {
+        if (tag == 42) {
          parse_Xingming:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_xingming()));
@@ -9067,13 +9494,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_Lianxidianhua;
+        if (input->ExpectTag(50)) goto parse_Lianxidianhua;
         break;
       }
 
-      // optional string Lianxidianhua = 7;
-      case 7: {
-        if (tag == 58) {
+      // optional string Lianxidianhua = 6;
+      case 6: {
+        if (tag == 50) {
          parse_Lianxidianhua:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_lianxidianhua()));
@@ -9084,13 +9511,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_Chuguoshiyou;
+        if (input->ExpectTag(58)) goto parse_Chuguoshiyou;
         break;
       }
 
-      // optional string Chuguoshiyou = 8;
-      case 8: {
-        if (tag == 66) {
+      // optional string Chuguoshiyou = 7;
+      case 7: {
+        if (tag == 58) {
          parse_Chuguoshiyou:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_chuguoshiyou()));
@@ -9101,13 +9528,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_YuanZhengjianhaoma;
+        if (input->ExpectTag(66)) goto parse_YuanZhengjianhaoma;
         break;
       }
 
-      // optional string YuanZhengjianhaoma = 9;
-      case 9: {
-        if (tag == 74) {
+      // optional string YuanZhengjianhaoma = 8;
+      case 8: {
+        if (tag == 66) {
          parse_YuanZhengjianhaoma:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yuanzhengjianhaoma()));
@@ -9118,13 +9545,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(82)) goto parse_Qianzhuzhonglei;
+        if (input->ExpectTag(74)) goto parse_Qianzhuzhonglei;
         break;
       }
 
-      // optional string Qianzhuzhonglei = 10;
-      case 10: {
-        if (tag == 82) {
+      // optional string Qianzhuzhonglei = 9;
+      case 9: {
+        if (tag == 74) {
          parse_Qianzhuzhonglei:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_qianzhuzhonglei()));
@@ -9135,13 +9562,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(90)) goto parse_Xingbie;
+        if (input->ExpectTag(82)) goto parse_Xingbie;
         break;
       }
 
-      // optional string Xingbie = 11;
-      case 11: {
-        if (tag == 90) {
+      // optional string Xingbie = 10;
+      case 10: {
+        if (tag == 82) {
          parse_Xingbie:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_xingbie()));
@@ -9152,13 +9579,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(98)) goto parse_Hukousuozaidi;
+        if (input->ExpectTag(90)) goto parse_Hukousuozaidi;
         break;
       }
 
-      // optional string Hukousuozaidi = 12;
-      case 12: {
-        if (tag == 98) {
+      // optional string Hukousuozaidi = 11;
+      case 11: {
+        if (tag == 90) {
          parse_Hukousuozaidi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_hukousuozaidi()));
@@ -9169,13 +9596,13 @@ bool MsgYuShouLiShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(106)) goto parse_Minzu;
+        if (input->ExpectTag(98)) goto parse_Minzu;
         break;
       }
 
-      // optional string Minzu = 13;
-      case 13: {
-        if (tag == 106) {
+      // optional string Minzu = 12;
+      case 12: {
+        if (tag == 98) {
          parse_Minzu:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_minzu()));
@@ -9215,125 +9642,119 @@ failure:
 void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgYuShouLiShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "riqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->riqi(), output);
+      2, this->riqi(), output);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shebeiip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->shebeiip(), output);
+      3, this->shebeiip(), output);
   }
 
-  // optional string Yewubianhao = 5;
+  // optional string Yewubianhao = 4;
   if (has_yewubianhao()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yewubianhao().data(), this->yewubianhao().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yewubianhao");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->yewubianhao(), output);
+      4, this->yewubianhao(), output);
   }
 
-  // optional string Xingming = 6;
+  // optional string Xingming = 5;
   if (has_xingming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingming().data(), this->xingming().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "xingming");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->xingming(), output);
+      5, this->xingming(), output);
   }
 
-  // optional string Lianxidianhua = 7;
+  // optional string Lianxidianhua = 6;
   if (has_lianxidianhua()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->lianxidianhua().data(), this->lianxidianhua().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "lianxidianhua");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->lianxidianhua(), output);
+      6, this->lianxidianhua(), output);
   }
 
-  // optional string Chuguoshiyou = 8;
+  // optional string Chuguoshiyou = 7;
   if (has_chuguoshiyou()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->chuguoshiyou().data(), this->chuguoshiyou().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "chuguoshiyou");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->chuguoshiyou(), output);
+      7, this->chuguoshiyou(), output);
   }
 
-  // optional string YuanZhengjianhaoma = 9;
+  // optional string YuanZhengjianhaoma = 8;
   if (has_yuanzhengjianhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yuanzhengjianhaoma().data(), this->yuanzhengjianhaoma().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yuanzhengjianhaoma");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      9, this->yuanzhengjianhaoma(), output);
+      8, this->yuanzhengjianhaoma(), output);
   }
 
-  // optional string Qianzhuzhonglei = 10;
+  // optional string Qianzhuzhonglei = 9;
   if (has_qianzhuzhonglei()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->qianzhuzhonglei().data(), this->qianzhuzhonglei().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "qianzhuzhonglei");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      10, this->qianzhuzhonglei(), output);
+      9, this->qianzhuzhonglei(), output);
   }
 
-  // optional string Xingbie = 11;
+  // optional string Xingbie = 10;
   if (has_xingbie()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingbie().data(), this->xingbie().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "xingbie");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      11, this->xingbie(), output);
+      10, this->xingbie(), output);
   }
 
-  // optional string Hukousuozaidi = 12;
+  // optional string Hukousuozaidi = 11;
   if (has_hukousuozaidi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->hukousuozaidi().data(), this->hukousuozaidi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "hukousuozaidi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      12, this->hukousuozaidi(), output);
+      11, this->hukousuozaidi(), output);
   }
 
-  // optional string Minzu = 13;
+  // optional string Minzu = 12;
   if (has_minzu()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->minzu().data(), this->minzu().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "minzu");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      13, this->minzu(), output);
+      12, this->minzu(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -9346,19 +9767,12 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgYuShouLiShuJuData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgYuShouLiShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
@@ -9366,10 +9780,10 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "riqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->riqi(), target);
+        2, this->riqi(), target);
   }
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   if (has_shebeiip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeiip().data(), this->shebeiip().length(),
@@ -9377,10 +9791,10 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "shebeiip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->shebeiip(), target);
+        3, this->shebeiip(), target);
   }
 
-  // optional string Yewubianhao = 5;
+  // optional string Yewubianhao = 4;
   if (has_yewubianhao()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yewubianhao().data(), this->yewubianhao().length(),
@@ -9388,10 +9802,10 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "yewubianhao");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->yewubianhao(), target);
+        4, this->yewubianhao(), target);
   }
 
-  // optional string Xingming = 6;
+  // optional string Xingming = 5;
   if (has_xingming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingming().data(), this->xingming().length(),
@@ -9399,10 +9813,10 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "xingming");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->xingming(), target);
+        5, this->xingming(), target);
   }
 
-  // optional string Lianxidianhua = 7;
+  // optional string Lianxidianhua = 6;
   if (has_lianxidianhua()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->lianxidianhua().data(), this->lianxidianhua().length(),
@@ -9410,10 +9824,10 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "lianxidianhua");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->lianxidianhua(), target);
+        6, this->lianxidianhua(), target);
   }
 
-  // optional string Chuguoshiyou = 8;
+  // optional string Chuguoshiyou = 7;
   if (has_chuguoshiyou()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->chuguoshiyou().data(), this->chuguoshiyou().length(),
@@ -9421,10 +9835,10 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "chuguoshiyou");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        8, this->chuguoshiyou(), target);
+        7, this->chuguoshiyou(), target);
   }
 
-  // optional string YuanZhengjianhaoma = 9;
+  // optional string YuanZhengjianhaoma = 8;
   if (has_yuanzhengjianhaoma()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yuanzhengjianhaoma().data(), this->yuanzhengjianhaoma().length(),
@@ -9432,10 +9846,10 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "yuanzhengjianhaoma");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        9, this->yuanzhengjianhaoma(), target);
+        8, this->yuanzhengjianhaoma(), target);
   }
 
-  // optional string Qianzhuzhonglei = 10;
+  // optional string Qianzhuzhonglei = 9;
   if (has_qianzhuzhonglei()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->qianzhuzhonglei().data(), this->qianzhuzhonglei().length(),
@@ -9443,10 +9857,10 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "qianzhuzhonglei");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        10, this->qianzhuzhonglei(), target);
+        9, this->qianzhuzhonglei(), target);
   }
 
-  // optional string Xingbie = 11;
+  // optional string Xingbie = 10;
   if (has_xingbie()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->xingbie().data(), this->xingbie().length(),
@@ -9454,10 +9868,10 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "xingbie");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        11, this->xingbie(), target);
+        10, this->xingbie(), target);
   }
 
-  // optional string Hukousuozaidi = 12;
+  // optional string Hukousuozaidi = 11;
   if (has_hukousuozaidi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->hukousuozaidi().data(), this->hukousuozaidi().length(),
@@ -9465,10 +9879,10 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "hukousuozaidi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        12, this->hukousuozaidi(), target);
+        11, this->hukousuozaidi(), target);
   }
 
-  // optional string Minzu = 13;
+  // optional string Minzu = 12;
   if (has_minzu()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->minzu().data(), this->minzu().length(),
@@ -9476,7 +9890,7 @@ void MsgYuShouLiShuJuData::SerializeWithCachedSizes(
       "minzu");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        13, this->minzu(), target);
+        12, this->minzu(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -9491,93 +9905,86 @@ int MsgYuShouLiShuJuData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional string Riqi = 3;
+    // optional string Riqi = 2;
     if (has_riqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->riqi());
     }
 
-    // optional string ShebeiIP = 4;
+    // optional string ShebeiIP = 3;
     if (has_shebeiip()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shebeiip());
     }
 
-    // optional string Yewubianhao = 5;
+    // optional string Yewubianhao = 4;
     if (has_yewubianhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yewubianhao());
     }
 
-    // optional string Xingming = 6;
+    // optional string Xingming = 5;
     if (has_xingming()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->xingming());
     }
 
-    // optional string Lianxidianhua = 7;
+    // optional string Lianxidianhua = 6;
     if (has_lianxidianhua()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->lianxidianhua());
     }
 
-    // optional string Chuguoshiyou = 8;
+    // optional string Chuguoshiyou = 7;
     if (has_chuguoshiyou()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->chuguoshiyou());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional string YuanZhengjianhaoma = 9;
+    // optional string YuanZhengjianhaoma = 8;
     if (has_yuanzhengjianhaoma()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yuanzhengjianhaoma());
     }
 
-    // optional string Qianzhuzhonglei = 10;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional string Qianzhuzhonglei = 9;
     if (has_qianzhuzhonglei()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->qianzhuzhonglei());
     }
 
-    // optional string Xingbie = 11;
+    // optional string Xingbie = 10;
     if (has_xingbie()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->xingbie());
     }
 
-    // optional string Hukousuozaidi = 12;
+    // optional string Hukousuozaidi = 11;
     if (has_hukousuozaidi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->hukousuozaidi());
     }
 
-    // optional string Minzu = 13;
+    // optional string Minzu = 12;
     if (has_minzu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -9611,9 +10018,6 @@ void MsgYuShouLiShuJuData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgYuShouLiShuJuData::MergeFrom(const MsgYuShouLiShuJuData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -9635,11 +10039,11 @@ void MsgYuShouLiShuJuData::MergeFrom(const MsgYuShouLiShuJuData& from) {
     if (from.has_chuguoshiyou()) {
       set_chuguoshiyou(from.chuguoshiyou());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_yuanzhengjianhaoma()) {
       set_yuanzhengjianhaoma(from.yuanzhengjianhaoma());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_qianzhuzhonglei()) {
       set_qianzhuzhonglei(from.qianzhuzhonglei());
     }
@@ -9669,17 +10073,12 @@ void MsgYuShouLiShuJuData::CopyFrom(const MsgYuShouLiShuJuData& from) {
 }
 
 bool MsgYuShouLiShuJuData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgYuShouLiShuJuData::Swap(MsgYuShouLiShuJuData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(riqi_, other->riqi_);
     std::swap(shebeiip_, other->shebeiip_);
@@ -9710,7 +10109,6 @@ void MsgYuShouLiShuJuData::Swap(MsgYuShouLiShuJuData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgSheBeiYiChangShuJuData::kHeadFieldNumber;
 const int MsgSheBeiYiChangShuJuData::kXuhaoFieldNumber;
 const int MsgSheBeiYiChangShuJuData::kRiqiFieldNumber;
 const int MsgSheBeiYiChangShuJuData::kShiyongdanweiFieldNumber;
@@ -9726,7 +10124,6 @@ MsgSheBeiYiChangShuJuData::MsgSheBeiYiChangShuJuData()
 }
 
 void MsgSheBeiYiChangShuJuData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgSheBeiYiChangShuJuData::MsgSheBeiYiChangShuJuData(const MsgSheBeiYiChangShuJuData& from)
@@ -9739,7 +10136,6 @@ MsgSheBeiYiChangShuJuData::MsgSheBeiYiChangShuJuData(const MsgSheBeiYiChangShuJu
 void MsgSheBeiYiChangShuJuData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   riqi_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   shiyongdanwei_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -9771,7 +10167,6 @@ void MsgSheBeiYiChangShuJuData::SharedDtor() {
     delete yichangxiangxineirong_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -9797,10 +10192,7 @@ MsgSheBeiYiChangShuJuData* MsgSheBeiYiChangShuJuData::New() const {
 }
 
 void MsgSheBeiYiChangShuJuData::Clear() {
-  if (_has_bits_[0 / 32] & 127) {
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
+  if (_has_bits_[0 / 32] & 63) {
     xuhao_ = 0;
     if (has_riqi()) {
       if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9842,22 +10234,9 @@ bool MsgSheBeiYiChangShuJuData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -9865,13 +10244,13 @@ bool MsgSheBeiYiChangShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_Riqi;
+        if (input->ExpectTag(18)) goto parse_Riqi;
         break;
       }
 
-      // optional string Riqi = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string Riqi = 2;
+      case 2: {
+        if (tag == 18) {
          parse_Riqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_riqi()));
@@ -9882,13 +10261,13 @@ bool MsgSheBeiYiChangShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_Shiyongdanwei;
+        if (input->ExpectTag(26)) goto parse_Shiyongdanwei;
         break;
       }
 
-      // optional string Shiyongdanwei = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string Shiyongdanwei = 3;
+      case 3: {
+        if (tag == 26) {
          parse_Shiyongdanwei:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shiyongdanwei()));
@@ -9899,13 +10278,13 @@ bool MsgSheBeiYiChangShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_Yichangshejimokuai;
+        if (input->ExpectTag(34)) goto parse_Yichangshejimokuai;
         break;
       }
 
-      // optional string Yichangshejimokuai = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string Yichangshejimokuai = 4;
+      case 4: {
+        if (tag == 34) {
          parse_Yichangshejimokuai:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yichangshejimokuai()));
@@ -9916,13 +10295,13 @@ bool MsgSheBeiYiChangShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_Yichangyuanyin;
+        if (input->ExpectTag(42)) goto parse_Yichangyuanyin;
         break;
       }
 
-      // optional string Yichangyuanyin = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string Yichangyuanyin = 5;
+      case 5: {
+        if (tag == 42) {
          parse_Yichangyuanyin:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yichangyuanyin()));
@@ -9933,13 +10312,13 @@ bool MsgSheBeiYiChangShuJuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_Yichangxiangxineirong;
+        if (input->ExpectTag(50)) goto parse_Yichangxiangxineirong;
         break;
       }
 
-      // optional string Yichangxiangxineirong = 7;
-      case 7: {
-        if (tag == 58) {
+      // optional string Yichangxiangxineirong = 6;
+      case 6: {
+        if (tag == 50) {
          parse_Yichangxiangxineirong:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yichangxiangxineirong()));
@@ -9979,65 +10358,59 @@ failure:
 void MsgSheBeiYiChangShuJuData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgSheBeiYiChangShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "riqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->riqi(), output);
+      2, this->riqi(), output);
   }
 
-  // optional string Shiyongdanwei = 4;
+  // optional string Shiyongdanwei = 3;
   if (has_shiyongdanwei()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shiyongdanwei().data(), this->shiyongdanwei().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shiyongdanwei");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->shiyongdanwei(), output);
+      3, this->shiyongdanwei(), output);
   }
 
-  // optional string Yichangshejimokuai = 5;
+  // optional string Yichangshejimokuai = 4;
   if (has_yichangshejimokuai()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yichangshejimokuai().data(), this->yichangshejimokuai().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yichangshejimokuai");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->yichangshejimokuai(), output);
+      4, this->yichangshejimokuai(), output);
   }
 
-  // optional string Yichangyuanyin = 6;
+  // optional string Yichangyuanyin = 5;
   if (has_yichangyuanyin()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yichangyuanyin().data(), this->yichangyuanyin().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yichangyuanyin");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->yichangyuanyin(), output);
+      5, this->yichangyuanyin(), output);
   }
 
-  // optional string Yichangxiangxineirong = 7;
+  // optional string Yichangxiangxineirong = 6;
   if (has_yichangxiangxineirong()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yichangxiangxineirong().data(), this->yichangxiangxineirong().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yichangxiangxineirong");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->yichangxiangxineirong(), output);
+      6, this->yichangxiangxineirong(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -10050,19 +10423,12 @@ void MsgSheBeiYiChangShuJuData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgSheBeiYiChangShuJuData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgSheBeiYiChangShuJuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
@@ -10070,10 +10436,10 @@ void MsgSheBeiYiChangShuJuData::SerializeWithCachedSizes(
       "riqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->riqi(), target);
+        2, this->riqi(), target);
   }
 
-  // optional string Shiyongdanwei = 4;
+  // optional string Shiyongdanwei = 3;
   if (has_shiyongdanwei()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shiyongdanwei().data(), this->shiyongdanwei().length(),
@@ -10081,10 +10447,10 @@ void MsgSheBeiYiChangShuJuData::SerializeWithCachedSizes(
       "shiyongdanwei");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->shiyongdanwei(), target);
+        3, this->shiyongdanwei(), target);
   }
 
-  // optional string Yichangshejimokuai = 5;
+  // optional string Yichangshejimokuai = 4;
   if (has_yichangshejimokuai()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yichangshejimokuai().data(), this->yichangshejimokuai().length(),
@@ -10092,10 +10458,10 @@ void MsgSheBeiYiChangShuJuData::SerializeWithCachedSizes(
       "yichangshejimokuai");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->yichangshejimokuai(), target);
+        4, this->yichangshejimokuai(), target);
   }
 
-  // optional string Yichangyuanyin = 6;
+  // optional string Yichangyuanyin = 5;
   if (has_yichangyuanyin()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yichangyuanyin().data(), this->yichangyuanyin().length(),
@@ -10103,10 +10469,10 @@ void MsgSheBeiYiChangShuJuData::SerializeWithCachedSizes(
       "yichangyuanyin");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->yichangyuanyin(), target);
+        5, this->yichangyuanyin(), target);
   }
 
-  // optional string Yichangxiangxineirong = 7;
+  // optional string Yichangxiangxineirong = 6;
   if (has_yichangxiangxineirong()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yichangxiangxineirong().data(), this->yichangxiangxineirong().length(),
@@ -10114,7 +10480,7 @@ void MsgSheBeiYiChangShuJuData::SerializeWithCachedSizes(
       "yichangxiangxineirong");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->yichangxiangxineirong(), target);
+        6, this->yichangxiangxineirong(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -10129,49 +10495,42 @@ int MsgSheBeiYiChangShuJuData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional string Riqi = 3;
+    // optional string Riqi = 2;
     if (has_riqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->riqi());
     }
 
-    // optional string Shiyongdanwei = 4;
+    // optional string Shiyongdanwei = 3;
     if (has_shiyongdanwei()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shiyongdanwei());
     }
 
-    // optional string Yichangshejimokuai = 5;
+    // optional string Yichangshejimokuai = 4;
     if (has_yichangshejimokuai()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yichangshejimokuai());
     }
 
-    // optional string Yichangyuanyin = 6;
+    // optional string Yichangyuanyin = 5;
     if (has_yichangyuanyin()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yichangyuanyin());
     }
 
-    // optional string Yichangxiangxineirong = 7;
+    // optional string Yichangxiangxineirong = 6;
     if (has_yichangxiangxineirong()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -10205,9 +10564,6 @@ void MsgSheBeiYiChangShuJuData::MergeFrom(const ::google::protobuf::Message& fro
 void MsgSheBeiYiChangShuJuData::MergeFrom(const MsgSheBeiYiChangShuJuData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -10243,17 +10599,12 @@ void MsgSheBeiYiChangShuJuData::CopyFrom(const MsgSheBeiYiChangShuJuData& from) 
 }
 
 bool MsgSheBeiYiChangShuJuData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgSheBeiYiChangShuJuData::Swap(MsgSheBeiYiChangShuJuData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(riqi_, other->riqi_);
     std::swap(shiyongdanwei_, other->shiyongdanwei_);
@@ -10278,7 +10629,6 @@ void MsgSheBeiYiChangShuJuData::Swap(MsgSheBeiYiChangShuJuData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgGuanLiYuanData::kHeadFieldNumber;
 const int MsgGuanLiYuanData::kXuhaoFieldNumber;
 const int MsgGuanLiYuanData::kYonghumingFieldNumber;
 const int MsgGuanLiYuanData::kMimaFieldNumber;
@@ -10293,7 +10643,6 @@ MsgGuanLiYuanData::MsgGuanLiYuanData()
 }
 
 void MsgGuanLiYuanData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgGuanLiYuanData::MsgGuanLiYuanData(const MsgGuanLiYuanData& from)
@@ -10306,7 +10655,6 @@ MsgGuanLiYuanData::MsgGuanLiYuanData(const MsgGuanLiYuanData& from)
 void MsgGuanLiYuanData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   yonghuming_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   mima_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -10331,7 +10679,6 @@ void MsgGuanLiYuanData::SharedDtor() {
     delete youxiaoqi_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -10367,11 +10714,8 @@ void MsgGuanLiYuanData::Clear() {
     ::memset(&first, 0, n);                                \
   } while (0)
 
-  if (_has_bits_[0 / 32] & 63) {
+  if (_has_bits_[0 / 32] & 31) {
     ZR_(xuhao_, quanxianjibie_);
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
     if (has_yonghuming()) {
       if (yonghuming_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         yonghuming_->clear();
@@ -10406,22 +10750,9 @@ bool MsgGuanLiYuanData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -10429,13 +10760,13 @@ bool MsgGuanLiYuanData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_Yonghuming;
+        if (input->ExpectTag(18)) goto parse_Yonghuming;
         break;
       }
 
-      // optional string Yonghuming = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string Yonghuming = 2;
+      case 2: {
+        if (tag == 18) {
          parse_Yonghuming:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yonghuming()));
@@ -10446,13 +10777,13 @@ bool MsgGuanLiYuanData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_Mima;
+        if (input->ExpectTag(26)) goto parse_Mima;
         break;
       }
 
-      // optional string Mima = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string Mima = 3;
+      case 3: {
+        if (tag == 26) {
          parse_Mima:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_mima()));
@@ -10463,13 +10794,13 @@ bool MsgGuanLiYuanData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_Youxiaoqi;
+        if (input->ExpectTag(34)) goto parse_Youxiaoqi;
         break;
       }
 
-      // optional string Youxiaoqi = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string Youxiaoqi = 4;
+      case 4: {
+        if (tag == 34) {
          parse_Youxiaoqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_youxiaoqi()));
@@ -10480,13 +10811,13 @@ bool MsgGuanLiYuanData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(48)) goto parse_Quanxianjibie;
+        if (input->ExpectTag(40)) goto parse_Quanxianjibie;
         break;
       }
 
-      // optional int32 Quanxianjibie = 6;
-      case 6: {
-        if (tag == 48) {
+      // optional int32 Quanxianjibie = 5;
+      case 5: {
+        if (tag == 40) {
          parse_Quanxianjibie:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
@@ -10524,50 +10855,44 @@ failure:
 void MsgGuanLiYuanData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgGuanLiYuanData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional string Yonghuming = 3;
+  // optional string Yonghuming = 2;
   if (has_yonghuming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yonghuming().data(), this->yonghuming().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yonghuming");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->yonghuming(), output);
+      2, this->yonghuming(), output);
   }
 
-  // optional string Mima = 4;
+  // optional string Mima = 3;
   if (has_mima()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->mima().data(), this->mima().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "mima");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->mima(), output);
+      3, this->mima(), output);
   }
 
-  // optional string Youxiaoqi = 5;
+  // optional string Youxiaoqi = 4;
   if (has_youxiaoqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->youxiaoqi().data(), this->youxiaoqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "youxiaoqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->youxiaoqi(), output);
+      4, this->youxiaoqi(), output);
   }
 
-  // optional int32 Quanxianjibie = 6;
+  // optional int32 Quanxianjibie = 5;
   if (has_quanxianjibie()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->quanxianjibie(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->quanxianjibie(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -10580,19 +10905,12 @@ void MsgGuanLiYuanData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgGuanLiYuanData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgGuanLiYuanData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional string Yonghuming = 3;
+  // optional string Yonghuming = 2;
   if (has_yonghuming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yonghuming().data(), this->yonghuming().length(),
@@ -10600,10 +10918,10 @@ void MsgGuanLiYuanData::SerializeWithCachedSizes(
       "yonghuming");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->yonghuming(), target);
+        2, this->yonghuming(), target);
   }
 
-  // optional string Mima = 4;
+  // optional string Mima = 3;
   if (has_mima()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->mima().data(), this->mima().length(),
@@ -10611,10 +10929,10 @@ void MsgGuanLiYuanData::SerializeWithCachedSizes(
       "mima");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->mima(), target);
+        3, this->mima(), target);
   }
 
-  // optional string Youxiaoqi = 5;
+  // optional string Youxiaoqi = 4;
   if (has_youxiaoqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->youxiaoqi().data(), this->youxiaoqi().length(),
@@ -10622,12 +10940,12 @@ void MsgGuanLiYuanData::SerializeWithCachedSizes(
       "youxiaoqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->youxiaoqi(), target);
+        4, this->youxiaoqi(), target);
   }
 
-  // optional int32 Quanxianjibie = 6;
+  // optional int32 Quanxianjibie = 5;
   if (has_quanxianjibie()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->quanxianjibie(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->quanxianjibie(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -10642,42 +10960,35 @@ int MsgGuanLiYuanData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional string Yonghuming = 3;
+    // optional string Yonghuming = 2;
     if (has_yonghuming()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yonghuming());
     }
 
-    // optional string Mima = 4;
+    // optional string Mima = 3;
     if (has_mima()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->mima());
     }
 
-    // optional string Youxiaoqi = 5;
+    // optional string Youxiaoqi = 4;
     if (has_youxiaoqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->youxiaoqi());
     }
 
-    // optional int32 Quanxianjibie = 6;
+    // optional int32 Quanxianjibie = 5;
     if (has_quanxianjibie()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -10711,9 +11022,6 @@ void MsgGuanLiYuanData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgGuanLiYuanData::MergeFrom(const MsgGuanLiYuanData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -10746,17 +11054,12 @@ void MsgGuanLiYuanData::CopyFrom(const MsgGuanLiYuanData& from) {
 }
 
 bool MsgGuanLiYuanData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgGuanLiYuanData::Swap(MsgGuanLiYuanData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(yonghuming_, other->yonghuming_);
     std::swap(mima_, other->mima_);
@@ -10780,7 +11083,6 @@ void MsgGuanLiYuanData::Swap(MsgGuanLiYuanData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgGuanLiYuanCaoZuoJiLuData::kHeadFieldNumber;
 const int MsgGuanLiYuanCaoZuoJiLuData::kXuhaoFieldNumber;
 const int MsgGuanLiYuanCaoZuoJiLuData::kYonghumingFieldNumber;
 const int MsgGuanLiYuanCaoZuoJiLuData::kRiqiFieldNumber;
@@ -10795,7 +11097,6 @@ MsgGuanLiYuanCaoZuoJiLuData::MsgGuanLiYuanCaoZuoJiLuData()
 }
 
 void MsgGuanLiYuanCaoZuoJiLuData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgGuanLiYuanCaoZuoJiLuData::MsgGuanLiYuanCaoZuoJiLuData(const MsgGuanLiYuanCaoZuoJiLuData& from)
@@ -10808,7 +11109,6 @@ MsgGuanLiYuanCaoZuoJiLuData::MsgGuanLiYuanCaoZuoJiLuData(const MsgGuanLiYuanCaoZ
 void MsgGuanLiYuanCaoZuoJiLuData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   yonghuming_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   riqi_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -10836,7 +11136,6 @@ void MsgGuanLiYuanCaoZuoJiLuData::SharedDtor() {
     delete caozuoneirong_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -10862,10 +11161,7 @@ MsgGuanLiYuanCaoZuoJiLuData* MsgGuanLiYuanCaoZuoJiLuData::New() const {
 }
 
 void MsgGuanLiYuanCaoZuoJiLuData::Clear() {
-  if (_has_bits_[0 / 32] & 63) {
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
+  if (_has_bits_[0 / 32] & 31) {
     xuhao_ = 0;
     if (has_yonghuming()) {
       if (yonghuming_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10902,22 +11198,9 @@ bool MsgGuanLiYuanCaoZuoJiLuData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -10925,13 +11208,13 @@ bool MsgGuanLiYuanCaoZuoJiLuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_Yonghuming;
+        if (input->ExpectTag(18)) goto parse_Yonghuming;
         break;
       }
 
-      // optional string Yonghuming = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string Yonghuming = 2;
+      case 2: {
+        if (tag == 18) {
          parse_Yonghuming:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_yonghuming()));
@@ -10942,13 +11225,13 @@ bool MsgGuanLiYuanCaoZuoJiLuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_Riqi;
+        if (input->ExpectTag(26)) goto parse_Riqi;
         break;
       }
 
-      // optional string Riqi = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string Riqi = 3;
+      case 3: {
+        if (tag == 26) {
          parse_Riqi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_riqi()));
@@ -10959,13 +11242,13 @@ bool MsgGuanLiYuanCaoZuoJiLuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_Caozuoleibie;
+        if (input->ExpectTag(34)) goto parse_Caozuoleibie;
         break;
       }
 
-      // optional string Caozuoleibie = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string Caozuoleibie = 4;
+      case 4: {
+        if (tag == 34) {
          parse_Caozuoleibie:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_caozuoleibie()));
@@ -10976,13 +11259,13 @@ bool MsgGuanLiYuanCaoZuoJiLuData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_Caozuoneirong;
+        if (input->ExpectTag(42)) goto parse_Caozuoneirong;
         break;
       }
 
-      // optional string Caozuoneirong = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string Caozuoneirong = 5;
+      case 5: {
+        if (tag == 42) {
          parse_Caozuoneirong:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_caozuoneirong()));
@@ -11022,55 +11305,49 @@ failure:
 void MsgGuanLiYuanCaoZuoJiLuData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgGuanLiYuanCaoZuoJiLuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional string Yonghuming = 3;
+  // optional string Yonghuming = 2;
   if (has_yonghuming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yonghuming().data(), this->yonghuming().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "yonghuming");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->yonghuming(), output);
+      2, this->yonghuming(), output);
   }
 
-  // optional string Riqi = 4;
+  // optional string Riqi = 3;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "riqi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->riqi(), output);
+      3, this->riqi(), output);
   }
 
-  // optional string Caozuoleibie = 5;
+  // optional string Caozuoleibie = 4;
   if (has_caozuoleibie()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->caozuoleibie().data(), this->caozuoleibie().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "caozuoleibie");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->caozuoleibie(), output);
+      4, this->caozuoleibie(), output);
   }
 
-  // optional string Caozuoneirong = 6;
+  // optional string Caozuoneirong = 5;
   if (has_caozuoneirong()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->caozuoneirong().data(), this->caozuoneirong().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "caozuoneirong");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->caozuoneirong(), output);
+      5, this->caozuoneirong(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -11083,19 +11360,12 @@ void MsgGuanLiYuanCaoZuoJiLuData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgGuanLiYuanCaoZuoJiLuData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgGuanLiYuanCaoZuoJiLuData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional string Yonghuming = 3;
+  // optional string Yonghuming = 2;
   if (has_yonghuming()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->yonghuming().data(), this->yonghuming().length(),
@@ -11103,10 +11373,10 @@ void MsgGuanLiYuanCaoZuoJiLuData::SerializeWithCachedSizes(
       "yonghuming");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->yonghuming(), target);
+        2, this->yonghuming(), target);
   }
 
-  // optional string Riqi = 4;
+  // optional string Riqi = 3;
   if (has_riqi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->riqi().data(), this->riqi().length(),
@@ -11114,10 +11384,10 @@ void MsgGuanLiYuanCaoZuoJiLuData::SerializeWithCachedSizes(
       "riqi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->riqi(), target);
+        3, this->riqi(), target);
   }
 
-  // optional string Caozuoleibie = 5;
+  // optional string Caozuoleibie = 4;
   if (has_caozuoleibie()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->caozuoleibie().data(), this->caozuoleibie().length(),
@@ -11125,10 +11395,10 @@ void MsgGuanLiYuanCaoZuoJiLuData::SerializeWithCachedSizes(
       "caozuoleibie");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->caozuoleibie(), target);
+        4, this->caozuoleibie(), target);
   }
 
-  // optional string Caozuoneirong = 6;
+  // optional string Caozuoneirong = 5;
   if (has_caozuoneirong()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->caozuoneirong().data(), this->caozuoneirong().length(),
@@ -11136,7 +11406,7 @@ void MsgGuanLiYuanCaoZuoJiLuData::SerializeWithCachedSizes(
       "caozuoneirong");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->caozuoneirong(), target);
+        5, this->caozuoneirong(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -11151,42 +11421,35 @@ int MsgGuanLiYuanCaoZuoJiLuData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional string Yonghuming = 3;
+    // optional string Yonghuming = 2;
     if (has_yonghuming()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->yonghuming());
     }
 
-    // optional string Riqi = 4;
+    // optional string Riqi = 3;
     if (has_riqi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->riqi());
     }
 
-    // optional string Caozuoleibie = 5;
+    // optional string Caozuoleibie = 4;
     if (has_caozuoleibie()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->caozuoleibie());
     }
 
-    // optional string Caozuoneirong = 6;
+    // optional string Caozuoneirong = 5;
     if (has_caozuoneirong()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -11220,9 +11483,6 @@ void MsgGuanLiYuanCaoZuoJiLuData::MergeFrom(const ::google::protobuf::Message& f
 void MsgGuanLiYuanCaoZuoJiLuData::MergeFrom(const MsgGuanLiYuanCaoZuoJiLuData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -11255,17 +11515,12 @@ void MsgGuanLiYuanCaoZuoJiLuData::CopyFrom(const MsgGuanLiYuanCaoZuoJiLuData& fr
 }
 
 bool MsgGuanLiYuanCaoZuoJiLuData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgGuanLiYuanCaoZuoJiLuData::Swap(MsgGuanLiYuanCaoZuoJiLuData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(yonghuming_, other->yonghuming_);
     std::swap(riqi_, other->riqi_);
@@ -11289,7 +11544,6 @@ void MsgGuanLiYuanCaoZuoJiLuData::Swap(MsgGuanLiYuanCaoZuoJiLuData* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int MsgSheBeiGuanLiData::kHeadFieldNumber;
 const int MsgSheBeiGuanLiData::kXuhaoFieldNumber;
 const int MsgSheBeiGuanLiData::kShengFieldNumber;
 const int MsgSheBeiGuanLiData::kShiFieldNumber;
@@ -11309,7 +11563,6 @@ MsgSheBeiGuanLiData::MsgSheBeiGuanLiData()
 }
 
 void MsgSheBeiGuanLiData::InitAsDefaultInstance() {
-  head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
 }
 
 MsgSheBeiGuanLiData::MsgSheBeiGuanLiData(const MsgSheBeiGuanLiData& from)
@@ -11322,7 +11575,6 @@ MsgSheBeiGuanLiData::MsgSheBeiGuanLiData(const MsgSheBeiGuanLiData& from)
 void MsgSheBeiGuanLiData::SharedCtor() {
   ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
-  head_ = NULL;
   xuhao_ = 0;
   sheng_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   shi_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
@@ -11370,7 +11622,6 @@ void MsgSheBeiGuanLiData::SharedDtor() {
     delete chuangjianshijian_;
   }
   if (this != default_instance_) {
-    delete head_;
   }
 }
 
@@ -11397,9 +11648,6 @@ MsgSheBeiGuanLiData* MsgSheBeiGuanLiData::New() const {
 
 void MsgSheBeiGuanLiData::Clear() {
   if (_has_bits_[0 / 32] & 255) {
-    if (has_head()) {
-      if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-    }
     xuhao_ = 0;
     if (has_sheng()) {
       if (sheng_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11431,13 +11679,13 @@ void MsgSheBeiGuanLiData::Clear() {
         shebeileixing_->clear();
       }
     }
-  }
-  if (_has_bits_[8 / 32] & 1792) {
     if (has_jingdu()) {
       if (jingdu_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         jingdu_->clear();
       }
     }
+  }
+  if (_has_bits_[8 / 32] & 768) {
     if (has_weidu()) {
       if (weidu_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
         weidu_->clear();
@@ -11463,22 +11711,9 @@ bool MsgSheBeiGuanLiData::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .netmsg.MsgHead head = 1;
+      // optional int32 Xuhao = 1;
       case 1: {
-        if (tag == 10) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_head()));
-        } else {
-          goto handle_unusual;
-        }
-        if (input->ExpectTag(16)) goto parse_Xuhao;
-        break;
-      }
-
-      // optional int32 Xuhao = 2;
-      case 2: {
-        if (tag == 16) {
-         parse_Xuhao:
+        if (tag == 8) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &xuhao_)));
@@ -11486,13 +11721,13 @@ bool MsgSheBeiGuanLiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_Sheng;
+        if (input->ExpectTag(18)) goto parse_Sheng;
         break;
       }
 
-      // optional string Sheng = 3;
-      case 3: {
-        if (tag == 26) {
+      // optional string Sheng = 2;
+      case 2: {
+        if (tag == 18) {
          parse_Sheng:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_sheng()));
@@ -11503,13 +11738,13 @@ bool MsgSheBeiGuanLiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_Shi;
+        if (input->ExpectTag(26)) goto parse_Shi;
         break;
       }
 
-      // optional string Shi = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional string Shi = 3;
+      case 3: {
+        if (tag == 26) {
          parse_Shi:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shi()));
@@ -11520,13 +11755,13 @@ bool MsgSheBeiGuanLiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_Qu;
+        if (input->ExpectTag(34)) goto parse_Qu;
         break;
       }
 
-      // optional string Qu = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional string Qu = 4;
+      case 4: {
+        if (tag == 34) {
          parse_Qu:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_qu()));
@@ -11537,13 +11772,13 @@ bool MsgSheBeiGuanLiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_Shiyongdanwei;
+        if (input->ExpectTag(42)) goto parse_Shiyongdanwei;
         break;
       }
 
-      // optional string Shiyongdanwei = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional string Shiyongdanwei = 5;
+      case 5: {
+        if (tag == 42) {
          parse_Shiyongdanwei:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shiyongdanwei()));
@@ -11554,13 +11789,13 @@ bool MsgSheBeiGuanLiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_IP;
+        if (input->ExpectTag(50)) goto parse_IP;
         break;
       }
 
-      // optional string IP = 7;
-      case 7: {
-        if (tag == 58) {
+      // optional string IP = 6;
+      case 6: {
+        if (tag == 50) {
          parse_IP:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_ip()));
@@ -11571,13 +11806,13 @@ bool MsgSheBeiGuanLiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_Shebeileixing;
+        if (input->ExpectTag(58)) goto parse_Shebeileixing;
         break;
       }
 
-      // optional string Shebeileixing = 8;
-      case 8: {
-        if (tag == 66) {
+      // optional string Shebeileixing = 7;
+      case 7: {
+        if (tag == 58) {
          parse_Shebeileixing:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_shebeileixing()));
@@ -11588,13 +11823,13 @@ bool MsgSheBeiGuanLiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_Jingdu;
+        if (input->ExpectTag(66)) goto parse_Jingdu;
         break;
       }
 
-      // optional string Jingdu = 9;
-      case 9: {
-        if (tag == 74) {
+      // optional string Jingdu = 8;
+      case 8: {
+        if (tag == 66) {
          parse_Jingdu:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_jingdu()));
@@ -11605,13 +11840,13 @@ bool MsgSheBeiGuanLiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(82)) goto parse_Weidu;
+        if (input->ExpectTag(74)) goto parse_Weidu;
         break;
       }
 
-      // optional string Weidu = 10;
-      case 10: {
-        if (tag == 82) {
+      // optional string Weidu = 9;
+      case 9: {
+        if (tag == 74) {
          parse_Weidu:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_weidu()));
@@ -11622,13 +11857,13 @@ bool MsgSheBeiGuanLiData::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(90)) goto parse_Chuangjianshijian;
+        if (input->ExpectTag(82)) goto parse_Chuangjianshijian;
         break;
       }
 
-      // optional string Chuangjianshijian = 11;
-      case 11: {
-        if (tag == 90) {
+      // optional string Chuangjianshijian = 10;
+      case 10: {
+        if (tag == 82) {
          parse_Chuangjianshijian:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
                 input, this->mutable_chuangjianshijian()));
@@ -11668,105 +11903,99 @@ failure:
 void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // @@protoc_insertion_point(serialize_start:netmsg.MsgSheBeiGuanLiData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->head(), output);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->xuhao(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->xuhao(), output);
   }
 
-  // optional string Sheng = 3;
+  // optional string Sheng = 2;
   if (has_sheng()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->sheng().data(), this->sheng().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "sheng");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      3, this->sheng(), output);
+      2, this->sheng(), output);
   }
 
-  // optional string Shi = 4;
+  // optional string Shi = 3;
   if (has_shi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shi().data(), this->shi().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shi");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      4, this->shi(), output);
+      3, this->shi(), output);
   }
 
-  // optional string Qu = 5;
+  // optional string Qu = 4;
   if (has_qu()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->qu().data(), this->qu().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "qu");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      5, this->qu(), output);
+      4, this->qu(), output);
   }
 
-  // optional string Shiyongdanwei = 6;
+  // optional string Shiyongdanwei = 5;
   if (has_shiyongdanwei()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shiyongdanwei().data(), this->shiyongdanwei().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shiyongdanwei");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      6, this->shiyongdanwei(), output);
+      5, this->shiyongdanwei(), output);
   }
 
-  // optional string IP = 7;
+  // optional string IP = 6;
   if (has_ip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->ip().data(), this->ip().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "ip");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      7, this->ip(), output);
+      6, this->ip(), output);
   }
 
-  // optional string Shebeileixing = 8;
+  // optional string Shebeileixing = 7;
   if (has_shebeileixing()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeileixing().data(), this->shebeileixing().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "shebeileixing");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      8, this->shebeileixing(), output);
+      7, this->shebeileixing(), output);
   }
 
-  // optional string Jingdu = 9;
+  // optional string Jingdu = 8;
   if (has_jingdu()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->jingdu().data(), this->jingdu().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "jingdu");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      9, this->jingdu(), output);
+      8, this->jingdu(), output);
   }
 
-  // optional string Weidu = 10;
+  // optional string Weidu = 9;
   if (has_weidu()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->weidu().data(), this->weidu().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "weidu");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      10, this->weidu(), output);
+      9, this->weidu(), output);
   }
 
-  // optional string Chuangjianshijian = 11;
+  // optional string Chuangjianshijian = 10;
   if (has_chuangjianshijian()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->chuangjianshijian().data(), this->chuangjianshijian().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE,
       "chuangjianshijian");
     ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      11, this->chuangjianshijian(), output);
+      10, this->chuangjianshijian(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -11779,19 +12008,12 @@ void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
 ::google::protobuf::uint8* MsgSheBeiGuanLiData::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // @@protoc_insertion_point(serialize_to_array_start:netmsg.MsgSheBeiGuanLiData)
-  // required .netmsg.MsgHead head = 1;
-  if (has_head()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->head(), target);
-  }
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   if (has_xuhao()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->xuhao(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->xuhao(), target);
   }
 
-  // optional string Sheng = 3;
+  // optional string Sheng = 2;
   if (has_sheng()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->sheng().data(), this->sheng().length(),
@@ -11799,10 +12021,10 @@ void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
       "sheng");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->sheng(), target);
+        2, this->sheng(), target);
   }
 
-  // optional string Shi = 4;
+  // optional string Shi = 3;
   if (has_shi()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shi().data(), this->shi().length(),
@@ -11810,10 +12032,10 @@ void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
       "shi");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        4, this->shi(), target);
+        3, this->shi(), target);
   }
 
-  // optional string Qu = 5;
+  // optional string Qu = 4;
   if (has_qu()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->qu().data(), this->qu().length(),
@@ -11821,10 +12043,10 @@ void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
       "qu");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        5, this->qu(), target);
+        4, this->qu(), target);
   }
 
-  // optional string Shiyongdanwei = 6;
+  // optional string Shiyongdanwei = 5;
   if (has_shiyongdanwei()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shiyongdanwei().data(), this->shiyongdanwei().length(),
@@ -11832,10 +12054,10 @@ void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
       "shiyongdanwei");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        6, this->shiyongdanwei(), target);
+        5, this->shiyongdanwei(), target);
   }
 
-  // optional string IP = 7;
+  // optional string IP = 6;
   if (has_ip()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->ip().data(), this->ip().length(),
@@ -11843,10 +12065,10 @@ void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
       "ip");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        7, this->ip(), target);
+        6, this->ip(), target);
   }
 
-  // optional string Shebeileixing = 8;
+  // optional string Shebeileixing = 7;
   if (has_shebeileixing()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->shebeileixing().data(), this->shebeileixing().length(),
@@ -11854,10 +12076,10 @@ void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
       "shebeileixing");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        8, this->shebeileixing(), target);
+        7, this->shebeileixing(), target);
   }
 
-  // optional string Jingdu = 9;
+  // optional string Jingdu = 8;
   if (has_jingdu()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->jingdu().data(), this->jingdu().length(),
@@ -11865,10 +12087,10 @@ void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
       "jingdu");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        9, this->jingdu(), target);
+        8, this->jingdu(), target);
   }
 
-  // optional string Weidu = 10;
+  // optional string Weidu = 9;
   if (has_weidu()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->weidu().data(), this->weidu().length(),
@@ -11876,10 +12098,10 @@ void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
       "weidu");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        10, this->weidu(), target);
+        9, this->weidu(), target);
   }
 
-  // optional string Chuangjianshijian = 11;
+  // optional string Chuangjianshijian = 10;
   if (has_chuangjianshijian()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
       this->chuangjianshijian().data(), this->chuangjianshijian().length(),
@@ -11887,7 +12109,7 @@ void MsgSheBeiGuanLiData::SerializeWithCachedSizes(
       "chuangjianshijian");
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        11, this->chuangjianshijian(), target);
+        10, this->chuangjianshijian(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -11902,79 +12124,72 @@ int MsgSheBeiGuanLiData::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .netmsg.MsgHead head = 1;
-    if (has_head()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->head());
-    }
-
-    // optional int32 Xuhao = 2;
+    // optional int32 Xuhao = 1;
     if (has_xuhao()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->xuhao());
     }
 
-    // optional string Sheng = 3;
+    // optional string Sheng = 2;
     if (has_sheng()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->sheng());
     }
 
-    // optional string Shi = 4;
+    // optional string Shi = 3;
     if (has_shi()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shi());
     }
 
-    // optional string Qu = 5;
+    // optional string Qu = 4;
     if (has_qu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->qu());
     }
 
-    // optional string Shiyongdanwei = 6;
+    // optional string Shiyongdanwei = 5;
     if (has_shiyongdanwei()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shiyongdanwei());
     }
 
-    // optional string IP = 7;
+    // optional string IP = 6;
     if (has_ip()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->ip());
     }
 
-    // optional string Shebeileixing = 8;
+    // optional string Shebeileixing = 7;
     if (has_shebeileixing()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->shebeileixing());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional string Jingdu = 9;
+    // optional string Jingdu = 8;
     if (has_jingdu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->jingdu());
     }
 
-    // optional string Weidu = 10;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional string Weidu = 9;
     if (has_weidu()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->weidu());
     }
 
-    // optional string Chuangjianshijian = 11;
+    // optional string Chuangjianshijian = 10;
     if (has_chuangjianshijian()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
@@ -12008,9 +12223,6 @@ void MsgSheBeiGuanLiData::MergeFrom(const ::google::protobuf::Message& from) {
 void MsgSheBeiGuanLiData::MergeFrom(const MsgSheBeiGuanLiData& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_head()) {
-      mutable_head()->::netmsg::MsgHead::MergeFrom(from.head());
-    }
     if (from.has_xuhao()) {
       set_xuhao(from.xuhao());
     }
@@ -12032,11 +12244,11 @@ void MsgSheBeiGuanLiData::MergeFrom(const MsgSheBeiGuanLiData& from) {
     if (from.has_shebeileixing()) {
       set_shebeileixing(from.shebeileixing());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_jingdu()) {
       set_jingdu(from.jingdu());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_weidu()) {
       set_weidu(from.weidu());
     }
@@ -12060,17 +12272,12 @@ void MsgSheBeiGuanLiData::CopyFrom(const MsgSheBeiGuanLiData& from) {
 }
 
 bool MsgSheBeiGuanLiData::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
 
-  if (has_head()) {
-    if (!this->head().IsInitialized()) return false;
-  }
   return true;
 }
 
 void MsgSheBeiGuanLiData::Swap(MsgSheBeiGuanLiData* other) {
   if (other != this) {
-    std::swap(head_, other->head_);
     std::swap(xuhao_, other->xuhao_);
     std::swap(sheng_, other->sheng_);
     std::swap(shi_, other->shi_);

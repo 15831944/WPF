@@ -7,6 +7,8 @@ public:
 	~CServer();
 protected:
 	CServer();
+	static CServer*						m_pServer;	//内部实例指针
+	static void							OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorcode, const char* errormsg);
 
 	typedef bool						(*_startServerType)(char *ip, int port, IN OnReceiveCallBack callback, OUT ServerSendData& CallSendData);
 	typedef bool						(*_stopServerType)();
@@ -18,8 +20,8 @@ protected:
 
 	ServerSendData						m_sendDataFunc;
 
-	static CServer*						m_pServer;	//内部实例指针
-	static void							OnReceiveCallBack(long userID, BYTE* buf, int len, int errorcode, const char* errormsg);
+
+	void								SendMsgBuf(long userID, ::google::protobuf::Message& msg);
 public:
 	static CServer* 					GetInstance();
 	static void 						ReleaseInstance();

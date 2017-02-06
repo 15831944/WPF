@@ -18,7 +18,8 @@ BOOL APIENTRY DllMain(HMODULE hModule,
 		//RIM_RTK_BSD_DB_FILE = szPath;
 		//RIM_RTK_BSD_DB_FILE += "\\data\\BOSD.SDB";
 
-		RIM_RTK_BSD_DB_FILE = "e:\\gitcode\\zhangyong\\WPF\\NetDemo\\设计资料\\test.db";
+		//RIM_RTK_BSD_DB_FILE = "e:\\gitcode\\zhangyong\\WPF\\NetDemo\\设计资料\\test.db";
+		RIM_RTK_BSD_DB_FILE = "test.db";
 	}
 	case DLL_THREAD_ATTACH:
 	case DLL_THREAD_DETACH:

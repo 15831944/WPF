@@ -62,7 +62,7 @@ void session::heartpack_handler(const boost::system::error_code& ec)
 			m_pReceiveCallBack((long)this, NULL, 0, ec.value(), ec.message().c_str());
 		return;
 	}
-
+	return;
 	if (!bstarted())
 		return;
 

@@ -34,8 +34,9 @@ void  protobuf_AddDesc_netmsg_2eproto();
 void protobuf_AssignDesc_netmsg_2eproto();
 void protobuf_ShutdownFile_netmsg_2eproto();
 
+class MsgPack;
 class MsgHead;
-class MsgString;
+class MsgCmd;
 class MsgIdCardApplyData;
 class MsgOnlineStatusData;
 class MsgShuLiangHuiZongData;
@@ -79,6 +80,267 @@ inline bool NetMsgType_Parse(
     NetMsgType_descriptor(), name, value);
 }
 // ===================================================================
+
+class MsgPack : public ::google::protobuf::Message {
+ public:
+  MsgPack();
+  virtual ~MsgPack();
+
+  MsgPack(const MsgPack& from);
+
+  inline MsgPack& operator=(const MsgPack& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const MsgPack& default_instance();
+
+  void Swap(MsgPack* other);
+
+  // implements Message ----------------------------------------------
+
+  MsgPack* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const MsgPack& from);
+  void MergeFrom(const MsgPack& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required .netmsg.MsgHead head = 1;
+  inline bool has_head() const;
+  inline void clear_head();
+  static const int kHeadFieldNumber = 1;
+  inline const ::netmsg::MsgHead& head() const;
+  inline ::netmsg::MsgHead* mutable_head();
+  inline ::netmsg::MsgHead* release_head();
+  inline void set_allocated_head(::netmsg::MsgHead* head);
+
+  // optional .netmsg.MsgCmd msgcmd = 2;
+  inline bool has_msgcmd() const;
+  inline void clear_msgcmd();
+  static const int kMsgcmdFieldNumber = 2;
+  inline const ::netmsg::MsgCmd& msgcmd() const;
+  inline ::netmsg::MsgCmd* mutable_msgcmd();
+  inline ::netmsg::MsgCmd* release_msgcmd();
+  inline void set_allocated_msgcmd(::netmsg::MsgCmd* msgcmd);
+
+  // optional .netmsg.MsgIdCardApplyData msgidcardapplydata = 3;
+  inline bool has_msgidcardapplydata() const;
+  inline void clear_msgidcardapplydata();
+  static const int kMsgidcardapplydataFieldNumber = 3;
+  inline const ::netmsg::MsgIdCardApplyData& msgidcardapplydata() const;
+  inline ::netmsg::MsgIdCardApplyData* mutable_msgidcardapplydata();
+  inline ::netmsg::MsgIdCardApplyData* release_msgidcardapplydata();
+  inline void set_allocated_msgidcardapplydata(::netmsg::MsgIdCardApplyData* msgidcardapplydata);
+
+  // optional .netmsg.MsgOnlineStatusData msgonlinestatusdata = 4;
+  inline bool has_msgonlinestatusdata() const;
+  inline void clear_msgonlinestatusdata();
+  static const int kMsgonlinestatusdataFieldNumber = 4;
+  inline const ::netmsg::MsgOnlineStatusData& msgonlinestatusdata() const;
+  inline ::netmsg::MsgOnlineStatusData* mutable_msgonlinestatusdata();
+  inline ::netmsg::MsgOnlineStatusData* release_msgonlinestatusdata();
+  inline void set_allocated_msgonlinestatusdata(::netmsg::MsgOnlineStatusData* msgonlinestatusdata);
+
+  // optional .netmsg.MsgShuLiangHuiZongData msgshulianghuizongdata = 5;
+  inline bool has_msgshulianghuizongdata() const;
+  inline void clear_msgshulianghuizongdata();
+  static const int kMsgshulianghuizongdataFieldNumber = 5;
+  inline const ::netmsg::MsgShuLiangHuiZongData& msgshulianghuizongdata() const;
+  inline ::netmsg::MsgShuLiangHuiZongData* mutable_msgshulianghuizongdata();
+  inline ::netmsg::MsgShuLiangHuiZongData* release_msgshulianghuizongdata();
+  inline void set_allocated_msgshulianghuizongdata(::netmsg::MsgShuLiangHuiZongData* msgshulianghuizongdata);
+
+  // optional .netmsg.MsgXiangXiTongJiData msgxiangxitongjidata = 6;
+  inline bool has_msgxiangxitongjidata() const;
+  inline void clear_msgxiangxitongjidata();
+  static const int kMsgxiangxitongjidataFieldNumber = 6;
+  inline const ::netmsg::MsgXiangXiTongJiData& msgxiangxitongjidata() const;
+  inline ::netmsg::MsgXiangXiTongJiData* mutable_msgxiangxitongjidata();
+  inline ::netmsg::MsgXiangXiTongJiData* release_msgxiangxitongjidata();
+  inline void set_allocated_msgxiangxitongjidata(::netmsg::MsgXiangXiTongJiData* msgxiangxitongjidata);
+
+  // optional .netmsg.MsgZhiQianShuJuData msgzhiqianshujudata = 7;
+  inline bool has_msgzhiqianshujudata() const;
+  inline void clear_msgzhiqianshujudata();
+  static const int kMsgzhiqianshujudataFieldNumber = 7;
+  inline const ::netmsg::MsgZhiQianShuJuData& msgzhiqianshujudata() const;
+  inline ::netmsg::MsgZhiQianShuJuData* mutable_msgzhiqianshujudata();
+  inline ::netmsg::MsgZhiQianShuJuData* release_msgzhiqianshujudata();
+  inline void set_allocated_msgzhiqianshujudata(::netmsg::MsgZhiQianShuJuData* msgzhiqianshujudata);
+
+  // optional .netmsg.MsgShouZhengShuJuData msgshouzhengshujudata = 8;
+  inline bool has_msgshouzhengshujudata() const;
+  inline void clear_msgshouzhengshujudata();
+  static const int kMsgshouzhengshujudataFieldNumber = 8;
+  inline const ::netmsg::MsgShouZhengShuJuData& msgshouzhengshujudata() const;
+  inline ::netmsg::MsgShouZhengShuJuData* mutable_msgshouzhengshujudata();
+  inline ::netmsg::MsgShouZhengShuJuData* release_msgshouzhengshujudata();
+  inline void set_allocated_msgshouzhengshujudata(::netmsg::MsgShouZhengShuJuData* msgshouzhengshujudata);
+
+  // optional .netmsg.MsgQianZhuShuJuData msgqianzhushujudata = 9;
+  inline bool has_msgqianzhushujudata() const;
+  inline void clear_msgqianzhushujudata();
+  static const int kMsgqianzhushujudataFieldNumber = 9;
+  inline const ::netmsg::MsgQianZhuShuJuData& msgqianzhushujudata() const;
+  inline ::netmsg::MsgQianZhuShuJuData* mutable_msgqianzhushujudata();
+  inline ::netmsg::MsgQianZhuShuJuData* release_msgqianzhushujudata();
+  inline void set_allocated_msgqianzhushujudata(::netmsg::MsgQianZhuShuJuData* msgqianzhushujudata);
+
+  // optional .netmsg.MsgJiaoKuanShuJuData msgjiaokuanshujudata = 10;
+  inline bool has_msgjiaokuanshujudata() const;
+  inline void clear_msgjiaokuanshujudata();
+  static const int kMsgjiaokuanshujudataFieldNumber = 10;
+  inline const ::netmsg::MsgJiaoKuanShuJuData& msgjiaokuanshujudata() const;
+  inline ::netmsg::MsgJiaoKuanShuJuData* mutable_msgjiaokuanshujudata();
+  inline ::netmsg::MsgJiaoKuanShuJuData* release_msgjiaokuanshujudata();
+  inline void set_allocated_msgjiaokuanshujudata(::netmsg::MsgJiaoKuanShuJuData* msgjiaokuanshujudata);
+
+  // optional .netmsg.MsgChaXunShuJuData msgchaxunshujudata = 11;
+  inline bool has_msgchaxunshujudata() const;
+  inline void clear_msgchaxunshujudata();
+  static const int kMsgchaxunshujudataFieldNumber = 11;
+  inline const ::netmsg::MsgChaXunShuJuData& msgchaxunshujudata() const;
+  inline ::netmsg::MsgChaXunShuJuData* mutable_msgchaxunshujudata();
+  inline ::netmsg::MsgChaXunShuJuData* release_msgchaxunshujudata();
+  inline void set_allocated_msgchaxunshujudata(::netmsg::MsgChaXunShuJuData* msgchaxunshujudata);
+
+  // optional .netmsg.MsgYuShouLiShuJuData msgyushoulishujudata = 12;
+  inline bool has_msgyushoulishujudata() const;
+  inline void clear_msgyushoulishujudata();
+  static const int kMsgyushoulishujudataFieldNumber = 12;
+  inline const ::netmsg::MsgYuShouLiShuJuData& msgyushoulishujudata() const;
+  inline ::netmsg::MsgYuShouLiShuJuData* mutable_msgyushoulishujudata();
+  inline ::netmsg::MsgYuShouLiShuJuData* release_msgyushoulishujudata();
+  inline void set_allocated_msgyushoulishujudata(::netmsg::MsgYuShouLiShuJuData* msgyushoulishujudata);
+
+  // optional .netmsg.MsgSheBeiYiChangShuJuData msgshebeiyichangshujudata = 13;
+  inline bool has_msgshebeiyichangshujudata() const;
+  inline void clear_msgshebeiyichangshujudata();
+  static const int kMsgshebeiyichangshujudataFieldNumber = 13;
+  inline const ::netmsg::MsgSheBeiYiChangShuJuData& msgshebeiyichangshujudata() const;
+  inline ::netmsg::MsgSheBeiYiChangShuJuData* mutable_msgshebeiyichangshujudata();
+  inline ::netmsg::MsgSheBeiYiChangShuJuData* release_msgshebeiyichangshujudata();
+  inline void set_allocated_msgshebeiyichangshujudata(::netmsg::MsgSheBeiYiChangShuJuData* msgshebeiyichangshujudata);
+
+  // optional .netmsg.MsgGuanLiYuanData msgguanliyuandata = 14;
+  inline bool has_msgguanliyuandata() const;
+  inline void clear_msgguanliyuandata();
+  static const int kMsgguanliyuandataFieldNumber = 14;
+  inline const ::netmsg::MsgGuanLiYuanData& msgguanliyuandata() const;
+  inline ::netmsg::MsgGuanLiYuanData* mutable_msgguanliyuandata();
+  inline ::netmsg::MsgGuanLiYuanData* release_msgguanliyuandata();
+  inline void set_allocated_msgguanliyuandata(::netmsg::MsgGuanLiYuanData* msgguanliyuandata);
+
+  // optional .netmsg.MsgGuanLiYuanCaoZuoJiLuData msgguanliyuancaozuojiludata = 15;
+  inline bool has_msgguanliyuancaozuojiludata() const;
+  inline void clear_msgguanliyuancaozuojiludata();
+  static const int kMsgguanliyuancaozuojiludataFieldNumber = 15;
+  inline const ::netmsg::MsgGuanLiYuanCaoZuoJiLuData& msgguanliyuancaozuojiludata() const;
+  inline ::netmsg::MsgGuanLiYuanCaoZuoJiLuData* mutable_msgguanliyuancaozuojiludata();
+  inline ::netmsg::MsgGuanLiYuanCaoZuoJiLuData* release_msgguanliyuancaozuojiludata();
+  inline void set_allocated_msgguanliyuancaozuojiludata(::netmsg::MsgGuanLiYuanCaoZuoJiLuData* msgguanliyuancaozuojiludata);
+
+  // optional .netmsg.MsgSheBeiGuanLiData msgshebeiguanlidata = 16;
+  inline bool has_msgshebeiguanlidata() const;
+  inline void clear_msgshebeiguanlidata();
+  static const int kMsgshebeiguanlidataFieldNumber = 16;
+  inline const ::netmsg::MsgSheBeiGuanLiData& msgshebeiguanlidata() const;
+  inline ::netmsg::MsgSheBeiGuanLiData* mutable_msgshebeiguanlidata();
+  inline ::netmsg::MsgSheBeiGuanLiData* release_msgshebeiguanlidata();
+  inline void set_allocated_msgshebeiguanlidata(::netmsg::MsgSheBeiGuanLiData* msgshebeiguanlidata);
+
+  // @@protoc_insertion_point(class_scope:netmsg.MsgPack)
+ private:
+  inline void set_has_head();
+  inline void clear_has_head();
+  inline void set_has_msgcmd();
+  inline void clear_has_msgcmd();
+  inline void set_has_msgidcardapplydata();
+  inline void clear_has_msgidcardapplydata();
+  inline void set_has_msgonlinestatusdata();
+  inline void clear_has_msgonlinestatusdata();
+  inline void set_has_msgshulianghuizongdata();
+  inline void clear_has_msgshulianghuizongdata();
+  inline void set_has_msgxiangxitongjidata();
+  inline void clear_has_msgxiangxitongjidata();
+  inline void set_has_msgzhiqianshujudata();
+  inline void clear_has_msgzhiqianshujudata();
+  inline void set_has_msgshouzhengshujudata();
+  inline void clear_has_msgshouzhengshujudata();
+  inline void set_has_msgqianzhushujudata();
+  inline void clear_has_msgqianzhushujudata();
+  inline void set_has_msgjiaokuanshujudata();
+  inline void clear_has_msgjiaokuanshujudata();
+  inline void set_has_msgchaxunshujudata();
+  inline void clear_has_msgchaxunshujudata();
+  inline void set_has_msgyushoulishujudata();
+  inline void clear_has_msgyushoulishujudata();
+  inline void set_has_msgshebeiyichangshujudata();
+  inline void clear_has_msgshebeiyichangshujudata();
+  inline void set_has_msgguanliyuandata();
+  inline void clear_has_msgguanliyuandata();
+  inline void set_has_msgguanliyuancaozuojiludata();
+  inline void clear_has_msgguanliyuancaozuojiludata();
+  inline void set_has_msgshebeiguanlidata();
+  inline void clear_has_msgshebeiguanlidata();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::netmsg::MsgHead* head_;
+  ::netmsg::MsgCmd* msgcmd_;
+  ::netmsg::MsgIdCardApplyData* msgidcardapplydata_;
+  ::netmsg::MsgOnlineStatusData* msgonlinestatusdata_;
+  ::netmsg::MsgShuLiangHuiZongData* msgshulianghuizongdata_;
+  ::netmsg::MsgXiangXiTongJiData* msgxiangxitongjidata_;
+  ::netmsg::MsgZhiQianShuJuData* msgzhiqianshujudata_;
+  ::netmsg::MsgShouZhengShuJuData* msgshouzhengshujudata_;
+  ::netmsg::MsgQianZhuShuJuData* msgqianzhushujudata_;
+  ::netmsg::MsgJiaoKuanShuJuData* msgjiaokuanshujudata_;
+  ::netmsg::MsgChaXunShuJuData* msgchaxunshujudata_;
+  ::netmsg::MsgYuShouLiShuJuData* msgyushoulishujudata_;
+  ::netmsg::MsgSheBeiYiChangShuJuData* msgshebeiyichangshujudata_;
+  ::netmsg::MsgGuanLiYuanData* msgguanliyuandata_;
+  ::netmsg::MsgGuanLiYuanCaoZuoJiLuData* msgguanliyuancaozuojiludata_;
+  ::netmsg::MsgSheBeiGuanLiData* msgshebeiguanlidata_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static MsgPack* default_instance_;
+};
+// -------------------------------------------------------------------
 
 class MsgHead : public ::google::protobuf::Message {
  public:
@@ -179,14 +441,14 @@ class MsgHead : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class MsgString : public ::google::protobuf::Message {
+class MsgCmd : public ::google::protobuf::Message {
  public:
-  MsgString();
-  virtual ~MsgString();
+  MsgCmd();
+  virtual ~MsgCmd();
 
-  MsgString(const MsgString& from);
+  MsgCmd(const MsgCmd& from);
 
-  inline MsgString& operator=(const MsgString& from) {
+  inline MsgCmd& operator=(const MsgCmd& from) {
     CopyFrom(from);
     return *this;
   }
@@ -200,17 +462,17 @@ class MsgString : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const MsgString& default_instance();
+  static const MsgCmd& default_instance();
 
-  void Swap(MsgString* other);
+  void Swap(MsgCmd* other);
 
   // implements Message ----------------------------------------------
 
-  MsgString* New() const;
+  MsgCmd* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const MsgString& from);
-  void MergeFrom(const MsgString& from);
+  void CopyFrom(const MsgCmd& from);
+  void MergeFrom(const MsgCmd& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -232,15 +494,6 @@ class MsgString : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
   // required string Cmd = 2;
   inline bool has_cmd() const;
   inline void clear_cmd();
@@ -253,10 +506,8 @@ class MsgString : public ::google::protobuf::Message {
   inline ::std::string* release_cmd();
   inline void set_allocated_cmd(::std::string* cmd);
 
-  // @@protoc_insertion_point(class_scope:netmsg.MsgString)
+  // @@protoc_insertion_point(class_scope:netmsg.MsgCmd)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_cmd();
   inline void clear_has_cmd();
 
@@ -264,14 +515,13 @@ class MsgString : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* cmd_;
   friend void  protobuf_AddDesc_netmsg_2eproto();
   friend void protobuf_AssignDesc_netmsg_2eproto();
   friend void protobuf_ShutdownFile_netmsg_2eproto();
 
   void InitAsDefaultInstance();
-  static MsgString* default_instance_;
+  static MsgCmd* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -328,19 +578,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional string name = 2;
+  // optional string name = 1;
   inline bool has_name() const;
   inline void clear_name();
-  static const int kNameFieldNumber = 2;
+  static const int kNameFieldNumber = 1;
   inline const ::std::string& name() const;
   inline void set_name(const ::std::string& value);
   inline void set_name(const char* value);
@@ -349,10 +590,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // optional string gender = 3;
+  // optional string gender = 2;
   inline bool has_gender() const;
   inline void clear_gender();
-  static const int kGenderFieldNumber = 3;
+  static const int kGenderFieldNumber = 2;
   inline const ::std::string& gender() const;
   inline void set_gender(const ::std::string& value);
   inline void set_gender(const char* value);
@@ -361,10 +602,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_gender();
   inline void set_allocated_gender(::std::string* gender);
 
-  // optional string Nation = 4;
+  // optional string Nation = 3;
   inline bool has_nation() const;
   inline void clear_nation();
-  static const int kNationFieldNumber = 4;
+  static const int kNationFieldNumber = 3;
   inline const ::std::string& nation() const;
   inline void set_nation(const ::std::string& value);
   inline void set_nation(const char* value);
@@ -373,10 +614,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_nation();
   inline void set_allocated_nation(::std::string* nation);
 
-  // optional string Birthday = 5;
+  // optional string Birthday = 4;
   inline bool has_birthday() const;
   inline void clear_birthday();
-  static const int kBirthdayFieldNumber = 5;
+  static const int kBirthdayFieldNumber = 4;
   inline const ::std::string& birthday() const;
   inline void set_birthday(const ::std::string& value);
   inline void set_birthday(const char* value);
@@ -385,10 +626,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_birthday();
   inline void set_allocated_birthday(::std::string* birthday);
 
-  // optional string Address = 6;
+  // optional string Address = 5;
   inline bool has_address() const;
   inline void clear_address();
-  static const int kAddressFieldNumber = 6;
+  static const int kAddressFieldNumber = 5;
   inline const ::std::string& address() const;
   inline void set_address(const ::std::string& value);
   inline void set_address(const char* value);
@@ -397,10 +638,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_address();
   inline void set_allocated_address(::std::string* address);
 
-  // optional string IdNumber = 7;
+  // optional string IdNumber = 6;
   inline bool has_idnumber() const;
   inline void clear_idnumber();
-  static const int kIdNumberFieldNumber = 7;
+  static const int kIdNumberFieldNumber = 6;
   inline const ::std::string& idnumber() const;
   inline void set_idnumber(const ::std::string& value);
   inline void set_idnumber(const char* value);
@@ -409,10 +650,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_idnumber();
   inline void set_allocated_idnumber(::std::string* idnumber);
 
-  // optional string SigDepart = 8;
+  // optional string SigDepart = 7;
   inline bool has_sigdepart() const;
   inline void clear_sigdepart();
-  static const int kSigDepartFieldNumber = 8;
+  static const int kSigDepartFieldNumber = 7;
   inline const ::std::string& sigdepart() const;
   inline void set_sigdepart(const ::std::string& value);
   inline void set_sigdepart(const char* value);
@@ -421,10 +662,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_sigdepart();
   inline void set_allocated_sigdepart(::std::string* sigdepart);
 
-  // optional string SLH = 9;
+  // optional string SLH = 8;
   inline bool has_slh() const;
   inline void clear_slh();
-  static const int kSLHFieldNumber = 9;
+  static const int kSLHFieldNumber = 8;
   inline const ::std::string& slh() const;
   inline void set_slh(const ::std::string& value);
   inline void set_slh(const char* value);
@@ -433,10 +674,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_slh();
   inline void set_allocated_slh(::std::string* slh);
 
-  // optional string fpData = 10;
+  // optional string fpData = 9;
   inline bool has_fpdata() const;
   inline void clear_fpdata();
-  static const int kFpDataFieldNumber = 10;
+  static const int kFpDataFieldNumber = 9;
   inline const ::std::string& fpdata() const;
   inline void set_fpdata(const ::std::string& value);
   inline void set_fpdata(const char* value);
@@ -445,10 +686,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_fpdata();
   inline void set_allocated_fpdata(::std::string* fpdata);
 
-  // optional string fpFeature = 11;
+  // optional string fpFeature = 10;
   inline bool has_fpfeature() const;
   inline void clear_fpfeature();
-  static const int kFpFeatureFieldNumber = 11;
+  static const int kFpFeatureFieldNumber = 10;
   inline const ::std::string& fpfeature() const;
   inline void set_fpfeature(const ::std::string& value);
   inline void set_fpfeature(const char* value);
@@ -457,10 +698,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_fpfeature();
   inline void set_allocated_fpfeature(::std::string* fpfeature);
 
-  // optional string XCZP = 12;
+  // optional string XCZP = 11;
   inline bool has_xczp() const;
   inline void clear_xczp();
-  static const int kXCZPFieldNumber = 12;
+  static const int kXCZPFieldNumber = 11;
   inline const ::std::string& xczp() const;
   inline void set_xczp(const ::std::string& value);
   inline void set_xczp(const char* value);
@@ -469,10 +710,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_xczp();
   inline void set_allocated_xczp(::std::string* xczp);
 
-  // optional string XZQH = 13;
+  // optional string XZQH = 12;
   inline bool has_xzqh() const;
   inline void clear_xzqh();
-  static const int kXZQHFieldNumber = 13;
+  static const int kXZQHFieldNumber = 12;
   inline const ::std::string& xzqh() const;
   inline void set_xzqh(const ::std::string& value);
   inline void set_xzqh(const char* value);
@@ -481,10 +722,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_xzqh();
   inline void set_allocated_xzqh(::std::string* xzqh);
 
-  // optional string sannerId = 14;
+  // optional string sannerId = 13;
   inline bool has_sannerid() const;
   inline void clear_sannerid();
-  static const int kSannerIdFieldNumber = 14;
+  static const int kSannerIdFieldNumber = 13;
   inline const ::std::string& sannerid() const;
   inline void set_sannerid(const ::std::string& value);
   inline void set_sannerid(const char* value);
@@ -493,10 +734,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_sannerid();
   inline void set_allocated_sannerid(::std::string* sannerid);
 
-  // optional string scannerName = 15;
+  // optional string scannerName = 14;
   inline bool has_scannername() const;
   inline void clear_scannername();
-  static const int kScannerNameFieldNumber = 15;
+  static const int kScannerNameFieldNumber = 14;
   inline const ::std::string& scannername() const;
   inline void set_scannername(const ::std::string& value);
   inline void set_scannername(const char* value);
@@ -505,17 +746,17 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_scannername();
   inline void set_allocated_scannername(::std::string* scannername);
 
-  // optional bool legal = 16;
+  // optional bool legal = 15;
   inline bool has_legal() const;
   inline void clear_legal();
-  static const int kLegalFieldNumber = 16;
+  static const int kLegalFieldNumber = 15;
   inline bool legal() const;
   inline void set_legal(bool value);
 
-  // optional string operatorID = 17;
+  // optional string operatorID = 16;
   inline bool has_operatorid() const;
   inline void clear_operatorid();
-  static const int kOperatorIDFieldNumber = 17;
+  static const int kOperatorIDFieldNumber = 16;
   inline const ::std::string& operatorid() const;
   inline void set_operatorid(const ::std::string& value);
   inline void set_operatorid(const char* value);
@@ -524,10 +765,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_operatorid();
   inline void set_allocated_operatorid(::std::string* operatorid);
 
-  // optional string operatorName = 18;
+  // optional string operatorName = 17;
   inline bool has_operatorname() const;
   inline void clear_operatorname();
-  static const int kOperatorNameFieldNumber = 18;
+  static const int kOperatorNameFieldNumber = 17;
   inline const ::std::string& operatorname() const;
   inline void set_operatorname(const ::std::string& value);
   inline void set_operatorname(const char* value);
@@ -536,10 +777,10 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
   inline ::std::string* release_operatorname();
   inline void set_allocated_operatorname(::std::string* operatorname);
 
-  // optional string opDate = 19;
+  // optional string opDate = 18;
   inline bool has_opdate() const;
   inline void clear_opdate();
-  static const int kOpDateFieldNumber = 19;
+  static const int kOpDateFieldNumber = 18;
   inline const ::std::string& opdate() const;
   inline void set_opdate(const ::std::string& value);
   inline void set_opdate(const char* value);
@@ -550,8 +791,6 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgIdCardApplyData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_name();
   inline void clear_has_name();
   inline void set_has_gender();
@@ -593,7 +832,6 @@ class MsgIdCardApplyData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* name_;
   ::std::string* gender_;
   ::std::string* nation_;
@@ -674,19 +912,10 @@ class MsgOnlineStatusData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional string machineId = 2;
+  // optional string machineId = 1;
   inline bool has_machineid() const;
   inline void clear_machineid();
-  static const int kMachineIdFieldNumber = 2;
+  static const int kMachineIdFieldNumber = 1;
   inline const ::std::string& machineid() const;
   inline void set_machineid(const ::std::string& value);
   inline void set_machineid(const char* value);
@@ -695,10 +924,10 @@ class MsgOnlineStatusData : public ::google::protobuf::Message {
   inline ::std::string* release_machineid();
   inline void set_allocated_machineid(::std::string* machineid);
 
-  // optional string machineName = 3;
+  // optional string machineName = 2;
   inline bool has_machinename() const;
   inline void clear_machinename();
-  static const int kMachineNameFieldNumber = 3;
+  static const int kMachineNameFieldNumber = 2;
   inline const ::std::string& machinename() const;
   inline void set_machinename(const ::std::string& value);
   inline void set_machinename(const char* value);
@@ -707,10 +936,10 @@ class MsgOnlineStatusData : public ::google::protobuf::Message {
   inline ::std::string* release_machinename();
   inline void set_allocated_machinename(::std::string* machinename);
 
-  // optional string machineIP = 4;
+  // optional string machineIP = 3;
   inline bool has_machineip() const;
   inline void clear_machineip();
-  static const int kMachineIPFieldNumber = 4;
+  static const int kMachineIPFieldNumber = 3;
   inline const ::std::string& machineip() const;
   inline void set_machineip(const ::std::string& value);
   inline void set_machineip(const char* value);
@@ -719,10 +948,10 @@ class MsgOnlineStatusData : public ::google::protobuf::Message {
   inline ::std::string* release_machineip();
   inline void set_allocated_machineip(::std::string* machineip);
 
-  // optional string machineLongi = 5;
+  // optional string machineLongi = 4;
   inline bool has_machinelongi() const;
   inline void clear_machinelongi();
-  static const int kMachineLongiFieldNumber = 5;
+  static const int kMachineLongiFieldNumber = 4;
   inline const ::std::string& machinelongi() const;
   inline void set_machinelongi(const ::std::string& value);
   inline void set_machinelongi(const char* value);
@@ -731,10 +960,10 @@ class MsgOnlineStatusData : public ::google::protobuf::Message {
   inline ::std::string* release_machinelongi();
   inline void set_allocated_machinelongi(::std::string* machinelongi);
 
-  // optional string machineLat = 6;
+  // optional string machineLat = 5;
   inline bool has_machinelat() const;
   inline void clear_machinelat();
-  static const int kMachineLatFieldNumber = 6;
+  static const int kMachineLatFieldNumber = 5;
   inline const ::std::string& machinelat() const;
   inline void set_machinelat(const ::std::string& value);
   inline void set_machinelat(const char* value);
@@ -743,10 +972,10 @@ class MsgOnlineStatusData : public ::google::protobuf::Message {
   inline ::std::string* release_machinelat();
   inline void set_allocated_machinelat(::std::string* machinelat);
 
-  // optional string currentBusiness = 7;
+  // optional string currentBusiness = 6;
   inline bool has_currentbusiness() const;
   inline void clear_currentbusiness();
-  static const int kCurrentBusinessFieldNumber = 7;
+  static const int kCurrentBusinessFieldNumber = 6;
   inline const ::std::string& currentbusiness() const;
   inline void set_currentbusiness(const ::std::string& value);
   inline void set_currentbusiness(const char* value);
@@ -755,10 +984,10 @@ class MsgOnlineStatusData : public ::google::protobuf::Message {
   inline ::std::string* release_currentbusiness();
   inline void set_allocated_currentbusiness(::std::string* currentbusiness);
 
-  // optional string businessStartTime = 8;
+  // optional string businessStartTime = 7;
   inline bool has_businessstarttime() const;
   inline void clear_businessstarttime();
-  static const int kBusinessStartTimeFieldNumber = 8;
+  static const int kBusinessStartTimeFieldNumber = 7;
   inline const ::std::string& businessstarttime() const;
   inline void set_businessstarttime(const ::std::string& value);
   inline void set_businessstarttime(const char* value);
@@ -767,10 +996,10 @@ class MsgOnlineStatusData : public ::google::protobuf::Message {
   inline ::std::string* release_businessstarttime();
   inline void set_allocated_businessstarttime(::std::string* businessstarttime);
 
-  // optional string businessEndTime = 9;
+  // optional string businessEndTime = 8;
   inline bool has_businessendtime() const;
   inline void clear_businessendtime();
-  static const int kBusinessEndTimeFieldNumber = 9;
+  static const int kBusinessEndTimeFieldNumber = 8;
   inline const ::std::string& businessendtime() const;
   inline void set_businessendtime(const ::std::string& value);
   inline void set_businessendtime(const char* value);
@@ -779,17 +1008,15 @@ class MsgOnlineStatusData : public ::google::protobuf::Message {
   inline ::std::string* release_businessendtime();
   inline void set_allocated_businessendtime(::std::string* businessendtime);
 
-  // optional bool businessDone = 10;
+  // optional bool businessDone = 9;
   inline bool has_businessdone() const;
   inline void clear_businessdone();
-  static const int kBusinessDoneFieldNumber = 10;
+  static const int kBusinessDoneFieldNumber = 9;
   inline bool businessdone() const;
   inline void set_businessdone(bool value);
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgOnlineStatusData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_machineid();
   inline void clear_has_machineid();
   inline void set_has_machinename();
@@ -813,7 +1040,6 @@ class MsgOnlineStatusData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* machineid_;
   ::std::string* machinename_;
   ::std::string* machineip_;
@@ -885,124 +1111,113 @@ class MsgShuLiangHuiZongData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional int32 Shiyongdanwei = 3;
+  // optional int32 Shiyongdanwei = 2;
   inline bool has_shiyongdanwei() const;
   inline void clear_shiyongdanwei();
-  static const int kShiyongdanweiFieldNumber = 3;
+  static const int kShiyongdanweiFieldNumber = 2;
   inline ::google::protobuf::int32 shiyongdanwei() const;
   inline void set_shiyongdanwei(::google::protobuf::int32 value);
 
-  // optional int32 Shebeizongshuliang = 4;
+  // optional int32 Shebeizongshuliang = 3;
   inline bool has_shebeizongshuliang() const;
   inline void clear_shebeizongshuliang();
-  static const int kShebeizongshuliangFieldNumber = 4;
+  static const int kShebeizongshuliangFieldNumber = 3;
   inline ::google::protobuf::int32 shebeizongshuliang() const;
   inline void set_shebeizongshuliang(::google::protobuf::int32 value);
 
-  // optional int32 Qiyongshebei = 5;
+  // optional int32 Qiyongshebei = 4;
   inline bool has_qiyongshebei() const;
   inline void clear_qiyongshebei();
-  static const int kQiyongshebeiFieldNumber = 5;
+  static const int kQiyongshebeiFieldNumber = 4;
   inline ::google::protobuf::int32 qiyongshebei() const;
   inline void set_qiyongshebei(::google::protobuf::int32 value);
 
-  // optional int32 Yuyueyewu = 6;
+  // optional int32 Yuyueyewu = 5;
   inline bool has_yuyueyewu() const;
   inline void clear_yuyueyewu();
-  static const int kYuyueyewuFieldNumber = 6;
+  static const int kYuyueyewuFieldNumber = 5;
   inline ::google::protobuf::int32 yuyueyewu() const;
   inline void set_yuyueyewu(::google::protobuf::int32 value);
 
-  // optional int32 Yushouliyewu = 7;
+  // optional int32 Yushouliyewu = 6;
   inline bool has_yushouliyewu() const;
   inline void clear_yushouliyewu();
-  static const int kYushouliyewuFieldNumber = 7;
+  static const int kYushouliyewuFieldNumber = 6;
   inline ::google::protobuf::int32 yushouliyewu() const;
   inline void set_yushouliyewu(::google::protobuf::int32 value);
 
-  // optional int32 Jiaofeiyewu = 8;
+  // optional int32 Jiaofeiyewu = 7;
   inline bool has_jiaofeiyewu() const;
   inline void clear_jiaofeiyewu();
-  static const int kJiaofeiyewuFieldNumber = 8;
+  static const int kJiaofeiyewuFieldNumber = 7;
   inline ::google::protobuf::int32 jiaofeiyewu() const;
   inline void set_jiaofeiyewu(::google::protobuf::int32 value);
 
-  // optional int32 Chaxunyewu = 9;
+  // optional int32 Chaxunyewu = 8;
   inline bool has_chaxunyewu() const;
   inline void clear_chaxunyewu();
-  static const int kChaxunyewuFieldNumber = 9;
+  static const int kChaxunyewuFieldNumber = 8;
   inline ::google::protobuf::int32 chaxunyewu() const;
   inline void set_chaxunyewu(::google::protobuf::int32 value);
 
-  // optional int32 Shebeishouzheng = 10;
+  // optional int32 Shebeishouzheng = 9;
   inline bool has_shebeishouzheng() const;
   inline void clear_shebeishouzheng();
-  static const int kShebeishouzhengFieldNumber = 10;
+  static const int kShebeishouzhengFieldNumber = 9;
   inline ::google::protobuf::int32 shebeishouzheng() const;
   inline void set_shebeishouzheng(::google::protobuf::int32 value);
 
-  // optional int32 Xuqianyewu = 11;
+  // optional int32 Xuqianyewu = 10;
   inline bool has_xuqianyewu() const;
   inline void clear_xuqianyewu();
-  static const int kXuqianyewuFieldNumber = 11;
+  static const int kXuqianyewuFieldNumber = 10;
   inline ::google::protobuf::int32 xuqianyewu() const;
   inline void set_xuqianyewu(::google::protobuf::int32 value);
 
-  // optional int32 Benshitongxingzheng = 12;
+  // optional int32 Benshitongxingzheng = 11;
   inline bool has_benshitongxingzheng() const;
   inline void clear_benshitongxingzheng();
-  static const int kBenshitongxingzhengFieldNumber = 12;
+  static const int kBenshitongxingzhengFieldNumber = 11;
   inline ::google::protobuf::int32 benshitongxingzheng() const;
   inline void set_benshitongxingzheng(::google::protobuf::int32 value);
 
-  // optional int32 Dianzitongxingzheng = 13;
+  // optional int32 Dianzitongxingzheng = 12;
   inline bool has_dianzitongxingzheng() const;
   inline void clear_dianzitongxingzheng();
-  static const int kDianzitongxingzhengFieldNumber = 13;
+  static const int kDianzitongxingzhengFieldNumber = 12;
   inline ::google::protobuf::int32 dianzitongxingzheng() const;
   inline void set_dianzitongxingzheng(::google::protobuf::int32 value);
 
-  // optional int32 Tongxingzhengzhika = 14;
+  // optional int32 Tongxingzhengzhika = 13;
   inline bool has_tongxingzhengzhika() const;
   inline void clear_tongxingzhengzhika();
-  static const int kTongxingzhengzhikaFieldNumber = 14;
+  static const int kTongxingzhengzhikaFieldNumber = 13;
   inline ::google::protobuf::int32 tongxingzhengzhika() const;
   inline void set_tongxingzhengzhika(::google::protobuf::int32 value);
 
-  // optional int32 Lidengkequ = 15;
+  // optional int32 Lidengkequ = 14;
   inline bool has_lidengkequ() const;
   inline void clear_lidengkequ();
-  static const int kLidengkequFieldNumber = 15;
+  static const int kLidengkequFieldNumber = 14;
   inline ::google::protobuf::int32 lidengkequ() const;
   inline void set_lidengkequ(::google::protobuf::int32 value);
 
-  // optional int32 Feilidengkequ = 16;
+  // optional int32 Feilidengkequ = 15;
   inline bool has_feilidengkequ() const;
   inline void clear_feilidengkequ();
-  static const int kFeilidengkequFieldNumber = 16;
+  static const int kFeilidengkequFieldNumber = 15;
   inline ::google::protobuf::int32 feilidengkequ() const;
   inline void set_feilidengkequ(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgShuLiangHuiZongData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_shiyongdanwei();
@@ -1038,7 +1253,6 @@ class MsgShuLiangHuiZongData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::google::protobuf::int32 xuhao_;
   ::google::protobuf::int32 shiyongdanwei_;
   ::google::protobuf::int32 shebeizongshuliang_;
@@ -1116,152 +1330,141 @@ class MsgXiangXiTongJiData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional int32 Nian = 3;
+  // optional int32 Nian = 2;
   inline bool has_nian() const;
   inline void clear_nian();
-  static const int kNianFieldNumber = 3;
+  static const int kNianFieldNumber = 2;
   inline ::google::protobuf::int32 nian() const;
   inline void set_nian(::google::protobuf::int32 value);
 
-  // optional int32 Yue = 4;
+  // optional int32 Yue = 3;
   inline bool has_yue() const;
   inline void clear_yue();
-  static const int kYueFieldNumber = 4;
+  static const int kYueFieldNumber = 3;
   inline ::google::protobuf::int32 yue() const;
   inline void set_yue(::google::protobuf::int32 value);
 
-  // optional int32 Ri = 5;
+  // optional int32 Ri = 4;
   inline bool has_ri() const;
   inline void clear_ri();
-  static const int kRiFieldNumber = 5;
+  static const int kRiFieldNumber = 4;
   inline ::google::protobuf::int32 ri() const;
   inline void set_ri(::google::protobuf::int32 value);
 
-  // optional int32 Xiaoshi = 6;
+  // optional int32 Xiaoshi = 5;
   inline bool has_xiaoshi() const;
   inline void clear_xiaoshi();
-  static const int kXiaoshiFieldNumber = 6;
+  static const int kXiaoshiFieldNumber = 5;
   inline ::google::protobuf::int32 xiaoshi() const;
   inline void set_xiaoshi(::google::protobuf::int32 value);
 
-  // optional int32 Fenzhong = 7;
+  // optional int32 Fenzhong = 6;
   inline bool has_fenzhong() const;
   inline void clear_fenzhong();
-  static const int kFenzhongFieldNumber = 7;
+  static const int kFenzhongFieldNumber = 6;
   inline ::google::protobuf::int32 fenzhong() const;
   inline void set_fenzhong(::google::protobuf::int32 value);
 
-  // optional int32 Shiyongdanwei = 8;
+  // optional int32 Shiyongdanwei = 7;
   inline bool has_shiyongdanwei() const;
   inline void clear_shiyongdanwei();
-  static const int kShiyongdanweiFieldNumber = 8;
+  static const int kShiyongdanweiFieldNumber = 7;
   inline ::google::protobuf::int32 shiyongdanwei() const;
   inline void set_shiyongdanwei(::google::protobuf::int32 value);
 
-  // optional int32 Qiyongshebei = 9;
+  // optional int32 Qiyongshebei = 8;
   inline bool has_qiyongshebei() const;
   inline void clear_qiyongshebei();
-  static const int kQiyongshebeiFieldNumber = 9;
+  static const int kQiyongshebeiFieldNumber = 8;
   inline ::google::protobuf::int32 qiyongshebei() const;
   inline void set_qiyongshebei(::google::protobuf::int32 value);
 
-  // optional int32 Yuyueyewu = 10;
+  // optional int32 Yuyueyewu = 9;
   inline bool has_yuyueyewu() const;
   inline void clear_yuyueyewu();
-  static const int kYuyueyewuFieldNumber = 10;
+  static const int kYuyueyewuFieldNumber = 9;
   inline ::google::protobuf::int32 yuyueyewu() const;
   inline void set_yuyueyewu(::google::protobuf::int32 value);
 
-  // optional int32 Yushouliyewu = 11;
+  // optional int32 Yushouliyewu = 10;
   inline bool has_yushouliyewu() const;
   inline void clear_yushouliyewu();
-  static const int kYushouliyewuFieldNumber = 11;
+  static const int kYushouliyewuFieldNumber = 10;
   inline ::google::protobuf::int32 yushouliyewu() const;
   inline void set_yushouliyewu(::google::protobuf::int32 value);
 
-  // optional int32 Jiaofeiyewu = 12;
+  // optional int32 Jiaofeiyewu = 11;
   inline bool has_jiaofeiyewu() const;
   inline void clear_jiaofeiyewu();
-  static const int kJiaofeiyewuFieldNumber = 12;
+  static const int kJiaofeiyewuFieldNumber = 11;
   inline ::google::protobuf::int32 jiaofeiyewu() const;
   inline void set_jiaofeiyewu(::google::protobuf::int32 value);
 
-  // optional int32 Chaxunyewu = 13;
+  // optional int32 Chaxunyewu = 12;
   inline bool has_chaxunyewu() const;
   inline void clear_chaxunyewu();
-  static const int kChaxunyewuFieldNumber = 13;
+  static const int kChaxunyewuFieldNumber = 12;
   inline ::google::protobuf::int32 chaxunyewu() const;
   inline void set_chaxunyewu(::google::protobuf::int32 value);
 
-  // optional int32 Shebeishouzheng = 14;
+  // optional int32 Shebeishouzheng = 13;
   inline bool has_shebeishouzheng() const;
   inline void clear_shebeishouzheng();
-  static const int kShebeishouzhengFieldNumber = 14;
+  static const int kShebeishouzhengFieldNumber = 13;
   inline ::google::protobuf::int32 shebeishouzheng() const;
   inline void set_shebeishouzheng(::google::protobuf::int32 value);
 
-  // optional int32 Xuqianyewu = 15;
+  // optional int32 Xuqianyewu = 14;
   inline bool has_xuqianyewu() const;
   inline void clear_xuqianyewu();
-  static const int kXuqianyewuFieldNumber = 15;
+  static const int kXuqianyewuFieldNumber = 14;
   inline ::google::protobuf::int32 xuqianyewu() const;
   inline void set_xuqianyewu(::google::protobuf::int32 value);
 
-  // optional int32 Benshitongxingzheng = 16;
+  // optional int32 Benshitongxingzheng = 15;
   inline bool has_benshitongxingzheng() const;
   inline void clear_benshitongxingzheng();
-  static const int kBenshitongxingzhengFieldNumber = 16;
+  static const int kBenshitongxingzhengFieldNumber = 15;
   inline ::google::protobuf::int32 benshitongxingzheng() const;
   inline void set_benshitongxingzheng(::google::protobuf::int32 value);
 
-  // optional int32 Dianzitongxingzheng = 17;
+  // optional int32 Dianzitongxingzheng = 16;
   inline bool has_dianzitongxingzheng() const;
   inline void clear_dianzitongxingzheng();
-  static const int kDianzitongxingzhengFieldNumber = 17;
+  static const int kDianzitongxingzhengFieldNumber = 16;
   inline ::google::protobuf::int32 dianzitongxingzheng() const;
   inline void set_dianzitongxingzheng(::google::protobuf::int32 value);
 
-  // optional int32 Tongxingzhengzhika = 18;
+  // optional int32 Tongxingzhengzhika = 17;
   inline bool has_tongxingzhengzhika() const;
   inline void clear_tongxingzhengzhika();
-  static const int kTongxingzhengzhikaFieldNumber = 18;
+  static const int kTongxingzhengzhikaFieldNumber = 17;
   inline ::google::protobuf::int32 tongxingzhengzhika() const;
   inline void set_tongxingzhengzhika(::google::protobuf::int32 value);
 
-  // optional int32 Lidengkequ = 19;
+  // optional int32 Lidengkequ = 18;
   inline bool has_lidengkequ() const;
   inline void clear_lidengkequ();
-  static const int kLidengkequFieldNumber = 19;
+  static const int kLidengkequFieldNumber = 18;
   inline ::google::protobuf::int32 lidengkequ() const;
   inline void set_lidengkequ(::google::protobuf::int32 value);
 
-  // optional int32 Feilidengkequ = 20;
+  // optional int32 Feilidengkequ = 19;
   inline bool has_feilidengkequ() const;
   inline void clear_feilidengkequ();
-  static const int kFeilidengkequFieldNumber = 20;
+  static const int kFeilidengkequFieldNumber = 19;
   inline ::google::protobuf::int32 feilidengkequ() const;
   inline void set_feilidengkequ(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgXiangXiTongJiData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_nian();
@@ -1305,7 +1508,6 @@ class MsgXiangXiTongJiData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::google::protobuf::int32 xuhao_;
   ::google::protobuf::int32 nian_;
   ::google::protobuf::int32 yue_;
@@ -1387,26 +1589,17 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   inline bool has_riqi() const;
   inline void clear_riqi();
-  static const int kRiqiFieldNumber = 3;
+  static const int kRiqiFieldNumber = 2;
   inline const ::std::string& riqi() const;
   inline void set_riqi(const ::std::string& value);
   inline void set_riqi(const char* value);
@@ -1415,10 +1608,10 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_riqi();
   inline void set_allocated_riqi(::std::string* riqi);
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   inline bool has_shebeiip() const;
   inline void clear_shebeiip();
-  static const int kShebeiIPFieldNumber = 4;
+  static const int kShebeiIPFieldNumber = 3;
   inline const ::std::string& shebeiip() const;
   inline void set_shebeiip(const ::std::string& value);
   inline void set_shebeiip(const char* value);
@@ -1427,10 +1620,10 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_shebeiip();
   inline void set_allocated_shebeiip(::std::string* shebeiip);
 
-  // optional string Yewubianhao = 5;
+  // optional string Yewubianhao = 4;
   inline bool has_yewubianhao() const;
   inline void clear_yewubianhao();
-  static const int kYewubianhaoFieldNumber = 5;
+  static const int kYewubianhaoFieldNumber = 4;
   inline const ::std::string& yewubianhao() const;
   inline void set_yewubianhao(const ::std::string& value);
   inline void set_yewubianhao(const char* value);
@@ -1439,10 +1632,10 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_yewubianhao();
   inline void set_allocated_yewubianhao(::std::string* yewubianhao);
 
-  // optional string YuanZhengjianhaoma = 6;
+  // optional string YuanZhengjianhaoma = 5;
   inline bool has_yuanzhengjianhaoma() const;
   inline void clear_yuanzhengjianhaoma();
-  static const int kYuanZhengjianhaomaFieldNumber = 6;
+  static const int kYuanZhengjianhaomaFieldNumber = 5;
   inline const ::std::string& yuanzhengjianhaoma() const;
   inline void set_yuanzhengjianhaoma(const ::std::string& value);
   inline void set_yuanzhengjianhaoma(const char* value);
@@ -1451,10 +1644,10 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_yuanzhengjianhaoma();
   inline void set_allocated_yuanzhengjianhaoma(::std::string* yuanzhengjianhaoma);
 
-  // optional string Xingming = 7;
+  // optional string Xingming = 6;
   inline bool has_xingming() const;
   inline void clear_xingming();
-  static const int kXingmingFieldNumber = 7;
+  static const int kXingmingFieldNumber = 6;
   inline const ::std::string& xingming() const;
   inline void set_xingming(const ::std::string& value);
   inline void set_xingming(const char* value);
@@ -1463,10 +1656,10 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_xingming();
   inline void set_allocated_xingming(::std::string* xingming);
 
-  // optional string Qianzhuzhonglei = 8;
+  // optional string Qianzhuzhonglei = 7;
   inline bool has_qianzhuzhonglei() const;
   inline void clear_qianzhuzhonglei();
-  static const int kQianzhuzhongleiFieldNumber = 8;
+  static const int kQianzhuzhongleiFieldNumber = 7;
   inline const ::std::string& qianzhuzhonglei() const;
   inline void set_qianzhuzhonglei(const ::std::string& value);
   inline void set_qianzhuzhonglei(const char* value);
@@ -1475,10 +1668,10 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_qianzhuzhonglei();
   inline void set_allocated_qianzhuzhonglei(::std::string* qianzhuzhonglei);
 
-  // optional string ZhikaZhuangtai = 9;
+  // optional string ZhikaZhuangtai = 8;
   inline bool has_zhikazhuangtai() const;
   inline void clear_zhikazhuangtai();
-  static const int kZhikaZhuangtaiFieldNumber = 9;
+  static const int kZhikaZhuangtaiFieldNumber = 8;
   inline const ::std::string& zhikazhuangtai() const;
   inline void set_zhikazhuangtai(const ::std::string& value);
   inline void set_zhikazhuangtai(const char* value);
@@ -1487,10 +1680,10 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_zhikazhuangtai();
   inline void set_allocated_zhikazhuangtai(::std::string* zhikazhuangtai);
 
-  // optional string Zhengjianhaoma = 10;
+  // optional string Zhengjianhaoma = 9;
   inline bool has_zhengjianhaoma() const;
   inline void clear_zhengjianhaoma();
-  static const int kZhengjianhaomaFieldNumber = 10;
+  static const int kZhengjianhaomaFieldNumber = 9;
   inline const ::std::string& zhengjianhaoma() const;
   inline void set_zhengjianhaoma(const ::std::string& value);
   inline void set_zhengjianhaoma(const char* value);
@@ -1499,10 +1692,10 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_zhengjianhaoma();
   inline void set_allocated_zhengjianhaoma(::std::string* zhengjianhaoma);
 
-  // optional string Jiekoufanhuijieguo = 11;
+  // optional string Jiekoufanhuijieguo = 10;
   inline bool has_jiekoufanhuijieguo() const;
   inline void clear_jiekoufanhuijieguo();
-  static const int kJiekoufanhuijieguoFieldNumber = 11;
+  static const int kJiekoufanhuijieguoFieldNumber = 10;
   inline const ::std::string& jiekoufanhuijieguo() const;
   inline void set_jiekoufanhuijieguo(const ::std::string& value);
   inline void set_jiekoufanhuijieguo(const char* value);
@@ -1511,10 +1704,10 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_jiekoufanhuijieguo();
   inline void set_allocated_jiekoufanhuijieguo(::std::string* jiekoufanhuijieguo);
 
-  // optional string Lianxidianhua = 12;
+  // optional string Lianxidianhua = 11;
   inline bool has_lianxidianhua() const;
   inline void clear_lianxidianhua();
-  static const int kLianxidianhuaFieldNumber = 12;
+  static const int kLianxidianhuaFieldNumber = 11;
   inline const ::std::string& lianxidianhua() const;
   inline void set_lianxidianhua(const ::std::string& value);
   inline void set_lianxidianhua(const char* value);
@@ -1525,8 +1718,6 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgZhiQianShuJuData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_riqi();
@@ -1554,7 +1745,6 @@ class MsgZhiQianShuJuData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* riqi_;
   ::std::string* shebeiip_;
   ::std::string* yewubianhao_;
@@ -1628,26 +1818,17 @@ class MsgShouZhengShuJuData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   inline bool has_riqi() const;
   inline void clear_riqi();
-  static const int kRiqiFieldNumber = 3;
+  static const int kRiqiFieldNumber = 2;
   inline const ::std::string& riqi() const;
   inline void set_riqi(const ::std::string& value);
   inline void set_riqi(const char* value);
@@ -1656,10 +1837,10 @@ class MsgShouZhengShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_riqi();
   inline void set_allocated_riqi(::std::string* riqi);
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   inline bool has_shebeiip() const;
   inline void clear_shebeiip();
-  static const int kShebeiIPFieldNumber = 4;
+  static const int kShebeiIPFieldNumber = 3;
   inline const ::std::string& shebeiip() const;
   inline void set_shebeiip(const ::std::string& value);
   inline void set_shebeiip(const char* value);
@@ -1668,10 +1849,10 @@ class MsgShouZhengShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_shebeiip();
   inline void set_allocated_shebeiip(::std::string* shebeiip);
 
-  // optional string Zhengjianleixing = 5;
+  // optional string Zhengjianleixing = 4;
   inline bool has_zhengjianleixing() const;
   inline void clear_zhengjianleixing();
-  static const int kZhengjianleixingFieldNumber = 5;
+  static const int kZhengjianleixingFieldNumber = 4;
   inline const ::std::string& zhengjianleixing() const;
   inline void set_zhengjianleixing(const ::std::string& value);
   inline void set_zhengjianleixing(const char* value);
@@ -1680,10 +1861,10 @@ class MsgShouZhengShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_zhengjianleixing();
   inline void set_allocated_zhengjianleixing(::std::string* zhengjianleixing);
 
-  // optional string Zhengjianhaoma = 6;
+  // optional string Zhengjianhaoma = 5;
   inline bool has_zhengjianhaoma() const;
   inline void clear_zhengjianhaoma();
-  static const int kZhengjianhaomaFieldNumber = 6;
+  static const int kZhengjianhaomaFieldNumber = 5;
   inline const ::std::string& zhengjianhaoma() const;
   inline void set_zhengjianhaoma(const ::std::string& value);
   inline void set_zhengjianhaoma(const char* value);
@@ -1692,10 +1873,10 @@ class MsgShouZhengShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_zhengjianhaoma();
   inline void set_allocated_zhengjianhaoma(::std::string* zhengjianhaoma);
 
-  // optional string Xingming = 7;
+  // optional string Xingming = 6;
   inline bool has_xingming() const;
   inline void clear_xingming();
-  static const int kXingmingFieldNumber = 7;
+  static const int kXingmingFieldNumber = 6;
   inline const ::std::string& xingming() const;
   inline void set_xingming(const ::std::string& value);
   inline void set_xingming(const char* value);
@@ -1704,10 +1885,10 @@ class MsgShouZhengShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_xingming();
   inline void set_allocated_xingming(::std::string* xingming);
 
-  // optional string Shoulibianhao = 8;
+  // optional string Shoulibianhao = 7;
   inline bool has_shoulibianhao() const;
   inline void clear_shoulibianhao();
-  static const int kShoulibianhaoFieldNumber = 8;
+  static const int kShoulibianhaoFieldNumber = 7;
   inline const ::std::string& shoulibianhao() const;
   inline void set_shoulibianhao(const ::std::string& value);
   inline void set_shoulibianhao(const char* value);
@@ -1716,10 +1897,10 @@ class MsgShouZhengShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_shoulibianhao();
   inline void set_allocated_shoulibianhao(::std::string* shoulibianhao);
 
-  // optional string Shifoujiaofei = 9;
+  // optional string Shifoujiaofei = 8;
   inline bool has_shifoujiaofei() const;
   inline void clear_shifoujiaofei();
-  static const int kShifoujiaofeiFieldNumber = 9;
+  static const int kShifoujiaofeiFieldNumber = 8;
   inline const ::std::string& shifoujiaofei() const;
   inline void set_shifoujiaofei(const ::std::string& value);
   inline void set_shifoujiaofei(const char* value);
@@ -1730,8 +1911,6 @@ class MsgShouZhengShuJuData : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgShouZhengShuJuData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_riqi();
@@ -1753,7 +1932,6 @@ class MsgShouZhengShuJuData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* riqi_;
   ::std::string* shebeiip_;
   ::std::string* zhengjianleixing_;
@@ -1824,26 +2002,17 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   inline bool has_riqi() const;
   inline void clear_riqi();
-  static const int kRiqiFieldNumber = 3;
+  static const int kRiqiFieldNumber = 2;
   inline const ::std::string& riqi() const;
   inline void set_riqi(const ::std::string& value);
   inline void set_riqi(const char* value);
@@ -1852,10 +2021,10 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_riqi();
   inline void set_allocated_riqi(::std::string* riqi);
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   inline bool has_shebeiip() const;
   inline void clear_shebeiip();
-  static const int kShebeiIPFieldNumber = 4;
+  static const int kShebeiIPFieldNumber = 3;
   inline const ::std::string& shebeiip() const;
   inline void set_shebeiip(const ::std::string& value);
   inline void set_shebeiip(const char* value);
@@ -1864,10 +2033,10 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_shebeiip();
   inline void set_allocated_shebeiip(::std::string* shebeiip);
 
-  // optional string YuanZhengjianhaoma = 5;
+  // optional string YuanZhengjianhaoma = 4;
   inline bool has_yuanzhengjianhaoma() const;
   inline void clear_yuanzhengjianhaoma();
-  static const int kYuanZhengjianhaomaFieldNumber = 5;
+  static const int kYuanZhengjianhaomaFieldNumber = 4;
   inline const ::std::string& yuanzhengjianhaoma() const;
   inline void set_yuanzhengjianhaoma(const ::std::string& value);
   inline void set_yuanzhengjianhaoma(const char* value);
@@ -1876,10 +2045,10 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_yuanzhengjianhaoma();
   inline void set_allocated_yuanzhengjianhaoma(::std::string* yuanzhengjianhaoma);
 
-  // optional string Xingming = 6;
+  // optional string Xingming = 5;
   inline bool has_xingming() const;
   inline void clear_xingming();
-  static const int kXingmingFieldNumber = 6;
+  static const int kXingmingFieldNumber = 5;
   inline const ::std::string& xingming() const;
   inline void set_xingming(const ::std::string& value);
   inline void set_xingming(const char* value);
@@ -1888,10 +2057,10 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_xingming();
   inline void set_allocated_xingming(::std::string* xingming);
 
-  // optional string Xingbie = 7;
+  // optional string Xingbie = 6;
   inline bool has_xingbie() const;
   inline void clear_xingbie();
-  static const int kXingbieFieldNumber = 7;
+  static const int kXingbieFieldNumber = 6;
   inline const ::std::string& xingbie() const;
   inline void set_xingbie(const ::std::string& value);
   inline void set_xingbie(const char* value);
@@ -1900,10 +2069,10 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_xingbie();
   inline void set_allocated_xingbie(::std::string* xingbie);
 
-  // optional string Chushengriqi = 8;
+  // optional string Chushengriqi = 7;
   inline bool has_chushengriqi() const;
   inline void clear_chushengriqi();
-  static const int kChushengriqiFieldNumber = 8;
+  static const int kChushengriqiFieldNumber = 7;
   inline const ::std::string& chushengriqi() const;
   inline void set_chushengriqi(const ::std::string& value);
   inline void set_chushengriqi(const char* value);
@@ -1912,10 +2081,10 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_chushengriqi();
   inline void set_allocated_chushengriqi(::std::string* chushengriqi);
 
-  // optional string Lianxidianhua = 9;
+  // optional string Lianxidianhua = 8;
   inline bool has_lianxidianhua() const;
   inline void clear_lianxidianhua();
-  static const int kLianxidianhuaFieldNumber = 9;
+  static const int kLianxidianhuaFieldNumber = 8;
   inline const ::std::string& lianxidianhua() const;
   inline void set_lianxidianhua(const ::std::string& value);
   inline void set_lianxidianhua(const char* value);
@@ -1924,10 +2093,10 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_lianxidianhua();
   inline void set_allocated_lianxidianhua(::std::string* lianxidianhua);
 
-  // optional string Yewuleixing = 10;
+  // optional string Yewuleixing = 9;
   inline bool has_yewuleixing() const;
   inline void clear_yewuleixing();
-  static const int kYewuleixingFieldNumber = 10;
+  static const int kYewuleixingFieldNumber = 9;
   inline const ::std::string& yewuleixing() const;
   inline void set_yewuleixing(const ::std::string& value);
   inline void set_yewuleixing(const char* value);
@@ -1936,10 +2105,10 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_yewuleixing();
   inline void set_allocated_yewuleixing(::std::string* yewuleixing);
 
-  // optional string Shouliren = 11;
+  // optional string Shouliren = 10;
   inline bool has_shouliren() const;
   inline void clear_shouliren();
-  static const int kShoulirenFieldNumber = 11;
+  static const int kShoulirenFieldNumber = 10;
   inline const ::std::string& shouliren() const;
   inline void set_shouliren(const ::std::string& value);
   inline void set_shouliren(const char* value);
@@ -1950,8 +2119,6 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgQianZhuShuJuData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_riqi();
@@ -1977,7 +2144,6 @@ class MsgQianZhuShuJuData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* riqi_;
   ::std::string* shebeiip_;
   ::std::string* yuanzhengjianhaoma_;
@@ -2050,26 +2216,17 @@ class MsgJiaoKuanShuJuData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   inline bool has_riqi() const;
   inline void clear_riqi();
-  static const int kRiqiFieldNumber = 3;
+  static const int kRiqiFieldNumber = 2;
   inline const ::std::string& riqi() const;
   inline void set_riqi(const ::std::string& value);
   inline void set_riqi(const char* value);
@@ -2078,10 +2235,10 @@ class MsgJiaoKuanShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_riqi();
   inline void set_allocated_riqi(::std::string* riqi);
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   inline bool has_shebeiip() const;
   inline void clear_shebeiip();
-  static const int kShebeiIPFieldNumber = 4;
+  static const int kShebeiIPFieldNumber = 3;
   inline const ::std::string& shebeiip() const;
   inline void set_shebeiip(const ::std::string& value);
   inline void set_shebeiip(const char* value);
@@ -2090,10 +2247,10 @@ class MsgJiaoKuanShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_shebeiip();
   inline void set_allocated_shebeiip(::std::string* shebeiip);
 
-  // optional string Zhishoudanweidaima = 5;
+  // optional string Zhishoudanweidaima = 4;
   inline bool has_zhishoudanweidaima() const;
   inline void clear_zhishoudanweidaima();
-  static const int kZhishoudanweidaimaFieldNumber = 5;
+  static const int kZhishoudanweidaimaFieldNumber = 4;
   inline const ::std::string& zhishoudanweidaima() const;
   inline void set_zhishoudanweidaima(const ::std::string& value);
   inline void set_zhishoudanweidaima(const char* value);
@@ -2102,10 +2259,10 @@ class MsgJiaoKuanShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_zhishoudanweidaima();
   inline void set_allocated_zhishoudanweidaima(::std::string* zhishoudanweidaima);
 
-  // optional string Jiaokuantongzhishuhaoma = 6;
+  // optional string Jiaokuantongzhishuhaoma = 5;
   inline bool has_jiaokuantongzhishuhaoma() const;
   inline void clear_jiaokuantongzhishuhaoma();
-  static const int kJiaokuantongzhishuhaomaFieldNumber = 6;
+  static const int kJiaokuantongzhishuhaomaFieldNumber = 5;
   inline const ::std::string& jiaokuantongzhishuhaoma() const;
   inline void set_jiaokuantongzhishuhaoma(const ::std::string& value);
   inline void set_jiaokuantongzhishuhaoma(const char* value);
@@ -2114,10 +2271,10 @@ class MsgJiaoKuanShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_jiaokuantongzhishuhaoma();
   inline void set_allocated_jiaokuantongzhishuhaoma(::std::string* jiaokuantongzhishuhaoma);
 
-  // optional string Jiaokuanrenxingming = 7;
+  // optional string Jiaokuanrenxingming = 6;
   inline bool has_jiaokuanrenxingming() const;
   inline void clear_jiaokuanrenxingming();
-  static const int kJiaokuanrenxingmingFieldNumber = 7;
+  static const int kJiaokuanrenxingmingFieldNumber = 6;
   inline const ::std::string& jiaokuanrenxingming() const;
   inline void set_jiaokuanrenxingming(const ::std::string& value);
   inline void set_jiaokuanrenxingming(const char* value);
@@ -2126,17 +2283,17 @@ class MsgJiaoKuanShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_jiaokuanrenxingming();
   inline void set_allocated_jiaokuanrenxingming(::std::string* jiaokuanrenxingming);
 
-  // optional float Yingkoukuanheji = 8;
+  // optional float Yingkoukuanheji = 7;
   inline bool has_yingkoukuanheji() const;
   inline void clear_yingkoukuanheji();
-  static const int kYingkoukuanhejiFieldNumber = 8;
+  static const int kYingkoukuanhejiFieldNumber = 7;
   inline float yingkoukuanheji() const;
   inline void set_yingkoukuanheji(float value);
 
-  // optional string Jiaoyiriqi = 9;
+  // optional string Jiaoyiriqi = 8;
   inline bool has_jiaoyiriqi() const;
   inline void clear_jiaoyiriqi();
-  static const int kJiaoyiriqiFieldNumber = 9;
+  static const int kJiaoyiriqiFieldNumber = 8;
   inline const ::std::string& jiaoyiriqi() const;
   inline void set_jiaoyiriqi(const ::std::string& value);
   inline void set_jiaoyiriqi(const char* value);
@@ -2147,8 +2304,6 @@ class MsgJiaoKuanShuJuData : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgJiaoKuanShuJuData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_riqi();
@@ -2170,7 +2325,6 @@ class MsgJiaoKuanShuJuData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* riqi_;
   ::std::string* shebeiip_;
   ::std::string* zhishoudanweidaima_;
@@ -2241,26 +2395,17 @@ class MsgChaXunShuJuData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   inline bool has_riqi() const;
   inline void clear_riqi();
-  static const int kRiqiFieldNumber = 3;
+  static const int kRiqiFieldNumber = 2;
   inline const ::std::string& riqi() const;
   inline void set_riqi(const ::std::string& value);
   inline void set_riqi(const char* value);
@@ -2269,10 +2414,10 @@ class MsgChaXunShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_riqi();
   inline void set_allocated_riqi(::std::string* riqi);
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   inline bool has_shebeiip() const;
   inline void clear_shebeiip();
-  static const int kShebeiIPFieldNumber = 4;
+  static const int kShebeiIPFieldNumber = 3;
   inline const ::std::string& shebeiip() const;
   inline void set_shebeiip(const ::std::string& value);
   inline void set_shebeiip(const char* value);
@@ -2281,10 +2426,10 @@ class MsgChaXunShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_shebeiip();
   inline void set_allocated_shebeiip(::std::string* shebeiip);
 
-  // optional string Chaxunhaoma = 5;
+  // optional string Chaxunhaoma = 4;
   inline bool has_chaxunhaoma() const;
   inline void clear_chaxunhaoma();
-  static const int kChaxunhaomaFieldNumber = 5;
+  static const int kChaxunhaomaFieldNumber = 4;
   inline const ::std::string& chaxunhaoma() const;
   inline void set_chaxunhaoma(const ::std::string& value);
   inline void set_chaxunhaoma(const char* value);
@@ -2293,10 +2438,10 @@ class MsgChaXunShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_chaxunhaoma();
   inline void set_allocated_chaxunhaoma(::std::string* chaxunhaoma);
 
-  // optional string Chaxunleixing = 6;
+  // optional string Chaxunleixing = 5;
   inline bool has_chaxunleixing() const;
   inline void clear_chaxunleixing();
-  static const int kChaxunleixingFieldNumber = 6;
+  static const int kChaxunleixingFieldNumber = 5;
   inline const ::std::string& chaxunleixing() const;
   inline void set_chaxunleixing(const ::std::string& value);
   inline void set_chaxunleixing(const char* value);
@@ -2305,17 +2450,15 @@ class MsgChaXunShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_chaxunleixing();
   inline void set_allocated_chaxunleixing(::std::string* chaxunleixing);
 
-  // optional bool Shifouchaxunchenggong = 7;
+  // optional bool Shifouchaxunchenggong = 6;
   inline bool has_shifouchaxunchenggong() const;
   inline void clear_shifouchaxunchenggong();
-  static const int kShifouchaxunchenggongFieldNumber = 7;
+  static const int kShifouchaxunchenggongFieldNumber = 6;
   inline bool shifouchaxunchenggong() const;
   inline void set_shifouchaxunchenggong(bool value);
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgChaXunShuJuData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_riqi();
@@ -2333,7 +2476,6 @@ class MsgChaXunShuJuData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* riqi_;
   ::std::string* shebeiip_;
   ::google::protobuf::int32 xuhao_;
@@ -2402,26 +2544,17 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   inline bool has_riqi() const;
   inline void clear_riqi();
-  static const int kRiqiFieldNumber = 3;
+  static const int kRiqiFieldNumber = 2;
   inline const ::std::string& riqi() const;
   inline void set_riqi(const ::std::string& value);
   inline void set_riqi(const char* value);
@@ -2430,10 +2563,10 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_riqi();
   inline void set_allocated_riqi(::std::string* riqi);
 
-  // optional string ShebeiIP = 4;
+  // optional string ShebeiIP = 3;
   inline bool has_shebeiip() const;
   inline void clear_shebeiip();
-  static const int kShebeiIPFieldNumber = 4;
+  static const int kShebeiIPFieldNumber = 3;
   inline const ::std::string& shebeiip() const;
   inline void set_shebeiip(const ::std::string& value);
   inline void set_shebeiip(const char* value);
@@ -2442,10 +2575,10 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_shebeiip();
   inline void set_allocated_shebeiip(::std::string* shebeiip);
 
-  // optional string Yewubianhao = 5;
+  // optional string Yewubianhao = 4;
   inline bool has_yewubianhao() const;
   inline void clear_yewubianhao();
-  static const int kYewubianhaoFieldNumber = 5;
+  static const int kYewubianhaoFieldNumber = 4;
   inline const ::std::string& yewubianhao() const;
   inline void set_yewubianhao(const ::std::string& value);
   inline void set_yewubianhao(const char* value);
@@ -2454,10 +2587,10 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_yewubianhao();
   inline void set_allocated_yewubianhao(::std::string* yewubianhao);
 
-  // optional string Xingming = 6;
+  // optional string Xingming = 5;
   inline bool has_xingming() const;
   inline void clear_xingming();
-  static const int kXingmingFieldNumber = 6;
+  static const int kXingmingFieldNumber = 5;
   inline const ::std::string& xingming() const;
   inline void set_xingming(const ::std::string& value);
   inline void set_xingming(const char* value);
@@ -2466,10 +2599,10 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_xingming();
   inline void set_allocated_xingming(::std::string* xingming);
 
-  // optional string Lianxidianhua = 7;
+  // optional string Lianxidianhua = 6;
   inline bool has_lianxidianhua() const;
   inline void clear_lianxidianhua();
-  static const int kLianxidianhuaFieldNumber = 7;
+  static const int kLianxidianhuaFieldNumber = 6;
   inline const ::std::string& lianxidianhua() const;
   inline void set_lianxidianhua(const ::std::string& value);
   inline void set_lianxidianhua(const char* value);
@@ -2478,10 +2611,10 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_lianxidianhua();
   inline void set_allocated_lianxidianhua(::std::string* lianxidianhua);
 
-  // optional string Chuguoshiyou = 8;
+  // optional string Chuguoshiyou = 7;
   inline bool has_chuguoshiyou() const;
   inline void clear_chuguoshiyou();
-  static const int kChuguoshiyouFieldNumber = 8;
+  static const int kChuguoshiyouFieldNumber = 7;
   inline const ::std::string& chuguoshiyou() const;
   inline void set_chuguoshiyou(const ::std::string& value);
   inline void set_chuguoshiyou(const char* value);
@@ -2490,10 +2623,10 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_chuguoshiyou();
   inline void set_allocated_chuguoshiyou(::std::string* chuguoshiyou);
 
-  // optional string YuanZhengjianhaoma = 9;
+  // optional string YuanZhengjianhaoma = 8;
   inline bool has_yuanzhengjianhaoma() const;
   inline void clear_yuanzhengjianhaoma();
-  static const int kYuanZhengjianhaomaFieldNumber = 9;
+  static const int kYuanZhengjianhaomaFieldNumber = 8;
   inline const ::std::string& yuanzhengjianhaoma() const;
   inline void set_yuanzhengjianhaoma(const ::std::string& value);
   inline void set_yuanzhengjianhaoma(const char* value);
@@ -2502,10 +2635,10 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_yuanzhengjianhaoma();
   inline void set_allocated_yuanzhengjianhaoma(::std::string* yuanzhengjianhaoma);
 
-  // optional string Qianzhuzhonglei = 10;
+  // optional string Qianzhuzhonglei = 9;
   inline bool has_qianzhuzhonglei() const;
   inline void clear_qianzhuzhonglei();
-  static const int kQianzhuzhongleiFieldNumber = 10;
+  static const int kQianzhuzhongleiFieldNumber = 9;
   inline const ::std::string& qianzhuzhonglei() const;
   inline void set_qianzhuzhonglei(const ::std::string& value);
   inline void set_qianzhuzhonglei(const char* value);
@@ -2514,10 +2647,10 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_qianzhuzhonglei();
   inline void set_allocated_qianzhuzhonglei(::std::string* qianzhuzhonglei);
 
-  // optional string Xingbie = 11;
+  // optional string Xingbie = 10;
   inline bool has_xingbie() const;
   inline void clear_xingbie();
-  static const int kXingbieFieldNumber = 11;
+  static const int kXingbieFieldNumber = 10;
   inline const ::std::string& xingbie() const;
   inline void set_xingbie(const ::std::string& value);
   inline void set_xingbie(const char* value);
@@ -2526,10 +2659,10 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_xingbie();
   inline void set_allocated_xingbie(::std::string* xingbie);
 
-  // optional string Hukousuozaidi = 12;
+  // optional string Hukousuozaidi = 11;
   inline bool has_hukousuozaidi() const;
   inline void clear_hukousuozaidi();
-  static const int kHukousuozaidiFieldNumber = 12;
+  static const int kHukousuozaidiFieldNumber = 11;
   inline const ::std::string& hukousuozaidi() const;
   inline void set_hukousuozaidi(const ::std::string& value);
   inline void set_hukousuozaidi(const char* value);
@@ -2538,10 +2671,10 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_hukousuozaidi();
   inline void set_allocated_hukousuozaidi(::std::string* hukousuozaidi);
 
-  // optional string Minzu = 13;
+  // optional string Minzu = 12;
   inline bool has_minzu() const;
   inline void clear_minzu();
-  static const int kMinzuFieldNumber = 13;
+  static const int kMinzuFieldNumber = 12;
   inline const ::std::string& minzu() const;
   inline void set_minzu(const ::std::string& value);
   inline void set_minzu(const char* value);
@@ -2552,8 +2685,6 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgYuShouLiShuJuData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_riqi();
@@ -2583,7 +2714,6 @@ class MsgYuShouLiShuJuData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* riqi_;
   ::std::string* shebeiip_;
   ::std::string* yewubianhao_;
@@ -2658,26 +2788,17 @@ class MsgSheBeiYiChangShuJuData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional string Riqi = 3;
+  // optional string Riqi = 2;
   inline bool has_riqi() const;
   inline void clear_riqi();
-  static const int kRiqiFieldNumber = 3;
+  static const int kRiqiFieldNumber = 2;
   inline const ::std::string& riqi() const;
   inline void set_riqi(const ::std::string& value);
   inline void set_riqi(const char* value);
@@ -2686,10 +2807,10 @@ class MsgSheBeiYiChangShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_riqi();
   inline void set_allocated_riqi(::std::string* riqi);
 
-  // optional string Shiyongdanwei = 4;
+  // optional string Shiyongdanwei = 3;
   inline bool has_shiyongdanwei() const;
   inline void clear_shiyongdanwei();
-  static const int kShiyongdanweiFieldNumber = 4;
+  static const int kShiyongdanweiFieldNumber = 3;
   inline const ::std::string& shiyongdanwei() const;
   inline void set_shiyongdanwei(const ::std::string& value);
   inline void set_shiyongdanwei(const char* value);
@@ -2698,10 +2819,10 @@ class MsgSheBeiYiChangShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_shiyongdanwei();
   inline void set_allocated_shiyongdanwei(::std::string* shiyongdanwei);
 
-  // optional string Yichangshejimokuai = 5;
+  // optional string Yichangshejimokuai = 4;
   inline bool has_yichangshejimokuai() const;
   inline void clear_yichangshejimokuai();
-  static const int kYichangshejimokuaiFieldNumber = 5;
+  static const int kYichangshejimokuaiFieldNumber = 4;
   inline const ::std::string& yichangshejimokuai() const;
   inline void set_yichangshejimokuai(const ::std::string& value);
   inline void set_yichangshejimokuai(const char* value);
@@ -2710,10 +2831,10 @@ class MsgSheBeiYiChangShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_yichangshejimokuai();
   inline void set_allocated_yichangshejimokuai(::std::string* yichangshejimokuai);
 
-  // optional string Yichangyuanyin = 6;
+  // optional string Yichangyuanyin = 5;
   inline bool has_yichangyuanyin() const;
   inline void clear_yichangyuanyin();
-  static const int kYichangyuanyinFieldNumber = 6;
+  static const int kYichangyuanyinFieldNumber = 5;
   inline const ::std::string& yichangyuanyin() const;
   inline void set_yichangyuanyin(const ::std::string& value);
   inline void set_yichangyuanyin(const char* value);
@@ -2722,10 +2843,10 @@ class MsgSheBeiYiChangShuJuData : public ::google::protobuf::Message {
   inline ::std::string* release_yichangyuanyin();
   inline void set_allocated_yichangyuanyin(::std::string* yichangyuanyin);
 
-  // optional string Yichangxiangxineirong = 7;
+  // optional string Yichangxiangxineirong = 6;
   inline bool has_yichangxiangxineirong() const;
   inline void clear_yichangxiangxineirong();
-  static const int kYichangxiangxineirongFieldNumber = 7;
+  static const int kYichangxiangxineirongFieldNumber = 6;
   inline const ::std::string& yichangxiangxineirong() const;
   inline void set_yichangxiangxineirong(const ::std::string& value);
   inline void set_yichangxiangxineirong(const char* value);
@@ -2736,8 +2857,6 @@ class MsgSheBeiYiChangShuJuData : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgSheBeiYiChangShuJuData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_riqi();
@@ -2755,7 +2874,6 @@ class MsgSheBeiYiChangShuJuData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* riqi_;
   ::std::string* shiyongdanwei_;
   ::std::string* yichangshejimokuai_;
@@ -2824,26 +2942,17 @@ class MsgGuanLiYuanData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional string Yonghuming = 3;
+  // optional string Yonghuming = 2;
   inline bool has_yonghuming() const;
   inline void clear_yonghuming();
-  static const int kYonghumingFieldNumber = 3;
+  static const int kYonghumingFieldNumber = 2;
   inline const ::std::string& yonghuming() const;
   inline void set_yonghuming(const ::std::string& value);
   inline void set_yonghuming(const char* value);
@@ -2852,10 +2961,10 @@ class MsgGuanLiYuanData : public ::google::protobuf::Message {
   inline ::std::string* release_yonghuming();
   inline void set_allocated_yonghuming(::std::string* yonghuming);
 
-  // optional string Mima = 4;
+  // optional string Mima = 3;
   inline bool has_mima() const;
   inline void clear_mima();
-  static const int kMimaFieldNumber = 4;
+  static const int kMimaFieldNumber = 3;
   inline const ::std::string& mima() const;
   inline void set_mima(const ::std::string& value);
   inline void set_mima(const char* value);
@@ -2864,10 +2973,10 @@ class MsgGuanLiYuanData : public ::google::protobuf::Message {
   inline ::std::string* release_mima();
   inline void set_allocated_mima(::std::string* mima);
 
-  // optional string Youxiaoqi = 5;
+  // optional string Youxiaoqi = 4;
   inline bool has_youxiaoqi() const;
   inline void clear_youxiaoqi();
-  static const int kYouxiaoqiFieldNumber = 5;
+  static const int kYouxiaoqiFieldNumber = 4;
   inline const ::std::string& youxiaoqi() const;
   inline void set_youxiaoqi(const ::std::string& value);
   inline void set_youxiaoqi(const char* value);
@@ -2876,17 +2985,15 @@ class MsgGuanLiYuanData : public ::google::protobuf::Message {
   inline ::std::string* release_youxiaoqi();
   inline void set_allocated_youxiaoqi(::std::string* youxiaoqi);
 
-  // optional int32 Quanxianjibie = 6;
+  // optional int32 Quanxianjibie = 5;
   inline bool has_quanxianjibie() const;
   inline void clear_quanxianjibie();
-  static const int kQuanxianjibieFieldNumber = 6;
+  static const int kQuanxianjibieFieldNumber = 5;
   inline ::google::protobuf::int32 quanxianjibie() const;
   inline void set_quanxianjibie(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgGuanLiYuanData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_yonghuming();
@@ -2902,7 +3009,6 @@ class MsgGuanLiYuanData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* yonghuming_;
   ::std::string* mima_;
   ::google::protobuf::int32 xuhao_;
@@ -2970,26 +3076,17 @@ class MsgGuanLiYuanCaoZuoJiLuData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional string Yonghuming = 3;
+  // optional string Yonghuming = 2;
   inline bool has_yonghuming() const;
   inline void clear_yonghuming();
-  static const int kYonghumingFieldNumber = 3;
+  static const int kYonghumingFieldNumber = 2;
   inline const ::std::string& yonghuming() const;
   inline void set_yonghuming(const ::std::string& value);
   inline void set_yonghuming(const char* value);
@@ -2998,10 +3095,10 @@ class MsgGuanLiYuanCaoZuoJiLuData : public ::google::protobuf::Message {
   inline ::std::string* release_yonghuming();
   inline void set_allocated_yonghuming(::std::string* yonghuming);
 
-  // optional string Riqi = 4;
+  // optional string Riqi = 3;
   inline bool has_riqi() const;
   inline void clear_riqi();
-  static const int kRiqiFieldNumber = 4;
+  static const int kRiqiFieldNumber = 3;
   inline const ::std::string& riqi() const;
   inline void set_riqi(const ::std::string& value);
   inline void set_riqi(const char* value);
@@ -3010,10 +3107,10 @@ class MsgGuanLiYuanCaoZuoJiLuData : public ::google::protobuf::Message {
   inline ::std::string* release_riqi();
   inline void set_allocated_riqi(::std::string* riqi);
 
-  // optional string Caozuoleibie = 5;
+  // optional string Caozuoleibie = 4;
   inline bool has_caozuoleibie() const;
   inline void clear_caozuoleibie();
-  static const int kCaozuoleibieFieldNumber = 5;
+  static const int kCaozuoleibieFieldNumber = 4;
   inline const ::std::string& caozuoleibie() const;
   inline void set_caozuoleibie(const ::std::string& value);
   inline void set_caozuoleibie(const char* value);
@@ -3022,10 +3119,10 @@ class MsgGuanLiYuanCaoZuoJiLuData : public ::google::protobuf::Message {
   inline ::std::string* release_caozuoleibie();
   inline void set_allocated_caozuoleibie(::std::string* caozuoleibie);
 
-  // optional string Caozuoneirong = 6;
+  // optional string Caozuoneirong = 5;
   inline bool has_caozuoneirong() const;
   inline void clear_caozuoneirong();
-  static const int kCaozuoneirongFieldNumber = 6;
+  static const int kCaozuoneirongFieldNumber = 5;
   inline const ::std::string& caozuoneirong() const;
   inline void set_caozuoneirong(const ::std::string& value);
   inline void set_caozuoneirong(const char* value);
@@ -3036,8 +3133,6 @@ class MsgGuanLiYuanCaoZuoJiLuData : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgGuanLiYuanCaoZuoJiLuData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_yonghuming();
@@ -3053,7 +3148,6 @@ class MsgGuanLiYuanCaoZuoJiLuData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* yonghuming_;
   ::std::string* riqi_;
   ::std::string* caozuoleibie_;
@@ -3121,26 +3215,17 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // required .netmsg.MsgHead head = 1;
-  inline bool has_head() const;
-  inline void clear_head();
-  static const int kHeadFieldNumber = 1;
-  inline const ::netmsg::MsgHead& head() const;
-  inline ::netmsg::MsgHead* mutable_head();
-  inline ::netmsg::MsgHead* release_head();
-  inline void set_allocated_head(::netmsg::MsgHead* head);
-
-  // optional int32 Xuhao = 2;
+  // optional int32 Xuhao = 1;
   inline bool has_xuhao() const;
   inline void clear_xuhao();
-  static const int kXuhaoFieldNumber = 2;
+  static const int kXuhaoFieldNumber = 1;
   inline ::google::protobuf::int32 xuhao() const;
   inline void set_xuhao(::google::protobuf::int32 value);
 
-  // optional string Sheng = 3;
+  // optional string Sheng = 2;
   inline bool has_sheng() const;
   inline void clear_sheng();
-  static const int kShengFieldNumber = 3;
+  static const int kShengFieldNumber = 2;
   inline const ::std::string& sheng() const;
   inline void set_sheng(const ::std::string& value);
   inline void set_sheng(const char* value);
@@ -3149,10 +3234,10 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
   inline ::std::string* release_sheng();
   inline void set_allocated_sheng(::std::string* sheng);
 
-  // optional string Shi = 4;
+  // optional string Shi = 3;
   inline bool has_shi() const;
   inline void clear_shi();
-  static const int kShiFieldNumber = 4;
+  static const int kShiFieldNumber = 3;
   inline const ::std::string& shi() const;
   inline void set_shi(const ::std::string& value);
   inline void set_shi(const char* value);
@@ -3161,10 +3246,10 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
   inline ::std::string* release_shi();
   inline void set_allocated_shi(::std::string* shi);
 
-  // optional string Qu = 5;
+  // optional string Qu = 4;
   inline bool has_qu() const;
   inline void clear_qu();
-  static const int kQuFieldNumber = 5;
+  static const int kQuFieldNumber = 4;
   inline const ::std::string& qu() const;
   inline void set_qu(const ::std::string& value);
   inline void set_qu(const char* value);
@@ -3173,10 +3258,10 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
   inline ::std::string* release_qu();
   inline void set_allocated_qu(::std::string* qu);
 
-  // optional string Shiyongdanwei = 6;
+  // optional string Shiyongdanwei = 5;
   inline bool has_shiyongdanwei() const;
   inline void clear_shiyongdanwei();
-  static const int kShiyongdanweiFieldNumber = 6;
+  static const int kShiyongdanweiFieldNumber = 5;
   inline const ::std::string& shiyongdanwei() const;
   inline void set_shiyongdanwei(const ::std::string& value);
   inline void set_shiyongdanwei(const char* value);
@@ -3185,10 +3270,10 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
   inline ::std::string* release_shiyongdanwei();
   inline void set_allocated_shiyongdanwei(::std::string* shiyongdanwei);
 
-  // optional string IP = 7;
+  // optional string IP = 6;
   inline bool has_ip() const;
   inline void clear_ip();
-  static const int kIPFieldNumber = 7;
+  static const int kIPFieldNumber = 6;
   inline const ::std::string& ip() const;
   inline void set_ip(const ::std::string& value);
   inline void set_ip(const char* value);
@@ -3197,10 +3282,10 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
   inline ::std::string* release_ip();
   inline void set_allocated_ip(::std::string* ip);
 
-  // optional string Shebeileixing = 8;
+  // optional string Shebeileixing = 7;
   inline bool has_shebeileixing() const;
   inline void clear_shebeileixing();
-  static const int kShebeileixingFieldNumber = 8;
+  static const int kShebeileixingFieldNumber = 7;
   inline const ::std::string& shebeileixing() const;
   inline void set_shebeileixing(const ::std::string& value);
   inline void set_shebeileixing(const char* value);
@@ -3209,10 +3294,10 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
   inline ::std::string* release_shebeileixing();
   inline void set_allocated_shebeileixing(::std::string* shebeileixing);
 
-  // optional string Jingdu = 9;
+  // optional string Jingdu = 8;
   inline bool has_jingdu() const;
   inline void clear_jingdu();
-  static const int kJingduFieldNumber = 9;
+  static const int kJingduFieldNumber = 8;
   inline const ::std::string& jingdu() const;
   inline void set_jingdu(const ::std::string& value);
   inline void set_jingdu(const char* value);
@@ -3221,10 +3306,10 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
   inline ::std::string* release_jingdu();
   inline void set_allocated_jingdu(::std::string* jingdu);
 
-  // optional string Weidu = 10;
+  // optional string Weidu = 9;
   inline bool has_weidu() const;
   inline void clear_weidu();
-  static const int kWeiduFieldNumber = 10;
+  static const int kWeiduFieldNumber = 9;
   inline const ::std::string& weidu() const;
   inline void set_weidu(const ::std::string& value);
   inline void set_weidu(const char* value);
@@ -3233,10 +3318,10 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
   inline ::std::string* release_weidu();
   inline void set_allocated_weidu(::std::string* weidu);
 
-  // optional string Chuangjianshijian = 11;
+  // optional string Chuangjianshijian = 10;
   inline bool has_chuangjianshijian() const;
   inline void clear_chuangjianshijian();
-  static const int kChuangjianshijianFieldNumber = 11;
+  static const int kChuangjianshijianFieldNumber = 10;
   inline const ::std::string& chuangjianshijian() const;
   inline void set_chuangjianshijian(const ::std::string& value);
   inline void set_chuangjianshijian(const char* value);
@@ -3247,8 +3332,6 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:netmsg.MsgSheBeiGuanLiData)
  private:
-  inline void set_has_head();
-  inline void clear_has_head();
   inline void set_has_xuhao();
   inline void clear_has_xuhao();
   inline void set_has_sheng();
@@ -3274,7 +3357,6 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
-  ::netmsg::MsgHead* head_;
   ::std::string* sheng_;
   ::std::string* shi_;
   ::std::string* qu_;
@@ -3296,6 +3378,666 @@ class MsgSheBeiGuanLiData : public ::google::protobuf::Message {
 
 
 // ===================================================================
+
+// MsgPack
+
+// required .netmsg.MsgHead head = 1;
+inline bool MsgPack::has_head() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void MsgPack::set_has_head() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void MsgPack::clear_has_head() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void MsgPack::clear_head() {
+  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
+  clear_has_head();
+}
+inline const ::netmsg::MsgHead& MsgPack::head() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.head)
+  return head_ != NULL ? *head_ : *default_instance_->head_;
+}
+inline ::netmsg::MsgHead* MsgPack::mutable_head() {
+  set_has_head();
+  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.head)
+  return head_;
+}
+inline ::netmsg::MsgHead* MsgPack::release_head() {
+  clear_has_head();
+  ::netmsg::MsgHead* temp = head_;
+  head_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_head(::netmsg::MsgHead* head) {
+  delete head_;
+  head_ = head;
+  if (head) {
+    set_has_head();
+  } else {
+    clear_has_head();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.head)
+}
+
+// optional .netmsg.MsgCmd msgcmd = 2;
+inline bool MsgPack::has_msgcmd() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void MsgPack::set_has_msgcmd() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void MsgPack::clear_has_msgcmd() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void MsgPack::clear_msgcmd() {
+  if (msgcmd_ != NULL) msgcmd_->::netmsg::MsgCmd::Clear();
+  clear_has_msgcmd();
+}
+inline const ::netmsg::MsgCmd& MsgPack::msgcmd() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgcmd)
+  return msgcmd_ != NULL ? *msgcmd_ : *default_instance_->msgcmd_;
+}
+inline ::netmsg::MsgCmd* MsgPack::mutable_msgcmd() {
+  set_has_msgcmd();
+  if (msgcmd_ == NULL) msgcmd_ = new ::netmsg::MsgCmd;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgcmd)
+  return msgcmd_;
+}
+inline ::netmsg::MsgCmd* MsgPack::release_msgcmd() {
+  clear_has_msgcmd();
+  ::netmsg::MsgCmd* temp = msgcmd_;
+  msgcmd_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgcmd(::netmsg::MsgCmd* msgcmd) {
+  delete msgcmd_;
+  msgcmd_ = msgcmd;
+  if (msgcmd) {
+    set_has_msgcmd();
+  } else {
+    clear_has_msgcmd();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgcmd)
+}
+
+// optional .netmsg.MsgIdCardApplyData msgidcardapplydata = 3;
+inline bool MsgPack::has_msgidcardapplydata() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void MsgPack::set_has_msgidcardapplydata() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void MsgPack::clear_has_msgidcardapplydata() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void MsgPack::clear_msgidcardapplydata() {
+  if (msgidcardapplydata_ != NULL) msgidcardapplydata_->::netmsg::MsgIdCardApplyData::Clear();
+  clear_has_msgidcardapplydata();
+}
+inline const ::netmsg::MsgIdCardApplyData& MsgPack::msgidcardapplydata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgidcardapplydata)
+  return msgidcardapplydata_ != NULL ? *msgidcardapplydata_ : *default_instance_->msgidcardapplydata_;
+}
+inline ::netmsg::MsgIdCardApplyData* MsgPack::mutable_msgidcardapplydata() {
+  set_has_msgidcardapplydata();
+  if (msgidcardapplydata_ == NULL) msgidcardapplydata_ = new ::netmsg::MsgIdCardApplyData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgidcardapplydata)
+  return msgidcardapplydata_;
+}
+inline ::netmsg::MsgIdCardApplyData* MsgPack::release_msgidcardapplydata() {
+  clear_has_msgidcardapplydata();
+  ::netmsg::MsgIdCardApplyData* temp = msgidcardapplydata_;
+  msgidcardapplydata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgidcardapplydata(::netmsg::MsgIdCardApplyData* msgidcardapplydata) {
+  delete msgidcardapplydata_;
+  msgidcardapplydata_ = msgidcardapplydata;
+  if (msgidcardapplydata) {
+    set_has_msgidcardapplydata();
+  } else {
+    clear_has_msgidcardapplydata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgidcardapplydata)
+}
+
+// optional .netmsg.MsgOnlineStatusData msgonlinestatusdata = 4;
+inline bool MsgPack::has_msgonlinestatusdata() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void MsgPack::set_has_msgonlinestatusdata() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void MsgPack::clear_has_msgonlinestatusdata() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void MsgPack::clear_msgonlinestatusdata() {
+  if (msgonlinestatusdata_ != NULL) msgonlinestatusdata_->::netmsg::MsgOnlineStatusData::Clear();
+  clear_has_msgonlinestatusdata();
+}
+inline const ::netmsg::MsgOnlineStatusData& MsgPack::msgonlinestatusdata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgonlinestatusdata)
+  return msgonlinestatusdata_ != NULL ? *msgonlinestatusdata_ : *default_instance_->msgonlinestatusdata_;
+}
+inline ::netmsg::MsgOnlineStatusData* MsgPack::mutable_msgonlinestatusdata() {
+  set_has_msgonlinestatusdata();
+  if (msgonlinestatusdata_ == NULL) msgonlinestatusdata_ = new ::netmsg::MsgOnlineStatusData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgonlinestatusdata)
+  return msgonlinestatusdata_;
+}
+inline ::netmsg::MsgOnlineStatusData* MsgPack::release_msgonlinestatusdata() {
+  clear_has_msgonlinestatusdata();
+  ::netmsg::MsgOnlineStatusData* temp = msgonlinestatusdata_;
+  msgonlinestatusdata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgonlinestatusdata(::netmsg::MsgOnlineStatusData* msgonlinestatusdata) {
+  delete msgonlinestatusdata_;
+  msgonlinestatusdata_ = msgonlinestatusdata;
+  if (msgonlinestatusdata) {
+    set_has_msgonlinestatusdata();
+  } else {
+    clear_has_msgonlinestatusdata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgonlinestatusdata)
+}
+
+// optional .netmsg.MsgShuLiangHuiZongData msgshulianghuizongdata = 5;
+inline bool MsgPack::has_msgshulianghuizongdata() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void MsgPack::set_has_msgshulianghuizongdata() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void MsgPack::clear_has_msgshulianghuizongdata() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void MsgPack::clear_msgshulianghuizongdata() {
+  if (msgshulianghuizongdata_ != NULL) msgshulianghuizongdata_->::netmsg::MsgShuLiangHuiZongData::Clear();
+  clear_has_msgshulianghuizongdata();
+}
+inline const ::netmsg::MsgShuLiangHuiZongData& MsgPack::msgshulianghuizongdata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgshulianghuizongdata)
+  return msgshulianghuizongdata_ != NULL ? *msgshulianghuizongdata_ : *default_instance_->msgshulianghuizongdata_;
+}
+inline ::netmsg::MsgShuLiangHuiZongData* MsgPack::mutable_msgshulianghuizongdata() {
+  set_has_msgshulianghuizongdata();
+  if (msgshulianghuizongdata_ == NULL) msgshulianghuizongdata_ = new ::netmsg::MsgShuLiangHuiZongData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgshulianghuizongdata)
+  return msgshulianghuizongdata_;
+}
+inline ::netmsg::MsgShuLiangHuiZongData* MsgPack::release_msgshulianghuizongdata() {
+  clear_has_msgshulianghuizongdata();
+  ::netmsg::MsgShuLiangHuiZongData* temp = msgshulianghuizongdata_;
+  msgshulianghuizongdata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgshulianghuizongdata(::netmsg::MsgShuLiangHuiZongData* msgshulianghuizongdata) {
+  delete msgshulianghuizongdata_;
+  msgshulianghuizongdata_ = msgshulianghuizongdata;
+  if (msgshulianghuizongdata) {
+    set_has_msgshulianghuizongdata();
+  } else {
+    clear_has_msgshulianghuizongdata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgshulianghuizongdata)
+}
+
+// optional .netmsg.MsgXiangXiTongJiData msgxiangxitongjidata = 6;
+inline bool MsgPack::has_msgxiangxitongjidata() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void MsgPack::set_has_msgxiangxitongjidata() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void MsgPack::clear_has_msgxiangxitongjidata() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void MsgPack::clear_msgxiangxitongjidata() {
+  if (msgxiangxitongjidata_ != NULL) msgxiangxitongjidata_->::netmsg::MsgXiangXiTongJiData::Clear();
+  clear_has_msgxiangxitongjidata();
+}
+inline const ::netmsg::MsgXiangXiTongJiData& MsgPack::msgxiangxitongjidata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgxiangxitongjidata)
+  return msgxiangxitongjidata_ != NULL ? *msgxiangxitongjidata_ : *default_instance_->msgxiangxitongjidata_;
+}
+inline ::netmsg::MsgXiangXiTongJiData* MsgPack::mutable_msgxiangxitongjidata() {
+  set_has_msgxiangxitongjidata();
+  if (msgxiangxitongjidata_ == NULL) msgxiangxitongjidata_ = new ::netmsg::MsgXiangXiTongJiData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgxiangxitongjidata)
+  return msgxiangxitongjidata_;
+}
+inline ::netmsg::MsgXiangXiTongJiData* MsgPack::release_msgxiangxitongjidata() {
+  clear_has_msgxiangxitongjidata();
+  ::netmsg::MsgXiangXiTongJiData* temp = msgxiangxitongjidata_;
+  msgxiangxitongjidata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgxiangxitongjidata(::netmsg::MsgXiangXiTongJiData* msgxiangxitongjidata) {
+  delete msgxiangxitongjidata_;
+  msgxiangxitongjidata_ = msgxiangxitongjidata;
+  if (msgxiangxitongjidata) {
+    set_has_msgxiangxitongjidata();
+  } else {
+    clear_has_msgxiangxitongjidata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgxiangxitongjidata)
+}
+
+// optional .netmsg.MsgZhiQianShuJuData msgzhiqianshujudata = 7;
+inline bool MsgPack::has_msgzhiqianshujudata() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void MsgPack::set_has_msgzhiqianshujudata() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void MsgPack::clear_has_msgzhiqianshujudata() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void MsgPack::clear_msgzhiqianshujudata() {
+  if (msgzhiqianshujudata_ != NULL) msgzhiqianshujudata_->::netmsg::MsgZhiQianShuJuData::Clear();
+  clear_has_msgzhiqianshujudata();
+}
+inline const ::netmsg::MsgZhiQianShuJuData& MsgPack::msgzhiqianshujudata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgzhiqianshujudata)
+  return msgzhiqianshujudata_ != NULL ? *msgzhiqianshujudata_ : *default_instance_->msgzhiqianshujudata_;
+}
+inline ::netmsg::MsgZhiQianShuJuData* MsgPack::mutable_msgzhiqianshujudata() {
+  set_has_msgzhiqianshujudata();
+  if (msgzhiqianshujudata_ == NULL) msgzhiqianshujudata_ = new ::netmsg::MsgZhiQianShuJuData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgzhiqianshujudata)
+  return msgzhiqianshujudata_;
+}
+inline ::netmsg::MsgZhiQianShuJuData* MsgPack::release_msgzhiqianshujudata() {
+  clear_has_msgzhiqianshujudata();
+  ::netmsg::MsgZhiQianShuJuData* temp = msgzhiqianshujudata_;
+  msgzhiqianshujudata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgzhiqianshujudata(::netmsg::MsgZhiQianShuJuData* msgzhiqianshujudata) {
+  delete msgzhiqianshujudata_;
+  msgzhiqianshujudata_ = msgzhiqianshujudata;
+  if (msgzhiqianshujudata) {
+    set_has_msgzhiqianshujudata();
+  } else {
+    clear_has_msgzhiqianshujudata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgzhiqianshujudata)
+}
+
+// optional .netmsg.MsgShouZhengShuJuData msgshouzhengshujudata = 8;
+inline bool MsgPack::has_msgshouzhengshujudata() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void MsgPack::set_has_msgshouzhengshujudata() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void MsgPack::clear_has_msgshouzhengshujudata() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void MsgPack::clear_msgshouzhengshujudata() {
+  if (msgshouzhengshujudata_ != NULL) msgshouzhengshujudata_->::netmsg::MsgShouZhengShuJuData::Clear();
+  clear_has_msgshouzhengshujudata();
+}
+inline const ::netmsg::MsgShouZhengShuJuData& MsgPack::msgshouzhengshujudata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgshouzhengshujudata)
+  return msgshouzhengshujudata_ != NULL ? *msgshouzhengshujudata_ : *default_instance_->msgshouzhengshujudata_;
+}
+inline ::netmsg::MsgShouZhengShuJuData* MsgPack::mutable_msgshouzhengshujudata() {
+  set_has_msgshouzhengshujudata();
+  if (msgshouzhengshujudata_ == NULL) msgshouzhengshujudata_ = new ::netmsg::MsgShouZhengShuJuData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgshouzhengshujudata)
+  return msgshouzhengshujudata_;
+}
+inline ::netmsg::MsgShouZhengShuJuData* MsgPack::release_msgshouzhengshujudata() {
+  clear_has_msgshouzhengshujudata();
+  ::netmsg::MsgShouZhengShuJuData* temp = msgshouzhengshujudata_;
+  msgshouzhengshujudata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgshouzhengshujudata(::netmsg::MsgShouZhengShuJuData* msgshouzhengshujudata) {
+  delete msgshouzhengshujudata_;
+  msgshouzhengshujudata_ = msgshouzhengshujudata;
+  if (msgshouzhengshujudata) {
+    set_has_msgshouzhengshujudata();
+  } else {
+    clear_has_msgshouzhengshujudata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgshouzhengshujudata)
+}
+
+// optional .netmsg.MsgQianZhuShuJuData msgqianzhushujudata = 9;
+inline bool MsgPack::has_msgqianzhushujudata() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void MsgPack::set_has_msgqianzhushujudata() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void MsgPack::clear_has_msgqianzhushujudata() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void MsgPack::clear_msgqianzhushujudata() {
+  if (msgqianzhushujudata_ != NULL) msgqianzhushujudata_->::netmsg::MsgQianZhuShuJuData::Clear();
+  clear_has_msgqianzhushujudata();
+}
+inline const ::netmsg::MsgQianZhuShuJuData& MsgPack::msgqianzhushujudata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgqianzhushujudata)
+  return msgqianzhushujudata_ != NULL ? *msgqianzhushujudata_ : *default_instance_->msgqianzhushujudata_;
+}
+inline ::netmsg::MsgQianZhuShuJuData* MsgPack::mutable_msgqianzhushujudata() {
+  set_has_msgqianzhushujudata();
+  if (msgqianzhushujudata_ == NULL) msgqianzhushujudata_ = new ::netmsg::MsgQianZhuShuJuData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgqianzhushujudata)
+  return msgqianzhushujudata_;
+}
+inline ::netmsg::MsgQianZhuShuJuData* MsgPack::release_msgqianzhushujudata() {
+  clear_has_msgqianzhushujudata();
+  ::netmsg::MsgQianZhuShuJuData* temp = msgqianzhushujudata_;
+  msgqianzhushujudata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgqianzhushujudata(::netmsg::MsgQianZhuShuJuData* msgqianzhushujudata) {
+  delete msgqianzhushujudata_;
+  msgqianzhushujudata_ = msgqianzhushujudata;
+  if (msgqianzhushujudata) {
+    set_has_msgqianzhushujudata();
+  } else {
+    clear_has_msgqianzhushujudata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgqianzhushujudata)
+}
+
+// optional .netmsg.MsgJiaoKuanShuJuData msgjiaokuanshujudata = 10;
+inline bool MsgPack::has_msgjiaokuanshujudata() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void MsgPack::set_has_msgjiaokuanshujudata() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void MsgPack::clear_has_msgjiaokuanshujudata() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void MsgPack::clear_msgjiaokuanshujudata() {
+  if (msgjiaokuanshujudata_ != NULL) msgjiaokuanshujudata_->::netmsg::MsgJiaoKuanShuJuData::Clear();
+  clear_has_msgjiaokuanshujudata();
+}
+inline const ::netmsg::MsgJiaoKuanShuJuData& MsgPack::msgjiaokuanshujudata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgjiaokuanshujudata)
+  return msgjiaokuanshujudata_ != NULL ? *msgjiaokuanshujudata_ : *default_instance_->msgjiaokuanshujudata_;
+}
+inline ::netmsg::MsgJiaoKuanShuJuData* MsgPack::mutable_msgjiaokuanshujudata() {
+  set_has_msgjiaokuanshujudata();
+  if (msgjiaokuanshujudata_ == NULL) msgjiaokuanshujudata_ = new ::netmsg::MsgJiaoKuanShuJuData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgjiaokuanshujudata)
+  return msgjiaokuanshujudata_;
+}
+inline ::netmsg::MsgJiaoKuanShuJuData* MsgPack::release_msgjiaokuanshujudata() {
+  clear_has_msgjiaokuanshujudata();
+  ::netmsg::MsgJiaoKuanShuJuData* temp = msgjiaokuanshujudata_;
+  msgjiaokuanshujudata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgjiaokuanshujudata(::netmsg::MsgJiaoKuanShuJuData* msgjiaokuanshujudata) {
+  delete msgjiaokuanshujudata_;
+  msgjiaokuanshujudata_ = msgjiaokuanshujudata;
+  if (msgjiaokuanshujudata) {
+    set_has_msgjiaokuanshujudata();
+  } else {
+    clear_has_msgjiaokuanshujudata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgjiaokuanshujudata)
+}
+
+// optional .netmsg.MsgChaXunShuJuData msgchaxunshujudata = 11;
+inline bool MsgPack::has_msgchaxunshujudata() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void MsgPack::set_has_msgchaxunshujudata() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void MsgPack::clear_has_msgchaxunshujudata() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void MsgPack::clear_msgchaxunshujudata() {
+  if (msgchaxunshujudata_ != NULL) msgchaxunshujudata_->::netmsg::MsgChaXunShuJuData::Clear();
+  clear_has_msgchaxunshujudata();
+}
+inline const ::netmsg::MsgChaXunShuJuData& MsgPack::msgchaxunshujudata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgchaxunshujudata)
+  return msgchaxunshujudata_ != NULL ? *msgchaxunshujudata_ : *default_instance_->msgchaxunshujudata_;
+}
+inline ::netmsg::MsgChaXunShuJuData* MsgPack::mutable_msgchaxunshujudata() {
+  set_has_msgchaxunshujudata();
+  if (msgchaxunshujudata_ == NULL) msgchaxunshujudata_ = new ::netmsg::MsgChaXunShuJuData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgchaxunshujudata)
+  return msgchaxunshujudata_;
+}
+inline ::netmsg::MsgChaXunShuJuData* MsgPack::release_msgchaxunshujudata() {
+  clear_has_msgchaxunshujudata();
+  ::netmsg::MsgChaXunShuJuData* temp = msgchaxunshujudata_;
+  msgchaxunshujudata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgchaxunshujudata(::netmsg::MsgChaXunShuJuData* msgchaxunshujudata) {
+  delete msgchaxunshujudata_;
+  msgchaxunshujudata_ = msgchaxunshujudata;
+  if (msgchaxunshujudata) {
+    set_has_msgchaxunshujudata();
+  } else {
+    clear_has_msgchaxunshujudata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgchaxunshujudata)
+}
+
+// optional .netmsg.MsgYuShouLiShuJuData msgyushoulishujudata = 12;
+inline bool MsgPack::has_msgyushoulishujudata() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void MsgPack::set_has_msgyushoulishujudata() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void MsgPack::clear_has_msgyushoulishujudata() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void MsgPack::clear_msgyushoulishujudata() {
+  if (msgyushoulishujudata_ != NULL) msgyushoulishujudata_->::netmsg::MsgYuShouLiShuJuData::Clear();
+  clear_has_msgyushoulishujudata();
+}
+inline const ::netmsg::MsgYuShouLiShuJuData& MsgPack::msgyushoulishujudata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgyushoulishujudata)
+  return msgyushoulishujudata_ != NULL ? *msgyushoulishujudata_ : *default_instance_->msgyushoulishujudata_;
+}
+inline ::netmsg::MsgYuShouLiShuJuData* MsgPack::mutable_msgyushoulishujudata() {
+  set_has_msgyushoulishujudata();
+  if (msgyushoulishujudata_ == NULL) msgyushoulishujudata_ = new ::netmsg::MsgYuShouLiShuJuData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgyushoulishujudata)
+  return msgyushoulishujudata_;
+}
+inline ::netmsg::MsgYuShouLiShuJuData* MsgPack::release_msgyushoulishujudata() {
+  clear_has_msgyushoulishujudata();
+  ::netmsg::MsgYuShouLiShuJuData* temp = msgyushoulishujudata_;
+  msgyushoulishujudata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgyushoulishujudata(::netmsg::MsgYuShouLiShuJuData* msgyushoulishujudata) {
+  delete msgyushoulishujudata_;
+  msgyushoulishujudata_ = msgyushoulishujudata;
+  if (msgyushoulishujudata) {
+    set_has_msgyushoulishujudata();
+  } else {
+    clear_has_msgyushoulishujudata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgyushoulishujudata)
+}
+
+// optional .netmsg.MsgSheBeiYiChangShuJuData msgshebeiyichangshujudata = 13;
+inline bool MsgPack::has_msgshebeiyichangshujudata() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void MsgPack::set_has_msgshebeiyichangshujudata() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void MsgPack::clear_has_msgshebeiyichangshujudata() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void MsgPack::clear_msgshebeiyichangshujudata() {
+  if (msgshebeiyichangshujudata_ != NULL) msgshebeiyichangshujudata_->::netmsg::MsgSheBeiYiChangShuJuData::Clear();
+  clear_has_msgshebeiyichangshujudata();
+}
+inline const ::netmsg::MsgSheBeiYiChangShuJuData& MsgPack::msgshebeiyichangshujudata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgshebeiyichangshujudata)
+  return msgshebeiyichangshujudata_ != NULL ? *msgshebeiyichangshujudata_ : *default_instance_->msgshebeiyichangshujudata_;
+}
+inline ::netmsg::MsgSheBeiYiChangShuJuData* MsgPack::mutable_msgshebeiyichangshujudata() {
+  set_has_msgshebeiyichangshujudata();
+  if (msgshebeiyichangshujudata_ == NULL) msgshebeiyichangshujudata_ = new ::netmsg::MsgSheBeiYiChangShuJuData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgshebeiyichangshujudata)
+  return msgshebeiyichangshujudata_;
+}
+inline ::netmsg::MsgSheBeiYiChangShuJuData* MsgPack::release_msgshebeiyichangshujudata() {
+  clear_has_msgshebeiyichangshujudata();
+  ::netmsg::MsgSheBeiYiChangShuJuData* temp = msgshebeiyichangshujudata_;
+  msgshebeiyichangshujudata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgshebeiyichangshujudata(::netmsg::MsgSheBeiYiChangShuJuData* msgshebeiyichangshujudata) {
+  delete msgshebeiyichangshujudata_;
+  msgshebeiyichangshujudata_ = msgshebeiyichangshujudata;
+  if (msgshebeiyichangshujudata) {
+    set_has_msgshebeiyichangshujudata();
+  } else {
+    clear_has_msgshebeiyichangshujudata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgshebeiyichangshujudata)
+}
+
+// optional .netmsg.MsgGuanLiYuanData msgguanliyuandata = 14;
+inline bool MsgPack::has_msgguanliyuandata() const {
+  return (_has_bits_[0] & 0x00002000u) != 0;
+}
+inline void MsgPack::set_has_msgguanliyuandata() {
+  _has_bits_[0] |= 0x00002000u;
+}
+inline void MsgPack::clear_has_msgguanliyuandata() {
+  _has_bits_[0] &= ~0x00002000u;
+}
+inline void MsgPack::clear_msgguanliyuandata() {
+  if (msgguanliyuandata_ != NULL) msgguanliyuandata_->::netmsg::MsgGuanLiYuanData::Clear();
+  clear_has_msgguanliyuandata();
+}
+inline const ::netmsg::MsgGuanLiYuanData& MsgPack::msgguanliyuandata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgguanliyuandata)
+  return msgguanliyuandata_ != NULL ? *msgguanliyuandata_ : *default_instance_->msgguanliyuandata_;
+}
+inline ::netmsg::MsgGuanLiYuanData* MsgPack::mutable_msgguanliyuandata() {
+  set_has_msgguanliyuandata();
+  if (msgguanliyuandata_ == NULL) msgguanliyuandata_ = new ::netmsg::MsgGuanLiYuanData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgguanliyuandata)
+  return msgguanliyuandata_;
+}
+inline ::netmsg::MsgGuanLiYuanData* MsgPack::release_msgguanliyuandata() {
+  clear_has_msgguanliyuandata();
+  ::netmsg::MsgGuanLiYuanData* temp = msgguanliyuandata_;
+  msgguanliyuandata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgguanliyuandata(::netmsg::MsgGuanLiYuanData* msgguanliyuandata) {
+  delete msgguanliyuandata_;
+  msgguanliyuandata_ = msgguanliyuandata;
+  if (msgguanliyuandata) {
+    set_has_msgguanliyuandata();
+  } else {
+    clear_has_msgguanliyuandata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgguanliyuandata)
+}
+
+// optional .netmsg.MsgGuanLiYuanCaoZuoJiLuData msgguanliyuancaozuojiludata = 15;
+inline bool MsgPack::has_msgguanliyuancaozuojiludata() const {
+  return (_has_bits_[0] & 0x00004000u) != 0;
+}
+inline void MsgPack::set_has_msgguanliyuancaozuojiludata() {
+  _has_bits_[0] |= 0x00004000u;
+}
+inline void MsgPack::clear_has_msgguanliyuancaozuojiludata() {
+  _has_bits_[0] &= ~0x00004000u;
+}
+inline void MsgPack::clear_msgguanliyuancaozuojiludata() {
+  if (msgguanliyuancaozuojiludata_ != NULL) msgguanliyuancaozuojiludata_->::netmsg::MsgGuanLiYuanCaoZuoJiLuData::Clear();
+  clear_has_msgguanliyuancaozuojiludata();
+}
+inline const ::netmsg::MsgGuanLiYuanCaoZuoJiLuData& MsgPack::msgguanliyuancaozuojiludata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgguanliyuancaozuojiludata)
+  return msgguanliyuancaozuojiludata_ != NULL ? *msgguanliyuancaozuojiludata_ : *default_instance_->msgguanliyuancaozuojiludata_;
+}
+inline ::netmsg::MsgGuanLiYuanCaoZuoJiLuData* MsgPack::mutable_msgguanliyuancaozuojiludata() {
+  set_has_msgguanliyuancaozuojiludata();
+  if (msgguanliyuancaozuojiludata_ == NULL) msgguanliyuancaozuojiludata_ = new ::netmsg::MsgGuanLiYuanCaoZuoJiLuData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgguanliyuancaozuojiludata)
+  return msgguanliyuancaozuojiludata_;
+}
+inline ::netmsg::MsgGuanLiYuanCaoZuoJiLuData* MsgPack::release_msgguanliyuancaozuojiludata() {
+  clear_has_msgguanliyuancaozuojiludata();
+  ::netmsg::MsgGuanLiYuanCaoZuoJiLuData* temp = msgguanliyuancaozuojiludata_;
+  msgguanliyuancaozuojiludata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgguanliyuancaozuojiludata(::netmsg::MsgGuanLiYuanCaoZuoJiLuData* msgguanliyuancaozuojiludata) {
+  delete msgguanliyuancaozuojiludata_;
+  msgguanliyuancaozuojiludata_ = msgguanliyuancaozuojiludata;
+  if (msgguanliyuancaozuojiludata) {
+    set_has_msgguanliyuancaozuojiludata();
+  } else {
+    clear_has_msgguanliyuancaozuojiludata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgguanliyuancaozuojiludata)
+}
+
+// optional .netmsg.MsgSheBeiGuanLiData msgshebeiguanlidata = 16;
+inline bool MsgPack::has_msgshebeiguanlidata() const {
+  return (_has_bits_[0] & 0x00008000u) != 0;
+}
+inline void MsgPack::set_has_msgshebeiguanlidata() {
+  _has_bits_[0] |= 0x00008000u;
+}
+inline void MsgPack::clear_has_msgshebeiguanlidata() {
+  _has_bits_[0] &= ~0x00008000u;
+}
+inline void MsgPack::clear_msgshebeiguanlidata() {
+  if (msgshebeiguanlidata_ != NULL) msgshebeiguanlidata_->::netmsg::MsgSheBeiGuanLiData::Clear();
+  clear_has_msgshebeiguanlidata();
+}
+inline const ::netmsg::MsgSheBeiGuanLiData& MsgPack::msgshebeiguanlidata() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.msgshebeiguanlidata)
+  return msgshebeiguanlidata_ != NULL ? *msgshebeiguanlidata_ : *default_instance_->msgshebeiguanlidata_;
+}
+inline ::netmsg::MsgSheBeiGuanLiData* MsgPack::mutable_msgshebeiguanlidata() {
+  set_has_msgshebeiguanlidata();
+  if (msgshebeiguanlidata_ == NULL) msgshebeiguanlidata_ = new ::netmsg::MsgSheBeiGuanLiData;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.msgshebeiguanlidata)
+  return msgshebeiguanlidata_;
+}
+inline ::netmsg::MsgSheBeiGuanLiData* MsgPack::release_msgshebeiguanlidata() {
+  clear_has_msgshebeiguanlidata();
+  ::netmsg::MsgSheBeiGuanLiData* temp = msgshebeiguanlidata_;
+  msgshebeiguanlidata_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_msgshebeiguanlidata(::netmsg::MsgSheBeiGuanLiData* msgshebeiguanlidata) {
+  delete msgshebeiguanlidata_;
+  msgshebeiguanlidata_ = msgshebeiguanlidata;
+  if (msgshebeiguanlidata) {
+    set_has_msgshebeiguanlidata();
+  } else {
+    clear_has_msgshebeiguanlidata();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.msgshebeiguanlidata)
+}
+
+// -------------------------------------------------------------------
 
 // MsgHead
 
@@ -3374,102 +4116,61 @@ inline void MsgHead::set_packtype(::netmsg::NetMsgType value) {
 
 // -------------------------------------------------------------------
 
-// MsgString
-
-// required .netmsg.MsgHead head = 1;
-inline bool MsgString::has_head() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void MsgString::set_has_head() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void MsgString::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgString::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgString::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgString.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgString::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgString.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgString::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgString::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgString.head)
-}
+// MsgCmd
 
 // required string Cmd = 2;
-inline bool MsgString::has_cmd() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+inline bool MsgCmd::has_cmd() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgString::set_has_cmd() {
-  _has_bits_[0] |= 0x00000002u;
+inline void MsgCmd::set_has_cmd() {
+  _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgString::clear_has_cmd() {
-  _has_bits_[0] &= ~0x00000002u;
+inline void MsgCmd::clear_has_cmd() {
+  _has_bits_[0] &= ~0x00000001u;
 }
-inline void MsgString::clear_cmd() {
+inline void MsgCmd::clear_cmd() {
   if (cmd_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     cmd_->clear();
   }
   clear_has_cmd();
 }
-inline const ::std::string& MsgString::cmd() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgString.Cmd)
+inline const ::std::string& MsgCmd::cmd() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgCmd.Cmd)
   return *cmd_;
 }
-inline void MsgString::set_cmd(const ::std::string& value) {
+inline void MsgCmd::set_cmd(const ::std::string& value) {
   set_has_cmd();
   if (cmd_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     cmd_ = new ::std::string;
   }
   cmd_->assign(value);
-  // @@protoc_insertion_point(field_set:netmsg.MsgString.Cmd)
+  // @@protoc_insertion_point(field_set:netmsg.MsgCmd.Cmd)
 }
-inline void MsgString::set_cmd(const char* value) {
+inline void MsgCmd::set_cmd(const char* value) {
   set_has_cmd();
   if (cmd_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     cmd_ = new ::std::string;
   }
   cmd_->assign(value);
-  // @@protoc_insertion_point(field_set_char:netmsg.MsgString.Cmd)
+  // @@protoc_insertion_point(field_set_char:netmsg.MsgCmd.Cmd)
 }
-inline void MsgString::set_cmd(const char* value, size_t size) {
+inline void MsgCmd::set_cmd(const char* value, size_t size) {
   set_has_cmd();
   if (cmd_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     cmd_ = new ::std::string;
   }
   cmd_->assign(reinterpret_cast<const char*>(value), size);
-  // @@protoc_insertion_point(field_set_pointer:netmsg.MsgString.Cmd)
+  // @@protoc_insertion_point(field_set_pointer:netmsg.MsgCmd.Cmd)
 }
-inline ::std::string* MsgString::mutable_cmd() {
+inline ::std::string* MsgCmd::mutable_cmd() {
   set_has_cmd();
   if (cmd_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     cmd_ = new ::std::string;
   }
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgString.Cmd)
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgCmd.Cmd)
   return cmd_;
 }
-inline ::std::string* MsgString::release_cmd() {
+inline ::std::string* MsgCmd::release_cmd() {
   clear_has_cmd();
   if (cmd_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     return NULL;
@@ -3479,7 +4180,7 @@ inline ::std::string* MsgString::release_cmd() {
     return temp;
   }
 }
-inline void MsgString::set_allocated_cmd(::std::string* cmd) {
+inline void MsgCmd::set_allocated_cmd(::std::string* cmd) {
   if (cmd_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
     delete cmd_;
   }
@@ -3490,63 +4191,22 @@ inline void MsgString::set_allocated_cmd(::std::string* cmd) {
     clear_has_cmd();
     cmd_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgString.Cmd)
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgCmd.Cmd)
 }
 
 // -------------------------------------------------------------------
 
 // MsgIdCardApplyData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgIdCardApplyData::has_head() const {
+// optional string name = 1;
+inline bool MsgIdCardApplyData::has_name() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgIdCardApplyData::set_has_head() {
+inline void MsgIdCardApplyData::set_has_name() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgIdCardApplyData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgIdCardApplyData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgIdCardApplyData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgIdCardApplyData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgIdCardApplyData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgIdCardApplyData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgIdCardApplyData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgIdCardApplyData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.head)
-}
-
-// optional string name = 2;
-inline bool MsgIdCardApplyData::has_name() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgIdCardApplyData::set_has_name() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgIdCardApplyData::clear_has_name() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgIdCardApplyData::clear_name() {
   if (name_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -3614,15 +4274,15 @@ inline void MsgIdCardApplyData::set_allocated_name(::std::string* name) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.name)
 }
 
-// optional string gender = 3;
+// optional string gender = 2;
 inline bool MsgIdCardApplyData::has_gender() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_gender() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgIdCardApplyData::clear_has_gender() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgIdCardApplyData::clear_gender() {
   if (gender_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -3690,15 +4350,15 @@ inline void MsgIdCardApplyData::set_allocated_gender(::std::string* gender) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.gender)
 }
 
-// optional string Nation = 4;
+// optional string Nation = 3;
 inline bool MsgIdCardApplyData::has_nation() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_nation() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgIdCardApplyData::clear_has_nation() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgIdCardApplyData::clear_nation() {
   if (nation_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -3766,15 +4426,15 @@ inline void MsgIdCardApplyData::set_allocated_nation(::std::string* nation) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.Nation)
 }
 
-// optional string Birthday = 5;
+// optional string Birthday = 4;
 inline bool MsgIdCardApplyData::has_birthday() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_birthday() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgIdCardApplyData::clear_has_birthday() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgIdCardApplyData::clear_birthday() {
   if (birthday_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -3842,15 +4502,15 @@ inline void MsgIdCardApplyData::set_allocated_birthday(::std::string* birthday) 
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.Birthday)
 }
 
-// optional string Address = 6;
+// optional string Address = 5;
 inline bool MsgIdCardApplyData::has_address() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_address() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgIdCardApplyData::clear_has_address() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgIdCardApplyData::clear_address() {
   if (address_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -3918,15 +4578,15 @@ inline void MsgIdCardApplyData::set_allocated_address(::std::string* address) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.Address)
 }
 
-// optional string IdNumber = 7;
+// optional string IdNumber = 6;
 inline bool MsgIdCardApplyData::has_idnumber() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_idnumber() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgIdCardApplyData::clear_has_idnumber() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgIdCardApplyData::clear_idnumber() {
   if (idnumber_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -3994,15 +4654,15 @@ inline void MsgIdCardApplyData::set_allocated_idnumber(::std::string* idnumber) 
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.IdNumber)
 }
 
-// optional string SigDepart = 8;
+// optional string SigDepart = 7;
 inline bool MsgIdCardApplyData::has_sigdepart() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_sigdepart() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgIdCardApplyData::clear_has_sigdepart() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgIdCardApplyData::clear_sigdepart() {
   if (sigdepart_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4070,15 +4730,15 @@ inline void MsgIdCardApplyData::set_allocated_sigdepart(::std::string* sigdepart
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.SigDepart)
 }
 
-// optional string SLH = 9;
+// optional string SLH = 8;
 inline bool MsgIdCardApplyData::has_slh() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_slh() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgIdCardApplyData::clear_has_slh() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgIdCardApplyData::clear_slh() {
   if (slh_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4146,15 +4806,15 @@ inline void MsgIdCardApplyData::set_allocated_slh(::std::string* slh) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.SLH)
 }
 
-// optional string fpData = 10;
+// optional string fpData = 9;
 inline bool MsgIdCardApplyData::has_fpdata() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_fpdata() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void MsgIdCardApplyData::clear_has_fpdata() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void MsgIdCardApplyData::clear_fpdata() {
   if (fpdata_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4222,15 +4882,15 @@ inline void MsgIdCardApplyData::set_allocated_fpdata(::std::string* fpdata) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.fpData)
 }
 
-// optional string fpFeature = 11;
+// optional string fpFeature = 10;
 inline bool MsgIdCardApplyData::has_fpfeature() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_fpfeature() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void MsgIdCardApplyData::clear_has_fpfeature() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void MsgIdCardApplyData::clear_fpfeature() {
   if (fpfeature_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4298,15 +4958,15 @@ inline void MsgIdCardApplyData::set_allocated_fpfeature(::std::string* fpfeature
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.fpFeature)
 }
 
-// optional string XCZP = 12;
+// optional string XCZP = 11;
 inline bool MsgIdCardApplyData::has_xczp() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_xczp() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void MsgIdCardApplyData::clear_has_xczp() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void MsgIdCardApplyData::clear_xczp() {
   if (xczp_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4374,15 +5034,15 @@ inline void MsgIdCardApplyData::set_allocated_xczp(::std::string* xczp) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.XCZP)
 }
 
-// optional string XZQH = 13;
+// optional string XZQH = 12;
 inline bool MsgIdCardApplyData::has_xzqh() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_xzqh() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void MsgIdCardApplyData::clear_has_xzqh() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void MsgIdCardApplyData::clear_xzqh() {
   if (xzqh_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4450,15 +5110,15 @@ inline void MsgIdCardApplyData::set_allocated_xzqh(::std::string* xzqh) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.XZQH)
 }
 
-// optional string sannerId = 14;
+// optional string sannerId = 13;
 inline bool MsgIdCardApplyData::has_sannerid() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_sannerid() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void MsgIdCardApplyData::clear_has_sannerid() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void MsgIdCardApplyData::clear_sannerid() {
   if (sannerid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4526,15 +5186,15 @@ inline void MsgIdCardApplyData::set_allocated_sannerid(::std::string* sannerid) 
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.sannerId)
 }
 
-// optional string scannerName = 15;
+// optional string scannerName = 14;
 inline bool MsgIdCardApplyData::has_scannername() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_scannername() {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00002000u;
 }
 inline void MsgIdCardApplyData::clear_has_scannername() {
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline void MsgIdCardApplyData::clear_scannername() {
   if (scannername_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4602,15 +5262,15 @@ inline void MsgIdCardApplyData::set_allocated_scannername(::std::string* scanner
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.scannerName)
 }
 
-// optional bool legal = 16;
+// optional bool legal = 15;
 inline bool MsgIdCardApplyData::has_legal() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_legal() {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00004000u;
 }
 inline void MsgIdCardApplyData::clear_has_legal() {
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline void MsgIdCardApplyData::clear_legal() {
   legal_ = false;
@@ -4626,15 +5286,15 @@ inline void MsgIdCardApplyData::set_legal(bool value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgIdCardApplyData.legal)
 }
 
-// optional string operatorID = 17;
+// optional string operatorID = 16;
 inline bool MsgIdCardApplyData::has_operatorid() const {
-  return (_has_bits_[0] & 0x00010000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_operatorid() {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00008000u;
 }
 inline void MsgIdCardApplyData::clear_has_operatorid() {
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline void MsgIdCardApplyData::clear_operatorid() {
   if (operatorid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4702,15 +5362,15 @@ inline void MsgIdCardApplyData::set_allocated_operatorid(::std::string* operator
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.operatorID)
 }
 
-// optional string operatorName = 18;
+// optional string operatorName = 17;
 inline bool MsgIdCardApplyData::has_operatorname() const {
-  return (_has_bits_[0] & 0x00020000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_operatorname() {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00010000u;
 }
 inline void MsgIdCardApplyData::clear_has_operatorname() {
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline void MsgIdCardApplyData::clear_operatorname() {
   if (operatorname_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4778,15 +5438,15 @@ inline void MsgIdCardApplyData::set_allocated_operatorname(::std::string* operat
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgIdCardApplyData.operatorName)
 }
 
-// optional string opDate = 19;
+// optional string opDate = 18;
 inline bool MsgIdCardApplyData::has_opdate() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00020000u) != 0;
 }
 inline void MsgIdCardApplyData::set_has_opdate() {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00020000u;
 }
 inline void MsgIdCardApplyData::clear_has_opdate() {
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00020000u;
 }
 inline void MsgIdCardApplyData::clear_opdate() {
   if (opdate_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4858,56 +5518,15 @@ inline void MsgIdCardApplyData::set_allocated_opdate(::std::string* opdate) {
 
 // MsgOnlineStatusData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgOnlineStatusData::has_head() const {
+// optional string machineId = 1;
+inline bool MsgOnlineStatusData::has_machineid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgOnlineStatusData::set_has_head() {
+inline void MsgOnlineStatusData::set_has_machineid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgOnlineStatusData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgOnlineStatusData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgOnlineStatusData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgOnlineStatusData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgOnlineStatusData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgOnlineStatusData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgOnlineStatusData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgOnlineStatusData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgOnlineStatusData.head)
-}
-
-// optional string machineId = 2;
-inline bool MsgOnlineStatusData::has_machineid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgOnlineStatusData::set_has_machineid() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgOnlineStatusData::clear_has_machineid() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgOnlineStatusData::clear_machineid() {
   if (machineid_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -4975,15 +5594,15 @@ inline void MsgOnlineStatusData::set_allocated_machineid(::std::string* machinei
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgOnlineStatusData.machineId)
 }
 
-// optional string machineName = 3;
+// optional string machineName = 2;
 inline bool MsgOnlineStatusData::has_machinename() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgOnlineStatusData::set_has_machinename() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgOnlineStatusData::clear_has_machinename() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgOnlineStatusData::clear_machinename() {
   if (machinename_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -5051,15 +5670,15 @@ inline void MsgOnlineStatusData::set_allocated_machinename(::std::string* machin
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgOnlineStatusData.machineName)
 }
 
-// optional string machineIP = 4;
+// optional string machineIP = 3;
 inline bool MsgOnlineStatusData::has_machineip() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgOnlineStatusData::set_has_machineip() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgOnlineStatusData::clear_has_machineip() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgOnlineStatusData::clear_machineip() {
   if (machineip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -5127,15 +5746,15 @@ inline void MsgOnlineStatusData::set_allocated_machineip(::std::string* machinei
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgOnlineStatusData.machineIP)
 }
 
-// optional string machineLongi = 5;
+// optional string machineLongi = 4;
 inline bool MsgOnlineStatusData::has_machinelongi() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgOnlineStatusData::set_has_machinelongi() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgOnlineStatusData::clear_has_machinelongi() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgOnlineStatusData::clear_machinelongi() {
   if (machinelongi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -5203,15 +5822,15 @@ inline void MsgOnlineStatusData::set_allocated_machinelongi(::std::string* machi
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgOnlineStatusData.machineLongi)
 }
 
-// optional string machineLat = 6;
+// optional string machineLat = 5;
 inline bool MsgOnlineStatusData::has_machinelat() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgOnlineStatusData::set_has_machinelat() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgOnlineStatusData::clear_has_machinelat() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgOnlineStatusData::clear_machinelat() {
   if (machinelat_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -5279,15 +5898,15 @@ inline void MsgOnlineStatusData::set_allocated_machinelat(::std::string* machine
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgOnlineStatusData.machineLat)
 }
 
-// optional string currentBusiness = 7;
+// optional string currentBusiness = 6;
 inline bool MsgOnlineStatusData::has_currentbusiness() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgOnlineStatusData::set_has_currentbusiness() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgOnlineStatusData::clear_has_currentbusiness() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgOnlineStatusData::clear_currentbusiness() {
   if (currentbusiness_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -5355,15 +5974,15 @@ inline void MsgOnlineStatusData::set_allocated_currentbusiness(::std::string* cu
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgOnlineStatusData.currentBusiness)
 }
 
-// optional string businessStartTime = 8;
+// optional string businessStartTime = 7;
 inline bool MsgOnlineStatusData::has_businessstarttime() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgOnlineStatusData::set_has_businessstarttime() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgOnlineStatusData::clear_has_businessstarttime() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgOnlineStatusData::clear_businessstarttime() {
   if (businessstarttime_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -5431,15 +6050,15 @@ inline void MsgOnlineStatusData::set_allocated_businessstarttime(::std::string* 
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgOnlineStatusData.businessStartTime)
 }
 
-// optional string businessEndTime = 9;
+// optional string businessEndTime = 8;
 inline bool MsgOnlineStatusData::has_businessendtime() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgOnlineStatusData::set_has_businessendtime() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgOnlineStatusData::clear_has_businessendtime() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgOnlineStatusData::clear_businessendtime() {
   if (businessendtime_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -5507,15 +6126,15 @@ inline void MsgOnlineStatusData::set_allocated_businessendtime(::std::string* bu
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgOnlineStatusData.businessEndTime)
 }
 
-// optional bool businessDone = 10;
+// optional bool businessDone = 9;
 inline bool MsgOnlineStatusData::has_businessdone() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void MsgOnlineStatusData::set_has_businessdone() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void MsgOnlineStatusData::clear_has_businessdone() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void MsgOnlineStatusData::clear_businessdone() {
   businessdone_ = false;
@@ -5535,56 +6154,15 @@ inline void MsgOnlineStatusData::set_businessdone(bool value) {
 
 // MsgShuLiangHuiZongData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgShuLiangHuiZongData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgShuLiangHuiZongData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgShuLiangHuiZongData::set_has_head() {
+inline void MsgShuLiangHuiZongData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgShuLiangHuiZongData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgShuLiangHuiZongData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgShuLiangHuiZongData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgShuLiangHuiZongData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgShuLiangHuiZongData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgShuLiangHuiZongData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgShuLiangHuiZongData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgShuLiangHuiZongData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgShuLiangHuiZongData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgShuLiangHuiZongData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgShuLiangHuiZongData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgShuLiangHuiZongData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgShuLiangHuiZongData::clear_xuhao() {
   xuhao_ = 0;
@@ -5600,15 +6178,15 @@ inline void MsgShuLiangHuiZongData::set_xuhao(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Xuhao)
 }
 
-// optional int32 Shiyongdanwei = 3;
+// optional int32 Shiyongdanwei = 2;
 inline bool MsgShuLiangHuiZongData::has_shiyongdanwei() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_shiyongdanwei() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_shiyongdanwei() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgShuLiangHuiZongData::clear_shiyongdanwei() {
   shiyongdanwei_ = 0;
@@ -5624,15 +6202,15 @@ inline void MsgShuLiangHuiZongData::set_shiyongdanwei(::google::protobuf::int32 
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Shiyongdanwei)
 }
 
-// optional int32 Shebeizongshuliang = 4;
+// optional int32 Shebeizongshuliang = 3;
 inline bool MsgShuLiangHuiZongData::has_shebeizongshuliang() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_shebeizongshuliang() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_shebeizongshuliang() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgShuLiangHuiZongData::clear_shebeizongshuliang() {
   shebeizongshuliang_ = 0;
@@ -5648,15 +6226,15 @@ inline void MsgShuLiangHuiZongData::set_shebeizongshuliang(::google::protobuf::i
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Shebeizongshuliang)
 }
 
-// optional int32 Qiyongshebei = 5;
+// optional int32 Qiyongshebei = 4;
 inline bool MsgShuLiangHuiZongData::has_qiyongshebei() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_qiyongshebei() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_qiyongshebei() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgShuLiangHuiZongData::clear_qiyongshebei() {
   qiyongshebei_ = 0;
@@ -5672,15 +6250,15 @@ inline void MsgShuLiangHuiZongData::set_qiyongshebei(::google::protobuf::int32 v
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Qiyongshebei)
 }
 
-// optional int32 Yuyueyewu = 6;
+// optional int32 Yuyueyewu = 5;
 inline bool MsgShuLiangHuiZongData::has_yuyueyewu() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_yuyueyewu() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_yuyueyewu() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgShuLiangHuiZongData::clear_yuyueyewu() {
   yuyueyewu_ = 0;
@@ -5696,15 +6274,15 @@ inline void MsgShuLiangHuiZongData::set_yuyueyewu(::google::protobuf::int32 valu
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Yuyueyewu)
 }
 
-// optional int32 Yushouliyewu = 7;
+// optional int32 Yushouliyewu = 6;
 inline bool MsgShuLiangHuiZongData::has_yushouliyewu() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_yushouliyewu() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_yushouliyewu() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgShuLiangHuiZongData::clear_yushouliyewu() {
   yushouliyewu_ = 0;
@@ -5720,15 +6298,15 @@ inline void MsgShuLiangHuiZongData::set_yushouliyewu(::google::protobuf::int32 v
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Yushouliyewu)
 }
 
-// optional int32 Jiaofeiyewu = 8;
+// optional int32 Jiaofeiyewu = 7;
 inline bool MsgShuLiangHuiZongData::has_jiaofeiyewu() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_jiaofeiyewu() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_jiaofeiyewu() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgShuLiangHuiZongData::clear_jiaofeiyewu() {
   jiaofeiyewu_ = 0;
@@ -5744,15 +6322,15 @@ inline void MsgShuLiangHuiZongData::set_jiaofeiyewu(::google::protobuf::int32 va
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Jiaofeiyewu)
 }
 
-// optional int32 Chaxunyewu = 9;
+// optional int32 Chaxunyewu = 8;
 inline bool MsgShuLiangHuiZongData::has_chaxunyewu() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_chaxunyewu() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_chaxunyewu() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgShuLiangHuiZongData::clear_chaxunyewu() {
   chaxunyewu_ = 0;
@@ -5768,15 +6346,15 @@ inline void MsgShuLiangHuiZongData::set_chaxunyewu(::google::protobuf::int32 val
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Chaxunyewu)
 }
 
-// optional int32 Shebeishouzheng = 10;
+// optional int32 Shebeishouzheng = 9;
 inline bool MsgShuLiangHuiZongData::has_shebeishouzheng() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_shebeishouzheng() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_shebeishouzheng() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void MsgShuLiangHuiZongData::clear_shebeishouzheng() {
   shebeishouzheng_ = 0;
@@ -5792,15 +6370,15 @@ inline void MsgShuLiangHuiZongData::set_shebeishouzheng(::google::protobuf::int3
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Shebeishouzheng)
 }
 
-// optional int32 Xuqianyewu = 11;
+// optional int32 Xuqianyewu = 10;
 inline bool MsgShuLiangHuiZongData::has_xuqianyewu() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_xuqianyewu() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_xuqianyewu() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void MsgShuLiangHuiZongData::clear_xuqianyewu() {
   xuqianyewu_ = 0;
@@ -5816,15 +6394,15 @@ inline void MsgShuLiangHuiZongData::set_xuqianyewu(::google::protobuf::int32 val
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Xuqianyewu)
 }
 
-// optional int32 Benshitongxingzheng = 12;
+// optional int32 Benshitongxingzheng = 11;
 inline bool MsgShuLiangHuiZongData::has_benshitongxingzheng() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_benshitongxingzheng() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_benshitongxingzheng() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void MsgShuLiangHuiZongData::clear_benshitongxingzheng() {
   benshitongxingzheng_ = 0;
@@ -5840,15 +6418,15 @@ inline void MsgShuLiangHuiZongData::set_benshitongxingzheng(::google::protobuf::
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Benshitongxingzheng)
 }
 
-// optional int32 Dianzitongxingzheng = 13;
+// optional int32 Dianzitongxingzheng = 12;
 inline bool MsgShuLiangHuiZongData::has_dianzitongxingzheng() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_dianzitongxingzheng() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_dianzitongxingzheng() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void MsgShuLiangHuiZongData::clear_dianzitongxingzheng() {
   dianzitongxingzheng_ = 0;
@@ -5864,15 +6442,15 @@ inline void MsgShuLiangHuiZongData::set_dianzitongxingzheng(::google::protobuf::
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Dianzitongxingzheng)
 }
 
-// optional int32 Tongxingzhengzhika = 14;
+// optional int32 Tongxingzhengzhika = 13;
 inline bool MsgShuLiangHuiZongData::has_tongxingzhengzhika() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_tongxingzhengzhika() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_tongxingzhengzhika() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void MsgShuLiangHuiZongData::clear_tongxingzhengzhika() {
   tongxingzhengzhika_ = 0;
@@ -5888,15 +6466,15 @@ inline void MsgShuLiangHuiZongData::set_tongxingzhengzhika(::google::protobuf::i
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Tongxingzhengzhika)
 }
 
-// optional int32 Lidengkequ = 15;
+// optional int32 Lidengkequ = 14;
 inline bool MsgShuLiangHuiZongData::has_lidengkequ() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_lidengkequ() {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00002000u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_lidengkequ() {
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline void MsgShuLiangHuiZongData::clear_lidengkequ() {
   lidengkequ_ = 0;
@@ -5912,15 +6490,15 @@ inline void MsgShuLiangHuiZongData::set_lidengkequ(::google::protobuf::int32 val
   // @@protoc_insertion_point(field_set:netmsg.MsgShuLiangHuiZongData.Lidengkequ)
 }
 
-// optional int32 Feilidengkequ = 16;
+// optional int32 Feilidengkequ = 15;
 inline bool MsgShuLiangHuiZongData::has_feilidengkequ() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void MsgShuLiangHuiZongData::set_has_feilidengkequ() {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00004000u;
 }
 inline void MsgShuLiangHuiZongData::clear_has_feilidengkequ() {
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline void MsgShuLiangHuiZongData::clear_feilidengkequ() {
   feilidengkequ_ = 0;
@@ -5940,56 +6518,15 @@ inline void MsgShuLiangHuiZongData::set_feilidengkequ(::google::protobuf::int32 
 
 // MsgXiangXiTongJiData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgXiangXiTongJiData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgXiangXiTongJiData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgXiangXiTongJiData::set_has_head() {
+inline void MsgXiangXiTongJiData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgXiangXiTongJiData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgXiangXiTongJiData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgXiangXiTongJiData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgXiangXiTongJiData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgXiangXiTongJiData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgXiangXiTongJiData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgXiangXiTongJiData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgXiangXiTongJiData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgXiangXiTongJiData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgXiangXiTongJiData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgXiangXiTongJiData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgXiangXiTongJiData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgXiangXiTongJiData::clear_xuhao() {
   xuhao_ = 0;
@@ -6005,15 +6542,15 @@ inline void MsgXiangXiTongJiData::set_xuhao(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Xuhao)
 }
 
-// optional int32 Nian = 3;
+// optional int32 Nian = 2;
 inline bool MsgXiangXiTongJiData::has_nian() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_nian() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgXiangXiTongJiData::clear_has_nian() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgXiangXiTongJiData::clear_nian() {
   nian_ = 0;
@@ -6029,15 +6566,15 @@ inline void MsgXiangXiTongJiData::set_nian(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Nian)
 }
 
-// optional int32 Yue = 4;
+// optional int32 Yue = 3;
 inline bool MsgXiangXiTongJiData::has_yue() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_yue() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgXiangXiTongJiData::clear_has_yue() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgXiangXiTongJiData::clear_yue() {
   yue_ = 0;
@@ -6053,15 +6590,15 @@ inline void MsgXiangXiTongJiData::set_yue(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Yue)
 }
 
-// optional int32 Ri = 5;
+// optional int32 Ri = 4;
 inline bool MsgXiangXiTongJiData::has_ri() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_ri() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgXiangXiTongJiData::clear_has_ri() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgXiangXiTongJiData::clear_ri() {
   ri_ = 0;
@@ -6077,15 +6614,15 @@ inline void MsgXiangXiTongJiData::set_ri(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Ri)
 }
 
-// optional int32 Xiaoshi = 6;
+// optional int32 Xiaoshi = 5;
 inline bool MsgXiangXiTongJiData::has_xiaoshi() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_xiaoshi() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgXiangXiTongJiData::clear_has_xiaoshi() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgXiangXiTongJiData::clear_xiaoshi() {
   xiaoshi_ = 0;
@@ -6101,15 +6638,15 @@ inline void MsgXiangXiTongJiData::set_xiaoshi(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Xiaoshi)
 }
 
-// optional int32 Fenzhong = 7;
+// optional int32 Fenzhong = 6;
 inline bool MsgXiangXiTongJiData::has_fenzhong() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_fenzhong() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgXiangXiTongJiData::clear_has_fenzhong() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgXiangXiTongJiData::clear_fenzhong() {
   fenzhong_ = 0;
@@ -6125,15 +6662,15 @@ inline void MsgXiangXiTongJiData::set_fenzhong(::google::protobuf::int32 value) 
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Fenzhong)
 }
 
-// optional int32 Shiyongdanwei = 8;
+// optional int32 Shiyongdanwei = 7;
 inline bool MsgXiangXiTongJiData::has_shiyongdanwei() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_shiyongdanwei() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgXiangXiTongJiData::clear_has_shiyongdanwei() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgXiangXiTongJiData::clear_shiyongdanwei() {
   shiyongdanwei_ = 0;
@@ -6149,15 +6686,15 @@ inline void MsgXiangXiTongJiData::set_shiyongdanwei(::google::protobuf::int32 va
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Shiyongdanwei)
 }
 
-// optional int32 Qiyongshebei = 9;
+// optional int32 Qiyongshebei = 8;
 inline bool MsgXiangXiTongJiData::has_qiyongshebei() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_qiyongshebei() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgXiangXiTongJiData::clear_has_qiyongshebei() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgXiangXiTongJiData::clear_qiyongshebei() {
   qiyongshebei_ = 0;
@@ -6173,15 +6710,15 @@ inline void MsgXiangXiTongJiData::set_qiyongshebei(::google::protobuf::int32 val
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Qiyongshebei)
 }
 
-// optional int32 Yuyueyewu = 10;
+// optional int32 Yuyueyewu = 9;
 inline bool MsgXiangXiTongJiData::has_yuyueyewu() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_yuyueyewu() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void MsgXiangXiTongJiData::clear_has_yuyueyewu() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void MsgXiangXiTongJiData::clear_yuyueyewu() {
   yuyueyewu_ = 0;
@@ -6197,15 +6734,15 @@ inline void MsgXiangXiTongJiData::set_yuyueyewu(::google::protobuf::int32 value)
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Yuyueyewu)
 }
 
-// optional int32 Yushouliyewu = 11;
+// optional int32 Yushouliyewu = 10;
 inline bool MsgXiangXiTongJiData::has_yushouliyewu() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_yushouliyewu() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void MsgXiangXiTongJiData::clear_has_yushouliyewu() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void MsgXiangXiTongJiData::clear_yushouliyewu() {
   yushouliyewu_ = 0;
@@ -6221,15 +6758,15 @@ inline void MsgXiangXiTongJiData::set_yushouliyewu(::google::protobuf::int32 val
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Yushouliyewu)
 }
 
-// optional int32 Jiaofeiyewu = 12;
+// optional int32 Jiaofeiyewu = 11;
 inline bool MsgXiangXiTongJiData::has_jiaofeiyewu() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_jiaofeiyewu() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void MsgXiangXiTongJiData::clear_has_jiaofeiyewu() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void MsgXiangXiTongJiData::clear_jiaofeiyewu() {
   jiaofeiyewu_ = 0;
@@ -6245,15 +6782,15 @@ inline void MsgXiangXiTongJiData::set_jiaofeiyewu(::google::protobuf::int32 valu
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Jiaofeiyewu)
 }
 
-// optional int32 Chaxunyewu = 13;
+// optional int32 Chaxunyewu = 12;
 inline bool MsgXiangXiTongJiData::has_chaxunyewu() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_chaxunyewu() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void MsgXiangXiTongJiData::clear_has_chaxunyewu() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void MsgXiangXiTongJiData::clear_chaxunyewu() {
   chaxunyewu_ = 0;
@@ -6269,15 +6806,15 @@ inline void MsgXiangXiTongJiData::set_chaxunyewu(::google::protobuf::int32 value
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Chaxunyewu)
 }
 
-// optional int32 Shebeishouzheng = 14;
+// optional int32 Shebeishouzheng = 13;
 inline bool MsgXiangXiTongJiData::has_shebeishouzheng() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_shebeishouzheng() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void MsgXiangXiTongJiData::clear_has_shebeishouzheng() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void MsgXiangXiTongJiData::clear_shebeishouzheng() {
   shebeishouzheng_ = 0;
@@ -6293,15 +6830,15 @@ inline void MsgXiangXiTongJiData::set_shebeishouzheng(::google::protobuf::int32 
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Shebeishouzheng)
 }
 
-// optional int32 Xuqianyewu = 15;
+// optional int32 Xuqianyewu = 14;
 inline bool MsgXiangXiTongJiData::has_xuqianyewu() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_xuqianyewu() {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00002000u;
 }
 inline void MsgXiangXiTongJiData::clear_has_xuqianyewu() {
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline void MsgXiangXiTongJiData::clear_xuqianyewu() {
   xuqianyewu_ = 0;
@@ -6317,15 +6854,15 @@ inline void MsgXiangXiTongJiData::set_xuqianyewu(::google::protobuf::int32 value
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Xuqianyewu)
 }
 
-// optional int32 Benshitongxingzheng = 16;
+// optional int32 Benshitongxingzheng = 15;
 inline bool MsgXiangXiTongJiData::has_benshitongxingzheng() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_benshitongxingzheng() {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00004000u;
 }
 inline void MsgXiangXiTongJiData::clear_has_benshitongxingzheng() {
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline void MsgXiangXiTongJiData::clear_benshitongxingzheng() {
   benshitongxingzheng_ = 0;
@@ -6341,15 +6878,15 @@ inline void MsgXiangXiTongJiData::set_benshitongxingzheng(::google::protobuf::in
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Benshitongxingzheng)
 }
 
-// optional int32 Dianzitongxingzheng = 17;
+// optional int32 Dianzitongxingzheng = 16;
 inline bool MsgXiangXiTongJiData::has_dianzitongxingzheng() const {
-  return (_has_bits_[0] & 0x00010000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_dianzitongxingzheng() {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00008000u;
 }
 inline void MsgXiangXiTongJiData::clear_has_dianzitongxingzheng() {
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline void MsgXiangXiTongJiData::clear_dianzitongxingzheng() {
   dianzitongxingzheng_ = 0;
@@ -6365,15 +6902,15 @@ inline void MsgXiangXiTongJiData::set_dianzitongxingzheng(::google::protobuf::in
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Dianzitongxingzheng)
 }
 
-// optional int32 Tongxingzhengzhika = 18;
+// optional int32 Tongxingzhengzhika = 17;
 inline bool MsgXiangXiTongJiData::has_tongxingzhengzhika() const {
-  return (_has_bits_[0] & 0x00020000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_tongxingzhengzhika() {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00010000u;
 }
 inline void MsgXiangXiTongJiData::clear_has_tongxingzhengzhika() {
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline void MsgXiangXiTongJiData::clear_tongxingzhengzhika() {
   tongxingzhengzhika_ = 0;
@@ -6389,15 +6926,15 @@ inline void MsgXiangXiTongJiData::set_tongxingzhengzhika(::google::protobuf::int
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Tongxingzhengzhika)
 }
 
-// optional int32 Lidengkequ = 19;
+// optional int32 Lidengkequ = 18;
 inline bool MsgXiangXiTongJiData::has_lidengkequ() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00020000u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_lidengkequ() {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00020000u;
 }
 inline void MsgXiangXiTongJiData::clear_has_lidengkequ() {
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00020000u;
 }
 inline void MsgXiangXiTongJiData::clear_lidengkequ() {
   lidengkequ_ = 0;
@@ -6413,15 +6950,15 @@ inline void MsgXiangXiTongJiData::set_lidengkequ(::google::protobuf::int32 value
   // @@protoc_insertion_point(field_set:netmsg.MsgXiangXiTongJiData.Lidengkequ)
 }
 
-// optional int32 Feilidengkequ = 20;
+// optional int32 Feilidengkequ = 19;
 inline bool MsgXiangXiTongJiData::has_feilidengkequ() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
+  return (_has_bits_[0] & 0x00040000u) != 0;
 }
 inline void MsgXiangXiTongJiData::set_has_feilidengkequ() {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00040000u;
 }
 inline void MsgXiangXiTongJiData::clear_has_feilidengkequ() {
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 inline void MsgXiangXiTongJiData::clear_feilidengkequ() {
   feilidengkequ_ = 0;
@@ -6441,56 +6978,15 @@ inline void MsgXiangXiTongJiData::set_feilidengkequ(::google::protobuf::int32 va
 
 // MsgZhiQianShuJuData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgZhiQianShuJuData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgZhiQianShuJuData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgZhiQianShuJuData::set_has_head() {
+inline void MsgZhiQianShuJuData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgZhiQianShuJuData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgZhiQianShuJuData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgZhiQianShuJuData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgZhiQianShuJuData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgZhiQianShuJuData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgZhiQianShuJuData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgZhiQianShuJuData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgZhiQianShuJuData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgZhiQianShuJuData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgZhiQianShuJuData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgZhiQianShuJuData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgZhiQianShuJuData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgZhiQianShuJuData::clear_xuhao() {
   xuhao_ = 0;
@@ -6506,15 +7002,15 @@ inline void MsgZhiQianShuJuData::set_xuhao(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgZhiQianShuJuData.Xuhao)
 }
 
-// optional string Riqi = 3;
+// optional string Riqi = 2;
 inline bool MsgZhiQianShuJuData::has_riqi() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgZhiQianShuJuData::set_has_riqi() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgZhiQianShuJuData::clear_has_riqi() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgZhiQianShuJuData::clear_riqi() {
   if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -6582,15 +7078,15 @@ inline void MsgZhiQianShuJuData::set_allocated_riqi(::std::string* riqi) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgZhiQianShuJuData.Riqi)
 }
 
-// optional string ShebeiIP = 4;
+// optional string ShebeiIP = 3;
 inline bool MsgZhiQianShuJuData::has_shebeiip() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgZhiQianShuJuData::set_has_shebeiip() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgZhiQianShuJuData::clear_has_shebeiip() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgZhiQianShuJuData::clear_shebeiip() {
   if (shebeiip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -6658,15 +7154,15 @@ inline void MsgZhiQianShuJuData::set_allocated_shebeiip(::std::string* shebeiip)
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgZhiQianShuJuData.ShebeiIP)
 }
 
-// optional string Yewubianhao = 5;
+// optional string Yewubianhao = 4;
 inline bool MsgZhiQianShuJuData::has_yewubianhao() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgZhiQianShuJuData::set_has_yewubianhao() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgZhiQianShuJuData::clear_has_yewubianhao() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgZhiQianShuJuData::clear_yewubianhao() {
   if (yewubianhao_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -6734,15 +7230,15 @@ inline void MsgZhiQianShuJuData::set_allocated_yewubianhao(::std::string* yewubi
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgZhiQianShuJuData.Yewubianhao)
 }
 
-// optional string YuanZhengjianhaoma = 6;
+// optional string YuanZhengjianhaoma = 5;
 inline bool MsgZhiQianShuJuData::has_yuanzhengjianhaoma() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgZhiQianShuJuData::set_has_yuanzhengjianhaoma() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgZhiQianShuJuData::clear_has_yuanzhengjianhaoma() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgZhiQianShuJuData::clear_yuanzhengjianhaoma() {
   if (yuanzhengjianhaoma_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -6810,15 +7306,15 @@ inline void MsgZhiQianShuJuData::set_allocated_yuanzhengjianhaoma(::std::string*
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgZhiQianShuJuData.YuanZhengjianhaoma)
 }
 
-// optional string Xingming = 7;
+// optional string Xingming = 6;
 inline bool MsgZhiQianShuJuData::has_xingming() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgZhiQianShuJuData::set_has_xingming() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgZhiQianShuJuData::clear_has_xingming() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgZhiQianShuJuData::clear_xingming() {
   if (xingming_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -6886,15 +7382,15 @@ inline void MsgZhiQianShuJuData::set_allocated_xingming(::std::string* xingming)
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgZhiQianShuJuData.Xingming)
 }
 
-// optional string Qianzhuzhonglei = 8;
+// optional string Qianzhuzhonglei = 7;
 inline bool MsgZhiQianShuJuData::has_qianzhuzhonglei() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgZhiQianShuJuData::set_has_qianzhuzhonglei() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgZhiQianShuJuData::clear_has_qianzhuzhonglei() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgZhiQianShuJuData::clear_qianzhuzhonglei() {
   if (qianzhuzhonglei_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -6962,15 +7458,15 @@ inline void MsgZhiQianShuJuData::set_allocated_qianzhuzhonglei(::std::string* qi
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgZhiQianShuJuData.Qianzhuzhonglei)
 }
 
-// optional string ZhikaZhuangtai = 9;
+// optional string ZhikaZhuangtai = 8;
 inline bool MsgZhiQianShuJuData::has_zhikazhuangtai() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgZhiQianShuJuData::set_has_zhikazhuangtai() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgZhiQianShuJuData::clear_has_zhikazhuangtai() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgZhiQianShuJuData::clear_zhikazhuangtai() {
   if (zhikazhuangtai_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7038,15 +7534,15 @@ inline void MsgZhiQianShuJuData::set_allocated_zhikazhuangtai(::std::string* zhi
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgZhiQianShuJuData.ZhikaZhuangtai)
 }
 
-// optional string Zhengjianhaoma = 10;
+// optional string Zhengjianhaoma = 9;
 inline bool MsgZhiQianShuJuData::has_zhengjianhaoma() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void MsgZhiQianShuJuData::set_has_zhengjianhaoma() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void MsgZhiQianShuJuData::clear_has_zhengjianhaoma() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void MsgZhiQianShuJuData::clear_zhengjianhaoma() {
   if (zhengjianhaoma_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7114,15 +7610,15 @@ inline void MsgZhiQianShuJuData::set_allocated_zhengjianhaoma(::std::string* zhe
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgZhiQianShuJuData.Zhengjianhaoma)
 }
 
-// optional string Jiekoufanhuijieguo = 11;
+// optional string Jiekoufanhuijieguo = 10;
 inline bool MsgZhiQianShuJuData::has_jiekoufanhuijieguo() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void MsgZhiQianShuJuData::set_has_jiekoufanhuijieguo() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void MsgZhiQianShuJuData::clear_has_jiekoufanhuijieguo() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void MsgZhiQianShuJuData::clear_jiekoufanhuijieguo() {
   if (jiekoufanhuijieguo_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7190,15 +7686,15 @@ inline void MsgZhiQianShuJuData::set_allocated_jiekoufanhuijieguo(::std::string*
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgZhiQianShuJuData.Jiekoufanhuijieguo)
 }
 
-// optional string Lianxidianhua = 12;
+// optional string Lianxidianhua = 11;
 inline bool MsgZhiQianShuJuData::has_lianxidianhua() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void MsgZhiQianShuJuData::set_has_lianxidianhua() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void MsgZhiQianShuJuData::clear_has_lianxidianhua() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void MsgZhiQianShuJuData::clear_lianxidianhua() {
   if (lianxidianhua_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7270,56 +7766,15 @@ inline void MsgZhiQianShuJuData::set_allocated_lianxidianhua(::std::string* lian
 
 // MsgShouZhengShuJuData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgShouZhengShuJuData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgShouZhengShuJuData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgShouZhengShuJuData::set_has_head() {
+inline void MsgShouZhengShuJuData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgShouZhengShuJuData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgShouZhengShuJuData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgShouZhengShuJuData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgShouZhengShuJuData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgShouZhengShuJuData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgShouZhengShuJuData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgShouZhengShuJuData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgShouZhengShuJuData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgShouZhengShuJuData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgShouZhengShuJuData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgShouZhengShuJuData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgShouZhengShuJuData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgShouZhengShuJuData::clear_xuhao() {
   xuhao_ = 0;
@@ -7335,15 +7790,15 @@ inline void MsgShouZhengShuJuData::set_xuhao(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgShouZhengShuJuData.Xuhao)
 }
 
-// optional string Riqi = 3;
+// optional string Riqi = 2;
 inline bool MsgShouZhengShuJuData::has_riqi() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgShouZhengShuJuData::set_has_riqi() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgShouZhengShuJuData::clear_has_riqi() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgShouZhengShuJuData::clear_riqi() {
   if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7411,15 +7866,15 @@ inline void MsgShouZhengShuJuData::set_allocated_riqi(::std::string* riqi) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgShouZhengShuJuData.Riqi)
 }
 
-// optional string ShebeiIP = 4;
+// optional string ShebeiIP = 3;
 inline bool MsgShouZhengShuJuData::has_shebeiip() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgShouZhengShuJuData::set_has_shebeiip() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgShouZhengShuJuData::clear_has_shebeiip() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgShouZhengShuJuData::clear_shebeiip() {
   if (shebeiip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7487,15 +7942,15 @@ inline void MsgShouZhengShuJuData::set_allocated_shebeiip(::std::string* shebeii
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgShouZhengShuJuData.ShebeiIP)
 }
 
-// optional string Zhengjianleixing = 5;
+// optional string Zhengjianleixing = 4;
 inline bool MsgShouZhengShuJuData::has_zhengjianleixing() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgShouZhengShuJuData::set_has_zhengjianleixing() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgShouZhengShuJuData::clear_has_zhengjianleixing() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgShouZhengShuJuData::clear_zhengjianleixing() {
   if (zhengjianleixing_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7563,15 +8018,15 @@ inline void MsgShouZhengShuJuData::set_allocated_zhengjianleixing(::std::string*
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgShouZhengShuJuData.Zhengjianleixing)
 }
 
-// optional string Zhengjianhaoma = 6;
+// optional string Zhengjianhaoma = 5;
 inline bool MsgShouZhengShuJuData::has_zhengjianhaoma() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgShouZhengShuJuData::set_has_zhengjianhaoma() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgShouZhengShuJuData::clear_has_zhengjianhaoma() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgShouZhengShuJuData::clear_zhengjianhaoma() {
   if (zhengjianhaoma_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7639,15 +8094,15 @@ inline void MsgShouZhengShuJuData::set_allocated_zhengjianhaoma(::std::string* z
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgShouZhengShuJuData.Zhengjianhaoma)
 }
 
-// optional string Xingming = 7;
+// optional string Xingming = 6;
 inline bool MsgShouZhengShuJuData::has_xingming() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgShouZhengShuJuData::set_has_xingming() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgShouZhengShuJuData::clear_has_xingming() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgShouZhengShuJuData::clear_xingming() {
   if (xingming_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7715,15 +8170,15 @@ inline void MsgShouZhengShuJuData::set_allocated_xingming(::std::string* xingmin
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgShouZhengShuJuData.Xingming)
 }
 
-// optional string Shoulibianhao = 8;
+// optional string Shoulibianhao = 7;
 inline bool MsgShouZhengShuJuData::has_shoulibianhao() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgShouZhengShuJuData::set_has_shoulibianhao() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgShouZhengShuJuData::clear_has_shoulibianhao() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgShouZhengShuJuData::clear_shoulibianhao() {
   if (shoulibianhao_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7791,15 +8246,15 @@ inline void MsgShouZhengShuJuData::set_allocated_shoulibianhao(::std::string* sh
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgShouZhengShuJuData.Shoulibianhao)
 }
 
-// optional string Shifoujiaofei = 9;
+// optional string Shifoujiaofei = 8;
 inline bool MsgShouZhengShuJuData::has_shifoujiaofei() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgShouZhengShuJuData::set_has_shifoujiaofei() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgShouZhengShuJuData::clear_has_shifoujiaofei() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgShouZhengShuJuData::clear_shifoujiaofei() {
   if (shifoujiaofei_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -7871,56 +8326,15 @@ inline void MsgShouZhengShuJuData::set_allocated_shifoujiaofei(::std::string* sh
 
 // MsgQianZhuShuJuData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgQianZhuShuJuData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgQianZhuShuJuData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgQianZhuShuJuData::set_has_head() {
+inline void MsgQianZhuShuJuData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgQianZhuShuJuData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgQianZhuShuJuData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgQianZhuShuJuData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgQianZhuShuJuData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgQianZhuShuJuData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgQianZhuShuJuData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgQianZhuShuJuData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgQianZhuShuJuData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgQianZhuShuJuData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgQianZhuShuJuData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgQianZhuShuJuData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgQianZhuShuJuData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgQianZhuShuJuData::clear_xuhao() {
   xuhao_ = 0;
@@ -7936,15 +8350,15 @@ inline void MsgQianZhuShuJuData::set_xuhao(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgQianZhuShuJuData.Xuhao)
 }
 
-// optional string Riqi = 3;
+// optional string Riqi = 2;
 inline bool MsgQianZhuShuJuData::has_riqi() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgQianZhuShuJuData::set_has_riqi() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgQianZhuShuJuData::clear_has_riqi() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgQianZhuShuJuData::clear_riqi() {
   if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8012,15 +8426,15 @@ inline void MsgQianZhuShuJuData::set_allocated_riqi(::std::string* riqi) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgQianZhuShuJuData.Riqi)
 }
 
-// optional string ShebeiIP = 4;
+// optional string ShebeiIP = 3;
 inline bool MsgQianZhuShuJuData::has_shebeiip() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgQianZhuShuJuData::set_has_shebeiip() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgQianZhuShuJuData::clear_has_shebeiip() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgQianZhuShuJuData::clear_shebeiip() {
   if (shebeiip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8088,15 +8502,15 @@ inline void MsgQianZhuShuJuData::set_allocated_shebeiip(::std::string* shebeiip)
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgQianZhuShuJuData.ShebeiIP)
 }
 
-// optional string YuanZhengjianhaoma = 5;
+// optional string YuanZhengjianhaoma = 4;
 inline bool MsgQianZhuShuJuData::has_yuanzhengjianhaoma() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgQianZhuShuJuData::set_has_yuanzhengjianhaoma() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgQianZhuShuJuData::clear_has_yuanzhengjianhaoma() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgQianZhuShuJuData::clear_yuanzhengjianhaoma() {
   if (yuanzhengjianhaoma_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8164,15 +8578,15 @@ inline void MsgQianZhuShuJuData::set_allocated_yuanzhengjianhaoma(::std::string*
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgQianZhuShuJuData.YuanZhengjianhaoma)
 }
 
-// optional string Xingming = 6;
+// optional string Xingming = 5;
 inline bool MsgQianZhuShuJuData::has_xingming() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgQianZhuShuJuData::set_has_xingming() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgQianZhuShuJuData::clear_has_xingming() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgQianZhuShuJuData::clear_xingming() {
   if (xingming_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8240,15 +8654,15 @@ inline void MsgQianZhuShuJuData::set_allocated_xingming(::std::string* xingming)
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgQianZhuShuJuData.Xingming)
 }
 
-// optional string Xingbie = 7;
+// optional string Xingbie = 6;
 inline bool MsgQianZhuShuJuData::has_xingbie() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgQianZhuShuJuData::set_has_xingbie() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgQianZhuShuJuData::clear_has_xingbie() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgQianZhuShuJuData::clear_xingbie() {
   if (xingbie_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8316,15 +8730,15 @@ inline void MsgQianZhuShuJuData::set_allocated_xingbie(::std::string* xingbie) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgQianZhuShuJuData.Xingbie)
 }
 
-// optional string Chushengriqi = 8;
+// optional string Chushengriqi = 7;
 inline bool MsgQianZhuShuJuData::has_chushengriqi() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgQianZhuShuJuData::set_has_chushengriqi() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgQianZhuShuJuData::clear_has_chushengriqi() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgQianZhuShuJuData::clear_chushengriqi() {
   if (chushengriqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8392,15 +8806,15 @@ inline void MsgQianZhuShuJuData::set_allocated_chushengriqi(::std::string* chush
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgQianZhuShuJuData.Chushengriqi)
 }
 
-// optional string Lianxidianhua = 9;
+// optional string Lianxidianhua = 8;
 inline bool MsgQianZhuShuJuData::has_lianxidianhua() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgQianZhuShuJuData::set_has_lianxidianhua() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgQianZhuShuJuData::clear_has_lianxidianhua() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgQianZhuShuJuData::clear_lianxidianhua() {
   if (lianxidianhua_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8468,15 +8882,15 @@ inline void MsgQianZhuShuJuData::set_allocated_lianxidianhua(::std::string* lian
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgQianZhuShuJuData.Lianxidianhua)
 }
 
-// optional string Yewuleixing = 10;
+// optional string Yewuleixing = 9;
 inline bool MsgQianZhuShuJuData::has_yewuleixing() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void MsgQianZhuShuJuData::set_has_yewuleixing() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void MsgQianZhuShuJuData::clear_has_yewuleixing() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void MsgQianZhuShuJuData::clear_yewuleixing() {
   if (yewuleixing_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8544,15 +8958,15 @@ inline void MsgQianZhuShuJuData::set_allocated_yewuleixing(::std::string* yewule
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgQianZhuShuJuData.Yewuleixing)
 }
 
-// optional string Shouliren = 11;
+// optional string Shouliren = 10;
 inline bool MsgQianZhuShuJuData::has_shouliren() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void MsgQianZhuShuJuData::set_has_shouliren() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void MsgQianZhuShuJuData::clear_has_shouliren() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void MsgQianZhuShuJuData::clear_shouliren() {
   if (shouliren_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8624,56 +9038,15 @@ inline void MsgQianZhuShuJuData::set_allocated_shouliren(::std::string* shoulire
 
 // MsgJiaoKuanShuJuData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgJiaoKuanShuJuData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgJiaoKuanShuJuData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgJiaoKuanShuJuData::set_has_head() {
+inline void MsgJiaoKuanShuJuData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgJiaoKuanShuJuData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgJiaoKuanShuJuData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgJiaoKuanShuJuData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgJiaoKuanShuJuData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgJiaoKuanShuJuData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgJiaoKuanShuJuData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgJiaoKuanShuJuData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgJiaoKuanShuJuData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgJiaoKuanShuJuData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgJiaoKuanShuJuData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgJiaoKuanShuJuData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgJiaoKuanShuJuData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgJiaoKuanShuJuData::clear_xuhao() {
   xuhao_ = 0;
@@ -8689,15 +9062,15 @@ inline void MsgJiaoKuanShuJuData::set_xuhao(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgJiaoKuanShuJuData.Xuhao)
 }
 
-// optional string Riqi = 3;
+// optional string Riqi = 2;
 inline bool MsgJiaoKuanShuJuData::has_riqi() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgJiaoKuanShuJuData::set_has_riqi() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgJiaoKuanShuJuData::clear_has_riqi() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgJiaoKuanShuJuData::clear_riqi() {
   if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8765,15 +9138,15 @@ inline void MsgJiaoKuanShuJuData::set_allocated_riqi(::std::string* riqi) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgJiaoKuanShuJuData.Riqi)
 }
 
-// optional string ShebeiIP = 4;
+// optional string ShebeiIP = 3;
 inline bool MsgJiaoKuanShuJuData::has_shebeiip() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgJiaoKuanShuJuData::set_has_shebeiip() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgJiaoKuanShuJuData::clear_has_shebeiip() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgJiaoKuanShuJuData::clear_shebeiip() {
   if (shebeiip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8841,15 +9214,15 @@ inline void MsgJiaoKuanShuJuData::set_allocated_shebeiip(::std::string* shebeiip
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgJiaoKuanShuJuData.ShebeiIP)
 }
 
-// optional string Zhishoudanweidaima = 5;
+// optional string Zhishoudanweidaima = 4;
 inline bool MsgJiaoKuanShuJuData::has_zhishoudanweidaima() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgJiaoKuanShuJuData::set_has_zhishoudanweidaima() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgJiaoKuanShuJuData::clear_has_zhishoudanweidaima() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgJiaoKuanShuJuData::clear_zhishoudanweidaima() {
   if (zhishoudanweidaima_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8917,15 +9290,15 @@ inline void MsgJiaoKuanShuJuData::set_allocated_zhishoudanweidaima(::std::string
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgJiaoKuanShuJuData.Zhishoudanweidaima)
 }
 
-// optional string Jiaokuantongzhishuhaoma = 6;
+// optional string Jiaokuantongzhishuhaoma = 5;
 inline bool MsgJiaoKuanShuJuData::has_jiaokuantongzhishuhaoma() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgJiaoKuanShuJuData::set_has_jiaokuantongzhishuhaoma() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgJiaoKuanShuJuData::clear_has_jiaokuantongzhishuhaoma() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgJiaoKuanShuJuData::clear_jiaokuantongzhishuhaoma() {
   if (jiaokuantongzhishuhaoma_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -8993,15 +9366,15 @@ inline void MsgJiaoKuanShuJuData::set_allocated_jiaokuantongzhishuhaoma(::std::s
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgJiaoKuanShuJuData.Jiaokuantongzhishuhaoma)
 }
 
-// optional string Jiaokuanrenxingming = 7;
+// optional string Jiaokuanrenxingming = 6;
 inline bool MsgJiaoKuanShuJuData::has_jiaokuanrenxingming() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgJiaoKuanShuJuData::set_has_jiaokuanrenxingming() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgJiaoKuanShuJuData::clear_has_jiaokuanrenxingming() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgJiaoKuanShuJuData::clear_jiaokuanrenxingming() {
   if (jiaokuanrenxingming_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9069,15 +9442,15 @@ inline void MsgJiaoKuanShuJuData::set_allocated_jiaokuanrenxingming(::std::strin
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgJiaoKuanShuJuData.Jiaokuanrenxingming)
 }
 
-// optional float Yingkoukuanheji = 8;
+// optional float Yingkoukuanheji = 7;
 inline bool MsgJiaoKuanShuJuData::has_yingkoukuanheji() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgJiaoKuanShuJuData::set_has_yingkoukuanheji() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgJiaoKuanShuJuData::clear_has_yingkoukuanheji() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgJiaoKuanShuJuData::clear_yingkoukuanheji() {
   yingkoukuanheji_ = 0;
@@ -9093,15 +9466,15 @@ inline void MsgJiaoKuanShuJuData::set_yingkoukuanheji(float value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgJiaoKuanShuJuData.Yingkoukuanheji)
 }
 
-// optional string Jiaoyiriqi = 9;
+// optional string Jiaoyiriqi = 8;
 inline bool MsgJiaoKuanShuJuData::has_jiaoyiriqi() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgJiaoKuanShuJuData::set_has_jiaoyiriqi() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgJiaoKuanShuJuData::clear_has_jiaoyiriqi() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgJiaoKuanShuJuData::clear_jiaoyiriqi() {
   if (jiaoyiriqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9173,56 +9546,15 @@ inline void MsgJiaoKuanShuJuData::set_allocated_jiaoyiriqi(::std::string* jiaoyi
 
 // MsgChaXunShuJuData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgChaXunShuJuData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgChaXunShuJuData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgChaXunShuJuData::set_has_head() {
+inline void MsgChaXunShuJuData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgChaXunShuJuData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgChaXunShuJuData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgChaXunShuJuData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgChaXunShuJuData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgChaXunShuJuData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgChaXunShuJuData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgChaXunShuJuData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgChaXunShuJuData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgChaXunShuJuData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgChaXunShuJuData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgChaXunShuJuData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgChaXunShuJuData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgChaXunShuJuData::clear_xuhao() {
   xuhao_ = 0;
@@ -9238,15 +9570,15 @@ inline void MsgChaXunShuJuData::set_xuhao(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgChaXunShuJuData.Xuhao)
 }
 
-// optional string Riqi = 3;
+// optional string Riqi = 2;
 inline bool MsgChaXunShuJuData::has_riqi() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgChaXunShuJuData::set_has_riqi() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgChaXunShuJuData::clear_has_riqi() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgChaXunShuJuData::clear_riqi() {
   if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9314,15 +9646,15 @@ inline void MsgChaXunShuJuData::set_allocated_riqi(::std::string* riqi) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgChaXunShuJuData.Riqi)
 }
 
-// optional string ShebeiIP = 4;
+// optional string ShebeiIP = 3;
 inline bool MsgChaXunShuJuData::has_shebeiip() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgChaXunShuJuData::set_has_shebeiip() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgChaXunShuJuData::clear_has_shebeiip() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgChaXunShuJuData::clear_shebeiip() {
   if (shebeiip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9390,15 +9722,15 @@ inline void MsgChaXunShuJuData::set_allocated_shebeiip(::std::string* shebeiip) 
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgChaXunShuJuData.ShebeiIP)
 }
 
-// optional string Chaxunhaoma = 5;
+// optional string Chaxunhaoma = 4;
 inline bool MsgChaXunShuJuData::has_chaxunhaoma() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgChaXunShuJuData::set_has_chaxunhaoma() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgChaXunShuJuData::clear_has_chaxunhaoma() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgChaXunShuJuData::clear_chaxunhaoma() {
   if (chaxunhaoma_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9466,15 +9798,15 @@ inline void MsgChaXunShuJuData::set_allocated_chaxunhaoma(::std::string* chaxunh
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgChaXunShuJuData.Chaxunhaoma)
 }
 
-// optional string Chaxunleixing = 6;
+// optional string Chaxunleixing = 5;
 inline bool MsgChaXunShuJuData::has_chaxunleixing() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgChaXunShuJuData::set_has_chaxunleixing() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgChaXunShuJuData::clear_has_chaxunleixing() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgChaXunShuJuData::clear_chaxunleixing() {
   if (chaxunleixing_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9542,15 +9874,15 @@ inline void MsgChaXunShuJuData::set_allocated_chaxunleixing(::std::string* chaxu
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgChaXunShuJuData.Chaxunleixing)
 }
 
-// optional bool Shifouchaxunchenggong = 7;
+// optional bool Shifouchaxunchenggong = 6;
 inline bool MsgChaXunShuJuData::has_shifouchaxunchenggong() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgChaXunShuJuData::set_has_shifouchaxunchenggong() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgChaXunShuJuData::clear_has_shifouchaxunchenggong() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgChaXunShuJuData::clear_shifouchaxunchenggong() {
   shifouchaxunchenggong_ = false;
@@ -9570,56 +9902,15 @@ inline void MsgChaXunShuJuData::set_shifouchaxunchenggong(bool value) {
 
 // MsgYuShouLiShuJuData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgYuShouLiShuJuData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgYuShouLiShuJuData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgYuShouLiShuJuData::set_has_head() {
+inline void MsgYuShouLiShuJuData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgYuShouLiShuJuData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgYuShouLiShuJuData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgYuShouLiShuJuData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgYuShouLiShuJuData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgYuShouLiShuJuData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgYuShouLiShuJuData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgYuShouLiShuJuData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgYuShouLiShuJuData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgYuShouLiShuJuData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgYuShouLiShuJuData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgYuShouLiShuJuData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgYuShouLiShuJuData::clear_xuhao() {
   xuhao_ = 0;
@@ -9635,15 +9926,15 @@ inline void MsgYuShouLiShuJuData::set_xuhao(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgYuShouLiShuJuData.Xuhao)
 }
 
-// optional string Riqi = 3;
+// optional string Riqi = 2;
 inline bool MsgYuShouLiShuJuData::has_riqi() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_riqi() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_riqi() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgYuShouLiShuJuData::clear_riqi() {
   if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9711,15 +10002,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_riqi(::std::string* riqi) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.Riqi)
 }
 
-// optional string ShebeiIP = 4;
+// optional string ShebeiIP = 3;
 inline bool MsgYuShouLiShuJuData::has_shebeiip() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_shebeiip() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_shebeiip() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgYuShouLiShuJuData::clear_shebeiip() {
   if (shebeiip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9787,15 +10078,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_shebeiip(::std::string* shebeiip
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.ShebeiIP)
 }
 
-// optional string Yewubianhao = 5;
+// optional string Yewubianhao = 4;
 inline bool MsgYuShouLiShuJuData::has_yewubianhao() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_yewubianhao() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_yewubianhao() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgYuShouLiShuJuData::clear_yewubianhao() {
   if (yewubianhao_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9863,15 +10154,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_yewubianhao(::std::string* yewub
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.Yewubianhao)
 }
 
-// optional string Xingming = 6;
+// optional string Xingming = 5;
 inline bool MsgYuShouLiShuJuData::has_xingming() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_xingming() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_xingming() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgYuShouLiShuJuData::clear_xingming() {
   if (xingming_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -9939,15 +10230,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_xingming(::std::string* xingming
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.Xingming)
 }
 
-// optional string Lianxidianhua = 7;
+// optional string Lianxidianhua = 6;
 inline bool MsgYuShouLiShuJuData::has_lianxidianhua() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_lianxidianhua() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_lianxidianhua() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgYuShouLiShuJuData::clear_lianxidianhua() {
   if (lianxidianhua_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10015,15 +10306,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_lianxidianhua(::std::string* lia
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.Lianxidianhua)
 }
 
-// optional string Chuguoshiyou = 8;
+// optional string Chuguoshiyou = 7;
 inline bool MsgYuShouLiShuJuData::has_chuguoshiyou() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_chuguoshiyou() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_chuguoshiyou() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgYuShouLiShuJuData::clear_chuguoshiyou() {
   if (chuguoshiyou_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10091,15 +10382,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_chuguoshiyou(::std::string* chug
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.Chuguoshiyou)
 }
 
-// optional string YuanZhengjianhaoma = 9;
+// optional string YuanZhengjianhaoma = 8;
 inline bool MsgYuShouLiShuJuData::has_yuanzhengjianhaoma() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_yuanzhengjianhaoma() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_yuanzhengjianhaoma() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgYuShouLiShuJuData::clear_yuanzhengjianhaoma() {
   if (yuanzhengjianhaoma_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10167,15 +10458,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_yuanzhengjianhaoma(::std::string
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.YuanZhengjianhaoma)
 }
 
-// optional string Qianzhuzhonglei = 10;
+// optional string Qianzhuzhonglei = 9;
 inline bool MsgYuShouLiShuJuData::has_qianzhuzhonglei() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_qianzhuzhonglei() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_qianzhuzhonglei() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void MsgYuShouLiShuJuData::clear_qianzhuzhonglei() {
   if (qianzhuzhonglei_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10243,15 +10534,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_qianzhuzhonglei(::std::string* q
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.Qianzhuzhonglei)
 }
 
-// optional string Xingbie = 11;
+// optional string Xingbie = 10;
 inline bool MsgYuShouLiShuJuData::has_xingbie() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_xingbie() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_xingbie() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void MsgYuShouLiShuJuData::clear_xingbie() {
   if (xingbie_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10319,15 +10610,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_xingbie(::std::string* xingbie) 
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.Xingbie)
 }
 
-// optional string Hukousuozaidi = 12;
+// optional string Hukousuozaidi = 11;
 inline bool MsgYuShouLiShuJuData::has_hukousuozaidi() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_hukousuozaidi() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_hukousuozaidi() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void MsgYuShouLiShuJuData::clear_hukousuozaidi() {
   if (hukousuozaidi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10395,15 +10686,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_hukousuozaidi(::std::string* huk
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgYuShouLiShuJuData.Hukousuozaidi)
 }
 
-// optional string Minzu = 13;
+// optional string Minzu = 12;
 inline bool MsgYuShouLiShuJuData::has_minzu() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void MsgYuShouLiShuJuData::set_has_minzu() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void MsgYuShouLiShuJuData::clear_has_minzu() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void MsgYuShouLiShuJuData::clear_minzu() {
   if (minzu_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10475,56 +10766,15 @@ inline void MsgYuShouLiShuJuData::set_allocated_minzu(::std::string* minzu) {
 
 // MsgSheBeiYiChangShuJuData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgSheBeiYiChangShuJuData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgSheBeiYiChangShuJuData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgSheBeiYiChangShuJuData::set_has_head() {
+inline void MsgSheBeiYiChangShuJuData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgSheBeiYiChangShuJuData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgSheBeiYiChangShuJuData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgSheBeiYiChangShuJuData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgSheBeiYiChangShuJuData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgSheBeiYiChangShuJuData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgSheBeiYiChangShuJuData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgSheBeiYiChangShuJuData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgSheBeiYiChangShuJuData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiYiChangShuJuData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgSheBeiYiChangShuJuData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgSheBeiYiChangShuJuData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgSheBeiYiChangShuJuData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_xuhao() {
   xuhao_ = 0;
@@ -10540,15 +10790,15 @@ inline void MsgSheBeiYiChangShuJuData::set_xuhao(::google::protobuf::int32 value
   // @@protoc_insertion_point(field_set:netmsg.MsgSheBeiYiChangShuJuData.Xuhao)
 }
 
-// optional string Riqi = 3;
+// optional string Riqi = 2;
 inline bool MsgSheBeiYiChangShuJuData::has_riqi() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgSheBeiYiChangShuJuData::set_has_riqi() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_has_riqi() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_riqi() {
   if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10616,15 +10866,15 @@ inline void MsgSheBeiYiChangShuJuData::set_allocated_riqi(::std::string* riqi) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiYiChangShuJuData.Riqi)
 }
 
-// optional string Shiyongdanwei = 4;
+// optional string Shiyongdanwei = 3;
 inline bool MsgSheBeiYiChangShuJuData::has_shiyongdanwei() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgSheBeiYiChangShuJuData::set_has_shiyongdanwei() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_has_shiyongdanwei() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_shiyongdanwei() {
   if (shiyongdanwei_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10692,15 +10942,15 @@ inline void MsgSheBeiYiChangShuJuData::set_allocated_shiyongdanwei(::std::string
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiYiChangShuJuData.Shiyongdanwei)
 }
 
-// optional string Yichangshejimokuai = 5;
+// optional string Yichangshejimokuai = 4;
 inline bool MsgSheBeiYiChangShuJuData::has_yichangshejimokuai() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgSheBeiYiChangShuJuData::set_has_yichangshejimokuai() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_has_yichangshejimokuai() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_yichangshejimokuai() {
   if (yichangshejimokuai_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10768,15 +11018,15 @@ inline void MsgSheBeiYiChangShuJuData::set_allocated_yichangshejimokuai(::std::s
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiYiChangShuJuData.Yichangshejimokuai)
 }
 
-// optional string Yichangyuanyin = 6;
+// optional string Yichangyuanyin = 5;
 inline bool MsgSheBeiYiChangShuJuData::has_yichangyuanyin() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgSheBeiYiChangShuJuData::set_has_yichangyuanyin() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_has_yichangyuanyin() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_yichangyuanyin() {
   if (yichangyuanyin_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10844,15 +11094,15 @@ inline void MsgSheBeiYiChangShuJuData::set_allocated_yichangyuanyin(::std::strin
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiYiChangShuJuData.Yichangyuanyin)
 }
 
-// optional string Yichangxiangxineirong = 7;
+// optional string Yichangxiangxineirong = 6;
 inline bool MsgSheBeiYiChangShuJuData::has_yichangxiangxineirong() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgSheBeiYiChangShuJuData::set_has_yichangxiangxineirong() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_has_yichangxiangxineirong() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgSheBeiYiChangShuJuData::clear_yichangxiangxineirong() {
   if (yichangxiangxineirong_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -10924,56 +11174,15 @@ inline void MsgSheBeiYiChangShuJuData::set_allocated_yichangxiangxineirong(::std
 
 // MsgGuanLiYuanData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgGuanLiYuanData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgGuanLiYuanData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgGuanLiYuanData::set_has_head() {
+inline void MsgGuanLiYuanData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgGuanLiYuanData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgGuanLiYuanData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgGuanLiYuanData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgGuanLiYuanData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgGuanLiYuanData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgGuanLiYuanData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgGuanLiYuanData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgGuanLiYuanData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgGuanLiYuanData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgGuanLiYuanData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgGuanLiYuanData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgGuanLiYuanData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgGuanLiYuanData::clear_xuhao() {
   xuhao_ = 0;
@@ -10989,15 +11198,15 @@ inline void MsgGuanLiYuanData::set_xuhao(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgGuanLiYuanData.Xuhao)
 }
 
-// optional string Yonghuming = 3;
+// optional string Yonghuming = 2;
 inline bool MsgGuanLiYuanData::has_yonghuming() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgGuanLiYuanData::set_has_yonghuming() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgGuanLiYuanData::clear_has_yonghuming() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgGuanLiYuanData::clear_yonghuming() {
   if (yonghuming_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11065,15 +11274,15 @@ inline void MsgGuanLiYuanData::set_allocated_yonghuming(::std::string* yonghumin
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgGuanLiYuanData.Yonghuming)
 }
 
-// optional string Mima = 4;
+// optional string Mima = 3;
 inline bool MsgGuanLiYuanData::has_mima() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgGuanLiYuanData::set_has_mima() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgGuanLiYuanData::clear_has_mima() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgGuanLiYuanData::clear_mima() {
   if (mima_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11141,15 +11350,15 @@ inline void MsgGuanLiYuanData::set_allocated_mima(::std::string* mima) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgGuanLiYuanData.Mima)
 }
 
-// optional string Youxiaoqi = 5;
+// optional string Youxiaoqi = 4;
 inline bool MsgGuanLiYuanData::has_youxiaoqi() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgGuanLiYuanData::set_has_youxiaoqi() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgGuanLiYuanData::clear_has_youxiaoqi() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgGuanLiYuanData::clear_youxiaoqi() {
   if (youxiaoqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11217,15 +11426,15 @@ inline void MsgGuanLiYuanData::set_allocated_youxiaoqi(::std::string* youxiaoqi)
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgGuanLiYuanData.Youxiaoqi)
 }
 
-// optional int32 Quanxianjibie = 6;
+// optional int32 Quanxianjibie = 5;
 inline bool MsgGuanLiYuanData::has_quanxianjibie() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgGuanLiYuanData::set_has_quanxianjibie() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgGuanLiYuanData::clear_has_quanxianjibie() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgGuanLiYuanData::clear_quanxianjibie() {
   quanxianjibie_ = 0;
@@ -11245,56 +11454,15 @@ inline void MsgGuanLiYuanData::set_quanxianjibie(::google::protobuf::int32 value
 
 // MsgGuanLiYuanCaoZuoJiLuData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgGuanLiYuanCaoZuoJiLuData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgGuanLiYuanCaoZuoJiLuData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgGuanLiYuanCaoZuoJiLuData::set_has_head() {
+inline void MsgGuanLiYuanCaoZuoJiLuData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgGuanLiYuanCaoZuoJiLuData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgGuanLiYuanCaoZuoJiLuData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgGuanLiYuanCaoZuoJiLuData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgGuanLiYuanCaoZuoJiLuData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgGuanLiYuanCaoZuoJiLuData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgGuanLiYuanCaoZuoJiLuData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgGuanLiYuanCaoZuoJiLuData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgGuanLiYuanCaoZuoJiLuData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgGuanLiYuanCaoZuoJiLuData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgGuanLiYuanCaoZuoJiLuData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgGuanLiYuanCaoZuoJiLuData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgGuanLiYuanCaoZuoJiLuData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::clear_xuhao() {
   xuhao_ = 0;
@@ -11310,15 +11478,15 @@ inline void MsgGuanLiYuanCaoZuoJiLuData::set_xuhao(::google::protobuf::int32 val
   // @@protoc_insertion_point(field_set:netmsg.MsgGuanLiYuanCaoZuoJiLuData.Xuhao)
 }
 
-// optional string Yonghuming = 3;
+// optional string Yonghuming = 2;
 inline bool MsgGuanLiYuanCaoZuoJiLuData::has_yonghuming() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::set_has_yonghuming() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::clear_has_yonghuming() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::clear_yonghuming() {
   if (yonghuming_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11386,15 +11554,15 @@ inline void MsgGuanLiYuanCaoZuoJiLuData::set_allocated_yonghuming(::std::string*
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgGuanLiYuanCaoZuoJiLuData.Yonghuming)
 }
 
-// optional string Riqi = 4;
+// optional string Riqi = 3;
 inline bool MsgGuanLiYuanCaoZuoJiLuData::has_riqi() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::set_has_riqi() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::clear_has_riqi() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::clear_riqi() {
   if (riqi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11462,15 +11630,15 @@ inline void MsgGuanLiYuanCaoZuoJiLuData::set_allocated_riqi(::std::string* riqi)
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgGuanLiYuanCaoZuoJiLuData.Riqi)
 }
 
-// optional string Caozuoleibie = 5;
+// optional string Caozuoleibie = 4;
 inline bool MsgGuanLiYuanCaoZuoJiLuData::has_caozuoleibie() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::set_has_caozuoleibie() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::clear_has_caozuoleibie() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::clear_caozuoleibie() {
   if (caozuoleibie_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11538,15 +11706,15 @@ inline void MsgGuanLiYuanCaoZuoJiLuData::set_allocated_caozuoleibie(::std::strin
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgGuanLiYuanCaoZuoJiLuData.Caozuoleibie)
 }
 
-// optional string Caozuoneirong = 6;
+// optional string Caozuoneirong = 5;
 inline bool MsgGuanLiYuanCaoZuoJiLuData::has_caozuoneirong() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::set_has_caozuoneirong() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::clear_has_caozuoneirong() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgGuanLiYuanCaoZuoJiLuData::clear_caozuoneirong() {
   if (caozuoneirong_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11618,56 +11786,15 @@ inline void MsgGuanLiYuanCaoZuoJiLuData::set_allocated_caozuoneirong(::std::stri
 
 // MsgSheBeiGuanLiData
 
-// required .netmsg.MsgHead head = 1;
-inline bool MsgSheBeiGuanLiData::has_head() const {
+// optional int32 Xuhao = 1;
+inline bool MsgSheBeiGuanLiData::has_xuhao() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void MsgSheBeiGuanLiData::set_has_head() {
+inline void MsgSheBeiGuanLiData::set_has_xuhao() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void MsgSheBeiGuanLiData::clear_has_head() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void MsgSheBeiGuanLiData::clear_head() {
-  if (head_ != NULL) head_->::netmsg::MsgHead::Clear();
-  clear_has_head();
-}
-inline const ::netmsg::MsgHead& MsgSheBeiGuanLiData::head() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgSheBeiGuanLiData.head)
-  return head_ != NULL ? *head_ : *default_instance_->head_;
-}
-inline ::netmsg::MsgHead* MsgSheBeiGuanLiData::mutable_head() {
-  set_has_head();
-  if (head_ == NULL) head_ = new ::netmsg::MsgHead;
-  // @@protoc_insertion_point(field_mutable:netmsg.MsgSheBeiGuanLiData.head)
-  return head_;
-}
-inline ::netmsg::MsgHead* MsgSheBeiGuanLiData::release_head() {
-  clear_has_head();
-  ::netmsg::MsgHead* temp = head_;
-  head_ = NULL;
-  return temp;
-}
-inline void MsgSheBeiGuanLiData::set_allocated_head(::netmsg::MsgHead* head) {
-  delete head_;
-  head_ = head;
-  if (head) {
-    set_has_head();
-  } else {
-    clear_has_head();
-  }
-  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiGuanLiData.head)
-}
-
-// optional int32 Xuhao = 2;
-inline bool MsgSheBeiGuanLiData::has_xuhao() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void MsgSheBeiGuanLiData::set_has_xuhao() {
-  _has_bits_[0] |= 0x00000002u;
-}
 inline void MsgSheBeiGuanLiData::clear_has_xuhao() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000001u;
 }
 inline void MsgSheBeiGuanLiData::clear_xuhao() {
   xuhao_ = 0;
@@ -11683,15 +11810,15 @@ inline void MsgSheBeiGuanLiData::set_xuhao(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgSheBeiGuanLiData.Xuhao)
 }
 
-// optional string Sheng = 3;
+// optional string Sheng = 2;
 inline bool MsgSheBeiGuanLiData::has_sheng() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000002u) != 0;
 }
 inline void MsgSheBeiGuanLiData::set_has_sheng() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000002u;
 }
 inline void MsgSheBeiGuanLiData::clear_has_sheng() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void MsgSheBeiGuanLiData::clear_sheng() {
   if (sheng_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11759,15 +11886,15 @@ inline void MsgSheBeiGuanLiData::set_allocated_sheng(::std::string* sheng) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiGuanLiData.Sheng)
 }
 
-// optional string Shi = 4;
+// optional string Shi = 3;
 inline bool MsgSheBeiGuanLiData::has_shi() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void MsgSheBeiGuanLiData::set_has_shi() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void MsgSheBeiGuanLiData::clear_has_shi() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgSheBeiGuanLiData::clear_shi() {
   if (shi_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11835,15 +11962,15 @@ inline void MsgSheBeiGuanLiData::set_allocated_shi(::std::string* shi) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiGuanLiData.Shi)
 }
 
-// optional string Qu = 5;
+// optional string Qu = 4;
 inline bool MsgSheBeiGuanLiData::has_qu() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void MsgSheBeiGuanLiData::set_has_qu() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void MsgSheBeiGuanLiData::clear_has_qu() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgSheBeiGuanLiData::clear_qu() {
   if (qu_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11911,15 +12038,15 @@ inline void MsgSheBeiGuanLiData::set_allocated_qu(::std::string* qu) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiGuanLiData.Qu)
 }
 
-// optional string Shiyongdanwei = 6;
+// optional string Shiyongdanwei = 5;
 inline bool MsgSheBeiGuanLiData::has_shiyongdanwei() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgSheBeiGuanLiData::set_has_shiyongdanwei() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgSheBeiGuanLiData::clear_has_shiyongdanwei() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgSheBeiGuanLiData::clear_shiyongdanwei() {
   if (shiyongdanwei_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -11987,15 +12114,15 @@ inline void MsgSheBeiGuanLiData::set_allocated_shiyongdanwei(::std::string* shiy
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiGuanLiData.Shiyongdanwei)
 }
 
-// optional string IP = 7;
+// optional string IP = 6;
 inline bool MsgSheBeiGuanLiData::has_ip() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgSheBeiGuanLiData::set_has_ip() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgSheBeiGuanLiData::clear_has_ip() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgSheBeiGuanLiData::clear_ip() {
   if (ip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -12063,15 +12190,15 @@ inline void MsgSheBeiGuanLiData::set_allocated_ip(::std::string* ip) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiGuanLiData.IP)
 }
 
-// optional string Shebeileixing = 8;
+// optional string Shebeileixing = 7;
 inline bool MsgSheBeiGuanLiData::has_shebeileixing() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgSheBeiGuanLiData::set_has_shebeileixing() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgSheBeiGuanLiData::clear_has_shebeileixing() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgSheBeiGuanLiData::clear_shebeileixing() {
   if (shebeileixing_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -12139,15 +12266,15 @@ inline void MsgSheBeiGuanLiData::set_allocated_shebeileixing(::std::string* sheb
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiGuanLiData.Shebeileixing)
 }
 
-// optional string Jingdu = 9;
+// optional string Jingdu = 8;
 inline bool MsgSheBeiGuanLiData::has_jingdu() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgSheBeiGuanLiData::set_has_jingdu() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgSheBeiGuanLiData::clear_has_jingdu() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgSheBeiGuanLiData::clear_jingdu() {
   if (jingdu_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -12215,15 +12342,15 @@ inline void MsgSheBeiGuanLiData::set_allocated_jingdu(::std::string* jingdu) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiGuanLiData.Jingdu)
 }
 
-// optional string Weidu = 10;
+// optional string Weidu = 9;
 inline bool MsgSheBeiGuanLiData::has_weidu() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void MsgSheBeiGuanLiData::set_has_weidu() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void MsgSheBeiGuanLiData::clear_has_weidu() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void MsgSheBeiGuanLiData::clear_weidu() {
   if (weidu_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
@@ -12291,15 +12418,15 @@ inline void MsgSheBeiGuanLiData::set_allocated_weidu(::std::string* weidu) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgSheBeiGuanLiData.Weidu)
 }
 
-// optional string Chuangjianshijian = 11;
+// optional string Chuangjianshijian = 10;
 inline bool MsgSheBeiGuanLiData::has_chuangjianshijian() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void MsgSheBeiGuanLiData::set_has_chuangjianshijian() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void MsgSheBeiGuanLiData::clear_has_chuangjianshijian() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void MsgSheBeiGuanLiData::clear_chuangjianshijian() {
   if (chuangjianshijian_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {

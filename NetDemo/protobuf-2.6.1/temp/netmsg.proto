@@ -1,5 +1,27 @@
 package netmsg;
 
+message MsgPack
+{
+	required	MsgHead								head							= 1;
+	optional	MsgCmd  							msgcmd							= 2;
+	optional	MsgIdCardApplyData					msgidcardapplydata				= 3;
+	optional	MsgOnlineStatusData					msgonlinestatusdata				= 4;
+	optional	MsgShuLiangHuiZongData				msgshulianghuizongdata			= 5;
+	optional	MsgXiangXiTongJiData  				msgxiangxitongjidata			= 6;
+	optional	MsgZhiQianShuJuData  				msgzhiqianshujudata				= 7;
+	optional	MsgShouZhengShuJuData  				msgshouzhengshujudata			= 8;
+	optional	MsgQianZhuShuJuData  				msgqianzhushujudata				= 9;
+	optional	MsgJiaoKuanShuJuData  				msgjiaokuanshujudata			= 10;
+	optional	MsgChaXunShuJuData  				msgchaxunshujudata				= 11;
+	optional	MsgYuShouLiShuJuData  				msgyushoulishujudata			= 12;
+	optional	MsgSheBeiYiChangShuJuData  			msgshebeiyichangshujudata		= 13;
+	optional	MsgGuanLiYuanData  					msgguanliyuandata				= 14;
+	optional	MsgGuanLiYuanCaoZuoJiLuData  		msgguanliyuancaozuojiludata		= 15;
+	optional	MsgSheBeiGuanLiData  				msgshebeiguanlidata				= 16;
+}
+
+
+
 enum NetMsgType{
 	NetMsgType_Unknown										= 0;
 
@@ -23,206 +45,190 @@ message MsgHead{
     required	NetMsgType			packtype				= 3 [default = NetMsgType_Unknown];          
 }
 
-message MsgString{
-
-	required	MsgHead				head					= 1;
+message MsgCmd{
 	required	string				Cmd						= 2;
 }
 
 message MsgIdCardApplyData{
-	required	MsgHead				head					= 1;
-	optional	string  			name					= 2;	//姓名
-	optional	string  			gender					= 3;	//性别
-	optional	string  			Nation					= 4;	//民族
-	optional	string  			Birthday				= 5;	//出生日期
-	optional	string  			Address					= 6;	//地址
-	optional	string  			IdNumber				= 7;	//身份证号码
-	optional	string  			SigDepart				= 8;	//签发机关
-	optional	string  			SLH						= 9;	//受理号
-	optional	string  			fpData					= 10;	//lob 指纹数据
-	optional	string  			fpFeature				= 11;	//lob 指纹特征数据
-	optional	string  			XCZP					= 12;	//lob 现场照片
-	optional	string  			XZQH					= 13;	//行政区划
-	optional	string  			sannerId				= 14;	//指纹仪编号
-	optional	string  			scannerName				= 15;	//指纹仪名称
-	optional	bool			  	legal					= 16;	//是否合法
-	optional	string  			operatorID				= 17;	//审核员编号
-	optional	string  			operatorName			= 18;	//审核员姓名
-	optional	string  			opDate					= 19;	//操作日期
+	optional	string  			name					= 1;	//姓名
+	optional	string  			gender					= 2;	//性别
+	optional	string  			Nation					= 3;	//民族
+	optional	string  			Birthday				= 4;	//出生日期
+	optional	string  			Address					= 5;	//地址
+	optional	string  			IdNumber				= 6;	//身份证号码
+	optional	string  			SigDepart				= 7;	//签发机关
+	optional	string  			SLH						= 8;	//受理号
+	optional	string  			fpData					= 9;	//lob 指纹数据
+	optional	string  			fpFeature				= 10;	//lob 指纹特征数据
+	optional	string  			XCZP					= 11;	//lob 现场照片
+	optional	string  			XZQH					= 12;	//行政区划
+	optional	string  			sannerId				= 13;	//指纹仪编号
+	optional	string  			scannerName				= 14;	//指纹仪名称
+	optional	bool			  	legal					= 15;	//是否合法
+	optional	string  			operatorID				= 16;	//审核员编号
+	optional	string  			operatorName			= 17;	//审核员姓名
+	optional	string  			opDate					= 18;	//操作日期
 }
 
 message MsgOnlineStatusData{
-	required	MsgHead				head					= 1;
-	optional	string  			machineId				= 2;	//自助设备编号
-	optional	string  			machineName				= 3;	//自助设备名称
-	optional	string  			machineIP				= 4;	//自助设备IP地址
-	optional	string  			machineLongi			= 5;	//自助设备经度
-	optional	string  			machineLat				= 6;	//自助设备纬度
-	optional	string  			currentBusiness			= 7;	//当前办理业务环节
-	optional	string  			businessStartTime		= 8;	//开始办理业务时间
-	optional	string  			businessEndTime			= 9;	//结束办理业务时间
-	optional	bool		  		businessDone			= 10;	//业务是否办理成功
+	optional	string  			machineId				= 1;	//自助设备编号
+	optional	string  			machineName				= 2;	//自助设备名称
+	optional	string  			machineIP				= 3;	//自助设备IP地址
+	optional	string  			machineLongi			= 4;	//自助设备经度
+	optional	string  			machineLat				= 5;	//自助设备纬度
+	optional	string  			currentBusiness			= 6;	//当前办理业务环节
+	optional	string  			businessStartTime		= 7;	//开始办理业务时间
+	optional	string  			businessEndTime			= 8;	//结束办理业务时间
+	optional	bool		  		businessDone			= 9;	//业务是否办理成功
 }
 
 message MsgShuLiangHuiZongData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	int32  				Shiyongdanwei			= 3;	//使用单位数量
-	optional	int32  				Shebeizongshuliang		= 4;	//设备总数量
-	optional	int32  				Qiyongshebei			= 5;	//设备在线数量
-	optional	int32  				Yuyueyewu				= 6;	//预约业务
-	optional	int32  				Yushouliyewu			= 7;	//预受理业务
-	optional	int32  				Jiaofeiyewu				= 8;	//缴费业务
-	optional	int32  				Chaxunyewu				= 9;	//查询业务
-	optional	int32		  		Shebeishouzheng			= 10;	//设备收证
-	optional	int32		  		Xuqianyewu				= 11;	//续签业务总数
-	optional	int32		  		Benshitongxingzheng		= 12;	//本式通行证
-	optional	int32		  		Dianzitongxingzheng		= 13;	//电子通行证
-	optional	int32		  		Tongxingzhengzhika		= 14;	//通行证制卡总数
-	optional	int32		  		Lidengkequ				= 15;	//立等可取
-	optional	int32		  		Feilidengkequ			= 16;	//非立等可取
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	int32  				Shiyongdanwei			= 2;	//使用单位数量
+	optional	int32  				Shebeizongshuliang		= 3;	//设备总数量
+	optional	int32  				Qiyongshebei			= 4;	//设备在线数量
+	optional	int32  				Yuyueyewu				= 5;	//预约业务
+	optional	int32  				Yushouliyewu			= 6;	//预受理业务
+	optional	int32  				Jiaofeiyewu				= 7;	//缴费业务
+	optional	int32  				Chaxunyewu				= 8;	//查询业务
+	optional	int32		  		Shebeishouzheng			= 9;	//设备收证
+	optional	int32		  		Xuqianyewu				= 10;	//续签业务总数
+	optional	int32		  		Benshitongxingzheng		= 11;	//本式通行证
+	optional	int32		  		Dianzitongxingzheng		= 12;	//电子通行证
+	optional	int32		  		Tongxingzhengzhika		= 13;	//通行证制卡总数
+	optional	int32		  		Lidengkequ				= 14;	//立等可取
+	optional	int32		  		Feilidengkequ			= 15;	//非立等可取
 }
 
 message MsgXiangXiTongJiData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	int32  				Nian					= 3;	//年份
-	optional	int32  				Yue						= 4;	//月
-	optional	int32  				Ri						= 5;	//日
-	optional	int32  				Xiaoshi					= 6;	//小时
-	optional	int32  				Fenzhong				= 7;	//分钟
-	optional	int32  				Shiyongdanwei			= 8;	//使用单位数量
-	optional	int32  				Qiyongshebei			= 9;	//设备在线数量
-	optional	int32		  		Yuyueyewu				= 10;	//预约业务
-	optional	int32		  		Yushouliyewu			= 11;	//预受理业务
-	optional	int32		  		Jiaofeiyewu				= 12;	//缴费业务
-	optional	int32		  		Chaxunyewu				= 13;	//查询业务
-	optional	int32		  		Shebeishouzheng			= 14;	//设备收证
-	optional	int32		  		Xuqianyewu				= 15;	//续签业务总数
-	optional	int32		  		Benshitongxingzheng		= 16;	//本式通行证
-	optional	int32		  		Dianzitongxingzheng		= 17;	//电子通行证
-	optional	int32		  		Tongxingzhengzhika		= 18;	//通行证制卡总数
-	optional	int32		  		Lidengkequ				= 19;	//立等可取
-	optional	int32		  		Feilidengkequ			= 20;	//非立等可取
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	int32  				Nian					= 2;	//年份
+	optional	int32  				Yue						= 3;	//月
+	optional	int32  				Ri						= 4;	//日
+	optional	int32  				Xiaoshi					= 5;	//小时
+	optional	int32  				Fenzhong				= 6;	//分钟
+	optional	int32  				Shiyongdanwei			= 7;	//使用单位数量
+	optional	int32  				Qiyongshebei			= 8;	//设备在线数量
+	optional	int32		  		Yuyueyewu				= 9;	//预约业务
+	optional	int32		  		Yushouliyewu			= 10;	//预受理业务
+	optional	int32		  		Jiaofeiyewu				= 11;	//缴费业务
+	optional	int32		  		Chaxunyewu				= 12;	//查询业务
+	optional	int32		  		Shebeishouzheng			= 13;	//设备收证
+	optional	int32		  		Xuqianyewu				= 14;	//续签业务总数
+	optional	int32		  		Benshitongxingzheng		= 15;	//本式通行证
+	optional	int32		  		Dianzitongxingzheng		= 16;	//电子通行证
+	optional	int32		  		Tongxingzhengzhika		= 17;	//通行证制卡总数
+	optional	int32		  		Lidengkequ				= 18;	//立等可取
+	optional	int32		  		Feilidengkequ			= 19;	//非立等可取
 }
 
 message MsgZhiQianShuJuData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	string  			Riqi					= 3;	//日期
-	optional	string  			ShebeiIP				= 4;	//设备IP地址
-	optional	string  			Yewubianhao				= 5;	//业务编号
-	optional	string  			YuanZhengjianhaoma		= 6;	//原证件号码
-	optional	string  			Xingming				= 7;	//姓名
-	optional	string  			Qianzhuzhonglei			= 8;	//签注种类
-	optional	string  			ZhikaZhuangtai			= 9;	//制卡状态
-	optional	string		  		Zhengjianhaoma			= 10;	//证件号码
-	optional	string		  		Jiekoufanhuijieguo		= 11;	//接口返回结果
-	optional	string		  		Lianxidianhua			= 12;	//联系电话
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	string  			Riqi					= 2;	//日期
+	optional	string  			ShebeiIP				= 3;	//设备IP地址
+	optional	string  			Yewubianhao				= 4;	//业务编号
+	optional	string  			YuanZhengjianhaoma		= 5;	//原证件号码
+	optional	string  			Xingming				= 6;	//姓名
+	optional	string  			Qianzhuzhonglei			= 7;	//签注种类
+	optional	string  			ZhikaZhuangtai			= 8;	//制卡状态
+	optional	string		  		Zhengjianhaoma			= 9;	//证件号码
+	optional	string		  		Jiekoufanhuijieguo		= 10;	//接口返回结果
+	optional	string		  		Lianxidianhua			= 11;	//联系电话
 }
 
 message MsgShouZhengShuJuData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	string  			Riqi					= 3;	//日期
-	optional	string  			ShebeiIP				= 4;	//设备IP地址
-	optional	string  			Zhengjianleixing		= 5;	//证件类型
-	optional	string  			Zhengjianhaoma			= 6;	//证件号码
-	optional	string  			Xingming				= 7;	//姓名
-	optional	string  			Shoulibianhao			= 8;	//受理编号
-	optional	string  			Shifoujiaofei			= 9;	//是否缴费
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	string  			Riqi					= 2;	//日期
+	optional	string  			ShebeiIP				= 3;	//设备IP地址
+	optional	string  			Zhengjianleixing		= 4;	//证件类型
+	optional	string  			Zhengjianhaoma			= 5;	//证件号码
+	optional	string  			Xingming				= 6;	//姓名
+	optional	string  			Shoulibianhao			= 7;	//受理编号
+	optional	string  			Shifoujiaofei			= 8;	//是否缴费
 }
 
 message MsgQianZhuShuJuData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	string  			Riqi					= 3;	//日期
-	optional	string  			ShebeiIP				= 4;	//设备IP地址
-	optional	string  			YuanZhengjianhaoma		= 5;	//原证件号码
-	optional	string  			Xingming				= 6;	//姓名
-	optional	string  			Xingbie					= 7;	//性别
-	optional	string  			Chushengriqi			= 8;	//出生日期
-	optional	string  			Lianxidianhua			= 9;	//联系电话
-	optional	string  			Yewuleixing				= 10;	//业务类型
-	optional	string  			Shouliren				= 11;	//受理人
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	string  			Riqi					= 2;	//日期
+	optional	string  			ShebeiIP				= 3;	//设备IP地址
+	optional	string  			YuanZhengjianhaoma		= 4;	//原证件号码
+	optional	string  			Xingming				= 5;	//姓名
+	optional	string  			Xingbie					= 6;	//性别
+	optional	string  			Chushengriqi			= 7;	//出生日期
+	optional	string  			Lianxidianhua			= 8;	//联系电话
+	optional	string  			Yewuleixing				= 9;	//业务类型
+	optional	string  			Shouliren				= 10;	//受理人
 }	
 
 message MsgJiaoKuanShuJuData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	string  			Riqi					= 3;	//日期
-	optional	string  			ShebeiIP				= 4;	//设备IP地址
-	optional	string  			Zhishoudanweidaima		= 5;	//执收单位代码
-	optional	string  			Jiaokuantongzhishuhaoma	= 6;	//缴款通知书号码
-	optional	string  			Jiaokuanrenxingming		= 7;	//缴款人姓名
-	optional	float  				Yingkoukuanheji			= 8;	//应扣款合计
-	optional	string  			Jiaoyiriqi				= 9;	//交易日期
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	string  			Riqi					= 2;	//日期
+	optional	string  			ShebeiIP				= 3;	//设备IP地址
+	optional	string  			Zhishoudanweidaima		= 4;	//执收单位代码
+	optional	string  			Jiaokuantongzhishuhaoma	= 5;	//缴款通知书号码
+	optional	string  			Jiaokuanrenxingming		= 6;	//缴款人姓名
+	optional	float  				Yingkoukuanheji			= 7;	//应扣款合计
+	optional	string  			Jiaoyiriqi				= 8;	//交易日期
 }
 
 message MsgChaXunShuJuData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	string  			Riqi					= 3;	//日期
-	optional	string  			ShebeiIP				= 4;	//设备IP地址
-	optional	string  			Chaxunhaoma				= 5;	//查询号码
-	optional	string  			Chaxunleixing			= 6;	//查询类型
-	optional	bool  				Shifouchaxunchenggong	= 7;	//是否查询成功
-}
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	string  			Riqi					= 2;	//日期
+	optional	string  			ShebeiIP				= 3;	//设备IP地址
+	optional	string  			Chaxunhaoma				= 4;	//查询号码
+	optional	string  			Chaxunleixing			= 5;	//查询类型
+	optional	bool  				Shifouchaxunchenggong	= 6;	//是否查询成功
+}															  
 
 message MsgYuShouLiShuJuData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	string  			Riqi					= 3;	//日期
-	optional	string  			ShebeiIP				= 4;	//设备IP地址
-	optional	string  			Yewubianhao				= 5;	//业务编号
-	optional	string  			Xingming				= 6;	//姓名
-	optional	string  			Lianxidianhua			= 7;	//联系电话
-	optional	string  			Chuguoshiyou			= 8;	//出国事由
-	optional	string  			YuanZhengjianhaoma		= 9;	//原证件号码
-	optional	string  			Qianzhuzhonglei			= 10;	//签注种类
-	optional	string  			Xingbie					= 11;	//性别
-	optional	string  			Hukousuozaidi			= 12;	//户口所在地
-	optional	string  			Minzu					= 13;	//民族
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	string  			Riqi					= 2;	//日期
+	optional	string  			ShebeiIP				= 3;	//设备IP地址
+	optional	string  			Yewubianhao				= 4;	//业务编号
+	optional	string  			Xingming				= 5;	//姓名
+	optional	string  			Lianxidianhua			= 6;	//联系电话
+	optional	string  			Chuguoshiyou			= 7;	//出国事由
+	optional	string  			YuanZhengjianhaoma		= 8;	//原证件号码
+	optional	string  			Qianzhuzhonglei			= 9;	//签注种类
+	optional	string  			Xingbie					= 10;	//性别
+	optional	string  			Hukousuozaidi			= 11;	//户口所在地
+	optional	string  			Minzu					= 12;	//民族
 }	
 
 message MsgSheBeiYiChangShuJuData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	string  			Riqi					= 3;	//日期
-	optional	string  			Shiyongdanwei			= 4;	//使用单位
-	optional	string  			Yichangshejimokuai		= 5;	//异常涉及模块
-	optional	string  			Yichangyuanyin			= 6;	//异常原因
-	optional	string  			Yichangxiangxineirong	= 7;	//异常详细内容
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	string  			Riqi					= 2;	//日期
+	optional	string  			Shiyongdanwei			= 3;	//使用单位
+	optional	string  			Yichangshejimokuai		= 4;	//异常涉及模块
+	optional	string  			Yichangyuanyin			= 5;	//异常原因
+	optional	string  			Yichangxiangxineirong	= 6;	//异常详细内容
 }	
 
 message MsgGuanLiYuanData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	string  			Yonghuming				= 3;	//用户名
-	optional	string  			Mima					= 4;	//密码
-	optional	string  			Youxiaoqi				= 5;	//有效期
-	optional	int32  				Quanxianjibie			= 6;	//权限级别
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	string  			Yonghuming				= 2;	//用户名
+	optional	string  			Mima					= 3;	//密码
+	optional	string  			Youxiaoqi				= 4;	//有效期
+	optional	int32  				Quanxianjibie			= 5;	//权限级别
 }	
 
 message MsgGuanLiYuanCaoZuoJiLuData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	string  			Yonghuming				= 3;	//用户名
-	optional	string  			Riqi					= 4;	//操作日期
-	optional	string  			Caozuoleibie			= 5;	//操作类别
-	optional	string  			Caozuoneirong			= 6;	//操作内容
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	string  			Yonghuming				= 2;	//用户名
+	optional	string  			Riqi					= 3;	//操作日期
+	optional	string  			Caozuoleibie			= 4;	//操作类别
+	optional	string  			Caozuoneirong			= 5;	//操作内容
 }	
 
 message MsgSheBeiGuanLiData{
-	required	MsgHead				head					= 1;
-	optional	int32  				Xuhao					= 2;	//序号
-	optional	string  			Sheng					= 3;	//所属省份
-	optional	string  			Shi						= 4;	//所属市
-	optional	string  			Qu						= 5;	//所属区
-	optional	string  			Shiyongdanwei			= 6;	//使用单位
-	optional	string  			IP						= 7;	//设备IP地址
-	optional	string  			Shebeileixing			= 8;	//设备类型
-	optional	string  			Jingdu					= 9;	//经度
-	optional	string  			Weidu					= 10;	//纬度
-	optional	string  			Chuangjianshijian		= 11;	//创建时间
+	optional	int32  				Xuhao					= 1;	//序号
+	optional	string  			Sheng					= 2;	//所属省份
+	optional	string  			Shi						= 3;	//所属市
+	optional	string  			Qu						= 4;	//所属区
+	optional	string  			Shiyongdanwei			= 5;	//使用单位
+	optional	string  			IP						= 6;	//设备IP地址
+	optional	string  			Shebeileixing			= 7;	//设备类型
+	optional	string  			Jingdu					= 8;	//经度
+	optional	string  			Weidu					= 9;;	//纬度
+	optional	string  			Chuangjianshijian		= 10;	//创建时间
 }	

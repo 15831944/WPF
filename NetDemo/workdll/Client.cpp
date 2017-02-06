@@ -1,3 +1,5 @@
+m_bCmdFinished
+m_bCmdFinished
 #include "stdafx.h"
 #include "Client.h"
 
@@ -22,7 +24,35 @@ CClient::~CClient()
 void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorcode, const char* errormsg)
 {
 
-	//m_bCmdFinished = true;
+	if (buf != NULL && len > 0)
+	{
+		netmsg::MsgPack msgPack;
+		if (msgPack.ParseFromArray(buf, len))
+		{
+			if (msgPack.has_msgcmd())
+			{
+				switch (msgPack.head().packtype())
+				{
+				case netmsg::NetMsgType_DatabaseQueryError:
+				case netmsg::NetMsgType_DatabaseQuerySuccess:
+				{
+					CClient::GetInstance()->m_bCmdFinished = true;
+				}
+				break;
+				case netmsg::NetMsgType_DatabaseAddAsk:
+					break;
+				case netmsg::NetMsgType_DatabaseDeleteAsk:
+					break;
+				}
+			}
+			else if (msgPack.has_msgidcardapplydata())
+			{
+
+				if (msgPack.head().totalpack() == msgPack.head().packindex())
+					CClient::GetInstance()->m_bCmdFinished = true;
+			}
+		}
+	}
 }
 
 CClient* CClient::GetInstance()
@@ -47,7 +77,7 @@ bool CClient::StartClient(char *ip, int port)
 	// TODO:  在此添加控件通知处理程序代码
 	if (m_startClientFunc)
 	{
-		return m_startClientFunc(ip, port, OnReceiveCallBackFunc, m_sendDataFunc);
+		return m_startClientFunc(ip, port, CClient::OnReceiveCallBackFunc, m_sendDataFunc);
 	}
 
 	return false;
@@ -68,6 +98,26 @@ bool CClient::ClientStoped()
 		return m_isClientStopedFunc();
 	return true;
 }
+void CClient::SendMsgBuf(::google::protobuf::Message& msg)
+{
+	if (m_sendDataFunc)
+	{
+		//int msgLen			= msg.ByteSize();
+		//LPBYTE pBuffer		= new BYTE[msgLen + 4];
+		//msg.SerializeToArray(pBuffer + 4, msgLen);
+		//(*(int*)pBuffer)	= msgLen;
+
+		//m_sendDataFunc(pBuffer, msgLen + 4);
+
+
+		int msgLen			= msg.ByteSize();
+		LPBYTE pBuffer		= new BYTE[msgLen];
+		msg.SerializeToArray(pBuffer, msgLen);
+
+		m_sendDataFunc(pBuffer, msgLen);
+		delete[] pBuffer;
+	}
+}
 
 void CClient::QueryIDCARDAPPLY(char* querySqlStr, QueryIDCARDAPPLYCallBack callBack)
 {
@@ -78,9 +128,13 @@ void CClient::QueryIDCARDAPPLY(char* querySqlStr, QueryIDCARDAPPLYCallBack callB
 		{
 			m_bCmdFinished = false;
 
-			netmsg::MsgString data;
-			data.set_str();
-
+			netmsg::MsgPack pack;
+			pack.mutable_head()->set_totalpack(1);
+			pack.mutable_head()->set_packindex(1);
+			pack.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseQueryAsk);
+			
+			pack.mutable_msgcmd()->set_cmd(querySqlStr);
+			SendMsgBuf(pack);
 		}
 	}
 }
