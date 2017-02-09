@@ -4,73 +4,19 @@
                     xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
                     xmlns:Model="clr-namespace:ManageSystem.Model"
                     xmlns:Local="clr-namespace:ManageSystem"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                    xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
                     >
     
     <DataTemplate DataType="{x:Type viewModel:QueryViewModel}">
         <Grid Visibility="{Binding Path=bShowPage}" Background="Gray">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="200"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TreeView Grid.Column="0" ItemsSource="{Binding Path=deviceList}"/>
-            <!--<WrapPanel Grid.Column="1">
-                <Grid Margin="5,0,5,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">证件编号</TextBlock>
-                    <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"></TextBox>
-                </Grid>
-                <Grid Margin="5,0,5,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">业务编码</TextBlock>
-                    <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"></TextBox>
-                </Grid>
-                <Grid Margin="5,0,5,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">受理时间开始</TextBlock>
-                    <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"></TextBox>
-                </Grid>
-                <Grid Margin="5,0,5,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">受理时间截止</TextBlock>
-                    <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"></TextBox>
-                </Grid>
-                <Grid Margin="5,0,5,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">受理单位</TextBlock>
-                    <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"></TextBox>
-                </Grid>
-                <Grid Margin="5,0,5,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">办理事由</TextBlock>
-                    <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"></TextBox>
-                </Grid>
-                <Grid Margin="5,0,5,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">办理类别</TextBlock>
-                    <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"></TextBox>
-                </Grid>
-            </WrapPanel>-->
+            <TreeView Grid.Column="0" AlternationCount="3" ItemsSource="{Binding Path=deviceList}"  ItemContainerStyle="{DynamicResource TreeViewItemStyle1}">
+
+            </TreeView>
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="100"/>
@@ -80,8 +26,8 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
                         <ColumnDefinition Width="0.5*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
@@ -128,31 +74,32 @@
                             <TextBox Grid.Column="1" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"></TextBox>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Column="2">
+                    <Grid Grid.Column="2" ShowGridLines="False">
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
+                        <Grid Grid.Row="0" ShowGridLines="False">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">受理时间开始</TextBlock>
-                            <!--<DatePicker Grid.Column="1" IsTodayHighlighted="True" Height="25" SelectedDateFormat="Long"></DatePicker>-->
-                            <!--<TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"></TextBox>-->
-                            <!--<WindowsFormsHost Grid.Column="1"  x:Name="host" AllowDrop="True" SnapsToDevicePixels="True">
-                                <winform:DateTimePicker BackColor="Red" ForeColor="Red"  CalendarForeColor="Red"   Format="Custom" ShowUpDown="False" 
-                                                        CustomFormat="yyyy-MM-dd HH:mm:ss"  Width="150" CalendarMonthBackground="Blue" 
-                                                        CalendarTitleBackColor="Blue" CalendarTitleForeColor="Blue" CalendarTrailingForeColor="Blue"></winform:DateTimePicker>
-                            </WindowsFormsHost>-->
-
-                            <Local:Dameer Background="Black"  Grid.Column="1" ShowCheckBox="False" Width="200" Format="Custom" CustomFormat="yyyy-MM-dd HH:mm:ss"></Local:Dameer>
+                            <Toolkit:DateTimePicker Grid.Column="1"
+                                  
+                                 VerticalAlignment="Center"
+                                 IsReadOnly="False"
+                                 Format="Custom"
+                                 FormatString="yyyy-MM-dd HH:mm:ss"
+                                 TimeFormat="Custom"
+                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
+                                 Text="DateTime.Now"
+                                 />
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">办理类别</TextBlock>
                             <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100"></TextBox>
@@ -166,13 +113,33 @@
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">受理时间截止</TextBlock>
-                            <DatePicker Grid.Column="1" IsTodayHighlighted="True" Height="25" SelectedDateFormat="Long"></DatePicker>
+                            <Toolkit:DateTimePicker Grid.Column="1"
+                                 VerticalAlignment="Center"
+                                 IsReadOnly="False"
+                                 Format="Custom"
+                                 FormatString="yyyy-MM-dd HH:mm:ss"
+                                 TimeFormat="Custom"
+                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
+                                 Text="DateTime.Now"
+                                 />
                         </Grid>
                     </Grid>
                     <Button Grid.Column="4" Width="50" Command="{Binding Path=QueryCommand}" Height="50">查询</Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="100,0,0,0" FontSize="25" Grid.Row="0">查询结果</TextBlock>
+                    <DataGrid Grid.Row="1" x:Name="_subListViewTouch" GridLinesVisibility="None" 
+                              VerticalAlignment="Stretch" 
+                              Background="Green" EnableRowVirtualization="False" Foreground="#FFFBFBFB"
+                              >
+                    </DataGrid>
                 </Grid>
             </Grid>
         </Grid>

@@ -4,6 +4,6 @@
                     xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
                     >
     <viewModel:MainWindowViewModel x:Key="MainWindowViewModelKey"/>
-    <viewModel:HomePageViewModel x:Key="HomePageViewModelKey"/>
-    <viewModel:ElectronicMapViewModel x:Key="ElectronicMapViewModelKey"/>
+    <!--<viewModel:HomePageViewModel x:Key="HomePageViewModelKey"/>
+    <viewModel:ElectronicMapViewModel x:Key="ElectronicMapViewModelKey"/>-->
 </ResourceDictionary>

@@ -27,6 +27,20 @@ namespace ManageSystem.Model
             }
         }
 
+        private bool _isSel;
+        public bool isSel
+        {
+            get
+            {
+                return _isSel;
+            }
+            set
+            {
+                _isSel = value;
+                this.RaisePropertyChanged("isSel");
+            }
+        }
+
         private string _text;
         public string Text
         {
