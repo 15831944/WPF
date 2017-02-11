@@ -1,0 +1,9 @@
+LIBRARY         "database"
+
+DESCRIPTION     '(c)2017 zhangyong'
+
+EXPORTS
+		QueryIDCARDAPPLY
+		AddIDCARDAPPLY
+
+		QueryZHIQIANSHUJU
