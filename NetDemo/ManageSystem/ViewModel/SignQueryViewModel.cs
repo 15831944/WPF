@@ -249,6 +249,7 @@ namespace ManageSystem.ViewModel
                string Lianxidianhua
         )
         {
+
             ZHIQIANSHUJUModel model     = new ZHIQIANSHUJUModel();
             model.Xuhao                 = Xuhao.ToString();
             model.Riqi                  = Riqi;
@@ -266,6 +267,7 @@ namespace ManageSystem.ViewModel
         }
         public void Query(object obj)
         {
+            tableList.Clear();
             WorkServer.GetInstance().QueryZHIQIANSHUJU("select * from Zhiqianshuju", Marshal.GetFunctionPointerForDelegate(_queryzhiqianshujucallbackdelegate));
         }
 
