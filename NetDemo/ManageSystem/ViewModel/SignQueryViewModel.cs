@@ -8,18 +8,20 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 
 namespace ManageSystem.ViewModel
 {
     class SignQueryViewModel : NotificationObject
     {
-        public QueryIDCARDAPPLYCallBackDelegate         QueryIDCARDAPPLYCallBackDelegate = null;
+        public QueryIDCARDAPPLYCallBackDelegate         _queryidcardapplycallbackdelegate = null;
+        public QueryZHIQIANSHUJUCallBackDelegate        _queryzhiqianshujucallbackdelegate = null;
 
         public DelegateCommand<object>                  QueryCommand { get; set; }
         public DelegateCommand<object>                  SelectedItemCommand { get; set; }
         public DelegateCommand<object>                  UnSelectedItemCommand { get; set; }
 
-         private Visibility _bShowPage;
+        private Visibility _bShowPage;
         public Visibility bShowPage
         {
             get { return _bShowPage; }
@@ -51,48 +53,161 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private ObservableCollection<string> _businesstype;
+        public ObservableCollection<string> businesstype
+        {
+            get
+            {
+                return _businesstype;
+            }
+            set
+            {
+                _businesstype = value;
+                this.RaisePropertyChanged("businesstype");
+            }
+        }
+
+        private ObservableCollection<string> _cardstatus;
+        public ObservableCollection<string> cardstatus
+        {
+            get
+            {
+                return _cardstatus;
+            }
+            set
+            {
+                _cardstatus = value;
+                this.RaisePropertyChanged("cardstatus");
+            }
+        }
+
+        private ObservableCollection<ZHIQIANSHUJUModel> _tableList;
+        public ObservableCollection<ZHIQIANSHUJUModel> tableList
+        {
+            get
+            {
+                return _tableList;
+            }
+            set
+            {
+                _tableList = value;
+                this.RaisePropertyChanged("tableList");
+            }
+        }
+
         public SignQueryViewModel()
         {
-            QueryIDCARDAPPLYCallBackDelegate            = new Server.QueryIDCARDAPPLYCallBackDelegate(QueryIDCARDAPPLYCallBack);
+            _queryidcardapplycallbackdelegate           = new Server.QueryIDCARDAPPLYCallBackDelegate(QueryIDCARDAPPLYCallBack);
+            _queryzhiqianshujucallbackdelegate          = new Server.QueryZHIQIANSHUJUCallBackDelegate(QueryZHIQIANSHUJUCallBack);
             QueryCommand                                = new DelegateCommand<object>(new Action<object>(this.Query));
             SelectedItemCommand                         = new DelegateCommand<object>(new Action<object>(this.SelectedItem));
             UnSelectedItemCommand                       = new DelegateCommand<object>(new Action<object>(this.UnSelectedItem));
 
             _bShowPage                                  = Visibility.Visible;
             _deviceList                                 = new ObservableCollection<DeviceModel>();
+            _cardstatus                                 = new ObservableCollection<string>();
+            _businesstype                               = new ObservableCollection<string>();
+            _tableList                                  = new ObservableCollection<ZHIQIANSHUJUModel>();
             {   //for test
                 DeviceModel model_1                     = new DeviceModel();
-                model_1.Text                            = "1";
+                model_1.Text                            = "深圳市";
                 DeviceModel model_1_0                   = new DeviceModel();
-                model_1_0.Text                          = "1_0";
+                model_1_0.Text                          = "市局";
                 model_1.Children.Add(model_1_0);
                 DeviceModel model_1_1                   = new DeviceModel();
-                model_1_1.Text                          = "1_1";
+                model_1_1.Text                          = "宝安分局";
                 model_1.Children.Add(model_1_1);
                 DeviceModel model_1_2                   = new DeviceModel();
-                model_1_2.Text                          = "1_2";
+                model_1_2.Text                          = "南山分局";
                 model_1.Children.Add(model_1_2);
                 DeviceModel model_1_2_1                 = new DeviceModel();
-                model_1_2_1.Text                        = "1_2_1";
+                model_1_2_1.Text                        = "南山分局管理科";
                 model_1_2.Children.Add(model_1_2_1);
 
-                DeviceModel model_2                     = new DeviceModel();
-                model_2.Text                            = "2";
-                DeviceModel model_2_0                   = new DeviceModel();
-                model_2_0.Text                          = "2_0";
-                model_2.Children.Add(model_2_0);
-                DeviceModel model_2_1                   = new DeviceModel();
-                model_2_1.Text                          = "2_1";
-                model_2.Children.Add(model_2_1);
-                DeviceModel model_2_2                   = new DeviceModel();
-                model_2_2.Text                          = "2_2";
-                model_2.Children.Add(model_2_2);        
+                DeviceModel model_1_2_1_1               = new DeviceModel();
+                model_1_2_1_1.Text                      = "127.0.0.1";
+                model_1_2_1.Children.Add(model_1_2_1_1);
+
+                //DeviceModel model_2                     = new DeviceModel();
+                //model_2.Text                            = "2";
+                //DeviceModel model_2_0                   = new DeviceModel();
+                //model_2_0.Text                          = "2_0";
+                //model_2.Children.Add(model_2_0);
+                //DeviceModel model_2_1                   = new DeviceModel();
+                //model_2_1.Text                          = "2_1";
+                //model_2.Children.Add(model_2_1);
+                //DeviceModel model_2_2                   = new DeviceModel();
+                //model_2_2.Text                          = "2_2";
+                //model_2.Children.Add(model_2_2);        
 
                 _deviceList.Add(model_1);
-                _deviceList.Add(model_2);
+                //_deviceList.Add(model_2);
+            }
+            {
+                _cardstatus.Add("全部");
+                _cardstatus.Add("成功");
+                _cardstatus.Add("失败");
+                _cardstatus.Add("异常");
+            }
+            {
+                _businesstype.Add("全部");
+                _businesstype.Add("本地");
+                _businesstype.Add("异地");
             }
         }
 
+        //Access and update columns during autogeneration
+        public void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            string headername = e.Column.Header.ToString();
+            //Cancel the column you don't want to generate
+            if (headername == "Xuhao")
+            {
+                e.Column.Header = "序号";
+            }
+            else if (headername == "Riqi")
+            {
+                e.Column.Header = "日期";
+            }
+             else   if (headername == "ShebeiIP")
+            {
+                e.Column.Header = "设备IP地址";
+            }
+            else if (headername == "Yewubianhao")
+            {
+                e.Column.Header = "业务编号";
+            }
+            else if (headername == "YuanZhengjianhaoma")
+            {
+                e.Column.Header = "原证件号码";
+            }
+            else if (headername == "Xingming")
+            {
+                e.Column.Header = "姓名";
+            }
+            else if (headername == "Qianzhuzhonglei")
+            {
+                e.Column.Header = "签注种类";
+            }
+            else if (headername == "ZhikaZhuangtai")
+            {
+                e.Column.Header = "制卡状态";
+            }
+            else if (headername == "Zhengjianhaoma")
+            {
+                e.Column.Header = "证件号码";
+
+            }
+            else if (headername == "Jiekoufanhuijieguo")
+            {
+                e.Column.Header = "接口返回结果";
+            }
+            else if (headername == "Lianxidianhua")
+            {
+                e.Column.Header = "联系电话";
+            }
+
+        }
         public void QueryIDCARDAPPLYCallBack(
                     string name,
                     string gender,
@@ -119,9 +234,39 @@ namespace ManageSystem.ViewModel
         {
 
         }
+
+        public void QueryZHIQIANSHUJUCallBack(
+               int Xuhao,
+               string Riqi,
+               string ShebeiIP,
+               string Yewubianhao,
+               string YuanZhengjianhaoma,
+               string Xingming,
+               string Qianzhuzhonglei,
+               string ZhikaZhuangtai,
+               string Zhengjianhaoma,
+               string Jiekoufanhuijieguo,
+               string Lianxidianhua
+        )
+        {
+            ZHIQIANSHUJUModel model     = new ZHIQIANSHUJUModel();
+            model.Xuhao                 = Xuhao.ToString();
+            model.Riqi                  = Riqi;
+            model.ShebeiIP              = ShebeiIP;
+            model.Yewubianhao           = Yewubianhao;
+            model.YuanZhengjianhaoma    = YuanZhengjianhaoma;
+            model.Xingming              = Xingming;
+            model.Qianzhuzhonglei       = Qianzhuzhonglei;
+            model.ZhikaZhuangtai        = ZhikaZhuangtai;
+            model.Zhengjianhaoma        = Zhengjianhaoma;
+            model.Jiekoufanhuijieguo    = Jiekoufanhuijieguo;
+            model.Lianxidianhua         = Lianxidianhua;
+
+            tableList.Add(model);
+        }
         public void Query(object obj)
         {
-            WorkServer.GetInstance().QueryIDCARDAPPLY("select * from idCardApply", Marshal.GetFunctionPointerForDelegate(QueryIDCARDAPPLYCallBackDelegate));
+            WorkServer.GetInstance().QueryZHIQIANSHUJU("select * from Zhiqianshuju", Marshal.GetFunctionPointerForDelegate(_queryzhiqianshujucallbackdelegate));
         }
 
 

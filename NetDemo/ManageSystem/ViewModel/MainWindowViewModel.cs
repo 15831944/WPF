@@ -23,36 +23,37 @@ namespace ManageSystem.ViewModel
         PageVisibleEnum_PreAcceptQuery,
     }
 
-    //public class ShortCutInfoImageConvert : IValueConverter
-    //{
-    //    #region IValueConverter 成员
-    //    public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-    //    {
-    //        if (value != null && value.GetType() == typeof(MainWindowViewModel))
-    //            //if (value != null && value.GetType() == typeof(bool) && ((bool)value))
-    //        {
-    //            MainWindowViewModel model = value as MainWindowViewModel;
-    //            if(model.bShowPage == PageVisibleEnum.PageVisibleEnum_Home)
-    //                return Visibility.Visible;
-    //            return Visibility.Hidden;
-    //        }
-    //        else
-    //            return Visibility.Hidden;
+    public class DataGridItemSourceConvert : IValueConverter
+    {
+        #region IValueConverter 成员
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string str = value.GetType().ToString();
+            if (value.GetType() == typeof(DataGrid))
+            {
+                DataGrid grid = value as DataGrid;
 
-    //        return null;
-    //    }
-    //    public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-    //    {
-    //        string mypric = value.ToString();
-    //        decimal pri;
-    //        if (decimal.TryParse(mypric, System.Globalization.NumberStyles.Any, culture, out pri))
-    //        {
-    //            return pri;
-    //        }
-    //        return value;
-    //    }
-    //    #endregion
-    //}
+                string strtype = grid.DataContext.GetType().ToString();
+                if (grid.DataContext.GetType() == typeof(SignQueryViewModel))
+                {
+                    SignQueryViewModel model = grid.DataContext as SignQueryViewModel;
+                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
+
+                    return model.tableList;
+                }
+                else
+                {
+                }
+            }
+
+            return null;
+        }
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return null;
+        }
+        #endregion
+    }
 
     class MainWindowViewModel : NotificationObject
     {
@@ -118,71 +119,58 @@ namespace ManageSystem.ViewModel
             _QueryQueryViewModel                        = new QueryQueryViewModel();
             _PreAcceptQueryViewModel                    = new PreAcceptQueryViewModel();
 
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_EndorsementQuery;
-
-            _HomePageViewModel              .bShowPage                = Visibility.Hidden;
-            _SummaryStatViewModel           .bShowPage                = Visibility.Hidden;
-            _SignStatViewModel              .bShowPage                = Visibility.Hidden;
-            _SignAnomalyStatViewModel       .bShowPage                = Visibility.Hidden;
-            _SignQueryViewModel             .bShowPage                = Visibility.Hidden;
-            _CardQueryViewModel             .bShowPage                = Visibility.Hidden;
-            _EndorsementQueryViewModel      .bShowPage                = Visibility.Hidden;
-            _PaymentQueryViewModel          .bShowPage                = Visibility.Hidden;
-            _QueryQueryViewModel            .bShowPage                = Visibility.Hidden;
-            _PreAcceptQueryViewModel        .bShowPage                = Visibility.Hidden;
-
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_SignQuery;
         }
 
 
         public void mainPageShow(object obj)
         {
-            bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Home;
-         
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_Home;
         }
 
         private void SummaryStatShow(object obj)
         {
-            bShowPage                                  = PageVisibleEnum.PageVisibleEnum_SummaryStat;
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_SummaryStat;
         }
 
         private void SignStatShow(object obj)
         {
-            bShowPage                                  = PageVisibleEnum.PageVisibleEnum_SignStat;
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_SignStat;
         }
 
         private void SignAnomalyShow(object obj)
         {
-            bShowPage                                  = PageVisibleEnum.PageVisibleEnum_SignAnomalyStat;
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_SignAnomalyStat;
         }
 
         private void SignQueryShow(object obj)
         {
-            bShowPage                                  = PageVisibleEnum.PageVisibleEnum_SignQuery;
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_SignQuery;
         }
 
         private void CardQueryShow(object obj)
         {
-            bShowPage                                  = PageVisibleEnum.PageVisibleEnum_CardQuery;
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_CardQuery;
         }
 
         private void EndorsementQueryShow(object obj)
         {
-            bShowPage                                  = PageVisibleEnum.PageVisibleEnum_EndorsementQuery;
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_EndorsementQuery;
         }
 
         private void PaymentQueryShow(object obj)
         {
-            bShowPage                                  = PageVisibleEnum.PageVisibleEnum_PaymentQuery;
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_PaymentQuery;
         }
 
         private void QueryQueryShow(object obj)
         {
-            bShowPage                                  = PageVisibleEnum.PageVisibleEnum_QueryQuery;
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_QueryQuery;
         }
 
         private void PreAcceptQueryShow(object obj)
         {
-            bShowPage                                  = PageVisibleEnum.PageVisibleEnum_PreAcceptQuery;
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_PreAcceptQuery;
         }
 
         private void DragWnd(object obj)

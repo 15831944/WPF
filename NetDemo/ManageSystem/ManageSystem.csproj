@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -59,6 +60,7 @@
     </ApplicationDefinition>
     <Compile Include="Dameer.cs" />
     <Compile Include="Model\DeviceModel.cs" />
+    <Compile Include="Model\ZHIQIANSHUJUModel.cs" />
     <Compile Include="Resources\DateTimer\ButtonSpinner.cs" />
     <Compile Include="Resources\DateTimer\DateTimeFormat.cs" />
     <Compile Include="Resources\DateTimer\DateTimeInfo.cs" />

@@ -5,6 +5,8 @@
 #include "Client.h"
 #include "Server.h"
 
+#include "SqliteData.h"
+
 /***************************************Server*******************************************/
 bool startServer(char *ip, int port)
 {
@@ -59,7 +61,31 @@ void queryXIANGXITONGJI(char* querySqlStr, QueryXIANGXITONGJICallBack callBack)
 
 void queryZHIQIANSHUJU(char* querySqlStr, QueryZHIQIANSHUJUCallBack callBack)
 {
-	CClient::GetInstance()->QueryZHIQIANSHUJU(querySqlStr, callBack);
+	std::vector<tagZHIQIANSHUJU>  lcArray;
+	string strError = "";
+	CSqliteData::GetInstance()->QueryZHIQIANSHUJU(querySqlStr, lcArray, strError);
+
+	if (callBack)
+	{
+		for (int i = 0; i < lcArray.size(); ++i)
+		{
+			callBack(
+				lcArray[i].Xuhao,
+				(char*)lcArray[i].Riqi.c_str(),
+				(char*)lcArray[i].ShebeiIP.c_str(),
+				(char*)lcArray[i].Yewubianhao.c_str(),
+				(char*)lcArray[i].YuanZhengjianhaoma.c_str(),
+				(char*)lcArray[i].Xingming.c_str(),
+				(char*)lcArray[i].Qianzhuzhonglei.c_str(),
+				(char*)lcArray[i].ZhikaZhuangtai.c_str(),
+				(char*)lcArray[i].Zhengjianhaoma.c_str(),
+				(char*)lcArray[i].Jiekoufanhuijieguo.c_str(),
+				(char*)lcArray[i].Lianxidianhua.c_str()
+				);
+		}
+	}
+
+	//CClient::GetInstance()->QueryZHIQIANSHUJU(querySqlStr, callBack);
 }
 
 void querySHOUZHENGSHUJU(char* querySqlStr, QuerySHOUZHENGSHUJUCallBack callBack)

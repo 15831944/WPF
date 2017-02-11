@@ -3,7 +3,7 @@
                     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                     xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
                     >
-    <!--<viewModel:ShortCutInfoImageConvert x:Key="ShortCutInfoImageConvert"/>-->
+    <viewModel:DataGridItemSourceConvert x:Key="DataGridItemSourceConvert"/>
 
     <viewModel:MainWindowViewModel x:Key="MainWindowViewModelKey"/>
     <!--<viewModel:HomePageViewModel x:Key="HomePageViewModelKey"/>

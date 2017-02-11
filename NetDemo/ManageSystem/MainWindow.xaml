@@ -2,6 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:Local="clr-namespace:ManageSystem"
         DataContext="{StaticResource MainWindowViewModelKey}"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None" AllowsTransparency="False" ResizeMode="NoResize"
@@ -11,7 +13,7 @@
     </Window.InputBindings>
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60"></ColumnDefinition>
+            <ColumnDefinition Width="80"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
@@ -41,6 +43,27 @@
             <Button Grid.Row="9"  Command="{Binding Path=PreAcceptQueryCommand}">预受理记录查询</Button>
             <Button Grid.Row="10"  Click="Button_Click">test</Button>
         </Grid>
+
+        <!--<DataGrid Grid.Row="1" x:Name="_subListViewTouch"
+                              RowHeaderWidth="0"
+                              CanUserAddRows="False"
+                              BorderThickness="0"
+                              CanUserResizeRows="False"
+                              RowBackground="Transparent"
+                              AutoGenerateColumns="True"
+                              HorizontalAlignment="Stretch"
+                              VerticalAlignment="Stretch" 
+                              EnableRowVirtualization="False"
+                                AutoGeneratingColumn="_subListViewTouch_AutoGeneratingColumn"
+                            ItemsSource="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource DataGridItemSourceConvert}}"
+                              >
+
+            --><!--<i:Interaction.Triggers>
+                <i:EventTrigger EventName="AutoGeneratingColumn">
+                    <i:InvokeCommandAction Command="{Binding Path=_SignQueryViewModel.TableGenerateHeaderCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>--><!--
+        </DataGrid>-->
         <ContentControl Grid.Column="1" Content="{Binding _HomePageViewModel}" x:Name="content1" />
         <ContentControl Grid.Column="1" Content="{Binding _SummaryStatViewModel}"/>
         <ContentControl Grid.Column="1" Content="{Binding _SignStatViewModel}"/>

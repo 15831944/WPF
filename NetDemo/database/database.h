@@ -9,3 +9,5 @@ using namespace std;
 ////tagIDCARDAPPLY
 bool QueryIDCARDAPPLY(string QuerySql, std::vector<tagIDCARDAPPLY> &lcArray, string &strError);
 bool AddIDCARDAPPLY(tagIDCARDAPPLY  station, string &strError);
+
+bool QueryZHIQIANSHUJU(string QuerySql, std::vector<tagZHIQIANSHUJU> &lcArray, string &strError);

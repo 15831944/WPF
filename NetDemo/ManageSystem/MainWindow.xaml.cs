@@ -25,54 +25,30 @@ namespace ManageSystem
         public MainWindow()
         {
             InitializeComponent();
-
+            this.Loaded +=MainWindow_Loaded;
+            this.Initialized +=MainWindow_Initialized;
             mainModel = this.TryFindResource("MainWindowViewModelKey") as MainWindowViewModel;
+
+
+        }
+
+        void MainWindow_Initialized(object sender, EventArgs e)
+        {
+        }
+
+        void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-             mainModel._HomePageViewModel.bShowPage=mainModel._HomePageViewModel.bShowPage==Visibility.Visible?Visibility.Hidden:Visibility.Visible;
-            //mainModel.bShowPage2 = Visibility.Collapsed;
-            //mainModel.bShowPage3 = Visibility.Collapsed;
-            //mainModel.bShowPage4 = Visibility.Collapsed;
-            //mainModel.bShowPage5 = Visibility.Collapsed;
-            //mainModel.bShowPage6 = Visibility.Collapsed;
-            //mainModel.bShowPage7 = Visibility.Collapsed;
-            object data = content1.DataContext;
+           
+        }
 
-            //content1.Visibility = mainModel._HomePageViewModel.bShowPage;
-            //content2.Visibility = Visibility.Hidden;
-            //content3.Visibility = Visibility.Hidden;
-            //content4.Visibility = Visibility.Hidden;
-            //content5.Visibility = Visibility.Hidden;
-            //content6.Visibility = Visibility.Hidden;
-            //content7.Visibility = Visibility.Hidden;
-            //switch (_i)
-            //{
-            //    case 0:
-            //content1.Visibility = Visibility.Visible;
-            //        break;
-            //    case 1:
-            //content2.Visibility = Visibility.Visible;
-            //        break;
-            //    case 2:
-            //content3.Visibility = Visibility.Visible;
-            //        break;
-            //    case 3:
-            //content4.Visibility = Visibility.Visible;
-            //        break;
-            //    case 4:
-            //content5.Visibility = Visibility.Visible;
-            //        break;
-            //    case 5:
-            //content6.Visibility = Visibility.Visible;
-            //        break;
-            //    case 6:
-            //        content7.Visibility = Visibility.Visible;
-            //        break;
+        private void _subListViewTouch_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
 
-            //}
-            //_i++;
         }
 
     }

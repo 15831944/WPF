@@ -31,6 +31,21 @@ namespace ManageSystem.Server
                 string opDate
     );
 
+    [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+    public delegate void QueryZHIQIANSHUJUCallBackDelegate(
+               int Xuhao,
+               string Riqi,
+               string ShebeiIP,
+               string Yewubianhao,
+               string YuanZhengjianhaoma,
+               string Xingming,
+               string Qianzhuzhonglei,
+               string ZhikaZhuangtai,
+               string Zhengjianhaoma,
+               string Jiekoufanhuijieguo,
+               string Lianxidianhua
+    );
+
     public sealed class WorkServer
     {
         private static readonly WorkServer instance = new WorkServer();
@@ -61,7 +76,8 @@ namespace ManageSystem.Server
 
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryIDCARDAPPLY")]
         private static extern void _queryIDCARDAPPLY(string querySqlStr, IntPtr callback);
-
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryZHIQIANSHUJU")]
+        private static extern void _queryZHIQIANSHUJU(string querySqlStr, IntPtr callback);
         /// <summary>
         /// Server
         /// </summary>
@@ -106,17 +122,22 @@ namespace ManageSystem.Server
 
         public void QueryIDCARDAPPLY(string querySqlStr, IntPtr callback)
         {
-            if (isServerStoped())
-            {
-                startServer("127.0.0.1", 60000);
-            }
+            //if (isServerStoped())
+            //{
+            //    startServer("127.0.0.1", 60000);
+            //}
 
-            if(isClientStoped())
-            {
-                startClient("127.0.0.1", 60000);
-            }
+            //if(isClientStoped())
+            //{
+            //    startClient("127.0.0.1", 60000);
+            //}
 
             _queryIDCARDAPPLY(querySqlStr, callback);
+        }
+        
+        public void QueryZHIQIANSHUJU(string querySqlStr, IntPtr callback)
+        {
+            _queryZHIQIANSHUJU(querySqlStr, callback);
         }
     }
 }
