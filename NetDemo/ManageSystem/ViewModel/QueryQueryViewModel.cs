@@ -1,13 +1,14 @@
 ﻿using ManageSystem.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Windows;
 
 namespace ManageSystem.ViewModel
 {
-    class OptionViewModel : NotificationObject
+    class QueryQueryViewModel : NotificationObject
     {
         private Visibility _bShowPage;
         public Visibility bShowPage

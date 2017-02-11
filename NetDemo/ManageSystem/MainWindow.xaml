@@ -25,22 +25,31 @@
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <Button Grid.Row="0"  Margin="0,0,0,0" Command="{Binding Path=HomePageCommand}">首页</Button>
-            <Button Grid.Row="1"  Command="{Binding Path=StatisticsCommand}">统计</Button>
-            <Button Grid.Row="2"  Command="{Binding Path=QueryCommand}">查询</Button>
-            <Button Grid.Row="3"  Command="{Binding Path=DeviceManagementCommand}">设备管理</Button>
-            <Button Grid.Row="4"  Command="{Binding Path=ElectronicMapCommand}">电子地图</Button>
-            <Button Grid.Row="5"  Command="{Binding Path=ResListCommand}">资源列表</Button>
-            <Button Grid.Row="6"  Command="{Binding Path=OptionCommand}">选项</Button>
-            <Button Grid.Row="7"  Click="Button_Click">test</Button>
+            <Button Grid.Row="1"  Command="{Binding Path=SummaryStatCommand}">汇总统计</Button>
+            <Button Grid.Row="2"  Command="{Binding Path=SignStatCommand}">制签统计</Button>
+            <Button Grid.Row="3"  Command="{Binding Path=SignAnomalyStatCommand}">制签异常统计</Button>
+            <Button Grid.Row="4"  Command="{Binding Path=SignQueryCommand}">制签记录查询</Button>
+            <Button Grid.Row="5"  Command="{Binding Path=CardQueryCommand}">收证记录查询</Button>
+            <Button Grid.Row="6"  Command="{Binding Path=EndorsementQueryCommand}">签注记录查询</Button>
+            <Button Grid.Row="7"  Command="{Binding Path=PaymentQueryCommand}">缴款记录查询</Button>
+            <Button Grid.Row="8"  Command="{Binding Path=QueryQueryCommand}">查询记录查询</Button>
+            <Button Grid.Row="9"  Command="{Binding Path=PreAcceptQueryCommand}">预受理记录查询</Button>
+            <Button Grid.Row="10"  Click="Button_Click">test</Button>
         </Grid>
         <ContentControl Grid.Column="1" Content="{Binding _HomePageViewModel}" x:Name="content1" />
-        <ContentControl Grid.Column="1" Content="{Binding _StatisticsViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _QueryViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _DeviceManagementViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _ElectronicMapViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _ResListViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _OptionViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _SummaryStatViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _SignStatViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _SignAnomalyStatViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _SignQueryViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _CardQueryViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _EndorsementQueryViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _PaymentQueryViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _QueryQueryViewModel}"/>
+        <ContentControl Grid.Column="1" Content="{Binding _PreAcceptQueryViewModel}"/>
     </Grid>
 </Window>

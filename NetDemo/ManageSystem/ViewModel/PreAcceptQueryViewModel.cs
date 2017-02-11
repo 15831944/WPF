@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace ManageSystem.ViewModel
 {
-    class ElectronicMapViewModel : NotificationObject
+    class PreAcceptQueryViewModel : NotificationObject
     {
         private Visibility _bShowPage;
         public Visibility bShowPage

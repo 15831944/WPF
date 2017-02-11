@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace ManageSystem.ViewModel
 {
-    class StatisticsViewModel : NotificationObject
+    class SummaryStatModel : NotificationObject
     {
         private Visibility _bShowPage;
         public Visibility bShowPage

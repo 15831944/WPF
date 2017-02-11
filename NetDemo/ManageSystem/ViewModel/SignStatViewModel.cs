@@ -6,9 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
+
 namespace ManageSystem.ViewModel
 {
-    class ResListViewModel : NotificationObject
+    class SignStatViewModel : NotificationObject
     {
         private Visibility _bShowPage;
         public Visibility bShowPage

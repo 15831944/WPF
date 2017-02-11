@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace ManageSystem.ViewModel
 {
-    class DeviceManagementViewModel : NotificationObject
+    class EndorsementQueryViewModel : NotificationObject
     {
         private Visibility _bShowPage;
         public Visibility bShowPage

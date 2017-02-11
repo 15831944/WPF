@@ -13,7 +13,7 @@
                 
                 <ResourceDictionary Source="Resources/Res.xaml" />
                 <ResourceDictionary Source="Resources/Template.xaml" />
-                <ResourceDictionary Source="Resources/QueryTemplate.xaml" />
+                <ResourceDictionary Source="Resources/SignQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/TreeViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

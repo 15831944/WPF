@@ -8,7 +8,7 @@ using System.Windows;
 
 namespace ManageSystem.ViewModel
 {
-    class HomePageViewModel : NotificationObject
+    class PaymentQueryViewModel : NotificationObject
     {
         private Visibility _bShowPage;
         public Visibility bShowPage

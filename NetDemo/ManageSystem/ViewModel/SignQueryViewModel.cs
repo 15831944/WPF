@@ -11,7 +11,7 @@ using System.Windows.Controls;
 
 namespace ManageSystem.ViewModel
 {
-    class QueryViewModel : NotificationObject
+    class SignQueryViewModel : NotificationObject
     {
         public QueryIDCARDAPPLYCallBackDelegate         QueryIDCARDAPPLYCallBackDelegate = null;
 
@@ -51,7 +51,7 @@ namespace ManageSystem.ViewModel
             }
         }
 
-        public QueryViewModel()
+        public SignQueryViewModel()
         {
             QueryIDCARDAPPLYCallBackDelegate            = new Server.QueryIDCARDAPPLYCallBackDelegate(QueryIDCARDAPPLYCallBack);
             QueryCommand                                = new DelegateCommand<object>(new Action<object>(this.Query));
