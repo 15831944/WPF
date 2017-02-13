@@ -27,7 +27,7 @@ using namespace std;
 #ifdef _DEBUG
 #pragma comment(lib,"../../output/database/Debug/sqlite3.lib")
 #else
-#pragma comment(lib,"../../output/database/Realease/sqlite3.lib")
+#pragma comment(lib,"../../output/database/Release/sqlite3.lib")
 #endif
 
 #include "SqliteDataDefine.h"

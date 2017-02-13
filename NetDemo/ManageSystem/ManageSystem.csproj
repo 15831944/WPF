@@ -82,6 +82,7 @@
     <Compile Include="Resources\DateTimer\UpDownBase.cs" />
     <Compile Include="Resources\DateTimer\ValidSpinDirections.cs" />
     <Compile Include="Resources\DateTimer\WatermarkTextBox.cs" />
+    <Compile Include="Model\SHOUZHENGSHUJUModel.cs" />
     <Compile Include="Server\WorkServer.cs" />
     <Compile Include="ViewModel\CardQueryViewModel.cs" />
     <Compile Include="ViewModel\EndorsementQueryViewModel.cs" />
@@ -107,6 +108,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Resources\CardQueryTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\ComboBoxStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Resources\DateTimer\ButtonSpinnerStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -131,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\Res.xaml">
+    <Page Include="Resources\DataRes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

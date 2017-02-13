@@ -46,6 +46,17 @@ namespace ManageSystem.Server
                string Lianxidianhua
     );
 
+    [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+    public delegate void QuerySHOUZHENGSHUJUCallBackDelegate(
+               int Xuhao,
+               string Riqi,				
+               string ShebeiIP,			
+               string Zhengjianleixing,	
+               string Zhengjianhaoma,		
+               string Xingming,	
+               string Shoulibianhao,
+               string Shifoujiaofei
+    );
     public sealed class WorkServer
     {
         private static readonly WorkServer instance = new WorkServer();
@@ -78,6 +89,14 @@ namespace ManageSystem.Server
         private static extern void _queryIDCARDAPPLY(string querySqlStr, IntPtr callback);
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryZHIQIANSHUJU")]
         private static extern void _queryZHIQIANSHUJU(string querySqlStr, IntPtr callback);
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "querySHOUZHENGSHUJU")]
+        private static extern void _querySHOUZHENGSHUJU(string querySqlStr, IntPtr callback);
+        /// <summary>
+        /// Server
+        /// </summary>
+        /// <param name="ip"></param>
+        /// <param name="port"></param>
+        /// <returns></returns>
         /// <summary>
         /// Server
         /// </summary>
@@ -138,6 +157,10 @@ namespace ManageSystem.Server
         public void QueryZHIQIANSHUJU(string querySqlStr, IntPtr callback)
         {
             _queryZHIQIANSHUJU(querySqlStr, callback);
+        }
+        public void QuerySHOUZHENGSHUJU(string querySqlStr, IntPtr callback)
+        {
+            _querySHOUZHENGSHUJU(querySqlStr, callback);
         }
     }
 }

@@ -10,9 +10,11 @@
                 <ResourceDictionary Source="Resources/DateTimer/WatermarkTextBoxStyle.xaml" />
                 <ResourceDictionary Source="Resources/DateTimer/TimePickerStyle.xaml" />
                 <ResourceDictionary Source="Resources/DateTimer/DateTimePickerStyle.xaml" />
-                
-                <ResourceDictionary Source="Resources/Res.xaml" />
+
+                <ResourceDictionary Source="Resources/ComboBoxStyle.xaml" />
+                <ResourceDictionary Source="Resources/DataRes.xaml" />
                 <ResourceDictionary Source="Resources/Template.xaml" />
+                <ResourceDictionary Source="Resources/CardQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/SignQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/TreeViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>

@@ -16,9 +16,9 @@
 // TODO:  在此处引用程序需要的其他头文件
 
 #ifdef _DEBUG
-#pragma comment( lib, "libprotobuf_MTd.lib" )
+#pragma comment( lib, "libprotobuf_MDd.lib" )
 #else
-#pragma comment( lib, "libprotobuf_MT.lib" )
+#pragma comment( lib, "libprotobuf_MD.lib" )
 #endif
 
 #include <tchar.h>

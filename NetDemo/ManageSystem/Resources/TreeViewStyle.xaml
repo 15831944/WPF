@@ -69,7 +69,7 @@
                         <Border x:Name="Bd" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Grid.Column="0" Grid.ColumnSpan="3" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="true">
                             <ContentPresenter x:Name="PART_Header" ContentSource="Header" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                         </Border>
-                        <ItemsPresenter Margin="16,0,0,0" x:Name="ItemsHost" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1"/>
+                        <ItemsPresenter Margin="0,0,0,0" x:Name="ItemsHost" VerticalAlignment="Center" HorizontalAlignment="Stretch" Grid.ColumnSpan="3" Grid.Column="0" Grid.Row="1"/>
                         <ToggleButton Grid.Column="2" x:Name="Expander" ClickMode="Press" IsChecked="{Binding IsExpanded, RelativeSource={RelativeSource TemplatedParent}}" Style="{StaticResource ExpandCollapseToggleStyle}"/>
                     </Grid>
                     <ControlTemplate.Triggers>

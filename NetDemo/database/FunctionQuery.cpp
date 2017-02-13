@@ -113,3 +113,52 @@ bool QueryZHIQIANSHUJU(string QuerySql, std::vector<tagZHIQIANSHUJU> &lcArray, s
 
 	return bOk;
 }
+bool QuerySHOUZHENGSHUJU(string QuerySql, std::vector<tagSHOUZHENGSHUJU> &lcArray, string &strError)
+{
+	bool bOk	= true;
+	strError	= "";
+	do
+	{
+		std::auto_ptr<CSqlite>  lpSQlite(new CSqlite);
+		if (!lpSQlite->Open(RIM_RTK_BSD_DB_FILE, false, true))
+		{
+			strError = "打开基础支撑数据库失败";
+			OutputDebugStringA(strError.c_str());
+			bOk = false;
+			break;
+		}
+		sqlite3_stmt   *lpStmt   =  NULL;
+		std::string     lstrSQL  =  QuerySql;
+		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt, NULL) != SQLITE_OK)
+		{
+			char ch[512] ={ 0 };
+			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			strError = ch;
+			OutputDebugStringA(strError.c_str());
+			break;
+		}
+
+		while (sqlite3_step(lpStmt) == SQLITE_ROW)
+		{
+			if (sqlite3_column_count(lpStmt) == 8)
+			{
+				lcArray.push_back(tagSHOUZHENGSHUJU());
+				tagSHOUZHENGSHUJU &lc	= lcArray.back();
+
+				lc.Xuhao				= sqlite3_column_int(lpStmt, 0);
+				lc.Riqi					= sqlite3_column_bytes(lpStmt, 1)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt, 1)))		: "";
+				lc.ShebeiIP				= sqlite3_column_bytes(lpStmt, 2)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt, 2)))		: "";
+				lc.Zhengjianleixing		= sqlite3_column_bytes(lpStmt, 3)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt, 3)))		: "";
+				lc.Zhengjianhaoma		= sqlite3_column_bytes(lpStmt, 4)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt, 4)))		: "";
+				lc.Xingming				= sqlite3_column_bytes(lpStmt, 5)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt, 5)))		: "";
+				lc.Shoulibianhao		= sqlite3_column_bytes(lpStmt, 6)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt, 6)))		: "";
+				lc.Shifoujiaofei		= sqlite3_column_bytes(lpStmt, 7)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt, 7)))		: "";
+			}
+		}
+
+		sqlite3_finalize(lpStmt);
+		sqlite3_release_memory((int)sqlite3_memory_used());
+	} while (0);
+
+	return bOk;
+}

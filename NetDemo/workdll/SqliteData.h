@@ -11,10 +11,13 @@ protected:
 
 	typedef bool(*_QueryZHIQIANSHUJU)(string QuerySql, std::vector<tagZHIQIANSHUJU> &lcArray, string &strError);
 
+	typedef bool(*_QuerySHOUZHENGSHUJU)(string QuerySql, std::vector<tagSHOUZHENGSHUJU> &lcArray, string &strError);
 	_QueryIDCARDAPPLY						m_QueryIDCARDAPPLYFunc;
 	_AddIDCARDAPPLY							m_AddIDCARDAPPLYFunc;
 
 	_QueryZHIQIANSHUJU						m_QueryZHIQIANSHUJUFunc;
+
+	_QuerySHOUZHENGSHUJU					m_QuerySHOUZHENGSHUJUFunc;
 
 	static CSqliteData*						m_pSqliteData;	//内部实例指针
 public:
@@ -25,5 +28,8 @@ public:
 	bool									AddIDCARDAPPLY(tagIDCARDAPPLY  station, string &strError);
 
 	bool									QueryZHIQIANSHUJU(string QuerySql, std::vector<tagZHIQIANSHUJU> &lcArray, string &strError);
+
+	bool									QuerySHOUZHENGSHUJU(string QuerySql, std::vector<tagSHOUZHENGSHUJU> &lcArray, string &strError);
+
 };
 

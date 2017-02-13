@@ -41,8 +41,12 @@ namespace ManageSystem.ViewModel
 
                     return model.tableList;
                 }
-                else
+                else if (grid.DataContext.GetType() == typeof(CardQueryViewModel))
                 {
+                    CardQueryViewModel model = grid.DataContext as CardQueryViewModel;
+                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;    
+
+                    return model.tableList;
                 }
             }
 

@@ -64,7 +64,7 @@ void queryZHIQIANSHUJU(char* querySqlStr, QueryZHIQIANSHUJUCallBack callBack)
 	std::vector<tagZHIQIANSHUJU>  lcArray;
 	string strError = "";
 	CSqliteData::GetInstance()->QueryZHIQIANSHUJU(querySqlStr, lcArray, strError);
-
+	 
 	if (callBack)
 	{
 		for (int i = 0; i < lcArray.size(); ++i)
@@ -90,7 +90,27 @@ void queryZHIQIANSHUJU(char* querySqlStr, QueryZHIQIANSHUJUCallBack callBack)
 
 void querySHOUZHENGSHUJU(char* querySqlStr, QuerySHOUZHENGSHUJUCallBack callBack)
 {
-	CClient::GetInstance()->QuerySHOUZHENGSHUJU(querySqlStr, callBack);
+	std::vector<tagSHOUZHENGSHUJU>  lcArray;
+	string strError = "";
+	CSqliteData::GetInstance()->QuerySHOUZHENGSHUJU(querySqlStr, lcArray, strError);
+
+	if (callBack)
+	{
+		for (int i = 0; i < lcArray.size(); ++i)
+		{
+			callBack(
+				lcArray[i].Xuhao, 
+				(char*)lcArray[i].Riqi				.c_str(),
+				(char*)lcArray[i].ShebeiIP			.c_str(),
+				(char*)lcArray[i].Zhengjianleixing	.c_str(),
+				(char*)lcArray[i].Zhengjianhaoma	.c_str(),
+				(char*)lcArray[i].Xingming			.c_str(),
+				(char*)lcArray[i].Shoulibianhao		.c_str(),
+				(char*)lcArray[i].Shifoujiaofei		.c_str()
+				);
+		}
+	}
+	//CClient::GetInstance()->QuerySHOUZHENGSHUJU(querySqlStr, callBack);
 }
 
 void queryQIANZHUSHUJU(char* querySqlStr, QueryQIANZHUSHUJUCallBack callBack)

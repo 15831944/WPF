@@ -111,21 +111,27 @@ namespace ManageSystem.ViewModel
             {   //for test
                 DeviceModel model_1                     = new DeviceModel();
                 model_1.Text                            = "深圳市";
+                model_1.leftMargin                      = "0,0,0,0";
                 DeviceModel model_1_0                   = new DeviceModel();
                 model_1_0.Text                          = "市局";
+                model_1_0.leftMargin                    = "16, 0, 0, 0";
                 model_1.Children.Add(model_1_0);
                 DeviceModel model_1_1                   = new DeviceModel();
                 model_1_1.Text                          = "宝安分局";
+                model_1_1.leftMargin                    = "16, 0, 0, 0";
                 model_1.Children.Add(model_1_1);
                 DeviceModel model_1_2                   = new DeviceModel();
                 model_1_2.Text                          = "南山分局";
+                model_1_2.leftMargin                    = "16, 0, 0, 0";
                 model_1.Children.Add(model_1_2);
                 DeviceModel model_1_2_1                 = new DeviceModel();
                 model_1_2_1.Text                        = "南山分局管理科";
+                model_1_2_1.leftMargin                  = "32, 0, 0, 0";
                 model_1_2.Children.Add(model_1_2_1);
 
                 DeviceModel model_1_2_1_1               = new DeviceModel();
                 model_1_2_1_1.Text                      = "127.0.0.1";
+                model_1_2_1_1.leftMargin                = "48, 0, 0, 0";
                 model_1_2_1.Children.Add(model_1_2_1_1);
 
                 //DeviceModel model_2                     = new DeviceModel();

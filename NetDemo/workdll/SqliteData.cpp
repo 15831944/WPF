@@ -12,6 +12,10 @@ CSqliteData::CSqliteData()
 	m_AddIDCARDAPPLYFunc				= (_AddIDCARDAPPLY)GetProcAddress(hDataBaseDll, "AddIDCARDAPPLY");
 
 	m_QueryZHIQIANSHUJUFunc				= (_QueryZHIQIANSHUJU)GetProcAddress(hDataBaseDll, "QueryZHIQIANSHUJU");
+
+	m_QuerySHOUZHENGSHUJUFunc			= (_QuerySHOUZHENGSHUJU)GetProcAddress(hDataBaseDll, "QuerySHOUZHENGSHUJU");
+
+	
 }
 
 
@@ -56,5 +60,12 @@ bool CSqliteData::QueryZHIQIANSHUJU(string QuerySql, std::vector<tagZHIQIANSHUJU
 {
 	if (m_QueryZHIQIANSHUJUFunc)
 		return m_QueryZHIQIANSHUJUFunc(QuerySql, lcArray, strError);
+	return false;
+}
+
+bool CSqliteData::QuerySHOUZHENGSHUJU(string QuerySql, std::vector<tagSHOUZHENGSHUJU> &lcArray, string &strError)
+{
+	if (m_QuerySHOUZHENGSHUJUFunc)
+		return m_QuerySHOUZHENGSHUJUFunc(QuerySql, lcArray, strError);
 	return false;
 }

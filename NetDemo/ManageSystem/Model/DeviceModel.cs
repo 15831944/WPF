@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows;
 
 namespace ManageSystem.Model
 {
@@ -24,6 +25,20 @@ namespace ManageSystem.Model
             {
                 _children = value;
                 this.RaisePropertyChanged("Children");
+            }
+        }
+
+        private string  _leftMargin;
+        public string  leftMargin
+        {
+            get
+            {
+                return _leftMargin;
+            }
+            set
+            {
+                _leftMargin = value;
+                this.RaisePropertyChanged("leftMargin");
             }
         }
 

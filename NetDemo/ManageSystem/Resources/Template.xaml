@@ -6,23 +6,26 @@
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" x:Class="WpfApplication1.MainWindow"
                     >
     <HierarchicalDataTemplate DataType="{x:Type Model:DeviceModel}" ItemsSource="{Binding Path=Children}">
-        <Grid x:Name="itemGrid" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <CheckBox x:Name="checkbox" Grid.Column="0" IsChecked="{Binding Path=isSel}" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Checked">
-                        <i:InvokeCommandAction Command="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_SignQueryViewModel.SelectedItemCommand}" CommandParameter="{Binding ElementName=checkbox}" />
-                    </i:EventTrigger>
-                    <i:EventTrigger EventName="Unchecked">
-                        <i:InvokeCommandAction Command="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_SignQueryViewModel.UnSelectedItemCommand}" CommandParameter="{Binding ElementName=checkbox}" />
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </CheckBox>
-            <TextBlock Grid.Column="1" Text="{Binding Path=Text}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        </Grid>
+        <Border x:Name="itemGrid">
+            <Grid Margin="{Binding Path=leftMargin}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="checkbox" Grid.Column="0" IsChecked="{Binding Path=isSel}" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_SignQueryViewModel.SelectedItemCommand}" CommandParameter="{Binding ElementName=checkbox}" />
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Unchecked">
+                            <i:InvokeCommandAction Command="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_SignQueryViewModel.UnSelectedItemCommand}" CommandParameter="{Binding ElementName=checkbox}" />
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </CheckBox>
+                <TextBlock Grid.Column="1" Text="{Binding Path=Text}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
+
         <HierarchicalDataTemplate.Triggers>
             <DataTrigger Binding="{Binding Path=isSel}" Value="True">
                 <Setter Property="Background" TargetName="itemGrid" Value="#9CA3A9"></Setter>
@@ -140,18 +143,7 @@
             </DataTrigger>
         </DataTemplate.Triggers>
     </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModel:CardQueryViewModel}">
-        <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Border Background="Brown">
-
-            </Border>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_CardQuery}">
-                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
+   
     <DataTemplate DataType="{x:Type viewModel:EndorsementQueryViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
             <Border Background="AntiqueWhite">
