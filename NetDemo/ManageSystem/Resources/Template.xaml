@@ -144,53 +144,8 @@
         </DataTemplate.Triggers>
     </DataTemplate>
    
-    <DataTemplate DataType="{x:Type viewModel:EndorsementQueryViewModel}">
-        <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Border Background="AntiqueWhite">
-
-            </Border>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_EndorsementQuery}">
-                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModel:PaymentQueryViewModel}">
-        <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Border Background="Bisque">
-
-            </Border>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_PaymentQuery}">
-                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModel:QueryQueryViewModel}">
-        <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Border Background="CadetBlue">
-
-            </Border>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_QueryQuery}">
-                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModel:PreAcceptQueryViewModel}">
-        <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Border Background="DarkCyan">
-
-            </Border>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_PreAcceptQuery}">
-                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
+   
+    
+    
 
 </ResourceDictionary>

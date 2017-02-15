@@ -15,6 +15,10 @@
                 <ResourceDictionary Source="Resources/DataRes.xaml" />
                 <ResourceDictionary Source="Resources/Template.xaml" />
                 <ResourceDictionary Source="Resources/CardQueryTemplate.xaml" />
+                <ResourceDictionary Source="Resources/EndorsementQueryTemplate.xaml" />
+                <ResourceDictionary Source="Resources/PaymentQueryTemplate.xaml" />
+                <ResourceDictionary Source="Resources/QueryQueryTemplate.xaml" />
+                <ResourceDictionary Source="Resources/PreAcceptQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/SignQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/TreeViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>

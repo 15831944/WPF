@@ -15,7 +15,14 @@ CSqliteData::CSqliteData()
 
 	m_QuerySHOUZHENGSHUJUFunc			= (_QuerySHOUZHENGSHUJU)GetProcAddress(hDataBaseDll, "QuerySHOUZHENGSHUJU");
 
-	
+	m_QueryQIANZHUSHUJUFunc				= (_QueryQIANZHUSHUJU)GetProcAddress(hDataBaseDll, "QueryQIANZHUSHUJU");
+
+	m_QueryJIAOKUANSHUJUFunc			= (_QueryJIAOKUANSHUJU)GetProcAddress(hDataBaseDll, "QueryJIAOKUANSHUJU");
+
+	m_QueryCHAXUNSHUJUFunc				= (_QueryCHAXUNSHUJU)GetProcAddress(hDataBaseDll, "QueryCHAXUNSHUJU");
+
+	m_QueryYUSHOULISHUJUFunc			= (_QueryYUSHOULISHUJU)GetProcAddress(hDataBaseDll, "QueryYUSHOULISHUJU");
+
 }
 
 
@@ -67,5 +74,33 @@ bool CSqliteData::QuerySHOUZHENGSHUJU(string QuerySql, std::vector<tagSHOUZHENGS
 {
 	if (m_QuerySHOUZHENGSHUJUFunc)
 		return m_QuerySHOUZHENGSHUJUFunc(QuerySql, lcArray, strError);
+	return false;
+}
+
+bool CSqliteData::QueryQIANZHUSHUJU(string QuerySql, std::vector<tagQIANZHUSHUJU> &lcArray, string &strError)
+{
+	if (m_QueryQIANZHUSHUJUFunc)
+		return m_QueryQIANZHUSHUJUFunc(QuerySql, lcArray, strError);
+	return false;
+}
+
+bool CSqliteData::QueryJIAOKUANSHUJU(string QuerySql, std::vector<tagJIAOKUANSHUJU> &lcArray, string &strError)
+{
+	if (m_QueryJIAOKUANSHUJUFunc)
+		return m_QueryJIAOKUANSHUJUFunc(QuerySql, lcArray, strError);
+	return false;
+}
+
+bool CSqliteData::QueryCHAXUNSHUJU(string QuerySql, std::vector<tagCHAXUNSHUJU> &lcArray, string &strError)
+{
+	if (m_QueryCHAXUNSHUJUFunc)
+		return m_QueryCHAXUNSHUJUFunc(QuerySql, lcArray, strError);
+	return false;
+}
+
+bool CSqliteData::QueryYUSHOULISHUJU(string QuerySql, std::vector<tagYUSHOULISHUJU> &lcArray, string &strError)
+{
+	if (m_QueryYUSHOULISHUJUFunc)
+		return m_QueryYUSHOULISHUJUFunc(QuerySql, lcArray, strError);
 	return false;
 }

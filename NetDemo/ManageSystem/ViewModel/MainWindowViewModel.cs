@@ -48,6 +48,34 @@ namespace ManageSystem.ViewModel
 
                     return model.tableList;
                 }
+                else if (grid.DataContext.GetType() == typeof(EndorsementQueryViewModel))
+                {
+                    EndorsementQueryViewModel model = grid.DataContext as EndorsementQueryViewModel;
+                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
+
+                    return model.tableList;
+                }
+                else if (grid.DataContext.GetType() == typeof(PaymentQueryViewModel))
+                {
+                    PaymentQueryViewModel model = grid.DataContext as PaymentQueryViewModel;
+                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
+
+                    return model.tableList;
+                }
+                else if (grid.DataContext.GetType() == typeof(QueryQueryViewModel))
+                {
+                    QueryQueryViewModel model = grid.DataContext as QueryQueryViewModel;
+                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
+
+                    return model.tableList;
+                }
+                else if (grid.DataContext.GetType() == typeof(PreAcceptQueryViewModel))
+                {
+                    PreAcceptQueryViewModel model = grid.DataContext as PreAcceptQueryViewModel;
+                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
+
+                    return model.tableList;
+                }
             }
 
             return null;
