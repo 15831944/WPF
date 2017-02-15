@@ -212,6 +212,7 @@ namespace ManageSystem.Server
         
         public void QueryZHIQIANSHUJU(string querySqlStr, IntPtr callback)
         {
+           IntPtr tt = Common.LoadLibrary("WorkDll.dll");
             _queryZHIQIANSHUJU(querySqlStr, callback);
         }
         public void QuerySHOUZHENGSHUJU(string querySqlStr, IntPtr callback)

@@ -18,7 +18,7 @@
 #ifdef _DEBUG
 #pragma comment( lib, "libprotobuf_MDd.lib" )
 #else
-#pragma comment( lib, "libprotobuf_MD.lib" )
+#pragma comment( lib, "libprotobuf_MT.lib" )
 #endif
 
 #include <tchar.h>
