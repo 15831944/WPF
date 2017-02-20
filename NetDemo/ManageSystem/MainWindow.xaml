@@ -5,155 +5,82 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:Local="clr-namespace:ManageSystem"
         DataContext="{StaticResource MainWindowViewModelKey}"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen" WindowState="{Binding Path=wndState}"
         WindowStyle="None" AllowsTransparency="False" ResizeMode="NoResize"
         Title="MainWindow" Height="720" Width="1280">
-    <Window.Resources>
-        <DataTemplate x:Key="btn0_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-            <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=HomePageCommand}">首页</Button>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_Home}">
-                    <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-        <DataTemplate x:Key="btn1_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-            <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SummaryStatCommand}">汇总统计11</Button>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SummaryStat}">
-                    <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-        <DataTemplate x:Key="btn2_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-            <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SignStatCommand}">制签统计</Button>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignStat}">
-                    <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-        <DataTemplate x:Key="btn3_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-            <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SignAnomalyStatCommand}">制签异常统计</Button>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignAnomalyStat}">
-                    <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-        <DataTemplate x:Key="btn4_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-            <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SignQueryCommand}">制签记录查询</Button>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignQuery}">
-                    <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-        <DataTemplate x:Key="btn5_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-            <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=CardQueryCommand}">收证记录查询</Button>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_CardQuery}">
-                    <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-        <DataTemplate x:Key="btn6_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-            <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=EndorsementQueryCommand}">签注记录查询</Button>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_EndorsementQuery}">
-                    <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-        <DataTemplate x:Key="btn7_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-            <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=PaymentQueryCommand}">缴款记录查询</Button>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_PaymentQuery}">
-                    <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-        <DataTemplate x:Key="btn8_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-            <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=QueryQueryCommand}">查询记录查询</Button>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_QueryQuery}">
-                    <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-        <DataTemplate x:Key="btn9_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-            <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=PreAcceptQueryCommand}">预受理记录查询</Button>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_PreAcceptQuery}">
-                    <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-    </Window.Resources>
     <Window.InputBindings>
-        <MouseBinding MouseAction="LeftClick" Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+        <!--<MouseBinding MouseAction="LeftClick" Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>-->
     </Window.InputBindings>
-    <Grid Margin="0,0,0,0">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="MouseLeftButtonDown">
+            <i:InvokeCommandAction Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="{Binding Path=titleheight}"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <DockPanel Background="#34343E">
+            <TextBlock Margin="10,0,0,0" Foreground="White" Text="管理系统" VerticalAlignment="Center"></TextBlock>
+            <StackPanel Grid.Row="0" Orientation="Horizontal" FlowDirection="RightToLeft">
+                <Button Width="18" Height="18" Style="{StaticResource Style_BackGroundBtn}" Background="{StaticResource exitbrush}" Command="{Binding ExitCommand}" />
+                <ToggleButton Width="18" Height="18" Style="{StaticResource Style_MaxRestoreBtn}" Command="{Binding MaxCommand}">
+                    <ToggleButton.Template>
+                        <ControlTemplate TargetType="{x:Type ToggleButton}">
+                            <Rectangle x:Name="rect" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Fill="{StaticResource maxbrush}"/>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsChecked" Value="True">
+                                    <Setter Property="Fill" TargetName="rect" Value="{StaticResource restorebrush}"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </ToggleButton.Template>
+                </ToggleButton>
+                <Button Width="18" Height="18" Style="{StaticResource Style_BackGroundBtn}" Background="{StaticResource minbrush}" Command="{Binding MinCommand}"/>
+            </StackPanel>
+        </DockPanel>
 
-        <Grid Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
+        <Grid Grid.Row="1" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
 
-            <ContentControl Content="{Binding}" Grid.Row="0"    ContentTemplate="{StaticResource btn0_Template}"/>
-            <ContentControl Content="{Binding}" Grid.Row="1"    ContentTemplate="{StaticResource btn1_Template}"/>
-            <ContentControl Content="{Binding}" Grid.Row="2"    ContentTemplate="{StaticResource btn2_Template}"/>
-            <ContentControl Content="{Binding}" Grid.Row="3"    ContentTemplate="{StaticResource btn3_Template}"/>
-            <ContentControl Content="{Binding}" Grid.Row="4"    ContentTemplate="{StaticResource btn4_Template}"/>
-            <ContentControl Content="{Binding}" Grid.Row="5"    ContentTemplate="{StaticResource btn5_Template}"/>
-            <ContentControl Content="{Binding}" Grid.Row="6"    ContentTemplate="{StaticResource btn6_Template}"/>
-            <ContentControl Content="{Binding}" Grid.Row="7"    ContentTemplate="{StaticResource btn7_Template}"/>
-            <ContentControl Content="{Binding}" Grid.Row="8"    ContentTemplate="{StaticResource btn8_Template}"/>
-            <ContentControl Content="{Binding}" Grid.Row="9"    ContentTemplate="{StaticResource btn9_Template}"/>
-         </Grid>
-
-        <!--<DataGrid Grid.Row="1" x:Name="_subListViewTouch"
-                              RowHeaderWidth="0"
-                              CanUserAddRows="False"
-                              BorderThickness="0"
-                              CanUserResizeRows="False"
-                              RowBackground="Transparent"
-                              AutoGenerateColumns="True"
-                              HorizontalAlignment="Stretch"
-                              VerticalAlignment="Stretch" 
-                              EnableRowVirtualization="False"
-                                AutoGeneratingColumn="_subListViewTouch_AutoGeneratingColumn"
-                            ItemsSource="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource DataGridItemSourceConvert}}"
-                              >
-
-            --><!--<i:Interaction.Triggers>
-                <i:EventTrigger EventName="AutoGeneratingColumn">
-                    <i:InvokeCommandAction Command="{Binding Path=_SignQueryViewModel.TableGenerateHeaderCommand}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>--><!--
-        </DataGrid>-->
-        <ContentControl Grid.Column="1" Content="{Binding _HomePageViewModel}" x:Name="content1" />
-        <ContentControl Grid.Column="1" Content="{Binding _SummaryStatViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _SignStatViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _SignAnomalyStatViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _SignQueryViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _CardQueryViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _EndorsementQueryViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _PaymentQueryViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _QueryQueryViewModel}"/>
-        <ContentControl Grid.Column="1" Content="{Binding _PreAcceptQueryViewModel}"/>
+                <ContentControl Content="{Binding}" Grid.Row="0"    ContentTemplate="{StaticResource btn0_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="1"    ContentTemplate="{StaticResource btn1_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="2"    ContentTemplate="{StaticResource btn2_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="3"    ContentTemplate="{StaticResource btn3_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="4"    ContentTemplate="{StaticResource btn4_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="5"    ContentTemplate="{StaticResource btn5_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="6"    ContentTemplate="{StaticResource btn6_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="7"    ContentTemplate="{StaticResource btn7_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="8"    ContentTemplate="{StaticResource btn8_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="9"    ContentTemplate="{StaticResource btn9_Template}"/>
+            </Grid>
+            <ContentControl Grid.Column="1" Content="{Binding _HomePageViewModel}" x:Name="content1" />
+            <ContentControl Grid.Column="1" Content="{Binding _SummaryStatViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _SignStatViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _SignAnomalyStatViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _SignQueryViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _CardQueryViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _EndorsementQueryViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _PaymentQueryViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _QueryQueryViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _PreAcceptQueryViewModel}"/>
+        </Grid>
     </Grid>
 </Window>

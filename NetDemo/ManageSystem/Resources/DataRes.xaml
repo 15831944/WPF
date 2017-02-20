@@ -6,6 +6,14 @@
     <viewModel:DataGridItemSourceConvert x:Key="DataGridItemSourceConvert"/>
 
     <viewModel:MainWindowViewModel x:Key="MainWindowViewModelKey"/>
-    <!--<viewModel:HomePageViewModel x:Key="HomePageViewModelKey"/>
-    <viewModel:ElectronicMapViewModel x:Key="ElectronicMapViewModelKey"/>-->
+
+    <LinearGradientBrush x:Key="DataGridHeaderBorderBackground" EndPoint="0,1" StartPoint="0,0">
+        <GradientStop Color="#F0F1533A" Offset="0.0"/>
+        <GradientStop Color="#FFF1533A" Offset="1.0"/>
+    </LinearGradientBrush>
+
+    <ImageBrush x:Key="minbrush" ImageSource="/ManageSystem;component/Resources/imgs/最小化.png"/>
+    <ImageBrush x:Key="maxbrush" ImageSource="/ManageSystem;component/Resources/imgs/最大化.png"/>
+    <ImageBrush x:Key="exitbrush" ImageSource="/ManageSystem;component/Resources/imgs/关闭.png"/>
+    <ImageBrush x:Key="restorebrush" ImageSource="/ManageSystem;component/Resources/imgs/还原.png"/>
 </ResourceDictionary>

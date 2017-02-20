@@ -13,7 +13,8 @@
 
                 <ResourceDictionary Source="Resources/ComboBoxStyle.xaml" />
                 <ResourceDictionary Source="Resources/DataRes.xaml" />
-                <ResourceDictionary Source="Resources/Template.xaml" />
+                <ResourceDictionary Source="Resources/Templates.xaml" />
+                <ResourceDictionary Source="Resources/Styles.xaml" />
                 <ResourceDictionary Source="Resources/CardQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/EndorsementQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/PaymentQueryTemplate.xaml" />

@@ -89,6 +89,7 @@ namespace ManageSystem.ViewModel
 
     class MainWindowViewModel : NotificationObject
     {
+
         public DelegateCommand<object>                  HomePageCommand { get; set; }
         public DelegateCommand<object>                  SummaryStatCommand { get; set; }
         public DelegateCommand<object>                  SignStatCommand { get; set; }
@@ -101,6 +102,9 @@ namespace ManageSystem.ViewModel
         public DelegateCommand<object>                  PreAcceptQueryCommand { get; set; }
 
 
+        public DelegateCommand<object>                  ExitCommand { get; set; }
+        public DelegateCommand<object>                  MaxCommand { get; set; }
+        public DelegateCommand<object>                  MinCommand { get; set; }
         public DelegateCommand<object>                  DragWndCommand { get; set; }
 
         public HomePageViewModel                        _HomePageViewModel { get; set; }
@@ -126,6 +130,26 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private WindowState _wndState;
+        public WindowState wndState
+        {
+            get { return _wndState; }
+            set
+            {
+                _wndState = value;
+                this.RaisePropertyChanged("wndState");
+            }
+        }
+        private double _titleheight;
+        public double titleheight
+        {
+            get { return _titleheight; }
+            set
+            {
+                _titleheight = value;
+                this.RaisePropertyChanged("titleheight");
+            }
+        }
         public MainWindowViewModel()
         {
             HomePageCommand                             = new DelegateCommand<object>(new Action<object>(this.mainPageShow));
@@ -138,6 +162,10 @@ namespace ManageSystem.ViewModel
             PaymentQueryCommand                         = new DelegateCommand<object>(new Action<object>(this.PaymentQueryShow));
             QueryQueryCommand                           = new DelegateCommand<object>(new Action<object>(this.QueryQueryShow));
             PreAcceptQueryCommand                       = new DelegateCommand<object>(new Action<object>(this.PreAcceptQueryShow));
+
+            ExitCommand                                 = new DelegateCommand<object>(new Action<object>(this.ExitWnd));
+            MaxCommand                                  = new DelegateCommand<object>(new Action<object>(this.MaxWnd));
+            MinCommand                                  = new DelegateCommand<object>(new Action<object>(this.MinWnd));
             DragWndCommand                              = new DelegateCommand<object>(new Action<object>(this.DragWnd));
 
             _HomePageViewModel                          = new HomePageViewModel();
@@ -152,8 +180,30 @@ namespace ManageSystem.ViewModel
             _PreAcceptQueryViewModel                    = new PreAcceptQueryViewModel();
 
             _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_SignQuery;
+            _titleheight                                = 18;
         }
 
+        private void MaxWnd(object obj)
+        {
+            if(wndState == WindowState.Maximized)
+                wndState = WindowState.Normal;
+            else
+                wndState = WindowState.Maximized;
+        }
+        private void MinWnd(object obj)
+        {
+            wndState = WindowState.Minimized;
+        }
+        public void ExitWnd(object obj)
+        {
+            try
+            {
+                System.Windows.Application.Current.MainWindow.Close();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
 
         public void mainPageShow(object obj)
         {
@@ -209,7 +259,7 @@ namespace ManageSystem.ViewModel
         {
             Window wnd = obj as Window;
             System.Windows.Point pp = Mouse.GetPosition(wnd);//WPF方法
-            //if (pp.X > 0 && pp.X < windowWidth && pp.Y > 0 && pp.Y < 18)
+            if (pp.Y > 0 && pp.Y < titleheight)
                 wnd.DragMove();
         }
     }
