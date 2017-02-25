@@ -20,6 +20,7 @@ namespace ManageSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        AddDataWindow addwnd = new AddDataWindow();
         MainWindowViewModel  mainModel;
         int  _i = 0;
         public MainWindow()
@@ -29,7 +30,6 @@ namespace ManageSystem
             this.Initialized +=MainWindow_Initialized;
             mainModel = this.TryFindResource("MainWindowViewModelKey") as MainWindowViewModel;
 
-
         }
 
         void MainWindow_Initialized(object sender, EventArgs e)
@@ -38,7 +38,9 @@ namespace ManageSystem
 
         void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-
+            addwnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            addwnd.Owner = this;
+            addwnd.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

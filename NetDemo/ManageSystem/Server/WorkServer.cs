@@ -7,103 +7,176 @@ using System.Text;
 namespace ManageSystem.Server
 {
     [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-    public delegate void QueryIDCARDAPPLYCallBackDelegate(
-                string name,
-                string gender,
-                string Nation,
-                string Birthday,
-                string Address,
-                string IdNumber,
-                string SigDepart,
-                string SLH,
-                IntPtr fpData,
-                int fpDataSize,
-                IntPtr fpFeature,
-                int fpFeatureSize,
-                IntPtr XCZP,
-                int XCZPSize,
-                string XZQH,
-                string sannerId,
-                string scannerName,
-                bool legal,
-                string operatorID,
-                string operatorName,
-                string opDate
-    );
+    public delegate void QueryTableCallBackDelegate(string resultStr);
 
     [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
     public delegate void QueryZHIQIANSHUJUCallBackDelegate(
-                int Xuhao,
-                string Riqi,
-                string ShebeiIP,
-                string Yewubianhao,
-                string YuanZhengjianhaoma,
-                string Xingming,
-                string Qianzhuzhonglei,
-                string ZhikaZhuangtai,
-                string Zhengjianhaoma,
-                string Jiekoufanhuijieguo,
-                string Lianxidianhua
+                    int Xuhao,
+                    int Chengshibianhao,
+                    int Jubianhao,
+                    int Shiyongdanweibianhao,
+                    int IP,
+                    bool Bendiyewu,
+                    int Shebeibaifangweizhi,
+                    Int64 Riqi,
+                    string Yewubianhao,
+                    string YuanZhengjianhaoma,
+                    string Xingming,
+                    int Qianzhuzhonglei,
+                    int ZhikaZhuangtai,
+                    string Zhengjianhaoma,
+                    string Jiekoufanhuijieguo,
+                    string Lianxidianhua
     );
 
     [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
     public delegate void QuerySHOUZHENGSHUJUCallBackDelegate(
-                int Xuhao,
-                string Riqi,				
-                string ShebeiIP,			
-                string Zhengjianleixing,	
-                string Zhengjianhaoma,		
-                string Xingming,	
-                string Shoulibianhao,
-                string Shifoujiaofei
+                    int Xuhao,
+                    int Chengshibianhao,
+                    int Jubianhao,
+                    int Shiyongdanweibianhao,
+                    int IP,
+                    bool Bendiyewu,
+                    int Shebeibaifangweizhi,
+                    Int64 Riqi,
+                    int Zhengjianleixing,
+                    string Zhengjianhaoma,
+                    string Xingming,
+                    string Shoulibianhao,
+                    bool Shifoujiaofei
     );
     [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
     public delegate void QueryQIANZHUSHUJUCallBackDelegate(
-                int Xuhao,
-                string Riqi,
-                string ShebeiIP,
-                string YuanZhengjianhaoma,
-                string Xingming,
-                string Xingbie,
-                string Chushengriqi,
-                string Lianxidianhua,
-                string Yewuleixing,
-                string Shouliren
+                    int Xuhao,
+                    int Chengshibianhao,
+                    int Jubianhao,
+                    int Shiyongdanweibianhao,
+                    int IP,
+                    bool Bendiyewu,
+                    int Shebeibaifangweizhi,
+                    Int64 Riqi,
+                    string YuanZhengjianhaoma,
+                    string Xingming,
+                    int Xingbie,
+                    Int64 Chushengriqi,
+                    string Lianxidianhua,
+                    int Yewuleixing,
+                    string Shouliren
     );
     [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
     public delegate void QueryJIAOKUANSHUJUCallBackDelegate(
-                int Xuhao,
-                string Riqi,
-                string ShebeiIP,
-                string Zhishoudanweidaima,
-                string Jiaokuantongzhishuhaoma,
-                string Jiaokuanrenxingming,
-                float Yingkoukuanheji,
-                string Jiaoyiriqi
+                    int Xuhao,
+                    int Chengshibianhao,
+                    int Jubianhao,
+                    int Shiyongdanweibianhao,
+                    int IP,
+                    bool Bendiyewu,
+                    int Shebeibaifangweizhi,
+                    Int64 Riqi,
+                    string Zhishoudanweidaima,
+                    string Jiaokuantongzhishuhaoma,
+                    string Jiaokuanrenxingming,
+                    float Yingkoukuanheji,
+                    Int64 Jiaoyiriqi
     );
     [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
     public delegate void QueryCHAXUNSHUJUCallBackDelegate(
-                int Xuhao,
-                string Riqi,
-                string ShebeiIP,
-                string Chaxunhaoma,
-                string Chaxunleixing,
-                bool Shifouchaxunchenggong
+                    int Xuhao,
+                    int Chengshibianhao,
+                    int Jubianhao,
+                    int Shiyongdanweibianhao,
+                    int IP,
+                    bool Bendiyewu,
+                    int Shebeibaifangweizhi,
+                    Int64 Riqi,
+                    string Chaxunhaoma,
+                    string Chaxunleixing,
+                    bool Shifouchaxunchenggong,
+                    Int64 Chuangjianshijian
     );
     [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
     public delegate void QueryYUSHOULISHUJUCallBackDelegate(
-                int Xuhao,
-                string Riqi,
-                string ShebeiIP,
-                string Yewubianhao,
-                string Xingming,
-                string Lianxidianhua,
-                string Chuguoshiyou,
-                string YuanZhengjianhaoma,
-                string Qianzhuzhonglei,
-                string Xingbie,
-                string Hukousuozaidi,
-                string Minzu
+                    int Xuhao,
+                    int Chengshibianhao,
+                    int Jubianhao,
+                    int Shiyongdanweibianhao,
+                    int IP,
+                    bool Bendiyewu,
+                    int Shebeibaifangweizhi,
+                    Int64 Riqi,
+                    string Yewubianhao,
+                    string Xingming,
+                    string Lianxidianhua,
+                    string Chuguoshiyou,
+                    string YuanZhengjianhaoma,
+                    int Qianzhuzhonglei,
+                    int Xingbie,
+                    string Hukousuozaidi,
+                    string Minzu,
+                    Int64 Chuangjianshijian
+    );
+
+    [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+    public delegate void QuerySHEBEIZHUANGTAICallBackDelegate(
+                    int Xuhao,
+                    int Chengshibianhao,
+                    int Jubianhao,
+                    int Shiyongdanweibianhao,
+                    int IP,
+                    bool Bendiyewu,
+                    int Shebeibaifangweizhi,
+                    Int64 Riqi,
+                    bool Shifouzaixian
+    );
+    [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+    public delegate void QuerySHEBEIYICHANGSHUJUCallBackDelegate(
+                    int Xuhao,
+                    int Chengshibianhao,
+                    int Jubianhao,
+                    int Shiyongdanweibianhao,
+                    int IP,
+                    bool Bendiyewu,
+                    int Shebeibaifangweizhi,
+                    Int64 Riqi,
+                    string Yichangshejimokuai,
+                    string Yichangyuanyin,
+                    string Yichangxiangxineirong
+    );
+    [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+    public delegate void QueryGUANLIYUANCallBackDelegate(
+                    int Xuhao,
+                    string Yonghuming,
+                    string Mima,
+                    int Youxiaoqikaishi,
+                    int Youxiaoqijieshu,
+                    int Quanxianjibie
+    );
+    [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+    public delegate void QueryGUANLIYUANCAOZUOJILUCallBackDelegate(
+                    int Xuhao,
+                    string Yonghuming,
+                    Int64 Riqi,
+                    string Caozuoleibie,
+                    string Caozuoneirong
+    );
+    [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+    public delegate void QuerySHEBEIGUANLICallBackDelegate(
+                    int Xuhao,
+                    int Chengshibianhao,
+                    int Jubianhao,
+                    int Shiyongdanweibianhao,
+                    int IP,
+                    string Shebeichangjia,
+                    string Shebeimingcheng,
+                    string Shebeileixing,
+                    float Jingdu,
+                    float Weidu,
+                    Int64 Chuangjianshijian
+    );
+    [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+    public delegate void QueryYINGSHEBIAOCallBackDelegate(
+                    int Bianhao,
+                    string Mingcheng
     );
     public sealed class WorkServer
     {
@@ -132,9 +205,9 @@ namespace ManageSystem.Server
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "isClientStoped")]
         private static extern bool _isClientStoped();
 
+        [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryTable")]
+        private static extern bool _queryTable(string querySqlStr, IntPtr callback);
 
-        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryIDCARDAPPLY")]
-        private static extern void _queryIDCARDAPPLY(string querySqlStr, IntPtr callback);
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryZHIQIANSHUJU")]
         private static extern void _queryZHIQIANSHUJU(string querySqlStr, IntPtr callback);
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "querySHOUZHENGSHUJU")]
@@ -147,6 +220,18 @@ namespace ManageSystem.Server
         private static extern void _queryCHAXUNSHUJU(string querySqlStr, IntPtr callback);
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryYUSHOULISHUJU")]
         private static extern void _queryYUSHOULISHUJU(string querySqlStr, IntPtr callback);
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "querySHEBEIZHUANGTAI")]
+        private static extern void _querySHEBEIZHUANGTAI(string querySqlStr, IntPtr callback);
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "querySHEBEIYICHANGSHUJU")]
+        private static extern void _querySHEBEIYICHANGSHUJU(string querySqlStr, IntPtr callback);
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryGUANLIYUAN")]
+        private static extern void _queryGUANLIYUAN(string querySqlStr, IntPtr callback);
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryGUANLIYUANCAOZUOJILU")]
+        private static extern void _queryGUANLIYUANCAOZUOJILU(string querySqlStr, IntPtr callback);
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "querySHEBEIGUANLI")]
+        private static extern void _querySHEBEIGUANLI(string querySqlStr, IntPtr callback);
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryYINGSHEBIAO")]
+        private static extern void _queryYINGSHEBIAO(string querySqlStr, IntPtr callback);
         /// <summary>
         /// Server
         /// </summary>
@@ -195,24 +280,28 @@ namespace ManageSystem.Server
         }
 
 
-        public void QueryIDCARDAPPLY(string querySqlStr, IntPtr callback)
+        //public void QueryIDCARDAPPLY(string querySqlStr, IntPtr callback)
+        //{
+        //    //if (isServerStoped())
+        //    //{
+        //    //    startServer("127.0.0.1", 60000);
+        //    //}
+
+        //    //if(isClientStoped())
+        //    //{
+        //    //    startClient("127.0.0.1", 60000);
+        //    //}
+
+        //    _queryIDCARDAPPLY(querySqlStr, callback);
+        //}
+
+        public void QueryTable(string querySqlStr, IntPtr callback)
         {
-            //if (isServerStoped())
-            //{
-            //    startServer("127.0.0.1", 60000);
-            //}
-
-            //if(isClientStoped())
-            //{
-            //    startClient("127.0.0.1", 60000);
-            //}
-
-            _queryIDCARDAPPLY(querySqlStr, callback);
+            _queryTable(querySqlStr, callback);
         }
-        
+
         public void QueryZHIQIANSHUJU(string querySqlStr, IntPtr callback)
         {
-           IntPtr tt = Common.LoadLibrary("WorkDll.dll");
             _queryZHIQIANSHUJU(querySqlStr, callback);
         }
         public void QuerySHOUZHENGSHUJU(string querySqlStr, IntPtr callback)
@@ -234,6 +323,30 @@ namespace ManageSystem.Server
         public void QueryYUSHOULISHUJU(string querySqlStr, IntPtr callback)
         {
             _queryYUSHOULISHUJU(querySqlStr, callback);
+        }
+        public void QuerySHEBEIZHUANGTAI(string querySqlStr, IntPtr callback)
+        {
+            _querySHEBEIZHUANGTAI(querySqlStr, callback);
+        }
+        public void QuerySHEBEIYICHANGSHUJU(string querySqlStr, IntPtr callback)
+        {
+            _querySHEBEIYICHANGSHUJU(querySqlStr, callback);
+        }
+        public void QueryGUANLIYUAN(string querySqlStr, IntPtr callback)
+        {
+            _queryGUANLIYUAN(querySqlStr, callback);
+        }
+        public void QueryGUANLIYUANCAOZUOJILU(string querySqlStr, IntPtr callback)
+        {
+            _queryGUANLIYUANCAOZUOJILU(querySqlStr, callback);
+        }
+        public void QuerySHEBEIGUANLI(string querySqlStr, IntPtr callback)
+        {
+            _querySHEBEIGUANLI(querySqlStr, callback);
+        }
+        public void QueryYINGSHEBIAO(string querySqlStr, IntPtr callback)
+        {
+            _queryYINGSHEBIAO(querySqlStr, callback);
         }
     }
 }

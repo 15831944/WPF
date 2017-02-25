@@ -15,6 +15,27 @@ namespace ManageSystem.ViewModel
     class PreAcceptQueryViewModel : NotificationObject
     {
         public QueryYUSHOULISHUJUCallBackDelegate       _queryyushoulishujucallbackdelegate = null;
+        public Dictionary<string, string> _columnNameMap = new Dictionary<string, string>
+        {
+            {"Xuhao",					"序号"},
+            {"Chengshibianhao",			"城市编号"},
+            {"Jubianhao",				"局编号"},
+            {"Shiyongdanweibianhao",	"使用单位编号"},
+            {"IP",						"ip地址"},
+            {"Bendiyewu",				"是否本地业务"},
+            {"Shebeibaifangweizhi",		"设备摆放位置"},
+            {"Riqi",					"日期"},
+            {"Yewubianhao",				"业务编号"},
+            {"Xingming",				"姓名"},
+            {"Lianxidianhua",			"联系电话"},
+            {"Chuguoshiyou",			"出国事由"},
+            {"YuanZhengjianhaoma",		"原证件号码"},
+            {"Qianzhuzhonglei",			"签注种类"},
+            {"Xingbie",					"性别"},
+            {"Hukousuozaidi",			"户口所在地"},
+            {"Minzu",					"民族"},
+            {"Chuangjianshijian",		"创建时间"},
+        };
 
         public DelegateCommand<object>                  QueryCommand { get; set; }
         public DelegateCommand<object>                  SelectedItemCommand { get; set; }
@@ -106,6 +127,7 @@ namespace ManageSystem.ViewModel
             _cardstatus                                 = new ObservableCollection<string>();
             _businesstype                               = new ObservableCollection<string>();
             _tableList                                  = new ObservableCollection<YUSHOULISHUJUModel>();
+
             {   //for test
                 DeviceModel model_1                     = new DeviceModel();
                 model_1.Text                            = "深圳市";
@@ -165,85 +187,53 @@ namespace ManageSystem.ViewModel
         {
             string headername = e.Column.Header.ToString();
             //Cancel the column you don't want to generate
-            if (headername == "Xuhao")
+            if(_columnNameMap.ContainsKey(headername))
             {
-                e.Column.Header = "序号";
-            }
-            else if (headername == "Riqi")
-            {
-                e.Column.Header = "日期";
-            }
-            else if (headername == "ShebeiIP")
-            {
-                e.Column.Header = "设备IP地址";
-            }
-            else if (headername == "Yewubianhao")
-            {
-                e.Column.Header = "业务编号";
-            }
-            else if (headername == "Xingming")
-            {
-                e.Column.Header = "姓名";
-            }
-            else if (headername == "Lianxidianhua")
-            {
-                e.Column.Header = "联系电话";
-            }
-            else if (headername == "Chuguoshiyou")
-            {
-                e.Column.Header = "出国事由";
-            }
-            else if (headername == "YuanZhengjianhaoma")
-            {
-                e.Column.Header = "原证件号码";
-            }
-            else if (headername == "Qianzhuzhonglei")
-            {
-                e.Column.Header = "签注种类";
-            }
-            else if (headername == "Xingbie")
-            {
-                e.Column.Header = "性别";
-            }
-            else if (headername == "Hukousuozaidi")
-            {
-                e.Column.Header = "户口所在地";
-            }
-            else if (headername == "Minzu")
-            {
-                e.Column.Header = "民族";
+                e.Column.Header = _columnNameMap[headername];
             }
         }
    
         public void QueryYUSHOULISHUJUCallBack(
-                int Xuhao,
-                string Riqi,
-                string ShebeiIP,
-                string Yewubianhao,
-                string Xingming,
-                string Lianxidianhua,
-                string Chuguoshiyou,
-                string YuanZhengjianhaoma,
-                string Qianzhuzhonglei,
-                string Xingbie,
-                string Hukousuozaidi,
-                string Minzu
+                    int Xuhao,
+                    int Chengshibianhao,
+                    int Jubianhao,
+                    int Shiyongdanweibianhao,
+                    int IP,
+                    bool Bendiyewu,
+                    int Shebeibaifangweizhi,
+                    Int64 Riqi,
+                    string Yewubianhao,
+                    string Xingming,
+                    string Lianxidianhua,
+                    string Chuguoshiyou,
+                    string YuanZhengjianhaoma,
+                    int Qianzhuzhonglei,
+                    int Xingbie,
+                    string Hukousuozaidi,
+                    string Minzu,
+                    Int64 Chuangjianshijian
         )
         {
 
             YUSHOULISHUJUModel model        = new YUSHOULISHUJUModel();
-            model.Xuhao                     = Xuhao.ToString();
-            model.Riqi                      = Riqi;
-            model.ShebeiIP                  = ShebeiIP;
-            model.Yewubianhao               = Yewubianhao;
-            model.Xingming                  = Xingming;
-            model.Lianxidianhua             = Lianxidianhua;
-            model.Chuguoshiyou              = Chuguoshiyou;
-            model.YuanZhengjianhaoma        = YuanZhengjianhaoma;
-            model.Qianzhuzhonglei           = Qianzhuzhonglei;
-            model.Xingbie                   = Xingbie;
-            model.Hukousuozaidi             = Hukousuozaidi;
-            model.Minzu                     = Minzu;
+            model.Xuhao					    = Xuhao;
+            model.Chengshibianhao			= Chengshibianhao;
+            model.Jubianhao				    = Jubianhao;
+            model.Shiyongdanweibianhao	    = Shiyongdanweibianhao;
+            model.IP						= IP;
+            model.Bendiyewu				    = Bendiyewu;
+            model.Shebeibaifangweizhi		= Shebeibaifangweizhi;
+            model.Riqi					    = Riqi;
+            model.Yewubianhao			    = Yewubianhao;
+            model.Xingming				    = Xingming;
+            model.Lianxidianhua			    = Lianxidianhua;
+            model.Chuguoshiyou			    = Chuguoshiyou;
+            model.YuanZhengjianhaoma	    = YuanZhengjianhaoma;
+            model.Qianzhuzhonglei		    = Qianzhuzhonglei;
+            model.Xingbie				    = Xingbie;
+            model.Hukousuozaidi			    = Hukousuozaidi;
+            model.Minzu					    = Minzu;
+            model.Chuangjianshijian		    = Chuangjianshijian;
 
             tableList.Add(model);
         }

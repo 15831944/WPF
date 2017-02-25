@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ManageSystem.Model
 {
-    class SHOUZHENGSHUJUModel : NotificationObject
+    class SHEBEIZHUANGTAIModel : NotificationObject
     {
         private int _Xuhao;
         public int Xuhao
@@ -105,8 +105,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private Int64 _Riqi;
-        public Int64 Riqi
+        private int _Riqi;
+        public int Riqi
         {
             get
             {
@@ -119,73 +119,17 @@ namespace ManageSystem.Model
             }
         }
 
-        private int _Zhengjianleixing;
-        public int Zhengjianleixing
+        private string _Shifouzaixian;
+        public string Shifouzaixian
         {
             get
             {
-                return _Zhengjianleixing;
+                return _Shifouzaixian;
             }
             set
             {
-                _Zhengjianleixing = value;
-                this.RaisePropertyChanged("Zhengjianleixing");
-            }
-        }
-
-        private string _Zhengjianhaoma;
-        public string Zhengjianhaoma
-        {
-            get
-            {
-                return _Zhengjianhaoma;
-            }
-            set
-            {
-                _Zhengjianhaoma = value;
-                this.RaisePropertyChanged("Zhengjianhaoma");
-            }
-        }
-
-        private string _Xingming;
-        public string Xingming
-        {
-            get
-            {
-                return _Xingming;
-            }
-            set
-            {
-                _Xingming = value;
-                this.RaisePropertyChanged("Xingming");
-            }
-        }
-
-        private string _Shoulibianhao;
-        public string Shoulibianhao
-        {
-            get
-            {
-                return _Shoulibianhao;
-            }
-            set
-            {
-                _Shoulibianhao = value;
-                this.RaisePropertyChanged("Shoulibianhao");
-            }
-        }
-
-        private bool _Shifoujiaofei;
-        public bool Shifoujiaofei
-        {
-            get
-            {
-                return _Shifoujiaofei;
-            }
-            set
-            {
-                _Shifoujiaofei = value;
-                this.RaisePropertyChanged("Shifoujiaofei");
+                _Shifouzaixian = value;
+                this.RaisePropertyChanged("Shifouzaixian");
             }
         }
     }

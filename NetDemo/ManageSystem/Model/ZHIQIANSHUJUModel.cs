@@ -7,8 +7,8 @@ namespace ManageSystem.Model
 {
     class ZHIQIANSHUJUModel : NotificationObject
     {
-        private string  _Xuhao;
-        public string   Xuhao
+        private int  _Xuhao;
+        public int   Xuhao
         {
             get
             {
@@ -21,8 +21,90 @@ namespace ManageSystem.Model
             }
         }
 
-        private string  _Riqi;
-        public string   Riqi
+        private int _Chengshibianhao;
+        public int Chengshibianhao
+        {
+            get
+            {
+                return _Chengshibianhao;
+            }
+            set
+            {
+                _Chengshibianhao = value;
+                this.RaisePropertyChanged("Chengshibianhao");
+            }
+        }
+
+        private int _Jubianhao;
+        public int Jubianhao
+        {
+            get
+            {
+                return _Jubianhao;
+            }
+            set
+            {
+                _Jubianhao = value;
+                this.RaisePropertyChanged("Jubianhao");
+            }
+        }
+
+        private int _Shiyongdanweibianhao;
+        public int Shiyongdanweibianhao
+        {
+            get
+            {
+                return _Shiyongdanweibianhao;
+            }
+            set
+            {
+                _Shiyongdanweibianhao = value;
+                this.RaisePropertyChanged("Shiyongdanweibianhao");
+            }
+        }
+
+        private int _IP;
+        public int IP
+        {
+            get
+            {
+                return _IP;
+            }
+            set
+            {
+                _IP = value;
+                this.RaisePropertyChanged("IP");
+            }
+        }
+
+        private bool _Bendiyewu;
+        public bool Bendiyewu
+        {
+            get
+            {
+                return _Bendiyewu;
+            }
+            set
+            {
+                _Bendiyewu = value;
+                this.RaisePropertyChanged("Bendiyewu");
+            }
+        }
+        private int _Shebeibaifangweizhi;
+        public int Shebeibaifangweizhi
+        {
+            get
+            {
+                return _Shebeibaifangweizhi;
+            }
+            set
+            {
+                _Shebeibaifangweizhi = value;
+                this.RaisePropertyChanged("Shebeibaifangweizhi");
+            }
+        }
+        private Int64 _Riqi;
+        public Int64 Riqi
         {
             get
             {
@@ -34,21 +116,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Riqi");
             }
         }
-        private string  _ShebeiIP;
-        public string   ShebeiIP
-        {
-            get
-            {
-                return _ShebeiIP;
-            }
-            set
-            {
-                _ShebeiIP = value;
-                this.RaisePropertyChanged("ShebeiIP");
-            }
-        }
-        private string  _Yewubianhao;
-        public string   Yewubianhao
+        private string _Yewubianhao;
+        public string Yewubianhao
         {
             get
             {
@@ -60,8 +129,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Yewubianhao");
             }
         }
-        private string  _YuanZhengjianhaoma;
-        public string   YuanZhengjianhaoma
+        private string _YuanZhengjianhaoma;
+        public string YuanZhengjianhaoma
         {
             get
             {
@@ -73,8 +142,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("YuanZhengjianhaoma");
             }
         }
-        private string  _Xingming;
-        public string   Xingming
+        private string _Xingming;
+        public string Xingming
         {
             get
             {
@@ -86,8 +155,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Xingming");
             }
         }
-        private string  _Qianzhuzhonglei;
-        public string   Qianzhuzhonglei
+        private int _Qianzhuzhonglei;
+        public int Qianzhuzhonglei
         {
             get
             {
@@ -99,8 +168,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Qianzhuzhonglei");
             }
         }
-        private string  _ZhikaZhuangtai;
-        public string   ZhikaZhuangtai
+        private int _ZhikaZhuangtai;
+        public int ZhikaZhuangtai
         {
             get
             {
@@ -112,8 +181,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("ZhikaZhuangtai");
             }
         }
-        private string  _Zhengjianhaoma;
-        public string   Zhengjianhaoma
+        private string _Zhengjianhaoma;
+        public string Zhengjianhaoma
         {
             get
             {
@@ -125,8 +194,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Zhengjianhaoma");
             }
         }
-        private string  _Jiekoufanhuijieguo;
-        public string   Jiekoufanhuijieguo
+        private string _Jiekoufanhuijieguo;
+        public string Jiekoufanhuijieguo
         {
             get
             {
@@ -138,9 +207,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Jiekoufanhuijieguo");
             }
         }
-
-        private string  _Lianxidianhua;
-        public string   Lianxidianhua
+        private string _Lianxidianhua;
+        public string Lianxidianhua
         {
             get
             {

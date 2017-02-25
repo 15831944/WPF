@@ -90,6 +90,7 @@ namespace ManageSystem.ViewModel
     class MainWindowViewModel : NotificationObject
     {
 
+
         public DelegateCommand<object>                  HomePageCommand { get; set; }
         public DelegateCommand<object>                  SummaryStatCommand { get; set; }
         public DelegateCommand<object>                  SignStatCommand { get; set; }
@@ -106,6 +107,7 @@ namespace ManageSystem.ViewModel
         public DelegateCommand<object>                  MaxCommand { get; set; }
         public DelegateCommand<object>                  MinCommand { get; set; }
         public DelegateCommand<object>                  DragWndCommand { get; set; }
+        public DelegateCommand<RoutedEventArgs>         DoubleClickCommand {get; set; }
 
         public HomePageViewModel                        _HomePageViewModel { get; set; }
         public SummaryStatModel                         _SummaryStatViewModel { get; set; }
@@ -167,6 +169,7 @@ namespace ManageSystem.ViewModel
             MaxCommand                                  = new DelegateCommand<object>(new Action<object>(this.MaxWnd));
             MinCommand                                  = new DelegateCommand<object>(new Action<object>(this.MinWnd));
             DragWndCommand                              = new DelegateCommand<object>(new Action<object>(this.DragWnd));
+            DoubleClickCommand                          = new DelegateCommand<RoutedEventArgs>(new Action<RoutedEventArgs>(this.DoubleClickWnd));
 
             _HomePageViewModel                          = new HomePageViewModel();
             _SummaryStatViewModel                       = new SummaryStatModel();
@@ -198,7 +201,7 @@ namespace ManageSystem.ViewModel
         {
             try
             {
-                System.Windows.Application.Current.MainWindow.Close();
+                System.Windows.Application.Current.Shutdown();
             }
             catch (Exception ex)
             {
@@ -261,6 +264,19 @@ namespace ManageSystem.ViewModel
             System.Windows.Point pp = Mouse.GetPosition(wnd);//WPF方法
             if (pp.Y > 0 && pp.Y < titleheight)
                 wnd.DragMove();
+        }
+
+        private void DoubleClickWnd(RoutedEventArgs e)
+        {
+            MouseButtonEventArgs args = e as MouseButtonEventArgs;
+           if(args.ChangedButton == MouseButton.Left)
+           {
+               System.Windows.Point pp = Mouse.GetPosition(null);//WPF方法
+               if (pp.Y > 0 && pp.Y < titleheight)
+               {
+                   MaxWnd(null);
+               }
+           }
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ManageSystem.Model
 {
-    class SHOUZHENGSHUJUModel : NotificationObject
+    class SHEBEIGUANLIModel : NotificationObject
     {
         private int _Xuhao;
         public int Xuhao
@@ -77,115 +77,87 @@ namespace ManageSystem.Model
             }
         }
 
-        private bool _Bendiyewu;
-        public bool Bendiyewu
+        private string _Shebeichangjia;
+        public string Shebeichangjia
         {
             get
             {
-                return _Bendiyewu;
+                return _Shebeichangjia;
             }
             set
             {
-                _Bendiyewu = value;
-                this.RaisePropertyChanged("Bendiyewu");
+                _Shebeichangjia = value;
+                this.RaisePropertyChanged("Shebeichangjia");
             }
         }
 
-        private int _Shebeibaifangweizhi;
-        public int Shebeibaifangweizhi
+        private string _Shebeimingcheng;
+        public string Shebeimingcheng
         {
             get
             {
-                return _Shebeibaifangweizhi;
+                return _Shebeimingcheng;
             }
             set
             {
-                _Shebeibaifangweizhi = value;
-                this.RaisePropertyChanged("Shebeibaifangweizhi");
+                _Shebeimingcheng = value;
+                this.RaisePropertyChanged("Shebeimingcheng");
             }
         }
 
-        private Int64 _Riqi;
-        public Int64 Riqi
+        private string _Shebeileixing;
+        public string Shebeileixing
         {
             get
             {
-                return _Riqi;
+                return _Shebeileixing;
             }
             set
             {
-                _Riqi = value;
-                this.RaisePropertyChanged("Riqi");
+                _Shebeileixing = value;
+                this.RaisePropertyChanged("Shebeileixing");
             }
         }
 
-        private int _Zhengjianleixing;
-        public int Zhengjianleixing
+        private float _Jingdu;
+        public float Jingdu
         {
             get
             {
-                return _Zhengjianleixing;
+                return _Jingdu;
             }
             set
             {
-                _Zhengjianleixing = value;
-                this.RaisePropertyChanged("Zhengjianleixing");
+                _Jingdu = value;
+                this.RaisePropertyChanged("Jingdu");
             }
         }
 
-        private string _Zhengjianhaoma;
-        public string Zhengjianhaoma
+        private float _Weidu;
+        public float Weidu
         {
             get
             {
-                return _Zhengjianhaoma;
+                return _Weidu;
             }
             set
             {
-                _Zhengjianhaoma = value;
-                this.RaisePropertyChanged("Zhengjianhaoma");
+                _Weidu = value;
+                this.RaisePropertyChanged("Weidu");
             }
         }
 
-        private string _Xingming;
-        public string Xingming
+        private string _Chuangjianshijian;
+        public string Chuangjianshijian
         {
             get
             {
-                return _Xingming;
+                return _Chuangjianshijian;
             }
             set
             {
-                _Xingming = value;
-                this.RaisePropertyChanged("Xingming");
-            }
-        }
-
-        private string _Shoulibianhao;
-        public string Shoulibianhao
-        {
-            get
-            {
-                return _Shoulibianhao;
-            }
-            set
-            {
-                _Shoulibianhao = value;
-                this.RaisePropertyChanged("Shoulibianhao");
-            }
-        }
-
-        private bool _Shifoujiaofei;
-        public bool Shifoujiaofei
-        {
-            get
-            {
-                return _Shifoujiaofei;
-            }
-            set
-            {
-                _Shifoujiaofei = value;
-                this.RaisePropertyChanged("Shifoujiaofei");
+                _Chuangjianshijian = value;
+                this.RaisePropertyChanged("Chuangjianshijian");
             }
         }
     }

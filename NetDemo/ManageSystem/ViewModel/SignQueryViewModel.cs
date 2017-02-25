@@ -3,6 +3,7 @@ using ManageSystem.Server;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -14,9 +15,27 @@ namespace ManageSystem.ViewModel
 {
     class SignQueryViewModel : NotificationObject
     {
-        public QueryIDCARDAPPLYCallBackDelegate         _queryidcardapplycallbackdelegate = null;
+        public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
         public QueryZHIQIANSHUJUCallBackDelegate        _queryzhiqianshujucallbackdelegate = null;
-
+        public Dictionary<string, string>               _columnNameMap = new Dictionary<string, string>
+        {
+           {"Xuhao",				"序号"},
+           {"Chengshibianhao",		"城市编号"},
+           {"Jubianhao",			"局编号"},
+           {"Shiyongdanweibianhao",	"使用单位编号"},
+           {"IP",					"ip地址"},
+           {"Bendiyewu",			"是否本地业务"},
+           {"Shebeibaifangweizhi",	"设备摆放位置"},
+           {"Riqi",					"日期"},
+           {"Yewubianhao",			"业务编号"},
+           {"YuanZhengjianhaoma",	"原证件号码"},
+           {"Xingming",				"姓名"},
+           {"Qianzhuzhonglei",		"签注种类"},
+           {"ZhikaZhuangtai",		"制卡状态"},
+           {"Zhengjianhaoma",		"证件号码"},
+           {"Jiekoufanhuijieguo",	"接口返回结果"},
+           {"Lianxidianhua",		"联系电话"},
+        };
         public DelegateCommand<object>                  QueryCommand { get; set; }
         public DelegateCommand<object>                  SelectedItemCommand { get; set; }
         public DelegateCommand<object>                  UnSelectedItemCommand { get; set; }
@@ -97,7 +116,7 @@ namespace ManageSystem.ViewModel
 
         public SignQueryViewModel()
         {
-            _queryidcardapplycallbackdelegate           = new Server.QueryIDCARDAPPLYCallBackDelegate(QueryIDCARDAPPLYCallBack);
+            _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
             _queryzhiqianshujucallbackdelegate          = new Server.QueryZHIQIANSHUJUCallBackDelegate(QueryZHIQIANSHUJUCallBack);
             QueryCommand                                = new DelegateCommand<object>(new Action<object>(this.Query));
             SelectedItemCommand                         = new DelegateCommand<object>(new Action<object>(this.SelectedItem));
@@ -167,114 +186,107 @@ namespace ManageSystem.ViewModel
         {
             string headername = e.Column.Header.ToString();
             //Cancel the column you don't want to generate
-            if (headername == "Xuhao")
+            if (_columnNameMap.ContainsKey(headername))
             {
-                e.Column.Header = "序号";
+                e.Column.Header = _columnNameMap[headername];
             }
-            else if (headername == "Riqi")
-            {
-                e.Column.Header = "日期";
-            }
-             else   if (headername == "ShebeiIP")
-            {
-                e.Column.Header = "设备IP地址";
-            }
-            else if (headername == "Yewubianhao")
-            {
-                e.Column.Header = "业务编号";
-            }
-            else if (headername == "YuanZhengjianhaoma")
-            {
-                e.Column.Header = "原证件号码";
-            }
-            else if (headername == "Xingming")
-            {
-                e.Column.Header = "姓名";
-            }
-            else if (headername == "Qianzhuzhonglei")
-            {
-                e.Column.Header = "签注种类";
-            }
-            else if (headername == "ZhikaZhuangtai")
-            {
-                e.Column.Header = "制卡状态";
-            }
-            else if (headername == "Zhengjianhaoma")
-            {
-                e.Column.Header = "证件号码";
-
-            }
-            else if (headername == "Jiekoufanhuijieguo")
-            {
-                e.Column.Header = "接口返回结果";
-            }
-            else if (headername == "Lianxidianhua")
-            {
-                e.Column.Header = "联系电话";
-            }
-
         }
-        public void QueryIDCARDAPPLYCallBack(
-                    string name,
-                    string gender,
-                    string Nation,
-                    string Birthday,
-                    string Address,
-                    string IdNumber,
-                    string SigDepart,
-                    string SLH,
-                    IntPtr fpData,
-                    int fpDataSize,
-                    IntPtr fpFeature,
-                    int fpFeatureSize,
-                    IntPtr XCZP,
-                    int XCZPSize,
-                    string XZQH,
-                    string sannerId,
-                    string scannerName,
-                    bool legal,
-                    string operatorID,
-                    string operatorName,
-                    string opDate
-        )
+        public void QueryTableCallBack(string resultStr)
         {
+            System.Reflection.PropertyInfo[] properties = typeof(ZHIQIANSHUJUModel).GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
 
+            string[] rows = resultStr.Split(';');
+            foreach (string row in rows)
+            {
+                if (row.Length > 0)
+                {
+                    ZHIQIANSHUJUModel model     = new ZHIQIANSHUJUModel();
+
+                    string[] cells = row.Split(',');
+                    foreach (string cell in cells)
+                    {
+                        string[] keyvalue = cell.Split(':');
+                        if (keyvalue.Length != 2)
+                            continue;
+
+                        foreach (System.Reflection.PropertyInfo item in properties)
+                        {
+                            if (item.Name == keyvalue[0])
+                            {
+                                if (item.PropertyType.Name.StartsWith("Int32"))
+                                {
+                                    item.SetValue(model, Convert.ToInt32(keyvalue[1]), null);
+                                }
+                                else if (item.PropertyType.Name.StartsWith("Int64"))
+                                {
+                                    item.SetValue(model, Convert.ToInt64(keyvalue[1]), null);
+                                }
+                                else if (item.PropertyType.Name.StartsWith("String"))
+                                {
+                                    item.SetValue(model, keyvalue[1], null);
+                                }
+                                else if (item.PropertyType.Name.StartsWith("Boolean"))
+                                {
+                                    item.SetValue(model, Convert.ToBoolean(Convert.ToInt32(keyvalue[1])), null);
+                                }
+                                else
+                                {
+                                    ;
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    tableList.Add(model);
+                }
+            }
         }
-
         public void QueryZHIQIANSHUJUCallBack(
-               int Xuhao,
-               string Riqi,
-               string ShebeiIP,
-               string Yewubianhao,
-               string YuanZhengjianhaoma,
-               string Xingming,
-               string Qianzhuzhonglei,
-               string ZhikaZhuangtai,
-               string Zhengjianhaoma,
-               string Jiekoufanhuijieguo,
-               string Lianxidianhua
+                int Xuhao,
+                int Chengshibianhao,
+                int Jubianhao,
+                int Shiyongdanweibianhao,
+                int IP,
+                bool Bendiyewu,
+                int Shebeibaifangweizhi,
+                Int64 Riqi,
+                string Yewubianhao,
+                string YuanZhengjianhaoma,
+                string Xingming,
+                int Qianzhuzhonglei,
+                int ZhikaZhuangtai,
+                string Zhengjianhaoma,
+                string Jiekoufanhuijieguo,
+                string Lianxidianhua
         )
         {
 
             ZHIQIANSHUJUModel model     = new ZHIQIANSHUJUModel();
-            model.Xuhao                 = Xuhao.ToString();
-            model.Riqi                  = Riqi;
-            model.ShebeiIP              = ShebeiIP;
-            model.Yewubianhao           = Yewubianhao;
-            model.YuanZhengjianhaoma    = YuanZhengjianhaoma;
-            model.Xingming              = Xingming;
-            model.Qianzhuzhonglei       = Qianzhuzhonglei;
-            model.ZhikaZhuangtai        = ZhikaZhuangtai;
-            model.Zhengjianhaoma        = Zhengjianhaoma;
-            model.Jiekoufanhuijieguo    = Jiekoufanhuijieguo;
-            model.Lianxidianhua         = Lianxidianhua;
+            model.Xuhao				    = Xuhao;
+            model.Chengshibianhao		= Chengshibianhao;
+            model.Jubianhao			    = Jubianhao;
+            model.Shiyongdanweibianhao  = Shiyongdanweibianhao;
+            model.IP					= IP;
+            model.Bendiyewu			    = Bendiyewu;
+            model.Shebeibaifangweizhi	= Shebeibaifangweizhi;
+            model.Riqi				    = Riqi;
+            model.Yewubianhao			= Yewubianhao;
+            model.YuanZhengjianhaoma	= YuanZhengjianhaoma;
+            model.Xingming			    = Xingming;
+            model.Qianzhuzhonglei		= Qianzhuzhonglei;
+            model.ZhikaZhuangtai		= ZhikaZhuangtai;
+            model.Zhengjianhaoma		= Zhengjianhaoma;
+            model.Jiekoufanhuijieguo	= Jiekoufanhuijieguo;
+            model.Lianxidianhua		    = Lianxidianhua;
 
+            //Debug.WriteLine(tableList.Count);
             tableList.Add(model);
         }
         public void Query(object obj)
         {
             tableList.Clear();
-            WorkServer.GetInstance().QueryZHIQIANSHUJU("select * from Zhiqianshuju", Marshal.GetFunctionPointerForDelegate(_queryzhiqianshujucallbackdelegate));
+            WorkServer.GetInstance().QueryTable("select * from Zhiqianshuju", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            //WorkServer.GetInstance().QueryZHIQIANSHUJU("select * from Zhiqianshuju", Marshal.GetFunctionPointerForDelegate(_queryzhiqianshujucallbackdelegate));
         }
 
 

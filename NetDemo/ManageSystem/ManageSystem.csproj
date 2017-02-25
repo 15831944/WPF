@@ -73,11 +73,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddDataWindow.xaml.cs">
+      <DependentUpon>AddDataWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Dameer.cs" />
     <Compile Include="Model\CHAXUNSHUJUModel.cs" />
     <Compile Include="Model\DeviceModel.cs" />
+    <Compile Include="Model\GUANLIYUANCAOZUOJILUModel.cs" />
+    <Compile Include="Model\GUANLIYUANModel.cs" />
     <Compile Include="Model\JIAOKUANSHUJUModel.cs" />
     <Compile Include="Model\QIANZHUSHUJUModel.cs" />
+    <Compile Include="Model\SHEBEIGUANLIModel.cs" />
+    <Compile Include="Model\SHEBEIYICHANGSHUJUModel.cs" />
+    <Compile Include="Model\SHEBEIZHUANGTAIModel.cs" />
+    <Compile Include="Model\YINGSHEBIAOModel.cs" />
     <Compile Include="Model\YUSHOULISHUJUModel.cs" />
     <Compile Include="Model\ZHIQIANSHUJUModel.cs" />
     <Compile Include="Resources\DateTimer\ButtonSpinner.cs" />
@@ -114,6 +123,10 @@
     <Compile Include="ViewModel\SignQueryViewModel.cs" />
     <Compile Include="ViewModel\SignStatViewModel.cs" />
     <Compile Include="ViewModel\SummaryStatModel.cs" />
+    <Page Include="AddDataWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

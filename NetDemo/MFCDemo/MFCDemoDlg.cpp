@@ -75,8 +75,7 @@ END_MESSAGE_MAP()
 
 
 // CMFCDemoDlg 消息处理程序
-typedef bool(*_AddIDCARDAPPLY)(tagIDCARDAPPLY  station, string &strError);
-typedef bool(*_QueryIDCARDAPPLY)(string QuerySql, std::vector<tagIDCARDAPPLY> &lcArray, string &strError);
+
 
 BOOL CMFCDemoDlg::OnInitDialog()
 {
@@ -119,7 +118,7 @@ BOOL CMFCDemoDlg::OnInitDialog()
 	_stopClient						= (_stopClientType)GetProcAddress(hNetDll, "stopClient");
 
 	HMODULE hDatabase				= LoadLibrary(_T("database.dll"));
-	_AddIDCARDAPPLY addidcardapply	= (_AddIDCARDAPPLY)GetProcAddress(hDatabase, "AddIDCARDAPPLY");
+	/*_AddIDCARDAPPLY addidcardapply	= (_AddIDCARDAPPLY)GetProcAddress(hDatabase, "AddIDCARDAPPLY");
 	tagIDCARDAPPLY tagidcardapply;
 
 	tagidcardapply.name				= "1";
@@ -139,14 +138,14 @@ BOOL CMFCDemoDlg::OnInitDialog()
 	tagidcardapply.legal			= false;
 	tagidcardapply.operatorID		= "15";
 	tagidcardapply.operatorName		= "16";
-	tagidcardapply.opDate			= "17";
+	tagidcardapply.opDate			= "17";*/
 
 	string strError = "";
 	//addidcardapply(tagidcardapply, strError);
 
-	vector<tagIDCARDAPPLY> array;
-	_QueryIDCARDAPPLY queryidcardapply	= (_QueryIDCARDAPPLY)GetProcAddress(hDatabase, "QueryIDCARDAPPLY");
-	queryidcardapply("select * from idcardapply", array, strError);
+	//vector<tagIDCARDAPPLY> array;
+	//_QueryIDCARDAPPLY queryidcardapply	= (_QueryIDCARDAPPLY)GetProcAddress(hDatabase, "QueryIDCARDAPPLY");
+	//queryidcardapply("select * from idcardapply", array, strError);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }

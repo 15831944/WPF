@@ -36,7 +36,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					{
 					case netmsg::NetMsgType_DatabaseQueryAsk:
 					{
-						string strCmd = msgPack.msgcmd().cmd();
+						/*string strCmd = msgPack.msgcmd().cmd();
 						if (strCmd.find(T_IDCARDAPPLY))
 						{
 							std::vector<tagIDCARDAPPLY>  lcArray;
@@ -138,7 +138,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 						else if (strCmd.find(T_SHEBEIGUANLI))
 						{
 
-						}
+						}*/
 					}
 						break;
 					case netmsg::NetMsgType_DatabaseAddAsk:

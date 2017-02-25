@@ -11,84 +11,17 @@
 /*******************************/
 #pragma region macrodefinition
 
-/** 自助设备本地数据库（业务审核） */
-#define T_IDCARDAPPLY															"idCardApply"
-#define T_IDCARDAPPLY_NAME														"name"
-#define T_IDCARDAPPLY_GENDER													"gender"
-#define T_IDCARDAPPLY_NATION													"Nation"
-#define T_IDCARDAPPLY_BIRTHDAY													"Birthday"
-#define T_IDCARDAPPLY_ADDRESS													"Address"
-#define T_IDCARDAPPLY_IDNUMBER													"IdNumber"
-#define T_IDCARDAPPLY_SIGDEPART													"SigDepart"
-#define T_IDCARDAPPLY_SLH														"SLH"
-#define T_IDCARDAPPLY_FPDATA													"fpData"
-#define T_IDCARDAPPLY_FPFEATURE													"fpFeature"
-#define T_IDCARDAPPLY_XCZP														"XCZP"
-#define T_IDCARDAPPLY_XZQH														"XZQH"
-#define T_IDCARDAPPLY_SANNERID													"sannerId"
-#define T_IDCARDAPPLY_SCANNERNAME												"scannerName"
-#define T_IDCARDAPPLY_LEGAL														"legal"
-#define T_IDCARDAPPLY_OPERATORID												"operatorID"
-#define T_IDCARDAPPLY_OPERATORNAME												"operatorName"
-#define T_IDCARDAPPLY_OPDATE													"opDate"
-
-/** 服务器数据库 */
-#define T_ONLINESTATUS															"OnlineStatus"
-#define T_ONLINESTATUS_MACHINEID												"machineId"
-#define T_ONLINESTATUS_MACHINENAME												"machineName"
-#define T_ONLINESTATUS_MACHINEIP												"machineIP"
-#define T_ONLINESTATUS_MACHINELONGI												"machineLongi"
-#define T_ONLINESTATUS_MACHINELAT												"machineLat"
-#define T_ONLINESTATUS_CURRENTBUSINESS											"currentBusiness"
-#define T_ONLINESTATUS_BUSINESSSTARTTIME										"businessStartTime"
-#define T_ONLINESTATUS_BUSINESSENDTIME											"businessEndTime"
-#define T_ONLINESTATUS_BUSINESSDONE												"businessDone"
-
-/** 数量汇总（该表只有一条记录，需要实时更新） */
-#define T_SHULIANGHUIZONG														"Shulianghuizong"
-#define T_SHULIANGHUIZONG_XUHAO													"Xuhao"
-#define T_SHULIANGHUIZONG_SHIYONGDANWEI											"Shiyongdanwei"
-#define T_SHULIANGHUIZONG_SHEBEIZONGSHULIANG									"Shebeizongshuliang"
-#define T_SHULIANGHUIZONG_QIYONGSHEBEI											"Qiyongshebei"
-#define T_SHULIANGHUIZONG_YUYUEYEWU												"Yuyueyewu"
-#define T_SHULIANGHUIZONG_YUSHOULIYEWU											"Yushouliyewu"
-#define T_SHULIANGHUIZONG_JIAOFEIYEWU											"Jiaofeiyewu"
-#define T_SHULIANGHUIZONG_CHAXUNYEWU											"Xuhao"
-#define T_SHULIANGHUIZONG_SHEBEISHOUZHENG										"Shebeishouzheng"
-#define T_SHULIANGHUIZONG_XUQIANYEWU											"Xuqianyewu"
-#define T_SHULIANGHUIZONG_BENSHITONGXINGZHENG									"Benshitongxingzheng"
-#define T_SHULIANGHUIZONG_DIANZITONGXINGZHENG									"Dianzitongxingzheng"
-#define T_SHULIANGHUIZONG_TONGXINGZHENGZHIKA									"Tongxingzhengzhika"
-#define T_SHULIANGHUIZONG_LIDENGKEQU											"Lidengkequ"
-#define T_SHULIANGHUIZONG_FEILIDENGKEQU											"Feilidengkequ"
-
-/**详细统计（精确到分钟） */
-#define T_XIANGXITONGJI															"Xiangxitongji"
-#define T_XIANGXITONGJI_XUHAO													"Xuhao"
-#define T_XIANGXITONGJI_NIAN													"Nian"
-#define T_XIANGXITONGJI_YUE														"Yue"
-#define T_XIANGXITONGJI_RI														"Ri"
-#define T_XIANGXITONGJI_XIAOSHI													"Xiaoshi"
-#define T_XIANGXITONGJI_FENZHONG												"Fenzhong"
-#define T_XIANGXITONGJI_SHIYONGDANWEI											"Shiyongdanwei"
-#define T_XIANGXITONGJI_QIYONGSHEBEI											"Qiyongshebei"
-#define T_XIANGXITONGJI_YUYUEYEWU												"Yuyueyewu"
-#define T_XIANGXITONGJI_YUSHOULIYEWU											"Yushouliyewu"
-#define T_XIANGXITONGJI_JIAOFEIYEWU												"Jiaofeiyewu"
-#define T_XIANGXITONGJI_CHAXUNYEWU												"Chaxunyewu"
-#define T_XIANGXITONGJI_SHEBEISHOUZHENG											"Shebeishouzheng"
-#define T_XIANGXITONGJI_XUQIANYEWU												"Xuqianyewu"
-#define T_XIANGXITONGJI_BENSHITONGXINGZHENG										"Benshitongxingzheng"
-#define T_XIANGXITONGJI_DIANZITONGXINGZHENG										"Dianzitongxingzheng"
-#define T_XIANGXITONGJI_TONGXINGZHENGZHIKA										"Tongxingzhengzhika"
-#define T_XIANGXITONGJI_LIDENGKEQU												"Lidengkequ"
-#define T_XIANGXITONGJI_FEILIDENGKEQU											"Feilidengkequ"
 
 /**制签详细数据 */
 #define T_ZHIQIANSHUJU															"Zhiqianshuju"
 #define T_ZHIQIANSHUJU_XUHAO													"Xuhao"
+#define T_ZHIQIANSHUJU_CHENGSHIBIANHAO											"Chengshibianhao"
+#define T_ZHIQIANSHUJU_JUBIANHAO												"Jubianhao"
+#define T_ZHIQIANSHUJU_SHIYONGDANWEIBIANHAO										"Shiyongdanweibianhao"
+#define T_ZHIQIANSHUJU_IP														"IP"
+#define T_ZHIQIANSHUJU_BENDIYEWU												"Bendiyewu"
+#define T_ZHIQIANSHUJU_SHEBEIBAIFANGWEIZHI										"Shebeibaifangweizhi"
 #define T_ZHIQIANSHUJU_RIQI														"Riqi"
-#define T_ZHIQIANSHUJU_SHEBEIIP													"ShebeiIP"
 #define T_ZHIQIANSHUJU_YEWUBIANHAO												"Yewubianhao"
 #define T_ZHIQIANSHUJU_YUANZHENGJIANHAOMA										"YuanZhengjianhaoma"
 #define T_ZHIQIANSHUJU_XINGMING													"Xingming"
@@ -101,8 +34,13 @@
 /**收证详细数据 */
 #define T_SHOUZHENGSHUJU														"Shouzhengshuju"
 #define T_SHOUZHENGSHUJU_XUHAO													"Xuhao"
+#define T_SHOUZHENGSHUJU_CHENGSHIBIANHAO										"Chengshibianhao"
+#define T_SHOUZHENGSHUJU_JUBIANHAO												"Jubianhao"
+#define T_SHOUZHENGSHUJU_SHIYONGDANWEIBIANHAO									"Shiyongdanweibianhao"
+#define T_SHOUZHENGSHUJU_IP														"IP"
+#define T_SHOUZHENGSHUJU_BENDIYEWU												"Bendiyewu"
+#define T_SHOUZHENGSHUJU_SHEBEIBAIFANGWEIZHI									"Shebeibaifangweizhi"
 #define T_SHOUZHENGSHUJU_RIQI													"Riqi"
-#define T_SHOUZHENGSHUJU_SHEBEIIP												"ShebeiIP"
 #define T_SHOUZHENGSHUJU_ZHENGJIANLEIXING										"Zhengjianleixing"
 #define T_SHOUZHENGSHUJU_ZHENGJIANHAOMA											"Zhengjianhaoma"
 #define T_SHOUZHENGSHUJU_XINGMING												"Xingming"
@@ -112,8 +50,13 @@
 /**签注详细数据 */
 #define T_QIANZHUSHUJU															"Qianzhushuju"
 #define T_QIANZHUSHUJU_XUHAO													"Xuhao"
+#define T_QIANZHUSHUJU_CHENGSHIBIANHAO											"Chengshibianhao"
+#define T_QIANZHUSHUJU_JUBIANHAO												"Jubianhao"
+#define T_QIANZHUSHUJU_SHIYONGDANWEIBIANHAO										"Shiyongdanweibianhao"
+#define T_QIANZHUSHUJU_IP														"IP"
+#define T_QIANZHUSHUJU_BENDIYEWU												"Bendiyewu"
+#define T_QIANZHUSHUJU_SHEBEIBAIFANGWEIZHI										"Shebeibaifangweizhi"
 #define T_QIANZHUSHUJU_RIQI														"Riqi"
-#define T_QIANZHUSHUJU_SHEBEIIP													"ShebeiIP"
 #define T_QIANZHUSHUJU_YUANZHENGJIANHAOMA										"YuanZhengjianhaoma"
 #define T_QIANZHUSHUJU_XINGMING													"Xingming"
 #define T_QIANZHUSHUJU_XINGBIE													"Xingbie"
@@ -125,8 +68,13 @@
 /**缴款详细数据 */
 #define T_JIAOKUANSHUJU															"Jiaokuanshuju"
 #define T_JIAOKUANSHUJU_XUHAO													"Xuhao"
+#define T_JIAOKUANSHUJU_CHENGSHIBIANHAO											"Chengshibianhao"
+#define T_JIAOKUANSHUJU_JUBIANHAO												"Jubianhao"
+#define T_JIAOKUANSHUJU_SHIYONGDANWEIBIANHAO									"Shiyongdanweibianhao"
+#define T_JIAOKUANSHUJU_IP														"IP"
+#define T_JIAOKUANSHUJU_BENDIYEWU												"Bendiyewu"
+#define T_JIAOKUANSHUJU_SHEBEIBAIFANGWEIZHI										"Shebeibaifangweizhi"
 #define T_JIAOKUANSHUJU_RIQI													"Riqi"
-#define T_JIAOKUANSHUJU_SHEBEIIP												"ShebeiIP"
 #define T_JIAOKUANSHUJU_ZHISHOUDANWEIDAIMA										"Zhishoudanweidaima"
 #define T_JIAOKUANSHUJU_JIAOKUANTONGZHISHUHAOMA									"Jiaokuantongzhishuhaoma"
 #define T_JIAOKUANSHUJU_JIAOKUANRENXINGMING										"Jiaokuanrenxingming"
@@ -136,17 +84,28 @@
 /**查询详细数据 */
 #define T_CHAXUNSHUJU															"Chaxunshuju"
 #define T_CHAXUNSHUJU_XUHAO														"Xuhao"
+#define T_CHAXUNSHUJU_CHENGSHIBIANHAO											"Chengshibianhao"
+#define T_CHAXUNSHUJU_JUBIANHAO													"Jubianhao"
+#define T_CHAXUNSHUJU_SHIYONGDANWEIBIANHAO										"Shiyongdanweibianhao"
+#define T_CHAXUNSHUJU_IP														"IP"
+#define T_CHAXUNSHUJU_BENDIYEWU													"Bendiyewu"
+#define T_CHAXUNSHUJU_SHEBEIBAIFANGWEIZHI										"Shebeibaifangweizhi"
 #define T_CHAXUNSHUJU_RIQI														"Riqi"
-#define T_CHAXUNSHUJU_SHEBEIIP													"ShebeiIP"
 #define T_CHAXUNSHUJU_CHAXUNHAOMA												"Chaxunhaoma"
 #define T_CHAXUNSHUJU_CHAXUNLEIXING												"Chaxunleixing"
 #define T_CHAXUNSHUJU_SHIFOUCHAXUNCHENGGONG										"Shifouchaxunchenggong"
+#define T_CHAXUNSHUJU_CHUANGJIANSHIJIAN											"Chuangjianshijian"
 
 /**预受理详细数据 */
 #define T_YUSHOULISHUJU															"Yushoulishuju"
 #define T_YUSHOULISHUJU_XUHAO													"Xuhao"
+#define T_YUSHOULISHUJU_CHENGSHIBIANHAO											"Chengshibianhao"
+#define T_YUSHOULISHUJU_JUBIANHAO												"Jubianhao"
+#define T_YUSHOULISHUJU_SHIYONGDANWEIBIANHAO									"Shiyongdanweibianhao"
+#define T_YUSHOULISHUJU_IP														"IP"
+#define T_YUSHOULISHUJU_BENDIYEWU												"Bendiyewu"
+#define T_YUSHOULISHUJU_SHEBEIBAIFANGWEIZHI										"Shebeibaifangweizhi"
 #define T_YUSHOULISHUJU_RIQI													"Riqi"
-#define T_YUSHOULISHUJU_SHEBEIIP												"ShebeiIP"
 #define T_YUSHOULISHUJU_YEWUBIANHAO												"Yewubianhao"
 #define T_YUSHOULISHUJU_XINGMING												"Xingming"
 #define T_YUSHOULISHUJU_LIANXIDIANHUA											"Lianxidianhua"
@@ -156,12 +115,30 @@
 #define T_YUSHOULISHUJU_XINGBIE													"Xingbie"
 #define T_YUSHOULISHUJU_HUKOUSUOZAIDI											"Hukousuozaidi"
 #define T_YUSHOULISHUJU_MINZU													"Minzu"
+#define T_YUSHOULISHUJU_CHUANGJIANSHIJIAN										"Chuangjianshijian"
+
+/**自助设备状态 */
+#define T_SHEBEIZHUANGTAI														"Shebeizhuangtai"
+#define T_SHEBEIZHUANGTAI_XUHAO													"Xuhao"
+#define T_SHEBEIZHUANGTAI_CHENGSHIBIANHAO										"Chengshibianhao"
+#define T_SHEBEIZHUANGTAI_JUBIANHAO												"Jubianhao"
+#define T_SHEBEIZHUANGTAI_SHIYONGDANWEIBIANHAO									"Shiyongdanweibianhao"
+#define T_SHEBEIZHUANGTAI_IP													"IP"
+#define T_SHEBEIZHUANGTAI_BENDIYEWU												"Bendiyewu"
+#define T_SHEBEIZHUANGTAI_SHEBEIBAIFANGWEIZHI									"Shebeibaifangweizhi"
+#define T_SHEBEIZHUANGTAI_RIQI													"Riqi"
+#define T_SHEBEIZHUANGTAI_SHIFOUZAIXIAN											"Shifouzaixian"
 
 /**自助设备异常详细数据 */
-#define T_SHEBEIYICHANGSHUJU													"Shebeiyichangshuju"
+#define T_SHEBEIYICHANGSHUJU													"Shebeizhuangtai"
 #define T_SHEBEIYICHANGSHUJU_XUHAO												"Xuhao"
+#define T_SHEBEIYICHANGSHUJU_CHENGSHIBIANHAO									"Chengshibianhao"
+#define T_SHEBEIYICHANGSHUJU_JUBIANHAO											"Jubianhao"
+#define T_SHEBEIYICHANGSHUJU_SHIYONGDANWEIBIANHAO								"Shiyongdanweibianhao"
+#define T_SHEBEIYICHANGSHUJU_IP													"IP"
+#define T_SHEBEIYICHANGSHUJU_BENDIYEWU											"Bendiyewu"
+#define T_SHEBEIYICHANGSHUJU_SHEBEIBAIFANGWEIZHI								"Shebeibaifangweizhi"
 #define T_SHEBEIYICHANGSHUJU_RIQI												"Riqi"
-#define T_SHEBEIYICHANGSHUJU_SHIYONGDANWEI										"Shiyongdanwei"
 #define T_SHEBEIYICHANGSHUJU_YICHANGSHEJIMOKUAI									"Yichangshejimokuai"
 #define T_SHEBEIYICHANGSHUJU_YICHANGYUANYIN										"Yichangyuanyin"
 #define T_SHEBEIYICHANGSHUJU_YICHANGXIANGXINEIRONG								"Yichangxiangxineirong"
@@ -171,7 +148,8 @@
 #define T_GUANLIYUAN_XUHAO														"Xuhao"
 #define T_GUANLIYUAN_YONGHUMING													"Yonghuming"
 #define T_GUANLIYUAN_MIMA														"Mima"
-#define T_GUANLIYUAN_YOUXIAOQI													"Youxiaoqi"
+#define T_GUANLIYUAN_YOUXIAOQIKAISHI											"Youxiaoqikaishi"
+#define T_GUANLIYUAN_YOUXIAOQIJIESHU											"Youxiaoqijieshu"
 #define T_GUANLIYUAN_QUANXIANJIBIE												"Quanxianjibie"
 
 /**管理员操作记录 */
@@ -184,17 +162,21 @@
 /**设备管理 */
 #define T_SHEBEIGUANLI															"Shebeiguanli"
 #define T_SHEBEIGUANLI_XUHAO													"Xuhao"
-#define T_SHEBEIGUANLI_SHENG													"Sheng"
-#define T_SHEBEIGUANLI_SHI														"Shi"
-#define T_SHEBEIGUANLI_QU														"Qu"
-#define T_SHEBEIGUANLI_SHIYONGDANWEI											"Shiyongdanwei"
+#define T_SHEBEIGUANLI_CHENGSHIBIANHAO											"Chengshibianhao"
+#define T_SHEBEIGUANLI_JUBIANHAO												"Jubianhao"
+#define T_SHEBEIGUANLI_SHIYONGDANWEIBIANHAO										"Shiyongdanweibianhao"
 #define T_SHEBEIGUANLI_IP														"IP"
+#define T_SHEBEIGUANLI_SHEBEICHANGJIA											"Shebeichangjia"
+#define T_SHEBEIGUANLI_SHEBEIMINGCHENG											"Shebeimingcheng"
 #define T_SHEBEIGUANLI_SHEBEILEIXING											"Shebeileixing"
 #define T_SHEBEIGUANLI_JINGDU													"Jingdu"
 #define T_SHEBEIGUANLI_WEIDU													"Weidu"
 #define T_SHEBEIGUANLI_CHUANGJIANSHIJIAN										"Chuangjianshijian"
 
-
+/**映射表 */
+#define T_YINGSHEBIAO															"Yingshebiao"
+#define T_YINGSHEBIAO_BIANHAO													"Bianhao"
+#define T_YINGSHEBIAO_MINGCHENG													"Mingcheng"
 
 #define  BOSD_RIM_XML_PARAM_FRAME "<?xml version=\"1.0\"  encoding=\"gb2312\" >\n"\
 	"<!-- 设备参数框架 -->"\
@@ -206,241 +188,6 @@
 #pragma endregion macrodefinition
 
 ////////////////////////////////////////////////////////结构定义BEGIN////////////////////////////////////////////////////////
-//typedef class tagBUFFER
-//{
-//public:
-//	//tagBUFFER()
-//	//{
-//	//	byteLen				=  0;
-//	//	pBuffer				= NULL
-//	//}
-//
-//	tagBUFFER(LPBYTE buffer, long bufLen)
-//	{
-//		if (buffer == NULL)
-//		{
-//			m_pBuffer		= NULL;
-//			m_byteLen		= 0;
-//		}
-//		else
-//		{
-//			m_pBuffer		= new BYTE[bufLen];
-//			m_byteLen		= bufLen;
-//			memcpy(m_pBuffer, buffer, bufLen);
-//		}
-//	}
-//
-//	tagBUFFER(const tagBUFFER& ob)
-//	{
-//		*this = ob;
-//	}
-//	tagBUFFER& operator=(const tagBUFFER& ob)
-//	{
-//		if (m_pBuffer)
-//			delete[] m_pBuffer;
-//
-//		m_pBuffer		= new BYTE[ob.m_byteLen];
-//		m_byteLen		= ob.m_byteLen;
-//		memcpy(m_pBuffer, buffer, bufLen);
-//
-//		return *this;
-//	}
-//	~tagBUFFER()
-//	{
-//		if (m_pBuffer)
-//			delete[] m_pBuffer;
-//
-//		m_pBuffer		= NULL;
-//		m_byteLen		= 0;
-//	}
-//
-//	long				m_byteLen;
-//	LPBYTE				m_pBuffer;
-//}BUFFER, *LPBUFFER;
-/**
-* @class  tagIDCARDAPPLY 
-*
-* @brief 
-****************************************************************************
-*/
-typedef class tagIDCARDAPPLY
-{
-public:
-	tagIDCARDAPPLY::tagIDCARDAPPLY()
-	{
-		name				= "";
-		gender				= "";
-		Nation				= "";
-		Birthday			= "";
-		Address				= "";
-		IdNumber			= "";
-		SigDepart			= "";
-		SLH					= "";
-		fpData				= "";
-		fpFeature			= "";
-		XCZP				= "";
-		XZQH				= "";
-		sannerId 			= "";
-		scannerName			= "";
-		legal				= false;
-		operatorID			= "";
-		operatorName		= "";
-		opDate				= "";
-	}
-
-	std::string  			name;						//姓名
-	std::string  			gender;						//性别
-	std::string  			Nation;						//民族
-	std::string  			Birthday;					//出生日期
-	std::string  			Address;					//地址
-	std::string  			IdNumber;					//身份证号码
-	std::string  			SigDepart;					//签发机关
-	std::string  			SLH;						//受理号
-	std::string  			fpData;						//lob 指纹数据
-	std::string  			fpFeature;					//lob 指纹特征数据
-	std::string  			XCZP;						//lob 现场照片
-	std::string  			XZQH;						//行政区划
-	std::string  			sannerId;					//指纹仪编号
-	std::string  			scannerName;				//指纹仪名称
-	bool		  			legal;						//是否合法
-	std::string  			operatorID;					//审核员编号
-	std::string  			operatorName;				//审核员姓名
-	std::string  			opDate;						//操作日期
-
-}IDCARDAPPLY, *LPIDCARDAPPLY;
-/**
-* @class  tagONLINESTATUS
-*
-* @brief
-****************************************************************************
-*/
-typedef class tagONLINESTATUS
-{
-public:
-	tagONLINESTATUS::tagONLINESTATUS()
-	{
-		machineId				= "";
-		machineName				= "";
-		machineIP				= "";
-		machineLongi			= "";
-		machineLat				= "";
-		currentBusiness			= "";
-		businessStartTime		= "";
-		businessEndTime			= "";
-		businessDone			= false;
-	}
-
-	std::string  			machineId;					//自助设备编号
-	std::string  			machineName;				//自助设备名称
-	std::string  			machineIP;					//自助设备IP地址
-	std::string  			machineLongi;				//自助设备经度
-	std::string  			machineLat;					//自助设备纬度
-	std::string  			currentBusiness;			//当前办理业务环节
-	std::string  			businessStartTime;			//开始办理业务时间
-	std::string  			businessEndTime;			//结束办理业务时间
-	bool		  			businessDone;				//业务是否办理成功
-
-}ONLINESTATUS, *LPONLINESTATUS;
-
-/**
-* @class  tagSHULIANGHUIZONG
-*
-* @brief
-****************************************************************************
-*/
-typedef class tagSHULIANGHUIZONG
-{
-public:
-	tagSHULIANGHUIZONG::tagSHULIANGHUIZONG()
-	{
-		Xuhao					= 0;
-		Shiyongdanwei			= 0;
-		Shebeizongshuliang		= 0;
-		Qiyongshebei			= 0;
-		Yuyueyewu				= 0;
-		Yushouliyewu			= 0;
-		Jiaofeiyewu				= 0;
-		Chaxunyewu				= 0;
-		Shebeishouzheng			= 0;
-		Xuqianyewu				= 0;
-		Benshitongxingzheng		= 0;
-		Dianzitongxingzheng		= 0;
-		Tongxingzhengzhika		= 0;
-		Lidengkequ				= 0;
-		Feilidengkequ			= 0;
-	}
-
-	int  						Xuhao;					//序号
-	int  						Shiyongdanwei;			//使用单位数量
-	int  						Shebeizongshuliang;		//设备总数量
-	int  						Qiyongshebei;			//设备在线数量
-	int  						Yuyueyewu;				//预约业务
-	int  						Yushouliyewu;			//预受理业务
-	int  						Jiaofeiyewu;			//缴费业务
-	int  						Chaxunyewu;				//查询业务
-	int		  					Shebeishouzheng;		//设备收证
-	int		  					Xuqianyewu;				//续签业务总数
-	int		  					Benshitongxingzheng;	//本式通行证
-	int		  					Dianzitongxingzheng;	//电子通行证
-	int		  					Tongxingzhengzhika;		//通行证制卡总数
-	int		  					Lidengkequ;				//立等可取
-	int		  					Feilidengkequ;			//非立等可取
-
-}SHULIANGHUIZONG, *LPSHULIANGHUIZONG;
-/**
-* @class  tagXIANGXITONGJI
-*
-* @brief
-****************************************************************************
-*/
-typedef class tagXIANGXITONGJI
-{
-public:
-	tagXIANGXITONGJI::tagXIANGXITONGJI()
-	{
-		
-		Xuhao					= 0;
-		Nian					= 0;
-		Yue						= 0;
-		Ri						= 0;
-		Xiaoshi					= 0;
-		Fenzhong				= 0;
-		Shiyongdanwei			= 0;
-		Qiyongshebei			= 0;
-		Yuyueyewu				= 0;
-		Yushouliyewu			= 0;
-		Jiaofeiyewu				= 0;
-		Chaxunyewu				= 0;
-		Shebeishouzheng			= 0;
-		Xuqianyewu				= 0;
-		Benshitongxingzheng		= 0;
-		Dianzitongxingzheng		= 0;
-		Tongxingzhengzhika		= 0;
-		Lidengkequ				= 0;
-		Feilidengkequ			= 0;	
-	}
-
-	int  						Xuhao;					//序号
-	int  						Nian;					//年份
-	int  						Yue;					//月
-	int  						Ri;						//日
-	int  						Xiaoshi;				//小时
-	int  						Fenzhong;				//分钟
-	int  						Shiyongdanwei;			//使用单位数量
-	int  						Qiyongshebei;			//设备在线数量
-	int		  					Yuyueyewu;				//预约业务
-	int		  					Yushouliyewu;			//预受理业务
-	int		  					Jiaofeiyewu;			//缴费业务
-	int		  					Chaxunyewu;				//查询业务
-	int		  					Shebeishouzheng;		//设备收证
-	int		  					Xuqianyewu;				//续签业务总数
-	int		  					Benshitongxingzheng;	//本式通行证
-	int		  					Dianzitongxingzheng;	//电子通行证
-	int		  					Tongxingzhengzhika;		//通行证制卡总数
-	int		  					Lidengkequ;				//立等可取
-	int		  					Feilidengkequ;			//非立等可取
-
-}XIANGXITONGJI, *LPXIANGXITONGJI;
 /**
 * @class  tagZHIQIANSHUJU
 *
@@ -453,29 +200,39 @@ public:
 	tagZHIQIANSHUJU::tagZHIQIANSHUJU()
 	{
 		Xuhao					= 0;
-		Riqi					= "";
-		ShebeiIP				= "";
+		Chengshibianhao			= 0;
+		Jubianhao				= 0;
+		Shiyongdanweibianhao	= 0;
+		IP						= 0;
+		Bendiyewu				= false;
+		Shebeibaifangweizhi		= 0;
+		Riqi					= 0;
 		Yewubianhao				= "";
 		YuanZhengjianhaoma		= "";
 		Xingming				= "";
-		Qianzhuzhonglei			= "";
-		ZhikaZhuangtai			= "";
+		Qianzhuzhonglei			= 0;
+		ZhikaZhuangtai			= 0;
 		Zhengjianhaoma			= "";
 		Jiekoufanhuijieguo		= "";
 		Lianxidianhua			= "";
 	}
-
-	int  						Xuhao;					//序号
-	string  					Riqi;					//日期
-	string  					ShebeiIP;				//设备IP地址
-	string  					Yewubianhao;			//业务编号
-	string  					YuanZhengjianhaoma;		//原证件号码
-	string  					Xingming;				//姓名
-	string  					Qianzhuzhonglei;		//签注种类
-	string  					ZhikaZhuangtai;			//制卡状态
-	string		  				Zhengjianhaoma;			//证件号码
-	string		  				Jiekoufanhuijieguo;		//接口返回结果
-	string		  				Lianxidianhua;			//联系电话
+		
+	int 						Xuhao;						//序号
+	int							Chengshibianhao;			//城市编号
+	int							Jubianhao;					//局编号
+	int							Shiyongdanweibianhao;		//使用单位编号
+	int							IP;							//ip地址
+	bool						Bendiyewu;					//是否本地业务
+	int							Shebeibaifangweizhi;		//设备摆放位置
+	__int64						Riqi;						//日期
+	string	  					Yewubianhao;				//业务编号
+	string	  					YuanZhengjianhaoma;			//原证件号码
+	string	  					Xingming;					//姓名
+	int	  						Qianzhuzhonglei;			//签注种类
+	int	  						ZhikaZhuangtai;				//制卡状态
+	string	  					Zhengjianhaoma;				//证件号码
+	string	  					Jiekoufanhuijieguo;			//接口返回结果
+	string	  					Lianxidianhua;				//联系电话
 
 }ZHIQIANSHUJU, *LPZHIQIANSHUJU;
 /**
@@ -489,24 +246,34 @@ typedef class tagSHOUZHENGSHUJU
 public:
 	tagSHOUZHENGSHUJU::tagSHOUZHENGSHUJU()
 	{
-		Xuhao					= 0;
-		Riqi					= "";
-		ShebeiIP				= "";
-		Zhengjianleixing		= "";
-		Zhengjianhaoma			= "";
-		Xingming				= "";
-		Shoulibianhao			= "";
-		Shifoujiaofei			= "";
+		Xuhao						= 0;
+		Chengshibianhao				= 0;
+		Jubianhao					= 0;
+		Shiyongdanweibianhao		= 0;
+		IP							= 0;
+		Bendiyewu					= "";
+		Shebeibaifangweizhi			= 0;
+		Riqi						= 0;
+		Zhengjianleixing			= 0;
+		Zhengjianhaoma				= "";
+		Xingming					= "";
+		Shoulibianhao				= "";
+		Shifoujiaofei				= false;
 	}
 
-	int  						Xuhao;					//序号
-	string  					Riqi;					//日期
-	string  					ShebeiIP;				//设备IP地址
-	string  					Zhengjianleixing;		//证件类型
-	string  					Zhengjianhaoma;			//证件号码
-	string  					Xingming;				//姓名
-	string  					Shoulibianhao;			//受理编号
-	string  					Shifoujiaofei;			//是否缴费
+	int								Xuhao;					//序号
+	int								Chengshibianhao;		//城市编号
+	int								Jubianhao;				//局编号
+	int								Shiyongdanweibianhao;	//使用单位编号
+	int								IP;						//ip地址
+	bool							Bendiyewu;				//是否本地业务
+	int								Shebeibaifangweizhi;	//设备摆放位置
+	__int64							Riqi;					//日期
+	int								Zhengjianleixing;		//证件类型
+	string							Zhengjianhaoma;			//证件号码
+	string							Xingming;				//姓名
+	string							Shoulibianhao;			//受理编号
+	bool							Shifoujiaofei;			//是否缴费
 
 }SHOUZHENGSHUJU, *LPSHOUZHENGSHUJU;
 /**
@@ -521,28 +288,37 @@ public:
 	tagQIANZHUSHUJU::tagQIANZHUSHUJU()
 	{
 		Xuhao					= 0;
-		Riqi					= "";
-		ShebeiIP				= "";
+		Chengshibianhao			= 0;
+		Jubianhao				= 0;
+		Shiyongdanweibianhao	= 0;
+		IP						= 0;
+		Bendiyewu				= false;
+		Shebeibaifangweizhi		= 0;
+		Riqi					= 0;
 		YuanZhengjianhaoma		= "";
 		Xingming				= "";
-		Xingbie					= "";
-		Chushengriqi			= "";
+		Xingbie					= 0;
+		Chushengriqi			= 0;
 		Lianxidianhua			= "";
-		Yewuleixing				= "";
+		Yewuleixing				= 0;
 		Shouliren				= "";
 	}
 
-	int  						Xuhao;					//序号
-	string  					Riqi;					//日期
-	string  					ShebeiIP;				//设备IP地址
-	string  					YuanZhengjianhaoma;		//原证件号码
-	string  					Xingming;				//姓名
-	string  					Xingbie;				//性别
-	string  					Chushengriqi;			//出生日期
-	string  					Lianxidianhua;			//联系电话
-	string  					Yewuleixing;			//业务类型
-	string  					Shouliren;				//受理人
-
+	int							Xuhao;					//序号					
+	int							Chengshibianhao;		//城市编号				
+	int							Jubianhao;				//局编号				
+	int							Shiyongdanweibianhao;	//使用单位编号			
+	int							IP;						//ip地址				
+	bool						Bendiyewu;				//是否本地业务			
+	int							Shebeibaifangweizhi;	//设备摆放位置			
+	__int64						Riqi;					//日期					
+	string						YuanZhengjianhaoma;		//原证件号码			
+	string						Xingming;				//姓名					
+	int							Xingbie;				//性别					
+	__int64						Chushengriqi;			//出生日期				
+	string						Lianxidianhua;			//联系电话				
+	int							Yewuleixing;			//业务类型				
+	string						Shouliren;				//受理人				
 }QIANZHUSHUJU, *LPQIANZHUSHUJU;
 /**
 * @class  tagJIAOKUANSHUJU
@@ -556,23 +332,33 @@ public:
 	tagJIAOKUANSHUJU::tagJIAOKUANSHUJU()
 	{
 		Xuhao					= 0;
-		Riqi					= "";
-		ShebeiIP				= "";
+		Chengshibianhao			= 0;
+		Jubianhao				= 0;
+		Shiyongdanweibianhao	= 0;
+		IP						= 0;
+		Bendiyewu				= false;
+		Shebeibaifangweizhi		= 0;
+		Riqi					= 0;
 		Zhishoudanweidaima		= "";
-		Jiaokuantongzhishuhaoma = "";
+		Jiaokuantongzhishuhaoma	= "";
 		Jiaokuanrenxingming		= "";
-		Yingkoukuanheji			= 0.0;
-		Jiaoyiriqi				= "";
+		Yingkoukuanheji			= 0;
+		Jiaoyiriqi				= 0;
 	}
 
-	int  						Xuhao;					//序号
-	string  					Riqi;					//日期
-	string  					ShebeiIP;				//设备IP地址
-	string  					Zhishoudanweidaima;		//执收单位代码
-	string  					Jiaokuantongzhishuhaoma;//缴款通知书号码
-	string  					Jiaokuanrenxingming;	//缴款人姓名
-	float  						Yingkoukuanheji;		//应扣款合计
-	string  					Jiaoyiriqi;				//交易日期
+	int							Xuhao;						//序号	
+	int							Chengshibianhao;			//城市编号			
+	int							Jubianhao;					//局编号			
+	int							Shiyongdanweibianhao;		//使用单位编号		
+	int							IP;							//ip地址			
+	bool						Bendiyewu;					//是否本地业务		
+	int							Shebeibaifangweizhi;		//设备摆放位置		
+	__int64						Riqi;						//日期				
+	string						Zhishoudanweidaima;			//执收单位代码		
+	string						Jiaokuantongzhishuhaoma;	//缴款通知书号码	
+	string						Jiaokuanrenxingming;		//缴款人姓名		
+	float						Yingkoukuanheji;			//应扣款合计		
+	__int64						Jiaoyiriqi;					//交易日期		
 
 }JIAOKUANSHUJU, *LPJIAOKUANSHUJU;
 /**
@@ -587,19 +373,31 @@ public:
 	tagCHAXUNSHUJU::tagCHAXUNSHUJU()
 	{
 		Xuhao					= 0;
-		Riqi					= "";
-		ShebeiIP				= "";
+		Chengshibianhao			= 0;
+		Jubianhao				= 0;
+		Shiyongdanweibianhao	= 0;
+		IP						= 0;
+		Bendiyewu				= false;
+		Shebeibaifangweizhi		= 0;
+		Riqi					= 0;
 		Chaxunhaoma				= "";
 		Chaxunleixing			= "";
 		Shifouchaxunchenggong	= false;
+		Chuangjianshijian		= 0;
 	}
 
-	int  						Xuhao;					//序号
-	string  					Riqi;					//日期
-	string  					ShebeiIP;				//设备IP地址
-	string  					Chaxunhaoma;			//查询号码
-	string  					Chaxunleixing;			//查询类型
-	bool  						Shifouchaxunchenggong;	//是否查询成功
+	int							Xuhao;						//序号			
+	int		  					Chengshibianhao;			//城市编号		
+	int		  					Jubianhao;					//局编号		
+	int		  					Shiyongdanweibianhao;		//使用单位编号	
+	int		  					IP;							//ip地址		
+	bool						Bendiyewu;					//是否本地业务	
+	int							Shebeibaifangweizhi;		//设备摆放位置	
+	__int64						Riqi;						//日期			
+	string						Chaxunhaoma;				//查询号码		
+	string						Chaxunleixing;				//查询类型		
+	bool						Shifouchaxunchenggong;		//是否查询成功	
+	__int64						Chuangjianshijian;			//创建时间		
 
 }CHAXUNSHUJU, *LPCHAXUNSHUJU;
 /**
@@ -614,33 +412,77 @@ public:
 	tagYUSHOULISHUJU::tagYUSHOULISHUJU()
 	{
 		Xuhao					= 0;
-		Riqi					= "";
-		ShebeiIP				= "";
+		Chengshibianhao			= 0;
+		Jubianhao				= 0;
+		Shiyongdanweibianhao	= 0;
+		IP						= 0;
+		Bendiyewu				= false;
+		Shebeibaifangweizhi		= 0;
+		Riqi					= 0;
 		Yewubianhao				= "";
 		Xingming				= "";
 		Lianxidianhua			= "";
 		Chuguoshiyou			= "";
 		YuanZhengjianhaoma		= "";
-		Qianzhuzhonglei			= "";
-		Xingbie					= "";
+		Qianzhuzhonglei			= 0;
+		Xingbie					= false;
 		Hukousuozaidi			= "";
 		Minzu					= "";
+		Chuangjianshijian		= 0;
 	}
 
-	int  						Xuhao;					//序号
-	string  					Riqi;					//日期
-	string  					ShebeiIP;				//设备IP地址
-	string  					Yewubianhao;			//业务编号
-	string  					Xingming;				//姓名
-	string  					Lianxidianhua;			//联系电话
-	string  					Chuguoshiyou;			//出国事由
-	string  					YuanZhengjianhaoma;		//原证件号码
-	string  					Qianzhuzhonglei;		//签注种类
-	string  					Xingbie;				//性别
-	string  					Hukousuozaidi;			//户口所在地
-	string  					Minzu;					//民族
+	int							Xuhao;						//序号
+	int		  					Chengshibianhao;			//城市编号
+	int		  					Jubianhao;					//局编号
+	int		  					Shiyongdanweibianhao;		//使用单位编号
+	int		  					IP;							//ip地址
+	bool	  					Bendiyewu;					//是否本地业务
+	int		  					Shebeibaifangweizhi;		//设备摆放位置
+	__int64		  				Riqi;						//日期
+	string	  					Yewubianhao;				//业务编号
+	string	  					Xingming;					//姓名
+	string	  					Lianxidianhua;				//联系电话
+	string	  					Chuguoshiyou;				//出国事由
+	string  					YuanZhengjianhaoma;			//原证件号码
+	int		  					Qianzhuzhonglei;			//签注种类
+	int	  						Xingbie;					//性别
+	string	  					Hukousuozaidi;				//户口所在地
+	string	  					Minzu;						//民族
+	__int64  					Chuangjianshijian;			//创建时间
 
 }YUSHOULISHUJU, *LPYUSHOULISHUJU;
+/**
+* @class  tagSHEBEIZHUANGTAI
+*
+* @brief
+****************************************************************************
+*/
+typedef class tagSHEBEIZHUANGTAI
+{
+public:
+	tagSHEBEIZHUANGTAI::tagSHEBEIZHUANGTAI()
+	{
+		Xuhao					= 0;
+		Chengshibianhao			= 0;
+		Jubianhao				= 0;
+		Shiyongdanweibianhao	= 0;
+		IP						= 0;
+		Bendiyewu				= false;
+		Shebeibaifangweizhi		= 0;
+		Riqi					= 0;
+		Shifouzaixian			= false;
+	}
+
+	int							Xuhao;					//序号
+	int							Chengshibianhao;		//城市编号
+	int							Jubianhao;				//局编号
+	int							Shiyongdanweibianhao;	//使用单位编号
+	int							IP;						//ip地址
+	bool						Bendiyewu;				//是否本地业务
+	int							Shebeibaifangweizhi;	//设备摆放位置
+	__int64						Riqi;					//日期
+	bool						Shifouzaixian;			//是否在线
+}SHEBEIZHUANGTAI, *LPSHEBEIZHUANGTAI;
 /**
 * @class  tagSHEBEIYICHANGSHUJU
 *
@@ -653,19 +495,30 @@ public:
 	tagSHEBEIYICHANGSHUJU::tagSHEBEIYICHANGSHUJU()
 	{
 		Xuhao					= 0;
-		Riqi					= "";
-		Shiyongdanwei			= "";
+		Chengshibianhao			= 0;
+		Jubianhao				= 0;
+		Shiyongdanweibianhao	= 0;
+		IP						= 0;
+		Bendiyewu				= false;
+		Shebeibaifangweizhi		= 0;
+		Riqi					= 0;
 		Yichangshejimokuai		= "";
 		Yichangyuanyin			= "";
 		Yichangxiangxineirong	= "";
+
 	}
 
-	int  						Xuhao;					//序号
-	string  					Riqi;					//日期
-	string  					Shiyongdanwei;			//使用单位
-	string  					Yichangshejimokuai;		//异常涉及模块
-	string  					Yichangyuanyin;			//异常原因
-	string  					Yichangxiangxineirong;	//异常详细内容
+	int							Xuhao;					//序号				
+	int		  					Chengshibianhao;		//城市编号			
+	int		  					Jubianhao;				//局编号			
+	int		  					Shiyongdanweibianhao;	//使用单位编号		
+	int		  					IP;						//ip地址			
+	bool	  					Bendiyewu;				//是否本地业务		
+	int							Shebeibaifangweizhi;	//设备摆放位置
+	__int64						Riqi;					//日期
+	string						Yichangshejimokuai;		//异常涉及模块		
+	string						Yichangyuanyin;			//异常原因			
+	string						Yichangxiangxineirong;	//异常详细内容		
 
 }SHEBEIYICHANGSHUJU, *LPSHEBEIYICHANGSHUJU;
 /**
@@ -682,14 +535,16 @@ public:
 		Xuhao					= 0;
 		Yonghuming				= "";
 		Mima					= "";
-		Youxiaoqi				= "";
+		Youxiaoqikaishi			= 0;
+		Youxiaoqijieshu			= 0;
 		Quanxianjibie			= 0;
 	}
 
 	int  						Xuhao;					//序号
 	string  					Yonghuming;				//用户名
 	string  					Mima;					//密码
-	string  					Youxiaoqi;				//有效期
+	int  						Youxiaoqikaishi;		//有效期起始
+	int  						Youxiaoqijieshu;		//有效期截至
 	int  						Quanxianjibie;			//权限级别
 
 }GUANLIYUAN, *LPGUANLIYUAN;
@@ -706,14 +561,14 @@ public:
 	{
 		Xuhao					= 0;
 		Yonghuming				= "";
-		Riqi					= "";
+		Riqi					= 0;
 		Caozuoleibie			= "";
 		Caozuoneirong			= "";
 	}
 
 	int  						Xuhao;					//序号
 	string  					Yonghuming;				//用户名
-	string  					Riqi;					//操作日期
+	__int64  					Riqi;					//操作日期
 	string  					Caozuoleibie;			//操作类别
 	string  					Caozuoneirong;			//操作内容
 
@@ -730,30 +585,49 @@ public:
 	tagSHEBEIGUANLI::tagSHEBEIGUANLI()
 	{
 		Xuhao					= 0;
-		Sheng					= "";
-		Shi						= "";
-		Qu						= "";
-		Shiyongdanwei			= "";
-		IP						= "";
+		Chengshibianhao			= 0;
+		Jubianhao				= 0;
+		Shiyongdanweibianhao	= 0;
+		IP						= 0;
+		Shebeichangjia			= "";
+		Shebeimingcheng			= "";
 		Shebeileixing			= "";
-		Jingdu					= "";
-		Weidu					= "";
-		Chuangjianshijian		= "";
+		Jingdu					= 0;
+		Weidu					= 0;
+		Chuangjianshijian		= 0;
 	}	
 
-	int  						Xuhao;					//序号
-	string  					Sheng;					//所属省份
-	string  					Shi;					//所属市
-	string  					Qu;						//所属区
-	string  					Shiyongdanwei;			//使用单位
-	string  					IP;						//设备IP地址
-	string  					Shebeileixing;			//设备类型
-	string  					Jingdu;					//经度
-	string  					Weidu;					//纬度
-	string  					Chuangjianshijian;		//创建时间
+	int							Xuhao;					//序号			
+	int							Chengshibianhao;		//城市编号		
+	int							Jubianhao;				//局编号		
+	int							Shiyongdanweibianhao;	//使用单位编号	
+	int							IP;						//ip地址		
+	string						Shebeichangjia;			//设备厂家		
+	string						Shebeimingcheng;		//设备名称		
+	string						Shebeileixing;			//设备类型		
+	float						Jingdu;					//经度			
+	float						Weidu;					//纬度			
+	__int64						Chuangjianshijian;		//创建时间		
 
 }SHEBEIGUANLI, *LPSHEBEIGUANLI;
+/**
+* @class  tagYINGSHEBIAO
+*
+* @brief
+****************************************************************************
+*/
+typedef class tagYINGSHEBIAO
+{
+public:
+	tagYINGSHEBIAO::tagYINGSHEBIAO()
+	{
+		Bianhao					= 0;
+		Mingcheng				= "";
+	}
 
+	int							Bianhao;				//编号			
+	string						Mingcheng;				//名称		
+}YINGSHEBIAO, *LPYINGSHEBIAO;
 ////////////////////////////////////////////////////////结构定义END////////////////////////////////////////////////////////
 
 

@@ -55,7 +55,7 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 			}
 			else if (msgPack.has_msgidcardapplydata())
 			{
-				CClient::GetInstance()->m_QueryIDCARDAPPLYCallBack(
+				/*CClient::GetInstance()->m_QueryIDCARDAPPLYCallBack(
 					(char*)msgPack.msgidcardapplydata().name().c_str(),
 					(char*)msgPack.msgidcardapplydata().gender().c_str(),
 					(char*)msgPack.msgidcardapplydata().nation().c_str(),
@@ -80,7 +80,7 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					);
 
 				if (msgPack.head().totalpack() == msgPack.head().packindex())
-					CClient::GetInstance()->m_bCmdFinished = true;
+					CClient::GetInstance()->m_bCmdFinished = true;*/
 			}
 		}
 	}
@@ -151,34 +151,6 @@ void CClient::QuerySendMsg(char* querySqlStr)
 	}
 }
 
-void CClient::QueryIDCARDAPPLY(char* querySqlStr, QueryIDCARDAPPLYCallBack callBack)
-{
-	m_QueryIDCARDAPPLYCallBack = callBack;
-	if (m_QueryIDCARDAPPLYCallBack != NULL)
-		QuerySendMsg(querySqlStr);
-}
-
-void CClient::QueryONLINESTATUS(char* querySqlStr, QueryONLINESTATUSCallBack callBack)
-{
-	m_QueryONLINESTATUSCallBack = callBack;
-	if (m_QueryONLINESTATUSCallBack != NULL)
-		QuerySendMsg(querySqlStr);
-}
-
-void CClient::QuerySHULIANGHUIZONG(char* querySqlStr, QuerySHULIANGHUIZONGCallBack callBack)
-{
-	m_QuerySHULIANGHUIZONGCallBack = callBack;
-	if (m_QuerySHULIANGHUIZONGCallBack != NULL)
-		QuerySendMsg(querySqlStr);
-}
-
-void CClient::QueryXIANGXITONGJI(char* querySqlStr, QueryXIANGXITONGJICallBack callBack)
-{
-	m_QueryXIANGXITONGJICallBack = callBack;
-	if (m_QueryXIANGXITONGJICallBack != NULL)
-		QuerySendMsg(querySqlStr);
-}
-
 void CClient::QueryZHIQIANSHUJU(char* querySqlStr, QueryZHIQIANSHUJUCallBack callBack)
 {
 	m_QueryZHIQIANSHUJUCallBack = callBack;
@@ -221,6 +193,13 @@ void CClient::QueryYUSHOULISHUJU(char* querySqlStr, QueryYUSHOULISHUJUCallBack c
 		QuerySendMsg(querySqlStr);
 }
 
+void CClient::QuerySHEBEIZHUANGTAI(char* querySqlStr, QuerySHEBEIZHUANGTAICallBack callBack)
+{
+	m_QuerySHEBEIZHUANGTAICallBack = callBack;
+	if (m_QuerySHEBEIZHUANGTAICallBack != NULL)
+		QuerySendMsg(querySqlStr);
+}
+
 void CClient::QuerySHEBEIYICHANGSHUJU(char* querySqlStr, QuerySHEBEIYICHANGSHUJUCallBack callBack)
 {
 	m_QuerySHEBEIYICHANGSHUJUCallBack = callBack;
@@ -246,5 +225,12 @@ void CClient::QuerySHEBEIGUANLI(char* querySqlStr, QuerySHEBEIGUANLICallBack cal
 {
 	m_QuerySHEBEIGUANLICallBack = callBack;
 	if (m_QuerySHEBEIGUANLICallBack != NULL)
+		QuerySendMsg(querySqlStr);
+}
+
+void CClient::QueryYINGSHEBIAO(char* querySqlStr, QueryYINGSHEBIAOCallBack callBack)
+{
+	m_QueryYINGSHEBIAOCallBack = callBack;
+	if (m_QueryYINGSHEBIAOCallBack != NULL)
 		QuerySendMsg(querySqlStr);
 }

@@ -15,6 +15,10 @@
         <i:EventTrigger EventName="MouseLeftButtonDown">
             <i:InvokeCommandAction Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
         </i:EventTrigger>
+        <i:EventTrigger EventName="MouseDoubleClick">
+            <Local:MyEventCommand Command="{Binding DoubleClickCommand}"/>
+            <!--<i:InvokeCommandAction Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />-->
+        </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
         <Grid.RowDefinitions>
