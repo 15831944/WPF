@@ -43,6 +43,7 @@ void queryTable(char* QuerySql, QueryTableCallBack callBack)
 {
 	string strError = "";
 	string resultStr = "";
+	resultStr.reserve(0x100000);
 	CSqliteData::GetInstance()->QueryTable(QuerySql, resultStr, strError);
 
 	if (callBack)
@@ -51,341 +52,515 @@ void queryTable(char* QuerySql, QueryTableCallBack callBack)
 	}
 }
 
-void queryZHIQIANSHUJU(char* querySqlStr, QueryZHIQIANSHUJUCallBack callBack)
+void split(const string& str, vector<string>& ret_, string sep = ",")
 {
-	std::vector<tagZHIQIANSHUJU>  lcArray;
-	lcArray.reserve(10000);
-	string strError = "";
-	CSqliteData::GetInstance()->QueryZHIQIANSHUJU(querySqlStr, lcArray, strError);
-	 
-	if (callBack)
+	if (str.empty())
 	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
+		return;
+	}
+
+	string tmp;
+	string::size_type pos_begin = str.find_first_not_of(sep);
+	string::size_type comma_pos = 0;
+
+	while (pos_begin != string::npos)
+	{
+		comma_pos = str.find(sep, pos_begin);
+		if (comma_pos != string::npos)
 		{
-			callBack(
-				lcArray[i].Xuhao,
-				lcArray[i].Chengshibianhao,
-				lcArray[i].Jubianhao,
-				lcArray[i].Shiyongdanweibianhao,
-				lcArray[i].IP,
-				lcArray[i].Bendiyewu,
-				lcArray[i].Shebeibaifangweizhi,
-				lcArray[i].Riqi,
-				(char*)lcArray[i].Yewubianhao.c_str(),
-				(char*)lcArray[i].YuanZhengjianhaoma.c_str(),
-				(char*)lcArray[i].Xingming.c_str(),
-				lcArray[i].Qianzhuzhonglei,
-				lcArray[i].ZhikaZhuangtai,
-				(char*)lcArray[i].Zhengjianhaoma.c_str(),
-				(char*)lcArray[i].Jiekoufanhuijieguo.c_str(),
-				(char*)lcArray[i].Lianxidianhua.c_str()
-				);
+			tmp = str.substr(pos_begin, comma_pos - pos_begin);
+			pos_begin = comma_pos + sep.length();
+		}
+		else
+		{
+			tmp = str.substr(pos_begin);
+			pos_begin = comma_pos;
+		}
+
+		if (!tmp.empty())
+		{
+			ret_.push_back(tmp);
+			tmp.clear();
 		}
 	}
 
-	//CClient::GetInstance()->QueryZHIQIANSHUJU(querySqlStr, callBack);
+	return;
 }
 
-void querySHOUZHENGSHUJU(char* querySqlStr, QuerySHOUZHENGSHUJUCallBack callBack)
+void addTable(char* tableName, char* dataStr, AddDataCallBack callBack)
 {
-	std::vector<tagSHOUZHENGSHUJU>  lcArray;
 	string strError = "";
-	CSqliteData::GetInstance()->QuerySHOUZHENGSHUJU(querySqlStr, lcArray, strError);
+
+
+	CSqliteData::GetInstance()->AddTable(tableName, dataStr, strError);
 
 	if (callBack)
 	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Xuhao,
-				lcArray[i].Chengshibianhao,
-				lcArray[i].Jubianhao,
-				lcArray[i].Shiyongdanweibianhao,
-				lcArray[i].IP,
-				lcArray[i].Bendiyewu,
-				lcArray[i].Shebeibaifangweizhi,
-				lcArray[i].Riqi,
-				lcArray[i].Zhengjianleixing,
-				(char*)lcArray[i].Zhengjianhaoma.c_str(),
-				(char*)lcArray[i].Xingming.c_str(),
-				(char*)lcArray[i].Shoulibianhao.c_str(),
-				lcArray[i].Shifoujiaofei
-				);
-		}
+		callBack((char*)strError.c_str());
 	}
-	//CClient::GetInstance()->QuerySHOUZHENGSHUJU(querySqlStr, callBack);
-}
+	
+	return;
 
-void queryQIANZHUSHUJU(char* querySqlStr, QueryQIANZHUSHUJUCallBack callBack)
-{
-	std::vector<tagQIANZHUSHUJU>  lcArray;
-	string strError = "";
-	CSqliteData::GetInstance()->QueryQIANZHUSHUJU(querySqlStr, lcArray, strError);
+#pragma region fdfd
+	//vector<string> rows;
+	//split(dataStr, rows, ";");
+	//for (int rowIndex = 0; rowIndex < rows.size(); ++rowIndex)
+	//{
+	//	string row = rows[rowIndex];
+	//	if (row.length() > 0)
+	//	{
+	//		if (strcmp(tableName, T_ZHIQIANSHUJU) == 0)
+	//		{
+	//			tagZHIQIANSHUJU data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_CHENGSHIBIANHAO) == 0)
+	//					data.Chengshibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_JUBIANHAO) == 0)
+	//					data.Jubianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_SHIYONGDANWEIBIANHAO) == 0)
+	//					data.Shiyongdanweibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_IP) == 0)
+	//					data.IP = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_BENDIYEWU) == 0)
+	//					data.Bendiyewu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_SHEBEIBAIFANGWEIZHI) == 0)
+	//					data.Shebeibaifangweizhi = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_RIQI) == 0)
+	//					data.Riqi = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_YEWUBIANHAO) == 0)
+	//					data.Yewubianhao = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_YUANZHENGJIANHAOMA) == 0)
+	//					data.YuanZhengjianhaoma = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_XINGMING) == 0)
+	//					data.Xingming = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_QIANZHUZHONGLEI) == 0)
+	//					data.Qianzhuzhonglei = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_ZHIKAZHUANGTAI) == 0)
+	//					data.ZhikaZhuangtai = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_ZHENGJIANHAOMA) == 0)
+	//					data.Zhengjianhaoma = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_JIEKOUFANHUIJIEGUO) == 0)
+	//					data.Jiekoufanhuijieguo = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_ZHIQIANSHUJU_LIANXIDIANHUA) == 0)
+	//					data.Lianxidianhua = keyvalue[1];
+	//			}
+
+	//			CSqliteData::GetInstance()->AddZHIQIANSHUJU(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_SHOUZHENGSHUJU) == 0)
+	//		{
+	//			tagSHOUZHENGSHUJU data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_CHENGSHIBIANHAO) == 0)
+	//					data.Chengshibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_JUBIANHAO) == 0)
+	//					data.Jubianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_SHIYONGDANWEIBIANHAO) == 0)
+	//					data.Shiyongdanweibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_IP) == 0)
+	//					data.IP = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_BENDIYEWU) == 0)
+	//					data.Bendiyewu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_SHEBEIBAIFANGWEIZHI) == 0)
+	//					data.Shebeibaifangweizhi = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_RIQI) == 0)
+	//					data.Riqi = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_ZHENGJIANLEIXING) == 0)
+	//					data.Zhengjianleixing = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_ZHENGJIANHAOMA) == 0)
+	//					data.Zhengjianhaoma = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_XINGMING) == 0)
+	//					data.Xingming = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_SHOULIBIANHAO) == 0)
+	//					data.Shoulibianhao = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHOUZHENGSHUJU_SHIFOUJIAOFEI) == 0)
+	//					data.Shifoujiaofei = atoi(keyvalue[1].c_str());
+	//			}
+	//			CSqliteData::GetInstance()->AddSHOUZHENGSHUJU(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_QIANZHUSHUJU) == 0)
+	//		{
+	//			tagQIANZHUSHUJU data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_CHENGSHIBIANHAO) == 0)
+	//					data.Chengshibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_JUBIANHAO) == 0)
+	//					data.Jubianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_SHIYONGDANWEIBIANHAO) == 0)
+	//					data.Shiyongdanweibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_IP) == 0)
+	//					data.IP = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_BENDIYEWU) == 0)
+	//					data.Bendiyewu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_SHEBEIBAIFANGWEIZHI) == 0)
+	//					data.Shebeibaifangweizhi = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_RIQI) == 0)
+	//					data.Riqi = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_YUANZHENGJIANHAOMA) == 0)
+	//					data.YuanZhengjianhaoma = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_XINGMING) == 0)
+	//					data.Xingming = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_XINGBIE) == 0)
+	//					data.Xingbie = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_CHUSHENGRIQI) == 0)
+	//					data.Chushengriqi = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_LIANXIDIANHUA) == 0)
+	//					data.Lianxidianhua = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_YEWULEIXING) == 0)
+	//					data.Yewuleixing = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_QIANZHUSHUJU_SHOULIREN) == 0)
+	//					data.Shouliren = keyvalue[1].c_str();
+	//			}
+	//			CSqliteData::GetInstance()->AddQIANZHUSHUJU(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_JIAOKUANSHUJU) == 0)
+	//		{
+	//			tagJIAOKUANSHUJU data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_CHENGSHIBIANHAO) == 0)
+	//					data.Chengshibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_JUBIANHAO) == 0)
+	//					data.Jubianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_SHIYONGDANWEIBIANHAO) == 0)
+	//					data.Shiyongdanweibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_IP) == 0)
+	//					data.IP = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_BENDIYEWU) == 0)
+	//					data.Bendiyewu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_SHEBEIBAIFANGWEIZHI) == 0)
+	//					data.Shebeibaifangweizhi = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_RIQI) == 0)
+	//					data.Riqi = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_ZHISHOUDANWEIDAIMA) == 0)
+	//					data.Zhishoudanweidaima = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_JIAOKUANTONGZHISHUHAOMA) == 0)
+	//					data.Jiaokuantongzhishuhaoma = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_JIAOKUANRENXINGMING) == 0)
+	//					data.Jiaokuanrenxingming = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_YINGKOUKUANHEJI) == 0)
+	//					data.Yingkoukuanheji = atof(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_JIAOKUANSHUJU_JIAOYIRIQI) == 0)
+	//					data.Jiaoyiriqi = _atoi64(keyvalue[1].c_str());
+	//			}
+	//			CSqliteData::GetInstance()->AddJIAOKUANSHUJU(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_CHAXUNSHUJU) == 0)
+	//		{
+	//			tagCHAXUNSHUJU data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_CHENGSHIBIANHAO) == 0)
+	//					data.Chengshibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_JUBIANHAO) == 0)
+	//					data.Jubianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_SHIYONGDANWEIBIANHAO) == 0)
+	//					data.Shiyongdanweibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_IP) == 0)
+	//					data.IP = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_BENDIYEWU) == 0)
+	//					data.Bendiyewu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_SHEBEIBAIFANGWEIZHI) == 0)
+	//					data.Shebeibaifangweizhi = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_RIQI) == 0)
+	//					data.Riqi = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_CHAXUNHAOMA) == 0)
+	//					data.Chaxunhaoma = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_CHAXUNLEIXING) == 0)
+	//					data.Chaxunleixing = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_SHIFOUCHAXUNCHENGGONG) == 0)
+	//					data.Shifouchaxunchenggong = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_CHAXUNSHUJU_CHUANGJIANSHIJIAN) == 0)
+	//					data.Chuangjianshijian = _atoi64(keyvalue[1].c_str());
+	//			}
+	//			CSqliteData::GetInstance()->AddCHAXUNSHUJU(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_YUSHOULISHUJU) == 0)
+	//		{
+	//			tagYUSHOULISHUJU data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_CHENGSHIBIANHAO) == 0)
+	//					data.Chengshibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_JUBIANHAO) == 0)
+	//					data.Jubianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_SHIYONGDANWEIBIANHAO) == 0)
+	//					data.Shiyongdanweibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_IP) == 0)
+	//					data.IP = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_BENDIYEWU) == 0)
+	//					data.Bendiyewu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_SHEBEIBAIFANGWEIZHI) == 0)
+	//					data.Shebeibaifangweizhi = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_RIQI) == 0)
+	//					data.Riqi = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_YEWUBIANHAO) == 0)
+	//					data.Yewubianhao = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_XINGMING) == 0)
+	//					data.Xingming = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_LIANXIDIANHUA) == 0)
+	//					data.Lianxidianhua = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_CHUGUOSHIYOU) == 0)
+	//					data.Chuguoshiyou = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_YUANZHENGJIANHAOMA) == 0)
+	//					data.YuanZhengjianhaoma = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_QIANZHUZHONGLEI) == 0)
+	//					data.Qianzhuzhonglei = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_XINGBIE) == 0)
+	//					data.Xingbie = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_HUKOUSUOZAIDI) == 0)
+	//					data.Hukousuozaidi = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_MINZU) == 0)
+	//					data.Minzu = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_YUSHOULISHUJU_CHUANGJIANSHIJIAN) == 0)
+	//					data.Chuangjianshijian = _atoi64(keyvalue[1].c_str());
+	//			}
+	//			CSqliteData::GetInstance()->AddYUSHOULISHUJU(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_SHEBEIZHUANGTAI) == 0)
+	//		{
+	//			tagSHEBEIZHUANGTAI data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_SHEBEIZHUANGTAI_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIZHUANGTAI_CHENGSHIBIANHAO) == 0)
+	//					data.Chengshibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIZHUANGTAI_JUBIANHAO) == 0)
+	//					data.Jubianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIZHUANGTAI_SHIYONGDANWEIBIANHAO) == 0)
+	//					data.Shiyongdanweibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIZHUANGTAI_IP) == 0)
+	//					data.IP = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIZHUANGTAI_BENDIYEWU) == 0)
+	//					data.Bendiyewu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIZHUANGTAI_SHEBEIBAIFANGWEIZHI) == 0)
+	//					data.Shebeibaifangweizhi = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIZHUANGTAI_RIQI) == 0)
+	//					data.Riqi = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIZHUANGTAI_SHIFOUZAIXIAN) == 0)
+	//					data.Shifouzaixian = atoi(keyvalue[1].c_str());
+	//			}
+	//			CSqliteData::GetInstance()->AddSHEBEIZHUANGTAI(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_SHEBEIYICHANGSHUJU) == 0)
+	//		{
+	//			tagSHEBEIYICHANGSHUJU data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_CHENGSHIBIANHAO) == 0)
+	//					data.Chengshibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_JUBIANHAO) == 0)
+	//					data.Jubianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_SHIYONGDANWEIBIANHAO) == 0)
+	//					data.Shiyongdanweibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_IP) == 0)
+	//					data.IP = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_BENDIYEWU) == 0)
+	//					data.Bendiyewu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_SHEBEIBAIFANGWEIZHI) == 0)
+	//					data.Shebeibaifangweizhi = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_RIQI) == 0)
+	//					data.Riqi = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_YICHANGSHEJIMOKUAI) == 0)
+	//					data.Yichangshejimokuai = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_YICHANGYUANYIN) == 0)
+	//					data.Yichangyuanyin = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIYICHANGSHUJU_YICHANGXIANGXINEIRONG) == 0)
+	//					data.Yichangxiangxineirong = keyvalue[1].c_str();
+	//			}
+	//			CSqliteData::GetInstance()->AddSHEBEIYICHANGSHUJU(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_GUANLIYUAN) == 0)
+	//		{
+	//			tagGUANLIYUAN data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_GUANLIYUAN_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_GUANLIYUAN_YONGHUMING) == 0)
+	//					data.Yonghuming = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_GUANLIYUAN_MIMA) == 0)
+	//					data.Mima = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_GUANLIYUAN_YOUXIAOQIKAISHI) == 0)
+	//					data.Youxiaoqikaishi = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_GUANLIYUAN_YOUXIAOQIJIESHU) == 0)
+	//					data.Youxiaoqijieshu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_GUANLIYUAN_QUANXIANJIBIE) == 0)
+	//					data.Quanxianjibie = atoi(keyvalue[1].c_str());
+	//			}
+	//			CSqliteData::GetInstance()->AddGUANLIYUAN(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_GUANLIYUANCAOZUOJILU) == 0)
+	//		{
+	//			tagGUANLIYUANCAOZUOJILU data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_GUANLIYUANCAOZUOJILU_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_GUANLIYUANCAOZUOJILU_YONGHUMING) == 0)
+	//					data.Yonghuming = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_GUANLIYUANCAOZUOJILU_RIQI) == 0)
+	//					data.Riqi = _atoi64(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_GUANLIYUANCAOZUOJILU_CAOZUOLEIBIE) == 0)
+	//					data.Caozuoleibie = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_GUANLIYUANCAOZUOJILU_CAOZUONEIRONG) == 0)
+	//					data.Caozuoneirong = keyvalue[1].c_str();
+	//			}
+	//			CSqliteData::GetInstance()->AddGUANLIYUANCAOZUOJILU(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_SHEBEIGUANLI) == 0)
+	//		{
+	//			tagSHEBEIGUANLI data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_XUHAO) == 0)
+	//					data.Xuhao = 0;
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_CHENGSHIBIANHAO) == 0)
+	//					data.Chengshibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_JUBIANHAO) == 0)
+	//					data.Jubianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_SHIYONGDANWEIBIANHAO) == 0)
+	//					data.Shiyongdanweibianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_IP) == 0)
+	//					data.IP = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_SHEBEICHANGJIA) == 0)
+	//					data.Shebeichangjia = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_SHEBEIMINGCHENG) == 0)
+	//					data.Shebeimingcheng = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_SHEBEILEIXING) == 0)
+	//					data.Shebeileixing = keyvalue[1].c_str();
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_JINGDU) == 0)
+	//					data.Jingdu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_WEIDU) == 0)
+	//					data.Weidu = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_SHEBEIGUANLI_CHUANGJIANSHIJIAN) == 0)
+	//					data.Chuangjianshijian = _atoi64(keyvalue[1].c_str());
+	//			}
+	//			CSqliteData::GetInstance()->AddSHEBEIGUANLI(data, strError);
+	//		}
+	//		else if (strcmp(tableName, T_YINGSHEBIAO) == 0)
+	//		{
+	//			tagYINGSHEBIAO data;
+
+	//			vector<string> cells;
+	//			split(dataStr, cells, ",");
+	//			for (int colIndex = 0; colIndex < cells.size(); ++colIndex)
+	//			{
+	//				string cell = cells[colIndex];
+	//				vector<string> keyvalue;
+	//				split(cell, keyvalue, ":");
+
+	//				if (strcmp(keyvalue[0].c_str(), T_YINGSHEBIAO_BIANHAO) == 0)
+	//					data.Bianhao = atoi(keyvalue[1].c_str());
+	//				else if (strcmp(keyvalue[0].c_str(), T_YINGSHEBIAO_MINGCHENG) == 0)
+	//					data.Mingcheng = keyvalue[1].c_str();
+	//		
+	//			}
+	//			CSqliteData::GetInstance()->AddYINGSHEBIAO(data, strError);
+	//		}
+	//	}
+	//}
+#pragma endregion fdfd
 
 	if (callBack)
 	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Xuhao,
-				lcArray[i].Chengshibianhao,
-				lcArray[i].Jubianhao,
-				lcArray[i].Shiyongdanweibianhao,
-				lcArray[i].IP,
-				lcArray[i].Bendiyewu,
-				lcArray[i].Shebeibaifangweizhi,
-				lcArray[i].Riqi,
-				(char*)lcArray[i].YuanZhengjianhaoma.c_str(),
-				(char*)lcArray[i].Xingming.c_str(),
-				lcArray[i].Xingbie,
-				lcArray[i].Chushengriqi,
-				(char*)lcArray[i].Lianxidianhua.c_str(),
-				lcArray[i].Yewuleixing,
-				(char*)lcArray[i].Shouliren.c_str()
-				);
-		}
+		callBack((char*)strError.c_str());
 	}
-	//CClient::GetInstance()->QueryQIANZHUSHUJU(querySqlStr, callBack);
-}
-
-void queryJIAOKUANSHUJU(char* querySqlStr, QueryJIAOKUANSHUJUCallBack callBack)
-{
-	std::vector<tagJIAOKUANSHUJU>  lcArray;
-	string strError = "";
-	CSqliteData::GetInstance()->QueryJIAOKUANSHUJU(querySqlStr, lcArray, strError);
-
-	if (callBack)
-	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Xuhao,
-				lcArray[i].Chengshibianhao,
-				lcArray[i].Jubianhao,
-				lcArray[i].Shiyongdanweibianhao,
-				lcArray[i].IP,
-				lcArray[i].Bendiyewu,
-				lcArray[i].Shebeibaifangweizhi,
-				lcArray[i].Riqi,
-				(char*)lcArray[i].Zhishoudanweidaima.c_str(),
-				(char*)lcArray[i].Jiaokuantongzhishuhaoma.c_str(),
-				(char*)lcArray[i].Jiaokuanrenxingming.c_str(),
-				lcArray[i].Yingkoukuanheji,
-				lcArray[i].Jiaoyiriqi
-				);
-		}
-	}
-	//CClient::GetInstance()->QueryJIAOKUANSHUJU(querySqlStr, callBack);
-}
-
-void queryCHAXUNSHUJU(char* querySqlStr, QueryCHAXUNSHUJUCallBack callBack)
-{
-	std::vector<tagCHAXUNSHUJU>  lcArray;
-	string strError = "";
-	CSqliteData::GetInstance()->QueryCHAXUNSHUJU(querySqlStr, lcArray, strError);
-
-	if (callBack)
-	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Xuhao,
-				lcArray[i].Chengshibianhao,
-				lcArray[i].Jubianhao,
-				lcArray[i].Shiyongdanweibianhao,
-				lcArray[i].IP,
-				lcArray[i].Bendiyewu,
-				lcArray[i].Shebeibaifangweizhi,
-				lcArray[i].Riqi,
-				(char*)lcArray[i].Chaxunhaoma.c_str(),
-				(char*)lcArray[i].Chaxunleixing.c_str(),
-				lcArray[i].Shifouchaxunchenggong,
-				lcArray[i].Chuangjianshijian
-				);
-		}
-	}
-	//CClient::GetInstance()->QueryCHAXUNSHUJU(querySqlStr, callBack);
-}
-
-void queryYUSHOULISHUJU(char* querySqlStr, QueryYUSHOULISHUJUCallBack callBack)
-{
-	std::vector<tagYUSHOULISHUJU>  lcArray;
-	string strError = "";
-	CSqliteData::GetInstance()->QueryYUSHOULISHUJU(querySqlStr, lcArray, strError);
-
-	if (callBack)
-	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Xuhao,
-				lcArray[i].Chengshibianhao,
-				lcArray[i].Jubianhao,
-				lcArray[i].Shiyongdanweibianhao,
-				lcArray[i].IP,
-				lcArray[i].Bendiyewu,
-				lcArray[i].Shebeibaifangweizhi,
-				lcArray[i].Riqi,
-				(char*)lcArray[i].Yewubianhao.c_str(),
-				(char*)lcArray[i].Xingming.c_str(),
-				(char*)lcArray[i].Lianxidianhua.c_str(),
-				(char*)lcArray[i].Chuguoshiyou.c_str(),
-				(char*)lcArray[i].YuanZhengjianhaoma.c_str(),
-				lcArray[i].Qianzhuzhonglei,
-				lcArray[i].Xingbie,
-				(char*)lcArray[i].Hukousuozaidi.c_str(),
-				(char*)lcArray[i].Minzu.c_str(),
-				lcArray[i].Chuangjianshijian
-				);
-		}
-	}
-	//CClient::GetInstance()->QueryYUSHOULISHUJU(querySqlStr, callBack);
-}
-
-void querySHEBEIZHUANGTAI(char* querySqlStr, QuerySHEBEIZHUANGTAICallBack callBack)
-{
-	std::vector<tagSHEBEIZHUANGTAI>  lcArray;
-	string strError = "";
-	CSqliteData::GetInstance()->QuerySHEBEIZHUANGTAI(querySqlStr, lcArray, strError);
-
-	if (callBack)
-	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Xuhao,
-				lcArray[i].Chengshibianhao,
-				lcArray[i].Jubianhao,
-				lcArray[i].Shiyongdanweibianhao,
-				lcArray[i].IP,
-				lcArray[i].Bendiyewu,
-				lcArray[i].Shebeibaifangweizhi,
-				lcArray[i].Riqi,
-				lcArray[i].Shifouzaixian
-				);
-		}
-	}
-	//CClient::GetInstance()->QuerySHEBEIZHUANGTAI(querySqlStr, callBack);
-}
-
-void querySHEBEIYICHANGSHUJU(char* querySqlStr, QuerySHEBEIYICHANGSHUJUCallBack callBack)
-{
-	std::vector<tagSHEBEIYICHANGSHUJU>  lcArray;
-	string strError = "";
-	CSqliteData::GetInstance()->QuerySHEBEIYICHANGSHUJU(querySqlStr, lcArray, strError);
-
-	if (callBack)
-	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Xuhao,
-				lcArray[i].Chengshibianhao,
-				lcArray[i].Jubianhao,
-				lcArray[i].Shiyongdanweibianhao,
-				lcArray[i].IP,
-				lcArray[i].Bendiyewu,
-				lcArray[i].Shebeibaifangweizhi,
-				lcArray[i].Riqi,
-				(char*)lcArray[i].Yichangshejimokuai.c_str(),
-				(char*)lcArray[i].Yichangyuanyin.c_str(),
-				(char*)lcArray[i].Yichangxiangxineirong.c_str()
-				);
-		}
-	}
-	//CClient::GetInstance()->QuerySHEBEIYICHANGSHUJU(querySqlStr, callBack);
-}
-
-void queryGUANLIYUAN(char* querySqlStr, QueryGUANLIYUANCallBack callBack)
-{
-	std::vector<tagGUANLIYUAN>  lcArray;
-	string strError = "";
-	CSqliteData::GetInstance()->QueryGUANLIYUAN(querySqlStr, lcArray, strError);
-
-	if (callBack)
-	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Xuhao,
-				(char*)lcArray[i].Yonghuming.c_str(),
-				(char*)lcArray[i].Mima.c_str(),
-				lcArray[i].Youxiaoqikaishi,
-				lcArray[i].Youxiaoqijieshu,
-				lcArray[i].Quanxianjibie
-				);
-		}
-	}
-	//CClient::GetInstance()->QueryGUANLIYUAN(querySqlStr, callBack);
-}
-
-void queryGUANLIYUANCAOZUOJILU(char* querySqlStr, QueryGUANLIYUANCAOZUOJILUCallBack callBack)
-{
-	std::vector<tagGUANLIYUANCAOZUOJILU>  lcArray;
-	string strError = "";
-	CSqliteData::GetInstance()->QueryGUANLIYUANCAOZUOJILU(querySqlStr, lcArray, strError);
-
-	if (callBack)
-	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Xuhao,
-				(char*)lcArray[i].Yonghuming.c_str(),
-				lcArray[i].Riqi,
-				(char*)lcArray[i].Caozuoleibie.c_str(),
-				(char*)lcArray[i].Caozuoneirong.c_str()
-				);
-		}
-	}
-	//CClient::GetInstance()->QueryGUANLIYUANCAOZUOJILU(querySqlStr, callBack);
-}
-
-void querySHEBEIGUANLI(char* querySqlStr, QuerySHEBEIGUANLICallBack callBack)
-{
-	std::vector<tagSHEBEIGUANLI>  lcArray;
-	string strError = "";
-	CSqliteData::GetInstance()->QuerySHEBEIGUANLI(querySqlStr, lcArray, strError);
-
-	if (callBack)
-	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Xuhao,
-				lcArray[i].Chengshibianhao,
-				lcArray[i].Jubianhao,
-				lcArray[i].Shiyongdanweibianhao,
-				lcArray[i].IP,
-				(char*)lcArray[i].Shebeichangjia.c_str(),
-				(char*)lcArray[i].Shebeimingcheng.c_str(),
-				(char*)lcArray[i].Shebeileixing.c_str(),
-				lcArray[i].Jingdu,
-				lcArray[i].Weidu,
-				lcArray[i].Chuangjianshijian
-				);
-		}
-	}
-	//CClient::GetInstance()->QuerySHEBEIGUANLI(querySqlStr, callBack);
-}
-
-void queryYINGSHEBIAO(char* querySqlStr, QueryYINGSHEBIAOCallBack callBack)
-{
-	std::vector<tagYINGSHEBIAO>  lcArray;
-	string strError = "";
-	CSqliteData::GetInstance()->QueryYINGSHEBIAO(querySqlStr, lcArray, strError);
-
-	if (callBack)
-	{
-		for (UINT i = 0; i < lcArray.size(); ++i)
-		{
-			callBack(
-				lcArray[i].Bianhao,
-				(char*)lcArray[i].Mingcheng.c_str()
-				);
-		}
-	}
-	//CClient::GetInstance()->QueryYINGSHEBIAO(querySqlStr, callBack);
 }
 
 void addZHIQIANSHUJU(

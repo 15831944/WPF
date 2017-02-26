@@ -12,6 +12,51 @@ namespace ManageSystem
 {
     class Common
     {
+        /// <summary>
+        /// 将Unix时间戳转换为DateTime类型时间
+        /// </summary>
+        /// <param name="d">double 型数字</param>
+        /// <returns>DateTime</returns>
+        public static System.DateTime ConvertIntDateTime(double d)
+        {
+            System.DateTime time = System.DateTime.MinValue;
+            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
+            time = startTime.AddSeconds(d);
+            return time;
+        }
+
+        /// <summary>
+        /// 将c# DateTime时间格式转换为Unix时间戳格式
+        /// </summary>
+        /// <param name="time">时间</param>
+        /// <returns>double</returns>
+        public static double ConvertDateTimeInt(System.DateTime time)
+        {
+            double intResult = 0;
+            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
+            intResult = (time - startTime).TotalSeconds;
+            return intResult;
+        }
+
+        public static long IpToInt(string ip)
+        {
+            char[] separator = new char[] { '.' };
+            string[] items = ip.Split(separator);
+            return long.Parse(items[0]) << 24
+                    | long.Parse(items[1]) << 16
+                    | long.Parse(items[2]) << 8 
+                    | long.Parse(items[3]);
+        }
+        public static string IntToIp(long ipInt)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append((ipInt >> 24) & 0xFF).Append(".");
+            sb.Append((ipInt >> 16) & 0xFF).Append(".");
+            sb.Append((ipInt >> 8) & 0xFF).Append(".");
+            sb.Append(ipInt & 0xFF);
+            return sb.ToString();
+        }
+
         /// <summary> 
 
         /// 原型是 :HMODULE LoadLibrary(LPCTSTR lpFileName); 

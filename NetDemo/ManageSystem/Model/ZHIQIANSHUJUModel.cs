@@ -21,8 +21,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private int _Chengshibianhao;
-        public int Chengshibianhao
+        private string _Chengshibianhao;
+        public string Chengshibianhao
         {
             get
             {
@@ -35,8 +35,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private int _Jubianhao;
-        public int Jubianhao
+        private string _Jubianhao;
+        public string Jubianhao
         {
             get
             {
@@ -49,8 +49,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private int _Shiyongdanweibianhao;
-        public int Shiyongdanweibianhao
+        private string _Shiyongdanweibianhao;
+        public string Shiyongdanweibianhao
         {
             get
             {
@@ -63,8 +63,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private int _IP;
-        public int IP
+        private string _IP;
+        public string IP
         {
             get
             {
@@ -90,8 +90,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Bendiyewu");
             }
         }
-        private int _Shebeibaifangweizhi;
-        public int Shebeibaifangweizhi
+        private string _Shebeibaifangweizhi;
+        public string Shebeibaifangweizhi
         {
             get
             {
@@ -103,8 +103,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Shebeibaifangweizhi");
             }
         }
-        private Int64 _Riqi;
-        public Int64 Riqi
+        private string _Riqi;
+        public string Riqi
         {
             get
             {
@@ -155,8 +155,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Xingming");
             }
         }
-        private int _Qianzhuzhonglei;
-        public int Qianzhuzhonglei
+        private string _Qianzhuzhonglei;
+        public string Qianzhuzhonglei
         {
             get
             {
@@ -168,8 +168,8 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Qianzhuzhonglei");
             }
         }
-        private int _ZhikaZhuangtai;
-        public int ZhikaZhuangtai
+        private string _ZhikaZhuangtai;
+        public string ZhikaZhuangtai
         {
             get
             {

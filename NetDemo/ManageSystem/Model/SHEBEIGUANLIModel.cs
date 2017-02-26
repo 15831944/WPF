@@ -21,8 +21,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private int _Chengshibianhao;
-        public int Chengshibianhao
+        private string _Chengshibianhao;
+        public string Chengshibianhao
         {
             get
             {
@@ -35,8 +35,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private int _Jubianhao;
-        public int Jubianhao
+        private string _Jubianhao;
+        public string Jubianhao
         {
             get
             {
@@ -49,8 +49,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private int _Shiyongdanweibianhao;
-        public int Shiyongdanweibianhao
+        private string _Shiyongdanweibianhao;
+        public string Shiyongdanweibianhao
         {
             get
             {
@@ -63,8 +63,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private int _IP;
-        public int IP
+        private string _IP;
+        public string IP
         {
             get
             {

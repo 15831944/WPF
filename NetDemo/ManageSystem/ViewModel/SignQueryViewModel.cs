@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
@@ -16,7 +17,6 @@ namespace ManageSystem.ViewModel
     class SignQueryViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
-        public QueryZHIQIANSHUJUCallBackDelegate        _queryzhiqianshujucallbackdelegate = null;
         public Dictionary<string, string>               _columnNameMap = new Dictionary<string, string>
         {
            {"Xuhao",				"序号"},
@@ -37,66 +37,70 @@ namespace ManageSystem.ViewModel
            {"Lianxidianhua",		"联系电话"},
         };
         public DelegateCommand<object>                  QueryCommand { get; set; }
-        public DelegateCommand<object>                  SelectedItemCommand { get; set; }
-        public DelegateCommand<object>                  UnSelectedItemCommand { get; set; }
 
-        private Visibility _bShowPage;
-        public Visibility bShowPage
+        private string _cardNumber;
+        public string cardNumber
         {
-            get { return _bShowPage; }
+            get { return _cardNumber; }
             set
             {
-                _bShowPage = value;
-                this.RaisePropertyChanged("bShowPage");
+                _cardNumber = value;
+                this.RaisePropertyChanged("cardNumber");
             }
         }
 
-        private  ObservableCollection<DeviceModel> _deviceList;
-        public ObservableCollection<DeviceModel> deviceList
+        private string _businessNumber;
+        public string businessNumber
         {
-            get { return _deviceList; }
+            get { return _businessNumber; }
             set
             {
-                _deviceList = value;
-                this.RaisePropertyChanged("deviceList");
-            }
-        }
-        private ObservableCollection<string> _itemList;
-        public ObservableCollection<string> itemList
-        {
-            get { return _itemList; }
-            set
-            {
-                _itemList = value;
-                this.RaisePropertyChanged("itemList");
+                _businessNumber = value;
+                this.RaisePropertyChanged("businessNumber");
             }
         }
 
-        private ObservableCollection<string> _businesstype;
-        public ObservableCollection<string> businesstype
+        private string _startTime;
+        public string startTime
         {
-            get
-            {
-                return _businesstype;
-            }
+            get { return _startTime; }
             set
             {
-                _businesstype = value;
-                this.RaisePropertyChanged("businesstype");
+                _startTime = value;
+                this.RaisePropertyChanged("startTime");
             }
         }
 
-        private ObservableCollection<string> _cardstatus;
-        public ObservableCollection<string> cardstatus
+        private string _endTime;
+        public string endTime
         {
-            get
-            {
-                return _cardstatus;
-            }
+            get { return _endTime; }
             set
             {
-                _cardstatus = value;
-                this.RaisePropertyChanged("cardstatus");
+                _endTime = value;
+                this.RaisePropertyChanged("endTime");
+            }
+        }
+
+        private string _cardStatuText;
+        public string cardStatuText
+        {
+            get { return _cardStatuText; }
+            set
+            {
+                _cardStatuText = value;
+                this.RaisePropertyChanged("cardStatuText");
+            }
+        }
+
+        private string _businessTypeText;
+        public string businessTypeText
+        {
+            get { return _businessTypeText; }
+            set
+            {
+                _businessTypeText = value;
+                this.RaisePropertyChanged("businessTypeText");
             }
         }
 
@@ -117,68 +121,11 @@ namespace ManageSystem.ViewModel
         public SignQueryViewModel()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
-            _queryzhiqianshujucallbackdelegate          = new Server.QueryZHIQIANSHUJUCallBackDelegate(QueryZHIQIANSHUJUCallBack);
             QueryCommand                                = new DelegateCommand<object>(new Action<object>(this.Query));
-            SelectedItemCommand                         = new DelegateCommand<object>(new Action<object>(this.SelectedItem));
-            UnSelectedItemCommand                       = new DelegateCommand<object>(new Action<object>(this.UnSelectedItem));
-
-            _bShowPage                                  = Visibility.Visible;
-            _deviceList                                 = new ObservableCollection<DeviceModel>();
-            _cardstatus                                 = new ObservableCollection<string>();
-            _businesstype                               = new ObservableCollection<string>();
             _tableList                                  = new ObservableCollection<ZHIQIANSHUJUModel>();
-            {   //for test
-                DeviceModel model_1                     = new DeviceModel();
-                model_1.Text                            = "深圳市";
-                model_1.leftMargin                      = "0,0,0,0";
-                DeviceModel model_1_0                   = new DeviceModel();
-                model_1_0.Text                          = "市局";
-                model_1_0.leftMargin                    = "16, 0, 0, 0";
-                model_1.Children.Add(model_1_0);
-                DeviceModel model_1_1                   = new DeviceModel();
-                model_1_1.Text                          = "宝安分局";
-                model_1_1.leftMargin                    = "16, 0, 0, 0";
-                model_1.Children.Add(model_1_1);
-                DeviceModel model_1_2                   = new DeviceModel();
-                model_1_2.Text                          = "南山分局";
-                model_1_2.leftMargin                    = "16, 0, 0, 0";
-                model_1.Children.Add(model_1_2);
-                DeviceModel model_1_2_1                 = new DeviceModel();
-                model_1_2_1.Text                        = "南山分局管理科";
-                model_1_2_1.leftMargin                  = "32, 0, 0, 0";
-                model_1_2.Children.Add(model_1_2_1);
 
-                DeviceModel model_1_2_1_1               = new DeviceModel();
-                model_1_2_1_1.Text                      = "127.0.0.1";
-                model_1_2_1_1.leftMargin                = "48, 0, 0, 0";
-                model_1_2_1.Children.Add(model_1_2_1_1);
-
-                //DeviceModel model_2                     = new DeviceModel();
-                //model_2.Text                            = "2";
-                //DeviceModel model_2_0                   = new DeviceModel();
-                //model_2_0.Text                          = "2_0";
-                //model_2.Children.Add(model_2_0);
-                //DeviceModel model_2_1                   = new DeviceModel();
-                //model_2_1.Text                          = "2_1";
-                //model_2.Children.Add(model_2_1);
-                //DeviceModel model_2_2                   = new DeviceModel();
-                //model_2_2.Text                          = "2_2";
-                //model_2.Children.Add(model_2_2);        
-
-                _deviceList.Add(model_1);
-                //_deviceList.Add(model_2);
-            }
-            {
-                _cardstatus.Add("全部");
-                _cardstatus.Add("成功");
-                _cardstatus.Add("失败");
-                _cardstatus.Add("异常");
-            }
-            {
-                _businesstype.Add("全部");
-                _businesstype.Add("本地");
-                _businesstype.Add("异地");
-            }
+            startTime                                   = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
+            endTime                                     = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
         }
 
         //Access and update columns during autogeneration
@@ -223,7 +170,33 @@ namespace ManageSystem.ViewModel
                                 }
                                 else if (item.PropertyType.Name.StartsWith("String"))
                                 {
-                                    item.SetValue(model, keyvalue[1], null);
+                                    switch (item.Name)
+                                    {
+                                        case "Chengshibianhao":
+                                        case "Jubianhao":
+                                        case "Shiyongdanweibianhao":
+                                        case "Shebeibaifangweizhi":
+                                        case "Qianzhuzhonglei":
+                                        case "ZhikaZhuangtai":
+                                        case "Zhengjianleixing":
+                                        case "Xingbie":
+                                        case "Yewuleixing":
+                                            if (MainWindowViewModel._yingshelList.Keys.Contains(Convert.ToInt32(keyvalue[1])))
+                                                item.SetValue(model, MainWindowViewModel._yingshelList[Convert.ToInt32(keyvalue[1])], null);
+                                            break;
+                                        case "Riqi":
+                                        case "Chushengriqi":
+                                        case "Jiaoyiriqi":
+                                            DateTime datetime = Common.ConvertIntDateTime(Convert.ToInt64(keyvalue[1]));
+                                            item.SetValue(model, datetime.ToShortDateString(), null);
+                                            break;
+                                        case "IP":
+                                            item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder(Convert.ToInt32(keyvalue[1]))), null);
+                                            break;
+                                        default:
+                                            item.SetValue(model, keyvalue[1], null);
+                                            break;
+                                    }
                                 }
                                 else if (item.PropertyType.Name.StartsWith("Boolean"))
                                 {
@@ -241,135 +214,91 @@ namespace ManageSystem.ViewModel
                 }
             }
         }
-        public void QueryZHIQIANSHUJUCallBack(
-                int Xuhao,
-                int Chengshibianhao,
-                int Jubianhao,
-                int Shiyongdanweibianhao,
-                int IP,
-                bool Bendiyewu,
-                int Shebeibaifangweizhi,
-                Int64 Riqi,
-                string Yewubianhao,
-                string YuanZhengjianhaoma,
-                string Xingming,
-                int Qianzhuzhonglei,
-                int ZhikaZhuangtai,
-                string Zhengjianhaoma,
-                string Jiekoufanhuijieguo,
-                string Lianxidianhua
-        )
-        {
-
-            ZHIQIANSHUJUModel model     = new ZHIQIANSHUJUModel();
-            model.Xuhao				    = Xuhao;
-            model.Chengshibianhao		= Chengshibianhao;
-            model.Jubianhao			    = Jubianhao;
-            model.Shiyongdanweibianhao  = Shiyongdanweibianhao;
-            model.IP					= IP;
-            model.Bendiyewu			    = Bendiyewu;
-            model.Shebeibaifangweizhi	= Shebeibaifangweizhi;
-            model.Riqi				    = Riqi;
-            model.Yewubianhao			= Yewubianhao;
-            model.YuanZhengjianhaoma	= YuanZhengjianhaoma;
-            model.Xingming			    = Xingming;
-            model.Qianzhuzhonglei		= Qianzhuzhonglei;
-            model.ZhikaZhuangtai		= ZhikaZhuangtai;
-            model.Zhengjianhaoma		= Zhengjianhaoma;
-            model.Jiekoufanhuijieguo	= Jiekoufanhuijieguo;
-            model.Lianxidianhua		    = Lianxidianhua;
-
-            //Debug.WriteLine(tableList.Count);
-            tableList.Add(model);
-        }
+        
         public void Query(object obj)
         {
             tableList.Clear();
-            WorkServer.GetInstance().QueryTable("select * from Zhiqianshuju", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
-            //WorkServer.GetInstance().QueryZHIQIANSHUJU("select * from Zhiqianshuju", Marshal.GetFunctionPointerForDelegate(_queryzhiqianshujucallbackdelegate));
+            WorkServer.GetInstance().QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
         }
 
-
-        public void SelectedItem(object obj)
+        string MakeQuerySql(object obj)
         {
-            CheckBox changebox = obj as CheckBox;
-            if(changebox.IsFocused == false)
-                return;
-            DeviceModel deviceModelChange = changebox.DataContext as DeviceModel;
+            string str = "select * from Zhiqianshuju where Xuhao>=-1";
+            
+            MainWindowViewModel mainwindowviewmodel = obj as MainWindowViewModel;
 
-            ////MakeChildrens
-            foreach (DeviceModel child0 in deviceModelChange.Children)
+            foreach(DeviceModel model0 in mainwindowviewmodel.deviceList)
             {
-                child0.isSel  = true;
-                foreach (DeviceModel child1 in child0.Children)
+                if(model0.isSel)
                 {
-                    child1.isSel  = true;
-                    foreach (DeviceModel child2 in child1.Children)
+                    foreach(KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                     {
-                        child2.isSel  = true;
+                        if(kvp0.Value == model0.text)
+                            str += " and zhiqianshuju.[Chengshibianhao]=" + kvp0.Key.ToString();
                     }
                 }
-            }
 
-            ////MakeParent
-            bool bBreak = false;
-            foreach (DeviceModel parent0 in deviceList)
-            {
-                foreach (DeviceModel parent1 in parent0.Children)
+                foreach(DeviceModel model1 in model0.Children)
                 {
-                    if (parent1 == deviceModelChange)
+                    if (model1.isSel)
                     {
-                        bBreak = true;
-                        parent0.isSel = true;
-                        break;
-                    }
-                    foreach (DeviceModel parent2 in parent1.Children)
-                    {
-                        if (parent2 == deviceModelChange)
+                        foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                         {
-                            bBreak = true;
-                            parent0.isSel = true;
-                            parent1.isSel = true;
-                            break;
+                            if (kvp0.Value == model1.text)
+                                str += " and zhiqianshuju.[Jubianhao]=" + kvp0.Key.ToString();
                         }
+                    }
 
-                        foreach (DeviceModel parent3 in parent2.Children)
+                    foreach (DeviceModel model2 in model1.Children)
+                    {
+                        if (model2.isSel)
                         {
-                            if (parent0 == deviceModelChange)
+                            foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                             {
-                                bBreak = true;
-                                parent0.isSel = true;
-                                parent1.isSel = true;
-                                parent2.isSel = true;
-                                break;
+                                if (kvp0.Value == model2.text)
+                                    str += " and zhiqianshuju.[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
                             }
                         }
-
-                        if (bBreak) break;
+                        foreach (DeviceModel model3 in model2.Children)
+                        {
+                            if (model3.isSel)
+                            {
+                               str += " and zhiqianshuju.[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(model3.text)));
+                            }
+                        }
                     }
-                    if (bBreak) break;
                 }
-                if (bBreak) break;
             }
-        }
-        public void UnSelectedItem(object obj)
-        {
-            CheckBox changebox = obj as CheckBox;
-            DeviceModel deviceModelChange = changebox.DataContext as DeviceModel;
 
-            ////MakeChildrens
-            foreach (DeviceModel child0 in deviceModelChange.Children)
+            if (cardNumber!=null && cardNumber.Length != 0)
+                str += " and zhiqianshuju.[Zhengjianhaoma]=" + cardNumber;
+            if (businessNumber != null && businessNumber.Length != 0)
+                str += " and zhiqianshuju.[Yewubianhao]=" + businessNumber;
+            if (startTime != null && startTime.Length != 0)
+                str += " and zhiqianshuju.[Riqi]>" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
+            if (endTime != null && endTime.Length != 0)
+                str += " and zhiqianshuju.[Riqi]<" + Common.ConvertDateTimeInt(DateTime.Parse(endTime));
+            if (cardStatuText != null && cardStatuText.Length != 0)
             {
-                child0.isSel  = false;
-                foreach (DeviceModel child1 in child0.Children)
+                foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                 {
-                    child1.isSel  = false;
-                    foreach (DeviceModel child2 in child1.Children)
+                    if (kvp0.Value == cardStatuText)
                     {
-                        child2.isSel  = false;
+                        str += " and zhiqianshuju.[ZhikaZhuangtai]=" + kvp0.Key.ToString();
+                        break;
                     }
                 }
             }
+
+            if (businessTypeText != null && businessTypeText.Length != 0)
+            {
+                if(businessTypeText == "本地业务")
+                    str += " and zhiqianshuju.[Bendiyewu]=" + "1";
+                else
+                    str += " and zhiqianshuju.[Bendiyewu]=" + "0";
+            }
+
+            return str;
         }
     }
 }

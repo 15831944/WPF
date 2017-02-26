@@ -1,11 +1,11 @@
 #include "stdafx.h"
 #include "Function.h"
 
-bool QueryTable(string QuerySql, string &resultStr, string &strError)
+bool QueryTable(string QuerySql, string &dataStr, string &strError)
 {
 	bool bOk	= true;
 	strError	= "";
-	resultStr	= "";
+	dataStr	= "";
 	do
 	{
 		std::auto_ptr<CSqlite>  lpSQlite(new CSqlite);
@@ -35,14 +35,14 @@ bool QueryTable(string QuerySql, string &resultStr, string &strError)
 		{
 			for (int j=0; j<nCol; j++)
 			{
-				resultStr	+= pResult[j];
-				resultStr	+= ":";
-				resultStr	+= pResult[nIndex];
-				resultStr	+= ",";
+				dataStr	+= UTF8toASCII(pResult[j]);
+				dataStr	+= ":";
+				dataStr	+= UTF8toASCII(pResult[nIndex]);
+				dataStr	+= ",";
 
 				++nIndex;
 			}
-			resultStr += ";";
+			dataStr += ";";
 		}
 		sqlite3_free_table(pResult);  //使用完后务必释放为记录分配的内存，否则会内存泄漏
 		sqlite3_release_memory((int)sqlite3_memory_used());

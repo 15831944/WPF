@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ManageSystem.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -18,24 +19,13 @@ namespace ManageSystem
 
     public partial class AddDataWindow : Window
     {
-        public static long IpToInt(string ip)
-        {
-            char[] separator = new char[] { '.' };
-            string[] items = ip.Split(separator);
-            return long.Parse(items[0]) << 24
-                    | long.Parse(items[1]) << 16
-                    | long.Parse(items[2]) << 8 
-                    | long.Parse(items[3]);
-        }
-        public static string IntToIp(long ipInt)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append((ipInt >> 24) & 0xFF).Append(".");
-            sb.Append((ipInt >> 16) & 0xFF).Append(".");
-            sb.Append((ipInt >> 8) & 0xFF).Append(".");
-            sb.Append(ipInt & 0xFF);
-            return sb.ToString();
-        }
+
+
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "addTable")]
+        private static extern void _addTable(
+                        string tableName,
+                        string dataStr,
+                        IntPtr callback);
 
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "addZHIQIANSHUJU")]
         private static extern void _addZHIQIANSHUJU(
@@ -222,28 +212,116 @@ namespace ManageSystem
             switch(selIndex)
             {
                 case 0:
-                    for (int i = 0; i < addCount; ++i)
                     {
-                        _addZHIQIANSHUJU(
-                            0,
-                            (i%2 == 0) ? 0:1, //城市编号
-                            (i%2 == 0) ? 2001:2002,//局编号
-                            (i%2 == 0) ? 3001:3002,//使用单位编号
-                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)IpToInt("127.0.0.1"))),
-                            false,
-                            (i%2 == 0) ? 5001:5002,//设备摆放位置
-                            (Int32)DateTime.Now.ToFileTime(),
-                            i.ToString() + ran.Next(),
-                            i.ToString(),
-                            i.ToString(),
-                            (i%2 == 0) ? 6001:6002,//
-                            (i%2 == 0) ? 7001:7002,//签注种类
-                            i.ToString(),
-                            i.ToString(),
-                            i.ToString(),
-                            IntPtr.Zero
-                             );
-                    }       
+                        System.Reflection.PropertyInfo[] properties = typeof(ZHIQIANSHUJUModel).GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+
+                        DateTime time = DateTime.Now;
+                        string addXml = "";
+                        for (int i = 0; i < addCount; ++i)
+                        {
+                            foreach (System.Reflection.PropertyInfo item in properties)
+                            {
+                                if (item.PropertyType.Name.StartsWith("Int32"))
+                                {
+                                    addXml += item.Name;
+                                    addXml += ":";
+                                    switch (item.Name)
+                                    {
+                                        case "Xuhao":
+                                            addXml += "0";
+                                            break;
+                                        default:
+                                            addXml += ran.Next().ToString();
+                                            break;
+                                    }
+                                }
+                                else if (item.PropertyType.Name.StartsWith("Int64"))
+                                {
+                                    addXml += item.Name;
+                                    addXml += ":";
+                                    addXml += ran.Next().ToString();
+                                }
+                                else if (item.PropertyType.Name.StartsWith("String"))
+                                {
+                                    addXml += item.Name;
+                                    addXml += ":";
+                                    switch (item.Name)
+                                    {
+                                        case "Chengshibianhao":
+                                            addXml += ((i%2 == 0) ? 0:1).ToString();
+                                            break;
+                                        case "Jubianhao":
+                                            addXml += ((i%2 == 0) ? 2001:2002).ToString();
+                                            break;
+                                        case "Shiyongdanweibianhao":
+                                            addXml += ((i%2 == 0) ? 3001:3002).ToString();
+                                            break;
+                                        case "IP":
+                                            addXml += Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1")));
+                                            break;
+                                        case "Shebeibaifangweizhi":
+                                            addXml += ((i%2 == 0) ? 5001:5002).ToString();
+                                            break;
+                                        case "Riqi":
+                                            addXml += Common.ConvertDateTimeInt(DateTime.Now);
+                                            break;
+                                        case "Qianzhuzhonglei":
+                                            addXml += ((i%2 == 0) ? 6001:6002).ToString();
+                                            break;
+                                        case "ZhikaZhuangtai":
+                                            addXml += ((i%2 == 0) ? 7001:7002).ToString();
+                                            break;
+                                        default:
+                                            addXml += ran.Next().ToString();
+                                            break;
+                                    }
+                                }
+                                else if (item.PropertyType.Name.StartsWith("Boolean"))
+                                {
+                                    addXml += item.Name;
+                                    addXml += ":";
+                                    addXml += "0";
+                                }
+                                else
+                                {
+                                    ;
+                                }
+                                addXml += ",";
+                            }
+                            addXml += ";";
+                        }
+
+                        _addTable("Zhiqianshuju", addXml, IntPtr.Zero);
+                        TimeSpan span =  DateTime.Now - time;
+                    }
+
+                    //{
+                    //    DateTime time = DateTime.Now;
+                    //    for (int i = 0; i < addCount; ++i)
+                    //    {
+                    //        _addZHIQIANSHUJU(
+                    //            0,
+                    //            (i%2 == 0) ? 0:1, //城市编号
+                    //            (i%2 == 0) ? 2001:2002,//局编号
+                    //            (i%2 == 0) ? 3001:3002,//使用单位编号
+                    //            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)IpToInt("127.0.0.1"))),
+                    //            false,
+                    //            (i%2 == 0) ? 5001:5002,//设备摆放位置
+                    //            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
+                    //            i.ToString() + ran.Next(),
+                    //            i.ToString(),
+                    //            i.ToString(),
+                    //            (i%2 == 0) ? 6001:6002,//
+                    //            (i%2 == 0) ? 7001:7002,//签注种类
+                    //            i.ToString(),
+                    //            i.ToString(),
+                    //            i.ToString(),
+                    //            IntPtr.Zero
+                    //             );
+                    //    }
+                    //    TimeSpan span =  DateTime.Now - time;
+                    //}
+                    
                     break;
                 case 1:
                     for (int i = 0; i < addCount; ++i)
@@ -253,10 +331,10 @@ namespace ManageSystem
                             (i%2 == 0) ? 0:1, //城市编号
                             (i%2 == 0) ? 2001:2002,//局编号
                             (i%2 == 0) ? 3001:3002,//使用单位编号
-                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)IpToInt("127.0.0.1"))),
+                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1"))),
                             false,
                             (i%2 == 0) ? 5001:5002,//设备摆放位置
-                            (Int32)DateTime.Now.ToFileTime(),
+                            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
                             (i%2 == 0) ? 9001:9002,//证件类型
                             i.ToString() + ran.Next(),
                             i.ToString() + ran.Next(),
@@ -274,14 +352,14 @@ namespace ManageSystem
                             (i%2 == 0) ? 0:1, //城市编号
                             (i%2 == 0) ? 2001:2002,//局编号
                             (i%2 == 0) ? 3001:3002,//使用单位编号
-                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)IpToInt("127.0.0.1"))),
+                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1"))),
                             false,
                             (i%2 == 0) ? 5001:5002,//设备摆放位置
-                            (Int32)DateTime.Now.ToFileTime(),
+                            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
                             i.ToString() + ran.Next(),
                             i.ToString() + ran.Next(),
                             (i%2 == 0) ? 8001:8002,//性别
-                            (Int32)DateTime.Now.ToFileTime(),
+                            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
                             i.ToString() + ran.Next(),
                             (i%2 == 0) ? 4001:4002,//业务类型
                             i.ToString() + ran.Next(),
@@ -297,15 +375,15 @@ namespace ManageSystem
                             (i%2 == 0) ? 0:1, //城市编号
                             (i%2 == 0) ? 2001:2002,//局编号
                             (i%2 == 0) ? 3001:3002,//使用单位编号
-                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)IpToInt("127.0.0.1"))),
+                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1"))),
                             false,
                             (i%2 == 0) ? 5001:5002,//设备摆放位置
-                            (Int32)DateTime.Now.ToFileTime(),
+                            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
                             i.ToString() + ran.Next(),
                             i.ToString() + ran.Next(),
                             i.ToString() + ran.Next(),
                             ran.Next(),
-                            (Int32)DateTime.Now.ToFileTime(),
+                            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
                             IntPtr.Zero
                              );
                     } 
@@ -318,14 +396,14 @@ namespace ManageSystem
                             (i%2 == 0) ? 0:1, //城市编号
                             (i%2 == 0) ? 2001:2002,//局编号
                             (i%2 == 0) ? 3001:3002,//使用单位编号
-                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)IpToInt("127.0.0.1"))),
+                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1"))),
                             false,
                             (i%2 == 0) ? 5001:5002,//设备摆放位置
-                            (Int32)DateTime.Now.ToFileTime(),
+                            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
                             i.ToString() + ran.Next(),
                             i.ToString() + ran.Next(),
                             false,
-                            (Int32)DateTime.Now.ToFileTime(),
+                            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
                             IntPtr.Zero
                              );
                     } 
@@ -338,10 +416,10 @@ namespace ManageSystem
                             (i%2 == 0) ? 0:1, //城市编号
                             (i%2 == 0) ? 2001:2002,//局编号
                             (i%2 == 0) ? 3001:3002,//使用单位编号
-                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)IpToInt("127.0.0.1"))),
+                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1"))),
                             false,
                             (i%2 == 0) ? 5001:5002,//设备摆放位置
-                            (Int32)DateTime.Now.ToFileTime(),
+                            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
                             i.ToString() + ran.Next(),
                             i.ToString() + ran.Next(),
                             i.ToString() + ran.Next(),
@@ -351,7 +429,7 @@ namespace ManageSystem
                             (i%2 == 0) ? 8001:8002,//性别
                             i.ToString() + ran.Next(),
                             "汉",
-                            (Int32)DateTime.Now.ToFileTime(),
+                            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
                             IntPtr.Zero
                              );
                     } 
@@ -372,13 +450,13 @@ namespace ManageSystem
                             (i%2 == 0) ? 0:1, //城市编号
                             (i%2 == 0) ? 2001:2002,//局编号
                             (i%2 == 0) ? 3001:3002,//使用单位编号
-                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)IpToInt("127.0.0.1"))),
+                            Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1"))),
                             i.ToString() + ran.Next(),
                             i.ToString() + ran.Next(),
                             i.ToString() + ran.Next(),
                             ran.Next(),
                             ran.Next(),
-                            (Int32)DateTime.Now.ToFileTime(),
+                            (Int64)Common.ConvertDateTimeInt(DateTime.Now),
                             IntPtr.Zero
                              );
                     } 

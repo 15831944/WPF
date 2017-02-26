@@ -10,7 +10,19 @@ using namespace std;
 //bool QueryIDCARDAPPLY(string QuerySql, std::vector<tagIDCARDAPPLY> &lcArray, string &strError);
 //bool AddIDCARDAPPLY(tagIDCARDAPPLY  station, string &strError);
 
-bool			QueryTable(string QuerySql, string &resultStr, string &strError);
+/*
+	1. 每个属性与对应的值之间以 ： 号分隔
+	2. 属性与属性之间以 , 号分隔
+	3. 每行以 ; 号分隔
+	4. 行与行之间无字符
+	datastr Format:
+
+	propertyName0:propertyValue0,propertyName1:propertyValue1,propertyName2:propertyValue2,……;
+	propertyName0:propertyValue0,propertyName1:propertyValue1,propertyName2:propertyValue2,……;
+	propertyName0:propertyValue0,propertyName1:propertyValue1,propertyName2:propertyValue2,……;
+*/
+bool			QueryTable(string QuerySql, string &dataStr, string &strError);
+bool			AddTable(char* tableName, char* dataStr, string &strError);
 
 bool			QueryZHIQIANSHUJU(string QuerySql, std::vector<tagZHIQIANSHUJU> &lcArray, string &strError);
 bool			AddZHIQIANSHUJU(tagZHIQIANSHUJU  data, string &strError);

@@ -57,7 +57,7 @@ namespace ManageSystem.Model
         }
 
         private string _text;
-        public string Text
+        public string text
         {
             get
             {

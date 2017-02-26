@@ -16,7 +16,7 @@
             <TreeView Grid.Column="0" Grid.IsSharedSizeScope="True" AlternationCount="2" 
                       MinHeight="100" VerticalContentAlignment="Center"
                       Background="#CFD6DC"
-                      ItemsSource="{Binding Path=deviceList}"
+                      ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=deviceList}"
                       ItemContainerStyle="{DynamicResource TreeViewItemStyle1}">
 
             </TreeView>
@@ -44,7 +44,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">证件号码</TextBlock>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">身份证号</TextBlock>
                             <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch"></TextBox>
                         </Grid>
                         <Grid Grid.Row="1">
@@ -52,7 +52,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">制卡状态</TextBlock>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">插入大集中</TextBlock>
                             <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" 
                                       VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Path=cardstatus}" ></ComboBox>
                         </Grid>
@@ -67,7 +67,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">业务编码</TextBlock>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">业务编号</TextBlock>
                             <TextBox Grid.Column="1" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Stretch"></TextBox>
                         </Grid>
                         <Grid Grid.Row="1">

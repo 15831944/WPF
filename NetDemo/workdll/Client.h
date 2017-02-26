@@ -26,18 +26,6 @@ protected:
 	bool								m_bCmdFinished;
 	void								QuerySendMsg(char* querySqlStr);
 
-	QueryZHIQIANSHUJUCallBack			m_QueryZHIQIANSHUJUCallBack;
-	QuerySHOUZHENGSHUJUCallBack			m_QuerySHOUZHENGSHUJUCallBack;
-	QueryQIANZHUSHUJUCallBack			m_QueryQIANZHUSHUJUCallBack;
-	QueryJIAOKUANSHUJUCallBack			m_QueryJIAOKUANSHUJUCallBack;
-	QueryCHAXUNSHUJUCallBack			m_QueryCHAXUNSHUJUCallBack;
-	QueryYUSHOULISHUJUCallBack			m_QueryYUSHOULISHUJUCallBack;
-	QuerySHEBEIZHUANGTAICallBack		m_QuerySHEBEIZHUANGTAICallBack;
-	QuerySHEBEIYICHANGSHUJUCallBack		m_QuerySHEBEIYICHANGSHUJUCallBack;
-	QueryGUANLIYUANCallBack				m_QueryGUANLIYUANCallBack;
-	QueryGUANLIYUANCAOZUOJILUCallBack	m_QueryGUANLIYUANCAOZUOJILUCallBack;
-	QuerySHEBEIGUANLICallBack			m_QuerySHEBEIGUANLICallBack;
-	QueryYINGSHEBIAOCallBack			m_QueryYINGSHEBIAOCallBack;
 public:
 	static CClient* 					GetInstance();
 	static void 						ReleaseInstance();
@@ -45,18 +33,5 @@ public:
 	bool								StopClient();
 	bool								ClientStoped();
 
-
-	void								QueryZHIQIANSHUJU(char* querySqlStr, QueryZHIQIANSHUJUCallBack callBack);
-	void								QuerySHOUZHENGSHUJU(char* querySqlStr, QuerySHOUZHENGSHUJUCallBack callBack);
-	void								QueryQIANZHUSHUJU(char* querySqlStr, QueryQIANZHUSHUJUCallBack callBack);
-	void								QueryJIAOKUANSHUJU(char* querySqlStr, QueryJIAOKUANSHUJUCallBack callBack);
-	void								QueryCHAXUNSHUJU(char* querySqlStr, QueryCHAXUNSHUJUCallBack callBack);
-	void								QueryYUSHOULISHUJU(char* querySqlStr, QueryYUSHOULISHUJUCallBack callBack);
-	void								QuerySHEBEIZHUANGTAI(char* querySqlStr, QuerySHEBEIZHUANGTAICallBack callBack);
-	void								QuerySHEBEIYICHANGSHUJU(char* querySqlStr, QuerySHEBEIYICHANGSHUJUCallBack callBack);
-	void								QueryGUANLIYUAN(char* querySqlStr, QueryGUANLIYUANCallBack callBack);
-	void								QueryGUANLIYUANCAOZUOJILU(char* querySqlStr, QueryGUANLIYUANCAOZUOJILUCallBack callBack);
-	void								QuerySHEBEIGUANLI(char* querySqlStr, QuerySHEBEIGUANLICallBack callBack);
-	void								QueryYINGSHEBIAO(char* querySqlStr, QueryYINGSHEBIAOCallBack callBack);
 };
 

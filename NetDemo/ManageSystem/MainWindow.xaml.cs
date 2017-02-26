@@ -40,7 +40,7 @@ namespace ManageSystem
         {
             addwnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             addwnd.Owner = this;
-            addwnd.Show();
+            //addwnd.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

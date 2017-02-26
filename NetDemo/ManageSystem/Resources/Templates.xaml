@@ -15,14 +15,14 @@
                 <CheckBox x:Name="checkbox" Grid.Column="0" IsChecked="{Binding Path=isSel}" HorizontalAlignment="Left" VerticalAlignment="Center">
                     <i:Interaction.Triggers>
                         <i:EventTrigger EventName="Checked">
-                            <i:InvokeCommandAction Command="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_SignQueryViewModel.SelectedItemCommand}" CommandParameter="{Binding ElementName=checkbox}" />
+                            <i:InvokeCommandAction Command="{Binding Source={StaticResource MainWindowViewModelKey}, Path=SelectedItemCommand}" CommandParameter="{Binding ElementName=checkbox}" />
                         </i:EventTrigger>
                         <i:EventTrigger EventName="Unchecked">
-                            <i:InvokeCommandAction Command="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_SignQueryViewModel.UnSelectedItemCommand}" CommandParameter="{Binding ElementName=checkbox}" />
+                            <i:InvokeCommandAction Command="{Binding Source={StaticResource MainWindowViewModelKey}, Path=UnSelectedItemCommand}" CommandParameter="{Binding ElementName=checkbox}" />
                         </i:EventTrigger>
                     </i:Interaction.Triggers>
                 </CheckBox>
-                <TextBlock Grid.Column="1" Text="{Binding Path=Text}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" Text="{Binding Path=text}" HorizontalAlignment="Left" VerticalAlignment="Center"/>
             </Grid>
         </Border>
 

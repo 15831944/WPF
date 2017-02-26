@@ -9,20 +9,7 @@ CSqliteData::CSqliteData()
 	HMODULE hDataBaseDll				= LoadLibrary(_T("database.dll"));
 
 	m_QueryTableFunc					= (_QueryTable)GetProcAddress(hDataBaseDll, "QueryTable");
-
-	m_QueryZHIQIANSHUJUFunc				= (_QueryZHIQIANSHUJU)GetProcAddress(hDataBaseDll, "QueryZHIQIANSHUJU");
-	m_QuerySHOUZHENGSHUJUFunc			= (_QuerySHOUZHENGSHUJU)GetProcAddress(hDataBaseDll, "QuerySHOUZHENGSHUJU");
-	m_QueryQIANZHUSHUJUFunc				= (_QueryQIANZHUSHUJU)GetProcAddress(hDataBaseDll, "QueryQIANZHUSHUJU");
-	m_QueryJIAOKUANSHUJUFunc			= (_QueryJIAOKUANSHUJU)GetProcAddress(hDataBaseDll, "QueryJIAOKUANSHUJU");
-	m_QueryCHAXUNSHUJUFunc				= (_QueryCHAXUNSHUJU)GetProcAddress(hDataBaseDll, "QueryCHAXUNSHUJU");
-	m_QueryYUSHOULISHUJUFunc			= (_QueryYUSHOULISHUJU)GetProcAddress(hDataBaseDll, "QueryYUSHOULISHUJU");
-	m_QuerySHEBEIZHUANGTAIFunc			= (_QuerySHEBEIZHUANGTAI)GetProcAddress(hDataBaseDll, "QuerySHEBEIZHUANGTAI");
-	m_QuerySHEBEIYICHANGSHUJUFunc		= (_QuerySHEBEIYICHANGSHUJU)GetProcAddress(hDataBaseDll, "QuerySHEBEIYICHANGSHUJU");
-	m_QueryGUANLIYUANFunc				= (_QueryGUANLIYUAN)GetProcAddress(hDataBaseDll, "QueryGUANLIYUAN");
-	m_QueryGUANLIYUANCAOZUOJILUFunc		= (_QueryGUANLIYUANCAOZUOJILU)GetProcAddress(hDataBaseDll, "QueryGUANLIYUANCAOZUOJILU");
-	m_QuerySHEBEIGUANLIFunc				= (_QuerySHEBEIGUANLI)GetProcAddress(hDataBaseDll, "QuerySHEBEIGUANLI");
-	m_QueryYINGSHEBIAOFunc				= (_QueryYINGSHEBIAO)GetProcAddress(hDataBaseDll, "QueryYINGSHEBIAO");
-
+	m_AddTableFunc						= (_AddTable)GetProcAddress(hDataBaseDll, "AddTable");
 
 
 	m_AddZHIQIANSHUJUFunc				= (_AddZHIQIANSHUJU)GetProcAddress(hDataBaseDll, "AddZHIQIANSHUJU");
@@ -63,31 +50,25 @@ void CSqliteData::ReleaseInstance()
 	}
 }
 
-bool CSqliteData::QueryTable(string QuerySql, string &resultStr, string &strError)
+bool CSqliteData::QueryTable(string QuerySql, string &dataStr, string &strError)
 {
 	if (m_QueryTableFunc)
-		return m_QueryTableFunc(QuerySql, resultStr, strError);
+		return m_QueryTableFunc(QuerySql, dataStr, strError);
 	return false;
 }
 
-bool CSqliteData::QueryZHIQIANSHUJU(string QuerySql, std::vector<tagZHIQIANSHUJU> &lcArray, string &strError)
+bool CSqliteData::AddTable(char* tableName, char* dataStr, string &strError)
 {
-	if (m_QueryZHIQIANSHUJUFunc)
-		return m_QueryZHIQIANSHUJUFunc(QuerySql, lcArray, strError);
+	if (m_AddTableFunc)
+		return m_AddTableFunc(tableName, dataStr, strError);
 	return false;
 }
+
 
 bool CSqliteData::AddZHIQIANSHUJU(tagZHIQIANSHUJU data, string &strError)
 {
 	if (m_AddZHIQIANSHUJUFunc)
 		return m_AddZHIQIANSHUJUFunc(data, strError);
-	return false;
-}
-
-bool CSqliteData::QuerySHOUZHENGSHUJU(string QuerySql, std::vector<tagSHOUZHENGSHUJU> &lcArray, string &strError)
-{
-	if (m_QuerySHOUZHENGSHUJUFunc)
-		return m_QuerySHOUZHENGSHUJUFunc(QuerySql, lcArray, strError);
 	return false;
 }
 
@@ -98,24 +79,10 @@ bool CSqliteData::AddSHOUZHENGSHUJU(tagSHOUZHENGSHUJU data, string &strError)
 	return false;
 }
 
-bool CSqliteData::QueryQIANZHUSHUJU(string QuerySql, std::vector<tagQIANZHUSHUJU> &lcArray, string &strError)
-{
-	if (m_QueryQIANZHUSHUJUFunc)
-		return m_QueryQIANZHUSHUJUFunc(QuerySql, lcArray, strError);
-	return false;
-}
-
 bool CSqliteData::AddQIANZHUSHUJU(tagQIANZHUSHUJU data, string &strError)
 {
 	if (m_AddQIANZHUSHUJUFunc)
 		return m_AddQIANZHUSHUJUFunc(data, strError);
-	return false;
-}
-
-bool CSqliteData::QueryJIAOKUANSHUJU(string QuerySql, std::vector<tagJIAOKUANSHUJU> &lcArray, string &strError)
-{
-	if (m_QueryJIAOKUANSHUJUFunc)
-		return m_QueryJIAOKUANSHUJUFunc(QuerySql, lcArray, strError);
 	return false;
 }
 
@@ -126,24 +93,10 @@ bool CSqliteData::AddJIAOKUANSHUJU(tagJIAOKUANSHUJU data, string &strError)
 	return false;
 }
 
-bool CSqliteData::QueryCHAXUNSHUJU(string QuerySql, std::vector<tagCHAXUNSHUJU> &lcArray, string &strError)
-{
-	if (m_QueryCHAXUNSHUJUFunc)
-		return m_QueryCHAXUNSHUJUFunc(QuerySql, lcArray, strError);
-	return false;
-}
-
 bool CSqliteData::AddCHAXUNSHUJU(tagCHAXUNSHUJU data, string &strError)
 {
 	if (m_AddCHAXUNSHUJUFunc)
 		return m_AddCHAXUNSHUJUFunc(data, strError);
-	return false;
-}
-
-bool CSqliteData::QueryYUSHOULISHUJU(string QuerySql, std::vector<tagYUSHOULISHUJU> &lcArray, string &strError)
-{
-	if (m_QueryYUSHOULISHUJUFunc)
-		return m_QueryYUSHOULISHUJUFunc(QuerySql, lcArray, strError);
 	return false;
 }
 
@@ -154,24 +107,10 @@ bool CSqliteData::AddYUSHOULISHUJU(tagYUSHOULISHUJU data, string &strError)
 	return false;
 }
 
-bool CSqliteData::QuerySHEBEIZHUANGTAI(string QuerySql, std::vector<tagSHEBEIZHUANGTAI> &lcArray, string &strError)
-{
-	if (m_QuerySHEBEIZHUANGTAIFunc)
-		return m_QuerySHEBEIZHUANGTAIFunc(QuerySql, lcArray, strError);
-	return false;
-}
-
 bool CSqliteData::AddSHEBEIZHUANGTAI(tagSHEBEIZHUANGTAI data, string &strError)
 {
 	if (m_AddSHEBEIZHUANGTAIFunc)
 		return m_AddSHEBEIZHUANGTAIFunc(data, strError);
-	return false;
-}
-
-bool CSqliteData::QuerySHEBEIYICHANGSHUJU(string QuerySql, std::vector<tagSHEBEIYICHANGSHUJU> &lcArray, string &strError)
-{
-	if (m_QuerySHEBEIYICHANGSHUJUFunc)
-		return m_QuerySHEBEIYICHANGSHUJUFunc(QuerySql, lcArray, strError);
 	return false;
 }
 
@@ -182,24 +121,10 @@ bool CSqliteData::AddSHEBEIYICHANGSHUJU(tagSHEBEIYICHANGSHUJU data, string &strE
 	return false;
 }
 
-bool CSqliteData::QueryGUANLIYUAN(string QuerySql, std::vector<tagGUANLIYUAN> &lcArray, string &strError)
-{
-	if (m_QueryGUANLIYUANFunc)
-		return m_QueryGUANLIYUANFunc(QuerySql, lcArray, strError);
-	return false;
-}
-
 bool CSqliteData::AddGUANLIYUAN(tagGUANLIYUAN data, string &strError)
 {
 	if (m_AddGUANLIYUANFunc)
 		return m_AddGUANLIYUANFunc(data, strError);
-	return false;
-}
-
-bool CSqliteData::QueryGUANLIYUANCAOZUOJILU(string QuerySql, std::vector<tagGUANLIYUANCAOZUOJILU> &lcArray, string &strError)
-{
-	if (m_QueryGUANLIYUANCAOZUOJILUFunc)
-		return m_QueryGUANLIYUANCAOZUOJILUFunc(QuerySql, lcArray, strError);
 	return false;
 }
 
@@ -210,24 +135,10 @@ bool CSqliteData::AddGUANLIYUANCAOZUOJILU(tagGUANLIYUANCAOZUOJILU data, string &
 	return false;
 }
 
-bool CSqliteData::QuerySHEBEIGUANLI(string QuerySql, std::vector<tagSHEBEIGUANLI> &lcArray, string &strError)
-{
-	if (m_QuerySHEBEIGUANLIFunc)
-		return m_QuerySHEBEIGUANLIFunc(QuerySql, lcArray, strError);
-	return false;
-}
-
 bool CSqliteData::AddSHEBEIGUANLI(tagSHEBEIGUANLI data, string &strError)
 {
 	if (m_AddSHEBEIGUANLIFunc)
 		return m_AddSHEBEIGUANLIFunc(data, strError);
-	return false;
-}
-
-bool CSqliteData::QueryYINGSHEBIAO(string QuerySql, std::vector<tagYINGSHEBIAO> &lcArray, string &strError)
-{
-	if (m_QueryYINGSHEBIAOFunc)
-		return m_QueryYINGSHEBIAOFunc(QuerySql, lcArray, strError);
 	return false;
 }
 

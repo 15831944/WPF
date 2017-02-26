@@ -16,7 +16,7 @@
             <TreeView Grid.Column="0" Grid.IsSharedSizeScope="True" AlternationCount="2" 
                       MinHeight="100" VerticalContentAlignment="Center"
                       Background="#CFD6DC"
-                      ItemsSource="{Binding Path=deviceList}"
+                      ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=deviceList}"
                       ItemContainerStyle="{DynamicResource TreeViewItemStyle1}">
 
             </TreeView>
@@ -52,9 +52,9 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">制卡状态</TextBlock>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">插入大集中</TextBlock>
                             <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" 
-                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Path=cardstatus}" ></ComboBox>
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0"></ComboBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -100,6 +100,15 @@
                                  TimeFormatString="yyyy-MM-dd HH:mm:ss"
                                  Text="DateTime.Now"
                                  />
+                        </Grid>
+                        <Grid Grid.Row="1" ShowGridLines="False">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Center">原证件类型</TextBlock>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" 
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ></ComboBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="3">

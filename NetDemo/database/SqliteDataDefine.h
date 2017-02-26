@@ -154,6 +154,7 @@
 
 /**管理员操作记录 */
 #define T_GUANLIYUANCAOZUOJILU													"Guanliyuancaozuojilu"
+#define T_GUANLIYUANCAOZUOJILU_XUHAO											"Xuhao"
 #define T_GUANLIYUANCAOZUOJILU_YONGHUMING										"Yonghuming"
 #define T_GUANLIYUANCAOZUOJILU_RIQI												"Riqi"
 #define T_GUANLIYUANCAOZUOJILU_CAOZUOLEIBIE										"Caozuoleibie"
