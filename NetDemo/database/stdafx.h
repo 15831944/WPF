@@ -31,7 +31,9 @@ using namespace std;
 #pragma comment(lib,"../../output/database/Release/sqlite3.lib")
 #endif
 
+#include "ReadWriteLock.h"
 #include "SqliteDataDefine.h"
 #include "CommonFuntion.h"
 #include "Sqlite.h"
-extern string RIM_RTK_BSD_DB_FILE;
+extern string				RIM_RTK_BSD_DB_FILE;
+extern CReadWriteLock		g_ReadWriteLock;				//¶ÁÐ´Ëø

@@ -258,5 +258,31 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Chuangjianshijian");
             }
         }
+        private string _Shenfenzhenghao;
+        public string Shenfenzhenghao
+        {
+            get
+            {
+                return _Shenfenzhenghao;
+            }
+            set
+            {
+                _Shenfenzhenghao = value;
+                this.RaisePropertyChanged("Shenfenzhenghao");
+            }
+        }
+        private bool _Shifoucharudajizhong;
+        public bool Shifoucharudajizhong
+        {
+            get
+            {
+                return _Shifoucharudajizhong;
+            }
+            set
+            {
+                _Shifoucharudajizhong = value;
+                this.RaisePropertyChanged("Shifoucharudajizhong");
+            }
+        }
     }
 }

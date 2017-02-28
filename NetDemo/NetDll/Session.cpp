@@ -138,8 +138,17 @@ void session::receive_handler(const boost::system::error_code &ec, std::size_t b
 				{
 					if (pPackageHead->packType == PackTypeEnum_normal)
 					{
+						LPBYTE	pRealBuf	= NULL;
+						DWORD	realBufLen	= 0;
+						CZipData zipdata;
+						if (pPackageHead->bcompressed)
+							zipdata.uncompressdata(((BYTE*)pPackageHead + packHeadLen), pPackageHead->len, &pRealBuf, realBufLen);
+
+						if (pRealBuf == NULL) pRealBuf = ((BYTE*)pPackageHead + packHeadLen);
+						if (realBufLen == 0) realBufLen = pPackageHead->len;
+
 						if (m_pReceiveCallBack)
-							m_pReceiveCallBack((long)this, ((BYTE*)pPackageHead + packHeadLen), pPackageHead->len, ec.value(), ec.message().c_str());
+							m_pReceiveCallBack((long)this, pRealBuf, realBufLen, ec.value(), ec.message().c_str());
 						m_ReadBuffer.consume(packHeadLen + pPackageHead->len);	///删除数据
 					}
 					else if (pPackageHead->packType == PackTypeEnum_heart)
@@ -233,27 +242,44 @@ void session::write1500()
 
 void session::send(BYTE* SendBuf, int dataLen)
 {
-	boost::mutex::scoped_lock Lock(m_writebufMutex);
+
+	LPBYTE	pRealBuf	= NULL;
+	DWORD	realBufLen	= 0;
+
+	CZipData zipdata;
+	if (dataLen >= 0x10000)//压缩数据
+		zipdata.compressdata(SendBuf, dataLen, &pRealBuf, realBufLen);
 
 	PACKAGEHEAD packHead;
-	packHead.head1		= 0xff;
-	packHead.head2		= 0xfe;
-	packHead.packType	= PackTypeEnum_normal;
-	packHead.len		= dataLen;
+	packHead.head1				= 0xff;
+	packHead.head2				= 0xfe;
+	packHead.packType			= PackTypeEnum_normal;
+
+	if (realBufLen == 0){
+		packHead.bcompressed	= false;
+		pRealBuf				= SendBuf;
+		realBufLen				= dataLen;
+	}
+	else
+		packHead.bcompressed	= true;
+	packHead.len				= realBufLen;
+
+	boost::mutex::scoped_lock Lock(m_writebufMutex);
+
 	if (m_WriteBuffer.size() == 0)
 	{// outstanding async_write
 
-		m_WriteBuffer.prepare(dataLen + sizeof(PACKAGEHEAD));
+		m_WriteBuffer.prepare(realBufLen + sizeof(PACKAGEHEAD));
 		m_WriteBuffer.sputn((char*)&packHead, sizeof(PACKAGEHEAD));
-		m_WriteBuffer.sputn((char*)SendBuf, dataLen);
+		m_WriteBuffer.sputn((char*)pRealBuf, realBufLen);
 		write1500();
 		return;
 	}
 	else
 	{
-		m_WriteBuffer.prepare(dataLen + sizeof(PACKAGEHEAD));
+		m_WriteBuffer.prepare(realBufLen + sizeof(PACKAGEHEAD));
 		m_WriteBuffer.sputn((char*)&packHead, sizeof(PACKAGEHEAD));
-		m_WriteBuffer.sputn((char*)SendBuf, dataLen);
+		m_WriteBuffer.sputn((char*)pRealBuf, realBufLen);
 	}
 	Lock.unlock();
 }

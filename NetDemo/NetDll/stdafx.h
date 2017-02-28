@@ -18,6 +18,9 @@
 #include <tchar.h>
 //////////////////////////////////////////////////////////////////////////
 
+#include "zip.h"
+#include "unzip.h"
+
 //boost related
 
 #include <boost/thread.hpp>

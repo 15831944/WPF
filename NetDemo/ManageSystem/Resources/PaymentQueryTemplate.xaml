@@ -45,7 +45,8 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">缴款状态</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch"></TextBox>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=paymentStatusText}"
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=paymentStatus}"/>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -59,7 +60,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">业务编号</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Stretch"></TextBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=businessNumber}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="2" ShowGridLines="False">
@@ -80,7 +81,7 @@
                                  FormatString="yyyy-MM-dd HH:mm:ss"
                                  TimeFormat="Custom"
                                  TimeFormatString="yyyy-MM-dd HH:mm:ss"
-                                 Text="DateTime.Now"
+                                 Text="{Binding Path=startTime}"
                                  />
                         </Grid>
                     </Grid>
@@ -102,11 +103,11 @@
                                  FormatString="yyyy-MM-dd HH:mm:ss"
                                  TimeFormat="Custom"
                                  TimeFormatString="yyyy-MM-dd HH:mm:ss"
-                                 Text="DateTime.Now"
+                                 Text="{Binding Path=endTime}"
                                  />
                         </Grid>
                     </Grid>
-                    <Button Grid.Column="4" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" Height="50">查询</Button>
+                    <Button Grid.Column="4" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>

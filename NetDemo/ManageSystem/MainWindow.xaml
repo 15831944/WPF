@@ -5,9 +5,9 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:Local="clr-namespace:ManageSystem"
         DataContext="{StaticResource MainWindowViewModelKey}"
-        WindowStartupLocation="CenterScreen" WindowState="{Binding Path=wndState}"
+        WindowStartupLocation="CenterScreen" WindowState="{Binding Path=wndState}" BorderThickness="0"
         WindowStyle="None" AllowsTransparency="False" ResizeMode="NoResize"
-        Title="MainWindow" Height="720" Width="1280">
+        Title="MainWindow" Height="720" Width="1280" MouseRightButtonDown="Window_MouseRightButtonDown">
     <Window.InputBindings>
         <!--<MouseBinding MouseAction="LeftClick" Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>-->
     </Window.InputBindings>
@@ -45,9 +45,9 @@
             </StackPanel>
         </DockPanel>
 
-        <Grid Grid.Row="1" Margin="0,0,0,0">
+        <Grid Grid.Row="1" Margin="0,0,0,0" Background="#E9ECF4">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="80"></ColumnDefinition>
+                <ColumnDefinition Width="60"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
@@ -64,7 +64,7 @@
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <ContentControl Content="{Binding}" Grid.Row="0"    ContentTemplate="{StaticResource btn0_Template}"/>
+                <ContentControl HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding}" Grid.Row="0"    ContentTemplate="{StaticResource btn0_Template}"/>
                 <ContentControl Content="{Binding}" Grid.Row="1"    ContentTemplate="{StaticResource btn1_Template}"/>
                 <ContentControl Content="{Binding}" Grid.Row="2"    ContentTemplate="{StaticResource btn2_Template}"/>
                 <ContentControl Content="{Binding}" Grid.Row="3"    ContentTemplate="{StaticResource btn3_Template}"/>

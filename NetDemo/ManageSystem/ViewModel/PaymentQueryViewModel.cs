@@ -30,56 +30,52 @@ namespace ManageSystem.ViewModel
            {"Jiaokuanrenxingming",	        "缴款人姓名"},		
            {"Yingkoukuanheji",		        "应扣款合计"},		
            {"Jiaoyiriqi",					"交易日期"},		
+           {"Jiaofeizhuangtai",				"缴费状态"},		
+           {"Yewubianhao",					"业务编号"},		
         };
         public DelegateCommand<object>                  QueryCommand { get; set; }
 
-        private Visibility _bShowPage;
-        public Visibility bShowPage
+        private string _paymentStatusText;
+        public string paymentStatusText
         {
-            get { return _bShowPage; }
+            get { return _paymentStatusText; }
             set
             {
-                _bShowPage = value;
-                this.RaisePropertyChanged("bShowPage");
+                _paymentStatusText = value;
+                this.RaisePropertyChanged("paymentStatusText");
             }
         }
 
-        private ObservableCollection<string> _itemList;
-        public ObservableCollection<string> itemList
+        private string _businessNumber;
+        public string businessNumber
         {
-            get { return _itemList; }
+            get { return _businessNumber; }
             set
             {
-                _itemList = value;
-                this.RaisePropertyChanged("itemList");
+                _businessNumber = value;
+                this.RaisePropertyChanged("businessNumber");
             }
         }
 
-        private ObservableCollection<string> _businesstype;
-        public ObservableCollection<string> businesstype
+        private string _startTime;
+        public string startTime
         {
-            get
-            {
-                return _businesstype;
-            }
+            get { return _startTime; }
             set
             {
-                _businesstype = value;
-                this.RaisePropertyChanged("businesstype");
+                _startTime = value;
+                this.RaisePropertyChanged("startTime");
             }
         }
 
-        private ObservableCollection<string> _cardstatus;
-        public ObservableCollection<string> cardstatus
+        private string _endTime;
+        public string endTime
         {
-            get
-            {
-                return _cardstatus;
-            }
+            get { return _endTime; }
             set
             {
-                _cardstatus = value;
-                this.RaisePropertyChanged("cardstatus");
+                _endTime = value;
+                this.RaisePropertyChanged("endTime");
             }
         }
 
@@ -101,22 +97,10 @@ namespace ManageSystem.ViewModel
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
             QueryCommand                                = new DelegateCommand<object>(new Action<object>(this.Query));
-
-            _bShowPage                                  = Visibility.Visible;
-            _cardstatus                                 = new ObservableCollection<string>();
-            _businesstype                               = new ObservableCollection<string>();
             _tableList                                  = new ObservableCollection<JIAOKUANSHUJUModel>();
-            {
-                _cardstatus.Add("全部");
-                _cardstatus.Add("成功");
-                _cardstatus.Add("失败");
-                _cardstatus.Add("异常");
-            }
-            {
-                _businesstype.Add("全部");
-                _businesstype.Add("本地");
-                _businesstype.Add("异地");
-            }
+
+            startTime                                   = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
+            endTime                                     = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
         }
 
         //Access and update columns during autogeneration
@@ -173,6 +157,7 @@ namespace ManageSystem.ViewModel
                                         case "Zhengjianleixing":
                                         case "Xingbie":
                                         case "Yewuleixing":
+                                        case "Jiaofeizhuangtai":
                                             if (MainWindowViewModel._yingshelList.Keys.Contains(Convert.ToInt32(keyvalue[1])))
                                                 item.SetValue(model, MainWindowViewModel._yingshelList[Convert.ToInt32(keyvalue[1])], null);
                                             break;
@@ -209,7 +194,76 @@ namespace ManageSystem.ViewModel
         public void Query(object obj)
         {
             tableList.Clear();
-            WorkServer.GetInstance().QueryTable("select * from Jiaokuanshuju", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.GetInstance().QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+        }
+        string MakeQuerySql(object obj)
+        {
+            string str = "select * from Jiaokuanshuju where Xuhao>=-1";
+
+            MainWindowViewModel mainwindowviewmodel = obj as MainWindowViewModel;
+
+            foreach (DeviceModel model0 in mainwindowviewmodel.deviceList)
+            {
+                if (model0.isSel)
+                {
+                    foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                    {
+                        if (kvp0.Value == model0.text)
+                            str += " and Jiaokuanshuju.[Chengshibianhao]=" + kvp0.Key.ToString();
+                    }
+                }
+
+                foreach (DeviceModel model1 in model0.Children)
+                {
+                    if (model1.isSel)
+                    {
+                        foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                        {
+                            if (kvp0.Value == model1.text)
+                                str += " and Jiaokuanshuju.[Jubianhao]=" + kvp0.Key.ToString();
+                        }
+                    }
+
+                    foreach (DeviceModel model2 in model1.Children)
+                    {
+                        if (model2.isSel)
+                        {
+                            foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                            {
+                                if (kvp0.Value == model2.text)
+                                    str += " and Jiaokuanshuju.[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+                            }
+                        }
+                        foreach (DeviceModel model3 in model2.Children)
+                        {
+                            if (model3.isSel)
+                            {
+                                str += " and Jiaokuanshuju.[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(model3.text)));
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (paymentStatusText != null && paymentStatusText.Length != 0 && paymentStatusText != "全部")
+            {
+                foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                {
+                    if (kvp0.Value == paymentStatusText)
+                    {
+                        str += " and Jiaokuanshuju.[Jiaofeizhuangtai]=" + kvp0.Key.ToString();
+                        break;
+                    }
+                }
+            }
+            if (businessNumber != null && businessNumber.Length != 0)
+                str += " and Jiaokuanshuju.[Yewubianhao]=" + businessNumber;
+            if (startTime != null && startTime.Length != 0)
+                str += " and Jiaokuanshuju.[Riqi]>" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
+            if (endTime != null && endTime.Length != 0)
+                str += " and Jiaokuanshuju.[Riqi]<" + Common.ConvertDateTimeInt(DateTime.Parse(endTime));
+
+            return str;
         }
     }
 }

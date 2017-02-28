@@ -20,6 +20,7 @@ namespace ManageSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        int rbuttonclick = 0;
         AddDataWindow addwnd = new AddDataWindow();
         MainWindowViewModel  mainModel;
         int  _i = 0;
@@ -40,7 +41,6 @@ namespace ManageSystem
         {
             addwnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
             addwnd.Owner = this;
-            //addwnd.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -51,6 +51,14 @@ namespace ManageSystem
         private void _subListViewTouch_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
 
+        }
+
+        private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if(rbuttonclick >= 20)
+                addwnd.Show();
+            else
+                rbuttonclick++;
         }
 
     }

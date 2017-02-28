@@ -262,6 +262,28 @@
   <ItemGroup>
     <Resource Include="Resources\imgs\还原.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\imgs\制签异常统计-选中.png" />
+    <Resource Include="Resources\imgs\制签异常统计.png" />
+    <Resource Include="Resources\imgs\制签统计-选中.png" />
+    <Resource Include="Resources\imgs\制签统计.png" />
+    <Resource Include="Resources\imgs\制签记录查询-选中.png" />
+    <Resource Include="Resources\imgs\制签记录查询.png" />
+    <Resource Include="Resources\imgs\收证记录查询-选中.png" />
+    <Resource Include="Resources\imgs\收证记录查询.png" />
+    <Resource Include="Resources\imgs\查询记录查询-选中.png" />
+    <Resource Include="Resources\imgs\查询记录查询.png" />
+    <Resource Include="Resources\imgs\汇总统计-选中.png" />
+    <Resource Include="Resources\imgs\汇总统计.png" />
+    <Resource Include="Resources\imgs\签注记录查询-选中.png" />
+    <Resource Include="Resources\imgs\签注记录查询.png" />
+    <Resource Include="Resources\imgs\缴款记录查询-选中.png" />
+    <Resource Include="Resources\imgs\缴款记录查询.png" />
+    <Resource Include="Resources\imgs\预受理记录查询-选中.png" />
+    <Resource Include="Resources\imgs\预受理记录查询.png" />
+    <Resource Include="Resources\imgs\首页-选中.png" />
+    <Resource Include="Resources\imgs\首页.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

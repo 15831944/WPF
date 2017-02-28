@@ -16,6 +16,7 @@ typedef struct tagPACKAGEHEAD
 	BYTE											head1;			//0xff
 	BYTE											head2;			//0xfe
 	BYTE											packType;		//包类型
+	bool											bcompressed;	//是否压缩
 	INT												len;			//包长度
 }PACKAGEHEAD;
 

@@ -174,7 +174,33 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private ObservableCollection<string> _certificateType;
+        public ObservableCollection<string> certificateType
+        {
+            get
+            {
+                return _certificateType;
+            }
+            set
+            {
+                _certificateType = value;
+                this.RaisePropertyChanged("certificateType");
+            }
+        }
 
+        private ObservableCollection<string> _paymentStatus;
+        public ObservableCollection<string> paymentStatus
+        {
+            get
+            {
+                return _paymentStatus;
+            }
+            set
+            {
+                _paymentStatus = value;
+                this.RaisePropertyChanged("paymentStatus");
+            }
+        }
         private PageVisibleEnum _bShowPage;
         public PageVisibleEnum bShowPage
         {
@@ -243,10 +269,12 @@ namespace ManageSystem.ViewModel
 
             _deviceList                                 = new ObservableCollection<DeviceModel>();
             _cardstatus                                 = new ObservableCollection<string>();
+            _certificateType                            = new ObservableCollection<string>();
+            _paymentStatus                              = new ObservableCollection<string>();
             _businesstype                               = new ObservableCollection<string>();
 
             _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_SignQuery;
-            _titleheight                                = 18;
+            _titleheight                                = 25;
 
             QueryYingshebiao(null);
             QueryShebeiguanli(null);
@@ -372,19 +400,36 @@ namespace ManageSystem.ViewModel
         {
             _queryoperate = QueryOperate.QueryOperate_YingSheTable;
             _yingshelList.Clear();
+            cardstatus.Clear();
+            businesstype.Clear();
+            certificateType.Clear();
+            paymentStatus.Clear();
             WorkServer.GetInstance().QueryTable("select * from Yingshebiao", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
 
-
+            cardstatus.Add("全部");
+            businesstype.Add("全部");
+            certificateType.Add("全部");
+            paymentStatus.Add("全部");
             foreach(KeyValuePair<int, string> kvp0 in _yingshelList)
             {
-                if(kvp0.Key > 7000 && kvp0.Key < 8000)
+                if(kvp0.Key >= 7000 && kvp0.Key < 8000)
                 {
                     cardstatus.Add(kvp0.Value);
                 }
 
-                if (kvp0.Key > 4000 && kvp0.Key < 5000)
+                if (kvp0.Key >= 4000 && kvp0.Key < 5000)
                 {
                     businesstype.Add(kvp0.Value);
+                }
+
+                if (kvp0.Key >= 9000 && kvp0.Key < 9011)
+                {
+                    certificateType.Add(kvp0.Value);
+                }
+
+                if (kvp0.Key >= 10000 && kvp0.Key < 10011)
+                {
+                    paymentStatus.Add(kvp0.Value);
                 }
             }
         }

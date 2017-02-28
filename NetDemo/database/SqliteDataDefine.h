@@ -64,6 +64,9 @@
 #define T_QIANZHUSHUJU_LIANXIDIANHUA											"Lianxidianhua"
 #define T_QIANZHUSHUJU_YEWULEIXING												"Yewuleixing"
 #define T_QIANZHUSHUJU_SHOULIREN												"Shouliren"
+#define T_QIANZHUSHUJU_ZHENGJIANLEIXING											"Zhengjianleixing"
+#define T_QIANZHUSHUJU_YEWUBIANHAO												"Yewubianhao"
+#define T_QIANZHUSHUJU_SHIFOUCHARUDAJIZHONG										"Shifoucharudajizhong"
 
 /**缴款详细数据 */
 #define T_JIAOKUANSHUJU															"Jiaokuanshuju"
@@ -80,6 +83,8 @@
 #define T_JIAOKUANSHUJU_JIAOKUANRENXINGMING										"Jiaokuanrenxingming"
 #define T_JIAOKUANSHUJU_YINGKOUKUANHEJI											"Yingkoukuanheji"
 #define T_JIAOKUANSHUJU_JIAOYIRIQI												"Jiaoyiriqi"
+#define T_JIAOKUANSHUJU_JIAOFEIZHUANGTAI										"Jiaofeizhuangtai"
+#define T_JIAOKUANSHUJU_YEWUBIANHAO												"Yewubianhao"
 
 /**查询详细数据 */
 #define T_CHAXUNSHUJU															"Chaxunshuju"
@@ -116,6 +121,8 @@
 #define T_YUSHOULISHUJU_HUKOUSUOZAIDI											"Hukousuozaidi"
 #define T_YUSHOULISHUJU_MINZU													"Minzu"
 #define T_YUSHOULISHUJU_CHUANGJIANSHIJIAN										"Chuangjianshijian"
+#define T_YUSHOULISHUJU_SHENFENZHENGHAO											"Shenfenzhenghao"
+#define T_YUSHOULISHUJU_SHIFOUCHARUDAJIZHONG									"Shifoucharudajizhong"
 
 /**自助设备状态 */
 #define T_SHEBEIZHUANGTAI														"Shebeizhuangtai"
@@ -130,7 +137,7 @@
 #define T_SHEBEIZHUANGTAI_SHIFOUZAIXIAN											"Shifouzaixian"
 
 /**自助设备异常详细数据 */
-#define T_SHEBEIYICHANGSHUJU													"Shebeizhuangtai"
+#define T_SHEBEIYICHANGSHUJU													"Shebeiyichangshuju"
 #define T_SHEBEIYICHANGSHUJU_XUHAO												"Xuhao"
 #define T_SHEBEIYICHANGSHUJU_CHENGSHIBIANHAO									"Chengshibianhao"
 #define T_SHEBEIYICHANGSHUJU_JUBIANHAO											"Jubianhao"
@@ -139,6 +146,7 @@
 #define T_SHEBEIYICHANGSHUJU_BENDIYEWU											"Bendiyewu"
 #define T_SHEBEIYICHANGSHUJU_SHEBEIBAIFANGWEIZHI								"Shebeibaifangweizhi"
 #define T_SHEBEIYICHANGSHUJU_RIQI												"Riqi"
+#define T_SHEBEIYICHANGSHUJU_YICHANGLEIXING										"Yichangleixing"
 #define T_SHEBEIYICHANGSHUJU_YICHANGSHEJIMOKUAI									"Yichangshejimokuai"
 #define T_SHEBEIYICHANGSHUJU_YICHANGYUANYIN										"Yichangyuanyin"
 #define T_SHEBEIYICHANGSHUJU_YICHANGXIANGXINEIRONG								"Yichangxiangxineirong"
@@ -320,6 +328,9 @@ public:
 	string						Lianxidianhua;			//联系电话				
 	int							Yewuleixing;			//业务类型				
 	string						Shouliren;				//受理人				
+	int							Zhengjianleixing;		//证件类型			
+	string						Yewubianhao;			//业务编号			
+	int							Shifoucharudajizhong;	//是否插入大集中				
 }QIANZHUSHUJU, *LPQIANZHUSHUJU;
 /**
 * @class  tagJIAOKUANSHUJU
@@ -360,6 +371,8 @@ public:
 	string						Jiaokuanrenxingming;		//缴款人姓名		
 	float						Yingkoukuanheji;			//应扣款合计		
 	__int64						Jiaoyiriqi;					//交易日期		
+	int							Jiaofeizhuangtai;			//缴费状态		
+	string						Yewubianhao;				//业务编号		
 
 }JIAOKUANSHUJU, *LPJIAOKUANSHUJU;
 /**
@@ -450,6 +463,8 @@ public:
 	string	  					Hukousuozaidi;				//户口所在地
 	string	  					Minzu;						//民族
 	__int64  					Chuangjianshijian;			//创建时间
+	string  					Shenfenzhenghao;			//身份证号
+	int  						Shifoucharudajizhong;		//是否插入大集中
 
 }YUSHOULISHUJU, *LPYUSHOULISHUJU;
 /**
@@ -517,6 +532,7 @@ public:
 	bool	  					Bendiyewu;				//是否本地业务		
 	int							Shebeibaifangweizhi;	//设备摆放位置
 	__int64						Riqi;					//日期
+	int							Yichangleixing;			//异常类型		
 	string						Yichangshejimokuai;		//异常涉及模块		
 	string						Yichangyuanyin;			//异常原因			
 	string						Yichangxiangxineirong;	//异常详细内容		

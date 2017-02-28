@@ -33,84 +33,145 @@
         </HierarchicalDataTemplate.Triggers>
     </HierarchicalDataTemplate>
     <DataTemplate x:Key="btn0_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=HomePageCommand}">首页</Button>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_Home}">
-                <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=HomePageCommand}" ToolTip="首页">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/首页.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_Home}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/首页-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+       
     </DataTemplate>
     <DataTemplate x:Key="btn1_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SummaryStatCommand}">汇总统计11</Button>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SummaryStat}">
-                <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SummaryStatCommand}" ToolTip="汇总统计">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SummaryStat}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/汇总统计-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </DataTemplate>
     <DataTemplate x:Key="btn2_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SignStatCommand}">制签统计</Button>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignStat}">
-                <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SignStatCommand}" ToolTip="制签统计">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/制签统计.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignStat}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/制签统计-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </DataTemplate>
     <DataTemplate x:Key="btn3_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SignAnomalyStatCommand}">制签异常统计</Button>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignAnomalyStat}">
-                <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SignAnomalyStatCommand}" ToolTip="制签异常统计">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/制签异常统计.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignAnomalyStat}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/制签异常统计-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </DataTemplate>
     <DataTemplate x:Key="btn4_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SignQueryCommand}">制签记录查询</Button>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignQuery}">
-                <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=SignQueryCommand}" ToolTip="制签记录查询">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/制签记录查询.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/制签记录查询-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </DataTemplate>
     <DataTemplate x:Key="btn5_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=CardQueryCommand}">收证记录查询</Button>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_CardQuery}">
-                <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=CardQueryCommand}" ToolTip="收证记录查询">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/收证记录查询.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_CardQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/收证记录查询-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </DataTemplate>
     <DataTemplate x:Key="btn6_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=EndorsementQueryCommand}">签注记录查询</Button>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_EndorsementQuery}">
-                <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=EndorsementQueryCommand}" ToolTip="签注记录查询">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/签注记录查询.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_EndorsementQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/签注记录查询-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </DataTemplate>
     <DataTemplate x:Key="btn7_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=PaymentQueryCommand}">缴款记录查询</Button>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_PaymentQuery}">
-                <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=PaymentQueryCommand}" ToolTip="缴款记录查询">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/缴款记录查询.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_PaymentQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/缴款记录查询-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </DataTemplate>
     <DataTemplate x:Key="btn8_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=QueryQueryCommand}">查询记录查询</Button>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_QueryQuery}">
-                <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=QueryQueryCommand}" ToolTip="查询记录查询">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/查询记录查询.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_QueryQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/查询记录查询-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </DataTemplate>
     <DataTemplate x:Key="btn9_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
-        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=PreAcceptQueryCommand}">预受理记录查询</Button>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_PreAcceptQuery}">
-                <Setter Property="Foreground" TargetName="btn" Value="Red"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=PreAcceptQueryCommand}" ToolTip="预受理记录查询">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/预受理记录查询.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_PreAcceptQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/预受理记录查询-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </DataTemplate>
 
     <DataTemplate x:Key="DataGridColumCell0" DataType="{x:Type Model:ZHIQIANSHUJUModel}">

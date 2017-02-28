@@ -183,6 +183,32 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Jiaoyiriqi");
             }
         }
-      
+
+        private string _Jiaofeizhuangtai;
+        public string Jiaofeizhuangtai
+        {
+            get
+            {
+                return _Jiaofeizhuangtai;
+            }
+            set
+            {
+                _Jiaofeizhuangtai = value;
+                this.RaisePropertyChanged("Jiaofeizhuangtai");
+            }
+        }
+        private string _Yewubianhao;
+        public string Yewubianhao
+        {
+            get
+            {
+                return _Yewubianhao;
+            }
+            set
+            {
+                _Yewubianhao = value;
+                this.RaisePropertyChanged("Yewubianhao");
+            }
+        }
     }
 }

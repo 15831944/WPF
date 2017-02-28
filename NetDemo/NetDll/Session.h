@@ -2,6 +2,59 @@
 #include "Common.h"
 #include "NetDll.h"
 
+class CZipData
+{
+public:
+	CZipData()
+	{
+		hz				= NULL;
+		m_pundatabuf	= NULL;
+	}
+	~CZipData()
+	{
+		clear();
+	}
+	HZIP	hz;
+	LPBYTE  m_pundatabuf;
+	void compressdata(LPBYTE pSrcBuf, int srcLen, LPBYTE* ppDesBuf, ULONG& desLen)
+	{
+		clear();
+
+		*ppDesBuf = NULL; desLen = 0;
+		if (hz = CreateZip(NULL, srcLen, ""))
+		{
+			if (ZR_OK == ZipAdd(hz, _T("session"), pSrcBuf, srcLen))
+			{
+				ZipGetMemory(hz, (void**)ppDesBuf, &desLen);
+			}
+		}
+	}
+
+	void uncompressdata(LPBYTE pSrcBuf, int srcLen, LPBYTE* ppDesBuf, ULONG& desLen)
+	{
+		clear();
+
+		*ppDesBuf = NULL; desLen = 0;
+		if (hz = OpenZip(pSrcBuf, srcLen, "")){
+			ZIPENTRY ze ={ 0 };
+			if (ZR_OK == GetZipItem(hz, 0, &ze))
+			{
+				m_pundatabuf = new BYTE[ze.unc_size];
+				if (ZR_OK == UnzipItem(hz, 0, m_pundatabuf, ze.unc_size)){
+					*ppDesBuf	= m_pundatabuf;
+					desLen		= ze.unc_size;
+				}
+			}
+		}
+	}
+
+	void clear()
+	{
+		if (m_pundatabuf != NULL)	{ delete[] m_pundatabuf;	m_pundatabuf = NULL; }
+		if (hz != NULL)	{ CloseZip(hz);	hz = NULL; }
+	}
+};
+
 class session : public boost::enable_shared_from_this<session>
 {
 public:

@@ -1,6 +1,4 @@
-﻿using ManageSystem.Model;
-using ManageSystem.Server;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
@@ -11,6 +9,9 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+
+using ManageSystem.Model;
+using ManageSystem.Server;
 
 namespace ManageSystem.ViewModel
 {
@@ -278,7 +279,7 @@ namespace ManageSystem.ViewModel
                 str += " and zhiqianshuju.[Riqi]>" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
             if (endTime != null && endTime.Length != 0)
                 str += " and zhiqianshuju.[Riqi]<" + Common.ConvertDateTimeInt(DateTime.Parse(endTime));
-            if (cardStatuText != null && cardStatuText.Length != 0)
+            if (cardStatuText != null && cardStatuText.Length != 0 && cardStatuText != "全部")
             {
                 foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                 {
@@ -290,7 +291,7 @@ namespace ManageSystem.ViewModel
                 }
             }
 
-            if (businessTypeText != null && businessTypeText.Length != 0)
+            if (businessTypeText != null && businessTypeText.Length != 0 && businessTypeText != "全部")
             {
                 if(businessTypeText == "本地业务")
                     str += " and zhiqianshuju.[Bendiyewu]=" + "1";

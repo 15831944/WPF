@@ -100,6 +100,7 @@ xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configur
     <ClInclude Include="CommonFuntion.h" />
     <ClInclude Include="database.h" />
     <ClInclude Include="Function.h" />
+    <ClInclude Include="ReadWriteLock.h" />
     <ClInclude Include="Sqlite.h" />
     <ClInclude Include="SqliteDataDefine.h" />
     <ClInclude Include="stdafx.h" />

@@ -119,6 +119,20 @@ namespace ManageSystem.Model
             }
         }
 
+        private string _Yichangleixing;
+        public string Yichangleixing
+        {
+            get
+            {
+                return _Yichangleixing;
+            }
+            set
+            {
+                _Yichangleixing = value;
+                this.RaisePropertyChanged("Yichangleixing");
+            }
+        }
+
         private string _Yichangshejimokuai;
         public string Yichangshejimokuai
         {

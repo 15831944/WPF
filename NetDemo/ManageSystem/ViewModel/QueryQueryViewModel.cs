@@ -32,53 +32,47 @@ namespace ManageSystem.ViewModel
         };
         public DelegateCommand<object>                  QueryCommand { get; set; }
 
-        private Visibility _bShowPage;
-        public Visibility bShowPage
+        private string _queryNumber;
+        public string queryNumber
         {
-            get { return _bShowPage; }
+            get { return _queryNumber; }
             set
             {
-                _bShowPage = value;
-                this.RaisePropertyChanged("bShowPage");
+                _queryNumber = value;
+                this.RaisePropertyChanged("queryNumber");
             }
         }
 
-        private ObservableCollection<string> _itemList;
-        public ObservableCollection<string> itemList
+        private string _startTime;
+        public string startTime
         {
-            get { return _itemList; }
+            get { return _startTime; }
             set
             {
-                _itemList = value;
-                this.RaisePropertyChanged("itemList");
+                _startTime = value;
+                this.RaisePropertyChanged("startTime");
             }
         }
 
-        private ObservableCollection<string> _businesstype;
-        public ObservableCollection<string> businesstype
+        private string _endTime;
+        public string endTime
         {
-            get
-            {
-                return _businesstype;
-            }
+            get { return _endTime; }
             set
             {
-                _businesstype = value;
-                this.RaisePropertyChanged("businesstype");
+                _endTime = value;
+                this.RaisePropertyChanged("endTime");
             }
         }
 
-        private ObservableCollection<string> _cardstatus;
-        public ObservableCollection<string> cardstatus
+        private string _queryStatuText;
+        public string queryStatuText
         {
-            get
-            {
-                return _cardstatus;
-            }
+            get { return _queryStatuText; }
             set
             {
-                _cardstatus = value;
-                this.RaisePropertyChanged("cardstatus");
+                _queryStatuText = value;
+                this.RaisePropertyChanged("queryStatuText");
             }
         }
 
@@ -100,22 +94,10 @@ namespace ManageSystem.ViewModel
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
             QueryCommand                                = new DelegateCommand<object>(new Action<object>(this.Query));
-
-            _bShowPage                                  = Visibility.Visible;
-            _cardstatus                                 = new ObservableCollection<string>();
-            _businesstype                               = new ObservableCollection<string>();
             _tableList                                  = new ObservableCollection<CHAXUNSHUJUModel>();
-            {
-                _cardstatus.Add("全部");
-                _cardstatus.Add("成功");
-                _cardstatus.Add("失败");
-                _cardstatus.Add("异常");
-            }
-            {
-                _businesstype.Add("全部");
-                _businesstype.Add("本地");
-                _businesstype.Add("异地");
-            }
+
+            startTime                                   = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
+            endTime                                     = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
         }
 
         //Access and update columns during autogeneration
@@ -209,7 +191,73 @@ namespace ManageSystem.ViewModel
         public void Query(object obj)
         {
             tableList.Clear();
-            WorkServer.GetInstance().QueryTable("select * from Chaxunshuju", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.GetInstance().QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+        }
+
+        string MakeQuerySql(object obj)
+        {
+            string str = "select * from Chaxunshuju where Xuhao>=-1";
+
+            MainWindowViewModel mainwindowviewmodel = obj as MainWindowViewModel;
+
+            foreach (DeviceModel model0 in mainwindowviewmodel.deviceList)
+            {
+                if (model0.isSel)
+                {
+                    foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                    {
+                        if (kvp0.Value == model0.text)
+                            str += " and Chaxunshuju.[Chengshibianhao]=" + kvp0.Key.ToString();
+                    }
+                }
+
+                foreach (DeviceModel model1 in model0.Children)
+                {
+                    if (model1.isSel)
+                    {
+                        foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                        {
+                            if (kvp0.Value == model1.text)
+                                str += " and Chaxunshuju.[Jubianhao]=" + kvp0.Key.ToString();
+                        }
+                    }
+
+                    foreach (DeviceModel model2 in model1.Children)
+                    {
+                        if (model2.isSel)
+                        {
+                            foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                            {
+                                if (kvp0.Value == model2.text)
+                                    str += " and Chaxunshuju.[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+                            }
+                        }
+                        foreach (DeviceModel model3 in model2.Children)
+                        {
+                            if (model3.isSel)
+                            {
+                                str += " and Chaxunshuju.[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(model3.text)));
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (queryNumber!=null && queryNumber.Length != 0)
+                str += " and Chaxunshuju.[Chaxunhaoma]=" + queryNumber;
+            if (startTime != null && startTime.Length != 0)
+                str += " and Chaxunshuju.[Riqi]>" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
+            if (endTime != null && endTime.Length != 0)
+                str += " and Chaxunshuju.[Riqi]<" + Common.ConvertDateTimeInt(DateTime.Parse(endTime));
+            if (queryStatuText != null && queryStatuText.Length != 0 && queryStatuText != "全部")
+            {
+                if (queryStatuText == "成功")
+                    str += " and Chaxunshuju.[Shifouchaxunchenggong]=" + "1";
+                else
+                    str += " and Chaxunshuju.[Shifouchaxunchenggong]=" + "0";
+            }
+
+            return str;
         }
     }
 }

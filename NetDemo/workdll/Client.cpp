@@ -1,5 +1,3 @@
-m_bCmdFinished
-m_bCmdFinished
 #include "stdafx.h"
 #include "Client.h"
 

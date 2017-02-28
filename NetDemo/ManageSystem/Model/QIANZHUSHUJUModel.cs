@@ -217,5 +217,44 @@ namespace ManageSystem.Model
             }
         }
 
+        private string _Zhengjianleixing;
+        public string Zhengjianleixing
+        {
+            get
+            {
+                return _Zhengjianleixing;
+            }
+            set
+            {
+                _Zhengjianleixing = value;
+                this.RaisePropertyChanged("Zhengjianleixing");
+            }
+        }
+        private string _Yewubianhao;
+        public string Yewubianhao
+        {
+            get
+            {
+                return _Yewubianhao;
+            }
+            set
+            {
+                _Yewubianhao = value;
+                this.RaisePropertyChanged("Yewubianhao");
+            }
+        }
+        private bool _Shifoucharudajizhong;
+        public bool Shifoucharudajizhong
+        {
+            get
+            {
+                return _Shifoucharudajizhong;
+            }
+            set
+            {
+                _Shifoucharudajizhong = value;
+                this.RaisePropertyChanged("Shifoucharudajizhong");
+            }
+        }
     }
 }
