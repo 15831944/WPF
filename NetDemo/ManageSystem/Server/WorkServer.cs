@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -11,84 +12,27 @@ namespace ManageSystem.Server
 
     public sealed class WorkServer
     {
-        private static readonly WorkServer instance = new WorkServer();
-
-        private WorkServer()
-        {
-        }
-
-        public static WorkServer GetInstance()
-        {
-            return instance;
-        }
-
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "startServer")]
-        private static extern bool _startServer(string ip, int port);
+        private static extern bool startServer(string ip, int port);
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "stopServer")]
-        private static extern bool _stopServer();
+        private static extern bool stopServer();
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "isServerStoped")]
-        private static extern bool _isServerStoped();
+        private static extern bool isServerStoped();
 
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "startClient")]
-        private static extern bool _startClient(string ip, int port);
+        private static extern bool startClient(string ip, int port);
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "stopClient")]
-        private static extern bool _stopClient();
+        private static extern bool stopClient();
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "isClientStoped")]
-        private static extern bool _isClientStoped();
+        private static extern bool isClientStoped();
 
-        [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryTable")]
-        private static extern bool _queryTable(string querySqlStr, IntPtr callback);
- 
-        /// <summary>
-        /// Server
-        /// </summary>
-        /// <param name="ip"></param>
-        /// <param name="port"></param>
-        /// <returns></returns>
-        /// <summary>
-        /// Server
-        /// </summary>
-        /// <param name="ip"></param>
-        /// <param name="port"></param>
-        /// <returns></returns>
-        public bool startServer(string ip, int port)
-        {
-        	return _startServer(ip, port);
-        }
-        
-        public bool stopServer()
-        {
-        	return _stopServer();
-        }
-        public bool isServerStoped()
-        {
-        	return _isServerStoped();
-        }
-        
-        /// <summary>
-        /// Client
-        /// </summary>
-        /// <param name="ip"></param>
-        /// <param name="port"></param>
-        /// <returns></returns>
-        public bool startClient(string ip, int port)
-        {
-        	return _startClient(ip, port);
-        }
-        
-        public bool stopClient()
-        {
-        	return _stopClient();
-        }
-        
-        public bool isClientStoped()
-        {
-        	return _isClientStoped();
-        }
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi,  CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryTable")]
+        private static extern bool queryTable(string querySqlStr, IntPtr callback);
 
-        public void QueryTable(string querySqlStr, IntPtr callback)
-        {
-            _queryTable(querySqlStr, callback);
-        } 
+        public static bool QueryTable(string querySqlStr, IntPtr callback)
+        {//可以避免 直接绑定到Command上面 导致axml找不到模块
+           return (bool)typeof(WorkServer).InvokeMember("queryTable",
+          BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.InvokeMethod, null, null, new object[] {querySqlStr, callback});
+        }
     }
 }

@@ -32,13 +32,13 @@
                             </Path.RenderTransform>
                         </Path>--><!--
                     </Border>-->
-                    <TextBlock FontSize="12" Background="Green" Text="+"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Foreground="Red" x:Name="ExpandImg"></TextBlock>
+                    <TextBlock FontSize="12" Background="{StaticResource +Brush}"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"  Foreground="Red" x:Name="ExpandImg"></TextBlock>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Text" TargetName="ExpandImg" Value="-"/>
+                            <Setter Property="Background" TargetName="ExpandImg" Value="{StaticResource -Brush}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="False">
-                            <Setter Property="Text" TargetName="ExpandImg" Value="+"/>
+                            <Setter Property="Background" TargetName="ExpandImg" Value="{StaticResource +Brush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

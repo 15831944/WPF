@@ -174,81 +174,22 @@
         </Button>
     </DataTemplate>
 
+    <DataTemplate x:Key="btn10_Template" DataType="{x:Type viewModel:MainWindowViewModel}">
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=WebBrowserCommand}" ToolTip="预受理记录查询">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/预受理记录查询.png" />
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_WebBrowser}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/预受理记录查询-选中.png"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </DataTemplate>
+    
     <DataTemplate x:Key="DataGridColumCell0" DataType="{x:Type Model:ZHIQIANSHUJUModel}">
         <TextBlock Background="Transparent" Text="{Binding}"/>
     </DataTemplate>
-    
-    <DataTemplate DataType="{x:Type viewModel:HomePageViewModel}">
-        <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="25"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-            <Grid Grid.Row="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">本月设备故障数量</Button>
-                <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">本月办理业务数量</Button>
-                <Button Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">往来港澳通行证数量</Button>
-            </Grid>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center">设备在线数量</Button>
-                <Button Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">平台管理次数</Button>
-                <Button Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">往来台湾通行证数量</Button>
-            </Grid>
-            <Grid Grid.Row="2" Background="Red"></Grid>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_Home}">
-                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModel:SummaryStatModel}">
-        <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Border Background="Black">
-
-            </Border>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SummaryStat}">
-                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-
-    <DataTemplate DataType="{x:Type viewModel:SignStatViewModel}">
-        <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Border Background="Blue">
-
-            </Border>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignStat}">
-                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-    <DataTemplate DataType="{x:Type viewModel:SignAnomalyStatViewModel}">
-        <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Border Background="Green">
-
-            </Border>
-        </Grid>
-        <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignAnomalyStat}">
-                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
-            </DataTrigger>
-        </DataTemplate.Triggers>
-    </DataTemplate>
-   
 </ResourceDictionary>

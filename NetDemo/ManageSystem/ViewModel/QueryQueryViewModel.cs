@@ -191,16 +191,14 @@ namespace ManageSystem.ViewModel
         public void Query(object obj)
         {
             tableList.Clear();
-            WorkServer.GetInstance().QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
         }
 
         string MakeQuerySql(object obj)
         {
             string str = "select * from Chaxunshuju where Xuhao>=-1";
 
-            MainWindowViewModel mainwindowviewmodel = obj as MainWindowViewModel;
-
-            foreach (DeviceModel model0 in mainwindowviewmodel.deviceList)
+            foreach (DeviceModel model0 in MainWindowViewModel._deviceList)
             {
                 if (model0.isSel)
                 {
@@ -246,9 +244,9 @@ namespace ManageSystem.ViewModel
             if (queryNumber!=null && queryNumber.Length != 0)
                 str += " and Chaxunshuju.[Chaxunhaoma]=" + queryNumber;
             if (startTime != null && startTime.Length != 0)
-                str += " and Chaxunshuju.[Riqi]>" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
+                str += " and Chaxunshuju.[Riqi]>=" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
             if (endTime != null && endTime.Length != 0)
-                str += " and Chaxunshuju.[Riqi]<" + Common.ConvertDateTimeInt(DateTime.Parse(endTime));
+                str += " and Chaxunshuju.[Riqi]<=" + Common.ConvertDateTimeInt(DateTime.Parse(endTime));
             if (queryStatuText != null && queryStatuText.Length != 0 && queryStatuText != "全部")
             {
                 if (queryStatuText == "成功")

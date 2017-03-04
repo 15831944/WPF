@@ -21,7 +21,7 @@
 
             </TreeView>
             <GridSplitter Width="1"></GridSplitter>
-            <Grid Grid.Column="1" ShowGridLines="True">
+            <Grid Grid.Column="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
                     <RowDefinition/>
@@ -84,12 +84,12 @@
                                       VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=businesstype}"  Text="{Binding Path=businessTypeText}"></ComboBox>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Column="2" ShowGridLines="False">
+                    <Grid Grid.Column="2" >
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" ShowGridLines="False">
+                        <Grid Grid.Row="0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="1.5*"/>
@@ -128,7 +128,7 @@
                                  />
                         </Grid>
                     </Grid>
-                    <Button Grid.Column="4" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>
+                    <Button Grid.Column="4" Style="{StaticResource Style_QueryBtn}" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>

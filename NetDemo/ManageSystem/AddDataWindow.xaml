@@ -15,6 +15,7 @@
             <ComboBoxItem Content="管理员"></ComboBoxItem>
             <ComboBoxItem Content="管理员操作记录"></ComboBoxItem>
             <ComboBoxItem Content="设备管理"></ComboBoxItem>
+            <ComboBoxItem Content="映射表"></ComboBoxItem>
         </ComboBox>
         <TextBlock Text="添加条数:" Canvas.Left="138" Canvas.Top="55" Width="57"></TextBlock>
         <TextBox x:Name="addCountbox" Width="82" Canvas.Left="209" Canvas.Top="55" Text="100"></TextBox>

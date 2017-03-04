@@ -57,4 +57,51 @@
             </Setter.Value>
         </Setter>
     </Style>
+    
+    <Style x:Key="Style_QueryBtn" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Rectangle Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Name="rect" Fill="{StaticResource QueryBtnNormal}"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">查询</TextBlock>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="rect"  Value="{StaticResource QueryBtnHover}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Fill" TargetName="rect"  Value="{StaticResource QueryBtnPress}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Fill" TargetName="rect" Value="{StaticResource QueryBtnNormal}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <Style x:Key="Style_StatisticsBtn" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Grid>
+                        <Rectangle Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Name="rect" Fill="{StaticResource QueryBtnNormal}"/>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">统计</TextBlock>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Fill" TargetName="rect"  Value="{StaticResource QueryBtnHover}"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Fill" TargetName="rect"  Value="{StaticResource QueryBtnPress}" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Fill" TargetName="rect" Value="{StaticResource QueryBtnNormal}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 </ResourceDictionary>

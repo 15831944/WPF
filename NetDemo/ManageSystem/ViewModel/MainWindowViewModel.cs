@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -25,6 +26,15 @@ namespace ManageSystem.ViewModel
         PageVisibleEnum_PaymentQuery,
         PageVisibleEnum_QueryQuery,
         PageVisibleEnum_PreAcceptQuery,
+        PageVisibleEnum_WebBrowser,
+    }
+
+    enum ShowChartEnum
+    {
+        ShowChartEnum_Pie,
+        ShowChartEnum_Line,
+        ShowChartEnum_Histogram,
+        ShowChartEnum_Occupancy,
     }
 
     public class DataGridItemSourceConvert : IValueConverter
@@ -92,7 +102,7 @@ namespace ManageSystem.ViewModel
     }
 
     class MainWindowViewModel : NotificationObject
-    {
+    {  
         public enum QueryOperate
         {
             QueryOperate_None,
@@ -115,10 +125,12 @@ namespace ManageSystem.ViewModel
         public DelegateCommand<object>                  PaymentQueryCommand { get; set; }
         public DelegateCommand<object>                  QueryQueryCommand { get; set; }
         public DelegateCommand<object>                  PreAcceptQueryCommand { get; set; }
+        public DelegateCommand<object>                  WebBrowserCommand { get; set; }
 
         public DelegateCommand<object>                  SelectedItemCommand { get; set; }
         public DelegateCommand<object>                  UnSelectedItemCommand { get; set; }
 
+        public DelegateCommand<object>                  LoadedCommand { get; set; }
         public DelegateCommand<object>                  ExitCommand { get; set; }
         public DelegateCommand<object>                  MaxCommand { get; set; }
         public DelegateCommand<object>                  MinCommand { get; set; }
@@ -126,7 +138,7 @@ namespace ManageSystem.ViewModel
         public DelegateCommand<RoutedEventArgs>         DoubleClickCommand {get; set; }
 
         public HomePageViewModel                        _HomePageViewModel { get; set; }
-        public SummaryStatModel                         _SummaryStatViewModel { get; set; }
+        public SummaryStatViewModel                     _SummaryStatViewModel { get; set; }
         public SignStatViewModel                        _SignStatViewModel { get; set; }
         public SignAnomalyStatViewModel                 _SignAnomalyStatViewModel { get; set; }
         public SignQueryViewModel                       _SignQueryViewModel { get; set; }
@@ -135,8 +147,9 @@ namespace ManageSystem.ViewModel
         public PaymentQueryViewModel                    _PaymentQueryViewModel { get; set; }
         public QueryQueryViewModel                      _QueryQueryViewModel { get; set; }
         public PreAcceptQueryViewModel                  _PreAcceptQueryViewModel { get; set; }
+        public WebBrowserViewMode                       _WebBrowserViewMode { get; set; }
 
-        private ObservableCollection<DeviceModel> _deviceList;
+        public static ObservableCollection<DeviceModel> _deviceList;
         public ObservableCollection<DeviceModel> deviceList
         {
             get { return _deviceList; }
@@ -146,7 +159,7 @@ namespace ManageSystem.ViewModel
                 this.RaisePropertyChanged("deviceList");
             }
         }
-        private ObservableCollection<string> _businesstype;
+        public static ObservableCollection<string> _businesstype;
         public ObservableCollection<string> businesstype
         {
             get
@@ -188,19 +201,20 @@ namespace ManageSystem.ViewModel
             }
         }
 
-        private ObservableCollection<string> _paymentStatus;
-        public ObservableCollection<string> paymentStatus
+        private ObservableCollection<string> _devicePosition;
+        public ObservableCollection<string> devicePosition
         {
             get
             {
-                return _paymentStatus;
+                return _devicePosition;
             }
             set
             {
-                _paymentStatus = value;
-                this.RaisePropertyChanged("paymentStatus");
+                _devicePosition = value;
+                this.RaisePropertyChanged("devicePosition");
             }
         }
+
         private PageVisibleEnum _bShowPage;
         public PageVisibleEnum bShowPage
         {
@@ -232,9 +246,21 @@ namespace ManageSystem.ViewModel
                 this.RaisePropertyChanged("titleheight");
             }
         }
+
+        private double _leftWidth;
+        public double leftWidth
+        {
+            get { return _leftWidth; }
+            set
+            {
+                _leftWidth = value;
+                this.RaisePropertyChanged("leftWidth");
+            }
+        }
+
         public MainWindowViewModel()
         {
-            _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryYingSheTableCallBack);
+            _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
 
             HomePageCommand                             = new DelegateCommand<object>(new Action<object>(this.mainPageShow));
             SummaryStatCommand                          = new DelegateCommand<object>(new Action<object>(this.SummaryStatShow));
@@ -246,10 +272,12 @@ namespace ManageSystem.ViewModel
             PaymentQueryCommand                         = new DelegateCommand<object>(new Action<object>(this.PaymentQueryShow));
             QueryQueryCommand                           = new DelegateCommand<object>(new Action<object>(this.QueryQueryShow));
             PreAcceptQueryCommand                       = new DelegateCommand<object>(new Action<object>(this.PreAcceptQueryShow));
+            WebBrowserCommand                           = new DelegateCommand<object>(new Action<object>(this.WebBrowserShow));
 
             SelectedItemCommand                         = new DelegateCommand<object>(new Action<object>(this.SelectedItem));
             UnSelectedItemCommand                       = new DelegateCommand<object>(new Action<object>(this.UnSelectedItem));
 
+            LoadedCommand                               = new DelegateCommand<object>(new Action<object>(this.Loaded));
             ExitCommand                                 = new DelegateCommand<object>(new Action<object>(this.ExitWnd));
             MaxCommand                                  = new DelegateCommand<object>(new Action<object>(this.MaxWnd));
             MinCommand                                  = new DelegateCommand<object>(new Action<object>(this.MinWnd));
@@ -257,7 +285,7 @@ namespace ManageSystem.ViewModel
             DoubleClickCommand                          = new DelegateCommand<RoutedEventArgs>(new Action<RoutedEventArgs>(this.DoubleClickWnd));
 
             _HomePageViewModel                          = new HomePageViewModel();
-            _SummaryStatViewModel                       = new SummaryStatModel();
+            _SummaryStatViewModel                       = new SummaryStatViewModel();
             _SignStatViewModel                          = new SignStatViewModel();
             _SignAnomalyStatViewModel                   = new SignAnomalyStatViewModel();
             _SignQueryViewModel                         = new SignQueryViewModel();
@@ -266,21 +294,24 @@ namespace ManageSystem.ViewModel
             _PaymentQueryViewModel                      = new PaymentQueryViewModel();
             _QueryQueryViewModel                        = new QueryQueryViewModel();
             _PreAcceptQueryViewModel                    = new PreAcceptQueryViewModel();
+            _WebBrowserViewMode                          = new WebBrowserViewMode();
 
             _deviceList                                 = new ObservableCollection<DeviceModel>();
             _cardstatus                                 = new ObservableCollection<string>();
             _certificateType                            = new ObservableCollection<string>();
-            _paymentStatus                              = new ObservableCollection<string>();
+            _devicePosition                             = new ObservableCollection<string>();
             _businesstype                               = new ObservableCollection<string>();
 
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_SignQuery;
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Home;
             _titleheight                                = 25;
+            _leftWidth                                  = 60;
 
             QueryYingshebiao(null);
             QueryShebeiguanli(null);
         }
 
-        public void QueryYingSheTableCallBack(string resultStr)
+
+        public void QueryTableCallBack(string resultStr)
         {
             
             Type type = null;
@@ -403,13 +434,11 @@ namespace ManageSystem.ViewModel
             cardstatus.Clear();
             businesstype.Clear();
             certificateType.Clear();
-            paymentStatus.Clear();
-            WorkServer.GetInstance().QueryTable("select * from Yingshebiao", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable("select * from Yingshebiao", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
 
             cardstatus.Add("全部");
             businesstype.Add("全部");
             certificateType.Add("全部");
-            paymentStatus.Add("全部");
             foreach(KeyValuePair<int, string> kvp0 in _yingshelList)
             {
                 if(kvp0.Key >= 7000 && kvp0.Key < 8000)
@@ -422,14 +451,14 @@ namespace ManageSystem.ViewModel
                     businesstype.Add(kvp0.Value);
                 }
 
+                if (kvp0.Key >= 5000 && kvp0.Key < 6000)
+                {
+                    devicePosition.Add(kvp0.Value);
+                }
+
                 if (kvp0.Key >= 9000 && kvp0.Key < 9011)
                 {
                     certificateType.Add(kvp0.Value);
-                }
-
-                if (kvp0.Key >= 10000 && kvp0.Key < 10011)
-                {
-                    paymentStatus.Add(kvp0.Value);
                 }
             }
         }
@@ -438,7 +467,7 @@ namespace ManageSystem.ViewModel
         {
             _queryoperate = QueryOperate.QueryOperate_Shebeiguanli;
             deviceList.Clear();
-            WorkServer.GetInstance().QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
 
             foreach(KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<string>>>> kvp0 in _devicelistMap)
             {
@@ -551,6 +580,14 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        public void Loaded(object obj)
+        {
+            LineChartServer.InitializeCurveModule();
+            HistogramServer.InitializeHistogramModule();
+            OccupancyChartServer.InitializeOccupancyModule();
+            PieChartServer.InitializePieModule();
+        }
+
         private void MaxWnd(object obj)
         {
             if(wndState == WindowState.Maximized)
@@ -576,51 +613,100 @@ namespace ManageSystem.ViewModel
         public void mainPageShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_Home;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
         private void SummaryStatShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_SummaryStat;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
         private void SignStatShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_SignStat;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
         private void SignAnomalyShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_SignAnomalyStat;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
         private void SignQueryShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_SignQuery;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
         private void CardQueryShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_CardQuery;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
         private void EndorsementQueryShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_EndorsementQuery;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
         private void PaymentQueryShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_PaymentQuery;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
         private void QueryQueryShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_QueryQuery;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
         private void PreAcceptQueryShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_PreAcceptQuery;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
+        }
+
+        private void WebBrowserShow(object obj)
+        {
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_WebBrowser;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
         private void DragWnd(object obj)

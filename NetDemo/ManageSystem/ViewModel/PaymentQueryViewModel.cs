@@ -194,15 +194,13 @@ namespace ManageSystem.ViewModel
         public void Query(object obj)
         {
             tableList.Clear();
-            WorkServer.GetInstance().QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
         }
         string MakeQuerySql(object obj)
         {
             string str = "select * from Jiaokuanshuju where Xuhao>=-1";
 
-            MainWindowViewModel mainwindowviewmodel = obj as MainWindowViewModel;
-
-            foreach (DeviceModel model0 in mainwindowviewmodel.deviceList)
+            foreach (DeviceModel model0 in MainWindowViewModel._deviceList)
             {
                 if (model0.isSel)
                 {
@@ -247,21 +245,17 @@ namespace ManageSystem.ViewModel
 
             if (paymentStatusText != null && paymentStatusText.Length != 0 && paymentStatusText != "全部")
             {
-                foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
-                {
-                    if (kvp0.Value == paymentStatusText)
-                    {
-                        str += " and Jiaokuanshuju.[Jiaofeizhuangtai]=" + kvp0.Key.ToString();
-                        break;
-                    }
-                }
+                    if ("缴款成功" == paymentStatusText)
+                        str += " and Jiaokuanshuju.[Jiaofeizhuangtai]=" + "1";
+                    else
+                        str += " and Jiaokuanshuju.[Jiaofeizhuangtai]=" + "0";
             }
             if (businessNumber != null && businessNumber.Length != 0)
                 str += " and Jiaokuanshuju.[Yewubianhao]=" + businessNumber;
             if (startTime != null && startTime.Length != 0)
-                str += " and Jiaokuanshuju.[Riqi]>" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
+                str += " and Jiaokuanshuju.[Riqi]>=" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
             if (endTime != null && endTime.Length != 0)
-                str += " and Jiaokuanshuju.[Riqi]<" + Common.ConvertDateTimeInt(DateTime.Parse(endTime));
+                str += " and Jiaokuanshuju.[Riqi]<=" + Common.ConvertDateTimeInt(DateTime.Parse(endTime));
 
             return str;
         }

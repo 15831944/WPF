@@ -15,12 +15,17 @@
                 <ResourceDictionary Source="Resources/DataRes.xaml" />
                 <ResourceDictionary Source="Resources/Templates.xaml" />
                 <ResourceDictionary Source="Resources/Styles.xaml" />
+                <ResourceDictionary Source="Resources/HomePageTemplate.xaml" />
+                <ResourceDictionary Source="Resources/SummaryStatTemplate.xaml" />
+                <ResourceDictionary Source="Resources/SignStatTemplate.xaml" />
+                <ResourceDictionary Source="Resources/SignAnomalyStatTemplate.xaml" />
                 <ResourceDictionary Source="Resources/CardQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/EndorsementQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/PaymentQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/QueryQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/PreAcceptQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/SignQueryTemplate.xaml" />
+                <ResourceDictionary Source="Resources/WebBrowserTemplate.xaml" />
                 <ResourceDictionary Source="Resources/TreeViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

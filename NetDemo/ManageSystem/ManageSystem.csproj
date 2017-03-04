@@ -53,6 +53,7 @@
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
@@ -111,9 +112,14 @@
     <Compile Include="Resources\DateTimer\ValidSpinDirections.cs" />
     <Compile Include="Resources\DateTimer\WatermarkTextBox.cs" />
     <Compile Include="Model\SHOUZHENGSHUJUModel.cs" />
+    <Compile Include="Server\HistogramServer.cs" />
+    <Compile Include="Server\LineChartServer.cs" />
+    <Compile Include="Server\OccupancyChartServer.cs" />
+    <Compile Include="Server\PieChartServer.cs" />
     <Compile Include="Server\WorkServer.cs" />
     <Compile Include="ViewModel\CardQueryViewModel.cs" />
     <Compile Include="ViewModel\EndorsementQueryViewModel.cs" />
+    <Compile Include="ViewModel\Graphics.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PaymentQueryViewModel.cs" />
@@ -122,7 +128,8 @@
     <Compile Include="ViewModel\SignAnomalyStatViewModel.cs" />
     <Compile Include="ViewModel\SignQueryViewModel.cs" />
     <Compile Include="ViewModel\SignStatViewModel.cs" />
-    <Compile Include="ViewModel\SummaryStatModel.cs" />
+    <Compile Include="ViewModel\SummaryStatViewModel.cs" />
+    <Compile Include="ViewModel\WebBrowserViewMode.cs" />
     <Page Include="AddDataWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -172,7 +179,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\HomePageTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\PaymentQueryTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\SignAnomalyStatTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,7 +199,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\SignStatTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\SummaryStatTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,6 +224,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\QueryQueryTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\WebBrowserTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -283,6 +310,15 @@
     <Resource Include="Resources\imgs\预受理记录查询.png" />
     <Resource Include="Resources\imgs\首页-选中.png" />
     <Resource Include="Resources\imgs\首页.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\imgs\+.png" />
+    <Resource Include="Resources\imgs\-.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\imgs\查询-常态.png" />
+    <Resource Include="Resources\imgs\查询-鼠标悬停.png" />
+    <Resource Include="Resources\imgs\查询-鼠标按下.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

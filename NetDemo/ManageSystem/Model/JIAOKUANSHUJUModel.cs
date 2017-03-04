@@ -184,8 +184,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private string _Jiaofeizhuangtai;
-        public string Jiaofeizhuangtai
+        private bool _Jiaofeizhuangtai;
+        public bool Jiaofeizhuangtai
         {
             get
             {

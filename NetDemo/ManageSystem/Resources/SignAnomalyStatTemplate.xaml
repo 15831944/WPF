@@ -1,0 +1,217 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                    xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
+                    xmlns:Model="clr-namespace:ManageSystem.Model"
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+                    xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
+                    >
+    <DataTemplate DataType="{x:Type viewModel:SignAnomalyStatViewModel}">
+        <Grid x:Name="showhideCtrl" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding Path=leftListWidth}"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TreeView Grid.Column="0" Grid.IsSharedSizeScope="True" AlternationCount="2" 
+                      MinHeight="100" VerticalContentAlignment="Center"
+                      Background="#CFD6DC"
+                      ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=deviceList}"
+                      ItemContainerStyle="{DynamicResource TreeViewItemStyle1}">
+
+            </TreeView>
+            <Grid Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="{Binding Path=topHeight}"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0" Background="#34343E">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="0.5*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">业务类型</TextBlock>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=businessTypeText}"
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=businesstype}" ></ComboBox>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备摆放位置</TextBlock>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=devicePositionText}"
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=devicePosition}" ></ComboBox>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">数据类型</TextBlock>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=dataTypeText}"
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0">
+                                <ComboBoxItem>天统计</ComboBoxItem>
+                                <ComboBoxItem>周统计</ComboBoxItem>
+                                <ComboBoxItem>月统计</ComboBoxItem>
+                                <ComboBoxItem>年统计</ComboBoxItem>
+                            </ComboBox>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="2" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Center">起始时间</TextBlock>
+                            <Toolkit:DateTimePicker Grid.Column="1" Foreground="White" Background="#444450"
+                                 VerticalAlignment="Center"
+                                 IsReadOnly="False"
+                                 Text="{Binding Path=startTime}"
+                                 Format="Custom"
+                                 FormatString="yyyy-MM-dd HH:mm:ss"
+                                 TimeFormat="Custom"
+                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
+                                 />
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Column="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Center">截止时间</TextBlock>
+                            <Toolkit:DateTimePicker Grid.Column="1" Foreground="White" Background="#444450"
+                                 VerticalAlignment="Center"
+                                 IsReadOnly="False"
+                                 Format="Custom"
+                                 FormatString="yyyy-MM-dd HH:mm:ss"
+                                 TimeFormat="Custom"
+                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
+                                 Text="{Binding Path=endTime}"
+                                 />
+                        </Grid>
+                    </Grid>
+                    <Button Grid.Column="4" Style="{StaticResource Style_StatisticsBtn}" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>
+                </Grid>
+                <Grid Grid.Row="1" Background="#34343F">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="{Binding Path=regionTextHeight}"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="150"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="15">已受理业务统计图</TextBlock>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal">
+                            <ContentControl Content="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentControl.ContentTemplate>
+                                    <DataTemplate DataType="{x:Type viewModel:HomePageViewModel}">
+                                        <Button x:Name="btn" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=ShowPieChartCommand}" ToolTip="饼图">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <TextBlock x:Name="btnbg" Foreground="White" FontSize="15" Background="#222228">饼图</TextBlock>
+                                                    <ControlTemplate.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=bShowChart}" Value="{x:Static viewModel:ShowChartEnum.ShowChartEnum_Pie}">
+                                                            <Setter Property="Background" TargetName="btnbg" Value="Red"/>
+                                                        </DataTrigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </DataTemplate>
+                                </ContentControl.ContentTemplate>
+                            </ContentControl>
+                            <ContentControl Content="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentControl.ContentTemplate>
+                                    <DataTemplate DataType="{x:Type viewModel:HomePageViewModel}">
+                                        <Button x:Name="btn" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=ShowLineChartCommand}" ToolTip="曲线图">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <TextBlock x:Name="btnbg" Foreground="White" FontSize="15" Background="#222228">曲线图</TextBlock>
+                                                    <ControlTemplate.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=bShowChart}" Value="{x:Static viewModel:ShowChartEnum.ShowChartEnum_Line}">
+                                                            <Setter Property="Background" TargetName="btnbg" Value="Red"/>
+                                                        </DataTrigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </DataTemplate>
+                                </ContentControl.ContentTemplate>
+                            </ContentControl>
+                            <ContentControl Content="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <ContentControl.ContentTemplate>
+                                    <DataTemplate DataType="{x:Type viewModel:HomePageViewModel}">
+                                        <Button x:Name="btn" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=ShowHistogramChartCommand}" ToolTip="直方图">
+                                            <Button.Template>
+                                                <ControlTemplate TargetType="{x:Type Button}">
+                                                    <TextBlock x:Name="btnbg" Foreground="White" FontSize="15" Background="#222228">直方图</TextBlock>
+                                                    <ControlTemplate.Triggers>
+                                                        <DataTrigger Binding="{Binding Path=bShowChart}" Value="{x:Static viewModel:ShowChartEnum.ShowChartEnum_Histogram}">
+                                                            <Setter Property="Background" TargetName="btnbg" Value="Red"/>
+                                                        </DataTrigger>
+                                                    </ControlTemplate.Triggers>
+                                                </ControlTemplate>
+                                            </Button.Template>
+                                        </Button>
+                                    </DataTemplate>
+                                </ContentControl.ContentTemplate>
+                            </ContentControl>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Loaded">
+                    <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="SizeChanged">
+                    <i:InvokeCommandAction Command="{Binding SizeChangedCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignAnomalyStat}">
+                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+
+</ResourceDictionary>

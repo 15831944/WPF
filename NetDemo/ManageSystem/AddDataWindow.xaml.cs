@@ -98,105 +98,138 @@ namespace ManageSystem
                     break;
                 case 11:
                     tableName   = "Yingshebiao";
-                    type        = typeof(YINGSHEBIAOModel);
+                    type        = null;
+                    string addXml = 
+                        "Bianhao:0,Mingcheng:深圳市;"              +
+                        "Bianhao:1,Mingcheng:广州市;"              +
+                        "Bianhao:2001,Mingcheng:南山公安局;"         +
+                        "Bianhao:2002,Mingcheng:白云公安局;"         +
+                        "Bianhao:3001,Mingcheng:南山分局管理科;"         +
+                        "Bianhao:3002,Mingcheng:白云分局管理科;"         +
+                        "Bianhao:4001,Mingcheng:大陆;"                +
+                        "Bianhao:4002,Mingcheng:香港;"                +
+                        "Bianhao:4003,Mingcheng:台湾;"                +
+                        "Bianhao:5001,Mingcheng:深圳;"                +
+                        "Bianhao:5002,Mingcheng:广州;"                +
+                        "Bianhao:6001,Mingcheng:签注种类1;"         +
+                        "Bianhao:6002,Mingcheng:签注种类2;"         +
+                        "Bianhao:7001,Mingcheng:成功;"            +
+                        "Bianhao:7002,Mingcheng:失败;"            +
+                        "Bianhao:7003,Mingcheng:异常;"            +
+                        "Bianhao:8001,Mingcheng:男;"         +
+                        "Bianhao:8002,Mingcheng:女;"         +
+                        "Bianhao:9001,Mingcheng:本式;"         +
+                        "Bianhao:9002,Mingcheng:卡式;"         +
+                        "Bianhao:10001,Mingcheng:异常类型1;"         +
+                        "Bianhao:10002,Mingcheng:异常类型2;"         
+                        ;
+                    
+                    if (tableName != null && tableName.Length != 0)
+                        _addTable(tableName, addXml, IntPtr.Zero);
                     break;
             }
 
-            System.Reflection.PropertyInfo[] properties = type.GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-
-            DateTime time = DateTime.Now;
-            string addXml = "";
-            for (int i = 0; i < addCount; ++i)
+            if(type != null)
             {
-                foreach (System.Reflection.PropertyInfo item in properties)
+                System.Reflection.PropertyInfo[] properties = type.GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+
+                DateTime time = DateTime.Now;
+                string addXml = "";
+                for (int i = 0; i < addCount; ++i)
                 {
-                    if (item.PropertyType.Name.StartsWith("Int32"))
+                    foreach (System.Reflection.PropertyInfo item in properties)
                     {
-                        addXml += item.Name;
-                        addXml += ":";
-                        switch (item.Name)
+                        if (item.PropertyType.Name.StartsWith("Int32"))
                         {
-                            case "Xuhao":
-                                addXml += "0";
-                                break;
-                            default:
-                                addXml += ran.Next().ToString();
-                                break;
+                            addXml += item.Name;
+                            addXml += ":";
+                            switch (item.Name)
+                            {
+                                case "Xuhao":
+                                    addXml += "0";
+                                    break;
+                                default:
+                                    addXml += ran.Next().ToString();
+                                    break;
+                            }
                         }
-                    }
-                    else if (item.PropertyType.Name.StartsWith("Int64"))
-                    {
-                        addXml += item.Name;
-                        addXml += ":";
-                        addXml += ran.Next().ToString();
-                    }
-                    else if (item.PropertyType.Name.StartsWith("Single"))
-                    {
-                        addXml += item.Name;
-                        addXml += ":";
-                        addXml += ran.Next().ToString();
-                    }
-                    else if (item.PropertyType.Name.StartsWith("String"))
-                    {
-                        addXml += item.Name;
-                        addXml += ":";
-                        switch (item.Name)
+                        else if (item.PropertyType.Name.StartsWith("Int64"))
                         {
-                            case "Chengshibianhao":
-                                addXml += ((i%2 == 0) ? 0:1).ToString();
-                                break;
-                            case "Jubianhao":
-                                addXml += ((i%2 == 0) ? 2001:2002).ToString();
-                                break;
-                            case "Shiyongdanweibianhao":
-                                addXml += ((i%2 == 0) ? 3001:3002).ToString();
-                                break;
-                            case "IP":
-                                addXml += Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1")));
-                                break;
-                            case "Shebeibaifangweizhi":
-                                addXml += ((i%2 == 0) ? 5001:5002).ToString();
-                                break;
-                            case "Riqi":
-                                addXml += Common.ConvertDateTimeInt(DateTime.Now);
-                                break;
-                            case "Qianzhuzhonglei":
-                                addXml += ((i%2 == 0) ? 6001:6002).ToString();
-                                break;
-                            case "ZhikaZhuangtai":
-                                addXml += ((i%2 == 0) ? 7001:7002).ToString();
-                                break;
-                            case "Zhengjianleixing":
-                                addXml += ((i%2 == 0) ? 9001:9002).ToString();
-                                break;
-                            case "Jiaofeizhuangtai":
-                                addXml += ((i%2 == 0) ? 10001:10002).ToString();
-                                break;
-                            case "Xingbie":
-                                addXml += ((i%2 == 0) ? 8001:8002).ToString();
-                                break;
-                            default:
-                                addXml += ran.Next().ToString();
-                                break;
+                            addXml += item.Name;
+                            addXml += ":";
+                            addXml += ran.Next().ToString();
                         }
+                        else if (item.PropertyType.Name.StartsWith("Single"))
+                        {
+                            addXml += item.Name;
+                            addXml += ":";
+                            addXml += ran.Next().ToString();
+                        }
+                        else if (item.PropertyType.Name.StartsWith("String"))
+                        {
+                            addXml += item.Name;
+                            addXml += ":";
+                            switch (item.Name)
+                            {
+                                case "Chengshibianhao":
+                                    addXml += ((i%2 == 0) ? 0:1).ToString();
+                                    break;
+                                case "Jubianhao":
+                                    addXml += ((i%2 == 0) ? 2001:2002).ToString();
+                                    break;
+                                case "Shiyongdanweibianhao":
+                                    addXml += ((i%2 == 0) ? 3001:3002).ToString();
+                                    break;
+                                case "IP":
+                                    addXml += Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1")));
+                                    break;
+                                case "Yewuleixing":
+                                    addXml += ((i%2 == 0) ? 4001:4002).ToString();
+                                    break;
+                                case "Shebeibaifangweizhi":
+                                    addXml += ((i%2 == 0) ? 5001:5002).ToString();
+                                    break;
+                                case "Riqi":
+                                    addXml += Common.ConvertDateTimeInt(DateTime.Now);
+                                    break;
+                                case "Qianzhuzhonglei":
+                                    addXml += ((i%2 == 0) ? 6001:6002).ToString();
+                                    break;
+                                case "ZhikaZhuangtai":
+                                    addXml += ((i%2 == 0) ? 7001:7002).ToString();
+                                    break;
+                                case "Xingbie":
+                                    addXml += ((i%2 == 0) ? 8001:8002).ToString();
+                                    break;
+                                case "Zhengjianleixing":
+                                    addXml += ((i%2 == 0) ? 9001:9002).ToString();
+                                    break;
+                                case "Yichangleixing":
+                                    addXml += ((i%2 == 0) ? 10001:10002).ToString();
+                                    break;
+                                default:
+                                    addXml += ran.Next().ToString();
+                                    break;
+                            }
+                        }
+                        else if (item.PropertyType.Name.StartsWith("Boolean"))
+                        {
+                            addXml += item.Name;
+                            addXml += ":";
+                            addXml += (i%2 == 0) ? "0" : "1";
+                        }
+                        else
+                        {
+                            ;
+                        }
+                        addXml += ",";
                     }
-                    else if (item.PropertyType.Name.StartsWith("Boolean"))
-                    {
-                        addXml += item.Name;
-                        addXml += ":";
-                        addXml += (i%2 == 0) ? "0" : "1";
-                    }
-                    else
-                    {
-                        ;
-                    }
-                    addXml += ",";
+                    addXml += ";";
                 }
-                addXml += ";";
+
+                if (tableName != null && tableName.Length != 0)
+                    _addTable(tableName, addXml, IntPtr.Zero);
             }
-            
-            if(tableName != null && tableName.Length != 0)
-                _addTable(tableName, addXml, IntPtr.Zero);
         }
     }
 }

@@ -12,6 +12,9 @@
         <!--<MouseBinding MouseAction="LeftClick" Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>-->
     </Window.InputBindings>
     <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+        </i:EventTrigger>
         <i:EventTrigger EventName="MouseLeftButtonDown">
             <i:InvokeCommandAction Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
         </i:EventTrigger>
@@ -47,11 +50,12 @@
 
         <Grid Grid.Row="1" Margin="0,0,0,0" Background="#E9ECF4">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="60"></ColumnDefinition>
+                <ColumnDefinition Width="{Binding Path=leftWidth}"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid Grid.Column="0">
                 <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
@@ -74,6 +78,7 @@
                 <ContentControl Content="{Binding}" Grid.Row="7"    ContentTemplate="{StaticResource btn7_Template}"/>
                 <ContentControl Content="{Binding}" Grid.Row="8"    ContentTemplate="{StaticResource btn8_Template}"/>
                 <ContentControl Content="{Binding}" Grid.Row="9"    ContentTemplate="{StaticResource btn9_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="10"    ContentTemplate="{StaticResource btn10_Template}"/>
             </Grid>
             <ContentControl Grid.Column="1" Content="{Binding _HomePageViewModel}" x:Name="content1" />
             <ContentControl Grid.Column="1" Content="{Binding _SummaryStatViewModel}"/>
@@ -85,6 +90,7 @@
             <ContentControl Grid.Column="1" Content="{Binding _PaymentQueryViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _QueryQueryViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _PreAcceptQueryViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _WebBrowserViewMode}"/>
         </Grid>
     </Grid>
 </Window>

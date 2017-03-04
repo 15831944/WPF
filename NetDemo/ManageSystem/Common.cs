@@ -183,6 +183,36 @@ namespace ManageSystem
             return sb.ToString();
         }
 
+        public static DateTime FirstDayOfMonth(DateTime datetime)  
+        {
+            return datetime.AddDays(1 - datetime.Day);
+        }
+
+        public static DateTime LastDayOfMonth(DateTime datetime)
+        {
+
+            return datetime.AddDays(1 - datetime.Day).AddMonths(1).AddDays(-1);
+        }
+
+        public static DateTime FistDayOfWeek(DateTime datetime)
+        {
+            return DateTime.Now.AddDays(Convert.ToDouble((0 - Convert.ToInt16(DateTime.Now.DayOfWeek))));
+        }
+
+        public static DateTime LastDayOfWeek(DateTime datetime)
+        {
+            return DateTime.Now.AddDays(Convert.ToDouble((6 - Convert.ToInt16(DateTime.Now.DayOfWeek))));
+        }
+
+        public static DateTime FistDayOfYear(DateTime datetime)
+        {
+            return DateTime.Parse(datetime.ToString("yyyy-01-01"));
+        }
+
+        public static DateTime LastDayOfYear(DateTime datetime)
+        {
+            return DateTime.Parse(datetime.ToString("yyyy-01-01")).AddYears(1).AddDays(-1);
+        }
         ///// <summary> 
 
         ///// 原型是 :HMODULE LoadLibrary(LPCTSTR lpFileName); 
@@ -222,6 +252,23 @@ namespace ManageSystem
         //[DllImport("kernel32", EntryPoint="FreeLibrary", SetLastError=true)]
 
         //public static extern bool FreeLibrary(IntPtr hModule);
+    }
+
+    [System.Runtime.InteropServices.StructLayoutAttribute(System.Runtime.InteropServices.LayoutKind.Sequential)]
+    public struct tagRECT
+    {
+
+        /// LONG->int
+        public int left;
+
+        /// LONG->int
+        public int top;
+
+        /// LONG->int
+        public int right;
+
+        /// LONG->int
+        public int bottom;
     }
 
 }

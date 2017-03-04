@@ -223,15 +223,13 @@ namespace ManageSystem.ViewModel
         public void Query(object obj)
         {
             tableList.Clear();
-            WorkServer.GetInstance().QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
         }
         string MakeQuerySql(object obj)
         {
             string str = "select * from Yushoulishuju where Xuhao>=-1";
 
-            MainWindowViewModel mainwindowviewmodel = obj as MainWindowViewModel;
-
-            foreach (DeviceModel model0 in mainwindowviewmodel.deviceList)
+            foreach (DeviceModel model0 in MainWindowViewModel._deviceList)
             {
                 if (model0.isSel)
                 {
@@ -279,9 +277,9 @@ namespace ManageSystem.ViewModel
             if (businessNumber != null && businessNumber.Length != 0)
                 str += " and Yushoulishuju.[Yewubianhao]=" + businessNumber;
             if (startTime != null && startTime.Length != 0)
-                str += " and Yushoulishuju.[Riqi]>" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
+                str += " and Yushoulishuju.[Riqi]>=" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
             if (endTime != null && endTime.Length != 0)
-                str += " and Yushoulishuju.[Riqi]<" + Common.ConvertDateTimeInt(DateTime.Parse(endTime));
+                str += " and Yushoulishuju.[Riqi]<=" + Common.ConvertDateTimeInt(DateTime.Parse(endTime));
 
             if (groupInsetText != null && groupInsetText.Length != 0 && groupInsetText != "全部")
             {

@@ -21,7 +21,7 @@
 
             </TreeView>
             <GridSplitter Width="1"></GridSplitter>
-            <Grid Grid.Column="1" ShowGridLines="True">
+            <Grid Grid.Column="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="80"/>
                     <RowDefinition/>
@@ -46,7 +46,11 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">缴款状态</TextBlock>
                             <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=paymentStatusText}"
-                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=paymentStatus}"/>
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0">
+                                <ComboBoxItem>全部</ComboBoxItem>
+                                <ComboBoxItem>缴款成功</ComboBoxItem>
+                                <ComboBoxItem>缴款失败</ComboBoxItem>
+                            </ComboBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -63,12 +67,12 @@
                             <TextBox Grid.Column="1" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=businessNumber}"></TextBox>
                         </Grid>
                     </Grid>
-                    <Grid Grid.Column="2" ShowGridLines="False">
+                    <Grid Grid.Column="2" >
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" ShowGridLines="False">
+                        <Grid Grid.Row="0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="1.5*"/>
@@ -107,7 +111,7 @@
                                  />
                         </Grid>
                     </Grid>
-                    <Button Grid.Column="4" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>
+                    <Button Grid.Column="4" Style="{StaticResource Style_QueryBtn}" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
