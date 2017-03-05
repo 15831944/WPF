@@ -12,6 +12,9 @@ using System.Collections.ObjectModel;
 using ManageSystem.Model;
 using System.Runtime.InteropServices;
 using System.Net;
+using System.Configuration;
+using System.Windows.Threading;
+using System.Threading;
 namespace ManageSystem.ViewModel
 {
     enum PageVisibleEnum
@@ -149,6 +152,28 @@ namespace ManageSystem.ViewModel
         public PreAcceptQueryViewModel                  _PreAcceptQueryViewModel { get; set; }
         public WebBrowserViewMode                       _WebBrowserViewMode { get; set; }
 
+        private string _displayMsg;
+        public string displayMsg
+        {
+            get { return _displayMsg; }
+            set
+            {
+                _displayMsg = value;
+                this.RaisePropertyChanged("displayMsg");
+            }
+        }
+
+        private bool _bOnline;
+        public bool bOnline
+        {
+            get { return _bOnline; }
+            set
+            {
+                _bOnline = value;
+                this.RaisePropertyChanged("bOnline");
+            }
+        }
+
         public static ObservableCollection<DeviceModel> _deviceList;
         public ObservableCollection<DeviceModel> deviceList
         {
@@ -260,6 +285,36 @@ namespace ManageSystem.ViewModel
 
         public MainWindowViewModel()
         {
+#if (DEBUG)
+            //Configuration config                 = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            //config.AppSettings.Settings.Add("ServerIP", "127.0.0.1");
+            //config.AppSettings.Settings.Add("ServerPort", "60000");
+            //config.Save();
+            //ConfigurationManager.RefreshSection("appSettings");
+
+//            string  ip      = "";
+//            int     port    = 0;
+//            foreach (string key in ConfigurationManager.AppSettings)
+//            {    //检索当前选中的分辨率
+//                if (key == "ServerIP")
+//                {
+//                    ip = ConfigurationManager.AppSettings[key];
+//                }
+//                else if (key == "ServerPort")
+//                {
+//                    port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
+//                }
+//            }
+
+//            if(false == WorkServer.startClient(ip, port))
+//            {
+//                displayMsg = "连接服务端失败!";
+//                bOnline = false;
+//            }
+//            else
+//                bOnline = true;
+#endif
+
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
 
             HomePageCommand                             = new DelegateCommand<object>(new Action<object>(this.mainPageShow));
@@ -306,12 +361,18 @@ namespace ManageSystem.ViewModel
             _titleheight                                = 25;
             _leftWidth                                  = 60;
 
-            QueryYingshebiao(null);
-            QueryShebeiguanli(null);
+            var _timer                                  = new DispatcherTimer();
+            _timer.Interval                             = new TimeSpan(0, 0, 5);   //间隔1秒
+            _timer.Tick                                 += new EventHandler(Timer_Tick);
+            _timer.Start();
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            bOnline         = WorkServer.isClientStoped() == false;
+        }
 
-        public void QueryTableCallBack(string resultStr)
+        public void QueryTableCallBack(string resultStr, string errorStr)
         {
             
             Type type = null;
@@ -434,7 +495,7 @@ namespace ManageSystem.ViewModel
             cardstatus.Clear();
             businesstype.Clear();
             certificateType.Clear();
-            WorkServer.QueryTable("select * from Yingshebiao", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable("select * from Yingshebiao", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
 
             cardstatus.Add("全部");
             businesstype.Add("全部");
@@ -462,12 +523,11 @@ namespace ManageSystem.ViewModel
                 }
             }
         }
-      
         public void QueryShebeiguanli(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_Shebeiguanli;
             deviceList.Clear();
-            WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
 
             foreach(KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<string>>>> kvp0 in _devicelistMap)
             {
@@ -582,6 +642,9 @@ namespace ManageSystem.ViewModel
 
         public void Loaded(object obj)
         {
+            QueryYingshebiao(null);
+            QueryShebeiguanli(null);
+
             LineChartServer.InitializeCurveModule();
             HistogramServer.InitializeHistogramModule();
             OccupancyChartServer.InitializeOccupancyModule();
@@ -603,6 +666,7 @@ namespace ManageSystem.ViewModel
         {
             try
             {
+                WorkServer.stopClient();
                 System.Windows.Application.Current.Shutdown();
             }
             catch (Exception ex)

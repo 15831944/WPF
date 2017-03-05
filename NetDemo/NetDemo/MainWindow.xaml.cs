@@ -124,7 +124,7 @@ namespace NetDemo
             IntPtr pArray = Marshal.UnsafeAddrOfPinnedArrayElement(b2, 0);
 
             if(_clientSendDataAction != null)
-                _clientSendDataAction(pArray, 0x10000);
+                _clientSendDataAction(pArray, b2.Length);
         }
     }
 }

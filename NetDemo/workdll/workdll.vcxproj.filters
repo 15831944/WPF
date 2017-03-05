@@ -39,6 +39,12 @@
     <ClInclude Include="netmsg.pb.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ThreadMap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ThreadQueue.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

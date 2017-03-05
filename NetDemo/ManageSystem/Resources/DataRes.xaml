@@ -22,4 +22,11 @@
     <ImageBrush x:Key="QueryBtnNormal" ImageSource="/ManageSystem;component/Resources/imgs/查询-常态.png"/>
     <ImageBrush x:Key="QueryBtnHover" ImageSource="/ManageSystem;component/Resources/imgs/查询-鼠标悬停.png"/>
     <ImageBrush x:Key="QueryBtnPress" ImageSource="/ManageSystem;component/Resources/imgs/查询-鼠标按下.png"/>
+
+    <ImageBrush x:Key="PieBtnNormal" ImageSource="/ManageSystem;component/Resources/imgs/饼图－常态.png"/>
+    <ImageBrush x:Key="PieBtnPress" ImageSource="/ManageSystem;component/Resources/imgs/饼图－选中.png"/>
+    <ImageBrush x:Key="LineBtnNormal" ImageSource="/ManageSystem;component/Resources/imgs/曲线图－常态.png"/>
+    <ImageBrush x:Key="LineBtnPress" ImageSource="/ManageSystem;component/Resources/imgs/曲线图－选中.png"/>
+    <ImageBrush x:Key="HistogramBtnNormal" ImageSource="/ManageSystem;component/Resources/imgs/直方图－常态.png"/>
+    <ImageBrush x:Key="HistogramBtnPress" ImageSource="/ManageSystem;component/Resources/imgs/直方图－选中.png"/>
 </ResourceDictionary>

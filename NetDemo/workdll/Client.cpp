@@ -5,13 +5,13 @@ CClient* CClient::m_pClient				= NULL;
 
 CClient::CClient()
 {
-	m_bCmdFinished						= true;
 	HMODULE hNetDll						= LoadLibrary(_T("NetDll.dll"));
 
 	m_startClientFunc					= (_startClientType)GetProcAddress(hNetDll, "startClient");
 	m_stopClientFunc					= (_stopClientType)GetProcAddress(hNetDll, "stopClient");
 	m_isClientStopedFunc				= (_isClientStoped)GetProcAddress(hNetDll, "isClientStoped");
 
+	m_globalPackNumber					= 0;
 }
 
 
@@ -27,58 +27,22 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 		netmsg::MsgPack msgPack;
 		if (msgPack.ParseFromArray(buf, len))
 		{
-			if (msgPack.has_msgcmd())
+			pair<DWORD, void*> pairValue;
+			DWORD key = msgPack.head().globalpacknumber();
+			if (CClient::GetInstance()->m_requestMap.Pop(key, pairValue))
 			{
-				switch (msgPack.head().packtype())
+				if (msgPack.has_msgquerymsgresult())
 				{
-					case netmsg::NetMsgType_DatabaseQueryError:
-					case netmsg::NetMsgType_DatabaseQuerySuccess:
-					{
-						CClient::GetInstance()->m_bCmdFinished = true;
-					}
-					break;
-					case netmsg::NetMsgType_DatabaseAddError:
-					case netmsg::NetMsgType_DatabaseAddSuccess:
-					{
-						CClient::GetInstance()->m_bCmdFinished = true;
-					}
-					break;
-					case netmsg::NetMsgType_DatabaseDeleteError:
-					case netmsg::NetMsgType_DatabaseDeleteSuccess:
-					{
-						CClient::GetInstance()->m_bCmdFinished = true;
-					}
-					break;
+					string resultstr = msgPack.msgquerymsgresult().resultdata();
+					string resulterror = msgPack.msgquerymsgresult().resulterror();
+					if (pairValue.second)
+						((QueryTableCallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
 				}
-			}
-			else if (msgPack.has_msgidcardapplydata())
-			{
-				/*CClient::GetInstance()->m_QueryIDCARDAPPLYCallBack(
-					(char*)msgPack.msgidcardapplydata().name().c_str(),
-					(char*)msgPack.msgidcardapplydata().gender().c_str(),
-					(char*)msgPack.msgidcardapplydata().nation().c_str(),
-					(char*)msgPack.msgidcardapplydata().birthday().c_str(),
-					(char*)msgPack.msgidcardapplydata().address().c_str(),
-					(char*)msgPack.msgidcardapplydata().idnumber().c_str(),
-					(char*)msgPack.msgidcardapplydata().sigdepart().c_str(),
-					(char*)msgPack.msgidcardapplydata().slh().c_str(),
-					(LPBYTE)msgPack.msgidcardapplydata().fpdata().c_str(),
-					msgPack.msgidcardapplydata().fpdata().size(),
-					(LPBYTE)msgPack.msgidcardapplydata().fpfeature().c_str(),
-					msgPack.msgidcardapplydata().fpfeature().size(),
-					(LPBYTE)msgPack.msgidcardapplydata().xczp().c_str(),
-					msgPack.msgidcardapplydata().xczp().size(),
-					(char*)msgPack.msgidcardapplydata().xzqh().c_str(),
-					(char*)msgPack.msgidcardapplydata().sannerid().c_str(),
-					(char*)msgPack.msgidcardapplydata().scannername().c_str(),
-					msgPack.msgidcardapplydata().legal(),
-					(char*)msgPack.msgidcardapplydata().operatorid().c_str(),
-					(char*)msgPack.msgidcardapplydata().operatorname().c_str(),
-					(char*)msgPack.msgidcardapplydata().opdate().c_str()
-					);
-
-				if (msgPack.head().totalpack() == msgPack.head().packindex())
-					CClient::GetInstance()->m_bCmdFinished = true;*/
+				else if (msgPack.has_msgaddmsgresult())
+				{
+					if (pairValue.second)
+						((AddDataCallBack)pairValue.second)((char*)msgPack.msgaddmsgresult().resulterror().c_str());
+				}
 			}
 		}
 	}
@@ -127,18 +91,20 @@ bool CClient::ClientStoped()
 		return m_isClientStopedFunc();
 	return true;
 }
-void CClient::QuerySendMsg(char* querySqlStr)
-{
-	if (m_bCmdFinished && m_sendDataFunc)
-	{
-		m_bCmdFinished = false;
 
+void CClient::QueryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync)
+{
+	if (m_sendDataFunc)
+	{
+		DWORD numberTemp				= InterlockedIncrement(&m_globalPackNumber);
+		m_requestMap.Push(numberTemp, callBack);
 		netmsg::MsgPack pack;
+		pack.mutable_head()->set_globalpacknumber(numberTemp);
 		pack.mutable_head()->set_totalpack(1);
 		pack.mutable_head()->set_packindex(1);
 		pack.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseQueryAsk);
 
-		pack.mutable_msgcmd()->set_cmd(querySqlStr);
+		pack.mutable_msgquery()->set_msg(QuerySql);
 
 		int msgLen			= pack.ByteSize();
 		LPBYTE pBuffer		= new BYTE[msgLen];
@@ -146,6 +112,57 @@ void CClient::QuerySendMsg(char* querySqlStr)
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
+
+		if (bSync)
+		{
+			MSG msg;
+			while (m_requestMap.Exist(numberTemp))
+			{
+				if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+				{
+					::TranslateMessage(&msg);
+					::DispatchMessage(&msg);
+				}
+				Sleep(100);
+			}
+		}
 	}
 }
 
+void CClient::AddTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool bSync)
+{
+	if (m_sendDataFunc)
+	{
+		netmsg::MsgPack pack;
+		DWORD numberTemp			= InterlockedIncrement(&m_globalPackNumber);
+		m_requestMap.Push(numberTemp, callBack);
+		pack.mutable_head()->set_globalpacknumber(numberTemp);
+		pack.mutable_head()->set_totalpack(1);
+		pack.mutable_head()->set_packindex(1);
+		pack.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseAddAsk);
+
+		pack.mutable_msgadd()->set_tablename(tableName);
+		pack.mutable_msgadd()->set_msg(dataStr);
+
+		int msgLen			= pack.ByteSize();
+		LPBYTE pBuffer		= new BYTE[msgLen];
+		pack.SerializeToArray(pBuffer, msgLen);
+
+		m_sendDataFunc(pBuffer, msgLen);
+		delete[] pBuffer;
+
+		if (bSync)
+		{
+			MSG msg;
+			while (m_requestMap.Exist(numberTemp))
+			{
+				if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+				{
+					::TranslateMessage(&msg);
+					::DispatchMessage(&msg);
+				}
+				Sleep(100);
+			}
+		}
+	}
+}

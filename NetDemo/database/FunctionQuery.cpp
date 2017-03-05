@@ -22,11 +22,11 @@ bool QueryTable(string QuerySql, string &dataStr, string &strError)
 		char** pResult;
 		int nRow;
 		int nCol;
-		if (sqlite3_get_table(lpSQlite->Handle(), QuerySql.c_str(), &pResult, &nRow, &nCol, NULL) != SQLITE_OK)
+		if (sqlite3_get_table(lpSQlite->Handle(), ASCIItoUTF8(QuerySql).c_str(), &pResult, &nRow, &nCol, NULL) != SQLITE_OK)
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", QuerySql.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -76,7 +76,7 @@ bool QueryZHIQIANSHUJU(string QuerySql, std::vector<tagZHIQIANSHUJU> &lcArray, s
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -137,7 +137,7 @@ bool QuerySHOUZHENGSHUJU(string QuerySql, std::vector<tagSHOUZHENGSHUJU> &lcArra
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -195,7 +195,7 @@ bool QueryQIANZHUSHUJU(string QuerySql, std::vector<tagQIANZHUSHUJU> &lcArray, s
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -255,7 +255,7 @@ bool QueryJIAOKUANSHUJU(string QuerySql, std::vector<tagJIAOKUANSHUJU> &lcArray,
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -313,7 +313,7 @@ bool QueryCHAXUNSHUJU(string QuerySql, std::vector<tagCHAXUNSHUJU> &lcArray, str
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -370,7 +370,7 @@ bool QueryYUSHOULISHUJU(string QuerySql, std::vector<tagYUSHOULISHUJU> &lcArray,
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -433,7 +433,7 @@ bool QuerySHEBEIZHUANGTAI(string QuerySql, std::vector<tagSHEBEIZHUANGTAI> &lcAr
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -488,7 +488,7 @@ bool QuerySHEBEIYICHANGSHUJU(string QuerySql, std::vector<tagSHEBEIYICHANGSHUJU>
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -544,7 +544,7 @@ bool QueryGUANLIYUAN(string QuerySql, std::vector<tagGUANLIYUAN> &lcArray, strin
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -595,7 +595,7 @@ bool QueryGUANLIYUANCAOZUOJILU(string QuerySql, std::vector<tagGUANLIYUANCAOZUOJ
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -645,7 +645,7 @@ bool QuerySHEBEIGUANLI(string QuerySql, std::vector<tagSHEBEIGUANLI> &lcArray, s
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
@@ -701,7 +701,7 @@ bool QueryYINGSHEBIAO(string QuerySql, std::vector<tagYINGSHEBIAO> &lcArray, str
 		{
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}

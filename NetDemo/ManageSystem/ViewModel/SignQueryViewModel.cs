@@ -139,7 +139,7 @@ namespace ManageSystem.ViewModel
                 e.Column.Header = _columnNameMap[headername];
             }
         }
-        public void QueryTableCallBack(string resultStr)
+        public void QueryTableCallBack(string resultStr, string errorStr)
         {
             System.Reflection.PropertyInfo[] properties = typeof(ZHIQIANSHUJUModel).GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
 

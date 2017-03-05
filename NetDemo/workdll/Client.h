@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "WorkDll.h"
+#include "ThreadMap.h"
 
 class CClient
 {
@@ -21,10 +22,8 @@ protected:
 
 	ClientSendData						m_sendDataFunc;
 
-
-
-	bool								m_bCmdFinished;
-	void								QuerySendMsg(char* querySqlStr);
+	DWORD								m_globalPackNumber;	//×ÜµÄ°üºÅ
+	ThreadMap<DWORD, void*>				m_requestMap;
 
 public:
 	static CClient* 					GetInstance();
@@ -32,6 +31,10 @@ public:
 	bool								StartClient(char *ip, int port);
 	bool								StopClient();
 	bool								ClientStoped();
-
+	void								QueryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync);
+	void								AddTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool bSync);
 };
+
+#pragma  once
+
 

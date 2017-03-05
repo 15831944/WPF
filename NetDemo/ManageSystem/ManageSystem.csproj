@@ -52,6 +52,7 @@
   <ItemGroup>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -250,6 +251,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="ManageSystem.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -319,6 +321,14 @@
     <Resource Include="Resources\imgs\查询-常态.png" />
     <Resource Include="Resources\imgs\查询-鼠标悬停.png" />
     <Resource Include="Resources\imgs\查询-鼠标按下.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\imgs\曲线图－常态.png" />
+    <Resource Include="Resources\imgs\曲线图－选中.png" />
+    <Resource Include="Resources\imgs\直方图－常态.png" />
+    <Resource Include="Resources\imgs\直方图－选中.png" />
+    <Resource Include="Resources\imgs\饼图－常态.png" />
+    <Resource Include="Resources\imgs\饼图－选中.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

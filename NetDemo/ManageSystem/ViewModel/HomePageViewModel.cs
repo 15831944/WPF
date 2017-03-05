@@ -154,6 +154,49 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private string _region0Text;
+        public string region0Text
+        {
+            get { return _region0Text; }
+            set
+            {
+                _region0Text = value;
+                this.RaisePropertyChanged("region0Text");
+            }
+        }
+
+        private string _region1Text;
+        public string region1Text
+        {
+            get { return _region1Text; }
+            set
+            {
+                _region1Text = value;
+                this.RaisePropertyChanged("region1Text");
+            }
+        }
+
+        private string _region2Text;
+        public string region2Text
+        {
+            get { return _region2Text; }
+            set
+            {
+                _region2Text = value;
+                this.RaisePropertyChanged("region2Text");
+            }
+        }
+
+        private string _region3Text;
+        public string region3Text
+        {
+            get { return _region3Text; }
+            set
+            {
+                _region3Text = value;
+                this.RaisePropertyChanged("region3Text");
+            }
+        }
         public HomePageViewModel()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
@@ -174,11 +217,21 @@ namespace ManageSystem.ViewModel
             _topHeight                                  = 60;
             _regionTextHeight                           = 50;
             _regionRightWidth                           = 200;
+            _region0Text                                = "已受理业务统计图";
+            _region1Text                                = "已受理业务概率图表";
+            _region2Text                                = "已受理业务饼图表";
+            _region3Text                                = "已受理业务直方图表";
+
+            _lineCharIndex                              = -1;
+            _histogramCharIndex                         = -1;
+            _pieCharIndex                               = -1;
+            _occupancyCharIndex                         = -1;
+
             _bShowChart                                 = ShowChartEnum.ShowChartEnum_Line;
 
         }
 
-        private void QueryTableCallBack(string resultStr)
+        private void QueryTableCallBack(string resultStr, string errorStr)
         {
             string[] rows   = resultStr.Split(';');
             foreach (string row in rows)
@@ -227,10 +280,10 @@ namespace ManageSystem.ViewModel
                                     int clr0_4          = Color.Azure.ToArgb() + 100 * (rowIndex + 3);
                                                           
                                 PieChartServer.SetPieBasicInfo(_pieCharIndex, Convert.ToInt32(keyvalue[0]), (float)(Convert.ToDouble(keyvalue[1])), 
-                                    ref clr0_1,
-                                    ref clr0_2,
-                                    ref clr0_3,
-                                    ref clr0_4
+                                     clr0_1,
+                                     clr0_2,
+                                     clr0_3,
+                                     clr0_4
                                     );
                                 }
                                 break;
@@ -246,12 +299,17 @@ namespace ManageSystem.ViewModel
                 }
             }
 
+            PieChartServer.RedrawChart(_pieCharIndex);
+            LineChartServer.RedrawChart(_lineCharIndex);
+            HistogramServer.RedrawChart(_histogramCharIndex);
+            OccupancyChartServer.RedrawChart(_occupancyCharIndex);
+
             _queryoperate = QueryOperate.QueryOperate_None;
         }
         public void QueryShebeiguzhang(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_Guzhang;
-            WorkServer.QueryTable(MakeShebeiguzhangCurMonthQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeShebeiguzhangCurMonthQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeShebeiguzhangCurMonthQuerySql(object obj)
         {
@@ -265,7 +323,7 @@ namespace ManageSystem.ViewModel
         public void QueryBenyuebanliyewu(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_Yewu;
-            WorkServer.QueryTable(MakeBenyuebanliyewuCurMonthQuerySql(obj, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1,  0, 0, 0)), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeBenyuebanliyewuCurMonthQuerySql(obj, new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1,  0, 0, 0)), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeBenyuebanliyewuCurMonthQuerySql(object obj, DateTime BeginTime )
         {
@@ -306,7 +364,7 @@ namespace ManageSystem.ViewModel
         public void QueryHongKongWangLai(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_Hongkong;
-            WorkServer.QueryTable(MakeHongKongWangLaiCurMonthQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeHongKongWangLaiCurMonthQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeHongKongWangLaiCurMonthQuerySql(object obj)
         {
@@ -335,7 +393,7 @@ namespace ManageSystem.ViewModel
         public void QueryTaiWanWangLai(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_Taiwan;
-            WorkServer.QueryTable(MakeTaiWanWangLaiCurMonthQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeTaiWanWangLaiCurMonthQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeTaiWanWangLaiCurMonthQuerySql(object obj)
         {
@@ -363,7 +421,7 @@ namespace ManageSystem.ViewModel
         public void QuerySheBeiZaiXian(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_SheBeiZaiXian;
-            WorkServer.QueryTable(MakeSheBeiZaiXianCurQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeSheBeiZaiXianCurQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeSheBeiZaiXianCurQuerySql(object obj)
         {
@@ -375,7 +433,7 @@ namespace ManageSystem.ViewModel
         public void QueryGuanLiCiShu(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_GuanLiCnt;
-            WorkServer.QueryTable(MakeGuanLiCiShuQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeGuanLiCiShuQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeGuanLiCiShuQuerySql(object obj)
         {
@@ -385,7 +443,7 @@ namespace ManageSystem.ViewModel
         public void QueryLineChartData(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_LineChart;
-            WorkServer.QueryTable(MakeLineChartQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeLineChartQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeLineChartQuerySql(object obj)
         {
@@ -410,7 +468,7 @@ namespace ManageSystem.ViewModel
         public void QueryOccupancyChartData(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_OccupancyChart;
-            WorkServer.QueryTable(MakeOccupancyChartQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeOccupancyChartQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeOccupancyChartQuerySql(object obj)
         {
@@ -435,7 +493,7 @@ namespace ManageSystem.ViewModel
         public void QueryPieChartData(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_PieChart;
-            WorkServer.QueryTable(MakePieChartQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakePieChartQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakePieChartQuerySql(object obj)
         {
@@ -490,7 +548,7 @@ namespace ManageSystem.ViewModel
         public void QueryHistogramChartData(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_HistogramChart;
-            WorkServer.QueryTable(MakeHistogramChartQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeHistogramChartQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeHistogramChartQuerySql(object obj)
         {
@@ -534,48 +592,48 @@ namespace ManageSystem.ViewModel
         public void Initialized(object obj)
         {
             return;
-            IntPtr hwnd = new System.Windows.Interop.WindowInteropHelper(Application.Current.MainWindow).Handle;
-            tagRECT rcClient = new tagRECT();
+            //IntPtr hwnd = new System.Windows.Interop.WindowInteropHelper(Application.Current.MainWindow).Handle;
+            //tagRECT rcClient = new tagRECT();
 
-            _pieCharIndex       = PieChartServer.AddPieChart(hwnd, ref rcClient, 3);
-            _lineCharIndex      = LineChartServer.AddCurveChart(hwnd,  ref rcClient, 13, 12, 12000);
-            _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd, ref rcClient, 12, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
-            _occupancyCharIndex = OccupancyChartServer.AddOccupancyChart(hwnd, ref rcClient);
-
-
-            PieChartServer.RandomPieValues(_pieCharIndex);
-            LineChartServer.RandomCurvePoints(_lineCharIndex);
-            HistogramServer.RandomHistogramValues(_histogramCharIndex);
-            OccupancyChartServer.RandomOccupancyValues(_occupancyCharIndex);
+            //_pieCharIndex       = PieChartServer.AddPieChart(hwnd,  rcClient, 3);
+            //_lineCharIndex      = LineChartServer.AddCurveChart(hwnd,   rcClient, 13, 12, 12000);
+            //_histogramCharIndex = HistogramServer.AddHistogramChart(hwnd,  rcClient, 12, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
+            //_occupancyCharIndex = OccupancyChartServer.AddOccupancyChart(hwnd,  rcClient);
 
 
-            OccupancyChartServer.ShowOccupancyList(_occupancyCharIndex, false);
-            PieChartServer.ShowPieList(_pieCharIndex, false);
-            HistogramServer.ShowHistogramList(_histogramCharIndex, false);
-            ResizeShowCharts();
+            //PieChartServer.RandomPieValues(_pieCharIndex);
+            //LineChartServer.RandomCurvePoints(_lineCharIndex);
+            //HistogramServer.RandomHistogramValues(_histogramCharIndex);
+            //OccupancyChartServer.RandomOccupancyValues(_occupancyCharIndex);
 
-            //Thread tProcess = new Thread(() =>
-            //{   ////循环查询过期IP并删除之
-            //    ManualResetEventSlim    _event      = _QueueData.GetQueueEvent();
-            //    while (!_bExit)
-            //    {
-            //        _event.Wait();
-            //        ProcessData();
-            //    }
-            //    Debug.WriteLine(GetType() + ":" + "exit");
-            //}
-            //);
-            //tProcess.IsBackground = true;
-            //tProcess.Start();
-            QueryShebeiguzhang(null);
-            QueryBenyuebanliyewu(null);
-            QueryHongKongWangLai(null);
-            QueryTaiWanWangLai(null);
-            QuerySheBeiZaiXian(null);
-            QueryGuanLiCiShu(null);
-            QueryLineChartData(null);
-            QueryPieChartData(null);
-            QueryHistogramChartData(null);
+
+            //OccupancyChartServer.ShowOccupancyList(_occupancyCharIndex, false);
+            //PieChartServer.ShowPieList(_pieCharIndex, false);
+            //HistogramServer.ShowHistogramList(_histogramCharIndex, false);
+            //ResizeShowCharts();
+
+            ////Thread tProcess = new Thread(() =>
+            ////{   ////循环查询过期IP并删除之
+            ////    ManualResetEventSlim    _event      = _QueueData.GetQueueEvent();
+            ////    while (!_bExit)
+            ////    {
+            ////        _event.Wait();
+            ////        ProcessData();
+            ////    }
+            ////    Debug.WriteLine(GetType() + ":" + "exit");
+            ////}
+            ////);
+            ////tProcess.IsBackground = true;
+            ////tProcess.Start();
+            //QueryShebeiguzhang(null);
+            //QueryBenyuebanliyewu(null);
+            //QueryHongKongWangLai(null);
+            //QueryTaiWanWangLai(null);
+            //QuerySheBeiZaiXian(null);
+            //QueryGuanLiCiShu(null);
+            //QueryLineChartData(null);
+            //QueryPieChartData(null);
+            //QueryHistogramChartData(null);
         }
 
         public void Loaded(object obj)
@@ -583,25 +641,24 @@ namespace ManageSystem.ViewModel
             IntPtr hwnd = new System.Windows.Interop.WindowInteropHelper(Application.Current.MainWindow).Handle;
             tagRECT rcClient = new tagRECT();
 
-            _pieCharIndex       = PieChartServer.AddPieChart(hwnd, ref rcClient, 3);
-            _lineCharIndex      = LineChartServer.AddCurveChart(hwnd,  ref rcClient, 13, 12, 12000);
-            _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd,  ref rcClient, 12, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
-            _occupancyCharIndex = OccupancyChartServer.AddOccupancyChart(hwnd,  ref rcClient);
+            _pieCharIndex       = PieChartServer.AddPieChart(hwnd,  rcClient);
+            _lineCharIndex      = LineChartServer.AddCurveChart(hwnd,  rcClient);
+            _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd,  rcClient, 0, 3000, 300, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
+            _occupancyCharIndex = OccupancyChartServer.AddOccupancyChart(hwnd,  rcClient, 0, 3000, 300);
 
+            
+            PieChartServer.AddData(_pieCharIndex, MainWindowViewModel._businesstype.Count - 1);
+            LineChartServer.AddData(_lineCharIndex, 13, 12, 1200);
+            HistogramServer.AddData(_histogramCharIndex, 12);
+            OccupancyChartServer.AddData(_occupancyCharIndex, 12);
 
-            PieChartServer.RandomPieValues(_pieCharIndex);
-            LineChartServer.RandomCurvePoints(_lineCharIndex);
-            HistogramServer.RandomHistogramValues(_histogramCharIndex);
-            OccupancyChartServer.RandomOccupancyValues(_occupancyCharIndex);
-
-
-            OccupancyChartServer.ShowOccupancyList(_occupancyCharIndex, false);
             PieChartServer.ShowPieList(_pieCharIndex, false);
             HistogramServer.ShowHistogramList(_histogramCharIndex, false);
+            OccupancyChartServer.ShowOccupancyList(_occupancyCharIndex, false);
             ResizeShowCharts();
 
             Thread tQuery = new Thread(() =>
-            {   ////循环查询过期IP并删除之
+            {   ////循环查询
                 QueryShebeiguzhang(null);
                 QueryBenyuebanliyewu(null);
                 QueryHongKongWangLai(null);
@@ -676,23 +733,32 @@ namespace ManageSystem.ViewModel
                 rect4.right                                 = Convert.ToInt32(ptBotRightDlg4.X - ptOriginalDlg.X);
                 rect4.bottom                                = Convert.ToInt32(ptBotRightDlg4.Y - ptOriginalDlg.Y);
 
-                OccupancyChartServer.MoveChart(_occupancyCharIndex, ref rect2, true);
+                OccupancyChartServer.MoveChart(_occupancyCharIndex,  rect2, true);
                 switch (bShowChart)
                 {
                     case ShowChartEnum.ShowChartEnum_Pie:
-                        PieChartServer.MoveChart(_pieCharIndex, ref rect1, true);
-                        LineChartServer.MoveChart(_lineCharIndex, ref rect3, true);
-                        HistogramServer.MoveChart(_histogramCharIndex, ref rect4, true);
+                        region0Text                                = "已受理业务饼图表";
+                        region2Text                                = "已受理业务统计图";
+                        region3Text                                = "已受理业务直方图表";
+                        PieChartServer.MoveChart(_pieCharIndex,  rect1, true);
+                        LineChartServer.MoveChart(_lineCharIndex,  rect3, true);
+                        HistogramServer.MoveChart(_histogramCharIndex,  rect4, true);
                         break;
                     case ShowChartEnum.ShowChartEnum_Line:
-                        LineChartServer.MoveChart(_lineCharIndex, ref rect1, true);
-                        PieChartServer.MoveChart(_pieCharIndex, ref rect3, true);
-                        HistogramServer.MoveChart(_histogramCharIndex, ref rect4, true);
+                        region0Text                                = "已受理业务统计图";
+                        region2Text                                = "已受理业务饼图表";
+                        region3Text                                = "已受理业务直方图表";
+                        LineChartServer.MoveChart(_lineCharIndex,  rect1, true);
+                        PieChartServer.MoveChart(_pieCharIndex,  rect3, true);
+                        HistogramServer.MoveChart(_histogramCharIndex,  rect4, true);
                         break;
                     case ShowChartEnum.ShowChartEnum_Histogram:
-                        HistogramServer.MoveChart(_histogramCharIndex, ref rect1, true);
-                        LineChartServer.MoveChart(_lineCharIndex, ref rect3, true);
-                        PieChartServer.MoveChart(_pieCharIndex, ref rect4, true);
+                        region0Text                                = "已受理业务直方图表";
+                        region2Text                                = "已受理业务统计图";
+                        region3Text                                = "已受理业务饼图表";
+                        HistogramServer.MoveChart(_histogramCharIndex,  rect1, true);
+                        LineChartServer.MoveChart(_lineCharIndex,  rect3, true);
+                        PieChartServer.MoveChart(_pieCharIndex,  rect4, true);
                         break;
                 }
 

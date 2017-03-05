@@ -41,10 +41,19 @@ bool stopServer()
 bool isServerStoped()
 {
 	if (g_serverPtr != nullptr)
-		g_serverPtr->stoped();
+		return g_serverPtr->stoped();
 
 	return true;
 }
+
+int curServerConnections()
+{
+	if (g_serverPtr != nullptr)
+		return g_serverPtr->connections();
+
+	return 0;
+}
+
 
 boost::mutex									m_sockMutexclient;				//asio::socket不是线程安全的，一把大锁解决问题
 boost::asio::io_service							g_io_service_client;

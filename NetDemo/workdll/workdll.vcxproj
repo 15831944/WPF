@@ -104,6 +104,8 @@ xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configur
   <ItemGroup>
     <ClInclude Include="Client.h" />
     <ClInclude Include="netmsg.pb.h" />
+    <ClInclude Include="ThreadMap.h" />
+    <ClInclude Include="ThreadQueue.h" />
     <ClInclude Include="Server.h" />
     <ClInclude Include="SqliteData.h" />
     <ClInclude Include="stdafx.h" />

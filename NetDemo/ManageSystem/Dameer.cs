@@ -302,7 +302,7 @@ namespace ManageSystem
             int accum = 0;
             StringBuilder sb = new StringBuilder(this._format);
             foreach (Block b in this._blocks)
-                b.Render(ref accum, sb);
+                b.Render( accum, sb);
             this._dameer._textBox.Text = this._format = sb.ToString();
             this.Select(this._selectedBlock);
         }
@@ -531,7 +531,7 @@ namespace ManageSystem
             return string.Format("{0}, {1}", this.Pattern, this.Index);
         }
 
-        internal void Render(ref int accum, StringBuilder sb)
+        internal void Render( int accum, StringBuilder sb)
         {
             //Debug.WriteLine("Block.Render");
             this.Index += accum;

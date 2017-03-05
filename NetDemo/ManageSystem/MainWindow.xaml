@@ -9,7 +9,7 @@
         WindowStyle="None" AllowsTransparency="False" ResizeMode="NoResize"
         Title="MainWindow" Height="720" Width="1280" MouseRightButtonDown="Window_MouseRightButtonDown">
     <Window.InputBindings>
-        <!--<MouseBinding MouseAction="LeftClick" Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>-->
+        <KeyBinding Key="F4" Modifiers="Alt"  Command="{Binding ExitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
     </Window.InputBindings>
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
@@ -17,6 +17,9 @@
         </i:EventTrigger>
         <i:EventTrigger EventName="MouseLeftButtonDown">
             <i:InvokeCommandAction Command="{Binding DragWndCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
+        </i:EventTrigger>
+        <i:EventTrigger EventName="Closed">
+            <i:InvokeCommandAction Command="{Binding ExitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
         </i:EventTrigger>
         <i:EventTrigger EventName="MouseDoubleClick">
             <Local:MyEventCommand Command="{Binding DoubleClickCommand}"/>
@@ -28,8 +31,21 @@
             <RowDefinition Height="{Binding Path=titleheight}"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DockPanel Background="#34343E">
+        <DockPanel Grid.Row="0" Background="#34343E">
             <TextBlock Margin="10,0,0,0" Foreground="White" Text="管理系统" VerticalAlignment="Center"></TextBlock>
+            <ContentControl Margin="10,2,2,2" Width="18" Height="18">
+                <ContentControl.Template>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Ellipse x:Name="rect" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Fill="Red"/>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Path=bOnline}" Value="True">
+                                <Setter Property="Fill" TargetName="rect" Value="Green"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </ContentControl.Template>
+            </ContentControl>
+            <TextBlock Margin="10,0,0,0" Foreground="White" Text="{Binding Path=displayMsg}" VerticalAlignment="Center"></TextBlock>
             <StackPanel Grid.Row="0" Orientation="Horizontal" FlowDirection="RightToLeft">
                 <Button Width="18" Height="18" Style="{StaticResource Style_BackGroundBtn}" Background="{StaticResource exitbrush}" Command="{Binding ExitCommand}" />
                 <ToggleButton Width="18" Height="18" Style="{StaticResource Style_MaxRestoreBtn}" Command="{Binding MaxCommand}">

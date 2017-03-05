@@ -25,7 +25,8 @@ namespace ManageSystem
         private static extern void _addTable(
                         string tableName,
                         string dataStr,
-                        IntPtr callback);
+                        IntPtr callback, 
+                        bool bSync);
 
         Random ran=new Random();
         
@@ -125,7 +126,7 @@ namespace ManageSystem
                         ;
                     
                     if (tableName != null && tableName.Length != 0)
-                        _addTable(tableName, addXml, IntPtr.Zero);
+                        _addTable(tableName, addXml, IntPtr.Zero, true);
                     break;
             }
 
@@ -228,7 +229,7 @@ namespace ManageSystem
                 }
 
                 if (tableName != null && tableName.Length != 0)
-                    _addTable(tableName, addXml, IntPtr.Zero);
+                    _addTable(tableName, addXml, IntPtr.Zero, true);
             }
         }
     }

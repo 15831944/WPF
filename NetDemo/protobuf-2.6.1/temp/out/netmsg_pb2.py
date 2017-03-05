@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='netmsg.proto',
   package='netmsg',
-  serialized_pb=_b('\n\x0cnetmsg.proto\x12\x06netmsg\"\x98\x07\n\x07MsgPack\x12\x1d\n\x04head\x18\x01 \x02(\x0b\x32\x0f.netmsg.MsgHead\x12\x1e\n\x06msgcmd\x18\x02 \x01(\x0b\x32\x0e.netmsg.MsgCmd\x12\x36\n\x12msgidcardapplydata\x18\x03 \x01(\x0b\x32\x1a.netmsg.MsgIdCardApplyData\x12\x38\n\x13msgonlinestatusdata\x18\x04 \x01(\x0b\x32\x1b.netmsg.MsgOnlineStatusData\x12>\n\x16msgshulianghuizongdata\x18\x05 \x01(\x0b\x32\x1e.netmsg.MsgShuLiangHuiZongData\x12:\n\x14msgxiangxitongjidata\x18\x06 \x01(\x0b\x32\x1c.netmsg.MsgXiangXiTongJiData\x12\x38\n\x13msgzhiqianshujudata\x18\x07 \x01(\x0b\x32\x1b.netmsg.MsgZhiQianShuJuData\x12<\n\x15msgshouzhengshujudata\x18\x08 \x01(\x0b\x32\x1d.netmsg.MsgShouZhengShuJuData\x12\x38\n\x13msgqianzhushujudata\x18\t \x01(\x0b\x32\x1b.netmsg.MsgQianZhuShuJuData\x12:\n\x14msgjiaokuanshujudata\x18\n \x01(\x0b\x32\x1c.netmsg.MsgJiaoKuanShuJuData\x12\x36\n\x12msgchaxunshujudata\x18\x0b \x01(\x0b\x32\x1a.netmsg.MsgChaXunShuJuData\x12:\n\x14msgyushoulishujudata\x18\x0c \x01(\x0b\x32\x1c.netmsg.MsgYuShouLiShuJuData\x12\x44\n\x19msgshebeiyichangshujudata\x18\r \x01(\x0b\x32!.netmsg.MsgSheBeiYiChangShuJuData\x12\x34\n\x11msgguanliyuandata\x18\x0e \x01(\x0b\x32\x19.netmsg.MsgGuanLiYuanData\x12H\n\x1bmsgguanliyuancaozuojiludata\x18\x0f \x01(\x0b\x32#.netmsg.MsgGuanLiYuanCaoZuoJiLuData\x12\x38\n\x13msgshebeiguanlidata\x18\x10 \x01(\x0b\x32\x1b.netmsg.MsgSheBeiGuanLiData\"o\n\x07MsgHead\x12\x14\n\ttotalPack\x18\x01 \x02(\x05:\x01\x31\x12\x14\n\tpackIndex\x18\x02 \x02(\x05:\x01\x31\x12\x38\n\x08packtype\x18\x03 \x02(\x0e\x32\x12.netmsg.NetMsgType:\x12NetMsgType_Unknown\"\x15\n\x06MsgCmd\x12\x0b\n\x03\x43md\x18\x02 \x02(\t\"\xc6\x02\n\x12MsgIdCardApplyData\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0e\n\x06gender\x18\x02 \x01(\t\x12\x0e\n\x06Nation\x18\x03 \x01(\t\x12\x10\n\x08\x42irthday\x18\x04 \x01(\t\x12\x0f\n\x07\x41\x64\x64ress\x18\x05 \x01(\t\x12\x10\n\x08IdNumber\x18\x06 \x01(\t\x12\x11\n\tSigDepart\x18\x07 \x01(\t\x12\x0b\n\x03SLH\x18\x08 \x01(\t\x12\x0e\n\x06\x66pData\x18\t \x01(\t\x12\x11\n\tfpFeature\x18\n \x01(\t\x12\x0c\n\x04XCZP\x18\x0b \x01(\t\x12\x0c\n\x04XZQH\x18\x0c \x01(\t\x12\x10\n\x08sannerId\x18\r \x01(\t\x12\x13\n\x0bscannerName\x18\x0e \x01(\t\x12\r\n\x05legal\x18\x0f \x01(\x08\x12\x12\n\noperatorID\x18\x10 \x01(\t\x12\x14\n\x0coperatorName\x18\x11 \x01(\t\x12\x0e\n\x06opDate\x18\x12 \x01(\t\"\xdd\x01\n\x13MsgOnlineStatusData\x12\x11\n\tmachineId\x18\x01 \x01(\t\x12\x13\n\x0bmachineName\x18\x02 \x01(\t\x12\x11\n\tmachineIP\x18\x03 \x01(\t\x12\x14\n\x0cmachineLongi\x18\x04 \x01(\t\x12\x12\n\nmachineLat\x18\x05 \x01(\t\x12\x17\n\x0f\x63urrentBusiness\x18\x06 \x01(\t\x12\x19\n\x11\x62usinessStartTime\x18\x07 \x01(\t\x12\x17\n\x0f\x62usinessEndTime\x18\x08 \x01(\t\x12\x14\n\x0c\x62usinessDone\x18\t \x01(\x08\"\xf0\x02\n\x16MsgShuLiangHuiZongData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x15\n\rShiyongdanwei\x18\x02 \x01(\x05\x12\x1a\n\x12Shebeizongshuliang\x18\x03 \x01(\x05\x12\x14\n\x0cQiyongshebei\x18\x04 \x01(\x05\x12\x11\n\tYuyueyewu\x18\x05 \x01(\x05\x12\x14\n\x0cYushouliyewu\x18\x06 \x01(\x05\x12\x13\n\x0bJiaofeiyewu\x18\x07 \x01(\x05\x12\x12\n\nChaxunyewu\x18\x08 \x01(\x05\x12\x17\n\x0fShebeishouzheng\x18\t \x01(\x05\x12\x12\n\nXuqianyewu\x18\n \x01(\x05\x12\x1b\n\x13\x42\x65nshitongxingzheng\x18\x0b \x01(\x05\x12\x1b\n\x13\x44ianzitongxingzheng\x18\x0c \x01(\x05\x12\x1a\n\x12Tongxingzhengzhika\x18\r \x01(\x05\x12\x12\n\nLidengkequ\x18\x0e \x01(\x05\x12\x15\n\rFeilidengkequ\x18\x0f \x01(\x05\"\x9c\x03\n\x14MsgXiangXiTongJiData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x0c\n\x04Nian\x18\x02 \x01(\x05\x12\x0b\n\x03Yue\x18\x03 \x01(\x05\x12\n\n\x02Ri\x18\x04 \x01(\x05\x12\x0f\n\x07Xiaoshi\x18\x05 \x01(\x05\x12\x10\n\x08\x46\x65nzhong\x18\x06 \x01(\x05\x12\x15\n\rShiyongdanwei\x18\x07 \x01(\x05\x12\x14\n\x0cQiyongshebei\x18\x08 \x01(\x05\x12\x11\n\tYuyueyewu\x18\t \x01(\x05\x12\x14\n\x0cYushouliyewu\x18\n \x01(\x05\x12\x13\n\x0bJiaofeiyewu\x18\x0b \x01(\x05\x12\x12\n\nChaxunyewu\x18\x0c \x01(\x05\x12\x17\n\x0fShebeishouzheng\x18\r \x01(\x05\x12\x12\n\nXuqianyewu\x18\x0e \x01(\x05\x12\x1b\n\x13\x42\x65nshitongxingzheng\x18\x0f \x01(\x05\x12\x1b\n\x13\x44ianzitongxingzheng\x18\x10 \x01(\x05\x12\x1a\n\x12Tongxingzhengzhika\x18\x11 \x01(\x05\x12\x12\n\nLidengkequ\x18\x12 \x01(\x05\x12\x15\n\rFeilidengkequ\x18\x13 \x01(\x05\"\x83\x02\n\x13MsgZhiQianShuJuData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x0c\n\x04Riqi\x18\x02 \x01(\t\x12\x10\n\x08ShebeiIP\x18\x03 \x01(\t\x12\x13\n\x0bYewubianhao\x18\x04 \x01(\t\x12\x1a\n\x12YuanZhengjianhaoma\x18\x05 \x01(\t\x12\x10\n\x08Xingming\x18\x06 \x01(\t\x12\x17\n\x0fQianzhuzhonglei\x18\x07 \x01(\t\x12\x16\n\x0eZhikaZhuangtai\x18\x08 \x01(\t\x12\x16\n\x0eZhengjianhaoma\x18\t \x01(\t\x12\x1a\n\x12Jiekoufanhuijieguo\x18\n \x01(\t\x12\x15\n\rLianxidianhua\x18\x0b \x01(\t\"\xb8\x01\n\x15MsgShouZhengShuJuData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x0c\n\x04Riqi\x18\x02 \x01(\t\x12\x10\n\x08ShebeiIP\x18\x03 \x01(\t\x12\x18\n\x10Zhengjianleixing\x18\x04 \x01(\t\x12\x16\n\x0eZhengjianhaoma\x18\x05 \x01(\t\x12\x10\n\x08Xingming\x18\x06 \x01(\t\x12\x15\n\rShoulibianhao\x18\x07 \x01(\t\x12\x15\n\rShifoujiaofei\x18\x08 \x01(\t\"\xd8\x01\n\x13MsgQianZhuShuJuData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x0c\n\x04Riqi\x18\x02 \x01(\t\x12\x10\n\x08ShebeiIP\x18\x03 \x01(\t\x12\x1a\n\x12YuanZhengjianhaoma\x18\x04 \x01(\t\x12\x10\n\x08Xingming\x18\x05 \x01(\t\x12\x0f\n\x07Xingbie\x18\x06 \x01(\t\x12\x14\n\x0c\x43hushengriqi\x18\x07 \x01(\t\x12\x15\n\rLianxidianhua\x18\x08 \x01(\t\x12\x13\n\x0bYewuleixing\x18\t \x01(\t\x12\x11\n\tShouliren\x18\n \x01(\t\"\xcc\x01\n\x14MsgJiaoKuanShuJuData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x0c\n\x04Riqi\x18\x02 \x01(\t\x12\x10\n\x08ShebeiIP\x18\x03 \x01(\t\x12\x1a\n\x12Zhishoudanweidaima\x18\x04 \x01(\t\x12\x1f\n\x17Jiaokuantongzhishuhaoma\x18\x05 \x01(\t\x12\x1b\n\x13Jiaokuanrenxingming\x18\x06 \x01(\t\x12\x17\n\x0fYingkoukuanheji\x18\x07 \x01(\x02\x12\x12\n\nJiaoyiriqi\x18\x08 \x01(\t\"\x8e\x01\n\x12MsgChaXunShuJuData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x0c\n\x04Riqi\x18\x02 \x01(\t\x12\x10\n\x08ShebeiIP\x18\x03 \x01(\t\x12\x13\n\x0b\x43haxunhaoma\x18\x04 \x01(\t\x12\x15\n\rChaxunleixing\x18\x05 \x01(\t\x12\x1d\n\x15Shifouchaxunchenggong\x18\x06 \x01(\x08\"\x85\x02\n\x14MsgYuShouLiShuJuData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x0c\n\x04Riqi\x18\x02 \x01(\t\x12\x10\n\x08ShebeiIP\x18\x03 \x01(\t\x12\x13\n\x0bYewubianhao\x18\x04 \x01(\t\x12\x10\n\x08Xingming\x18\x05 \x01(\t\x12\x15\n\rLianxidianhua\x18\x06 \x01(\t\x12\x14\n\x0c\x43huguoshiyou\x18\x07 \x01(\t\x12\x1a\n\x12YuanZhengjianhaoma\x18\x08 \x01(\t\x12\x17\n\x0fQianzhuzhonglei\x18\t \x01(\t\x12\x0f\n\x07Xingbie\x18\n \x01(\t\x12\x15\n\rHukousuozaidi\x18\x0b \x01(\t\x12\r\n\x05Minzu\x18\x0c \x01(\t\"\xa2\x01\n\x19MsgSheBeiYiChangShuJuData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x0c\n\x04Riqi\x18\x02 \x01(\t\x12\x15\n\rShiyongdanwei\x18\x03 \x01(\t\x12\x1a\n\x12Yichangshejimokuai\x18\x04 \x01(\t\x12\x16\n\x0eYichangyuanyin\x18\x05 \x01(\t\x12\x1d\n\x15Yichangxiangxineirong\x18\x06 \x01(\t\"n\n\x11MsgGuanLiYuanData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x12\n\nYonghuming\x18\x02 \x01(\t\x12\x0c\n\x04Mima\x18\x03 \x01(\t\x12\x11\n\tYouxiaoqi\x18\x04 \x01(\t\x12\x15\n\rQuanxianjibie\x18\x05 \x01(\x05\"{\n\x1bMsgGuanLiYuanCaoZuoJiLuData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\x12\n\nYonghuming\x18\x02 \x01(\t\x12\x0c\n\x04Riqi\x18\x03 \x01(\t\x12\x14\n\x0c\x43\x61ozuoleibie\x18\x04 \x01(\t\x12\x15\n\rCaozuoneirong\x18\x05 \x01(\t\"\xc0\x01\n\x13MsgSheBeiGuanLiData\x12\r\n\x05Xuhao\x18\x01 \x01(\x05\x12\r\n\x05Sheng\x18\x02 \x01(\t\x12\x0b\n\x03Shi\x18\x03 \x01(\t\x12\n\n\x02Qu\x18\x04 \x01(\t\x12\x15\n\rShiyongdanwei\x18\x05 \x01(\t\x12\n\n\x02IP\x18\x06 \x01(\t\x12\x15\n\rShebeileixing\x18\x07 \x01(\t\x12\x0e\n\x06Jingdu\x18\x08 \x01(\t\x12\r\n\x05Weidu\x18\t \x01(\t\x12\x19\n\x11\x43huangjianshijian\x18\n \x01(\t*\xdc\x02\n\nNetMsgType\x12\x16\n\x12NetMsgType_Unknown\x10\x00\x12\x1d\n\x19NetMsgType_DatabaseAddAsk\x10\x01\x12!\n\x1dNetMsgType_DatabaseAddSuccess\x10\x02\x12\x1f\n\x1bNetMsgType_DatabaseAddError\x10\x03\x12 \n\x1cNetMsgType_DatabaseDeleteAsk\x10\x04\x12$\n NetMsgType_DatabaseDeleteSuccess\x10\x05\x12\"\n\x1eNetMsgType_DatabaseDeleteError\x10\x06\x12\x1f\n\x1bNetMsgType_DatabaseQueryAsk\x10\x07\x12#\n\x1fNetMsgType_DatabaseQuerySuccess\x10\x08\x12!\n\x1dNetMsgType_DatabaseQueryError\x10\t')
+  serialized_pb=_b('\n\x0cnetmsg.proto\x12\x06netmsg\"\xda\x01\n\x07MsgPack\x12\x1d\n\x04head\x18\x01 \x02(\x0b\x32\x0f.netmsg.MsgHead\x12%\n\x08msgquery\x18\x02 \x01(\x0b\x32\x13.netmsg.MsgQueryMsg\x12!\n\x06msgadd\x18\x03 \x01(\x0b\x32\x11.netmsg.MsgAddMsg\x12\x34\n\x11msgquerymsgresult\x18\x04 \x01(\x0b\x32\x19.netmsg.MsgQueryMsgResult\x12\x30\n\x0fmsgaddmsgresult\x18\x05 \x01(\x0b\x32\x17.netmsg.MsgAddMsgResult\"\x8c\x01\n\x07MsgHead\x12\x1b\n\x10globalPackNumber\x18\x01 \x02(\r:\x01\x31\x12\x14\n\ttotalPack\x18\x02 \x02(\x05:\x01\x31\x12\x14\n\tpackIndex\x18\x03 \x02(\x05:\x01\x31\x12\x38\n\x08packtype\x18\x04 \x02(\x0e\x32\x12.netmsg.NetMsgType:\x12NetMsgType_Unknown\"\x1a\n\x0bMsgQueryMsg\x12\x0b\n\x03Msg\x18\x01 \x02(\t\"<\n\x11MsgQueryMsgResult\x12\x12\n\nresultData\x18\x01 \x02(\t\x12\x13\n\x0bresultError\x18\x02 \x02(\t\"+\n\tMsgAddMsg\x12\x11\n\tTableName\x18\x01 \x02(\t\x12\x0b\n\x03Msg\x18\x02 \x02(\t\"&\n\x0fMsgAddMsgResult\x12\x13\n\x0bresultError\x18\x01 \x02(\t*\xdc\x02\n\nNetMsgType\x12\x16\n\x12NetMsgType_Unknown\x10\x00\x12\x1d\n\x19NetMsgType_DatabaseAddAsk\x10\x01\x12!\n\x1dNetMsgType_DatabaseAddSuccess\x10\x02\x12\x1f\n\x1bNetMsgType_DatabaseAddError\x10\x03\x12 \n\x1cNetMsgType_DatabaseDeleteAsk\x10\x04\x12$\n NetMsgType_DatabaseDeleteSuccess\x10\x05\x12\"\n\x1eNetMsgType_DatabaseDeleteError\x10\x06\x12\x1f\n\x1bNetMsgType_DatabaseQueryAsk\x10\x07\x12#\n\x1fNetMsgType_DatabaseQuerySuccess\x10\x08\x12!\n\x1dNetMsgType_DatabaseQueryError\x10\t')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -72,8 +72,8 @@ _NETMSGTYPE = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=4304,
-  serialized_end=4652,
+  serialized_start=564,
+  serialized_end=912,
 )
 _sym_db.RegisterEnumDescriptor(_NETMSGTYPE)
 
@@ -106,106 +106,29 @@ _MSGPACK = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='msgcmd', full_name='netmsg.MsgPack.msgcmd', index=1,
+      name='msgquery', full_name='netmsg.MsgPack.msgquery', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='msgidcardapplydata', full_name='netmsg.MsgPack.msgidcardapplydata', index=2,
+      name='msgadd', full_name='netmsg.MsgPack.msgadd', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='msgonlinestatusdata', full_name='netmsg.MsgPack.msgonlinestatusdata', index=3,
+      name='msgquerymsgresult', full_name='netmsg.MsgPack.msgquerymsgresult', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='msgshulianghuizongdata', full_name='netmsg.MsgPack.msgshulianghuizongdata', index=4,
+      name='msgaddmsgresult', full_name='netmsg.MsgPack.msgaddmsgresult', index=4,
       number=5, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgxiangxitongjidata', full_name='netmsg.MsgPack.msgxiangxitongjidata', index=5,
-      number=6, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgzhiqianshujudata', full_name='netmsg.MsgPack.msgzhiqianshujudata', index=6,
-      number=7, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgshouzhengshujudata', full_name='netmsg.MsgPack.msgshouzhengshujudata', index=7,
-      number=8, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgqianzhushujudata', full_name='netmsg.MsgPack.msgqianzhushujudata', index=8,
-      number=9, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgjiaokuanshujudata', full_name='netmsg.MsgPack.msgjiaokuanshujudata', index=9,
-      number=10, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgchaxunshujudata', full_name='netmsg.MsgPack.msgchaxunshujudata', index=10,
-      number=11, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgyushoulishujudata', full_name='netmsg.MsgPack.msgyushoulishujudata', index=11,
-      number=12, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgshebeiyichangshujudata', full_name='netmsg.MsgPack.msgshebeiyichangshujudata', index=12,
-      number=13, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgguanliyuandata', full_name='netmsg.MsgPack.msgguanliyuandata', index=13,
-      number=14, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgguanliyuancaozuojiludata', full_name='netmsg.MsgPack.msgguanliyuancaozuojiludata', index=14,
-      number=15, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='msgshebeiguanlidata', full_name='netmsg.MsgPack.msgshebeiguanlidata', index=15,
-      number=16, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -222,7 +145,7 @@ _MSGPACK = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=25,
-  serialized_end=945,
+  serialized_end=243,
 )
 
 
@@ -234,22 +157,29 @@ _MSGHEAD = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='totalPack', full_name='netmsg.MsgHead.totalPack', index=0,
-      number=1, type=5, cpp_type=1, label=2,
+      name='globalPackNumber', full_name='netmsg.MsgHead.globalPackNumber', index=0,
+      number=1, type=13, cpp_type=3, label=2,
       has_default_value=True, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='packIndex', full_name='netmsg.MsgHead.packIndex', index=1,
+      name='totalPack', full_name='netmsg.MsgHead.totalPack', index=1,
       number=2, type=5, cpp_type=1, label=2,
       has_default_value=True, default_value=1,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='packtype', full_name='netmsg.MsgHead.packtype', index=2,
-      number=3, type=14, cpp_type=8, label=2,
+      name='packIndex', full_name='netmsg.MsgHead.packIndex', index=2,
+      number=3, type=5, cpp_type=1, label=2,
+      has_default_value=True, default_value=1,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='packtype', full_name='netmsg.MsgHead.packtype', index=3,
+      number=4, type=14, cpp_type=8, label=2,
       has_default_value=True, default_value=0,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -265,20 +195,57 @@ _MSGHEAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=947,
-  serialized_end=1058,
+  serialized_start=246,
+  serialized_end=386,
 )
 
 
-_MSGCMD = _descriptor.Descriptor(
-  name='MsgCmd',
-  full_name='netmsg.MsgCmd',
+_MSGQUERYMSG = _descriptor.Descriptor(
+  name='MsgQueryMsg',
+  full_name='netmsg.MsgQueryMsg',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='Cmd', full_name='netmsg.MsgCmd.Cmd', index=0,
+      name='Msg', full_name='netmsg.MsgQueryMsg.Msg', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=388,
+  serialized_end=414,
+)
+
+
+_MSGQUERYMSGRESULT = _descriptor.Descriptor(
+  name='MsgQueryMsgResult',
+  full_name='netmsg.MsgQueryMsgResult',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='resultData', full_name='netmsg.MsgQueryMsgResult.resultData', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='resultError', full_name='netmsg.MsgQueryMsgResult.resultError', index=1,
       number=2, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -295,140 +262,28 @@ _MSGCMD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1060,
-  serialized_end=1081,
+  serialized_start=416,
+  serialized_end=476,
 )
 
 
-_MSGIDCARDAPPLYDATA = _descriptor.Descriptor(
-  name='MsgIdCardApplyData',
-  full_name='netmsg.MsgIdCardApplyData',
+_MSGADDMSG = _descriptor.Descriptor(
+  name='MsgAddMsg',
+  full_name='netmsg.MsgAddMsg',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='name', full_name='netmsg.MsgIdCardApplyData.name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
+      name='TableName', full_name='netmsg.MsgAddMsg.TableName', index=0,
+      number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='gender', full_name='netmsg.MsgIdCardApplyData.gender', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Nation', full_name='netmsg.MsgIdCardApplyData.Nation', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Birthday', full_name='netmsg.MsgIdCardApplyData.Birthday', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Address', full_name='netmsg.MsgIdCardApplyData.Address', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='IdNumber', full_name='netmsg.MsgIdCardApplyData.IdNumber', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='SigDepart', full_name='netmsg.MsgIdCardApplyData.SigDepart', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='SLH', full_name='netmsg.MsgIdCardApplyData.SLH', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='fpData', full_name='netmsg.MsgIdCardApplyData.fpData', index=8,
-      number=9, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='fpFeature', full_name='netmsg.MsgIdCardApplyData.fpFeature', index=9,
-      number=10, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='XCZP', full_name='netmsg.MsgIdCardApplyData.XCZP', index=10,
-      number=11, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='XZQH', full_name='netmsg.MsgIdCardApplyData.XZQH', index=11,
-      number=12, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='sannerId', full_name='netmsg.MsgIdCardApplyData.sannerId', index=12,
-      number=13, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='scannerName', full_name='netmsg.MsgIdCardApplyData.scannerName', index=13,
-      number=14, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='legal', full_name='netmsg.MsgIdCardApplyData.legal', index=14,
-      number=15, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='operatorID', full_name='netmsg.MsgIdCardApplyData.operatorID', index=15,
-      number=16, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='operatorName', full_name='netmsg.MsgIdCardApplyData.operatorName', index=16,
-      number=17, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='opDate', full_name='netmsg.MsgIdCardApplyData.opDate', index=17,
-      number=18, type=9, cpp_type=9, label=1,
+      name='Msg', full_name='netmsg.MsgAddMsg.Msg', index=1,
+      number=2, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -444,461 +299,21 @@ _MSGIDCARDAPPLYDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1084,
-  serialized_end=1410,
+  serialized_start=478,
+  serialized_end=521,
 )
 
 
-_MSGONLINESTATUSDATA = _descriptor.Descriptor(
-  name='MsgOnlineStatusData',
-  full_name='netmsg.MsgOnlineStatusData',
+_MSGADDMSGRESULT = _descriptor.Descriptor(
+  name='MsgAddMsgResult',
+  full_name='netmsg.MsgAddMsgResult',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='machineId', full_name='netmsg.MsgOnlineStatusData.machineId', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='machineName', full_name='netmsg.MsgOnlineStatusData.machineName', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='machineIP', full_name='netmsg.MsgOnlineStatusData.machineIP', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='machineLongi', full_name='netmsg.MsgOnlineStatusData.machineLongi', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='machineLat', full_name='netmsg.MsgOnlineStatusData.machineLat', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='currentBusiness', full_name='netmsg.MsgOnlineStatusData.currentBusiness', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='businessStartTime', full_name='netmsg.MsgOnlineStatusData.businessStartTime', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='businessEndTime', full_name='netmsg.MsgOnlineStatusData.businessEndTime', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='businessDone', full_name='netmsg.MsgOnlineStatusData.businessDone', index=8,
-      number=9, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1413,
-  serialized_end=1634,
-)
-
-
-_MSGSHULIANGHUIZONGDATA = _descriptor.Descriptor(
-  name='MsgShuLiangHuiZongData',
-  full_name='netmsg.MsgShuLiangHuiZongData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgShuLiangHuiZongData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shiyongdanwei', full_name='netmsg.MsgShuLiangHuiZongData.Shiyongdanwei', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shebeizongshuliang', full_name='netmsg.MsgShuLiangHuiZongData.Shebeizongshuliang', index=2,
-      number=3, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Qiyongshebei', full_name='netmsg.MsgShuLiangHuiZongData.Qiyongshebei', index=3,
-      number=4, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yuyueyewu', full_name='netmsg.MsgShuLiangHuiZongData.Yuyueyewu', index=4,
-      number=5, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yushouliyewu', full_name='netmsg.MsgShuLiangHuiZongData.Yushouliyewu', index=5,
-      number=6, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Jiaofeiyewu', full_name='netmsg.MsgShuLiangHuiZongData.Jiaofeiyewu', index=6,
-      number=7, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Chaxunyewu', full_name='netmsg.MsgShuLiangHuiZongData.Chaxunyewu', index=7,
-      number=8, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shebeishouzheng', full_name='netmsg.MsgShuLiangHuiZongData.Shebeishouzheng', index=8,
-      number=9, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Xuqianyewu', full_name='netmsg.MsgShuLiangHuiZongData.Xuqianyewu', index=9,
-      number=10, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Benshitongxingzheng', full_name='netmsg.MsgShuLiangHuiZongData.Benshitongxingzheng', index=10,
-      number=11, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Dianzitongxingzheng', full_name='netmsg.MsgShuLiangHuiZongData.Dianzitongxingzheng', index=11,
-      number=12, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Tongxingzhengzhika', full_name='netmsg.MsgShuLiangHuiZongData.Tongxingzhengzhika', index=12,
-      number=13, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Lidengkequ', full_name='netmsg.MsgShuLiangHuiZongData.Lidengkequ', index=13,
-      number=14, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Feilidengkequ', full_name='netmsg.MsgShuLiangHuiZongData.Feilidengkequ', index=14,
-      number=15, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=1637,
-  serialized_end=2005,
-)
-
-
-_MSGXIANGXITONGJIDATA = _descriptor.Descriptor(
-  name='MsgXiangXiTongJiData',
-  full_name='netmsg.MsgXiangXiTongJiData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgXiangXiTongJiData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Nian', full_name='netmsg.MsgXiangXiTongJiData.Nian', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yue', full_name='netmsg.MsgXiangXiTongJiData.Yue', index=2,
-      number=3, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Ri', full_name='netmsg.MsgXiangXiTongJiData.Ri', index=3,
-      number=4, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Xiaoshi', full_name='netmsg.MsgXiangXiTongJiData.Xiaoshi', index=4,
-      number=5, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Fenzhong', full_name='netmsg.MsgXiangXiTongJiData.Fenzhong', index=5,
-      number=6, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shiyongdanwei', full_name='netmsg.MsgXiangXiTongJiData.Shiyongdanwei', index=6,
-      number=7, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Qiyongshebei', full_name='netmsg.MsgXiangXiTongJiData.Qiyongshebei', index=7,
-      number=8, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yuyueyewu', full_name='netmsg.MsgXiangXiTongJiData.Yuyueyewu', index=8,
-      number=9, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yushouliyewu', full_name='netmsg.MsgXiangXiTongJiData.Yushouliyewu', index=9,
-      number=10, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Jiaofeiyewu', full_name='netmsg.MsgXiangXiTongJiData.Jiaofeiyewu', index=10,
-      number=11, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Chaxunyewu', full_name='netmsg.MsgXiangXiTongJiData.Chaxunyewu', index=11,
-      number=12, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shebeishouzheng', full_name='netmsg.MsgXiangXiTongJiData.Shebeishouzheng', index=12,
-      number=13, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Xuqianyewu', full_name='netmsg.MsgXiangXiTongJiData.Xuqianyewu', index=13,
-      number=14, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Benshitongxingzheng', full_name='netmsg.MsgXiangXiTongJiData.Benshitongxingzheng', index=14,
-      number=15, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Dianzitongxingzheng', full_name='netmsg.MsgXiangXiTongJiData.Dianzitongxingzheng', index=15,
-      number=16, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Tongxingzhengzhika', full_name='netmsg.MsgXiangXiTongJiData.Tongxingzhengzhika', index=16,
-      number=17, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Lidengkequ', full_name='netmsg.MsgXiangXiTongJiData.Lidengkequ', index=17,
-      number=18, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Feilidengkequ', full_name='netmsg.MsgXiangXiTongJiData.Feilidengkequ', index=18,
-      number=19, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2008,
-  serialized_end=2420,
-)
-
-
-_MSGZHIQIANSHUJUDATA = _descriptor.Descriptor(
-  name='MsgZhiQianShuJuData',
-  full_name='netmsg.MsgZhiQianShuJuData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgZhiQianShuJuData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Riqi', full_name='netmsg.MsgZhiQianShuJuData.Riqi', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='ShebeiIP', full_name='netmsg.MsgZhiQianShuJuData.ShebeiIP', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yewubianhao', full_name='netmsg.MsgZhiQianShuJuData.Yewubianhao', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='YuanZhengjianhaoma', full_name='netmsg.MsgZhiQianShuJuData.YuanZhengjianhaoma', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Xingming', full_name='netmsg.MsgZhiQianShuJuData.Xingming', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Qianzhuzhonglei', full_name='netmsg.MsgZhiQianShuJuData.Qianzhuzhonglei', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='ZhikaZhuangtai', full_name='netmsg.MsgZhiQianShuJuData.ZhikaZhuangtai', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Zhengjianhaoma', full_name='netmsg.MsgZhiQianShuJuData.Zhengjianhaoma', index=8,
-      number=9, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Jiekoufanhuijieguo', full_name='netmsg.MsgZhiQianShuJuData.Jiekoufanhuijieguo', index=9,
-      number=10, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Lianxidianhua', full_name='netmsg.MsgZhiQianShuJuData.Lianxidianhua', index=10,
-      number=11, type=9, cpp_type=9, label=1,
+      name='resultError', full_name='netmsg.MsgAddMsgResult.resultError', index=0,
+      number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -914,741 +329,22 @@ _MSGZHIQIANSHUJUDATA = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2423,
-  serialized_end=2682,
-)
-
-
-_MSGSHOUZHENGSHUJUDATA = _descriptor.Descriptor(
-  name='MsgShouZhengShuJuData',
-  full_name='netmsg.MsgShouZhengShuJuData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgShouZhengShuJuData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Riqi', full_name='netmsg.MsgShouZhengShuJuData.Riqi', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='ShebeiIP', full_name='netmsg.MsgShouZhengShuJuData.ShebeiIP', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Zhengjianleixing', full_name='netmsg.MsgShouZhengShuJuData.Zhengjianleixing', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Zhengjianhaoma', full_name='netmsg.MsgShouZhengShuJuData.Zhengjianhaoma', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Xingming', full_name='netmsg.MsgShouZhengShuJuData.Xingming', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shoulibianhao', full_name='netmsg.MsgShouZhengShuJuData.Shoulibianhao', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shifoujiaofei', full_name='netmsg.MsgShouZhengShuJuData.Shifoujiaofei', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2685,
-  serialized_end=2869,
-)
-
-
-_MSGQIANZHUSHUJUDATA = _descriptor.Descriptor(
-  name='MsgQianZhuShuJuData',
-  full_name='netmsg.MsgQianZhuShuJuData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgQianZhuShuJuData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Riqi', full_name='netmsg.MsgQianZhuShuJuData.Riqi', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='ShebeiIP', full_name='netmsg.MsgQianZhuShuJuData.ShebeiIP', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='YuanZhengjianhaoma', full_name='netmsg.MsgQianZhuShuJuData.YuanZhengjianhaoma', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Xingming', full_name='netmsg.MsgQianZhuShuJuData.Xingming', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Xingbie', full_name='netmsg.MsgQianZhuShuJuData.Xingbie', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Chushengriqi', full_name='netmsg.MsgQianZhuShuJuData.Chushengriqi', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Lianxidianhua', full_name='netmsg.MsgQianZhuShuJuData.Lianxidianhua', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yewuleixing', full_name='netmsg.MsgQianZhuShuJuData.Yewuleixing', index=8,
-      number=9, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shouliren', full_name='netmsg.MsgQianZhuShuJuData.Shouliren', index=9,
-      number=10, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=2872,
-  serialized_end=3088,
-)
-
-
-_MSGJIAOKUANSHUJUDATA = _descriptor.Descriptor(
-  name='MsgJiaoKuanShuJuData',
-  full_name='netmsg.MsgJiaoKuanShuJuData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgJiaoKuanShuJuData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Riqi', full_name='netmsg.MsgJiaoKuanShuJuData.Riqi', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='ShebeiIP', full_name='netmsg.MsgJiaoKuanShuJuData.ShebeiIP', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Zhishoudanweidaima', full_name='netmsg.MsgJiaoKuanShuJuData.Zhishoudanweidaima', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Jiaokuantongzhishuhaoma', full_name='netmsg.MsgJiaoKuanShuJuData.Jiaokuantongzhishuhaoma', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Jiaokuanrenxingming', full_name='netmsg.MsgJiaoKuanShuJuData.Jiaokuanrenxingming', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yingkoukuanheji', full_name='netmsg.MsgJiaoKuanShuJuData.Yingkoukuanheji', index=6,
-      number=7, type=2, cpp_type=6, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Jiaoyiriqi', full_name='netmsg.MsgJiaoKuanShuJuData.Jiaoyiriqi', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3091,
-  serialized_end=3295,
-)
-
-
-_MSGCHAXUNSHUJUDATA = _descriptor.Descriptor(
-  name='MsgChaXunShuJuData',
-  full_name='netmsg.MsgChaXunShuJuData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgChaXunShuJuData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Riqi', full_name='netmsg.MsgChaXunShuJuData.Riqi', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='ShebeiIP', full_name='netmsg.MsgChaXunShuJuData.ShebeiIP', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Chaxunhaoma', full_name='netmsg.MsgChaXunShuJuData.Chaxunhaoma', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Chaxunleixing', full_name='netmsg.MsgChaXunShuJuData.Chaxunleixing', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shifouchaxunchenggong', full_name='netmsg.MsgChaXunShuJuData.Shifouchaxunchenggong', index=5,
-      number=6, type=8, cpp_type=7, label=1,
-      has_default_value=False, default_value=False,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3298,
-  serialized_end=3440,
-)
-
-
-_MSGYUSHOULISHUJUDATA = _descriptor.Descriptor(
-  name='MsgYuShouLiShuJuData',
-  full_name='netmsg.MsgYuShouLiShuJuData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgYuShouLiShuJuData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Riqi', full_name='netmsg.MsgYuShouLiShuJuData.Riqi', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='ShebeiIP', full_name='netmsg.MsgYuShouLiShuJuData.ShebeiIP', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yewubianhao', full_name='netmsg.MsgYuShouLiShuJuData.Yewubianhao', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Xingming', full_name='netmsg.MsgYuShouLiShuJuData.Xingming', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Lianxidianhua', full_name='netmsg.MsgYuShouLiShuJuData.Lianxidianhua', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Chuguoshiyou', full_name='netmsg.MsgYuShouLiShuJuData.Chuguoshiyou', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='YuanZhengjianhaoma', full_name='netmsg.MsgYuShouLiShuJuData.YuanZhengjianhaoma', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Qianzhuzhonglei', full_name='netmsg.MsgYuShouLiShuJuData.Qianzhuzhonglei', index=8,
-      number=9, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Xingbie', full_name='netmsg.MsgYuShouLiShuJuData.Xingbie', index=9,
-      number=10, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Hukousuozaidi', full_name='netmsg.MsgYuShouLiShuJuData.Hukousuozaidi', index=10,
-      number=11, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Minzu', full_name='netmsg.MsgYuShouLiShuJuData.Minzu', index=11,
-      number=12, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3443,
-  serialized_end=3704,
-)
-
-
-_MSGSHEBEIYICHANGSHUJUDATA = _descriptor.Descriptor(
-  name='MsgSheBeiYiChangShuJuData',
-  full_name='netmsg.MsgSheBeiYiChangShuJuData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgSheBeiYiChangShuJuData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Riqi', full_name='netmsg.MsgSheBeiYiChangShuJuData.Riqi', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shiyongdanwei', full_name='netmsg.MsgSheBeiYiChangShuJuData.Shiyongdanwei', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yichangshejimokuai', full_name='netmsg.MsgSheBeiYiChangShuJuData.Yichangshejimokuai', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yichangyuanyin', full_name='netmsg.MsgSheBeiYiChangShuJuData.Yichangyuanyin', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yichangxiangxineirong', full_name='netmsg.MsgSheBeiYiChangShuJuData.Yichangxiangxineirong', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3707,
-  serialized_end=3869,
-)
-
-
-_MSGGUANLIYUANDATA = _descriptor.Descriptor(
-  name='MsgGuanLiYuanData',
-  full_name='netmsg.MsgGuanLiYuanData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgGuanLiYuanData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yonghuming', full_name='netmsg.MsgGuanLiYuanData.Yonghuming', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Mima', full_name='netmsg.MsgGuanLiYuanData.Mima', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Youxiaoqi', full_name='netmsg.MsgGuanLiYuanData.Youxiaoqi', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Quanxianjibie', full_name='netmsg.MsgGuanLiYuanData.Quanxianjibie', index=4,
-      number=5, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3871,
-  serialized_end=3981,
-)
-
-
-_MSGGUANLIYUANCAOZUOJILUDATA = _descriptor.Descriptor(
-  name='MsgGuanLiYuanCaoZuoJiLuData',
-  full_name='netmsg.MsgGuanLiYuanCaoZuoJiLuData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgGuanLiYuanCaoZuoJiLuData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Yonghuming', full_name='netmsg.MsgGuanLiYuanCaoZuoJiLuData.Yonghuming', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Riqi', full_name='netmsg.MsgGuanLiYuanCaoZuoJiLuData.Riqi', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Caozuoleibie', full_name='netmsg.MsgGuanLiYuanCaoZuoJiLuData.Caozuoleibie', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Caozuoneirong', full_name='netmsg.MsgGuanLiYuanCaoZuoJiLuData.Caozuoneirong', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=3983,
-  serialized_end=4106,
-)
-
-
-_MSGSHEBEIGUANLIDATA = _descriptor.Descriptor(
-  name='MsgSheBeiGuanLiData',
-  full_name='netmsg.MsgSheBeiGuanLiData',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='Xuhao', full_name='netmsg.MsgSheBeiGuanLiData.Xuhao', index=0,
-      number=1, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Sheng', full_name='netmsg.MsgSheBeiGuanLiData.Sheng', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shi', full_name='netmsg.MsgSheBeiGuanLiData.Shi', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Qu', full_name='netmsg.MsgSheBeiGuanLiData.Qu', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shiyongdanwei', full_name='netmsg.MsgSheBeiGuanLiData.Shiyongdanwei', index=4,
-      number=5, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='IP', full_name='netmsg.MsgSheBeiGuanLiData.IP', index=5,
-      number=6, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Shebeileixing', full_name='netmsg.MsgSheBeiGuanLiData.Shebeileixing', index=6,
-      number=7, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Jingdu', full_name='netmsg.MsgSheBeiGuanLiData.Jingdu', index=7,
-      number=8, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Weidu', full_name='netmsg.MsgSheBeiGuanLiData.Weidu', index=8,
-      number=9, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-    _descriptor.FieldDescriptor(
-      name='Chuangjianshijian', full_name='netmsg.MsgSheBeiGuanLiData.Chuangjianshijian', index=9,
-      number=10, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=_b("").decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      options=None),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  options=None,
-  is_extendable=False,
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=4109,
-  serialized_end=4301,
+  serialized_start=523,
+  serialized_end=561,
 )
 
 _MSGPACK.fields_by_name['head'].message_type = _MSGHEAD
-_MSGPACK.fields_by_name['msgcmd'].message_type = _MSGCMD
-_MSGPACK.fields_by_name['msgidcardapplydata'].message_type = _MSGIDCARDAPPLYDATA
-_MSGPACK.fields_by_name['msgonlinestatusdata'].message_type = _MSGONLINESTATUSDATA
-_MSGPACK.fields_by_name['msgshulianghuizongdata'].message_type = _MSGSHULIANGHUIZONGDATA
-_MSGPACK.fields_by_name['msgxiangxitongjidata'].message_type = _MSGXIANGXITONGJIDATA
-_MSGPACK.fields_by_name['msgzhiqianshujudata'].message_type = _MSGZHIQIANSHUJUDATA
-_MSGPACK.fields_by_name['msgshouzhengshujudata'].message_type = _MSGSHOUZHENGSHUJUDATA
-_MSGPACK.fields_by_name['msgqianzhushujudata'].message_type = _MSGQIANZHUSHUJUDATA
-_MSGPACK.fields_by_name['msgjiaokuanshujudata'].message_type = _MSGJIAOKUANSHUJUDATA
-_MSGPACK.fields_by_name['msgchaxunshujudata'].message_type = _MSGCHAXUNSHUJUDATA
-_MSGPACK.fields_by_name['msgyushoulishujudata'].message_type = _MSGYUSHOULISHUJUDATA
-_MSGPACK.fields_by_name['msgshebeiyichangshujudata'].message_type = _MSGSHEBEIYICHANGSHUJUDATA
-_MSGPACK.fields_by_name['msgguanliyuandata'].message_type = _MSGGUANLIYUANDATA
-_MSGPACK.fields_by_name['msgguanliyuancaozuojiludata'].message_type = _MSGGUANLIYUANCAOZUOJILUDATA
-_MSGPACK.fields_by_name['msgshebeiguanlidata'].message_type = _MSGSHEBEIGUANLIDATA
+_MSGPACK.fields_by_name['msgquery'].message_type = _MSGQUERYMSG
+_MSGPACK.fields_by_name['msgadd'].message_type = _MSGADDMSG
+_MSGPACK.fields_by_name['msgquerymsgresult'].message_type = _MSGQUERYMSGRESULT
+_MSGPACK.fields_by_name['msgaddmsgresult'].message_type = _MSGADDMSGRESULT
 _MSGHEAD.fields_by_name['packtype'].enum_type = _NETMSGTYPE
 DESCRIPTOR.message_types_by_name['MsgPack'] = _MSGPACK
 DESCRIPTOR.message_types_by_name['MsgHead'] = _MSGHEAD
-DESCRIPTOR.message_types_by_name['MsgCmd'] = _MSGCMD
-DESCRIPTOR.message_types_by_name['MsgIdCardApplyData'] = _MSGIDCARDAPPLYDATA
-DESCRIPTOR.message_types_by_name['MsgOnlineStatusData'] = _MSGONLINESTATUSDATA
-DESCRIPTOR.message_types_by_name['MsgShuLiangHuiZongData'] = _MSGSHULIANGHUIZONGDATA
-DESCRIPTOR.message_types_by_name['MsgXiangXiTongJiData'] = _MSGXIANGXITONGJIDATA
-DESCRIPTOR.message_types_by_name['MsgZhiQianShuJuData'] = _MSGZHIQIANSHUJUDATA
-DESCRIPTOR.message_types_by_name['MsgShouZhengShuJuData'] = _MSGSHOUZHENGSHUJUDATA
-DESCRIPTOR.message_types_by_name['MsgQianZhuShuJuData'] = _MSGQIANZHUSHUJUDATA
-DESCRIPTOR.message_types_by_name['MsgJiaoKuanShuJuData'] = _MSGJIAOKUANSHUJUDATA
-DESCRIPTOR.message_types_by_name['MsgChaXunShuJuData'] = _MSGCHAXUNSHUJUDATA
-DESCRIPTOR.message_types_by_name['MsgYuShouLiShuJuData'] = _MSGYUSHOULISHUJUDATA
-DESCRIPTOR.message_types_by_name['MsgSheBeiYiChangShuJuData'] = _MSGSHEBEIYICHANGSHUJUDATA
-DESCRIPTOR.message_types_by_name['MsgGuanLiYuanData'] = _MSGGUANLIYUANDATA
-DESCRIPTOR.message_types_by_name['MsgGuanLiYuanCaoZuoJiLuData'] = _MSGGUANLIYUANCAOZUOJILUDATA
-DESCRIPTOR.message_types_by_name['MsgSheBeiGuanLiData'] = _MSGSHEBEIGUANLIDATA
+DESCRIPTOR.message_types_by_name['MsgQueryMsg'] = _MSGQUERYMSG
+DESCRIPTOR.message_types_by_name['MsgQueryMsgResult'] = _MSGQUERYMSGRESULT
+DESCRIPTOR.message_types_by_name['MsgAddMsg'] = _MSGADDMSG
+DESCRIPTOR.message_types_by_name['MsgAddMsgResult'] = _MSGADDMSGRESULT
 DESCRIPTOR.enum_types_by_name['NetMsgType'] = _NETMSGTYPE
 
 MsgPack = _reflection.GeneratedProtocolMessageType('MsgPack', (_message.Message,), dict(
@@ -1665,110 +361,33 @@ MsgHead = _reflection.GeneratedProtocolMessageType('MsgHead', (_message.Message,
   ))
 _sym_db.RegisterMessage(MsgHead)
 
-MsgCmd = _reflection.GeneratedProtocolMessageType('MsgCmd', (_message.Message,), dict(
-  DESCRIPTOR = _MSGCMD,
+MsgQueryMsg = _reflection.GeneratedProtocolMessageType('MsgQueryMsg', (_message.Message,), dict(
+  DESCRIPTOR = _MSGQUERYMSG,
   __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgCmd)
+  # @@protoc_insertion_point(class_scope:netmsg.MsgQueryMsg)
   ))
-_sym_db.RegisterMessage(MsgCmd)
+_sym_db.RegisterMessage(MsgQueryMsg)
 
-MsgIdCardApplyData = _reflection.GeneratedProtocolMessageType('MsgIdCardApplyData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGIDCARDAPPLYDATA,
+MsgQueryMsgResult = _reflection.GeneratedProtocolMessageType('MsgQueryMsgResult', (_message.Message,), dict(
+  DESCRIPTOR = _MSGQUERYMSGRESULT,
   __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgIdCardApplyData)
+  # @@protoc_insertion_point(class_scope:netmsg.MsgQueryMsgResult)
   ))
-_sym_db.RegisterMessage(MsgIdCardApplyData)
+_sym_db.RegisterMessage(MsgQueryMsgResult)
 
-MsgOnlineStatusData = _reflection.GeneratedProtocolMessageType('MsgOnlineStatusData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGONLINESTATUSDATA,
+MsgAddMsg = _reflection.GeneratedProtocolMessageType('MsgAddMsg', (_message.Message,), dict(
+  DESCRIPTOR = _MSGADDMSG,
   __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgOnlineStatusData)
+  # @@protoc_insertion_point(class_scope:netmsg.MsgAddMsg)
   ))
-_sym_db.RegisterMessage(MsgOnlineStatusData)
+_sym_db.RegisterMessage(MsgAddMsg)
 
-MsgShuLiangHuiZongData = _reflection.GeneratedProtocolMessageType('MsgShuLiangHuiZongData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGSHULIANGHUIZONGDATA,
+MsgAddMsgResult = _reflection.GeneratedProtocolMessageType('MsgAddMsgResult', (_message.Message,), dict(
+  DESCRIPTOR = _MSGADDMSGRESULT,
   __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgShuLiangHuiZongData)
+  # @@protoc_insertion_point(class_scope:netmsg.MsgAddMsgResult)
   ))
-_sym_db.RegisterMessage(MsgShuLiangHuiZongData)
-
-MsgXiangXiTongJiData = _reflection.GeneratedProtocolMessageType('MsgXiangXiTongJiData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGXIANGXITONGJIDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgXiangXiTongJiData)
-  ))
-_sym_db.RegisterMessage(MsgXiangXiTongJiData)
-
-MsgZhiQianShuJuData = _reflection.GeneratedProtocolMessageType('MsgZhiQianShuJuData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGZHIQIANSHUJUDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgZhiQianShuJuData)
-  ))
-_sym_db.RegisterMessage(MsgZhiQianShuJuData)
-
-MsgShouZhengShuJuData = _reflection.GeneratedProtocolMessageType('MsgShouZhengShuJuData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGSHOUZHENGSHUJUDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgShouZhengShuJuData)
-  ))
-_sym_db.RegisterMessage(MsgShouZhengShuJuData)
-
-MsgQianZhuShuJuData = _reflection.GeneratedProtocolMessageType('MsgQianZhuShuJuData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGQIANZHUSHUJUDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgQianZhuShuJuData)
-  ))
-_sym_db.RegisterMessage(MsgQianZhuShuJuData)
-
-MsgJiaoKuanShuJuData = _reflection.GeneratedProtocolMessageType('MsgJiaoKuanShuJuData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGJIAOKUANSHUJUDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgJiaoKuanShuJuData)
-  ))
-_sym_db.RegisterMessage(MsgJiaoKuanShuJuData)
-
-MsgChaXunShuJuData = _reflection.GeneratedProtocolMessageType('MsgChaXunShuJuData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGCHAXUNSHUJUDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgChaXunShuJuData)
-  ))
-_sym_db.RegisterMessage(MsgChaXunShuJuData)
-
-MsgYuShouLiShuJuData = _reflection.GeneratedProtocolMessageType('MsgYuShouLiShuJuData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGYUSHOULISHUJUDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgYuShouLiShuJuData)
-  ))
-_sym_db.RegisterMessage(MsgYuShouLiShuJuData)
-
-MsgSheBeiYiChangShuJuData = _reflection.GeneratedProtocolMessageType('MsgSheBeiYiChangShuJuData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGSHEBEIYICHANGSHUJUDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgSheBeiYiChangShuJuData)
-  ))
-_sym_db.RegisterMessage(MsgSheBeiYiChangShuJuData)
-
-MsgGuanLiYuanData = _reflection.GeneratedProtocolMessageType('MsgGuanLiYuanData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGGUANLIYUANDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgGuanLiYuanData)
-  ))
-_sym_db.RegisterMessage(MsgGuanLiYuanData)
-
-MsgGuanLiYuanCaoZuoJiLuData = _reflection.GeneratedProtocolMessageType('MsgGuanLiYuanCaoZuoJiLuData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGGUANLIYUANCAOZUOJILUDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgGuanLiYuanCaoZuoJiLuData)
-  ))
-_sym_db.RegisterMessage(MsgGuanLiYuanCaoZuoJiLuData)
-
-MsgSheBeiGuanLiData = _reflection.GeneratedProtocolMessageType('MsgSheBeiGuanLiData', (_message.Message,), dict(
-  DESCRIPTOR = _MSGSHEBEIGUANLIDATA,
-  __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgSheBeiGuanLiData)
-  ))
-_sym_db.RegisterMessage(MsgSheBeiGuanLiData)
+_sym_db.RegisterMessage(MsgAddMsgResult)
 
 
 # @@protoc_insertion_point(module_scope)

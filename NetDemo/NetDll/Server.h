@@ -12,11 +12,15 @@ private:
 	boost::asio::io_service &						m_io_service;
 	boost::asio::ip::tcp::acceptor					m_acceptor;
 	boost::thread_group								m_tg;
-	OnReceiveCallBack								m_pReceiveCallBack;
-
+	static OnReceiveCallBack						m_pReceiveCallBack;
+	static void										OnServerCallBack(OUT long userID /*Only for Server*/, OUT BYTE* buf, OUT int len, OUT int errorcode, OUT const char* errormsg);
 
 	void											handle_accept(session_ptr new_session, const boost::system::error_code& error);
 	void											WorkThread();
+
+	boost::asio::io_service io_service;
+
+	auto_ptr<boost::asio::io_service::work>			m_work;
 public:
 	static boost::mutex								m_sessionsMutex;
 	static list<session_ptr>						m_sessions;
@@ -24,4 +28,5 @@ public:
 	void											run();
 	void											stop();
 	bool											stoped();
+	int												connections();
 };

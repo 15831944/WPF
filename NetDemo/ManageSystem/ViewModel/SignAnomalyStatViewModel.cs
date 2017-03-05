@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
@@ -29,11 +30,12 @@ namespace ManageSystem.ViewModel
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
         public QueryOperate                             _queryoperate = QueryOperate.QueryOperate_None;
 
-        public DelegateCommand<object> LoadedCommand { get; set; }
-        public DelegateCommand<object> SizeChangedCommand { get; set; }
-        public DelegateCommand<object> ShowPieChartCommand { get; set; }
-        public DelegateCommand<object> ShowLineChartCommand { get; set; }
-        public DelegateCommand<object> ShowHistogramChartCommand { get; set; }
+        public DelegateCommand<object>                  LoadedCommand { get; set; }
+        public DelegateCommand<object>                  SizeChangedCommand { get; set; }
+        public DelegateCommand<object>                  ShowPieChartCommand { get; set; }
+        public DelegateCommand<object>                  ShowLineChartCommand { get; set; }
+        public DelegateCommand<object>                  ShowHistogramChartCommand { get; set; }
+        public DelegateCommand<object>                  StatisticsCommand { get; set; }
 
         private ShowChartEnum _bShowChart;
         public ShowChartEnum bShowChart
@@ -134,6 +136,17 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private string _region0Text;
+        public string region0Text
+        {
+            get { return _region0Text; }
+            set
+            {
+                _region0Text = value;
+                this.RaisePropertyChanged("region0Text");
+            }
+        }
+
         public SignAnomalyStatViewModel()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
@@ -142,6 +155,7 @@ namespace ManageSystem.ViewModel
             ShowPieChartCommand                         = new DelegateCommand<object>(new Action<object>(this.ShowPieChart));
             ShowLineChartCommand                        = new DelegateCommand<object>(new Action<object>(this.ShowLineChart));
             ShowHistogramChartCommand                   = new DelegateCommand<object>(new Action<object>(this.ShowHistogramChart));
+            StatisticsCommand                           = new DelegateCommand<object>(new Action<object>(this.Statistics));
 
             startTime                                   = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
             endTime                                     = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
@@ -150,12 +164,14 @@ namespace ManageSystem.ViewModel
             _regionTextHeight                           = 50;
             _bShowChart                                 = ShowChartEnum.ShowChartEnum_Pie;
 
+            _lineCharIndex                              = -1;
+            _histogramCharIndex                         = -1;
+            _pieCharIndex                               = -1;
         }
 
-        private void QueryTableCallBack(string resultStr)
+        private void QueryTableCallBack(string resultStr, string errorStr)
         {
             string[] rows   = resultStr.Split(';');
-            int rowIndex    = 0;
             foreach (string row in rows)
             {
                 if (row.Length > 0)
@@ -167,71 +183,142 @@ namespace ManageSystem.ViewModel
                         if (keyvalue.Length != 2)
                             continue;
 
-                        switch (_queryoperate)
+                        LineChartServer.SetCurvePointInfo(_lineCharIndex, Convert.ToInt32(keyvalue[0]), Convert.ToInt32(keyvalue[1]));
                         {
+                            int rowIndex        = Convert.ToInt32(keyvalue[0]);
+                            int clr0_1          = Color.Azure.ToArgb() + 100 * (rowIndex + 0);
+                            int clr0_2          = Color.Azure.ToArgb() + 100 * (rowIndex + 1);
+                            int clr0_3          = Color.Azure.ToArgb() + 100 * (rowIndex + 2);
+                            int clr0_4          = Color.Azure.ToArgb() + 100 * (rowIndex + 3);
 
-                            case QueryOperate.QueryOperate_LineChart:
-                            case QueryOperate.QueryOperate_PieChart:
-                            case QueryOperate.QueryOperate_HistogramChart:
-                                {
-                                    LineChartServer.SetCurvePointInfo(_lineCharIndex, rowIndex, Convert.ToInt32(keyvalue[1]));
-                                    if(rowIndex < 3)
-                                    {
-                                        int clr0_1          = Color.BlueViolet.ToArgb() + 100 * (rowIndex + 0);
-                                        int clr0_2          = Color.BlueViolet.ToArgb() + 100 * (rowIndex + 1);
-                                        int clr0_3          = Color.BlueViolet.ToArgb() + 100 * (rowIndex + 2);
-                                        int clr0_4          = Color.BlueViolet.ToArgb() + 100 * (rowIndex + 3);
-
-                                        PieChartServer.SetPieBasicInfo(_pieCharIndex, rowIndex, Convert.ToInt32(keyvalue[1]),
-                                           ref clr0_1,
-                                           ref clr0_2,
-                                           ref clr0_3,
-                                           ref clr0_4
-                                           );
-                                    }
-
-                                    int clr1    = Color.BlueViolet.ToArgb() + 100 * rowIndex;
-                                    HistogramServer.SetHistogramBasicInfo(_lineCharIndex, rowIndex, Convert.ToInt32(keyvalue[1]), clr1);
-                                }
-                                break;
+                            PieChartServer.SetPieBasicInfo(_pieCharIndex, Convert.ToInt32(keyvalue[0]), (float)(Convert.ToDouble(keyvalue[1])),
+                                 clr0_1,
+                                 clr0_2,
+                                 clr0_3,
+                                 clr0_4
+                                );
                         }
-                        rowIndex++;
+
+                        {
+                            int rowIndex        = Convert.ToInt32(keyvalue[0]);
+                            int clr1            = Color.BlueViolet.ToArgb() + 100 * rowIndex;
+                            HistogramServer.SetHistogramBasicInfo(_lineCharIndex, Convert.ToInt32(keyvalue[0]), Convert.ToInt32(keyvalue[1]), clr1);
+                        }
                     }
                 }
             }
 
-            _queryoperate = QueryOperate.QueryOperate_None;
+            PieChartServer.RedrawChart(_pieCharIndex);
+            LineChartServer.RedrawChart(_lineCharIndex);
+            HistogramServer.RedrawChart(_histogramCharIndex);
         }
 
-        public void QueryLineChartData(object obj)
+        private void Statistics(object obj)
         {
-            _queryoperate = QueryOperate.QueryOperate_LineChart;
-            WorkServer.QueryTable(MakeLineChartQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeStatisticsQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
-        string MakeBenyuebanliyewuCurMonthQuerySql(object obj, DateTime BeginTime)
-        {
-            string str = "SELECT sum(totalCnt) as totalCnt FROM ( ";
-
-            str += "select count(*) as totalCnt from Shebeiyichangshuju where Xuhao>=-1";
-            str += " and Shebeiyichangshuju.[Riqi]>=" + Common.ConvertDateTimeInt(Common.FirstDayOfMonth(BeginTime));
-            str += " and Shebeiyichangshuju.[Riqi]<=" + Common.ConvertDateTimeInt(Common.LastDayOfMonth(BeginTime));
-
-
-            str +=")";
-            return str;
-        }
-        string MakeLineChartQuerySql(object obj)
+        public string MakeDeviceConditionSql(string tableName)
         {
             string str = "";
-            DateTime beginTime = new DateTime(DateTime.Now.Year, 1, 1, 0, 0, 0);
-            for (int i = 0; i < 12; ++i)
+            foreach (DeviceModel model0 in MainWindowViewModel._deviceList)
             {
-                str += MakeBenyuebanliyewuCurMonthQuerySql(obj, beginTime);
-                if ((i + 1) != 12)
-                    str += " union ALL ";
-                beginTime = beginTime.AddMonths(1);
+                if (model0.isSel)
+                {
+                    foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                    {
+                        if (kvp0.Value == model0.text)
+                            str += " and "+ tableName + ".[Chengshibianhao]=" + kvp0.Key.ToString();
+                    }
+                }
+
+                foreach (DeviceModel model1 in model0.Children)
+                {
+                    if (model1.isSel)
+                    {
+                        foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                        {
+                            if (kvp0.Value == model1.text)
+                                str += " and "+ tableName + ".[Jubianhao]=" + kvp0.Key.ToString();
+                        }
+                    }
+
+                    foreach (DeviceModel model2 in model1.Children)
+                    {
+                        if (model2.isSel)
+                        {
+                            foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                            {
+                                if (kvp0.Value == model2.text)
+                                    str += " and "+ tableName + ".[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+                            }
+                        }
+                        foreach (DeviceModel model3 in model2.Children)
+                        {
+                            if (model3.isSel)
+                            {
+                                str += " and "+ tableName + ".[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(model3.text)));
+                            }
+                        }
+                    }
+                }
             }
             return str;
+        }
+        string MakeStatisticsQuerySql(object obj)
+        {
+            DateTime realstartTime  = DateTime.Parse(startTime);
+            DateTime realendTime    = DateTime.Parse(endTime);
+
+            string str              = "select ";
+            string strCondition     = "";
+            int index               = 0;
+            do
+            {
+                strCondition += " ( ";
+                strCondition += "select count(*) as totalCnt from Shebeiyichangshuju where Xuhao>=-1";
+                strCondition +=  MakeDeviceConditionSql("Shebeiyichangshuju");
+                strCondition += " and Shebeiyichangshuju.[Riqi]>=" + Common.ConvertDateTimeInt(realstartTime);
+
+                if (dataTypeText.Contains("天"))
+                    realstartTime = realstartTime.AddDays(1);
+                else if (dataTypeText.Contains("周"))
+                    realstartTime = realstartTime.AddDays(7);
+                else if (dataTypeText.Contains("月"))
+                    realstartTime = realstartTime.AddMonths(1);
+                else if (dataTypeText.Contains("年"))
+                    realstartTime = realstartTime.AddYears(1);
+
+                if (realstartTime < realendTime)
+                    strCondition             += " and Shebeiyichangshuju.[Riqi]<" + Common.ConvertDateTimeInt(realstartTime);
+                else
+                    strCondition             += " and Shebeiyichangshuju.[Riqi]<" + Common.ConvertDateTimeInt(realendTime);
+                strCondition += " ) as " +  "'" + index + "'";
+
+                index++;
+                if (realstartTime < realendTime && index < 12)
+                    strCondition    += ",";
+            } while (realstartTime < realendTime && index < 12);
+
+            Application.Current.Dispatcher.Invoke(
+                new Action(() =>
+             {
+                 IntPtr hwnd = new System.Windows.Interop.WindowInteropHelper(Application.Current.MainWindow).Handle;
+                 tagRECT rcClient = new tagRECT();
+
+                 PieChartServer.RemovePieChart(_pieCharIndex);
+                 LineChartServer.RemoveCurveChart(_lineCharIndex);
+                 HistogramServer.RemoveHistogramChart(_histogramCharIndex);
+
+                 _pieCharIndex       = PieChartServer.AddPieChart(hwnd,  rcClient);
+                 _lineCharIndex      = LineChartServer.AddCurveChart(hwnd,  rcClient);
+                 _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd,  rcClient, 0, 3000, 300, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
+
+                 PieChartServer.AddData(_pieCharIndex, index);
+                 LineChartServer.AddData(_lineCharIndex, 13, index, 3600);
+                 HistogramServer.AddData(_histogramCharIndex, index);
+             }));
+
+            return str + strCondition;
         }
 
         private void ShowHistogramChart(object obj)
@@ -262,18 +349,11 @@ namespace ManageSystem.ViewModel
             IntPtr hwnd = new System.Windows.Interop.WindowInteropHelper(Application.Current.MainWindow).Handle;
             tagRECT rcClient = new tagRECT();
 
-            _pieCharIndex       = PieChartServer.AddPieChart(hwnd, ref rcClient, 3);
-            _lineCharIndex      = LineChartServer.AddCurveChart(hwnd, ref rcClient, 13, 12, 12000);
-            _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd, ref rcClient, 12, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
-
-
-            PieChartServer.RandomPieValues(_pieCharIndex);
-            LineChartServer.RandomCurvePoints(_lineCharIndex);
-            HistogramServer.RandomHistogramValues(_histogramCharIndex);
+            _pieCharIndex       = PieChartServer.AddPieChart(hwnd, rcClient);
+            _lineCharIndex      = LineChartServer.AddCurveChart(hwnd, rcClient);
+            _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd, rcClient, 0, 10000, 100, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
 
             ResizeShowCharts();
-
-            QueryLineChartData(null);
         }
 
         public void ResizeShowCharts()
@@ -302,22 +382,25 @@ namespace ManageSystem.ViewModel
                 rect1.right                                 = Convert.ToInt32(ptBotRightDlg1.X - ptOriginalDlg.X);
                 rect1.bottom                                = Convert.ToInt32(ptBotRightDlg1.Y - ptOriginalDlg.Y);
 
-                PieChartServer.MoveChart(_pieCharIndex, ref rect1, true);
-                LineChartServer.MoveChart(_lineCharIndex, ref rect1, true);
-                HistogramServer.MoveChart(_histogramCharIndex, ref rect1, true);
+                PieChartServer.MoveChart(_pieCharIndex,  rect1, true);
+                LineChartServer.MoveChart(_lineCharIndex,  rect1, true);
+                HistogramServer.MoveChart(_histogramCharIndex,  rect1, true);
                 switch (bShowChart)
                 {
                     case ShowChartEnum.ShowChartEnum_Pie:
+                        region0Text = "制签异常饼图";
                         PieChartServer.ShowChart(_pieCharIndex, true);
                         LineChartServer.ShowChart(_lineCharIndex, false);
                         HistogramServer.ShowChart(_histogramCharIndex, false);
                         break;
                     case ShowChartEnum.ShowChartEnum_Line:
+                        region0Text = "制签异统计图";
                         PieChartServer.ShowChart(_pieCharIndex, false);
                         LineChartServer.ShowChart(_lineCharIndex, true);
                         HistogramServer.ShowChart(_histogramCharIndex, false);
                         break;
                     case ShowChartEnum.ShowChartEnum_Histogram:
+                        region0Text = "制签直方图";
                         PieChartServer.ShowChart(_pieCharIndex, false);
                         LineChartServer.ShowChart(_lineCharIndex, false);
                         HistogramServer.ShowChart(_histogramCharIndex, true);

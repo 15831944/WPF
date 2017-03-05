@@ -1,6 +1,3 @@
-m_sendDataFunc
-m_sendDataFunc
-m_sendDataFunc
 #include "stdafx.h"
 #include "Server.h"
 #include "SqliteData.h"
@@ -14,6 +11,7 @@ CServer::CServer()
 	m_startServerFunc					= (_startServerType)GetProcAddress(hNetDll, "startServer");
 	m_stopServerFunc					= (_stopServerType)GetProcAddress(hNetDll, "stopServer");
 	m_isServerStopedFunc				= (_isServerStoped)GetProcAddress(hNetDll, "isServerStoped");
+	m_curServerConnectionsFunc			= (_curServerConnections)GetProcAddress(hNetDll, "curServerConnections");
 }
 
 CServer::~CServer()
@@ -30,126 +28,61 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 			netmsg::MsgPack msgPack;
 			if (msgPack.ParseFromArray(buf, len))
 			{
-				if (msgPack.has_msgcmd())
+				netmsg::MsgPack packResult;
+				packResult.mutable_head()->set_globalpacknumber(msgPack.head().globalpacknumber());
+				packResult.mutable_head()->set_totalpack(1);
+				packResult.mutable_head()->set_packindex(0);
+				if (msgPack.has_msgquery())
 				{
-					switch (msgPack.head().packtype())
+					string QueryStr = msgPack.msgquery().msg();
+					string strError = "";
+					string dataStr  = "";
+					CSqliteData::GetInstance()->QueryTable(QueryStr, dataStr, strError);
+
+
+					packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseQuerySuccess);
+					if (strError.empty())
 					{
-					case netmsg::NetMsgType_DatabaseQueryAsk:
+						if (dataStr.empty())
+						{
+							packResult.mutable_msgquerymsgresult()->set_resultdata("");
+							packResult.mutable_msgquerymsgresult()->set_resulterror("未查询到数据！");
+						}
+						else
+						{
+							packResult.mutable_msgquerymsgresult()->set_resultdata(dataStr);
+							packResult.mutable_msgquerymsgresult()->set_resulterror("");
+						}
+					}
+					else
 					{
-						/*string strCmd = msgPack.msgcmd().cmd();
-						if (strCmd.find(T_IDCARDAPPLY))
-						{
-							std::vector<tagIDCARDAPPLY>  lcArray;
-							string strError = "";
-							CSqliteData::GetInstance()->QueryIDCARDAPPLY(strCmd, lcArray, strError);
+						packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseQueryError);
 
-							netmsg::MsgPack pack;
-							pack.mutable_head()->set_totalpack(1);
-							pack.mutable_head()->set_packindex(1);
-							if (strError.empty())
-							{
-								pack.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseQuerySuccess);
-								if (lcArray.empty())
-								{
-									pack.mutable_msgcmd()->set_cmd("未查询到数据！");
-								}
-								else
-								{
-									pack.mutable_head()->set_totalpack(lcArray.size());
-									for (int i = 0; i < lcArray.size(); ++i)
-									{
-										pack.mutable_head()->set_packindex(i + 1);
-										pack.mutable_msgidcardapplydata()->set_name(lcArray[i].name.c_str(), lcArray[i].name.size());
-										pack.mutable_msgidcardapplydata()->set_gender(lcArray[i].gender.c_str(), lcArray[i].gender.size());
-										pack.mutable_msgidcardapplydata()->set_nation(lcArray[i].Nation.c_str(), lcArray[i].Nation.size());
-										pack.mutable_msgidcardapplydata()->set_birthday(lcArray[i].Birthday.c_str(), lcArray[i].Birthday.size());
-										pack.mutable_msgidcardapplydata()->set_address(lcArray[i].Address.c_str(), lcArray[i].Address.size());
-										pack.mutable_msgidcardapplydata()->set_idnumber(lcArray[i].IdNumber.c_str(), lcArray[i].IdNumber.size());
-										pack.mutable_msgidcardapplydata()->set_sigdepart(lcArray[i].SigDepart.c_str(), lcArray[i].SigDepart.size());
-										pack.mutable_msgidcardapplydata()->set_slh(lcArray[i].SLH.c_str(), lcArray[i].SLH.size());
-										pack.mutable_msgidcardapplydata()->set_fpdata(lcArray[i].fpData.c_str(), lcArray[i].fpData.size());
-										pack.mutable_msgidcardapplydata()->set_fpfeature(lcArray[i].fpFeature.c_str(), lcArray[i].fpFeature.size());
-										pack.mutable_msgidcardapplydata()->set_xczp(lcArray[i].XCZP.c_str(), lcArray[i].XCZP.size());
-										pack.mutable_msgidcardapplydata()->set_xzqh(lcArray[i].XZQH.c_str(), lcArray[i].XZQH.size());
-										pack.mutable_msgidcardapplydata()->set_sannerid(lcArray[i].sannerId.c_str(), lcArray[i].sannerId.size());
-										pack.mutable_msgidcardapplydata()->set_scannername(lcArray[i].scannerName.c_str(), lcArray[i].scannerName.size());
-										pack.mutable_msgidcardapplydata()->set_legal(lcArray[i].legal);
-										pack.mutable_msgidcardapplydata()->set_operatorid(lcArray[i].operatorID.c_str(), lcArray[i].operatorID.size());
-										pack.mutable_msgidcardapplydata()->set_operatorname(lcArray[i].operatorName.c_str(), lcArray[i].operatorName.size());
-										pack.mutable_msgidcardapplydata()->set_opdate(lcArray[i].opDate.c_str(), lcArray[i].opDate.size());
-									
-										CServer::GetInstance()->SendMsgBuf(userID, pack);
-									}
-								}
-							}
-							else
-							{
-								pack.mutable_msgcmd()->set_cmd(strError);
-							}
-						}
-						else if (strCmd.find(T_ONLINESTATUS))
-						{
-
-						}
-						else if (strCmd.find(T_SHULIANGHUIZONG))
-						{
-
-						}
-						else if (strCmd.find(T_XIANGXITONGJI))
-						{
-
-						}
-						else if (strCmd.find(T_ZHIQIANSHUJU))
-						{
-
-						}
-						else if (strCmd.find(T_SHOUZHENGSHUJU))
-						{
-
-						}
-						else if (strCmd.find(T_QIANZHUSHUJU))
-						{
-
-						}
-						else if (strCmd.find(T_JIAOKUANSHUJU))
-						{
-
-						}
-						else if (strCmd.find(T_CHAXUNSHUJU))
-						{
-
-						}
-						else if (strCmd.find(T_YUSHOULISHUJU))
-						{
-
-						}
-						else if (strCmd.find(T_SHEBEIYICHANGSHUJU))
-						{
-
-						}
-						else if (strCmd.find(T_GUANLIYUAN))
-						{
-
-						}
-						else if (strCmd.find(T_GUANLIYUANCAOZUOJILU))
-						{
-
-						}
-						else if (strCmd.find(T_SHEBEIGUANLI))
-						{
-
-						}*/
+						packResult.mutable_msgquerymsgresult()->set_resultdata("");
+						packResult.mutable_msgquerymsgresult()->set_resulterror(strError);
 					}
-						break;
-					case netmsg::NetMsgType_DatabaseAddAsk:
-						break;
-					case netmsg::NetMsgType_DatabaseDeleteAsk:
-						break;
-					}
+
+					CServer::GetInstance()->SendMsgBuf(userID, packResult);
 				}
-				else if (msgPack.has_msgidcardapplydata())
+				else if (msgPack.has_msgadd())
 				{
-					;
+					string tableNameStr = msgPack.msgadd().tablename();
+					string addStr		= msgPack.msgadd().msg();
+					string strError		= "";
+					CSqliteData::GetInstance()->AddTable((char*)tableNameStr.c_str(), (char*)addStr.c_str(), strError);
+
+					packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseAddSuccess);
+					if (strError.empty())
+					{
+						packResult.mutable_msgaddmsgresult()->set_resulterror("");
+					}
+					else
+					{
+						packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseAddError);
+						packResult.mutable_msgaddmsgresult()->set_resulterror(strError);
+					}
+
+					CServer::GetInstance()->SendMsgBuf(userID, packResult);
 				}
 				else
 				{
@@ -207,6 +140,13 @@ bool CServer::ServerStoped()
 {
 	if (m_isServerStopedFunc)
 		return m_isServerStopedFunc();
+	return true;
+}
+
+bool CServer::CurServerConnections()
+{
+	if (m_curServerConnectionsFunc)
+		return m_curServerConnectionsFunc();
 	return true;
 }
 

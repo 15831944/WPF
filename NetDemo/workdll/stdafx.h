@@ -22,6 +22,7 @@
 #endif
 
 #include <tchar.h>
+#include <queue>
 
 #include "../NetDll/NetDll.h"
 #include "../database/database.h"

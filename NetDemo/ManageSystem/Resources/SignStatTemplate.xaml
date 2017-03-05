@@ -133,12 +133,12 @@
                         <RowDefinition Height="{Binding Path=regionTextHeight}"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0" Margin="0,0,20,0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="150"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Margin="20,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="15">已受理业务统计图</TextBlock>
+                        <TextBlock Grid.Column="0" Margin="20,0,0,0" Text="{Binding Path=region0Text}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" FontSize="15"></TextBlock>
                         <StackPanel Grid.Column="1" Orientation="Horizontal">
                             <ContentControl Content="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Center">
                                 <ContentControl.ContentTemplate>
@@ -146,10 +146,10 @@
                                         <Button x:Name="btn" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=ShowPieChartCommand}" ToolTip="饼图">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="{x:Type Button}">
-                                                    <TextBlock x:Name="btnbg" Foreground="White" FontSize="15" Background="#222228">饼图</TextBlock>
+                                                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/饼图－常态.png" />
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding Path=bShowChart}" Value="{x:Static viewModel:ShowChartEnum.ShowChartEnum_Pie}">
-                                                            <Setter Property="Background" TargetName="btnbg" Value="Red"/>
+                                                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/饼图－选中.png"/>
                                                         </DataTrigger>
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>
@@ -164,10 +164,10 @@
                                         <Button x:Name="btn" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=ShowLineChartCommand}" ToolTip="曲线图">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="{x:Type Button}">
-                                                    <TextBlock x:Name="btnbg" Foreground="White" FontSize="15" Background="#222228">曲线图</TextBlock>
+                                                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/曲线图－常态.png" />
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding Path=bShowChart}" Value="{x:Static viewModel:ShowChartEnum.ShowChartEnum_Line}">
-                                                            <Setter Property="Background" TargetName="btnbg" Value="Red"/>
+                                                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/曲线图－选中.png"/>
                                                         </DataTrigger>
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>
@@ -182,10 +182,10 @@
                                         <Button x:Name="btn" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=ShowHistogramChartCommand}" ToolTip="直方图">
                                             <Button.Template>
                                                 <ControlTemplate TargetType="{x:Type Button}">
-                                                    <TextBlock x:Name="btnbg" Foreground="White" FontSize="15" Background="#222228">直方图</TextBlock>
+                                                    <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/直方图－常态.png" />
                                                     <ControlTemplate.Triggers>
                                                         <DataTrigger Binding="{Binding Path=bShowChart}" Value="{x:Static viewModel:ShowChartEnum.ShowChartEnum_Histogram}">
-                                                            <Setter Property="Background" TargetName="btnbg" Value="Red"/>
+                                                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/直方图－选中.png"/>
                                                         </DataTrigger>
                                                     </ControlTemplate.Triggers>
                                                 </ControlTemplate>

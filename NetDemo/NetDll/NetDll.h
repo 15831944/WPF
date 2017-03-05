@@ -7,6 +7,7 @@ typedef				void(__cdecl *OnReceiveCallBack)(OUT long userID /*Only for Server*/,
 bool				startServer(IN char *ip, IN int port, IN OnReceiveCallBack callback, OUT ServerSendData& CallSendData);
 bool				stopServer();
 bool				isServerStoped();
+int					curServerConnections();
 
 
 bool				startClient(IN char *ip, IN int port, IN OnReceiveCallBack callback, OUT ClientSendData& CallSendData);

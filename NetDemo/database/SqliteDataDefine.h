@@ -311,6 +311,9 @@ public:
 		Lianxidianhua			= "";
 		Yewuleixing				= 0;
 		Shouliren				= "";
+		Zhengjianleixing		= 0;
+		Yewubianhao				= "";
+		Shifoucharudajizhong	= false;
 	}
 
 	int							Xuhao;					//序号					
@@ -330,7 +333,7 @@ public:
 	string						Shouliren;				//受理人				
 	int							Zhengjianleixing;		//证件类型			
 	string						Yewubianhao;			//业务编号			
-	int							Shifoucharudajizhong;	//是否插入大集中				
+	bool						Shifoucharudajizhong;	//是否插入大集中				
 }QIANZHUSHUJU, *LPQIANZHUSHUJU;
 /**
 * @class  tagJIAOKUANSHUJU
@@ -356,6 +359,8 @@ public:
 		Jiaokuanrenxingming		= "";
 		Yingkoukuanheji			= 0;
 		Jiaoyiriqi				= 0;
+		Jiaofeizhuangtai		= false;
+		Yewubianhao				= "";
 	}
 
 	int							Xuhao;						//序号	
@@ -371,7 +376,7 @@ public:
 	string						Jiaokuanrenxingming;		//缴款人姓名		
 	float						Yingkoukuanheji;			//应扣款合计		
 	__int64						Jiaoyiriqi;					//交易日期		
-	int							Jiaofeizhuangtai;			//缴费状态		
+	bool						Jiaofeizhuangtai;			//缴费状态		
 	string						Yewubianhao;				//业务编号		
 
 }JIAOKUANSHUJU, *LPJIAOKUANSHUJU;
@@ -443,6 +448,8 @@ public:
 		Hukousuozaidi			= "";
 		Minzu					= "";
 		Chuangjianshijian		= 0;
+		Shenfenzhenghao			= "";
+		Shifoucharudajizhong	= 0;
 	}
 
 	int							Xuhao;						//序号
@@ -464,8 +471,7 @@ public:
 	string	  					Minzu;						//民族
 	__int64  					Chuangjianshijian;			//创建时间
 	string  					Shenfenzhenghao;			//身份证号
-	int  						Shifoucharudajizhong;		//是否插入大集中
-
+	bool  						Shifoucharudajizhong;		//是否插入大集中
 }YUSHOULISHUJU, *LPYUSHOULISHUJU;
 /**
 * @class  tagSHEBEIZHUANGTAI
@@ -518,6 +524,7 @@ public:
 		Bendiyewu				= false;
 		Shebeibaifangweizhi		= 0;
 		Riqi					= 0;
+		Yichangleixing			= 0;
 		Yichangshejimokuai		= "";
 		Yichangyuanyin			= "";
 		Yichangxiangxineirong	= "";

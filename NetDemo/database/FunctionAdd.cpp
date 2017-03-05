@@ -301,7 +301,7 @@ bool AddTable(char* tableName, char* dataStr, string &strError)
 
 		sqlite3_stmt   *lpStmt0		=  NULL;
 		const char* beginSQL = "BEGIN TRANSACTION";
-		if (sqlite3_prepare_v2(lpSQlite->Handle(), beginSQL, strlen(beginSQL), &lpStmt0, NULL) != SQLITE_OK) 
+		if (sqlite3_prepare_v2(lpSQlite->Handle(), beginSQL, -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			if (lpStmt0) sqlite3_finalize(lpStmt0);
 			bOk = false; char ch[512] ={ 0 };
@@ -331,11 +331,12 @@ bool AddTable(char* tableName, char* dataStr, string &strError)
 			if (lpStmt1) sqlite3_finalize(lpStmt1);
 			bOk = false;
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
 
+		string str = ASCIItoUTF8(dataStr);
 		vector<string> rows; rows.reserve(1000);
 		vector<string> cells; cells.reserve(1000);
 		split(dataStr, rows, ";");
@@ -368,7 +369,7 @@ bool AddTable(char* tableName, char* dataStr, string &strError)
 									;
 									break;
 								case SQLITE_TEXT:
-									rc = sqlite3_bind_text(lpStmt1, index, keyvalue[1].c_str(), keyvalue[1].size(), SQLITE_STATIC);
+									rc = sqlite3_bind_text(lpStmt1, index, ASCIItoUTF8(keyvalue[1]).c_str(), -1, SQLITE_STATIC);
 									break;
 								default:
 									rc = sqlite3_bind_null(lpStmt1, index);
@@ -442,7 +443,7 @@ bool AddZHIQIANSHUJU(tagZHIQIANSHUJU  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -463,14 +464,14 @@ bool AddZHIQIANSHUJU(tagZHIQIANSHUJU  data, string &strError)
 			sqlite3_bind_int(lpStmt0, 6, data.Bendiyewu);
 			sqlite3_bind_int(lpStmt0, 7, data.Shebeibaifangweizhi);
 			sqlite3_bind_int64(lpStmt0, 8, data.Riqi);
-			sqlite3_bind_text(lpStmt0, 9, data.Yewubianhao.c_str(), data.Yewubianhao.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 10, data.YuanZhengjianhaoma.c_str(), data.YuanZhengjianhaoma.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 11, data.Xingming.c_str(), data.Xingming.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 9, ASCIItoUTF8(data.Yewubianhao).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 10, ASCIItoUTF8(data.YuanZhengjianhaoma).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 11, ASCIItoUTF8(data.Xingming).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_int(lpStmt0, 12, data.Qianzhuzhonglei);
 			sqlite3_bind_int(lpStmt0, 13, data.ZhikaZhuangtai);
-			sqlite3_bind_text(lpStmt0, 14, data.Zhengjianhaoma.c_str(), data.Zhengjianhaoma.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 15, data.Jiekoufanhuijieguo.c_str(), data.Jiekoufanhuijieguo.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 16, data.Lianxidianhua.c_str(), data.Lianxidianhua.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 14, ASCIItoUTF8(data.Zhengjianhaoma).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 15, ASCIItoUTF8(data.Jiekoufanhuijieguo).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 16, ASCIItoUTF8(data.Lianxidianhua).c_str(), -1, SQLITE_STATIC);
 
 			int dd = sqlite3_step(lpStmt0);
 			if (dd != SQLITE_ROW) {
@@ -517,7 +518,7 @@ bool AddSHOUZHENGSHUJU(tagSHOUZHENGSHUJU  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -539,9 +540,9 @@ bool AddSHOUZHENGSHUJU(tagSHOUZHENGSHUJU  data, string &strError)
 			sqlite3_bind_int(lpStmt0, 7, data.Shebeibaifangweizhi);
 			sqlite3_bind_int64(lpStmt0, 8, data.Riqi);
 			sqlite3_bind_int(lpStmt0, 9, data.Zhengjianleixing);
-			sqlite3_bind_text(lpStmt0, 10, data.Zhengjianhaoma.c_str(), data.Zhengjianhaoma.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 11, data.Xingming.c_str(), data.Xingming.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 12, data.Shoulibianhao.c_str(), data.Shoulibianhao.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 10, ASCIItoUTF8(data.Zhengjianhaoma).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 11, ASCIItoUTF8(data.Xingming).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 12, ASCIItoUTF8(data.Shoulibianhao).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_int(lpStmt0, 13, data.Shifoujiaofei);
 
 			int dd = sqlite3_step(lpStmt0);
@@ -589,7 +590,7 @@ bool AddQIANZHUSHUJU(tagQIANZHUSHUJU  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -610,13 +611,16 @@ bool AddQIANZHUSHUJU(tagQIANZHUSHUJU  data, string &strError)
 			sqlite3_bind_int(lpStmt0, 6, data.Bendiyewu);
 			sqlite3_bind_int(lpStmt0, 7, data.Shebeibaifangweizhi);
 			sqlite3_bind_int64(lpStmt0, 8, data.Riqi);
-			sqlite3_bind_text(lpStmt0, 9, data.YuanZhengjianhaoma.c_str(), data.YuanZhengjianhaoma.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 10, data.Xingming.c_str(), data.Xingming.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 9, ASCIItoUTF8(data.YuanZhengjianhaoma).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 10, ASCIItoUTF8(data.Xingming).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_int(lpStmt0, 11, data.Xingbie);
 			sqlite3_bind_int64(lpStmt0, 12, data.Chushengriqi);
-			sqlite3_bind_text(lpStmt0, 13, data.Lianxidianhua.c_str(), data.Lianxidianhua.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 13, ASCIItoUTF8(data.Lianxidianhua).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_int(lpStmt0, 14, data.Yewuleixing);
-			sqlite3_bind_text(lpStmt0, 15, data.Shouliren.c_str(), data.Shouliren.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 15, ASCIItoUTF8(data.Shouliren).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_int(lpStmt0, 16, data.Zhengjianleixing);
+			sqlite3_bind_text(lpStmt0, 17, ASCIItoUTF8(data.Yewubianhao).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_int(lpStmt0, 18, data.Shifoucharudajizhong);
 
 			int dd = sqlite3_step(lpStmt0);
 			if (dd != SQLITE_ROW) {
@@ -662,7 +666,7 @@ bool AddJIAOKUANSHUJU(tagJIAOKUANSHUJU  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -683,11 +687,13 @@ bool AddJIAOKUANSHUJU(tagJIAOKUANSHUJU  data, string &strError)
 			sqlite3_bind_int(lpStmt0, 6, data.Bendiyewu);
 			sqlite3_bind_int(lpStmt0, 7, data.Shebeibaifangweizhi);
 			sqlite3_bind_int64(lpStmt0, 8, data.Riqi);
-			sqlite3_bind_text(lpStmt0, 9, data.Zhishoudanweidaima.c_str(), data.Zhishoudanweidaima.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 10, data.Jiaokuantongzhishuhaoma.c_str(), data.Jiaokuantongzhishuhaoma.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 11, data.Jiaokuanrenxingming.c_str(), data.Jiaokuanrenxingming.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 9, ASCIItoUTF8(data.Zhishoudanweidaima).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 10, ASCIItoUTF8(data.Jiaokuantongzhishuhaoma).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 11, ASCIItoUTF8(data.Jiaokuanrenxingming).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_int(lpStmt0, 12, data.Yingkoukuanheji);
 			sqlite3_bind_int64(lpStmt0, 13, data.Jiaoyiriqi);
+			sqlite3_bind_int64(lpStmt0, 14, data.Jiaofeizhuangtai);
+			sqlite3_bind_text(lpStmt0, 15, ASCIItoUTF8(data.Yewubianhao).c_str(), -1, SQLITE_STATIC);
 
 			int dd = sqlite3_step(lpStmt0);
 			if (dd != SQLITE_ROW) {
@@ -733,7 +739,7 @@ bool AddCHAXUNSHUJU(tagCHAXUNSHUJU  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -754,8 +760,8 @@ bool AddCHAXUNSHUJU(tagCHAXUNSHUJU  data, string &strError)
 			sqlite3_bind_int(lpStmt0, 6, data.Bendiyewu);
 			sqlite3_bind_int(lpStmt0, 7, data.Shebeibaifangweizhi);
 			sqlite3_bind_int64(lpStmt0, 8, data.Riqi);
-			sqlite3_bind_text(lpStmt0, 9, data.Chaxunhaoma.c_str(), data.Chaxunhaoma.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 10, data.Chaxunleixing.c_str(), data.Chaxunleixing.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 9, ASCIItoUTF8(data.Chaxunhaoma).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 10, ASCIItoUTF8(data.Chaxunleixing).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_int(lpStmt0, 11, data.Shifouchaxunchenggong);
 			sqlite3_bind_int64(lpStmt0, 12, data.Chuangjianshijian);
 
@@ -803,7 +809,7 @@ bool AddYUSHOULISHUJU(tagYUSHOULISHUJU  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -824,16 +830,18 @@ bool AddYUSHOULISHUJU(tagYUSHOULISHUJU  data, string &strError)
 			sqlite3_bind_int(lpStmt0, 6, data.Bendiyewu);
 			sqlite3_bind_int(lpStmt0, 7, data.Shebeibaifangweizhi);
 			sqlite3_bind_int64(lpStmt0, 8, data.Riqi);
-			sqlite3_bind_text(lpStmt0, 9, data.Yewubianhao.c_str(), data.Yewubianhao.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 10, data.Xingming.c_str(), data.Xingming.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 11, data.Lianxidianhua.c_str(), data.Lianxidianhua.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 12, data.Chuguoshiyou.c_str(), data.Chuguoshiyou.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 13, data.YuanZhengjianhaoma.c_str(), data.YuanZhengjianhaoma.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 9, ASCIItoUTF8(data.Yewubianhao).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 10, ASCIItoUTF8(data.Xingming).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 11, ASCIItoUTF8(data.Lianxidianhua).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 12, ASCIItoUTF8(data.Chuguoshiyou).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 13, ASCIItoUTF8(data.YuanZhengjianhaoma).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_int(lpStmt0, 14, data.Qianzhuzhonglei);
 			sqlite3_bind_int(lpStmt0, 15, data.Xingbie);
-			sqlite3_bind_text(lpStmt0, 16, data.Hukousuozaidi.c_str(), data.Hukousuozaidi.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 17, data.Minzu.c_str(), data.Minzu.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 16, ASCIItoUTF8(data.Hukousuozaidi).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 17, ASCIItoUTF8(data.Minzu).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_int64(lpStmt0, 18, data.Chuangjianshijian);
+			sqlite3_bind_text(lpStmt0, 19, ASCIItoUTF8(data.Shenfenzhenghao).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_int(lpStmt0, 20, data.Shifoucharudajizhong);
 
 			int dd = sqlite3_step(lpStmt0);
 			if (dd != SQLITE_ROW) {
@@ -879,7 +887,7 @@ bool AddSHEBEIZHUANGTAI(tagSHEBEIZHUANGTAI  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -946,7 +954,7 @@ bool AddSHEBEIYICHANGSHUJU(tagSHEBEIYICHANGSHUJU  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -967,9 +975,10 @@ bool AddSHEBEIYICHANGSHUJU(tagSHEBEIYICHANGSHUJU  data, string &strError)
 			sqlite3_bind_int(lpStmt0, 6, data.Bendiyewu);
 			sqlite3_bind_int(lpStmt0, 7, data.Shebeibaifangweizhi);
 			sqlite3_bind_int64(lpStmt0, 8, data.Riqi);
-			sqlite3_bind_text(lpStmt0, 9, data.Yichangshejimokuai.c_str(), data.Yichangshejimokuai.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 10, data.Yichangyuanyin.c_str(), data.Yichangyuanyin.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 11, data.Yichangxiangxineirong.c_str(), data.Yichangxiangxineirong.size(), SQLITE_STATIC);
+			sqlite3_bind_int(lpStmt0, 9, data.Yichangleixing);
+			sqlite3_bind_text(lpStmt0, 10, ASCIItoUTF8(data.Yichangshejimokuai).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 11, ASCIItoUTF8(data.Yichangyuanyin).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 12, ASCIItoUTF8(data.Yichangxiangxineirong).c_str(), -1, SQLITE_STATIC);
 
 			int dd = sqlite3_step(lpStmt0);
 			if (dd != SQLITE_ROW) {
@@ -1015,7 +1024,7 @@ bool AddGUANLIYUAN(tagGUANLIYUAN  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -1029,8 +1038,8 @@ bool AddGUANLIYUAN(tagGUANLIYUAN  data, string &strError)
 
 			if (data.Xuhao != 0)
 				sqlite3_bind_int(lpStmt0, 1, data.Xuhao);
-			sqlite3_bind_text(lpStmt0, 2, data.Yonghuming.c_str(), data.Yonghuming.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 3, data.Mima.c_str(), data.Mima.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 2, ASCIItoUTF8(data.Yonghuming).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 3, ASCIItoUTF8(data.Mima).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_int(lpStmt0, 4, data.Youxiaoqikaishi);
 			sqlite3_bind_int(lpStmt0, 5, data.Youxiaoqijieshu);
 			sqlite3_bind_int(lpStmt0, 6, data.Quanxianjibie);
@@ -1079,7 +1088,7 @@ bool AddGUANLIYUANCAOZUOJILU(tagGUANLIYUANCAOZUOJILU  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -1093,10 +1102,10 @@ bool AddGUANLIYUANCAOZUOJILU(tagGUANLIYUANCAOZUOJILU  data, string &strError)
 
 			if (data.Xuhao != 0)
 				sqlite3_bind_int(lpStmt0, 1, data.Xuhao);
-			sqlite3_bind_text(lpStmt0, 2, data.Yonghuming.c_str(), data.Yonghuming.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 2, ASCIItoUTF8(data.Yonghuming).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_int64(lpStmt0, 3, data.Riqi);
-			sqlite3_bind_text(lpStmt0, 4, data.Caozuoleibie.c_str(), data.Caozuoleibie.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 5, data.Caozuoneirong.c_str(), data.Caozuoneirong.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 4, ASCIItoUTF8(data.Caozuoleibie).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 5, ASCIItoUTF8(data.Caozuoneirong).c_str(), -1, SQLITE_STATIC);
 
 			int dd = sqlite3_step(lpStmt0);
 			if (dd != SQLITE_ROW) {
@@ -1142,7 +1151,7 @@ bool AddSHEBEIGUANLI(tagSHEBEIGUANLI  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -1160,9 +1169,9 @@ bool AddSHEBEIGUANLI(tagSHEBEIGUANLI  data, string &strError)
 			sqlite3_bind_int(lpStmt0, 3, data.Jubianhao);
 			sqlite3_bind_int(lpStmt0, 4, data.Shiyongdanweibianhao);
 			sqlite3_bind_int(lpStmt0, 5, data.IP);
-			sqlite3_bind_text(lpStmt0, 6, data.Shebeichangjia.c_str(), data.Shebeichangjia.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 7, data.Shebeimingcheng.c_str(), data.Shebeimingcheng.size(), SQLITE_STATIC);
-			sqlite3_bind_text(lpStmt0, 8, data.Shebeileixing.c_str(), data.Shebeileixing.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 6, ASCIItoUTF8(data.Shebeichangjia).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 7, ASCIItoUTF8(data.Shebeimingcheng).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 8, ASCIItoUTF8(data.Shebeileixing).c_str(), -1, SQLITE_STATIC);
 			sqlite3_bind_double(lpStmt0, 9, data.Jingdu);
 			sqlite3_bind_double(lpStmt0, 10, data.Weidu);
 			sqlite3_bind_int64(lpStmt0, 11, data.Chuangjianshijian);
@@ -1211,7 +1220,7 @@ bool AddYINGSHEBIAO(tagYINGSHEBIAO  data, string &strError)
 		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
 			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "Prepare SQL:%s failure:%s\n", lstrSQL.c_str(), sqlite3_errmsg(lpSQlite->Handle()));
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			bOk = false;
 			break;
@@ -1224,7 +1233,7 @@ bool AddYINGSHEBIAO(tagYINGSHEBIAO  data, string &strError)
 			//在绑定时，最左面的变量索引值是1。
 
 			sqlite3_bind_int(lpStmt0, 1, data.Bianhao);
-			sqlite3_bind_text(lpStmt0, 2, data.Mingcheng.c_str(), data.Mingcheng.size(), SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 2, ASCIItoUTF8(data.Mingcheng).c_str(), -1, SQLITE_STATIC);
 
 			int dd = sqlite3_step(lpStmt0);
 			if (dd != SQLITE_ROW) {

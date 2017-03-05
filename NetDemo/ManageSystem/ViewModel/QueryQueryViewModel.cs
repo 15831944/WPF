@@ -111,7 +111,7 @@ namespace ManageSystem.ViewModel
             }
         }
    
-        public void QueryTableCallBack(string resultStr)
+        public void QueryTableCallBack(string resultStr, string errorStr)
         {
             System.Reflection.PropertyInfo[] properties = typeof(CHAXUNSHUJUModel).GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
 
