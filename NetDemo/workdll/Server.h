@@ -22,7 +22,8 @@ protected:
 
 	ServerSendData						m_sendDataFunc;
 
-
+	std::map<DWORD, bool>				m_mapDevice;
+	HANDLE								m_mutexHandle;
 	void								SendMsgBuf(long userID, ::google::protobuf::Message& msg);
 public:
 	static CServer* 					GetInstance();

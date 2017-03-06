@@ -285,35 +285,35 @@ namespace ManageSystem.ViewModel
 
         public MainWindowViewModel()
         {
-#if (DEBUG)
+//#if (DEBUG)
             //Configuration config                 = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             //config.AppSettings.Settings.Add("ServerIP", "127.0.0.1");
             //config.AppSettings.Settings.Add("ServerPort", "60000");
             //config.Save();
             //ConfigurationManager.RefreshSection("appSettings");
 
-//            string  ip      = "";
-//            int     port    = 0;
-//            foreach (string key in ConfigurationManager.AppSettings)
-//            {    //检索当前选中的分辨率
-//                if (key == "ServerIP")
-//                {
-//                    ip = ConfigurationManager.AppSettings[key];
-//                }
-//                else if (key == "ServerPort")
-//                {
-//                    port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
-//                }
-//            }
+            string  ip      = "";
+            int     port    = 0;
+            foreach (string key in ConfigurationManager.AppSettings)
+            {    //检索当前选中的分辨率
+                if (key == "ServerIP")
+                {
+                    ip = ConfigurationManager.AppSettings[key];
+                }
+                else if (key == "ServerPort")
+                {
+                    port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
+                }
+            }
 
-//            if(false == WorkServer.startClient(ip, port))
-//            {
-//                displayMsg = "连接服务端失败!";
-//                bOnline = false;
-//            }
-//            else
-//                bOnline = true;
-#endif
+            if(false == WorkServer.startClient(ip, port, true))
+            {
+                displayMsg = "连接服务端失败!";
+                bOnline = false;
+            }
+            else
+                bOnline = true;
+//#endif
 
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
 
@@ -667,6 +667,10 @@ namespace ManageSystem.ViewModel
             try
             {
                 WorkServer.stopClient();
+                LineChartServer.UninitializeCurveModule();
+                HistogramServer.UninitializeHistogramModule();
+                OccupancyChartServer.UninitializeOccupancyModule();
+                PieChartServer.UninitializePieModule();
                 System.Windows.Application.Current.Shutdown();
             }
             catch (Exception ex)

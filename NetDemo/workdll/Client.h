@@ -24,15 +24,19 @@ protected:
 
 	DWORD								m_globalPackNumber;	//×ÜµÄ°üºÅ
 	ThreadMap<DWORD, void*>				m_requestMap;
+	bool								m_bDevice;
 
+	void								RegistType(bool bDevice);
 public:
 	static CClient* 					GetInstance();
 	static void 						ReleaseInstance();
-	bool								StartClient(char *ip, int port);
+	bool								StartClient(char *ip, int port, bool bDevice);
 	bool								StopClient();
 	bool								ClientStoped();
+
 	void								QueryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync);
 	void								AddTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool bSync);
+	void								QueryOnlieDevCnt(QueryTableCallBack callBack, bool bSync);
 };
 
 #pragma  once

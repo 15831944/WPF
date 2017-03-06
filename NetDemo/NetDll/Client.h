@@ -11,7 +11,6 @@ private:
 	boost::thread									m_thread;
 	OnReceiveCallBack								m_pReceiveCallBack;
 
-	void											handle_connect(session_ptr new_session, const boost::system::error_code& ec);
 	void											WorkThread();
 public:
 	session_ptr										m_pSession;

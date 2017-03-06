@@ -3,10 +3,16 @@ package netmsg;
 message MsgPack
 {
 	required	MsgHead								head							= 1;
-	optional	MsgQueryMsg  						msgquery						= 2;
-	optional	MsgAddMsg  							msgadd							= 3;
-	optional	MsgQueryMsgResult  					msgquerymsgresult				= 4;
-	optional	MsgAddMsgResult  					msgaddmsgresult					= 5;
+	optional 	RegistTypeMsg						registtype						= 2;
+	
+	optional 	QueryDevCntMsg						querydevcntmsg					= 3;
+	optional 	QueryDevCntMsgResult				querydevcntmsgresult			= 4;
+			
+	optional	QueryMsg  							query							= 5;
+	optional	AddMsg  							add								= 6;
+
+	optional	QueryMsgResult  					querymsgresult					= 7;
+	optional	AddMsgResult  						addmsgresult					= 8;
 }
 
 
@@ -14,17 +20,22 @@ message MsgPack
 enum NetMsgType{
 	NetMsgType_Unknown										= 0;
 
-	NetMsgType_DatabaseAddAsk								= 1;
-	NetMsgType_DatabaseAddSuccess							= 2;
-	NetMsgType_DatabaseAddError								= 3;
+	NetMsgType_RegistType									= 1;
 
-	NetMsgType_DatabaseDeleteAsk							= 4;
-	NetMsgType_DatabaseDeleteSuccess						= 5;
-	NetMsgType_DatabaseDeleteError							= 6;
+	NetMsgType_QueryDevCnt									= 2;
+	NetMsgType_QueryDevCntResult							= 3;
 
-	NetMsgType_DatabaseQueryAsk								= 7;
-	NetMsgType_DatabaseQuerySuccess							= 8;
-	NetMsgType_DatabaseQueryError							= 9;
+	NetMsgType_DatabaseAddAsk								= 4;
+	NetMsgType_DatabaseAddSuccess							= 5;
+	NetMsgType_DatabaseAddError								= 6;
+
+	NetMsgType_DatabaseDeleteAsk							= 7;
+	NetMsgType_DatabaseDeleteSuccess						= 8;
+	NetMsgType_DatabaseDeleteError							= 9;
+
+	NetMsgType_DatabaseQueryAsk								= 10;
+	NetMsgType_DatabaseQuerySuccess							= 11;
+	NetMsgType_DatabaseQueryError							= 12;
 	
 };
 
@@ -35,20 +46,32 @@ message MsgHead{
     required	NetMsgType			packtype				= 4 [default = NetMsgType_Unknown];          
 }
 
-message MsgQueryMsg{
+message RegistTypeMsg{
+	required	bool				bDevice					= 1;
+}
+
+message QueryDevCntMsg{
+
+}
+
+message QueryDevCntMsgResult{
+	required	int32				devCnt					= 1;
+}
+
+message QueryMsg{
 	required	string				Msg						= 1;
 }
 
-message MsgQueryMsgResult{
+message QueryMsgResult{
 	required	string				resultData				= 1;
 	required	string				resultError				= 2;
 }
 
-message MsgAddMsg{
+message AddMsg{
 	required	string				TableName				= 1;
 	required	string				Msg						= 2;
 }
 
-message MsgAddMsgResult{
+message AddMsgResult{
 	required	string				resultError				= 1;
 }

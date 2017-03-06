@@ -6,7 +6,6 @@ OnReceiveCallBack	server::m_pReceiveCallBack = NULL;
 server::server(boost::asio::io_service &io_service, boost::asio::ip::tcp::endpoint &endpoint, OnReceiveCallBack pReceiveCallBack)
 	: m_io_service(io_service)
 	, m_acceptor(io_service, endpoint)
-	, m_work(new boost::asio::io_service::work(io_service))
 {
 	m_pReceiveCallBack		= pReceiveCallBack;
 	session_ptr new_session(new session(m_io_service, &server::OnServerCallBack));
@@ -24,14 +23,10 @@ void server::OnServerCallBack(OUT long userID /*Only for Server*/, OUT BYTE* buf
 	if (errorcode != 0)
 	{
 		boost::mutex::scoped_lock Lock(m_sessionsMutex);
-		for (list<session_ptr>::iterator it = m_sessions.begin(); it != m_sessions.end();)
-		{	////清除已无用的连接对象
+		for (list<session_ptr>::iterator it = m_sessions.begin(); it != m_sessions.end();)////清除已无用的连接对象
+		{	
 			if (!(*it)->bstarted() || int((*it).get()) == userID)
-			{
-				(*it)->stop();
-				(*it) = nullptr;
 				it = m_sessions.erase(it);
-			}
 			else
 				++it;
 		}
@@ -88,7 +83,10 @@ void server::WorkThread()
 {
 	try
 	{
-		m_io_service.run();
+		while (!m_io_service.stopped())
+			m_io_service.run_one();
+
+		//m_io_service.run();
 	}
 	catch (std::exception &e)
 	{
@@ -99,21 +97,19 @@ void server::WorkThread()
 
 void server::stop()
 {
-	boost::mutex::scoped_lock Lock(m_sessionsMutex);
-
 	m_acceptor.close();
+
+	boost::mutex::scoped_lock Lock(m_sessionsMutex);
 	for (list<session_ptr>::iterator it = m_sessions.begin(); it != m_sessions.end(); ++it)
-	{
-		(*it)->stop(); 
-		(*it) = nullptr;
-	}
-	m_sessions.clear(); 
+		(*it)->stop();
+	Lock.unlock();
 
 	m_io_service.stop();
-	m_tg.interrupt_all();
 	m_tg.join_all();
 
-	Lock.unlock();
+	boost::mutex::scoped_lock Lock1(m_sessionsMutex);
+	m_sessions.clear();
+	Lock1.unlock(); 
 }
 
 void server::send(long userID, BYTE* SendBuf, int dataLen)

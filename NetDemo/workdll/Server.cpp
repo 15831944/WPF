@@ -6,6 +6,8 @@ CServer* CServer::m_pServer				= NULL;
 
 CServer::CServer()
 {
+	m_mutexHandle						= CreateMutex(NULL, FALSE, NULL);
+	
 	HMODULE hNetDll						= LoadLibrary(_T("NetDll.dll"));
 
 	m_startServerFunc					= (_startServerType)GetProcAddress(hNetDll, "startServer");
@@ -32,9 +34,17 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 				packResult.mutable_head()->set_globalpacknumber(msgPack.head().globalpacknumber());
 				packResult.mutable_head()->set_totalpack(1);
 				packResult.mutable_head()->set_packindex(0);
-				if (msgPack.has_msgquery())
+				packResult.mutable_head()->set_packtype(netmsg::NetMsgType_Unknown);
+
+				if (msgPack.has_registtype())
 				{
-					string QueryStr = msgPack.msgquery().msg();
+					WaitForSingleObject(CServer::GetInstance()->m_mutexHandle, INFINITE);
+					CServer::GetInstance()->m_mapDevice[userID] = msgPack.registtype().bdevice();
+					ReleaseMutex(CServer::GetInstance()->m_mutexHandle);
+				}
+				else if (msgPack.has_query())
+				{
+					string QueryStr = msgPack.query().msg();
 					string strError = "";
 					string dataStr  = "";
 					CSqliteData::GetInstance()->QueryTable(QueryStr, dataStr, strError);
@@ -45,55 +55,73 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					{
 						if (dataStr.empty())
 						{
-							packResult.mutable_msgquerymsgresult()->set_resultdata("");
-							packResult.mutable_msgquerymsgresult()->set_resulterror("未查询到数据！");
+							packResult.mutable_querymsgresult()->set_resultdata("");
+							packResult.mutable_querymsgresult()->set_resulterror("未查询到数据！");
 						}
 						else
 						{
-							packResult.mutable_msgquerymsgresult()->set_resultdata(dataStr);
-							packResult.mutable_msgquerymsgresult()->set_resulterror("");
+							packResult.mutable_querymsgresult()->set_resultdata(dataStr);
+							packResult.mutable_querymsgresult()->set_resulterror("");
 						}
 					}
 					else
 					{
 						packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseQueryError);
 
-						packResult.mutable_msgquerymsgresult()->set_resultdata("");
-						packResult.mutable_msgquerymsgresult()->set_resulterror(strError);
+						packResult.mutable_querymsgresult()->set_resultdata("");
+						packResult.mutable_querymsgresult()->set_resulterror(strError);
 					}
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
 				}
-				else if (msgPack.has_msgadd())
+				else if (msgPack.has_add())
 				{
-					string tableNameStr = msgPack.msgadd().tablename();
-					string addStr		= msgPack.msgadd().msg();
+					string tableNameStr = msgPack.add().tablename();
+					string addStr		= msgPack.add().msg();
 					string strError		= "";
 					CSqliteData::GetInstance()->AddTable((char*)tableNameStr.c_str(), (char*)addStr.c_str(), strError);
 
 					packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseAddSuccess);
 					if (strError.empty())
 					{
-						packResult.mutable_msgaddmsgresult()->set_resulterror("");
+						packResult.mutable_addmsgresult()->set_resulterror("");
 					}
 					else
 					{
 						packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseAddError);
-						packResult.mutable_msgaddmsgresult()->set_resulterror(strError);
+						packResult.mutable_addmsgresult()->set_resulterror(strError);
 					}
+
+					CServer::GetInstance()->SendMsgBuf(userID, packResult);
+				}
+				else if (msgPack.has_querydevcntmsg())
+				{
+					packResult.mutable_head()->set_packtype(netmsg::NetMsgType_QueryDevCntResult);
+					WaitForSingleObject(CServer::GetInstance()->m_mutexHandle, INFINITE);
+					int cnt = 0;
+					for (std::map<DWORD, bool>::iterator it = CServer::GetInstance()->m_mapDevice.begin(); it != CServer::GetInstance()->m_mapDevice.end(); ++it)
+					{
+						if (it->second == true) cnt++;
+					}
+					ReleaseMutex(CServer::GetInstance()->m_mutexHandle);
+
+					packResult.mutable_querydevcntmsgresult()->set_devcnt(cnt);
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
 				}
 				else
 				{
-					;
+
 				}
 			}
 		}
 	}
 	else
 	{
-
+		WaitForSingleObject(CServer::GetInstance()->m_mutexHandle, INFINITE);
+		std::map<DWORD, bool>::iterator it = CServer::GetInstance()->m_mapDevice.find(userID);
+		if (it != CServer::GetInstance()->m_mapDevice.end()) CServer::GetInstance()->m_mapDevice.erase(it);
+		ReleaseMutex(CServer::GetInstance()->m_mutexHandle);
 	}
 }
 

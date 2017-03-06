@@ -20,7 +20,7 @@ namespace ManageSystem.Server
         public static extern bool isServerStoped();
 
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "startClient")]
-        public static extern bool startClient(string ip, int port);
+        public static extern bool startClient(string ip, int port, bool bDevice);
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "stopClient")]
         public static extern bool stopClient();
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "isClientStoped")]
@@ -28,6 +28,8 @@ namespace ManageSystem.Server
 
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi,  CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryTable")]
         private static extern bool queryTable(string querySqlStr, IntPtr callback, bool bSync);
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryOnlieDevCnt")]
+        public static extern bool queryOnlieDevCnt(IntPtr callback, bool bSync);
 
         public static bool QueryTable(string querySqlStr, IntPtr callback, bool bSync = false)
         {//可以避免 直接绑定到Command上面 导致axml找不到模块

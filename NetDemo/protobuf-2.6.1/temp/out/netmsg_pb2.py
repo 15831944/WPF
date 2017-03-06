@@ -19,7 +19,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='netmsg.proto',
   package='netmsg',
-  serialized_pb=_b('\n\x0cnetmsg.proto\x12\x06netmsg\"\xda\x01\n\x07MsgPack\x12\x1d\n\x04head\x18\x01 \x02(\x0b\x32\x0f.netmsg.MsgHead\x12%\n\x08msgquery\x18\x02 \x01(\x0b\x32\x13.netmsg.MsgQueryMsg\x12!\n\x06msgadd\x18\x03 \x01(\x0b\x32\x11.netmsg.MsgAddMsg\x12\x34\n\x11msgquerymsgresult\x18\x04 \x01(\x0b\x32\x19.netmsg.MsgQueryMsgResult\x12\x30\n\x0fmsgaddmsgresult\x18\x05 \x01(\x0b\x32\x17.netmsg.MsgAddMsgResult\"\x8c\x01\n\x07MsgHead\x12\x1b\n\x10globalPackNumber\x18\x01 \x02(\r:\x01\x31\x12\x14\n\ttotalPack\x18\x02 \x02(\x05:\x01\x31\x12\x14\n\tpackIndex\x18\x03 \x02(\x05:\x01\x31\x12\x38\n\x08packtype\x18\x04 \x02(\x0e\x32\x12.netmsg.NetMsgType:\x12NetMsgType_Unknown\"\x1a\n\x0bMsgQueryMsg\x12\x0b\n\x03Msg\x18\x01 \x02(\t\"<\n\x11MsgQueryMsgResult\x12\x12\n\nresultData\x18\x01 \x02(\t\x12\x13\n\x0bresultError\x18\x02 \x02(\t\"+\n\tMsgAddMsg\x12\x11\n\tTableName\x18\x01 \x02(\t\x12\x0b\n\x03Msg\x18\x02 \x02(\t\"&\n\x0fMsgAddMsgResult\x12\x13\n\x0bresultError\x18\x01 \x02(\t*\xdc\x02\n\nNetMsgType\x12\x16\n\x12NetMsgType_Unknown\x10\x00\x12\x1d\n\x19NetMsgType_DatabaseAddAsk\x10\x01\x12!\n\x1dNetMsgType_DatabaseAddSuccess\x10\x02\x12\x1f\n\x1bNetMsgType_DatabaseAddError\x10\x03\x12 \n\x1cNetMsgType_DatabaseDeleteAsk\x10\x04\x12$\n NetMsgType_DatabaseDeleteSuccess\x10\x05\x12\"\n\x1eNetMsgType_DatabaseDeleteError\x10\x06\x12\x1f\n\x1bNetMsgType_DatabaseQueryAsk\x10\x07\x12#\n\x1fNetMsgType_DatabaseQuerySuccess\x10\x08\x12!\n\x1dNetMsgType_DatabaseQueryError\x10\t')
+  serialized_pb=_b('\n\x0cnetmsg.proto\x12\x06netmsg\"\xd9\x02\n\x07MsgPack\x12\x1d\n\x04head\x18\x01 \x02(\x0b\x32\x0f.netmsg.MsgHead\x12)\n\nregisttype\x18\x02 \x01(\x0b\x32\x15.netmsg.RegistTypeMsg\x12.\n\x0equerydevcntmsg\x18\x03 \x01(\x0b\x32\x16.netmsg.QueryDevCntMsg\x12:\n\x14querydevcntmsgresult\x18\x04 \x01(\x0b\x32\x1c.netmsg.QueryDevCntMsgResult\x12\x1f\n\x05query\x18\x05 \x01(\x0b\x32\x10.netmsg.QueryMsg\x12\x1b\n\x03\x61\x64\x64\x18\x06 \x01(\x0b\x32\x0e.netmsg.AddMsg\x12.\n\x0equerymsgresult\x18\x07 \x01(\x0b\x32\x16.netmsg.QueryMsgResult\x12*\n\x0c\x61\x64\x64msgresult\x18\x08 \x01(\x0b\x32\x14.netmsg.AddMsgResult\"\x8c\x01\n\x07MsgHead\x12\x1b\n\x10globalPackNumber\x18\x01 \x02(\r:\x01\x31\x12\x14\n\ttotalPack\x18\x02 \x02(\x05:\x01\x31\x12\x14\n\tpackIndex\x18\x03 \x02(\x05:\x01\x31\x12\x38\n\x08packtype\x18\x04 \x02(\x0e\x32\x12.netmsg.NetMsgType:\x12NetMsgType_Unknown\" \n\rRegistTypeMsg\x12\x0f\n\x07\x62\x44\x65vice\x18\x01 \x02(\x08\"\x10\n\x0eQueryDevCntMsg\"&\n\x14QueryDevCntMsgResult\x12\x0e\n\x06\x64\x65vCnt\x18\x01 \x02(\x05\"\x17\n\x08QueryMsg\x12\x0b\n\x03Msg\x18\x01 \x02(\t\"9\n\x0eQueryMsgResult\x12\x12\n\nresultData\x18\x01 \x02(\t\x12\x13\n\x0bresultError\x18\x02 \x02(\t\"(\n\x06\x41\x64\x64Msg\x12\x11\n\tTableName\x18\x01 \x02(\t\x12\x0b\n\x03Msg\x18\x02 \x02(\t\"#\n\x0c\x41\x64\x64MsgResult\x12\x13\n\x0bresultError\x18\x01 \x02(\t*\xb5\x03\n\nNetMsgType\x12\x16\n\x12NetMsgType_Unknown\x10\x00\x12\x19\n\x15NetMsgType_RegistType\x10\x01\x12\x1a\n\x16NetMsgType_QueryDevCnt\x10\x02\x12 \n\x1cNetMsgType_QueryDevCntResult\x10\x03\x12\x1d\n\x19NetMsgType_DatabaseAddAsk\x10\x04\x12!\n\x1dNetMsgType_DatabaseAddSuccess\x10\x05\x12\x1f\n\x1bNetMsgType_DatabaseAddError\x10\x06\x12 \n\x1cNetMsgType_DatabaseDeleteAsk\x10\x07\x12$\n NetMsgType_DatabaseDeleteSuccess\x10\x08\x12\"\n\x1eNetMsgType_DatabaseDeleteError\x10\t\x12\x1f\n\x1bNetMsgType_DatabaseQueryAsk\x10\n\x12#\n\x1fNetMsgType_DatabaseQuerySuccess\x10\x0b\x12!\n\x1dNetMsgType_DatabaseQueryError\x10\x0c')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -34,60 +34,75 @@ _NETMSGTYPE = _descriptor.EnumDescriptor(
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NetMsgType_DatabaseAddAsk', index=1, number=1,
+      name='NetMsgType_RegistType', index=1, number=1,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NetMsgType_DatabaseAddSuccess', index=2, number=2,
+      name='NetMsgType_QueryDevCnt', index=2, number=2,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NetMsgType_DatabaseAddError', index=3, number=3,
+      name='NetMsgType_QueryDevCntResult', index=3, number=3,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NetMsgType_DatabaseDeleteAsk', index=4, number=4,
+      name='NetMsgType_DatabaseAddAsk', index=4, number=4,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NetMsgType_DatabaseDeleteSuccess', index=5, number=5,
+      name='NetMsgType_DatabaseAddSuccess', index=5, number=5,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NetMsgType_DatabaseDeleteError', index=6, number=6,
+      name='NetMsgType_DatabaseAddError', index=6, number=6,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NetMsgType_DatabaseQueryAsk', index=7, number=7,
+      name='NetMsgType_DatabaseDeleteAsk', index=7, number=7,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NetMsgType_DatabaseQuerySuccess', index=8, number=8,
+      name='NetMsgType_DatabaseDeleteSuccess', index=8, number=8,
       options=None,
       type=None),
     _descriptor.EnumValueDescriptor(
-      name='NetMsgType_DatabaseQueryError', index=9, number=9,
+      name='NetMsgType_DatabaseDeleteError', index=9, number=9,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NetMsgType_DatabaseQueryAsk', index=10, number=10,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NetMsgType_DatabaseQuerySuccess', index=11, number=11,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='NetMsgType_DatabaseQueryError', index=12, number=12,
       options=None,
       type=None),
   ],
   containing_type=None,
   options=None,
-  serialized_start=564,
-  serialized_end=912,
+  serialized_start=771,
+  serialized_end=1208,
 )
 _sym_db.RegisterEnumDescriptor(_NETMSGTYPE)
 
 NetMsgType = enum_type_wrapper.EnumTypeWrapper(_NETMSGTYPE)
 NetMsgType_Unknown = 0
-NetMsgType_DatabaseAddAsk = 1
-NetMsgType_DatabaseAddSuccess = 2
-NetMsgType_DatabaseAddError = 3
-NetMsgType_DatabaseDeleteAsk = 4
-NetMsgType_DatabaseDeleteSuccess = 5
-NetMsgType_DatabaseDeleteError = 6
-NetMsgType_DatabaseQueryAsk = 7
-NetMsgType_DatabaseQuerySuccess = 8
-NetMsgType_DatabaseQueryError = 9
+NetMsgType_RegistType = 1
+NetMsgType_QueryDevCnt = 2
+NetMsgType_QueryDevCntResult = 3
+NetMsgType_DatabaseAddAsk = 4
+NetMsgType_DatabaseAddSuccess = 5
+NetMsgType_DatabaseAddError = 6
+NetMsgType_DatabaseDeleteAsk = 7
+NetMsgType_DatabaseDeleteSuccess = 8
+NetMsgType_DatabaseDeleteError = 9
+NetMsgType_DatabaseQueryAsk = 10
+NetMsgType_DatabaseQuerySuccess = 11
+NetMsgType_DatabaseQueryError = 12
 
 
 
@@ -106,29 +121,50 @@ _MSGPACK = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='msgquery', full_name='netmsg.MsgPack.msgquery', index=1,
+      name='registtype', full_name='netmsg.MsgPack.registtype', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='msgadd', full_name='netmsg.MsgPack.msgadd', index=2,
+      name='querydevcntmsg', full_name='netmsg.MsgPack.querydevcntmsg', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='msgquerymsgresult', full_name='netmsg.MsgPack.msgquerymsgresult', index=3,
+      name='querydevcntmsgresult', full_name='netmsg.MsgPack.querydevcntmsgresult', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='msgaddmsgresult', full_name='netmsg.MsgPack.msgaddmsgresult', index=4,
+      name='query', full_name='netmsg.MsgPack.query', index=4,
       number=5, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='add', full_name='netmsg.MsgPack.add', index=5,
+      number=6, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='querymsgresult', full_name='netmsg.MsgPack.querymsgresult', index=6,
+      number=7, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='addmsgresult', full_name='netmsg.MsgPack.addmsgresult', index=7,
+      number=8, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
@@ -145,7 +181,7 @@ _MSGPACK = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=25,
-  serialized_end=243,
+  serialized_end=370,
 )
 
 
@@ -195,20 +231,103 @@ _MSGHEAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=246,
-  serialized_end=386,
+  serialized_start=373,
+  serialized_end=513,
 )
 
 
-_MSGQUERYMSG = _descriptor.Descriptor(
-  name='MsgQueryMsg',
-  full_name='netmsg.MsgQueryMsg',
+_REGISTTYPEMSG = _descriptor.Descriptor(
+  name='RegistTypeMsg',
+  full_name='netmsg.RegistTypeMsg',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='Msg', full_name='netmsg.MsgQueryMsg.Msg', index=0,
+      name='bDevice', full_name='netmsg.RegistTypeMsg.bDevice', index=0,
+      number=1, type=8, cpp_type=7, label=2,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=515,
+  serialized_end=547,
+)
+
+
+_QUERYDEVCNTMSG = _descriptor.Descriptor(
+  name='QueryDevCntMsg',
+  full_name='netmsg.QueryDevCntMsg',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=549,
+  serialized_end=565,
+)
+
+
+_QUERYDEVCNTMSGRESULT = _descriptor.Descriptor(
+  name='QueryDevCntMsgResult',
+  full_name='netmsg.QueryDevCntMsgResult',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='devCnt', full_name='netmsg.QueryDevCntMsgResult.devCnt', index=0,
+      number=1, type=5, cpp_type=1, label=2,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=567,
+  serialized_end=605,
+)
+
+
+_QUERYMSG = _descriptor.Descriptor(
+  name='QueryMsg',
+  full_name='netmsg.QueryMsg',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Msg', full_name='netmsg.QueryMsg.Msg', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -225,27 +344,27 @@ _MSGQUERYMSG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=388,
-  serialized_end=414,
+  serialized_start=607,
+  serialized_end=630,
 )
 
 
-_MSGQUERYMSGRESULT = _descriptor.Descriptor(
-  name='MsgQueryMsgResult',
-  full_name='netmsg.MsgQueryMsgResult',
+_QUERYMSGRESULT = _descriptor.Descriptor(
+  name='QueryMsgResult',
+  full_name='netmsg.QueryMsgResult',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='resultData', full_name='netmsg.MsgQueryMsgResult.resultData', index=0,
+      name='resultData', full_name='netmsg.QueryMsgResult.resultData', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='resultError', full_name='netmsg.MsgQueryMsgResult.resultError', index=1,
+      name='resultError', full_name='netmsg.QueryMsgResult.resultError', index=1,
       number=2, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -262,27 +381,27 @@ _MSGQUERYMSGRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=416,
-  serialized_end=476,
+  serialized_start=632,
+  serialized_end=689,
 )
 
 
-_MSGADDMSG = _descriptor.Descriptor(
-  name='MsgAddMsg',
-  full_name='netmsg.MsgAddMsg',
+_ADDMSG = _descriptor.Descriptor(
+  name='AddMsg',
+  full_name='netmsg.AddMsg',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='TableName', full_name='netmsg.MsgAddMsg.TableName', index=0,
+      name='TableName', full_name='netmsg.AddMsg.TableName', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='Msg', full_name='netmsg.MsgAddMsg.Msg', index=1,
+      name='Msg', full_name='netmsg.AddMsg.Msg', index=1,
       number=2, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -299,20 +418,20 @@ _MSGADDMSG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=478,
-  serialized_end=521,
+  serialized_start=691,
+  serialized_end=731,
 )
 
 
-_MSGADDMSGRESULT = _descriptor.Descriptor(
-  name='MsgAddMsgResult',
-  full_name='netmsg.MsgAddMsgResult',
+_ADDMSGRESULT = _descriptor.Descriptor(
+  name='AddMsgResult',
+  full_name='netmsg.AddMsgResult',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='resultError', full_name='netmsg.MsgAddMsgResult.resultError', index=0,
+      name='resultError', full_name='netmsg.AddMsgResult.resultError', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -329,22 +448,28 @@ _MSGADDMSGRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=523,
-  serialized_end=561,
+  serialized_start=733,
+  serialized_end=768,
 )
 
 _MSGPACK.fields_by_name['head'].message_type = _MSGHEAD
-_MSGPACK.fields_by_name['msgquery'].message_type = _MSGQUERYMSG
-_MSGPACK.fields_by_name['msgadd'].message_type = _MSGADDMSG
-_MSGPACK.fields_by_name['msgquerymsgresult'].message_type = _MSGQUERYMSGRESULT
-_MSGPACK.fields_by_name['msgaddmsgresult'].message_type = _MSGADDMSGRESULT
+_MSGPACK.fields_by_name['registtype'].message_type = _REGISTTYPEMSG
+_MSGPACK.fields_by_name['querydevcntmsg'].message_type = _QUERYDEVCNTMSG
+_MSGPACK.fields_by_name['querydevcntmsgresult'].message_type = _QUERYDEVCNTMSGRESULT
+_MSGPACK.fields_by_name['query'].message_type = _QUERYMSG
+_MSGPACK.fields_by_name['add'].message_type = _ADDMSG
+_MSGPACK.fields_by_name['querymsgresult'].message_type = _QUERYMSGRESULT
+_MSGPACK.fields_by_name['addmsgresult'].message_type = _ADDMSGRESULT
 _MSGHEAD.fields_by_name['packtype'].enum_type = _NETMSGTYPE
 DESCRIPTOR.message_types_by_name['MsgPack'] = _MSGPACK
 DESCRIPTOR.message_types_by_name['MsgHead'] = _MSGHEAD
-DESCRIPTOR.message_types_by_name['MsgQueryMsg'] = _MSGQUERYMSG
-DESCRIPTOR.message_types_by_name['MsgQueryMsgResult'] = _MSGQUERYMSGRESULT
-DESCRIPTOR.message_types_by_name['MsgAddMsg'] = _MSGADDMSG
-DESCRIPTOR.message_types_by_name['MsgAddMsgResult'] = _MSGADDMSGRESULT
+DESCRIPTOR.message_types_by_name['RegistTypeMsg'] = _REGISTTYPEMSG
+DESCRIPTOR.message_types_by_name['QueryDevCntMsg'] = _QUERYDEVCNTMSG
+DESCRIPTOR.message_types_by_name['QueryDevCntMsgResult'] = _QUERYDEVCNTMSGRESULT
+DESCRIPTOR.message_types_by_name['QueryMsg'] = _QUERYMSG
+DESCRIPTOR.message_types_by_name['QueryMsgResult'] = _QUERYMSGRESULT
+DESCRIPTOR.message_types_by_name['AddMsg'] = _ADDMSG
+DESCRIPTOR.message_types_by_name['AddMsgResult'] = _ADDMSGRESULT
 DESCRIPTOR.enum_types_by_name['NetMsgType'] = _NETMSGTYPE
 
 MsgPack = _reflection.GeneratedProtocolMessageType('MsgPack', (_message.Message,), dict(
@@ -361,33 +486,54 @@ MsgHead = _reflection.GeneratedProtocolMessageType('MsgHead', (_message.Message,
   ))
 _sym_db.RegisterMessage(MsgHead)
 
-MsgQueryMsg = _reflection.GeneratedProtocolMessageType('MsgQueryMsg', (_message.Message,), dict(
-  DESCRIPTOR = _MSGQUERYMSG,
+RegistTypeMsg = _reflection.GeneratedProtocolMessageType('RegistTypeMsg', (_message.Message,), dict(
+  DESCRIPTOR = _REGISTTYPEMSG,
   __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgQueryMsg)
+  # @@protoc_insertion_point(class_scope:netmsg.RegistTypeMsg)
   ))
-_sym_db.RegisterMessage(MsgQueryMsg)
+_sym_db.RegisterMessage(RegistTypeMsg)
 
-MsgQueryMsgResult = _reflection.GeneratedProtocolMessageType('MsgQueryMsgResult', (_message.Message,), dict(
-  DESCRIPTOR = _MSGQUERYMSGRESULT,
+QueryDevCntMsg = _reflection.GeneratedProtocolMessageType('QueryDevCntMsg', (_message.Message,), dict(
+  DESCRIPTOR = _QUERYDEVCNTMSG,
   __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgQueryMsgResult)
+  # @@protoc_insertion_point(class_scope:netmsg.QueryDevCntMsg)
   ))
-_sym_db.RegisterMessage(MsgQueryMsgResult)
+_sym_db.RegisterMessage(QueryDevCntMsg)
 
-MsgAddMsg = _reflection.GeneratedProtocolMessageType('MsgAddMsg', (_message.Message,), dict(
-  DESCRIPTOR = _MSGADDMSG,
+QueryDevCntMsgResult = _reflection.GeneratedProtocolMessageType('QueryDevCntMsgResult', (_message.Message,), dict(
+  DESCRIPTOR = _QUERYDEVCNTMSGRESULT,
   __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgAddMsg)
+  # @@protoc_insertion_point(class_scope:netmsg.QueryDevCntMsgResult)
   ))
-_sym_db.RegisterMessage(MsgAddMsg)
+_sym_db.RegisterMessage(QueryDevCntMsgResult)
 
-MsgAddMsgResult = _reflection.GeneratedProtocolMessageType('MsgAddMsgResult', (_message.Message,), dict(
-  DESCRIPTOR = _MSGADDMSGRESULT,
+QueryMsg = _reflection.GeneratedProtocolMessageType('QueryMsg', (_message.Message,), dict(
+  DESCRIPTOR = _QUERYMSG,
   __module__ = 'netmsg_pb2'
-  # @@protoc_insertion_point(class_scope:netmsg.MsgAddMsgResult)
+  # @@protoc_insertion_point(class_scope:netmsg.QueryMsg)
   ))
-_sym_db.RegisterMessage(MsgAddMsgResult)
+_sym_db.RegisterMessage(QueryMsg)
+
+QueryMsgResult = _reflection.GeneratedProtocolMessageType('QueryMsgResult', (_message.Message,), dict(
+  DESCRIPTOR = _QUERYMSGRESULT,
+  __module__ = 'netmsg_pb2'
+  # @@protoc_insertion_point(class_scope:netmsg.QueryMsgResult)
+  ))
+_sym_db.RegisterMessage(QueryMsgResult)
+
+AddMsg = _reflection.GeneratedProtocolMessageType('AddMsg', (_message.Message,), dict(
+  DESCRIPTOR = _ADDMSG,
+  __module__ = 'netmsg_pb2'
+  # @@protoc_insertion_point(class_scope:netmsg.AddMsg)
+  ))
+_sym_db.RegisterMessage(AddMsg)
+
+AddMsgResult = _reflection.GeneratedProtocolMessageType('AddMsgResult', (_message.Message,), dict(
+  DESCRIPTOR = _ADDMSGRESULT,
+  __module__ = 'netmsg_pb2'
+  # @@protoc_insertion_point(class_scope:netmsg.AddMsgResult)
+  ))
+_sym_db.RegisterMessage(AddMsgResult)
 
 
 # @@protoc_insertion_point(module_scope)

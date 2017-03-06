@@ -67,17 +67,13 @@ bool startClient(char *ip, int port, OnReceiveCallBack callback, OUT ClientSendD
 
 		g_io_service_client.reset();
 		g_clientPtr.reset(new client(g_io_service_client, endpoint, callback));
-		g_clientPtr->run();
-
-		clock_t  begin = clock();
-		while (clock() - begin < 5000 && !g_clientPtr->m_pSession->bstarted())
-			Sleep(100);
 		if (!g_clientPtr->m_pSession->bstarted())
 		{
+			g_clientPtr->stop();
 			g_clientPtr					= nullptr;
 			return false;
 		}
-
+		g_clientPtr->run();
 		CallSendData = client::send;
 	}
 

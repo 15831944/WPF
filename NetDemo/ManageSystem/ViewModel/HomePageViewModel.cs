@@ -421,7 +421,7 @@ namespace ManageSystem.ViewModel
         public void QuerySheBeiZaiXian(object obj)
         {
             _queryoperate = QueryOperate.QueryOperate_SheBeiZaiXian;
-            WorkServer.QueryTable(MakeSheBeiZaiXianCurQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
+            WorkServer.queryOnlieDevCnt(Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeSheBeiZaiXianCurQuerySql(object obj)
         {

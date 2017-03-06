@@ -34,9 +34,9 @@ int curServerConnections()
 }
 
 /***************************************Client*******************************************/
-bool startClient(char *ip, int port)
+bool startClient(char *ip, int port, bool bDevice)
 {
-	return CClient::GetInstance()->StartClient(ip, port);
+	return CClient::GetInstance()->StartClient(ip, port, bDevice);
 }
 
 bool stopClient()
@@ -51,9 +51,8 @@ bool isClientStoped()
 
 void queryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync)
 {
-#ifdef _CONMIUNICATION_NET
-	CClient::GetInstance()->QueryTable(QuerySql, callBack, bSync);
-#else
+	//CClient::GetInstance()->QueryTable(QuerySql, callBack, bSync);
+
 	string strError = "";
 	string resultStr = "";
 	resultStr.reserve(0x100000);
@@ -63,14 +62,17 @@ void queryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync)
 	{
 		callBack((char*)resultStr.c_str(), (char*)strError.c_str());
 	}
-#endif // _CONMIUNICATION_NET
+}
+
+void queryOnlieDevCnt(QueryTableCallBack callBack, bool bSync)
+{
+	CClient::GetInstance()->QueryOnlieDevCnt(callBack, bSync);
 }
 
 void addTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool bSync)
 {
-#ifdef _CONMIUNICATION_NET
-	CClient::GetInstance()->AddTable(tableName, dataStr, callBack, bSync);
-#else
+	//CClient::GetInstance()->AddTable(tableName, dataStr, callBack, bSync);
+
 	string strError = "";
 	CSqliteData::GetInstance()->AddTable(tableName, dataStr, strError);
 
@@ -78,5 +80,4 @@ void addTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool bSy
 	{
 		callBack((char*)strError.c_str());
 	}
-#endif // _CONMIUNICATION_NET
 }

@@ -18,9 +18,6 @@ private:
 	void											handle_accept(session_ptr new_session, const boost::system::error_code& error);
 	void											WorkThread();
 
-	boost::asio::io_service io_service;
-
-	auto_ptr<boost::asio::io_service::work>			m_work;
 public:
 	static boost::mutex								m_sessionsMutex;
 	static list<session_ptr>						m_sessions;

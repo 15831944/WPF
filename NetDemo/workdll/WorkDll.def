@@ -13,4 +13,5 @@ EXPORTS
 		isClientStoped
 
 		queryTable
+		queryOnlieDevCnt
 		addTable

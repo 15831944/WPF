@@ -53,6 +53,9 @@ void OnReceiveCallBack1(long userID, BYTE* buf, int len, int errorcode, const ch
 	//g_pSendData = CallSendData;
 }
 
+
+typedef bool(__cdecl *_startServer)(IN char *ip, IN int port, IN OnReceiveCallBack callback, OUT ServerSendData& CallSendData);
+typedef bool(__cdecl *_stopServer)();
 CMFCDemoDlg::CMFCDemoDlg(CWnd* pParent /*=NULL*/)
 	: CDialogEx(CMFCDemoDlg::IDD, pParent)
 {
@@ -75,7 +78,8 @@ END_MESSAGE_MAP()
 
 
 // CMFCDemoDlg 消息处理程序
-
+_startServer startServertemp;
+_stopServer stopServertemp;
 
 BOOL CMFCDemoDlg::OnInitDialog()
 {
@@ -112,12 +116,18 @@ BOOL CMFCDemoDlg::OnInitDialog()
 	SetDlgItemText(IDE_Port, _T("60000"));
 
 
+
 	HMODULE hNetDll					= LoadLibrary(_T("NetDll.dll"));
 
+	 startServertemp				= (_startServer)GetProcAddress(hNetDll, "startServer");
+	stopServertemp					= (_stopServer)GetProcAddress(hNetDll, "stopServer");
+
+	ServerSendData dd;
+	startServertemp("127.0.0.1", 60000, nullptr, dd);
 	_startClient					= (_startClientType)GetProcAddress(hNetDll, "startClient");
 	_stopClient						= (_stopClientType)GetProcAddress(hNetDll, "stopClient");
 
-	HMODULE hDatabase				= LoadLibrary(_T("database.dll"));
+	//HMODULE hDatabase				= LoadLibrary(_T("database.dll"));
 	/*_AddIDCARDAPPLY addidcardapply	= (_AddIDCARDAPPLY)GetProcAddress(hDatabase, "AddIDCARDAPPLY");
 	tagIDCARDAPPLY tagidcardapply;
 
@@ -204,25 +214,26 @@ HCURSOR CMFCDemoDlg::OnQueryDragIcon()
 void CMFCDemoDlg::OnBnClickedSend()
 {
 	// TODO:  在此添加控件通知处理程序代码
-	if (g_pSendData != NULL)
-	{
-		TCHAR szPath[MAX_PATH] ={ 0 };
-		HMODULE hModule = 0;
-		GetModuleFileName(hModule, szPath, MAX_PATH);
-		TCHAR *pChar = _tcsrchr(szPath, _T('\\'));
-		if (pChar)
-			pChar[0] = _T('\0');
-		CString path = szPath;
-		path += _T("\\test1.xml");
-		
-		HANDLE hFile = ::CreateFile(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-		DWORD dwFileSize = GetFileSize(hFile, NULL);
-		LPBYTE  pBuf = new BYTE[dwFileSize];
-		DWORD readLen = 0;
-		::ReadFile(hFile, pBuf, dwFileSize, &readLen, NULL);
+	//if (g_pSendData != NULL)
+	//{
+	//	TCHAR szPath[MAX_PATH] ={ 0 };
+	//	HMODULE hModule = 0;
+	//	GetModuleFileName(hModule, szPath, MAX_PATH);
+	//	TCHAR *pChar = _tcsrchr(szPath, _T('\\'));
+	//	if (pChar)
+	//		pChar[0] = _T('\0');
+	//	CString path = szPath;
+	//	path += _T("\\test1.xml");
+	//	
+	//	HANDLE hFile = ::CreateFile(path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	//	DWORD dwFileSize = GetFileSize(hFile, NULL);
+	//	LPBYTE  pBuf = new BYTE[dwFileSize];
+	//	DWORD readLen = 0;
+	//	::ReadFile(hFile, pBuf, dwFileSize, &readLen, NULL);
 
-		g_pSendData(pBuf, readLen);
-	}
+	//	g_pSendData(pBuf, readLen);
+	//}
+	stopServertemp();
 }
 
 

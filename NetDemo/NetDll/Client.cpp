@@ -9,26 +9,10 @@ client::client(boost::asio::io_service &io_service, boost::asio::ip::tcp::endpoi
 	//we need to monitor for the client list change event ,a new client connects or one client gets disconnected,
 	// and notify all clients when this happens.Thus,we need to keep an array of clients,
 
-	m_pSession->socket().async_connect(endpoint,
-		boost::bind(&client::handle_connect,
-		this,
-		m_pSession,
-		boost::asio::placeholders::error));
-}
-
-void client::handle_connect(session_ptr new_session, const boost::system::error_code& ec)
-{
-	if (ec)
-	{
-		if (m_pReceiveCallBack)
-			m_pReceiveCallBack((long)m_pSession.get(), NULL, 0, ec.value(), ec.message().c_str());
-
-		string str = string("\nhandle_connect:") + ec.message();
-		OutputDebugStringA(str.c_str());
-		return;
-	}
-
-	new_session->start();
+	boost::system::error_code ec;
+	m_pSession->socket().connect(endpoint, ec);
+	if (ec == 0)
+		m_pSession->start();
 }
 
 void client::run() {
@@ -52,11 +36,14 @@ void client::WorkThread()
 void client::stop()
 {
 	if (m_pSession != NULL)
+	{
 		m_pSession->stop();
-	m_io_service.stop();
+	}
+
+	m_io_service.stop(); 
+	m_pSession = NULL;
 
 	m_thread.join();
-	m_pSession = NULL;
 }
 
 void client::send(BYTE* SendBuf, int dataLen)
