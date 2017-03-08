@@ -51,17 +51,17 @@ bool isClientStoped()
 
 void queryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync)
 {
-	//CClient::GetInstance()->QueryTable(QuerySql, callBack, bSync);
+	CClient::GetInstance()->QueryTable(QuerySql, callBack, bSync);
 
-	string strError = "";
-	string resultStr = "";
-	resultStr.reserve(0x100000);
-	CSqliteData::GetInstance()->QueryTable(QuerySql, resultStr, strError);
+	//string strError = "";
+	//string resultStr = "";
+	//resultStr.reserve(0x100000);
+	//CSqliteData::GetInstance()->QueryTable(QuerySql, resultStr, strError);
 
-	if (callBack)
-	{
-		callBack((char*)resultStr.c_str(), (char*)strError.c_str());
-	}
+	//if (callBack)
+	//{
+	//	callBack((char*)resultStr.c_str(), (char*)strError.c_str());
+	//}
 }
 
 void queryOnlieDevCnt(QueryTableCallBack callBack, bool bSync)
@@ -71,13 +71,13 @@ void queryOnlieDevCnt(QueryTableCallBack callBack, bool bSync)
 
 void addTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool bSync)
 {
-	//CClient::GetInstance()->AddTable(tableName, dataStr, callBack, bSync);
+	CClient::GetInstance()->AddTable(tableName, dataStr, callBack, bSync);
 
-	string strError = "";
-	CSqliteData::GetInstance()->AddTable(tableName, dataStr, strError);
+	//string strError = "";
+	//CSqliteData::GetInstance()->AddTable(tableName, dataStr, strError);
 
-	if (callBack)
-	{
-		callBack((char*)strError.c_str());
-	}
+	//if (callBack)
+	//{
+	//	callBack((char*)strError.c_str());
+	//}
 }

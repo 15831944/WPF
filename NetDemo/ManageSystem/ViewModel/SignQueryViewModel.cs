@@ -211,7 +211,11 @@ namespace ManageSystem.ViewModel
                             }
                         }
                     }
-                    tableList.Add(model);
+                    Application.Current.Dispatcher.Invoke(
+                    new Action(() =>
+                    {
+                        tableList.Add(model);
+                    }));
                 }
             }
         }

@@ -711,6 +711,7 @@ namespace ManageSystem.ViewModel
                                 progress        += 20;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
+                                Thread.Sleep(10);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -720,6 +721,7 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
+                                Thread.Sleep(10);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -729,6 +731,7 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      = progress + "%";
+                                Thread.Sleep(10);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -738,6 +741,7 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
+                                Thread.Sleep(10);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -747,6 +751,7 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
+                                Thread.Sleep(10);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -756,6 +761,7 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
+                                Thread.Sleep(10);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -765,6 +771,7 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
+                                Thread.Sleep(10);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -774,10 +781,12 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
+                                Thread.Sleep(10);
 
                                 progress        = 100;
                                 progressValue   = progress;
                                 displayMsg      = progress + "%";
+                                Thread.Sleep(10);
 
 
                                 Application.Current.Dispatcher.Invoke(
@@ -945,7 +954,7 @@ namespace ManageSystem.ViewModel
             MouseButtonEventArgs args = e as MouseButtonEventArgs;
            if(args.ChangedButton == MouseButton.Left)
            {
-               System.Windows.Point pp = Mouse.GetPosition(null);//WPF方法
+               System.Windows.Point pp = Mouse.GetPosition(Application.Current.MainWindow);//WPF方法
                if (pp.Y > 0 && pp.Y < titleheight)
                {
                    MaxWnd(null);

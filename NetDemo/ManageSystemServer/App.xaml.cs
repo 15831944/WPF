@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ManageSystem.Server;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -12,5 +13,16 @@ namespace ManageSystemServer
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+        }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            WorkServer.stopServer();
+
+            base.OnExit(e);
+        }
     }
 }

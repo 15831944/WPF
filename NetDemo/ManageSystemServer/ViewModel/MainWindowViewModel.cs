@@ -11,8 +11,9 @@ namespace ManageSystemServer.ViewModel
 {
     class MainWindowViewModel : NotificationObject
     {
-        public DelegateCommand<object> StartServerCommand { get; set; }
-        public DelegateCommand<object> StopServerCommand { get; set; }
+        public DelegateCommand<object>          StartServerCommand { get; set; }
+        public DelegateCommand<object>          StopServerCommand { get; set; }
+        public DelegateCommand<object>          ExitCommand { get; set; }
 
         private bool _bOnline;
         public bool bOnline
@@ -41,6 +42,7 @@ namespace ManageSystemServer.ViewModel
         { 
             StartServerCommand      = new DelegateCommand<object>(this.StartServer);
             StopServerCommand       = new DelegateCommand<object>(this.StopServer);
+            ExitCommand             = new DelegateCommand<object>(new Action<object>(this.ExitWnd));
             curConnections          = "未检测";
 
             var _timer              = new DispatcherTimer();
@@ -80,5 +82,15 @@ namespace ManageSystemServer.ViewModel
             WorkServer.startServer(ip, port);
         }
 
+        public void ExitWnd(object obj)
+        {
+            try
+            {
+                App.Current.Shutdown();
+            }
+            catch (Exception ex)
+            {
+            }
+        }
     }
 }
