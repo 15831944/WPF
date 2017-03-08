@@ -4,11 +4,12 @@
                     xmlns:Model="clr-namespace:ManageSystem.Model"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
+                    xmlns:WebBrowserA="clr-namespace:ManageSystem.Resources.WebBrowserAttach"
                    >
     <!--http://120.76.148.9/testgis/map/gis.html-->
     <DataTemplate DataType="{x:Type viewModel:WebBrowserViewMode}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <WebBrowser  Source="http://120.76.148.9/testgis/map/gis.html"></WebBrowser>
+            <WebBrowser WebBrowserA:WebBrowserAttach.Url="{Binding Path=url, Mode=TwoWay}"></WebBrowser>
         </Grid>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_WebBrowser}">

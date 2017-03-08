@@ -2,10 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                     xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
+                    xmlns:Local="clr-namespace:ManageSystem"
                     >
     <viewModel:DataGridItemSourceConvert x:Key="DataGridItemSourceConvert"/>
 
     <viewModel:MainWindowViewModel x:Key="MainWindowViewModelKey"/>
+    <!--<ObjectDataProvider x:Key="DATA_ButtonKey" ObjectType="{x:Type local:SerialUIDataFactory}" MethodName="GetButtonSeiralTreeData"/>-->
 
     <LinearGradientBrush x:Key="DataGridHeaderBorderBackground" EndPoint="0,1" StartPoint="0,0">
         <GradientStop Color="#F0F1533A" Offset="0.0"/>

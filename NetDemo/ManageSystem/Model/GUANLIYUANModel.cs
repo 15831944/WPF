@@ -21,59 +21,73 @@ namespace ManageSystem.Model
             }
         }
 
-        private string _Xingming;
-        public string Xingming
+        private string _Yonghuming;
+        public string Yonghuming
         {
             get
             {
-                return _Xingming;
+                return _Yonghuming;
             }
             set
             {
-                _Xingming = value;
-                this.RaisePropertyChanged("Xingming");
+                _Yonghuming = value;
+                this.RaisePropertyChanged("Yonghuming");
             }
         }
 
-        private int _Riqi;
-        public int Riqi
+        private string _Mima;
+        public string Mima
         {
             get
             {
-                return _Riqi;
+                return _Mima;
             }
             set
             {
-                _Riqi = value;
-                this.RaisePropertyChanged("Riqi");
+                _Mima = value;
+                this.RaisePropertyChanged("Mima");
             }
         }
 
-        private string _Caozuoleibie;
-        public string Caozuoleibie
+        private string _Youxiaoqikaishi;
+        public string Youxiaoqikaishi
         {
             get
             {
-                return _Caozuoleibie;
+                return _Youxiaoqikaishi;
             }
             set
             {
-                _Caozuoleibie = value;
-                this.RaisePropertyChanged("Caozuoleibie");
+                _Youxiaoqikaishi = value;
+                this.RaisePropertyChanged("Youxiaoqikaishi");
             }
         }
 
-        private string _Caozuoneirong;
-        public string Caozuoneirong
+        private string _Youxiaoqijieshu;
+        public string Youxiaoqijieshu
         {
             get
             {
-                return _Caozuoneirong;
+                return _Youxiaoqijieshu;
             }
             set
             {
-                _Caozuoneirong = value;
-                this.RaisePropertyChanged("Caozuoneirong");
+                _Youxiaoqijieshu = value;
+                this.RaisePropertyChanged("Youxiaoqijieshu");
+            }
+        }
+
+        private int _Quanxianjibie;
+        public int Quanxianjibie
+        {
+            get
+            {
+                return _Quanxianjibie;
+            }
+            set
+            {
+                _Quanxianjibie = value;
+                this.RaisePropertyChanged("Quanxianjibie");
             }
         }
     }

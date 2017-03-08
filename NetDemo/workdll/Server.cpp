@@ -158,8 +158,15 @@ bool CServer::StartServer(char *ip, int port)
 bool CServer::StopServer()
 {
 	// TODO:  在此添加控件通知处理程序代码
+	bool bRet = false;
 	if (m_stopServerFunc)
-		return m_stopServerFunc();
+	{
+		bRet = m_stopServerFunc();
+	}
+
+	WaitForSingleObject(m_mutexHandle, INFINITE);
+	m_mapDevice.clear();
+	ReleaseMutex(m_mutexHandle);
 
 	return false;
 }

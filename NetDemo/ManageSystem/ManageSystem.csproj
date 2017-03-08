@@ -79,6 +79,10 @@
       <DependentUpon>AddDataWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dameer.cs" />
+    <Compile Include="Interface\IWindowFactory.cs" />
+    <Compile Include="Logon.xaml.cs">
+      <DependentUpon>Logon.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\CHAXUNSHUJUModel.cs" />
     <Compile Include="Model\DeviceModel.cs" />
     <Compile Include="Model\GUANLIYUANCAOZUOJILUModel.cs" />
@@ -113,6 +117,8 @@
     <Compile Include="Resources\DateTimer\ValidSpinDirections.cs" />
     <Compile Include="Resources\DateTimer\WatermarkTextBox.cs" />
     <Compile Include="Model\SHOUZHENGSHUJUModel.cs" />
+    <Compile Include="Resources\PasswordBox\PasswordBoxWaterMark.cs" />
+    <Compile Include="Resources\WebBroser\WebBrowserAttach.cs" />
     <Compile Include="Server\HistogramServer.cs" />
     <Compile Include="Server\LineChartServer.cs" />
     <Compile Include="Server\OccupancyChartServer.cs" />
@@ -122,6 +128,7 @@
     <Compile Include="ViewModel\EndorsementQueryViewModel.cs" />
     <Compile Include="ViewModel\Graphics.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
+    <Compile Include="ViewModel\LogonViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PaymentQueryViewModel.cs" />
     <Compile Include="ViewModel\PreAcceptQueryViewModel.cs" />
@@ -132,6 +139,10 @@
     <Compile Include="ViewModel\SummaryStatViewModel.cs" />
     <Compile Include="ViewModel\WebBrowserViewMode.cs" />
     <Page Include="AddDataWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Logon.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -184,6 +195,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\LogonTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\PaymentQueryTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -201,6 +216,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\SignStatTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\SliderStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

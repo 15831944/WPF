@@ -41,9 +41,8 @@ void client::stop()
 	}
 
 	m_io_service.stop(); 
-	m_pSession = NULL;
-
 	m_thread.join();
+	m_pSession = NULL;
 }
 
 void client::send(BYTE* SendBuf, int dataLen)

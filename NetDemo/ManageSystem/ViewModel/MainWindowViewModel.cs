@@ -19,6 +19,7 @@ namespace ManageSystem.ViewModel
 {
     enum PageVisibleEnum
     {
+        PageVisibleEnum_Logon,
         PageVisibleEnum_Home,
         PageVisibleEnum_SummaryStat,
         PageVisibleEnum_SignStat,
@@ -111,12 +112,14 @@ namespace ManageSystem.ViewModel
             QueryOperate_None,
             QueryOperate_YingSheTable,
             QueryOperate_Shebeiguanli,
+            QueryOperate_GuanLiYuan,
         }
         public static Dictionary<string, Dictionary<string, Dictionary<string, HashSet<string>>>> _devicelistMap = new Dictionary<string, Dictionary<string, Dictionary<string, HashSet<string>>>>();
 
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
         public QueryOperate                             _queryoperate = QueryOperate.QueryOperate_None;
         public static Dictionary<Int32, string>         _yingshelList               = new Dictionary<Int32, string> ();
+        public Dictionary<string, GUANLIYUANModel>      _guliyuanList               = new Dictionary<string, GUANLIYUANModel>();
  
         public DelegateCommand<object>                  HomePageCommand { get; set; }
         public DelegateCommand<object>                  SummaryStatCommand { get; set; }
@@ -139,6 +142,7 @@ namespace ManageSystem.ViewModel
         public DelegateCommand<object>                  MinCommand { get; set; }
         public DelegateCommand<object>                  DragWndCommand { get; set; }
         public DelegateCommand<RoutedEventArgs>         DoubleClickCommand {get; set; }
+        public DelegateCommand<object>                  LogonCommand { get; set; }
 
         public HomePageViewModel                        _HomePageViewModel { get; set; }
         public SummaryStatViewModel                     _SummaryStatViewModel { get; set; }
@@ -283,38 +287,41 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private string _logonName;
+        public string logonName
+        {
+            get { return _logonName; }
+            set
+            {
+                _logonName = value;
+                this.RaisePropertyChanged("logonName");
+            }
+        }
+
+        private string _logonPassword;
+        public string logonPassword
+        {
+            get { return _logonPassword; }
+            set
+            {
+                _logonPassword = value;
+                this.RaisePropertyChanged("logonPassword");
+            }
+        }
+
+        private double  _progressValue;
+        public double  progressValue
+        {
+            get { return _progressValue; }
+            set
+            {
+                _progressValue = value;
+                this.RaisePropertyChanged("progressValue");
+            }
+        }
+
         public MainWindowViewModel()
         {
-//#if (DEBUG)
-            //Configuration config                 = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            //config.AppSettings.Settings.Add("ServerIP", "127.0.0.1");
-            //config.AppSettings.Settings.Add("ServerPort", "60000");
-            //config.Save();
-            //ConfigurationManager.RefreshSection("appSettings");
-
-            string  ip      = "";
-            int     port    = 0;
-            foreach (string key in ConfigurationManager.AppSettings)
-            {    //检索当前选中的分辨率
-                if (key == "ServerIP")
-                {
-                    ip = ConfigurationManager.AppSettings[key];
-                }
-                else if (key == "ServerPort")
-                {
-                    port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
-                }
-            }
-
-            if(false == WorkServer.startClient(ip, port, true))
-            {
-                displayMsg = "连接服务端失败!";
-                bOnline = false;
-            }
-            else
-                bOnline = true;
-//#endif
-
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
 
             HomePageCommand                             = new DelegateCommand<object>(new Action<object>(this.mainPageShow));
@@ -328,6 +335,7 @@ namespace ManageSystem.ViewModel
             QueryQueryCommand                           = new DelegateCommand<object>(new Action<object>(this.QueryQueryShow));
             PreAcceptQueryCommand                       = new DelegateCommand<object>(new Action<object>(this.PreAcceptQueryShow));
             WebBrowserCommand                           = new DelegateCommand<object>(new Action<object>(this.WebBrowserShow));
+            LogonCommand                                = new DelegateCommand<object>(new Action<object>(this.Logon));
 
             SelectedItemCommand                         = new DelegateCommand<object>(new Action<object>(this.SelectedItem));
             UnSelectedItemCommand                       = new DelegateCommand<object>(new Action<object>(this.UnSelectedItem));
@@ -357,9 +365,10 @@ namespace ManageSystem.ViewModel
             _devicePosition                             = new ObservableCollection<string>();
             _businesstype                               = new ObservableCollection<string>();
 
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Home;
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
             _titleheight                                = 25;
             _leftWidth                                  = 60;
+            _progressValue                              = 0;
 
             var _timer                                  = new DispatcherTimer();
             _timer.Interval                             = new TimeSpan(0, 0, 5);   //间隔1秒
@@ -383,6 +392,9 @@ namespace ManageSystem.ViewModel
                     break;
                 case QueryOperate.QueryOperate_YingSheTable:
                     type = typeof(YINGSHEBIAOModel);
+                    break;
+                case QueryOperate.QueryOperate_GuanLiYuan:
+                    type = typeof(GUANLIYUANModel);
                     break;
             }
 
@@ -482,6 +494,12 @@ namespace ManageSystem.ViewModel
                                 _yingshelList[modelTemp.Bianhao] = modelTemp.Mingcheng;
                             }
                             break;
+                        case QueryOperate.QueryOperate_GuanLiYuan:
+                            {
+                                GUANLIYUANModel modelTemp = model as GUANLIYUANModel;
+                                _guliyuanList[modelTemp.Yonghuming] = modelTemp;
+                            }
+                            break;
                     }
                 }
             }
@@ -500,9 +518,9 @@ namespace ManageSystem.ViewModel
             cardstatus.Add("全部");
             businesstype.Add("全部");
             certificateType.Add("全部");
-            foreach(KeyValuePair<int, string> kvp0 in _yingshelList)
+            foreach (KeyValuePair<int, string> kvp0 in _yingshelList)
             {
-                if(kvp0.Key >= 7000 && kvp0.Key < 8000)
+                if (kvp0.Key >= 7000 && kvp0.Key < 8000)
                 {
                     cardstatus.Add(kvp0.Value);
                 }
@@ -529,7 +547,7 @@ namespace ManageSystem.ViewModel
             deviceList.Clear();
             WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
 
-            foreach(KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<string>>>> kvp0 in _devicelistMap)
+            foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<string>>>> kvp0 in _devicelistMap)
             {
                 DeviceModel device0                 = new DeviceModel();
                 device0.text                        = kvp0.Key;
@@ -557,6 +575,12 @@ namespace ManageSystem.ViewModel
                 }
                 deviceList.Add(device0);
             }
+        }
+        public void QueryGuanliyuan(object obj)
+        {
+            _queryoperate = QueryOperate.QueryOperate_GuanLiYuan;
+            _guliyuanList.Clear();
+            WorkServer.QueryTable("select * from Guanliyuan", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         public void SelectedItem(object obj)
         {
@@ -640,15 +664,149 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        public void Logon(object obj)
+        {
+            string  ip      = "";
+            int     port    = 0;
+            foreach (string key in ConfigurationManager.AppSettings)
+            {    //检索当前选中的分辨率
+                if (key == "ServerIP")
+                {
+                    ip = ConfigurationManager.AppSettings[key];
+                }
+                else if (key == "ServerPort")
+                {
+                    port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
+                }
+            }
+            if (logonName == null || logonName.Length == 0)
+            {
+                displayMsg = "用户名不能为空!";
+                return;
+            }
+            if (logonPassword == null || logonPassword.Length == 0)
+            {
+                displayMsg = "不能为空!";
+                return;
+            }
+
+            if (WorkServer.startClient(ip, port, true))
+            {
+                bOnline         = true;
+                displayMsg      = "连接服务端成功!";
+                QueryGuanliyuan(null);
+
+                if (_guliyuanList.Keys.Count > 0)
+                {
+                    if (_guliyuanList.Keys.Contains(logonName))
+                    {
+                        if (_guliyuanList[logonName].Mima == logonPassword)
+                        {
+
+                            Thread thread = new Thread(new ThreadStart(() =>
+                            {
+                                double progress = 0;
+                                displayMsg      = "0" + "%";
+
+                                progress        += 20;
+                                progressValue   = progress;
+                                displayMsg      =  progress + "%";
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                    QueryYingshebiao(null);
+                                }));
+                                progress        += 10;
+                                progressValue   = progress;
+                                displayMsg      =  progress + "%";
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                    QueryShebeiguanli(null);
+                                }));
+                                progress        += 10;
+                                progressValue   = progress;
+                                displayMsg      = progress + "%";
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                    _HomePageViewModel.DoLogon();
+                                }));
+                                progress        += 10;
+                                progressValue   = progress;
+                                displayMsg      =  progress + "%";
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                    _SummaryStatViewModel.DoLogon();
+                                }));
+                                progress        += 10;
+                                progressValue   = progress;
+                                displayMsg      =  progress + "%";
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                    _SignStatViewModel.DoLogon();
+                                }));
+                                progress        += 10;
+                                progressValue   = progress;
+                                displayMsg      =  progress + "%";
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                    _SignAnomalyStatViewModel.DoLogon();
+                                }));
+                                progress        += 10;
+                                progressValue   = progress;
+                                displayMsg      =  progress + "%";
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                    //_WebBrowserViewMode.DoLogon();
+                                }));
+                                progress        += 10;
+                                progressValue   = progress;
+                                displayMsg      =  progress + "%";
+
+                                progress        = 100;
+                                progressValue   = progress;
+                                displayMsg      = progress + "%";
+
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                    mainPageShow(null);
+                                }));
+
+                                progressValue = 0;
+                                displayMsg =  "";
+                            }));
+                            thread.Start();
+                        }
+                        else
+                            displayMsg = "密码错误!";
+                    }
+                    else
+                        displayMsg = "不存在的用户!";
+                }
+                else
+                    displayMsg = "数据库用户表为空!";
+            }
+            else
+                displayMsg = "连接服务端失败!";
+        }
+
         public void Loaded(object obj)
         {
-            QueryYingshebiao(null);
-            QueryShebeiguanli(null);
 
-            LineChartServer.InitializeCurveModule();
-            HistogramServer.InitializeHistogramModule();
-            OccupancyChartServer.InitializeOccupancyModule();
-            PieChartServer.InitializePieModule();
         }
 
         private void MaxWnd(object obj)
@@ -666,12 +824,7 @@ namespace ManageSystem.ViewModel
         {
             try
             {
-                WorkServer.stopClient();
-                LineChartServer.UninitializeCurveModule();
-                HistogramServer.UninitializeHistogramModule();
-                OccupancyChartServer.UninitializeOccupancyModule();
-                PieChartServer.UninitializePieModule();
-                System.Windows.Application.Current.Shutdown();
+                App.Current.Shutdown();
             }
             catch (Exception ex)
             {
@@ -775,6 +928,8 @@ namespace ManageSystem.ViewModel
             _SummaryStatViewModel.ResizeShowCharts();
             _SignStatViewModel.ResizeShowCharts();
             _SignAnomalyStatViewModel.ResizeShowCharts();
+
+            _WebBrowserViewMode.DoLogon();
         }
 
         private void DragWnd(object obj)

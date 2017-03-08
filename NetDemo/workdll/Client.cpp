@@ -17,6 +17,7 @@ CClient::CClient()
 
 CClient::~CClient()
 {
+	StopClient();
 }
 
 void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorcode, const char* errormsg)
@@ -88,17 +89,24 @@ bool CClient::StartClient(char *ip, int port, bool bDevice)
 bool CClient::StopClient()
 {
 	// TODO:  在此添加控件通知处理程序代码
-	if (m_stopClientFunc)
-		return m_stopClientFunc();
 
-	return false;
+	bool bRet = false;
+	if (m_stopClientFunc)
+		bRet = m_stopClientFunc();
+
+	m_bDevice			= false;
+	m_globalPackNumber	= 0;
+	m_requestMap.Clear();
+
+	return bRet;
 }
 
 bool CClient::ClientStoped()
 {
 	if (m_isClientStopedFunc)
 		return m_isClientStopedFunc();
-	return true;
+
+	return false;
 }
 
 void CClient::RegistType(bool bDevice)

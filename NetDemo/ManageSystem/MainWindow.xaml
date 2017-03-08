@@ -4,6 +4,7 @@
         xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:Local="clr-namespace:ManageSystem"
+        xmlns:PasswordBoxMark="clr-namespace:ManageSystem.Resources.PasswordBoxWaterMark"
         DataContext="{StaticResource MainWindowViewModelKey}"
         WindowStartupLocation="CenterScreen" WindowState="{Binding Path=wndState}" BorderThickness="0"
         WindowStyle="None" AllowsTransparency="False" ResizeMode="NoResize"
@@ -108,5 +109,6 @@
             <ContentControl Grid.Column="1" Content="{Binding _PreAcceptQueryViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _WebBrowserViewMode}"/>
         </Grid>
+        <ContentControl Grid.Row="1" Content="{Binding}"/>
     </Grid>
 </Window>

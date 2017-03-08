@@ -370,6 +370,7 @@ namespace ManageSystem.ViewModel
                  _pieCharIndex       = PieChartServer.AddPieChart(hwnd,  rcClient);
                  _lineCharIndex      = LineChartServer.AddCurveChart(hwnd,  rcClient);
                  _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd,  rcClient, 0, 3000, 300, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
+                 ResizeShowCharts();
 
                  PieChartServer.AddData(_pieCharIndex, index);
                  LineChartServer.AddData(_lineCharIndex, 13, index, 3600);
@@ -404,12 +405,17 @@ namespace ManageSystem.ViewModel
 
         private void Loaded(object obj)
         {
+            
+        }
+
+        public void DoLogon()
+        {
             IntPtr hwnd = new System.Windows.Interop.WindowInteropHelper(Application.Current.MainWindow).Handle;
             tagRECT rcClient = new tagRECT();
 
-            _pieCharIndex       = PieChartServer.AddPieChart(hwnd,  rcClient);
-            _lineCharIndex      = LineChartServer.AddCurveChart(hwnd,   rcClient);
-            _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd,  rcClient, 0, 10000, 100, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
+            _pieCharIndex       = PieChartServer.AddPieChart(hwnd, rcClient);
+            _lineCharIndex      = LineChartServer.AddCurveChart(hwnd, rcClient);
+            _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd, rcClient, 0, 3000, 300, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
 
             ResizeShowCharts();
         }

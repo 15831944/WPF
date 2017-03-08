@@ -636,17 +636,17 @@ namespace ManageSystem.ViewModel
             //QueryHistogramChartData(null);
         }
 
-        public void Loaded(object obj)
+        public void DoLogon()
         {
             IntPtr hwnd = new System.Windows.Interop.WindowInteropHelper(Application.Current.MainWindow).Handle;
             tagRECT rcClient = new tagRECT();
 
-            _pieCharIndex       = PieChartServer.AddPieChart(hwnd,  rcClient);
-            _lineCharIndex      = LineChartServer.AddCurveChart(hwnd,  rcClient);
-            _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd,  rcClient, 0, 3000, 300, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
-            _occupancyCharIndex = OccupancyChartServer.AddOccupancyChart(hwnd,  rcClient, 0, 3000, 300);
+            _pieCharIndex       = PieChartServer.AddPieChart(hwnd, rcClient);
+            _lineCharIndex      = LineChartServer.AddCurveChart(hwnd, rcClient);
+            _histogramCharIndex = HistogramServer.AddHistogramChart(hwnd, rcClient, 0, 3000, 300, Color.Red.ToArgb(), Color.Black.ToArgb(), Color.Green.ToArgb());
+            _occupancyCharIndex = OccupancyChartServer.AddOccupancyChart(hwnd, rcClient, 0, 3000, 300);
 
-            
+
             PieChartServer.AddData(_pieCharIndex, MainWindowViewModel._businesstype.Count - 1);
             LineChartServer.AddData(_lineCharIndex, 13, 12, 1200);
             HistogramServer.AddData(_histogramCharIndex, 12);
@@ -673,6 +673,10 @@ namespace ManageSystem.ViewModel
             );
             tQuery.IsBackground = true;
             tQuery.Start();
+        }
+
+        public void Loaded(object obj)
+        {
         }
 
         private void SizeChanged(object obj)

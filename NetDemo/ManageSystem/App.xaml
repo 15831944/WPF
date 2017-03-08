@@ -11,10 +11,12 @@
                 <ResourceDictionary Source="Resources/DateTimer/TimePickerStyle.xaml" />
                 <ResourceDictionary Source="Resources/DateTimer/DateTimePickerStyle.xaml" />
 
+                <ResourceDictionary Source="Resources/SliderStyle.xaml" />
                 <ResourceDictionary Source="Resources/ComboBoxStyle.xaml" />
                 <ResourceDictionary Source="Resources/DataRes.xaml" />
                 <ResourceDictionary Source="Resources/Templates.xaml" />
                 <ResourceDictionary Source="Resources/Styles.xaml" />
+                <ResourceDictionary Source="Resources/LogonTemplate.xaml" />
                 <ResourceDictionary Source="Resources/HomePageTemplate.xaml" />
                 <ResourceDictionary Source="Resources/SummaryStatTemplate.xaml" />
                 <ResourceDictionary Source="Resources/SignStatTemplate.xaml" />
