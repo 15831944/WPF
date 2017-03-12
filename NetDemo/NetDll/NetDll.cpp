@@ -12,7 +12,7 @@ bool startServer(char *ip, int port, OnReceiveCallBack callback, OUT ServerSendD
 {
 	boost::mutex::scoped_lock Lock(m_sockMutexserver);
 
-	if (g_serverPtr == nullptr)
+	if (g_serverPtr == nullptr || isServerStoped())
 	{
 		boost::asio::ip::tcp::endpoint	endpoint(boost::asio::ip::address_v4::from_string(ip), port);
 
@@ -61,7 +61,7 @@ unique_ptr<client>								g_clientPtr;
 bool startClient(char *ip, int port, OnReceiveCallBack callback, OUT ClientSendData& CallSendData)
 {
 	boost::mutex::scoped_lock Lock(m_sockMutexclient);
-	if (g_clientPtr == nullptr)
+	if (g_clientPtr == nullptr || isClientStoped())
 	{
 		boost::asio::ip::tcp::endpoint	endpoint(boost::asio::ip::address_v4::from_string(ip), port);
 

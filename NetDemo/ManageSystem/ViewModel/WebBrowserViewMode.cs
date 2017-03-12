@@ -3,11 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace ManageSystem.ViewModel
 {
+    [System.Runtime.InteropServices.ComVisible(true)]
+    public class ObjectForScripingHelper
+    {
+        public ObjectForScripingHelper()
+        {
+
+        }
+
+        public void Test(string msg)
+        {
+            MessageBox.Show("msg");
+        }
+    }
+
     class WebBrowserViewMode : NotificationObject
     {
+        WebBrowser webbrowser;
+        public DelegateCommand<object>                  LoadedCommand { get; set; }
+        public DelegateCommand<object>                  LoadCompletedCommand { get; set; }
+
+
         private string _url;
         public string url
         {
@@ -21,7 +41,20 @@ namespace ManageSystem.ViewModel
 
         public WebBrowserViewMode()
         {
+            LoadedCommand                               = new DelegateCommand<object>(new Action<object>(this.Loaded));
+            LoadCompletedCommand                        = new DelegateCommand<object>(new Action<object>(this.LoadCompleted));
 
+        }
+
+        private void LoadCompleted(object obj)
+        {
+            object objj = webbrowser.InvokeScript("Get");
+        }
+
+        public void Loaded(object obj)
+        {
+            webbrowser = obj as WebBrowser;
+            webbrowser.ObjectForScripting   = new ObjectForScripingHelper();
         }
 
         public void DoLogon()

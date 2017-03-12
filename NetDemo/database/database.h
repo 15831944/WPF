@@ -6,9 +6,6 @@ using namespace std;
 
 #include "SqliteDataDefine.h"
 
-//////tagIDCARDAPPLY
-//bool QueryIDCARDAPPLY(string QuerySql, std::vector<tagIDCARDAPPLY> &lcArray, string &strError);
-//bool AddIDCARDAPPLY(tagIDCARDAPPLY  station, string &strError);
 
 /*
 	1. 每个属性与对应的值之间以 ： 号分隔
@@ -17,9 +14,9 @@ using namespace std;
 	4. 行与行之间无字符
 	datastr Format:
 
-	propertyName0:propertyValue0,propertyName1:propertyValue1,propertyName2:propertyValue2,……;
-	propertyName0:propertyValue0,propertyName1:propertyValue1,propertyName2:propertyValue2,……;
-	propertyName0:propertyValue0,propertyName1:propertyValue1,propertyName2:propertyValue2,……;
+	propertyName1_0:propertyValue1_0,propertyName1_1:propertyValue1_1,propertyName1_2:propertyValue1_2,……;
+	propertyName2_0:propertyValue2_0,propertyName2_1:propertyValue2_1,propertyName2_2:propertyValue2_2,……;
+	propertyName3_0:propertyValue3_0,propertyName3_1:propertyValue3_1,propertyName3_2:propertyValue3_2,……;
 */
 bool			QueryTable(string QuerySql, string &dataStr, string &strError);
 bool			AddTable(char* tableName, char* dataStr, string &strError);

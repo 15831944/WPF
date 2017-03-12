@@ -30,7 +30,6 @@
         <TextBlock  Canvas.Left="139" Canvas.Top="12"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=curConnections}"></TextBlock>
         <TextBlock Canvas.Left="50" Canvas.Top="70" HorizontalAlignment="Right" VerticalAlignment="Center">BindPort:</TextBlock>
         <TextBox x:Name="bindPortBox" Canvas.Left="120" Canvas.Top="70"  HorizontalAlignment="Left" VerticalAlignment="Center">60000</TextBox>
-        <TextBox x:Name="serverReceivebox" TextWrapping="Wrap" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Hidden" Canvas.Left="50" Canvas.Top="151"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="" Height="197" Width="718"/>
         <Button Canvas.Left="170" Canvas.Top="64" Width="100" Height="30" Name="butStartServer" Content="butStartServer" Command="{Binding Path=StartServerCommand}" />
         <Button Canvas.Left="290" Canvas.Top="63" Width="100" Height="30" Name="butStopServer"  Content="butStopServer" Command="{Binding Path=StopServerCommand}"/>
     </Canvas>

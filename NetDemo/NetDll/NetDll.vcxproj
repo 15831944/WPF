@@ -43,15 +43,15 @@
     <LinkIncremental>true</LinkIncremental>
     <OutDir>$(ProjectDir)..\..\output\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
-    <IncludePath>$(Boost);$(IncludePath)</IncludePath>
-    <LibraryPath>$(Boost)\stage\lib\win32\vs12;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(Boost)\include\boost-1_63;$(IncludePath)</IncludePath>
+    <LibraryPath>$(Boost)\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(ProjectDir)..\..\output\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)..\..\Intermediate\$(ProjectName)\$(Configuration)\</IntDir>
-    <IncludePath>$(Boost);$(IncludePath)</IncludePath>
-    <LibraryPath>$(Boost)\stage\lib\win32\vs12;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(Boost)\include\boost-1_63;$(IncludePath)</IncludePath>
+    <LibraryPath>$(Boost)\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -60,6 +60,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;NETDLL_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalOptions>-Zm110 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>

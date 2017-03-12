@@ -79,7 +79,6 @@
       <DependentUpon>AddDataWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dameer.cs" />
-    <Compile Include="Interface\IWindowFactory.cs" />
     <Compile Include="Model\CHAXUNSHUJUModel.cs" />
     <Compile Include="Model\DeviceModel.cs" />
     <Compile Include="Model\GUANLIYUANCAOZUOJILUModel.cs" />

@@ -5,11 +5,21 @@
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
                     xmlns:WebBrowserA="clr-namespace:ManageSystem.Resources.WebBrowserAttach"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                    >
     <!--http://120.76.148.9/testgis/map/gis.html-->
     <DataTemplate DataType="{x:Type viewModel:WebBrowserViewMode}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <WebBrowser WebBrowserA:WebBrowserAttach.Url="{Binding Path=url, Mode=TwoWay}"></WebBrowser>
+            <WebBrowser WebBrowserA:WebBrowserAttach.Url="{Binding Path=url, Mode=TwoWay}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Loaded">
+                        <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=WebBrowser}}" />
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LoadCompleted">
+                        <i:InvokeCommandAction Command="{Binding LoadCompletedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=WebBrowser}}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </WebBrowser>
         </Grid>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_WebBrowser}">

@@ -686,7 +686,7 @@ namespace ManageSystem.ViewModel
             }
             if (logonPassword == null || logonPassword.Length == 0)
             {
-                displayMsg = "不能为空!";
+                displayMsg = "密码不能为空!";
                 return;
             }
 
