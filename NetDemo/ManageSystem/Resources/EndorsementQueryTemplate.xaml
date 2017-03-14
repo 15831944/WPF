@@ -44,21 +44,25 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">证件号码</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=cardNumber}"></TextBox>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">统计类型</TextBlock>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450"
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource MainWindowViewModelKey}, Path=queryIndex}"
+                                      ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=queryStrs}"
+                                      >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding Source={StaticResource MainWindowViewModelKey}, Path=QuerySelectedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=SelectedIndex}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ComboBox>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">插入大集中</TextBlock>
-                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=groupInsetText}" 
-                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0">
-                                <ComboBoxItem>全部</ComboBoxItem>
-                                <ComboBoxItem>是</ComboBoxItem>
-                                <ComboBoxItem>否</ComboBoxItem>
-                            </ComboBox>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">证件号码</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=cardNumber}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -135,6 +139,19 @@
                                  TimeFormatString="yyyy-MM-dd HH:mm:ss"
                                  Text="{Binding Path=endTime}"
                                  />
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">插入大集中</TextBlock>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=groupInsetText}" 
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0">
+                                <ComboBoxItem>全部</ComboBoxItem>
+                                <ComboBoxItem>是</ComboBoxItem>
+                                <ComboBoxItem>否</ComboBoxItem>
+                            </ComboBox>
                         </Grid>
                     </Grid>
                     <Button Grid.Column="4" Style="{StaticResource Style_QueryBtn}" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>

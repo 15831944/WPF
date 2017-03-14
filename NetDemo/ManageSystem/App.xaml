@@ -28,6 +28,7 @@
                 <ResourceDictionary Source="Resources/PreAcceptQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/SignQueryTemplate.xaml" />
                 <ResourceDictionary Source="Resources/WebBrowserTemplate.xaml" />
+                <ResourceDictionary Source="Resources/DeviceManageTemplate.xaml" />
                 <ResourceDictionary Source="Resources/TreeViewStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

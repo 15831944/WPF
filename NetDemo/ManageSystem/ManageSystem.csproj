@@ -121,6 +121,7 @@
     <Compile Include="Server\PieChartServer.cs" />
     <Compile Include="Server\WorkServer.cs" />
     <Compile Include="ViewModel\CardQueryViewModel.cs" />
+    <Compile Include="ViewModel\DeviceManageViewModel.cs" />
     <Compile Include="ViewModel\EndorsementQueryViewModel.cs" />
     <Compile Include="ViewModel\Graphics.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
@@ -177,6 +178,10 @@
     <Page Include="Resources\DateTimer\WatermarkTextBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\DeviceManageTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\EndorsementQueryTemplate.xaml">
       <SubType>Designer</SubType>

@@ -31,6 +31,7 @@ namespace ManageSystem.ViewModel
         PageVisibleEnum_QueryQuery,
         PageVisibleEnum_PreAcceptQuery,
         PageVisibleEnum_WebBrowser,
+        PageVisibleEnum_DeviceManage,
     }
 
     enum ShowChartEnum
@@ -122,17 +123,20 @@ namespace ManageSystem.ViewModel
         public Dictionary<string, GUANLIYUANModel>      _guliyuanList               = new Dictionary<string, GUANLIYUANModel>();
  
         public DelegateCommand<object>                  HomePageCommand { get; set; }
-        public DelegateCommand<object>                  SummaryStatCommand { get; set; }
+        public DelegateCommand<object>                  StatisticsCommand { get; set; }
         public DelegateCommand<object>                  SignStatCommand { get; set; }
         public DelegateCommand<object>                  SignAnomalyStatCommand { get; set; }
-        public DelegateCommand<object>                  SignQueryCommand { get; set; }
+        public DelegateCommand<object>                  QueryCommand { get; set; }
         public DelegateCommand<object>                  CardQueryCommand { get; set; }
         public DelegateCommand<object>                  EndorsementQueryCommand { get; set; }
         public DelegateCommand<object>                  PaymentQueryCommand { get; set; }
         public DelegateCommand<object>                  QueryQueryCommand { get; set; }
         public DelegateCommand<object>                  PreAcceptQueryCommand { get; set; }
         public DelegateCommand<object>                  WebBrowserCommand { get; set; }
+        public DelegateCommand<object>                  DeviceManageCommand { get; set; }
 
+        public DelegateCommand<object>                  StatisticsSelectedCommand { get; set; }
+        public DelegateCommand<object>                  QuerySelectedCommand { get; set; }
         public DelegateCommand<object>                  SelectedItemCommand { get; set; }
         public DelegateCommand<object>                  UnSelectedItemCommand { get; set; }
 
@@ -155,6 +159,7 @@ namespace ManageSystem.ViewModel
         public QueryQueryViewModel                      _QueryQueryViewModel { get; set; }
         public PreAcceptQueryViewModel                  _PreAcceptQueryViewModel { get; set; }
         public WebBrowserViewMode                       _WebBrowserViewMode { get; set; }
+        public DeviceManageViewModel                    _DeviceManageViewModel { get; set; }
 
         private string _displayMsg;
         public string displayMsg
@@ -320,23 +325,71 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private ObservableCollection<string> _statisticsStrs;
+        public ObservableCollection<string> statisticsStrs
+        {
+            get
+            {
+                return _statisticsStrs;
+            }
+            set
+            {
+                _statisticsStrs = value;
+                this.RaisePropertyChanged("statisticsStrs");
+            }
+        }
+
+        private int  _statisticsIndex;
+        public int statisticsIndex
+        {
+            get { return _statisticsIndex; }
+            set
+            {
+                _statisticsIndex = value;
+                this.RaisePropertyChanged("statisticsIndex");
+            }
+        }
+
+        private ObservableCollection<string> _queryStrs;
+        public ObservableCollection<string> queryStrs
+        {
+            get
+            {
+                return _queryStrs;
+            }
+            set
+            {
+                _queryStrs = value;
+                this.RaisePropertyChanged("queryStrs");
+            }
+        }
+
+        private int  _queryIndex;
+        public int queryIndex
+        {
+            get { return _queryIndex; }
+            set
+            {
+                _queryIndex = value;
+                this.RaisePropertyChanged("queryIndex");
+            }
+        }
+
         public MainWindowViewModel()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
 
             HomePageCommand                             = new DelegateCommand<object>(new Action<object>(this.mainPageShow));
-            SummaryStatCommand                          = new DelegateCommand<object>(new Action<object>(this.SummaryStatShow));
-            SignStatCommand                             = new DelegateCommand<object>(new Action<object>(this.SignStatShow));
-            SignAnomalyStatCommand                      = new DelegateCommand<object>(new Action<object>(this.SignAnomalyShow));
-            SignQueryCommand                            = new DelegateCommand<object>(new Action<object>(this.SignQueryShow));
-            CardQueryCommand                            = new DelegateCommand<object>(new Action<object>(this.CardQueryShow));
-            EndorsementQueryCommand                     = new DelegateCommand<object>(new Action<object>(this.EndorsementQueryShow));
-            PaymentQueryCommand                         = new DelegateCommand<object>(new Action<object>(this.PaymentQueryShow));
-            QueryQueryCommand                           = new DelegateCommand<object>(new Action<object>(this.QueryQueryShow));
-            PreAcceptQueryCommand                       = new DelegateCommand<object>(new Action<object>(this.PreAcceptQueryShow));
+            StatisticsCommand                           = new DelegateCommand<object>(new Action<object>(this.StatisticsShow));
+            QueryCommand                                = new DelegateCommand<object>(new Action<object>(this.QueryShow));
             WebBrowserCommand                           = new DelegateCommand<object>(new Action<object>(this.WebBrowserShow));
+            DeviceManageCommand                         = new DelegateCommand<object>(new Action<object>(this.DeviceManageShow));
+            
             LogonCommand                                = new DelegateCommand<object>(new Action<object>(this.Logon));
 
+            
+            StatisticsSelectedCommand                   = new DelegateCommand<object>(new Action<object>(this.StatisticsSelected));
+            QuerySelectedCommand                        = new DelegateCommand<object>(new Action<object>(this.QuerySelected));
             SelectedItemCommand                         = new DelegateCommand<object>(new Action<object>(this.SelectedItem));
             UnSelectedItemCommand                       = new DelegateCommand<object>(new Action<object>(this.UnSelectedItem));
 
@@ -357,7 +410,8 @@ namespace ManageSystem.ViewModel
             _PaymentQueryViewModel                      = new PaymentQueryViewModel();
             _QueryQueryViewModel                        = new QueryQueryViewModel();
             _PreAcceptQueryViewModel                    = new PreAcceptQueryViewModel();
-            _WebBrowserViewMode                          = new WebBrowserViewMode();
+            _WebBrowserViewMode                         = new WebBrowserViewMode();
+            _DeviceManageViewModel                      = new DeviceManageViewModel();
 
             _deviceList                                 = new ObservableCollection<DeviceModel>();
             _cardstatus                                 = new ObservableCollection<string>();
@@ -365,10 +419,25 @@ namespace ManageSystem.ViewModel
             _devicePosition                             = new ObservableCollection<string>();
             _businesstype                               = new ObservableCollection<string>();
 
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
+            //_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_WebBrowser;
             _titleheight                                = 25;
             _leftWidth                                  = 60;
             _progressValue                              = 0;
+
+            _statisticsIndex                            = 0;
+            _queryIndex                                 = 0;
+            _statisticsStrs                             = new ObservableCollection<string>();
+            _queryStrs                                  = new ObservableCollection<string>();
+            _statisticsStrs.Add("汇总统计");
+            _statisticsStrs.Add("制签统计");
+            _statisticsStrs.Add("异常统计");
+            _queryStrs.Add("签记录查询");
+            _queryStrs.Add("收证记录查询");
+            _queryStrs.Add("签注记录查询");
+            _queryStrs.Add("缴款记录查询");
+            _queryStrs.Add("查询业务");
+            _queryStrs.Add("预受理记录查询");
 
             var _timer                                  = new DispatcherTimer();
             _timer.Interval                             = new TimeSpan(0, 0, 5);   //间隔1秒
@@ -582,6 +651,52 @@ namespace ManageSystem.ViewModel
             _guliyuanList.Clear();
             WorkServer.QueryTable("select * from Guanliyuan", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
+
+        public void StatisticsSelected(object obj)
+        {
+            int selIndex = statisticsIndex;
+
+            switch(selIndex)
+            {
+                case 0:
+                    SummaryStatShow(null);
+                    break;
+                case 1:
+                    SignStatShow(null);
+                    break;
+                case 2:
+                    SignAnomalyShow(null);
+                    break;
+            }
+        }
+
+        public void QuerySelected(object obj)
+        {
+            int selIndex = queryIndex;
+
+            switch (selIndex)
+            {
+                case 0:
+                    SignQueryShow(null);
+                    break;
+                case 1:
+                    CardQueryShow(null);
+                    break;
+                case 2:
+                    EndorsementQueryShow(null);
+                    break;
+                case 3:
+                    PaymentQueryShow(null);
+                    break;
+                case 4:
+                    QueryQueryShow(null);
+                    break;
+                case 5:
+                    PreAcceptQueryShow(null);
+                    break;
+            }
+        }
+
         public void SelectedItem(object obj)
         {
             CheckBox changebox = obj as CheckBox;
@@ -736,7 +851,7 @@ namespace ManageSystem.ViewModel
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
                                 {
-                                    _HomePageViewModel.DoLogon();
+                                    //_HomePageViewModel.DoLogon();
                                 }));
                                 progress        += 10;
                                 progressValue   = progress;
@@ -792,7 +907,8 @@ namespace ManageSystem.ViewModel
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
                                 {
-                                    mainPageShow(null);
+                                    //mainPageShow(null);
+                                    WebBrowserShow(null);
                                 }));
 
                                 progressValue = 0;
@@ -849,6 +965,11 @@ namespace ManageSystem.ViewModel
             _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
+        private void StatisticsShow(object obj)
+        {
+            StatisticsSelected(obj);
+        }
+
         private void SummaryStatShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_SummaryStat;
@@ -874,6 +995,12 @@ namespace ManageSystem.ViewModel
             _SummaryStatViewModel.ResizeShowCharts();
             _SignStatViewModel.ResizeShowCharts();
             _SignAnomalyStatViewModel.ResizeShowCharts();
+        }
+
+
+        private void QueryShow(object obj)
+        {
+            QuerySelected(obj);
         }
 
         private void SignQueryShow(object obj)
@@ -941,6 +1068,17 @@ namespace ManageSystem.ViewModel
             _WebBrowserViewMode.DoLogon();
         }
 
+        private void DeviceManageShow(object obj)
+        {
+            bShowPage                                   = PageVisibleEnum.PageVisibleEnum_DeviceManage;
+            _HomePageViewModel.ResizeShowCharts();
+            _SummaryStatViewModel.ResizeShowCharts();
+            _SignStatViewModel.ResizeShowCharts();
+            _SignAnomalyStatViewModel.ResizeShowCharts();
+
+            //_DeviceManageViewModel.DoLogon();
+        }
+        
         private void DragWnd(object obj)
         {
             Window wnd = obj as Window;

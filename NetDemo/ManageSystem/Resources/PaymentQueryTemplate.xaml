@@ -44,6 +44,23 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">统计类型</TextBlock>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450"
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource MainWindowViewModelKey}, Path=queryIndex}"
+                                      ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=queryStrs}"
+                                      >
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding Source={StaticResource MainWindowViewModelKey}, Path=QuerySelectedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=SelectedIndex}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ComboBox>
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">缴款状态</TextBlock>
                             <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=paymentStatusText}"
                                       VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0">

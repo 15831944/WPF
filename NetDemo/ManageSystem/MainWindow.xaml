@@ -81,23 +81,14 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-
-                <ContentControl HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="{Binding}" Grid.Row="0"    ContentTemplate="{StaticResource btn0_Template}"/>
+                <ContentControl Content="{Binding}" Grid.Row="0"    ContentTemplate="{StaticResource btn0_Template}"/>
                 <ContentControl Content="{Binding}" Grid.Row="1"    ContentTemplate="{StaticResource btn1_Template}"/>
                 <ContentControl Content="{Binding}" Grid.Row="2"    ContentTemplate="{StaticResource btn2_Template}"/>
                 <ContentControl Content="{Binding}" Grid.Row="3"    ContentTemplate="{StaticResource btn3_Template}"/>
-                <ContentControl Content="{Binding}" Grid.Row="4"    ContentTemplate="{StaticResource btn4_Template}"/>
-                <ContentControl Content="{Binding}" Grid.Row="5"    ContentTemplate="{StaticResource btn5_Template}"/>
-                <ContentControl Content="{Binding}" Grid.Row="6"    ContentTemplate="{StaticResource btn6_Template}"/>
-                <ContentControl Content="{Binding}" Grid.Row="7"    ContentTemplate="{StaticResource btn7_Template}"/>
-                <ContentControl Content="{Binding}" Grid.Row="8"    ContentTemplate="{StaticResource btn8_Template}"/>
-                <ContentControl Content="{Binding}" Grid.Row="9"    ContentTemplate="{StaticResource btn9_Template}"/>
-                <ContentControl Content="{Binding}" Grid.Row="10"    ContentTemplate="{StaticResource btn10_Template}"/>
+                <!--<ContentControl Content="{Binding}" Grid.Row="3"    ContentTemplate="{StaticResource btn30_Template}"/>-->
             </Grid>
-            <ContentControl Grid.Column="1" Content="{Binding _HomePageViewModel}" x:Name="content1" />
+            <ContentControl Grid.Column="1" Content="{Binding _HomePageViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _SummaryStatViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _SignStatViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _SignAnomalyStatViewModel}"/>
@@ -108,6 +99,7 @@
             <ContentControl Grid.Column="1" Content="{Binding _QueryQueryViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _PreAcceptQueryViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _WebBrowserViewMode}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _DeviceManageViewModel}"/>
         </Grid>
         <ContentControl Grid.Row="1" Content="{Binding}"/>
     </Grid>
