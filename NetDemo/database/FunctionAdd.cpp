@@ -242,6 +242,9 @@ void makeFieldsTypeMap(const char* tableName, vector<std::pair<std::string, int>
 			{ T_SHEBEIGUANLI_JINGDU, SQLITE_FLOAT },
 			{ T_SHEBEIGUANLI_WEIDU, SQLITE_FLOAT },
 			{ T_SHEBEIGUANLI_CHUANGJIANSHIJIAN, SQLITE_INTEGER },
+			{ T_SHEBEIGUANLI_YINGJIANXINXI, SQLITE_TEXT },
+			{ T_SHEBEIGUANLI_RUANJIANXINXI, SQLITE_TEXT },
+			{ T_SHEBEIGUANLI_RUANJIANSHENGJIXINXI, SQLITE_TEXT },
 		};
 	}
 	else if (strcmp(tableName, T_YINGSHEBIAO) == 0)
@@ -1175,6 +1178,9 @@ bool AddSHEBEIGUANLI(tagSHEBEIGUANLI  data, string &strError)
 			sqlite3_bind_double(lpStmt0, 9, data.Jingdu);
 			sqlite3_bind_double(lpStmt0, 10, data.Weidu);
 			sqlite3_bind_int64(lpStmt0, 11, data.Chuangjianshijian);
+			sqlite3_bind_text(lpStmt0, 12, ASCIItoUTF8(data.Yingjianxinxi).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 13, ASCIItoUTF8(data.Ruanjianxinxi).c_str(), -1, SQLITE_STATIC);
+			sqlite3_bind_text(lpStmt0, 14, ASCIItoUTF8(data.Ruanjianshengjixinxi).c_str(), -1, SQLITE_STATIC);
 
 			int dd = sqlite3_step(lpStmt0);
 			if (dd != SQLITE_ROW) {

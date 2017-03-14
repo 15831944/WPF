@@ -181,6 +181,9 @@
 #define T_SHEBEIGUANLI_JINGDU													"Jingdu"
 #define T_SHEBEIGUANLI_WEIDU													"Weidu"
 #define T_SHEBEIGUANLI_CHUANGJIANSHIJIAN										"Chuangjianshijian"
+#define T_SHEBEIGUANLI_YINGJIANXINXI											"Yingjianxinxi"
+#define T_SHEBEIGUANLI_RUANJIANXINXI											"Ruanjianxinxi"
+#define T_SHEBEIGUANLI_RUANJIANSHENGJIXINXI										"Ruanjianshengjixinxi"
 
 /**映射表 */
 #define T_YINGSHEBIAO															"Yingshebiao"
@@ -619,6 +622,9 @@ public:
 		Jingdu					= 0;
 		Weidu					= 0;
 		Chuangjianshijian		= 0;
+		Yingjianxinxi			= "";
+		Ruanjianxinxi			= "";
+		Ruanjianshengjixinxi	= "";
 	}	
 
 	int							Xuhao;					//序号			
@@ -632,6 +638,9 @@ public:
 	float						Jingdu;					//经度			
 	float						Weidu;					//纬度			
 	__int64						Chuangjianshijian;		//创建时间		
+	string						Yingjianxinxi;			//硬件信息	
+	string						Ruanjianxinxi;			//软件信息	
+	string						Ruanjianshengjixinxi;	//软件升级信息	
 
 }SHEBEIGUANLI, *LPSHEBEIGUANLI;
 /**

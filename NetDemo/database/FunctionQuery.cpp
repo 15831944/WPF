@@ -654,7 +654,7 @@ bool QuerySHEBEIGUANLI(string QuerySql, std::vector<tagSHEBEIGUANLI> &lcArray, s
 
 		while (sqlite3_step(lpStmt0) == SQLITE_ROW)
 		{
-			if (sqlite3_column_count(lpStmt0) == 11)
+			if (sqlite3_column_count(lpStmt0) == 14)
 			{
 				lcArray.push_back(tagSHEBEIGUANLI());
 				tagSHEBEIGUANLI &lc		= lcArray.back();
@@ -670,6 +670,9 @@ bool QuerySHEBEIGUANLI(string QuerySql, std::vector<tagSHEBEIGUANLI> &lcArray, s
 				lc.Jingdu					= sqlite3_column_double(lpStmt0, 8);
 				lc.Weidu					= sqlite3_column_double(lpStmt0, 9);
 				lc.Chuangjianshijian		= sqlite3_column_int64(lpStmt0, 10);
+				lc.Yingjianxinxi			= sqlite3_column_bytes(lpStmt0, 11)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt0, 11)))		: "";;
+				lc.Ruanjianxinxi			= sqlite3_column_bytes(lpStmt0, 12)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt0, 12)))		: "";;
+				lc.Ruanjianshengjixinxi		= sqlite3_column_bytes(lpStmt0, 13)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt0, 13)))		: "";;
 			}
 		}	
 

@@ -16,6 +16,13 @@
                 <ResourceDictionary Source="Resources/DataRes.xaml" />
                 <ResourceDictionary Source="Resources/Templates.xaml" />
                 <ResourceDictionary Source="Resources/Styles.xaml" />
+
+                <ResourceDictionary Source="Resources/DeviceTemplate/AbnormalTemplate.xaml" />
+                <ResourceDictionary Source="Resources/DeviceTemplate/DeviceTemplate.xaml" />
+                <ResourceDictionary Source="Resources/DeviceTemplate/NetTemplate.xaml" />
+                <ResourceDictionary Source="Resources/DeviceTemplate/UpgradeTemplate.xaml" />
+                <ResourceDictionary Source="Resources/DeviceTemplate/UserTemplate.xaml" />
+
                 <ResourceDictionary Source="Resources/LogonTemplate.xaml" />
                 <ResourceDictionary Source="Resources/HomePageTemplate.xaml" />
                 <ResourceDictionary Source="Resources/SummaryStatTemplate.xaml" />

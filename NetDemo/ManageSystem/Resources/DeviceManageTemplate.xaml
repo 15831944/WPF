@@ -9,13 +9,25 @@
     <DataTemplate DataType="{x:Type viewModel:DeviceManageViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="{Binding Path=leftListWidth}"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-
+            <StackPanel Grid.Column="0">
+                <Button Height="50">设备管理</Button>
+                <Button Height="50">用户管理</Button>
+                <Button Height="50">网络状态</Button>
+                <Button Height="50">软件升级</Button>
+                <Button Height="50">故障查询</Button>
+            </StackPanel>
+            <GridSplitter Width="1"></GridSplitter>
+            <ContentControl Grid.Column="1" Content="{Binding _DevicemaViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _UserViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _NetViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _UpgradeViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _AbnormalViewModel}"/>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_DeviceManage}">
+            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel.bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Device}">
                 <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
             </DataTrigger>
         </DataTemplate.Triggers>

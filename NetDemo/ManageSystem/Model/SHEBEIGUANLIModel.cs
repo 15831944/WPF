@@ -160,5 +160,47 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Chuangjianshijian");
             }
         }
+
+        private string _Yingjianxinxi;
+        public string Yingjianxinxi
+        {
+            get
+            {
+                return _Yingjianxinxi;
+            }
+            set
+            {
+                _Yingjianxinxi = value;
+                this.RaisePropertyChanged("Yingjianxinxi");
+            }
+        }
+
+        private string _Ruanjianxinxi;
+        public string Ruanjianxinxi
+        {
+            get
+            {
+                return _Ruanjianxinxi;
+            }
+            set
+            {
+                _Ruanjianxinxi = value;
+                this.RaisePropertyChanged("Ruanjianxinxi");
+            }
+        }
+
+        private string _Ruanjianshengjixinxi;
+        public string Ruanjianshengjixinxi
+        {
+            get
+            {
+                return _Ruanjianshengjixinxi;
+            }
+            set
+            {
+                _Ruanjianshengjixinxi = value;
+                this.RaisePropertyChanged("Ruanjianshengjixinxi");
+            }
+        }
     }
 }

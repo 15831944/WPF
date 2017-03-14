@@ -1,0 +1,24 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                    xmlns:deviceViewModel="clr-namespace:ManageSystem.ViewModel.DeviceViewModel"
+                    xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
+                    xmlns:Model="clr-namespace:ManageSystem.Model"
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+                    xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
+                    >
+    <DataTemplate DataType="{x:Type deviceViewModel:UpgradeViewModel}">
+        <Grid x:Name="showhideCtrl" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel.bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Upgrade}">
+                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>

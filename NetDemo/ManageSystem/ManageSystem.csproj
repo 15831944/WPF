@@ -122,6 +122,11 @@
     <Compile Include="Server\WorkServer.cs" />
     <Compile Include="ViewModel\CardQueryViewModel.cs" />
     <Compile Include="ViewModel\DeviceManageViewModel.cs" />
+    <Compile Include="ViewModel\DeviceViewModel\AbnormalViewModel.cs" />
+    <Compile Include="ViewModel\DeviceViewModel\DevicemaViewModel.cs" />
+    <Compile Include="ViewModel\DeviceViewModel\NetViewModel.cs" />
+    <Compile Include="ViewModel\DeviceViewModel\UpgradeViewModel.cs" />
+    <Compile Include="ViewModel\DeviceViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\EndorsementQueryViewModel.cs" />
     <Compile Include="ViewModel\Graphics.cs" />
     <Compile Include="ViewModel\HomePageViewModel.cs" />
@@ -180,6 +185,26 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\DeviceManageTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\DeviceTemplate\UserTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\DeviceTemplate\AbnormalTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\DeviceTemplate\UpgradeTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\DeviceTemplate\NetTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\DeviceTemplate\DeviceTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

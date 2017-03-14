@@ -420,7 +420,7 @@ namespace ManageSystem.ViewModel
             _businesstype                               = new ObservableCollection<string>();
 
             //_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_WebBrowser;
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
             _titleheight                                = 25;
             _leftWidth                                  = 60;
             _progressValue                              = 0;
@@ -759,6 +759,7 @@ namespace ManageSystem.ViewModel
                 if (bBreak) break;
             }
         }
+
         public void UnSelectedItem(object obj)
         {
             CheckBox changebox = obj as CheckBox;
