@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                    xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
+                    xmlns:Model="clr-namespace:ManageSystem.Model"
+                    xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+                    xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
+                    >
+    <DataTemplate DataType="{x:Type viewModel:DeviceManageViewModel}">
+        <Grid x:Name="showhideCtrl" Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="{Binding Path=leftListWidth}"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+        </Grid>
+        <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_DeviceManage}">
+                <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
+            </DataTrigger>
+        </DataTemplate.Triggers>
+    </DataTemplate>
+</ResourceDictionary>
