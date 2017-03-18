@@ -37,6 +37,8 @@ public:
 	void								QueryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync);
 	void								AddTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool bSync);
 	void								QueryOnlieDevCnt(QueryTableCallBack callBack, bool bSync);
+	void								ExcuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync);
+	void								QueryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSync);
 };
 
 #pragma  once

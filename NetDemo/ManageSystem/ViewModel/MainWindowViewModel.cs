@@ -15,6 +15,7 @@ using System.Net;
 using System.Configuration;
 using System.Windows.Threading;
 using System.Threading;
+using ManageSystem.ViewModel.DeviceViewModel;
 namespace ManageSystem.ViewModel
 {
     enum PageVisibleEnum
@@ -95,6 +96,20 @@ namespace ManageSystem.ViewModel
 
                     return model.tableList;
                 }
+                else if (grid.DataContext.GetType() == typeof(DevicemaViewModel))
+                {
+                    DevicemaViewModel model = grid.DataContext as DevicemaViewModel;
+                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
+
+                    return model.tableList;
+                }
+                else if (grid.DataContext.GetType() == typeof(UserViewModel))
+                {
+                    UserViewModel model = grid.DataContext as UserViewModel;
+                    grid.AutoGeneratingColumn += UserViewModel.DG1_AutoGeneratingColumn;
+
+                    return model.tableList;
+                }
             }
 
             return null;
@@ -112,14 +127,11 @@ namespace ManageSystem.ViewModel
         {
             QueryOperate_None,
             QueryOperate_YingSheTable,
-            QueryOperate_Shebeiguanli,
             QueryOperate_GuanLiYuan,
         }
-        public static Dictionary<string, Dictionary<string, Dictionary<string, HashSet<string>>>> _devicelistMap = new Dictionary<string, Dictionary<string, Dictionary<string, HashSet<string>>>>();
 
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
         public QueryOperate                             _queryoperate = QueryOperate.QueryOperate_None;
-        public static Dictionary<Int32, string>         _yingshelList               = new Dictionary<Int32, string> ();
         public Dictionary<string, GUANLIYUANModel>      _guliyuanList               = new Dictionary<string, GUANLIYUANModel>();
  
         public DelegateCommand<object>                  HomePageCommand { get; set; }
@@ -183,16 +195,17 @@ namespace ManageSystem.ViewModel
             }
         }
 
-        public static ObservableCollection<DeviceModel> _deviceList;
-        public ObservableCollection<DeviceModel> deviceList
+        public static Dictionary<Int32, string> _yingshelList               = new Dictionary<Int32, string>();
+        public Dictionary<Int32, string> yingshelList
         {
-            get { return _deviceList; }
+            get { return _yingshelList; }
             set
             {
-                _deviceList = value;
-                this.RaisePropertyChanged("deviceList");
+                _yingshelList = value;
+                this.RaisePropertyChanged("yingshelList");
             }
         }
+
         public static ObservableCollection<string> _businesstype;
         public ObservableCollection<string> businesstype
         {
@@ -375,6 +388,28 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private string  _IP;
+        public string IP
+        {
+            get { return _IP; }
+            set
+            {
+                _IP = value;
+                this.RaisePropertyChanged("IP");
+            }
+        }
+
+        private int  _port;
+        public int port
+        {
+            get { return _port; }
+            set
+            {
+                _port = value;
+                this.RaisePropertyChanged("port");
+            }
+        }
+
         public MainWindowViewModel()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
@@ -413,7 +448,6 @@ namespace ManageSystem.ViewModel
             _WebBrowserViewMode                         = new WebBrowserViewMode();
             _DeviceManageViewModel                      = new DeviceManageViewModel();
 
-            _deviceList                                 = new ObservableCollection<DeviceModel>();
             _cardstatus                                 = new ObservableCollection<string>();
             _certificateType                            = new ObservableCollection<string>();
             _devicePosition                             = new ObservableCollection<string>();
@@ -439,6 +473,18 @@ namespace ManageSystem.ViewModel
             _queryStrs.Add("查询业务");
             _queryStrs.Add("预受理记录查询");
 
+            foreach (string key in ConfigurationManager.AppSettings)
+            {    //检索当前选中的分辨率
+                if (key == "ServerIP")
+                {
+                    _IP = ConfigurationManager.AppSettings[key];
+                }
+                else if (key == "ServerPort")
+                {
+                    _port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
+                }
+            }
+
             var _timer                                  = new DispatcherTimer();
             _timer.Interval                             = new TimeSpan(0, 0, 5);   //间隔1秒
             _timer.Tick                                 += new EventHandler(Timer_Tick);
@@ -456,9 +502,6 @@ namespace ManageSystem.ViewModel
             Type type = null;
             switch(_queryoperate)
             {
-                case QueryOperate.QueryOperate_Shebeiguanli:
-                    type = typeof(SHEBEIGUANLIModel);
-                    break;
                 case QueryOperate.QueryOperate_YingSheTable:
                     type = typeof(YINGSHEBIAOModel);
                     break;
@@ -543,20 +586,6 @@ namespace ManageSystem.ViewModel
 
                     switch (_queryoperate)
                     {
-                        case QueryOperate.QueryOperate_Shebeiguanli:
-                            {
-                                SHEBEIGUANLIModel modelTemp = model as SHEBEIGUANLIModel;
-
-                                if(!_devicelistMap.Keys.Contains(modelTemp.Chengshibianhao))
-                                    _devicelistMap[modelTemp.Chengshibianhao] = new Dictionary<string, Dictionary<string, HashSet<string>>>();
-                                if(!_devicelistMap[modelTemp.Chengshibianhao].Keys.Contains(modelTemp.Jubianhao))
-                                    _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao] = new Dictionary<string, HashSet<string>>();
-                                if(!_devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao].Keys.Contains(modelTemp.Shiyongdanweibianhao))
-                                    _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao] = new HashSet<string>();
-
-                                _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao].Add(modelTemp.IP);
-                            }
-                            break;
                         case QueryOperate.QueryOperate_YingSheTable:
                             {
                                 YINGSHEBIAOModel modelTemp = model as YINGSHEBIAOModel;
@@ -608,41 +637,6 @@ namespace ManageSystem.ViewModel
                 {
                     certificateType.Add(kvp0.Value);
                 }
-            }
-        }
-        public void QueryShebeiguanli(object obj)
-        {
-            _queryoperate = QueryOperate.QueryOperate_Shebeiguanli;
-            deviceList.Clear();
-            WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
-
-            foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<string>>>> kvp0 in _devicelistMap)
-            {
-                DeviceModel device0                 = new DeviceModel();
-                device0.text                        = kvp0.Key;
-                device0.leftMargin                  = "0,0,0,0";
-                foreach (KeyValuePair<string, Dictionary<string, HashSet<string>>> kvp1 in kvp0.Value)
-                {
-                    DeviceModel device1             = new DeviceModel();
-                    device1.text                    = kvp1.Key;
-                    device1.leftMargin              = "16, 0, 0, 0";
-                    foreach (KeyValuePair<string, HashSet<string>> kvp2 in kvp1.Value)
-                    {
-                        DeviceModel device2         = new DeviceModel();
-                        device2.text                = kvp2.Key;
-                        device2.leftMargin          = "32, 0, 0, 0";
-                        foreach (string ipstr in kvp2.Value)
-                        {
-                            DeviceModel device3     = new DeviceModel();
-                            device3.text            = ipstr;
-                            device3.leftMargin      = "48, 0, 0, 0";
-                            device2.Children.Add(device3);
-                        }
-                        device1.Children.Add(device2);
-                    }
-                    device0.Children.Add(device1);
-                }
-                deviceList.Add(device0);
             }
         }
         public void QueryGuanliyuan(object obj)
@@ -720,7 +714,7 @@ namespace ManageSystem.ViewModel
 
             ////MakeParent
             bool bBreak = false;
-            foreach (DeviceModel parent0 in deviceList)
+            foreach (DeviceModel parent0 in _DeviceManageViewModel._DevicemaViewModel.deviceList)
             {
                 foreach (DeviceModel parent1 in parent0.Children)
                 {
@@ -782,19 +776,6 @@ namespace ManageSystem.ViewModel
 
         public void Logon(object obj)
         {
-            string  ip      = "";
-            int     port    = 0;
-            foreach (string key in ConfigurationManager.AppSettings)
-            {    //检索当前选中的分辨率
-                if (key == "ServerIP")
-                {
-                    ip = ConfigurationManager.AppSettings[key];
-                }
-                else if (key == "ServerPort")
-                {
-                    port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
-                }
-            }
             if (logonName == null || logonName.Length == 0)
             {
                 displayMsg = "用户名不能为空!";
@@ -806,7 +787,7 @@ namespace ManageSystem.ViewModel
                 return;
             }
 
-            if (WorkServer.startClient(ip, port, true))
+            if (WorkServer.startClient(IP, port, true))
             {
                 bOnline         = true;
                 displayMsg      = "连接服务端成功!";
@@ -842,7 +823,7 @@ namespace ManageSystem.ViewModel
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
                                 {
-                                    QueryShebeiguanli(null);
+                                    _DeviceManageViewModel._DevicemaViewModel.QueryShebeiguanli(null);
                                 }));
                                 progress        += 10;
                                 progressValue   = progress;
@@ -932,7 +913,14 @@ namespace ManageSystem.ViewModel
 
         public void Loaded(object obj)
         {
+            WorkServer.startClient(IP, port, true);
+            QueryYingshebiao(null);
+            _DeviceManageViewModel._DevicemaViewModel.QueryShebeiguanli(null);
+            _DeviceManageViewModel._UserViewModel.QueryYongHuguanli(null);
 
+            _SummaryStatViewModel.DoLogon();
+            _SignStatViewModel.DoLogon();
+            _SignAnomalyStatViewModel.DoLogon();
         }
 
         private void MaxWnd(object obj)

@@ -23,7 +23,6 @@
 #include <google/protobuf/message.h>
 #include <google/protobuf/repeated_field.h>
 #include <google/protobuf/extension_set.h>
-#include <google/protobuf/generated_enum_reflection.h>
 #include <google/protobuf/unknown_field_set.h>
 // @@protoc_insertion_point(includes)
 
@@ -43,37 +42,11 @@ class QueryMsg;
 class QueryMsgResult;
 class AddMsg;
 class AddMsgResult;
+class ExcuteSqlMsg;
+class ExcuteSqlMsgResult;
+class QueryDevSpeedMsg;
+class QueryDevSpeedMsgResult;
 
-enum NetMsgType {
-  NetMsgType_Unknown = 0,
-  NetMsgType_RegistType = 1,
-  NetMsgType_QueryDevCnt = 2,
-  NetMsgType_QueryDevCntResult = 3,
-  NetMsgType_DatabaseAddAsk = 4,
-  NetMsgType_DatabaseAddSuccess = 5,
-  NetMsgType_DatabaseAddError = 6,
-  NetMsgType_DatabaseDeleteAsk = 7,
-  NetMsgType_DatabaseDeleteSuccess = 8,
-  NetMsgType_DatabaseDeleteError = 9,
-  NetMsgType_DatabaseQueryAsk = 10,
-  NetMsgType_DatabaseQuerySuccess = 11,
-  NetMsgType_DatabaseQueryError = 12
-};
-bool NetMsgType_IsValid(int value);
-const NetMsgType NetMsgType_MIN = NetMsgType_Unknown;
-const NetMsgType NetMsgType_MAX = NetMsgType_DatabaseQueryError;
-const int NetMsgType_ARRAYSIZE = NetMsgType_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* NetMsgType_descriptor();
-inline const ::std::string& NetMsgType_Name(NetMsgType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    NetMsgType_descriptor(), value);
-}
-inline bool NetMsgType_Parse(
-    const ::std::string& name, NetMsgType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<NetMsgType>(
-    NetMsgType_descriptor(), name, value);
-}
 // ===================================================================
 
 class MsgPack : public ::google::protobuf::Message {
@@ -201,6 +174,42 @@ class MsgPack : public ::google::protobuf::Message {
   inline ::netmsg::AddMsgResult* release_addmsgresult();
   inline void set_allocated_addmsgresult(::netmsg::AddMsgResult* addmsgresult);
 
+  // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;
+  inline bool has_excutesqlmsg() const;
+  inline void clear_excutesqlmsg();
+  static const int kExcutesqlmsgFieldNumber = 9;
+  inline const ::netmsg::ExcuteSqlMsg& excutesqlmsg() const;
+  inline ::netmsg::ExcuteSqlMsg* mutable_excutesqlmsg();
+  inline ::netmsg::ExcuteSqlMsg* release_excutesqlmsg();
+  inline void set_allocated_excutesqlmsg(::netmsg::ExcuteSqlMsg* excutesqlmsg);
+
+  // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;
+  inline bool has_excutesqlmsgresult() const;
+  inline void clear_excutesqlmsgresult();
+  static const int kExcutesqlmsgresultFieldNumber = 10;
+  inline const ::netmsg::ExcuteSqlMsgResult& excutesqlmsgresult() const;
+  inline ::netmsg::ExcuteSqlMsgResult* mutable_excutesqlmsgresult();
+  inline ::netmsg::ExcuteSqlMsgResult* release_excutesqlmsgresult();
+  inline void set_allocated_excutesqlmsgresult(::netmsg::ExcuteSqlMsgResult* excutesqlmsgresult);
+
+  // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;
+  inline bool has_querydevspeedmsg() const;
+  inline void clear_querydevspeedmsg();
+  static const int kQuerydevspeedmsgFieldNumber = 11;
+  inline const ::netmsg::QueryDevSpeedMsg& querydevspeedmsg() const;
+  inline ::netmsg::QueryDevSpeedMsg* mutable_querydevspeedmsg();
+  inline ::netmsg::QueryDevSpeedMsg* release_querydevspeedmsg();
+  inline void set_allocated_querydevspeedmsg(::netmsg::QueryDevSpeedMsg* querydevspeedmsg);
+
+  // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;
+  inline bool has_querydevspeedmsgresult() const;
+  inline void clear_querydevspeedmsgresult();
+  static const int kQuerydevspeedmsgresultFieldNumber = 12;
+  inline const ::netmsg::QueryDevSpeedMsgResult& querydevspeedmsgresult() const;
+  inline ::netmsg::QueryDevSpeedMsgResult* mutable_querydevspeedmsgresult();
+  inline ::netmsg::QueryDevSpeedMsgResult* release_querydevspeedmsgresult();
+  inline void set_allocated_querydevspeedmsgresult(::netmsg::QueryDevSpeedMsgResult* querydevspeedmsgresult);
+
   // @@protoc_insertion_point(class_scope:netmsg.MsgPack)
  private:
   inline void set_has_head();
@@ -219,6 +228,14 @@ class MsgPack : public ::google::protobuf::Message {
   inline void clear_has_querymsgresult();
   inline void set_has_addmsgresult();
   inline void clear_has_addmsgresult();
+  inline void set_has_excutesqlmsg();
+  inline void clear_has_excutesqlmsg();
+  inline void set_has_excutesqlmsgresult();
+  inline void clear_has_excutesqlmsgresult();
+  inline void set_has_querydevspeedmsg();
+  inline void clear_has_querydevspeedmsg();
+  inline void set_has_querydevspeedmsgresult();
+  inline void clear_has_querydevspeedmsgresult();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -232,6 +249,10 @@ class MsgPack : public ::google::protobuf::Message {
   ::netmsg::AddMsg* add_;
   ::netmsg::QueryMsgResult* querymsgresult_;
   ::netmsg::AddMsgResult* addmsgresult_;
+  ::netmsg::ExcuteSqlMsg* excutesqlmsg_;
+  ::netmsg::ExcuteSqlMsgResult* excutesqlmsgresult_;
+  ::netmsg::QueryDevSpeedMsg* querydevspeedmsg_;
+  ::netmsg::QueryDevSpeedMsgResult* querydevspeedmsgresult_;
   friend void  protobuf_AddDesc_netmsg_2eproto();
   friend void protobuf_AssignDesc_netmsg_2eproto();
   friend void protobuf_ShutdownFile_netmsg_2eproto();
@@ -315,13 +336,6 @@ class MsgHead : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 packindex() const;
   inline void set_packindex(::google::protobuf::int32 value);
 
-  // required .netmsg.NetMsgType packtype = 4 [default = NetMsgType_Unknown];
-  inline bool has_packtype() const;
-  inline void clear_packtype();
-  static const int kPacktypeFieldNumber = 4;
-  inline ::netmsg::NetMsgType packtype() const;
-  inline void set_packtype(::netmsg::NetMsgType value);
-
   // @@protoc_insertion_point(class_scope:netmsg.MsgHead)
  private:
   inline void set_has_globalpacknumber();
@@ -330,8 +344,6 @@ class MsgHead : public ::google::protobuf::Message {
   inline void clear_has_totalpack();
   inline void set_has_packindex();
   inline void clear_has_packindex();
-  inline void set_has_packtype();
-  inline void clear_has_packtype();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -340,7 +352,6 @@ class MsgHead : public ::google::protobuf::Message {
   ::google::protobuf::uint32 globalpacknumber_;
   ::google::protobuf::int32 totalpack_;
   ::google::protobuf::int32 packindex_;
-  int packtype_;
   friend void  protobuf_AddDesc_netmsg_2eproto();
   friend void protobuf_AssignDesc_netmsg_2eproto();
   friend void protobuf_ShutdownFile_netmsg_2eproto();
@@ -941,6 +952,372 @@ class AddMsgResult : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static AddMsgResult* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class ExcuteSqlMsg : public ::google::protobuf::Message {
+ public:
+  ExcuteSqlMsg();
+  virtual ~ExcuteSqlMsg();
+
+  ExcuteSqlMsg(const ExcuteSqlMsg& from);
+
+  inline ExcuteSqlMsg& operator=(const ExcuteSqlMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ExcuteSqlMsg& default_instance();
+
+  void Swap(ExcuteSqlMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  ExcuteSqlMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ExcuteSqlMsg& from);
+  void MergeFrom(const ExcuteSqlMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string Msg = 1;
+  inline bool has_msg() const;
+  inline void clear_msg();
+  static const int kMsgFieldNumber = 1;
+  inline const ::std::string& msg() const;
+  inline void set_msg(const ::std::string& value);
+  inline void set_msg(const char* value);
+  inline void set_msg(const char* value, size_t size);
+  inline ::std::string* mutable_msg();
+  inline ::std::string* release_msg();
+  inline void set_allocated_msg(::std::string* msg);
+
+  // @@protoc_insertion_point(class_scope:netmsg.ExcuteSqlMsg)
+ private:
+  inline void set_has_msg();
+  inline void clear_has_msg();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* msg_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static ExcuteSqlMsg* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ExcuteSqlMsgResult : public ::google::protobuf::Message {
+ public:
+  ExcuteSqlMsgResult();
+  virtual ~ExcuteSqlMsgResult();
+
+  ExcuteSqlMsgResult(const ExcuteSqlMsgResult& from);
+
+  inline ExcuteSqlMsgResult& operator=(const ExcuteSqlMsgResult& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ExcuteSqlMsgResult& default_instance();
+
+  void Swap(ExcuteSqlMsgResult* other);
+
+  // implements Message ----------------------------------------------
+
+  ExcuteSqlMsgResult* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ExcuteSqlMsgResult& from);
+  void MergeFrom(const ExcuteSqlMsgResult& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string resultError = 1;
+  inline bool has_resulterror() const;
+  inline void clear_resulterror();
+  static const int kResultErrorFieldNumber = 1;
+  inline const ::std::string& resulterror() const;
+  inline void set_resulterror(const ::std::string& value);
+  inline void set_resulterror(const char* value);
+  inline void set_resulterror(const char* value, size_t size);
+  inline ::std::string* mutable_resulterror();
+  inline ::std::string* release_resulterror();
+  inline void set_allocated_resulterror(::std::string* resulterror);
+
+  // @@protoc_insertion_point(class_scope:netmsg.ExcuteSqlMsgResult)
+ private:
+  inline void set_has_resulterror();
+  inline void clear_has_resulterror();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* resulterror_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static ExcuteSqlMsgResult* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class QueryDevSpeedMsg : public ::google::protobuf::Message {
+ public:
+  QueryDevSpeedMsg();
+  virtual ~QueryDevSpeedMsg();
+
+  QueryDevSpeedMsg(const QueryDevSpeedMsg& from);
+
+  inline QueryDevSpeedMsg& operator=(const QueryDevSpeedMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const QueryDevSpeedMsg& default_instance();
+
+  void Swap(QueryDevSpeedMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  QueryDevSpeedMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const QueryDevSpeedMsg& from);
+  void MergeFrom(const QueryDevSpeedMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string ipStr = 1;
+  inline bool has_ipstr() const;
+  inline void clear_ipstr();
+  static const int kIpStrFieldNumber = 1;
+  inline const ::std::string& ipstr() const;
+  inline void set_ipstr(const ::std::string& value);
+  inline void set_ipstr(const char* value);
+  inline void set_ipstr(const char* value, size_t size);
+  inline ::std::string* mutable_ipstr();
+  inline ::std::string* release_ipstr();
+  inline void set_allocated_ipstr(::std::string* ipstr);
+
+  // required int32 askUserID = 2;
+  inline bool has_askuserid() const;
+  inline void clear_askuserid();
+  static const int kAskUserIDFieldNumber = 2;
+  inline ::google::protobuf::int32 askuserid() const;
+  inline void set_askuserid(::google::protobuf::int32 value);
+
+  // required int64 startTime = 3;
+  inline bool has_starttime() const;
+  inline void clear_starttime();
+  static const int kStartTimeFieldNumber = 3;
+  inline ::google::protobuf::int64 starttime() const;
+  inline void set_starttime(::google::protobuf::int64 value);
+
+  // @@protoc_insertion_point(class_scope:netmsg.QueryDevSpeedMsg)
+ private:
+  inline void set_has_ipstr();
+  inline void clear_has_ipstr();
+  inline void set_has_askuserid();
+  inline void clear_has_askuserid();
+  inline void set_has_starttime();
+  inline void clear_has_starttime();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* ipstr_;
+  ::google::protobuf::int64 starttime_;
+  ::google::protobuf::int32 askuserid_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static QueryDevSpeedMsg* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class QueryDevSpeedMsgResult : public ::google::protobuf::Message {
+ public:
+  QueryDevSpeedMsgResult();
+  virtual ~QueryDevSpeedMsgResult();
+
+  QueryDevSpeedMsgResult(const QueryDevSpeedMsgResult& from);
+
+  inline QueryDevSpeedMsgResult& operator=(const QueryDevSpeedMsgResult& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const QueryDevSpeedMsgResult& default_instance();
+
+  void Swap(QueryDevSpeedMsgResult* other);
+
+  // implements Message ----------------------------------------------
+
+  QueryDevSpeedMsgResult* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const QueryDevSpeedMsgResult& from);
+  void MergeFrom(const QueryDevSpeedMsgResult& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 speed = 1;
+  inline bool has_speed() const;
+  inline void clear_speed();
+  static const int kSpeedFieldNumber = 1;
+  inline ::google::protobuf::int32 speed() const;
+  inline void set_speed(::google::protobuf::int32 value);
+
+  // required string resultError = 2;
+  inline bool has_resulterror() const;
+  inline void clear_resulterror();
+  static const int kResultErrorFieldNumber = 2;
+  inline const ::std::string& resulterror() const;
+  inline void set_resulterror(const ::std::string& value);
+  inline void set_resulterror(const char* value);
+  inline void set_resulterror(const char* value, size_t size);
+  inline ::std::string* mutable_resulterror();
+  inline ::std::string* release_resulterror();
+  inline void set_allocated_resulterror(::std::string* resulterror);
+
+  // @@protoc_insertion_point(class_scope:netmsg.QueryDevSpeedMsgResult)
+ private:
+  inline void set_has_speed();
+  inline void clear_has_speed();
+  inline void set_has_resulterror();
+  inline void clear_has_resulterror();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* resulterror_;
+  ::google::protobuf::int32 speed_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static QueryDevSpeedMsgResult* default_instance_;
+};
 // ===================================================================
 
 
@@ -1276,6 +1653,170 @@ inline void MsgPack::set_allocated_addmsgresult(::netmsg::AddMsgResult* addmsgre
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.addmsgresult)
 }
 
+// optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;
+inline bool MsgPack::has_excutesqlmsg() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void MsgPack::set_has_excutesqlmsg() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void MsgPack::clear_has_excutesqlmsg() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void MsgPack::clear_excutesqlmsg() {
+  if (excutesqlmsg_ != NULL) excutesqlmsg_->::netmsg::ExcuteSqlMsg::Clear();
+  clear_has_excutesqlmsg();
+}
+inline const ::netmsg::ExcuteSqlMsg& MsgPack::excutesqlmsg() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.excutesqlmsg)
+  return excutesqlmsg_ != NULL ? *excutesqlmsg_ : *default_instance_->excutesqlmsg_;
+}
+inline ::netmsg::ExcuteSqlMsg* MsgPack::mutable_excutesqlmsg() {
+  set_has_excutesqlmsg();
+  if (excutesqlmsg_ == NULL) excutesqlmsg_ = new ::netmsg::ExcuteSqlMsg;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.excutesqlmsg)
+  return excutesqlmsg_;
+}
+inline ::netmsg::ExcuteSqlMsg* MsgPack::release_excutesqlmsg() {
+  clear_has_excutesqlmsg();
+  ::netmsg::ExcuteSqlMsg* temp = excutesqlmsg_;
+  excutesqlmsg_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_excutesqlmsg(::netmsg::ExcuteSqlMsg* excutesqlmsg) {
+  delete excutesqlmsg_;
+  excutesqlmsg_ = excutesqlmsg;
+  if (excutesqlmsg) {
+    set_has_excutesqlmsg();
+  } else {
+    clear_has_excutesqlmsg();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.excutesqlmsg)
+}
+
+// optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;
+inline bool MsgPack::has_excutesqlmsgresult() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void MsgPack::set_has_excutesqlmsgresult() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void MsgPack::clear_has_excutesqlmsgresult() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void MsgPack::clear_excutesqlmsgresult() {
+  if (excutesqlmsgresult_ != NULL) excutesqlmsgresult_->::netmsg::ExcuteSqlMsgResult::Clear();
+  clear_has_excutesqlmsgresult();
+}
+inline const ::netmsg::ExcuteSqlMsgResult& MsgPack::excutesqlmsgresult() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.excutesqlmsgresult)
+  return excutesqlmsgresult_ != NULL ? *excutesqlmsgresult_ : *default_instance_->excutesqlmsgresult_;
+}
+inline ::netmsg::ExcuteSqlMsgResult* MsgPack::mutable_excutesqlmsgresult() {
+  set_has_excutesqlmsgresult();
+  if (excutesqlmsgresult_ == NULL) excutesqlmsgresult_ = new ::netmsg::ExcuteSqlMsgResult;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.excutesqlmsgresult)
+  return excutesqlmsgresult_;
+}
+inline ::netmsg::ExcuteSqlMsgResult* MsgPack::release_excutesqlmsgresult() {
+  clear_has_excutesqlmsgresult();
+  ::netmsg::ExcuteSqlMsgResult* temp = excutesqlmsgresult_;
+  excutesqlmsgresult_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_excutesqlmsgresult(::netmsg::ExcuteSqlMsgResult* excutesqlmsgresult) {
+  delete excutesqlmsgresult_;
+  excutesqlmsgresult_ = excutesqlmsgresult;
+  if (excutesqlmsgresult) {
+    set_has_excutesqlmsgresult();
+  } else {
+    clear_has_excutesqlmsgresult();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.excutesqlmsgresult)
+}
+
+// optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;
+inline bool MsgPack::has_querydevspeedmsg() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void MsgPack::set_has_querydevspeedmsg() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void MsgPack::clear_has_querydevspeedmsg() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void MsgPack::clear_querydevspeedmsg() {
+  if (querydevspeedmsg_ != NULL) querydevspeedmsg_->::netmsg::QueryDevSpeedMsg::Clear();
+  clear_has_querydevspeedmsg();
+}
+inline const ::netmsg::QueryDevSpeedMsg& MsgPack::querydevspeedmsg() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.querydevspeedmsg)
+  return querydevspeedmsg_ != NULL ? *querydevspeedmsg_ : *default_instance_->querydevspeedmsg_;
+}
+inline ::netmsg::QueryDevSpeedMsg* MsgPack::mutable_querydevspeedmsg() {
+  set_has_querydevspeedmsg();
+  if (querydevspeedmsg_ == NULL) querydevspeedmsg_ = new ::netmsg::QueryDevSpeedMsg;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.querydevspeedmsg)
+  return querydevspeedmsg_;
+}
+inline ::netmsg::QueryDevSpeedMsg* MsgPack::release_querydevspeedmsg() {
+  clear_has_querydevspeedmsg();
+  ::netmsg::QueryDevSpeedMsg* temp = querydevspeedmsg_;
+  querydevspeedmsg_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_querydevspeedmsg(::netmsg::QueryDevSpeedMsg* querydevspeedmsg) {
+  delete querydevspeedmsg_;
+  querydevspeedmsg_ = querydevspeedmsg;
+  if (querydevspeedmsg) {
+    set_has_querydevspeedmsg();
+  } else {
+    clear_has_querydevspeedmsg();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.querydevspeedmsg)
+}
+
+// optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;
+inline bool MsgPack::has_querydevspeedmsgresult() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void MsgPack::set_has_querydevspeedmsgresult() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void MsgPack::clear_has_querydevspeedmsgresult() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void MsgPack::clear_querydevspeedmsgresult() {
+  if (querydevspeedmsgresult_ != NULL) querydevspeedmsgresult_->::netmsg::QueryDevSpeedMsgResult::Clear();
+  clear_has_querydevspeedmsgresult();
+}
+inline const ::netmsg::QueryDevSpeedMsgResult& MsgPack::querydevspeedmsgresult() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.querydevspeedmsgresult)
+  return querydevspeedmsgresult_ != NULL ? *querydevspeedmsgresult_ : *default_instance_->querydevspeedmsgresult_;
+}
+inline ::netmsg::QueryDevSpeedMsgResult* MsgPack::mutable_querydevspeedmsgresult() {
+  set_has_querydevspeedmsgresult();
+  if (querydevspeedmsgresult_ == NULL) querydevspeedmsgresult_ = new ::netmsg::QueryDevSpeedMsgResult;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.querydevspeedmsgresult)
+  return querydevspeedmsgresult_;
+}
+inline ::netmsg::QueryDevSpeedMsgResult* MsgPack::release_querydevspeedmsgresult() {
+  clear_has_querydevspeedmsgresult();
+  ::netmsg::QueryDevSpeedMsgResult* temp = querydevspeedmsgresult_;
+  querydevspeedmsgresult_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_querydevspeedmsgresult(::netmsg::QueryDevSpeedMsgResult* querydevspeedmsgresult) {
+  delete querydevspeedmsgresult_;
+  querydevspeedmsgresult_ = querydevspeedmsgresult;
+  if (querydevspeedmsgresult) {
+    set_has_querydevspeedmsgresult();
+  } else {
+    clear_has_querydevspeedmsgresult();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.querydevspeedmsgresult)
+}
+
 // -------------------------------------------------------------------
 
 // MsgHead
@@ -1350,31 +1891,6 @@ inline void MsgHead::set_packindex(::google::protobuf::int32 value) {
   set_has_packindex();
   packindex_ = value;
   // @@protoc_insertion_point(field_set:netmsg.MsgHead.packIndex)
-}
-
-// required .netmsg.NetMsgType packtype = 4 [default = NetMsgType_Unknown];
-inline bool MsgHead::has_packtype() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void MsgHead::set_has_packtype() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void MsgHead::clear_has_packtype() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void MsgHead::clear_packtype() {
-  packtype_ = 0;
-  clear_has_packtype();
-}
-inline ::netmsg::NetMsgType MsgHead::packtype() const {
-  // @@protoc_insertion_point(field_get:netmsg.MsgHead.packtype)
-  return static_cast< ::netmsg::NetMsgType >(packtype_);
-}
-inline void MsgHead::set_packtype(::netmsg::NetMsgType value) {
-  assert(::netmsg::NetMsgType_IsValid(value));
-  set_has_packtype();
-  packtype_ = value;
-  // @@protoc_insertion_point(field_set:netmsg.MsgHead.packtype)
 }
 
 // -------------------------------------------------------------------
@@ -1909,6 +2425,398 @@ inline void AddMsgResult::set_allocated_resulterror(::std::string* resulterror) 
   // @@protoc_insertion_point(field_set_allocated:netmsg.AddMsgResult.resultError)
 }
 
+// -------------------------------------------------------------------
+
+// ExcuteSqlMsg
+
+// required string Msg = 1;
+inline bool ExcuteSqlMsg::has_msg() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ExcuteSqlMsg::set_has_msg() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ExcuteSqlMsg::clear_has_msg() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ExcuteSqlMsg::clear_msg() {
+  if (msg_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    msg_->clear();
+  }
+  clear_has_msg();
+}
+inline const ::std::string& ExcuteSqlMsg::msg() const {
+  // @@protoc_insertion_point(field_get:netmsg.ExcuteSqlMsg.Msg)
+  return *msg_;
+}
+inline void ExcuteSqlMsg::set_msg(const ::std::string& value) {
+  set_has_msg();
+  if (msg_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    msg_ = new ::std::string;
+  }
+  msg_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.ExcuteSqlMsg.Msg)
+}
+inline void ExcuteSqlMsg::set_msg(const char* value) {
+  set_has_msg();
+  if (msg_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    msg_ = new ::std::string;
+  }
+  msg_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.ExcuteSqlMsg.Msg)
+}
+inline void ExcuteSqlMsg::set_msg(const char* value, size_t size) {
+  set_has_msg();
+  if (msg_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    msg_ = new ::std::string;
+  }
+  msg_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.ExcuteSqlMsg.Msg)
+}
+inline ::std::string* ExcuteSqlMsg::mutable_msg() {
+  set_has_msg();
+  if (msg_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    msg_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.ExcuteSqlMsg.Msg)
+  return msg_;
+}
+inline ::std::string* ExcuteSqlMsg::release_msg() {
+  clear_has_msg();
+  if (msg_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = msg_;
+    msg_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ExcuteSqlMsg::set_allocated_msg(::std::string* msg) {
+  if (msg_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete msg_;
+  }
+  if (msg) {
+    set_has_msg();
+    msg_ = msg;
+  } else {
+    clear_has_msg();
+    msg_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.ExcuteSqlMsg.Msg)
+}
+
+// -------------------------------------------------------------------
+
+// ExcuteSqlMsgResult
+
+// required string resultError = 1;
+inline bool ExcuteSqlMsgResult::has_resulterror() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ExcuteSqlMsgResult::set_has_resulterror() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ExcuteSqlMsgResult::clear_has_resulterror() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ExcuteSqlMsgResult::clear_resulterror() {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_->clear();
+  }
+  clear_has_resulterror();
+}
+inline const ::std::string& ExcuteSqlMsgResult::resulterror() const {
+  // @@protoc_insertion_point(field_get:netmsg.ExcuteSqlMsgResult.resultError)
+  return *resulterror_;
+}
+inline void ExcuteSqlMsgResult::set_resulterror(const ::std::string& value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.ExcuteSqlMsgResult.resultError)
+}
+inline void ExcuteSqlMsgResult::set_resulterror(const char* value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.ExcuteSqlMsgResult.resultError)
+}
+inline void ExcuteSqlMsgResult::set_resulterror(const char* value, size_t size) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.ExcuteSqlMsgResult.resultError)
+}
+inline ::std::string* ExcuteSqlMsgResult::mutable_resulterror() {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.ExcuteSqlMsgResult.resultError)
+  return resulterror_;
+}
+inline ::std::string* ExcuteSqlMsgResult::release_resulterror() {
+  clear_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = resulterror_;
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void ExcuteSqlMsgResult::set_allocated_resulterror(::std::string* resulterror) {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete resulterror_;
+  }
+  if (resulterror) {
+    set_has_resulterror();
+    resulterror_ = resulterror;
+  } else {
+    clear_has_resulterror();
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.ExcuteSqlMsgResult.resultError)
+}
+
+// -------------------------------------------------------------------
+
+// QueryDevSpeedMsg
+
+// required string ipStr = 1;
+inline bool QueryDevSpeedMsg::has_ipstr() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void QueryDevSpeedMsg::set_has_ipstr() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void QueryDevSpeedMsg::clear_has_ipstr() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void QueryDevSpeedMsg::clear_ipstr() {
+  if (ipstr_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ipstr_->clear();
+  }
+  clear_has_ipstr();
+}
+inline const ::std::string& QueryDevSpeedMsg::ipstr() const {
+  // @@protoc_insertion_point(field_get:netmsg.QueryDevSpeedMsg.ipStr)
+  return *ipstr_;
+}
+inline void QueryDevSpeedMsg::set_ipstr(const ::std::string& value) {
+  set_has_ipstr();
+  if (ipstr_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ipstr_ = new ::std::string;
+  }
+  ipstr_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.QueryDevSpeedMsg.ipStr)
+}
+inline void QueryDevSpeedMsg::set_ipstr(const char* value) {
+  set_has_ipstr();
+  if (ipstr_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ipstr_ = new ::std::string;
+  }
+  ipstr_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.QueryDevSpeedMsg.ipStr)
+}
+inline void QueryDevSpeedMsg::set_ipstr(const char* value, size_t size) {
+  set_has_ipstr();
+  if (ipstr_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ipstr_ = new ::std::string;
+  }
+  ipstr_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.QueryDevSpeedMsg.ipStr)
+}
+inline ::std::string* QueryDevSpeedMsg::mutable_ipstr() {
+  set_has_ipstr();
+  if (ipstr_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ipstr_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.QueryDevSpeedMsg.ipStr)
+  return ipstr_;
+}
+inline ::std::string* QueryDevSpeedMsg::release_ipstr() {
+  clear_has_ipstr();
+  if (ipstr_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = ipstr_;
+    ipstr_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void QueryDevSpeedMsg::set_allocated_ipstr(::std::string* ipstr) {
+  if (ipstr_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete ipstr_;
+  }
+  if (ipstr) {
+    set_has_ipstr();
+    ipstr_ = ipstr;
+  } else {
+    clear_has_ipstr();
+    ipstr_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.QueryDevSpeedMsg.ipStr)
+}
+
+// required int32 askUserID = 2;
+inline bool QueryDevSpeedMsg::has_askuserid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void QueryDevSpeedMsg::set_has_askuserid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void QueryDevSpeedMsg::clear_has_askuserid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void QueryDevSpeedMsg::clear_askuserid() {
+  askuserid_ = 0;
+  clear_has_askuserid();
+}
+inline ::google::protobuf::int32 QueryDevSpeedMsg::askuserid() const {
+  // @@protoc_insertion_point(field_get:netmsg.QueryDevSpeedMsg.askUserID)
+  return askuserid_;
+}
+inline void QueryDevSpeedMsg::set_askuserid(::google::protobuf::int32 value) {
+  set_has_askuserid();
+  askuserid_ = value;
+  // @@protoc_insertion_point(field_set:netmsg.QueryDevSpeedMsg.askUserID)
+}
+
+// required int64 startTime = 3;
+inline bool QueryDevSpeedMsg::has_starttime() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void QueryDevSpeedMsg::set_has_starttime() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void QueryDevSpeedMsg::clear_has_starttime() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void QueryDevSpeedMsg::clear_starttime() {
+  starttime_ = GOOGLE_LONGLONG(0);
+  clear_has_starttime();
+}
+inline ::google::protobuf::int64 QueryDevSpeedMsg::starttime() const {
+  // @@protoc_insertion_point(field_get:netmsg.QueryDevSpeedMsg.startTime)
+  return starttime_;
+}
+inline void QueryDevSpeedMsg::set_starttime(::google::protobuf::int64 value) {
+  set_has_starttime();
+  starttime_ = value;
+  // @@protoc_insertion_point(field_set:netmsg.QueryDevSpeedMsg.startTime)
+}
+
+// -------------------------------------------------------------------
+
+// QueryDevSpeedMsgResult
+
+// required int32 speed = 1;
+inline bool QueryDevSpeedMsgResult::has_speed() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void QueryDevSpeedMsgResult::set_has_speed() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void QueryDevSpeedMsgResult::clear_has_speed() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void QueryDevSpeedMsgResult::clear_speed() {
+  speed_ = 0;
+  clear_has_speed();
+}
+inline ::google::protobuf::int32 QueryDevSpeedMsgResult::speed() const {
+  // @@protoc_insertion_point(field_get:netmsg.QueryDevSpeedMsgResult.speed)
+  return speed_;
+}
+inline void QueryDevSpeedMsgResult::set_speed(::google::protobuf::int32 value) {
+  set_has_speed();
+  speed_ = value;
+  // @@protoc_insertion_point(field_set:netmsg.QueryDevSpeedMsgResult.speed)
+}
+
+// required string resultError = 2;
+inline bool QueryDevSpeedMsgResult::has_resulterror() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void QueryDevSpeedMsgResult::set_has_resulterror() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void QueryDevSpeedMsgResult::clear_has_resulterror() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void QueryDevSpeedMsgResult::clear_resulterror() {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_->clear();
+  }
+  clear_has_resulterror();
+}
+inline const ::std::string& QueryDevSpeedMsgResult::resulterror() const {
+  // @@protoc_insertion_point(field_get:netmsg.QueryDevSpeedMsgResult.resultError)
+  return *resulterror_;
+}
+inline void QueryDevSpeedMsgResult::set_resulterror(const ::std::string& value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.QueryDevSpeedMsgResult.resultError)
+}
+inline void QueryDevSpeedMsgResult::set_resulterror(const char* value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.QueryDevSpeedMsgResult.resultError)
+}
+inline void QueryDevSpeedMsgResult::set_resulterror(const char* value, size_t size) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.QueryDevSpeedMsgResult.resultError)
+}
+inline ::std::string* QueryDevSpeedMsgResult::mutable_resulterror() {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.QueryDevSpeedMsgResult.resultError)
+  return resulterror_;
+}
+inline ::std::string* QueryDevSpeedMsgResult::release_resulterror() {
+  clear_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = resulterror_;
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void QueryDevSpeedMsgResult::set_allocated_resulterror(::std::string* resulterror) {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete resulterror_;
+  }
+  if (resulterror) {
+    set_has_resulterror();
+    resulterror_ = resulterror;
+  } else {
+    clear_has_resulterror();
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.QueryDevSpeedMsgResult.resultError)
+}
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -1918,11 +2826,6 @@ inline void AddMsgResult::set_allocated_resulterror(::std::string* resulterror) 
 namespace google {
 namespace protobuf {
 
-template <> struct is_proto_enum< ::netmsg::NetMsgType> : ::google::protobuf::internal::true_type {};
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::netmsg::NetMsgType>() {
-  return ::netmsg::NetMsgType_descriptor();
-}
 
 }  // namespace google
 }  // namespace protobuf

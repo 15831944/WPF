@@ -119,8 +119,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private float _Jingdu;
-        public float Jingdu
+        private string _Jingdu;
+        public string Jingdu
         {
             get
             {
@@ -133,8 +133,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private float _Weidu;
-        public float Weidu
+        private string _Weidu;
+        public string Weidu
         {
             get
             {

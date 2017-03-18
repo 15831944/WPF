@@ -5,6 +5,7 @@
                     xmlns:Model="clr-namespace:ManageSystem.Model"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                     >
     <DataTemplate DataType="{x:Type deviceViewModel:DevicemaViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
@@ -17,9 +18,9 @@
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="1.5*"/>
-                        <ColumnDefinition Width="0.5*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid Grid.Column="0">
                         <Grid.RowDefinitions>
@@ -31,16 +32,18 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备名称</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=cardNumber}"></TextBox>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">城市编号</TextBlock>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=customInfo.Chengshibianhao}"
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Path=city}" >
+                            </ComboBox>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">经度</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=cardNumber}"></TextBox>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备厂家</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeichangjia}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -53,16 +56,18 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备摆放位置</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=businessNumber}"></TextBox>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">局编号</TextBlock>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=customInfo.Jubianhao}"
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Path=ju}" >
+                            </ComboBox>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">纬度</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=cardNumber}"></TextBox>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备名称</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeimingcheng}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="2" >
@@ -75,12 +80,18 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="1.5*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Center">设备类型</TextBlock>
-                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=cardStatuText}"
-                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=cardstatus}" ></ComboBox>
-
+                            <TextBlock Grid.Column="0" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Center">使用单位</TextBlock>
+                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=customInfo.Shiyongdanweibianhao}"
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Path=danwei}" >
+                            </ComboBox>
                         </Grid>
                         <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备类型</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeileixing}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="3">
@@ -93,9 +104,42 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="1.5*"/>
                             </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">IP</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.IP}"></TextBox>
+
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">经度</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Jingdu}"></TextBox>
+
                         </Grid>
                     </Grid>
-                    <Button Grid.Column="4" Style="{StaticResource Style_QueryBtn}" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>
+                    <Grid Grid.Column="4">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">纬度</TextBlock>
+                            <TextBox Margin="0,0,5,0" Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Weidu}"></TextBox>
+
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </Grid>
+                    <!--<Button Grid.Column="4" Style="{StaticResource Style_QueryBtn}" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>-->
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.RowDefinitions>
@@ -103,19 +147,31 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0" Orientation="Horizontal">
-                        <Button Margin="10,0,10,0">增加设备</Button>
-                        <Button Margin="10,0,10,0">删除增加设备</Button>
-                        <Button Margin="10,0,10,0">修改设备信息</Button>
+                        <Button Margin="10,0,10,0" Command="{Binding Path=AddCommand}" >增加设备</Button>
+                        <Button Margin="10,0,10,0" Command="{Binding Path=DeleteCommand}" >删除设备</Button>
+                        <Button Margin="10,0,10,0" Command="{Binding Path=ModifyCommand}" >修改设备信息</Button>
                     </StackPanel>
                     <DataGrid Grid.Row="1"
                               BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                               CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 
-                              AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True"
+                              AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True" SelectionMode="Single"
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
+                              SelectedValue="{Binding Path=customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
                               ItemsSource="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource DataGridItemSourceConvert}}"
                               >
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="LightBlue"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
                     </DataGrid>
                 </Grid>
             </Grid>

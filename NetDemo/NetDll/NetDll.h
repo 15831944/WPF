@@ -8,7 +8,7 @@ bool				startServer(IN char *ip, IN int port, IN OnReceiveCallBack callback, OUT
 bool				stopServer();
 bool				isServerStoped();
 int					curServerConnections();
-
+int					getClientIDByIP(char* ip);
 
 bool				startClient(IN char *ip, IN int port, IN OnReceiveCallBack callback, OUT ClientSendData& CallSendData);
 bool				stopClient();

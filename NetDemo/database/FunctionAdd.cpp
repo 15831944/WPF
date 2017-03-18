@@ -354,6 +354,8 @@ bool AddTable(char* tableName, char* dataStr, string &strError)
 					string& cell = cells[colIndex];
 					vector<string> keyvalue;
 					split(cell, keyvalue, ":");
+					if (keyvalue.size() != 2)
+						continue;
 
 					for (UINT index = 0; index < fieldsTypeMap.size(); ++index){
 						std::pair<std::string, int> it = fieldsTypeMap.at(index);
@@ -409,6 +411,9 @@ bool AddTable(char* tableName, char* dataStr, string &strError)
 
 		if (sqlite3_step(lpStmt2) != SQLITE_DONE) {
 			if (lpStmt2) sqlite3_finalize(lpStmt2);
+			bOk = false; char ch[512] ={ 0 };
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+			strError = ch;
 			break;
 		}
 		sqlite3_finalize(lpStmt2);

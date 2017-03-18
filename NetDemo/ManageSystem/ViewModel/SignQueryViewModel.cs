@@ -12,6 +12,7 @@ using System.Windows.Data;
 
 using ManageSystem.Model;
 using ManageSystem.Server;
+using ManageSystem.ViewModel.DeviceViewModel;
 
 namespace ManageSystem.ViewModel
 {
@@ -230,7 +231,7 @@ namespace ManageSystem.ViewModel
         {
             string str = "select * from Zhiqianshuju where Xuhao>=-1";
 
-            foreach(DeviceModel model0 in MainWindowViewModel._deviceList)
+            foreach(DeviceModel model0 in DevicemaViewModel._deviceList)
             {
                 if(model0.isSel)
                 {

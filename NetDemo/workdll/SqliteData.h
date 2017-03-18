@@ -8,6 +8,7 @@ protected:
 
 	typedef bool(*_QueryTable)(string QuerySql, string &dataStr, string &strError);
 	typedef bool(*_AddTable)(char* tableName, char* dataStr, string &strError);
+	typedef bool(*_ExcuteSql)(char* sqlStr, string &strError);
 
 	typedef bool(*_AddZHIQIANSHUJU)(tagZHIQIANSHUJU  data, string &strError);
 
@@ -35,6 +36,7 @@ protected:
 	
 	_QueryTable								m_QueryTableFunc;
 	_AddTable								m_AddTableFunc;
+	_ExcuteSql								m_ExcuteSqlFunc;
 
 	_AddZHIQIANSHUJU						m_AddZHIQIANSHUJUFunc;
 	_AddSHOUZHENGSHUJU						m_AddSHOUZHENGSHUJUFunc;
@@ -57,6 +59,7 @@ public:
 
 	bool									QueryTable(string QuerySql, string &dataStr, string &strError);
 	bool									AddTable(char* tableName, char* dataStr, string &strError);
+	bool									ExcuteSql(char* sqlStr, string &strError);
 
 	bool									AddZHIQIANSHUJU(tagZHIQIANSHUJU  data, string &strError);
 											
@@ -81,6 +84,5 @@ public:
 	bool									AddSHEBEIGUANLI(tagSHEBEIGUANLI  data, string &strError);
 											
 	bool									AddYINGSHEBIAO(tagYINGSHEBIAO  data, string &strError);
-
 };
 

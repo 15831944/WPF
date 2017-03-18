@@ -24,5 +24,8 @@ void				queryOnlieDevCnt(QueryTableCallBack callBack, bool bSync);
 typedef				void(__cdecl *AddDataCallBack)(
 	char*			strError
 	);
+typedef				AddDataCallBack ExcuteSqlCallBack;
 
 void				addTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool bSync);
+void				excuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync);
+void				queryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSync);

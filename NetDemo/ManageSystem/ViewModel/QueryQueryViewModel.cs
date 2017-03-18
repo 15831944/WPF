@@ -1,5 +1,6 @@
 ﻿using ManageSystem.Model;
 using ManageSystem.Server;
+using ManageSystem.ViewModel.DeviceViewModel;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -202,7 +203,7 @@ namespace ManageSystem.ViewModel
         {
             string str = "select * from Chaxunshuju where Xuhao>=-1";
 
-            foreach (DeviceModel model0 in MainWindowViewModel._deviceList)
+            foreach (DeviceModel model0 in DevicemaViewModel._deviceList)
             {
                 if (model0.isSel)
                 {

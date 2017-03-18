@@ -15,7 +15,7 @@
             <TreeView Grid.Column="0" Grid.IsSharedSizeScope="True" AlternationCount="2" 
                       MinHeight="100" VerticalContentAlignment="Center"
                       Background="#CFD6DC"
-                      ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=deviceList}"
+                      ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._DevicemaViewModel.deviceList}"
                       ItemContainerStyle="{DynamicResource TreeViewItemStyle1}">
 
             </TreeView>

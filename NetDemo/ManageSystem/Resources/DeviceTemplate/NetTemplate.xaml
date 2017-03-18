@@ -9,11 +9,75 @@
                     >
     <DataTemplate DataType="{x:Type deviceViewModel:NetViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" FontSize="25">网络状态</TextBlock>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">服务器IP</TextBlock>
+                        <TextBox Grid.Column="1" IsReadOnly="True"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Source={StaticResource MainWindowViewModelKey}, Path=IP}"></TextBox>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">自助设备IP</TextBlock>
+                        <TextBox Grid.Column="1"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.IP}"></TextBox>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <Button Margin="10,0,10,0" Command="{Binding Path=TestCommand}" >测试网速</Button>
+                <TextBlock Margin="10,0,10,0" Text="{Binding Path=statusText}"></TextBlock>
+            </StackPanel>
+            <DataGrid Grid.Row="3"
+                              DataContext="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._DevicemaViewModel}"
+                              BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
+                              RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                              CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 
+                              AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True" SelectionMode="Single"
+                              ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
+                              SelectedValue="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._NetViewModel.customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
+                              ItemsSource="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource DataGridItemSourceConvert}}"
+                              >
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
+            </DataGrid>
         </Grid>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel.bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Net}">

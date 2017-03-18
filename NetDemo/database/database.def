@@ -5,7 +5,7 @@ DESCRIPTION     '(c)2017 zhangyong'
 EXPORTS
 		QueryTable
 		AddTable
-
+		ExcuteSql
 
 		QueryZHIQIANSHUJU
 		AddZHIQIANSHUJU

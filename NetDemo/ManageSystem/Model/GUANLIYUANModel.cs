@@ -77,8 +77,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private int _Quanxianjibie;
-        public int Quanxianjibie
+        private string _Quanxianjibie;
+        public string Quanxianjibie
         {
             get
             {

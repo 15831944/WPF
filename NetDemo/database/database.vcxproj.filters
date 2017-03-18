@@ -65,6 +65,9 @@
     <ClCompile Include="FunctionAdd.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="FunctionDelete.cpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="database.def">

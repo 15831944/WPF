@@ -9,11 +9,53 @@
                     >
     <DataTemplate DataType="{x:Type deviceViewModel:UpgradeViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="150"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="200"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Row="0" FontSize="25">软件信息</TextBlock>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Text="{Binding Path=customInfo.Ruanjianxinxi}"></TextBlock>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition Height="50"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0" ItemsSource="{Binding Path=versionList}"></ListBox>
+                    <StackPanel Grid.Row="1" Orientation="Horizontal">
+                        <Button Margin="10,0,10,0" Command="{Binding Path=TestCommand}" >升级</Button>
+                        <Button Margin="10,0,10,0" Command="{Binding Path=TestCommand}" >强制升级</Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+            <DataGrid Grid.Row="2"
+                              DataContext="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._DevicemaViewModel}"
+                              BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
+                              RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                              CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 
+                              AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True" SelectionMode="Single"
+                              ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
+                              SelectedValue="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._NetViewModel.customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
+                              ItemsSource="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource DataGridItemSourceConvert}}"
+                              >
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
+            </DataGrid>
         </Grid>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel.bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Upgrade}">

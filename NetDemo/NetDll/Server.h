@@ -26,4 +26,5 @@ public:
 	void											stop();
 	bool											stoped();
 	int												connections();
+	int												getidbyip(string ip);
 };

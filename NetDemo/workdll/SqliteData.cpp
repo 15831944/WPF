@@ -10,7 +10,7 @@ CSqliteData::CSqliteData()
 
 	m_QueryTableFunc					= (_QueryTable)GetProcAddress(hDataBaseDll, "QueryTable");
 	m_AddTableFunc						= (_AddTable)GetProcAddress(hDataBaseDll, "AddTable");
-
+	m_ExcuteSqlFunc						= (_ExcuteSql)GetProcAddress(hDataBaseDll, "ExcuteSql");
 
 	m_AddZHIQIANSHUJUFunc				= (_AddZHIQIANSHUJU)GetProcAddress(hDataBaseDll, "AddZHIQIANSHUJU");
 	m_AddSHOUZHENGSHUJUFunc				= (_AddSHOUZHENGSHUJU)GetProcAddress(hDataBaseDll, "AddSHOUZHENGSHUJU");
@@ -64,6 +64,12 @@ bool CSqliteData::AddTable(char* tableName, char* dataStr, string &strError)
 	return false;
 }
 
+bool CSqliteData::ExcuteSql(char* sqlStr, string &strError)
+{
+	if (m_ExcuteSqlFunc)
+		return m_ExcuteSqlFunc(sqlStr, strError);
+	return false;
+}
 
 bool CSqliteData::AddZHIQIANSHUJU(tagZHIQIANSHUJU data, string &strError)
 {

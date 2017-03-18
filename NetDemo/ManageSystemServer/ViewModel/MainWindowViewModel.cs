@@ -71,7 +71,7 @@ namespace ManageSystemServer.ViewModel
             {    //检索当前选中的分辨率
                 if (kv0.Key == "ServerIP")
                 {
-                    ip = kv0.Value;
+                    ip = "";
                 }
                 else if (kv0.Key  == "ServerPort")
                 {

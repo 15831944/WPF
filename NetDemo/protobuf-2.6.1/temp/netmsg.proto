@@ -13,37 +13,18 @@ message MsgPack
 
 	optional	QueryMsgResult  					querymsgresult					= 7;
 	optional	AddMsgResult  						addmsgresult					= 8;
-}
-
-
-
-enum NetMsgType{
-	NetMsgType_Unknown										= 0;
-
-	NetMsgType_RegistType									= 1;
-
-	NetMsgType_QueryDevCnt									= 2;
-	NetMsgType_QueryDevCntResult							= 3;
-
-	NetMsgType_DatabaseAddAsk								= 4;
-	NetMsgType_DatabaseAddSuccess							= 5;
-	NetMsgType_DatabaseAddError								= 6;
-
-	NetMsgType_DatabaseDeleteAsk							= 7;
-	NetMsgType_DatabaseDeleteSuccess						= 8;
-	NetMsgType_DatabaseDeleteError							= 9;
-
-	NetMsgType_DatabaseQueryAsk								= 10;
-	NetMsgType_DatabaseQuerySuccess							= 11;
-	NetMsgType_DatabaseQueryError							= 12;
 	
-};
+	optional	ExcuteSqlMsg  						excutesqlmsg					= 9;
+	optional	ExcuteSqlMsgResult  				excutesqlmsgresult				= 10;
+
+	optional	QueryDevSpeedMsg  					querydevspeedmsg				= 11;
+	optional	QueryDevSpeedMsgResult  			querydevspeedmsgresult			= 12;
+}
 
 message MsgHead{
 	required	uint32				globalPackNumber		= 1 [default = 1]; 
     required	int32				totalPack				= 2 [default = 1];        
-    required	int32				packIndex				= 3 [default = 1];        
-    required	NetMsgType			packtype				= 4 [default = NetMsgType_Unknown];          
+    required	int32				packIndex				= 3 [default = 0];               
 }
 
 message RegistTypeMsg{
@@ -74,4 +55,23 @@ message AddMsg{
 
 message AddMsgResult{
 	required	string				resultError				= 1;
+}
+
+message ExcuteSqlMsg{
+	required	string				Msg						= 1;
+}
+
+message ExcuteSqlMsgResult{
+	required	string				resultError				= 1;
+}
+
+message QueryDevSpeedMsg{
+	required	string				ipStr					= 1;
+	required	int32				askUserID				= 2;
+	required	int64				startTime				= 3;
+}
+
+message QueryDevSpeedMsgResult{
+	required	int32				speed					= 1;
+	required	string				resultError				= 2;
 }

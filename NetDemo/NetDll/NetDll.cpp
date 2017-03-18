@@ -14,7 +14,12 @@ bool startServer(char *ip, int port, OnReceiveCallBack callback, OUT ServerSendD
 
 	if (g_serverPtr == nullptr || isServerStoped())
 	{
-		boost::asio::ip::tcp::endpoint	endpoint(boost::asio::ip::address_v4::from_string(ip), port);
+		boost::asio::ip::address_v4 v4;
+		if (strlen(ip))
+			v4 = boost::asio::ip::address_v4::from_string(ip);
+		else
+			v4 = boost::asio::ip::address_v4::any();
+		boost::asio::ip::tcp::endpoint	endpoint(v4, port);
 
 		g_io_service.reset();
 		g_serverPtr.reset(new server(g_io_service, endpoint, callback));
@@ -54,6 +59,13 @@ int curServerConnections()
 	return 0;
 }
 
+int getClientIDByIP(char* ip)
+{
+	if (g_serverPtr != nullptr)
+		return g_serverPtr->getidbyip(ip);
+
+	return 0;
+}
 
 boost::mutex									m_sockMutexclient;				//asio::socket不是线程安全的，一把大锁解决问题
 boost::asio::io_service							g_io_service_client;

@@ -2,9 +2,11 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                     xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
+                    xmlns:deviceViewModel="clr-namespace:ManageSystem.ViewModel.DeviceViewModel"
                     xmlns:Local="clr-namespace:ManageSystem"
                     >
     <viewModel:DataGridItemSourceConvert x:Key="DataGridItemSourceConvert"/>
+    <deviceViewModel:DataGridSelectConvert x:Key="DataGridSelectConvert"/>
 
     <viewModel:MainWindowViewModel x:Key="MainWindowViewModelKey"/>
     <!--<ObjectDataProvider x:Key="DATA_ButtonKey" ObjectType="{x:Type local:SerialUIDataFactory}" MethodName="GetButtonSeiralTreeData"/>-->

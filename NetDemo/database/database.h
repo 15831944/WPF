@@ -20,6 +20,7 @@ using namespace std;
 */
 bool			QueryTable(string QuerySql, string &dataStr, string &strError);
 bool			AddTable(char* tableName, char* dataStr, string &strError);
+bool			ExcuteSql(char* sqlStr, string &strError);
 
 bool			QueryZHIQIANSHUJU(string QuerySql, std::vector<tagZHIQIANSHUJU> &lcArray, string &strError);
 bool			AddZHIQIANSHUJU(tagZHIQIANSHUJU  data, string &strError);
@@ -56,7 +57,6 @@ bool			AddSHEBEIGUANLI(tagSHEBEIGUANLI  data, string &strError);
 
 bool			QueryYINGSHEBIAO(string QuerySql, std::vector<tagYINGSHEBIAO> &lcArray, string &strError);
 bool			AddYINGSHEBIAO(tagYINGSHEBIAO  data, string &strError);
-
 
 
 

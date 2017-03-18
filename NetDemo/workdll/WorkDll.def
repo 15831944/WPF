@@ -15,3 +15,5 @@ EXPORTS
 		queryTable
 		queryOnlieDevCnt
 		addTable
+		excuteSql
+		queryDevSpeed

@@ -13,12 +13,14 @@ protected:
 	typedef bool						(*_startServerType)(char *ip, int port, IN OnReceiveCallBack callback, OUT ServerSendData& CallSendData);
 	typedef bool						(*_stopServerType)();
 	typedef bool						(*_isServerStoped)();
-	typedef bool						(*_curServerConnections)();
+	typedef int							(*_curServerConnections)();
+	typedef int							(*_getIdByIP)(char *ip);
 
 	_startServerType					m_startServerFunc;
 	_stopServerType						m_stopServerFunc;
 	_isServerStoped						m_isServerStopedFunc;
 	_curServerConnections				m_curServerConnectionsFunc;
+	_getIdByIP							m_getIdByIPFunc;
 
 	ServerSendData						m_sendDataFunc;
 
@@ -31,6 +33,6 @@ public:
 	bool								StartServer(char *ip, int port);
 	bool								StopServer();
 	bool								ServerStoped();
-	bool								CurServerConnections();
+	int									CurServerConnections();
 };
 

@@ -8,6 +8,7 @@ namespace ManageSystem.ViewModel
 {
     enum DeviceVisibleEnum
     {
+        DeviceVisibleEnum_None,
         DeviceVisibleEnum_Device,
         DeviceVisibleEnum_User,
         DeviceVisibleEnum_Net,
@@ -17,6 +18,12 @@ namespace ManageSystem.ViewModel
 
     class DeviceManageViewModel : NotificationObject
     {
+        public DelegateCommand<object> DevicemaCommand { get; set; }
+        public DelegateCommand<object> UseCommand { get; set; }
+        public DelegateCommand<object> NetCommand { get; set; }
+        public DelegateCommand<object> UpgradeCommand { get; set; }
+        public DelegateCommand<object> AbnormalCommand { get; set; }
+
 
         public DevicemaViewModel                _DevicemaViewModel { get; set; }
         public UserViewModel                    _UserViewModel { get; set; }
@@ -38,6 +45,13 @@ namespace ManageSystem.ViewModel
 
         public DeviceManageViewModel()
         {
+            DevicemaCommand                 = new DelegateCommand<object>(DevicemaShow);
+            UseCommand                      = new DelegateCommand<object>(UseShow);
+            NetCommand                      = new DelegateCommand<object>(NetShow);
+            UpgradeCommand                  = new DelegateCommand<object>(UpgradeShow);
+            AbnormalCommand                 = new DelegateCommand<object>(AbnormalShow);
+
+
             _DevicemaViewModel              = new DevicemaViewModel();
             _UserViewModel                  = new UserViewModel();
             _NetViewModel                   = new NetViewModel();
@@ -47,7 +61,32 @@ namespace ManageSystem.ViewModel
 
 
 
-            _bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Device;
+            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Upgrade;
+        }
+
+        private void AbnormalShow(object obj)
+        {
+            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Abnormal;
+        }
+
+        private void UpgradeShow(object obj)
+        {
+            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Upgrade;
+        }
+
+        private void NetShow(object obj)
+        {
+            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Net;
+        }
+
+        private void UseShow(object obj)
+        {
+            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_User;
+        }
+
+        private void DevicemaShow(object obj)
+        {
+            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Device;
         }
     }
 }

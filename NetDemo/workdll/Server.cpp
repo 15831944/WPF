@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Server.h"
 #include "SqliteData.h"
+#include <time.h>
 
 CServer* CServer::m_pServer				= NULL;
 
@@ -14,6 +15,7 @@ CServer::CServer()
 	m_stopServerFunc					= (_stopServerType)GetProcAddress(hNetDll, "stopServer");
 	m_isServerStopedFunc				= (_isServerStoped)GetProcAddress(hNetDll, "isServerStoped");
 	m_curServerConnectionsFunc			= (_curServerConnections)GetProcAddress(hNetDll, "curServerConnections");
+	m_getIdByIPFunc						= (_getIdByIP)GetProcAddress(hNetDll, "getClientIDByIP");
 }
 
 CServer::~CServer()
@@ -34,7 +36,6 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 				packResult.mutable_head()->set_globalpacknumber(msgPack.head().globalpacknumber());
 				packResult.mutable_head()->set_totalpack(1);
 				packResult.mutable_head()->set_packindex(0);
-				packResult.mutable_head()->set_packtype(netmsg::NetMsgType_Unknown);
 
 				if (msgPack.has_registtype())
 				{
@@ -50,7 +51,6 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					CSqliteData::GetInstance()->QueryTable(QueryStr, dataStr, strError);
 
 
-					packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseQuerySuccess);
 					if (strError.empty())
 					{
 						if (dataStr.empty())
@@ -66,8 +66,6 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					}
 					else
 					{
-						packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseQueryError);
-
 						packResult.mutable_querymsgresult()->set_resultdata("");
 						packResult.mutable_querymsgresult()->set_resulterror(strError);
 					}
@@ -81,14 +79,12 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					string strError		= "";
 					CSqliteData::GetInstance()->AddTable((char*)tableNameStr.c_str(), (char*)addStr.c_str(), strError);
 
-					packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseAddSuccess);
 					if (strError.empty())
 					{
 						packResult.mutable_addmsgresult()->set_resulterror("");
 					}
 					else
 					{
-						packResult.mutable_head()->set_packtype(netmsg::NetMsgType_DatabaseAddError);
 						packResult.mutable_addmsgresult()->set_resulterror(strError);
 					}
 
@@ -96,7 +92,6 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 				}
 				else if (msgPack.has_querydevcntmsg())
 				{
-					packResult.mutable_head()->set_packtype(netmsg::NetMsgType_QueryDevCntResult);
 					WaitForSingleObject(CServer::GetInstance()->m_mutexHandle, INFINITE);
 					int cnt = 0;
 					for (std::map<DWORD, bool>::iterator it = CServer::GetInstance()->m_mapDevice.begin(); it != CServer::GetInstance()->m_mapDevice.end(); ++it)
@@ -108,6 +103,71 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					packResult.mutable_querydevcntmsgresult()->set_devcnt(cnt);
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
+				}
+				else if (msgPack.has_excutesqlmsg())
+				{
+					string sqlStr = msgPack.excutesqlmsg().msg();
+					string strError		= "";
+					CSqliteData::GetInstance()->ExcuteSql((char*)sqlStr.c_str(), strError);
+
+					if (strError.empty())
+					{
+						packResult.mutable_excutesqlmsgresult()->set_resulterror("");
+					}
+					else
+					{
+						packResult.mutable_excutesqlmsgresult()->set_resulterror(strError);
+					}
+
+					CServer::GetInstance()->SendMsgBuf(userID, packResult);
+				}
+				else if (msgPack.has_querydevspeedmsg())
+				{
+					int souraskuserID	= msgPack.querydevspeedmsg().askuserid();
+					string  sourdesIP	= msgPack.querydevspeedmsg().ipstr();
+
+					if (souraskuserID == -1)
+					{	//asker
+						int desid		= CServer::GetInstance()->m_getIdByIPFunc((char*)sourdesIP.c_str());
+
+						if (desid == 0)
+						{
+							packResult.mutable_querydevspeedmsgresult()->set_speed(0);
+							packResult.mutable_querydevspeedmsgresult()->set_resulterror("设备不在线");
+							CServer::GetInstance()->SendMsgBuf(userID, packResult);
+						}
+						else
+						{
+							clock_t startTime = clock();
+							msgPack.mutable_head()->set_totalpack(1);
+
+							string ipData;
+							ipData.resize(150000);
+							msgPack.mutable_querydevspeedmsg()->set_ipstr(ipData);
+							msgPack.mutable_querydevspeedmsg()->set_askuserid(userID);
+							msgPack.mutable_querydevspeedmsg()->set_starttime(startTime);
+
+							msgPack.mutable_head()->set_packindex(0);
+							CServer::GetInstance()->SendMsgBuf(desid, msgPack);
+
+						}
+					}
+					else
+					{	//deser
+						if (msgPack.head().totalpack() == (msgPack.head().packindex() + 1))
+						{
+							clock_t curclk		= clock();
+							clock_t startclk	= msgPack.querydevspeedmsg().starttime();
+							int totalPack		= msgPack.head().totalpack();
+							int packsize		= msgPack.ByteSize();
+
+							int speed = packsize * totalPack * 2 * 1000 /(curclk - startclk);
+
+							packResult.mutable_querydevspeedmsgresult()->set_speed(speed);
+							packResult.mutable_querydevspeedmsgresult()->set_resulterror("");
+							CServer::GetInstance()->SendMsgBuf(souraskuserID, packResult);
+						}
+					}
 				}
 				else
 				{
@@ -178,11 +238,11 @@ bool CServer::ServerStoped()
 	return true;
 }
 
-bool CServer::CurServerConnections()
+int CServer::CurServerConnections()
 {
 	if (m_curServerConnectionsFunc)
 		return m_curServerConnectionsFunc();
-	return true;
+	return 0;
 }
 
 void CServer::SendMsgBuf(long userID, ::google::protobuf::Message& msg)

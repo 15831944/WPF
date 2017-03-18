@@ -31,7 +31,7 @@ namespace ManageSystem.Server
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi,  CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryTable")]
         private static extern bool queryTable(string querySqlStr, IntPtr callback, bool bSync);
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryOnlieDevCnt")]
-        public static extern bool queryOnlieDevCnt(IntPtr callback, bool bSync);
+        public static extern int queryOnlieDevCnt(IntPtr callback, bool bSync);
 
         public static bool QueryTable(string querySqlStr, IntPtr callback, bool bSync = false)
         {//可以避免 直接绑定到Command上面 导致axml找不到模块

@@ -135,6 +135,7 @@ void server::send(long userID, BYTE* SendBuf, int dataLen)
 	}
 	catch (...)
 	{
+		OutputDebugStringA("·¢ËÍ³ö´íÁË£¡");
 	}
 }
 
@@ -148,4 +149,18 @@ int server::connections()
 	boost::mutex::scoped_lock Lock(m_sessionsMutex);
 	return m_sessions.size();
 	Lock.unlock();
+}
+
+int server::getidbyip(string ip)
+{
+	boost::mutex::scoped_lock Lock(m_sessionsMutex);
+	for (list<session_ptr>::iterator it = m_sessions.begin(); it != m_sessions.end(); ++it)
+	{
+		string str = (*it)->socket().remote_endpoint().address().to_string();
+		if (str == ip)
+			return int((*it).get());
+	}
+	Lock.unlock();
+
+	return 0;
 }

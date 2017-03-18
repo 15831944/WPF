@@ -118,6 +118,7 @@ xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configur
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="FunctionAdd.cpp" />
+    <ClCompile Include="FunctionDelete.cpp" />
     <ClCompile Include="FunctionQuery.cpp" />
     <ClCompile Include="Sqlite.cpp" />
     <ClCompile Include="stdafx.cpp">
