@@ -39,132 +39,145 @@ public final class Netmsg {
     netmsg.Netmsg.RegistTypeMsgOrBuilder getRegisttypeOrBuilder();
 
     /**
-     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+     * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+     */
+    boolean hasRegisttypemsgresult();
+    /**
+     * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+     */
+    netmsg.Netmsg.RegistTypeMsgResult getRegisttypemsgresult();
+    /**
+     * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+     */
+    netmsg.Netmsg.RegistTypeMsgResultOrBuilder getRegisttypemsgresultOrBuilder();
+
+    /**
+     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
      */
     boolean hasQuerydevcntmsg();
     /**
-     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
      */
     netmsg.Netmsg.QueryDevCntMsg getQuerydevcntmsg();
     /**
-     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
      */
     netmsg.Netmsg.QueryDevCntMsgOrBuilder getQuerydevcntmsgOrBuilder();
 
     /**
-     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
      */
     boolean hasQuerydevcntmsgresult();
     /**
-     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
      */
     netmsg.Netmsg.QueryDevCntMsgResult getQuerydevcntmsgresult();
     /**
-     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
      */
     netmsg.Netmsg.QueryDevCntMsgResultOrBuilder getQuerydevcntmsgresultOrBuilder();
 
     /**
-     * <code>optional .netmsg.QueryMsg query = 5;</code>
+     * <code>optional .netmsg.QueryMsg query = 6;</code>
      */
     boolean hasQuery();
     /**
-     * <code>optional .netmsg.QueryMsg query = 5;</code>
+     * <code>optional .netmsg.QueryMsg query = 6;</code>
      */
     netmsg.Netmsg.QueryMsg getQuery();
     /**
-     * <code>optional .netmsg.QueryMsg query = 5;</code>
+     * <code>optional .netmsg.QueryMsg query = 6;</code>
      */
     netmsg.Netmsg.QueryMsgOrBuilder getQueryOrBuilder();
 
     /**
-     * <code>optional .netmsg.AddMsg add = 6;</code>
+     * <code>optional .netmsg.AddMsg add = 7;</code>
      */
     boolean hasAdd();
     /**
-     * <code>optional .netmsg.AddMsg add = 6;</code>
+     * <code>optional .netmsg.AddMsg add = 7;</code>
      */
     netmsg.Netmsg.AddMsg getAdd();
     /**
-     * <code>optional .netmsg.AddMsg add = 6;</code>
+     * <code>optional .netmsg.AddMsg add = 7;</code>
      */
     netmsg.Netmsg.AddMsgOrBuilder getAddOrBuilder();
 
     /**
-     * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+     * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
      */
     boolean hasQuerymsgresult();
     /**
-     * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+     * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
      */
     netmsg.Netmsg.QueryMsgResult getQuerymsgresult();
     /**
-     * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+     * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
      */
     netmsg.Netmsg.QueryMsgResultOrBuilder getQuerymsgresultOrBuilder();
 
     /**
-     * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+     * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
      */
     boolean hasAddmsgresult();
     /**
-     * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+     * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
      */
     netmsg.Netmsg.AddMsgResult getAddmsgresult();
     /**
-     * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+     * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
      */
     netmsg.Netmsg.AddMsgResultOrBuilder getAddmsgresultOrBuilder();
 
     /**
-     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
      */
     boolean hasExcutesqlmsg();
     /**
-     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
      */
     netmsg.Netmsg.ExcuteSqlMsg getExcutesqlmsg();
     /**
-     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
      */
     netmsg.Netmsg.ExcuteSqlMsgOrBuilder getExcutesqlmsgOrBuilder();
 
     /**
-     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
      */
     boolean hasExcutesqlmsgresult();
     /**
-     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
      */
     netmsg.Netmsg.ExcuteSqlMsgResult getExcutesqlmsgresult();
     /**
-     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
      */
     netmsg.Netmsg.ExcuteSqlMsgResultOrBuilder getExcutesqlmsgresultOrBuilder();
 
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
      */
     boolean hasQuerydevspeedmsg();
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
      */
     netmsg.Netmsg.QueryDevSpeedMsg getQuerydevspeedmsg();
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
      */
     netmsg.Netmsg.QueryDevSpeedMsgOrBuilder getQuerydevspeedmsgOrBuilder();
 
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
      */
     boolean hasQuerydevspeedmsgresult();
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
      */
     netmsg.Netmsg.QueryDevSpeedMsgResult getQuerydevspeedmsgresult();
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
      */
     netmsg.Netmsg.QueryDevSpeedMsgResultOrBuilder getQuerydevspeedmsgresultOrBuilder();
   }
@@ -247,8 +260,21 @@ public final class Netmsg {
               break;
             }
             case 26: {
-              netmsg.Netmsg.QueryDevCntMsg.Builder subBuilder = null;
+              netmsg.Netmsg.RegistTypeMsgResult.Builder subBuilder = null;
               if (((bitField0_ & 0x00000004) == 0x00000004)) {
+                subBuilder = registtypemsgresult_.toBuilder();
+              }
+              registtypemsgresult_ = input.readMessage(netmsg.Netmsg.RegistTypeMsgResult.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(registtypemsgresult_);
+                registtypemsgresult_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000004;
+              break;
+            }
+            case 34: {
+              netmsg.Netmsg.QueryDevCntMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000008) == 0x00000008)) {
                 subBuilder = querydevcntmsg_.toBuilder();
               }
               querydevcntmsg_ = input.readMessage(netmsg.Netmsg.QueryDevCntMsg.PARSER, extensionRegistry);
@@ -256,12 +282,12 @@ public final class Netmsg {
                 subBuilder.mergeFrom(querydevcntmsg_);
                 querydevcntmsg_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000004;
+              bitField0_ |= 0x00000008;
               break;
             }
-            case 34: {
+            case 42: {
               netmsg.Netmsg.QueryDevCntMsgResult.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000008) == 0x00000008)) {
+              if (((bitField0_ & 0x00000010) == 0x00000010)) {
                 subBuilder = querydevcntmsgresult_.toBuilder();
               }
               querydevcntmsgresult_ = input.readMessage(netmsg.Netmsg.QueryDevCntMsgResult.PARSER, extensionRegistry);
@@ -269,12 +295,12 @@ public final class Netmsg {
                 subBuilder.mergeFrom(querydevcntmsgresult_);
                 querydevcntmsgresult_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000008;
+              bitField0_ |= 0x00000010;
               break;
             }
-            case 42: {
+            case 50: {
               netmsg.Netmsg.QueryMsg.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
+              if (((bitField0_ & 0x00000020) == 0x00000020)) {
                 subBuilder = query_.toBuilder();
               }
               query_ = input.readMessage(netmsg.Netmsg.QueryMsg.PARSER, extensionRegistry);
@@ -282,12 +308,12 @@ public final class Netmsg {
                 subBuilder.mergeFrom(query_);
                 query_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000010;
+              bitField0_ |= 0x00000020;
               break;
             }
-            case 50: {
+            case 58: {
               netmsg.Netmsg.AddMsg.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000020) == 0x00000020)) {
+              if (((bitField0_ & 0x00000040) == 0x00000040)) {
                 subBuilder = add_.toBuilder();
               }
               add_ = input.readMessage(netmsg.Netmsg.AddMsg.PARSER, extensionRegistry);
@@ -295,12 +321,12 @@ public final class Netmsg {
                 subBuilder.mergeFrom(add_);
                 add_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000020;
+              bitField0_ |= 0x00000040;
               break;
             }
-            case 58: {
+            case 66: {
               netmsg.Netmsg.QueryMsgResult.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000040) == 0x00000040)) {
+              if (((bitField0_ & 0x00000080) == 0x00000080)) {
                 subBuilder = querymsgresult_.toBuilder();
               }
               querymsgresult_ = input.readMessage(netmsg.Netmsg.QueryMsgResult.PARSER, extensionRegistry);
@@ -308,12 +334,12 @@ public final class Netmsg {
                 subBuilder.mergeFrom(querymsgresult_);
                 querymsgresult_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000040;
+              bitField0_ |= 0x00000080;
               break;
             }
-            case 66: {
+            case 74: {
               netmsg.Netmsg.AddMsgResult.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000080) == 0x00000080)) {
+              if (((bitField0_ & 0x00000100) == 0x00000100)) {
                 subBuilder = addmsgresult_.toBuilder();
               }
               addmsgresult_ = input.readMessage(netmsg.Netmsg.AddMsgResult.PARSER, extensionRegistry);
@@ -321,12 +347,12 @@ public final class Netmsg {
                 subBuilder.mergeFrom(addmsgresult_);
                 addmsgresult_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000080;
+              bitField0_ |= 0x00000100;
               break;
             }
-            case 74: {
+            case 82: {
               netmsg.Netmsg.ExcuteSqlMsg.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000100) == 0x00000100)) {
+              if (((bitField0_ & 0x00000200) == 0x00000200)) {
                 subBuilder = excutesqlmsg_.toBuilder();
               }
               excutesqlmsg_ = input.readMessage(netmsg.Netmsg.ExcuteSqlMsg.PARSER, extensionRegistry);
@@ -334,12 +360,12 @@ public final class Netmsg {
                 subBuilder.mergeFrom(excutesqlmsg_);
                 excutesqlmsg_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000100;
+              bitField0_ |= 0x00000200;
               break;
             }
-            case 82: {
+            case 90: {
               netmsg.Netmsg.ExcuteSqlMsgResult.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000200) == 0x00000200)) {
+              if (((bitField0_ & 0x00000400) == 0x00000400)) {
                 subBuilder = excutesqlmsgresult_.toBuilder();
               }
               excutesqlmsgresult_ = input.readMessage(netmsg.Netmsg.ExcuteSqlMsgResult.PARSER, extensionRegistry);
@@ -347,12 +373,12 @@ public final class Netmsg {
                 subBuilder.mergeFrom(excutesqlmsgresult_);
                 excutesqlmsgresult_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000200;
+              bitField0_ |= 0x00000400;
               break;
             }
-            case 90: {
+            case 98: {
               netmsg.Netmsg.QueryDevSpeedMsg.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000400) == 0x00000400)) {
+              if (((bitField0_ & 0x00000800) == 0x00000800)) {
                 subBuilder = querydevspeedmsg_.toBuilder();
               }
               querydevspeedmsg_ = input.readMessage(netmsg.Netmsg.QueryDevSpeedMsg.PARSER, extensionRegistry);
@@ -360,12 +386,12 @@ public final class Netmsg {
                 subBuilder.mergeFrom(querydevspeedmsg_);
                 querydevspeedmsg_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000400;
+              bitField0_ |= 0x00000800;
               break;
             }
-            case 98: {
+            case 106: {
               netmsg.Netmsg.QueryDevSpeedMsgResult.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000800) == 0x00000800)) {
+              if (((bitField0_ & 0x00001000) == 0x00001000)) {
                 subBuilder = querydevspeedmsgresult_.toBuilder();
               }
               querydevspeedmsgresult_ = input.readMessage(netmsg.Netmsg.QueryDevSpeedMsgResult.PARSER, extensionRegistry);
@@ -373,7 +399,7 @@ public final class Netmsg {
                 subBuilder.mergeFrom(querydevspeedmsgresult_);
                 querydevspeedmsgresult_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00000800;
+              bitField0_ |= 0x00001000;
               break;
             }
           }
@@ -458,211 +484,232 @@ public final class Netmsg {
       return registtype_;
     }
 
-    public static final int QUERYDEVCNTMSG_FIELD_NUMBER = 3;
-    private netmsg.Netmsg.QueryDevCntMsg querydevcntmsg_;
+    public static final int REGISTTYPEMSGRESULT_FIELD_NUMBER = 3;
+    private netmsg.Netmsg.RegistTypeMsgResult registtypemsgresult_;
     /**
-     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+     * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
      */
-    public boolean hasQuerydevcntmsg() {
+    public boolean hasRegisttypemsgresult() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+     * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+     */
+    public netmsg.Netmsg.RegistTypeMsgResult getRegisttypemsgresult() {
+      return registtypemsgresult_;
+    }
+    /**
+     * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+     */
+    public netmsg.Netmsg.RegistTypeMsgResultOrBuilder getRegisttypemsgresultOrBuilder() {
+      return registtypemsgresult_;
+    }
+
+    public static final int QUERYDEVCNTMSG_FIELD_NUMBER = 4;
+    private netmsg.Netmsg.QueryDevCntMsg querydevcntmsg_;
+    /**
+     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
+     */
+    public boolean hasQuerydevcntmsg() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
      */
     public netmsg.Netmsg.QueryDevCntMsg getQuerydevcntmsg() {
       return querydevcntmsg_;
     }
     /**
-     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+     * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
      */
     public netmsg.Netmsg.QueryDevCntMsgOrBuilder getQuerydevcntmsgOrBuilder() {
       return querydevcntmsg_;
     }
 
-    public static final int QUERYDEVCNTMSGRESULT_FIELD_NUMBER = 4;
+    public static final int QUERYDEVCNTMSGRESULT_FIELD_NUMBER = 5;
     private netmsg.Netmsg.QueryDevCntMsgResult querydevcntmsgresult_;
     /**
-     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
      */
     public boolean hasQuerydevcntmsgresult() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
      */
     public netmsg.Netmsg.QueryDevCntMsgResult getQuerydevcntmsgresult() {
       return querydevcntmsgresult_;
     }
     /**
-     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+     * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
      */
     public netmsg.Netmsg.QueryDevCntMsgResultOrBuilder getQuerydevcntmsgresultOrBuilder() {
       return querydevcntmsgresult_;
     }
 
-    public static final int QUERY_FIELD_NUMBER = 5;
+    public static final int QUERY_FIELD_NUMBER = 6;
     private netmsg.Netmsg.QueryMsg query_;
     /**
-     * <code>optional .netmsg.QueryMsg query = 5;</code>
+     * <code>optional .netmsg.QueryMsg query = 6;</code>
      */
     public boolean hasQuery() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>optional .netmsg.QueryMsg query = 5;</code>
+     * <code>optional .netmsg.QueryMsg query = 6;</code>
      */
     public netmsg.Netmsg.QueryMsg getQuery() {
       return query_;
     }
     /**
-     * <code>optional .netmsg.QueryMsg query = 5;</code>
+     * <code>optional .netmsg.QueryMsg query = 6;</code>
      */
     public netmsg.Netmsg.QueryMsgOrBuilder getQueryOrBuilder() {
       return query_;
     }
 
-    public static final int ADD_FIELD_NUMBER = 6;
+    public static final int ADD_FIELD_NUMBER = 7;
     private netmsg.Netmsg.AddMsg add_;
     /**
-     * <code>optional .netmsg.AddMsg add = 6;</code>
+     * <code>optional .netmsg.AddMsg add = 7;</code>
      */
     public boolean hasAdd() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
+      return ((bitField0_ & 0x00000040) == 0x00000040);
     }
     /**
-     * <code>optional .netmsg.AddMsg add = 6;</code>
+     * <code>optional .netmsg.AddMsg add = 7;</code>
      */
     public netmsg.Netmsg.AddMsg getAdd() {
       return add_;
     }
     /**
-     * <code>optional .netmsg.AddMsg add = 6;</code>
+     * <code>optional .netmsg.AddMsg add = 7;</code>
      */
     public netmsg.Netmsg.AddMsgOrBuilder getAddOrBuilder() {
       return add_;
     }
 
-    public static final int QUERYMSGRESULT_FIELD_NUMBER = 7;
+    public static final int QUERYMSGRESULT_FIELD_NUMBER = 8;
     private netmsg.Netmsg.QueryMsgResult querymsgresult_;
     /**
-     * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+     * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
      */
     public boolean hasQuerymsgresult() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00000080) == 0x00000080);
     }
     /**
-     * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+     * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
      */
     public netmsg.Netmsg.QueryMsgResult getQuerymsgresult() {
       return querymsgresult_;
     }
     /**
-     * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+     * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
      */
     public netmsg.Netmsg.QueryMsgResultOrBuilder getQuerymsgresultOrBuilder() {
       return querymsgresult_;
     }
 
-    public static final int ADDMSGRESULT_FIELD_NUMBER = 8;
+    public static final int ADDMSGRESULT_FIELD_NUMBER = 9;
     private netmsg.Netmsg.AddMsgResult addmsgresult_;
     /**
-     * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+     * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
      */
     public boolean hasAddmsgresult() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00000100) == 0x00000100);
     }
     /**
-     * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+     * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
      */
     public netmsg.Netmsg.AddMsgResult getAddmsgresult() {
       return addmsgresult_;
     }
     /**
-     * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+     * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
      */
     public netmsg.Netmsg.AddMsgResultOrBuilder getAddmsgresultOrBuilder() {
       return addmsgresult_;
     }
 
-    public static final int EXCUTESQLMSG_FIELD_NUMBER = 9;
+    public static final int EXCUTESQLMSG_FIELD_NUMBER = 10;
     private netmsg.Netmsg.ExcuteSqlMsg excutesqlmsg_;
     /**
-     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
      */
     public boolean hasExcutesqlmsg() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
+      return ((bitField0_ & 0x00000200) == 0x00000200);
     }
     /**
-     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
      */
     public netmsg.Netmsg.ExcuteSqlMsg getExcutesqlmsg() {
       return excutesqlmsg_;
     }
     /**
-     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+     * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
      */
     public netmsg.Netmsg.ExcuteSqlMsgOrBuilder getExcutesqlmsgOrBuilder() {
       return excutesqlmsg_;
     }
 
-    public static final int EXCUTESQLMSGRESULT_FIELD_NUMBER = 10;
+    public static final int EXCUTESQLMSGRESULT_FIELD_NUMBER = 11;
     private netmsg.Netmsg.ExcuteSqlMsgResult excutesqlmsgresult_;
     /**
-     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
      */
     public boolean hasExcutesqlmsgresult() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
+      return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
-     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
      */
     public netmsg.Netmsg.ExcuteSqlMsgResult getExcutesqlmsgresult() {
       return excutesqlmsgresult_;
     }
     /**
-     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+     * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
      */
     public netmsg.Netmsg.ExcuteSqlMsgResultOrBuilder getExcutesqlmsgresultOrBuilder() {
       return excutesqlmsgresult_;
     }
 
-    public static final int QUERYDEVSPEEDMSG_FIELD_NUMBER = 11;
+    public static final int QUERYDEVSPEEDMSG_FIELD_NUMBER = 12;
     private netmsg.Netmsg.QueryDevSpeedMsg querydevspeedmsg_;
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
      */
     public boolean hasQuerydevspeedmsg() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00000800) == 0x00000800);
     }
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
      */
     public netmsg.Netmsg.QueryDevSpeedMsg getQuerydevspeedmsg() {
       return querydevspeedmsg_;
     }
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
      */
     public netmsg.Netmsg.QueryDevSpeedMsgOrBuilder getQuerydevspeedmsgOrBuilder() {
       return querydevspeedmsg_;
     }
 
-    public static final int QUERYDEVSPEEDMSGRESULT_FIELD_NUMBER = 12;
+    public static final int QUERYDEVSPEEDMSGRESULT_FIELD_NUMBER = 13;
     private netmsg.Netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult_;
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
      */
     public boolean hasQuerydevspeedmsgresult() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
      */
     public netmsg.Netmsg.QueryDevSpeedMsgResult getQuerydevspeedmsgresult() {
       return querydevspeedmsgresult_;
     }
     /**
-     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+     * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
      */
     public netmsg.Netmsg.QueryDevSpeedMsgResultOrBuilder getQuerydevspeedmsgresultOrBuilder() {
       return querydevspeedmsgresult_;
@@ -671,6 +718,7 @@ public final class Netmsg {
     private void initFields() {
       head_ = netmsg.Netmsg.MsgHead.getDefaultInstance();
       registtype_ = netmsg.Netmsg.RegistTypeMsg.getDefaultInstance();
+      registtypemsgresult_ = netmsg.Netmsg.RegistTypeMsgResult.getDefaultInstance();
       querydevcntmsg_ = netmsg.Netmsg.QueryDevCntMsg.getDefaultInstance();
       querydevcntmsgresult_ = netmsg.Netmsg.QueryDevCntMsgResult.getDefaultInstance();
       query_ = netmsg.Netmsg.QueryMsg.getDefaultInstance();
@@ -770,34 +818,37 @@ public final class Netmsg {
         output.writeMessage(2, registtype_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeMessage(3, querydevcntmsg_);
+        output.writeMessage(3, registtypemsgresult_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeMessage(4, querydevcntmsgresult_);
+        output.writeMessage(4, querydevcntmsg_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeMessage(5, query_);
+        output.writeMessage(5, querydevcntmsgresult_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeMessage(6, add_);
+        output.writeMessage(6, query_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeMessage(7, querymsgresult_);
+        output.writeMessage(7, add_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeMessage(8, addmsgresult_);
+        output.writeMessage(8, querymsgresult_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeMessage(9, excutesqlmsg_);
+        output.writeMessage(9, addmsgresult_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeMessage(10, excutesqlmsgresult_);
+        output.writeMessage(10, excutesqlmsg_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeMessage(11, querydevspeedmsg_);
+        output.writeMessage(11, excutesqlmsgresult_);
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeMessage(12, querydevspeedmsgresult_);
+        output.writeMessage(12, querydevspeedmsg_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeMessage(13, querydevspeedmsgresult_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -818,43 +869,47 @@ public final class Netmsg {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, querydevcntmsg_);
+          .computeMessageSize(3, registtypemsgresult_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, querydevcntmsgresult_);
+          .computeMessageSize(4, querydevcntmsg_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, query_);
+          .computeMessageSize(5, querydevcntmsgresult_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, add_);
+          .computeMessageSize(6, query_);
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(7, querymsgresult_);
+          .computeMessageSize(7, add_);
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(8, addmsgresult_);
+          .computeMessageSize(8, querymsgresult_);
       }
       if (((bitField0_ & 0x00000100) == 0x00000100)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(9, excutesqlmsg_);
+          .computeMessageSize(9, addmsgresult_);
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(10, excutesqlmsgresult_);
+          .computeMessageSize(10, excutesqlmsg_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(11, querydevspeedmsg_);
+          .computeMessageSize(11, excutesqlmsgresult_);
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(12, querydevspeedmsgresult_);
+          .computeMessageSize(12, querydevspeedmsg_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(13, querydevspeedmsgresult_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -967,6 +1022,7 @@ public final class Netmsg {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getHeadFieldBuilder();
           getRegisttypeFieldBuilder();
+          getRegisttypemsgresultFieldBuilder();
           getQuerydevcntmsgFieldBuilder();
           getQuerydevcntmsgresultFieldBuilder();
           getQueryFieldBuilder();
@@ -997,66 +1053,72 @@ public final class Netmsg {
           registtypeBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000002);
+        if (registtypemsgresultBuilder_ == null) {
+          registtypemsgresult_ = netmsg.Netmsg.RegistTypeMsgResult.getDefaultInstance();
+        } else {
+          registtypemsgresultBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
         if (querydevcntmsgBuilder_ == null) {
           querydevcntmsg_ = netmsg.Netmsg.QueryDevCntMsg.getDefaultInstance();
         } else {
           querydevcntmsgBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         if (querydevcntmsgresultBuilder_ == null) {
           querydevcntmsgresult_ = netmsg.Netmsg.QueryDevCntMsgResult.getDefaultInstance();
         } else {
           querydevcntmsgresultBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         if (queryBuilder_ == null) {
           query_ = netmsg.Netmsg.QueryMsg.getDefaultInstance();
         } else {
           queryBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         if (addBuilder_ == null) {
           add_ = netmsg.Netmsg.AddMsg.getDefaultInstance();
         } else {
           addBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         if (querymsgresultBuilder_ == null) {
           querymsgresult_ = netmsg.Netmsg.QueryMsgResult.getDefaultInstance();
         } else {
           querymsgresultBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         if (addmsgresultBuilder_ == null) {
           addmsgresult_ = netmsg.Netmsg.AddMsgResult.getDefaultInstance();
         } else {
           addmsgresultBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         if (excutesqlmsgBuilder_ == null) {
           excutesqlmsg_ = netmsg.Netmsg.ExcuteSqlMsg.getDefaultInstance();
         } else {
           excutesqlmsgBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         if (excutesqlmsgresultBuilder_ == null) {
           excutesqlmsgresult_ = netmsg.Netmsg.ExcuteSqlMsgResult.getDefaultInstance();
         } else {
           excutesqlmsgresultBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         if (querydevspeedmsgBuilder_ == null) {
           querydevspeedmsg_ = netmsg.Netmsg.QueryDevSpeedMsg.getDefaultInstance();
         } else {
           querydevspeedmsgBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         if (querydevspeedmsgresultBuilder_ == null) {
           querydevspeedmsgresult_ = netmsg.Netmsg.QueryDevSpeedMsgResult.getDefaultInstance();
         } else {
           querydevspeedmsgresultBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
 
@@ -1104,77 +1166,85 @@ public final class Netmsg {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
+        if (registtypemsgresultBuilder_ == null) {
+          result.registtypemsgresult_ = registtypemsgresult_;
+        } else {
+          result.registtypemsgresult_ = registtypemsgresultBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
         if (querydevcntmsgBuilder_ == null) {
           result.querydevcntmsg_ = querydevcntmsg_;
         } else {
           result.querydevcntmsg_ = querydevcntmsgBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
         }
         if (querydevcntmsgresultBuilder_ == null) {
           result.querydevcntmsgresult_ = querydevcntmsgresult_;
         } else {
           result.querydevcntmsgresult_ = querydevcntmsgresultBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
         }
         if (queryBuilder_ == null) {
           result.query_ = query_;
         } else {
           result.query_ = queryBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
         }
         if (addBuilder_ == null) {
           result.add_ = add_;
         } else {
           result.add_ = addBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
         }
         if (querymsgresultBuilder_ == null) {
           result.querymsgresult_ = querymsgresult_;
         } else {
           result.querymsgresult_ = querymsgresultBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
         }
         if (addmsgresultBuilder_ == null) {
           result.addmsgresult_ = addmsgresult_;
         } else {
           result.addmsgresult_ = addmsgresultBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
         }
         if (excutesqlmsgBuilder_ == null) {
           result.excutesqlmsg_ = excutesqlmsg_;
         } else {
           result.excutesqlmsg_ = excutesqlmsgBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
         }
         if (excutesqlmsgresultBuilder_ == null) {
           result.excutesqlmsgresult_ = excutesqlmsgresult_;
         } else {
           result.excutesqlmsgresult_ = excutesqlmsgresultBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
         }
         if (querydevspeedmsgBuilder_ == null) {
           result.querydevspeedmsg_ = querydevspeedmsg_;
         } else {
           result.querydevspeedmsg_ = querydevspeedmsgBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
-          to_bitField0_ |= 0x00000800;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
         }
         if (querydevspeedmsgresultBuilder_ == null) {
           result.querydevspeedmsgresult_ = querydevspeedmsgresult_;
@@ -1202,6 +1272,9 @@ public final class Netmsg {
         }
         if (other.hasRegisttype()) {
           mergeRegisttype(other.getRegisttype());
+        }
+        if (other.hasRegisttypemsgresult()) {
+          mergeRegisttypemsgresult(other.getRegisttypemsgresult());
         }
         if (other.hasQuerydevcntmsg()) {
           mergeQuerydevcntmsg(other.getQuerydevcntmsg());
@@ -1560,17 +1633,133 @@ public final class Netmsg {
         return registtypeBuilder_;
       }
 
+      private netmsg.Netmsg.RegistTypeMsgResult registtypemsgresult_ = netmsg.Netmsg.RegistTypeMsgResult.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          netmsg.Netmsg.RegistTypeMsgResult, netmsg.Netmsg.RegistTypeMsgResult.Builder, netmsg.Netmsg.RegistTypeMsgResultOrBuilder> registtypemsgresultBuilder_;
+      /**
+       * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+       */
+      public boolean hasRegisttypemsgresult() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+       */
+      public netmsg.Netmsg.RegistTypeMsgResult getRegisttypemsgresult() {
+        if (registtypemsgresultBuilder_ == null) {
+          return registtypemsgresult_;
+        } else {
+          return registtypemsgresultBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+       */
+      public Builder setRegisttypemsgresult(netmsg.Netmsg.RegistTypeMsgResult value) {
+        if (registtypemsgresultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          registtypemsgresult_ = value;
+          onChanged();
+        } else {
+          registtypemsgresultBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+       */
+      public Builder setRegisttypemsgresult(
+          netmsg.Netmsg.RegistTypeMsgResult.Builder builderForValue) {
+        if (registtypemsgresultBuilder_ == null) {
+          registtypemsgresult_ = builderForValue.build();
+          onChanged();
+        } else {
+          registtypemsgresultBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+       */
+      public Builder mergeRegisttypemsgresult(netmsg.Netmsg.RegistTypeMsgResult value) {
+        if (registtypemsgresultBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+              registtypemsgresult_ != netmsg.Netmsg.RegistTypeMsgResult.getDefaultInstance()) {
+            registtypemsgresult_ =
+              netmsg.Netmsg.RegistTypeMsgResult.newBuilder(registtypemsgresult_).mergeFrom(value).buildPartial();
+          } else {
+            registtypemsgresult_ = value;
+          }
+          onChanged();
+        } else {
+          registtypemsgresultBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+       */
+      public Builder clearRegisttypemsgresult() {
+        if (registtypemsgresultBuilder_ == null) {
+          registtypemsgresult_ = netmsg.Netmsg.RegistTypeMsgResult.getDefaultInstance();
+          onChanged();
+        } else {
+          registtypemsgresultBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+       */
+      public netmsg.Netmsg.RegistTypeMsgResult.Builder getRegisttypemsgresultBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return getRegisttypemsgresultFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+       */
+      public netmsg.Netmsg.RegistTypeMsgResultOrBuilder getRegisttypemsgresultOrBuilder() {
+        if (registtypemsgresultBuilder_ != null) {
+          return registtypemsgresultBuilder_.getMessageOrBuilder();
+        } else {
+          return registtypemsgresult_;
+        }
+      }
+      /**
+       * <code>optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          netmsg.Netmsg.RegistTypeMsgResult, netmsg.Netmsg.RegistTypeMsgResult.Builder, netmsg.Netmsg.RegistTypeMsgResultOrBuilder> 
+          getRegisttypemsgresultFieldBuilder() {
+        if (registtypemsgresultBuilder_ == null) {
+          registtypemsgresultBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              netmsg.Netmsg.RegistTypeMsgResult, netmsg.Netmsg.RegistTypeMsgResult.Builder, netmsg.Netmsg.RegistTypeMsgResultOrBuilder>(
+                  getRegisttypemsgresult(),
+                  getParentForChildren(),
+                  isClean());
+          registtypemsgresult_ = null;
+        }
+        return registtypemsgresultBuilder_;
+      }
+
       private netmsg.Netmsg.QueryDevCntMsg querydevcntmsg_ = netmsg.Netmsg.QueryDevCntMsg.getDefaultInstance();
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryDevCntMsg, netmsg.Netmsg.QueryDevCntMsg.Builder, netmsg.Netmsg.QueryDevCntMsgOrBuilder> querydevcntmsgBuilder_;
       /**
-       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
        */
       public boolean hasQuerydevcntmsg() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
        */
       public netmsg.Netmsg.QueryDevCntMsg getQuerydevcntmsg() {
         if (querydevcntmsgBuilder_ == null) {
@@ -1580,7 +1769,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
        */
       public Builder setQuerydevcntmsg(netmsg.Netmsg.QueryDevCntMsg value) {
         if (querydevcntmsgBuilder_ == null) {
@@ -1592,11 +1781,11 @@ public final class Netmsg {
         } else {
           querydevcntmsgBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
        */
       public Builder setQuerydevcntmsg(
           netmsg.Netmsg.QueryDevCntMsg.Builder builderForValue) {
@@ -1606,15 +1795,15 @@ public final class Netmsg {
         } else {
           querydevcntmsgBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
        */
       public Builder mergeQuerydevcntmsg(netmsg.Netmsg.QueryDevCntMsg value) {
         if (querydevcntmsgBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004) &&
+          if (((bitField0_ & 0x00000008) == 0x00000008) &&
               querydevcntmsg_ != netmsg.Netmsg.QueryDevCntMsg.getDefaultInstance()) {
             querydevcntmsg_ =
               netmsg.Netmsg.QueryDevCntMsg.newBuilder(querydevcntmsg_).mergeFrom(value).buildPartial();
@@ -1625,11 +1814,11 @@ public final class Netmsg {
         } else {
           querydevcntmsgBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
        */
       public Builder clearQuerydevcntmsg() {
         if (querydevcntmsgBuilder_ == null) {
@@ -1638,19 +1827,19 @@ public final class Netmsg {
         } else {
           querydevcntmsgBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
        */
       public netmsg.Netmsg.QueryDevCntMsg.Builder getQuerydevcntmsgBuilder() {
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         onChanged();
         return getQuerydevcntmsgFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
        */
       public netmsg.Netmsg.QueryDevCntMsgOrBuilder getQuerydevcntmsgOrBuilder() {
         if (querydevcntmsgBuilder_ != null) {
@@ -1660,7 +1849,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;</code>
+       * <code>optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryDevCntMsg, netmsg.Netmsg.QueryDevCntMsg.Builder, netmsg.Netmsg.QueryDevCntMsgOrBuilder> 
@@ -1680,13 +1869,13 @@ public final class Netmsg {
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryDevCntMsgResult, netmsg.Netmsg.QueryDevCntMsgResult.Builder, netmsg.Netmsg.QueryDevCntMsgResultOrBuilder> querydevcntmsgresultBuilder_;
       /**
-       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
        */
       public boolean hasQuerydevcntmsgresult() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
        */
       public netmsg.Netmsg.QueryDevCntMsgResult getQuerydevcntmsgresult() {
         if (querydevcntmsgresultBuilder_ == null) {
@@ -1696,7 +1885,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
        */
       public Builder setQuerydevcntmsgresult(netmsg.Netmsg.QueryDevCntMsgResult value) {
         if (querydevcntmsgresultBuilder_ == null) {
@@ -1708,11 +1897,11 @@ public final class Netmsg {
         } else {
           querydevcntmsgresultBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
        */
       public Builder setQuerydevcntmsgresult(
           netmsg.Netmsg.QueryDevCntMsgResult.Builder builderForValue) {
@@ -1722,15 +1911,15 @@ public final class Netmsg {
         } else {
           querydevcntmsgresultBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
        */
       public Builder mergeQuerydevcntmsgresult(netmsg.Netmsg.QueryDevCntMsgResult value) {
         if (querydevcntmsgresultBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008) &&
+          if (((bitField0_ & 0x00000010) == 0x00000010) &&
               querydevcntmsgresult_ != netmsg.Netmsg.QueryDevCntMsgResult.getDefaultInstance()) {
             querydevcntmsgresult_ =
               netmsg.Netmsg.QueryDevCntMsgResult.newBuilder(querydevcntmsgresult_).mergeFrom(value).buildPartial();
@@ -1741,11 +1930,11 @@ public final class Netmsg {
         } else {
           querydevcntmsgresultBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
        */
       public Builder clearQuerydevcntmsgresult() {
         if (querydevcntmsgresultBuilder_ == null) {
@@ -1754,19 +1943,19 @@ public final class Netmsg {
         } else {
           querydevcntmsgresultBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
        */
       public netmsg.Netmsg.QueryDevCntMsgResult.Builder getQuerydevcntmsgresultBuilder() {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         onChanged();
         return getQuerydevcntmsgresultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
        */
       public netmsg.Netmsg.QueryDevCntMsgResultOrBuilder getQuerydevcntmsgresultOrBuilder() {
         if (querydevcntmsgresultBuilder_ != null) {
@@ -1776,7 +1965,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;</code>
+       * <code>optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryDevCntMsgResult, netmsg.Netmsg.QueryDevCntMsgResult.Builder, netmsg.Netmsg.QueryDevCntMsgResultOrBuilder> 
@@ -1796,13 +1985,13 @@ public final class Netmsg {
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryMsg, netmsg.Netmsg.QueryMsg.Builder, netmsg.Netmsg.QueryMsgOrBuilder> queryBuilder_;
       /**
-       * <code>optional .netmsg.QueryMsg query = 5;</code>
+       * <code>optional .netmsg.QueryMsg query = 6;</code>
        */
       public boolean hasQuery() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>optional .netmsg.QueryMsg query = 5;</code>
+       * <code>optional .netmsg.QueryMsg query = 6;</code>
        */
       public netmsg.Netmsg.QueryMsg getQuery() {
         if (queryBuilder_ == null) {
@@ -1812,7 +2001,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryMsg query = 5;</code>
+       * <code>optional .netmsg.QueryMsg query = 6;</code>
        */
       public Builder setQuery(netmsg.Netmsg.QueryMsg value) {
         if (queryBuilder_ == null) {
@@ -1824,11 +2013,11 @@ public final class Netmsg {
         } else {
           queryBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryMsg query = 5;</code>
+       * <code>optional .netmsg.QueryMsg query = 6;</code>
        */
       public Builder setQuery(
           netmsg.Netmsg.QueryMsg.Builder builderForValue) {
@@ -1838,15 +2027,15 @@ public final class Netmsg {
         } else {
           queryBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryMsg query = 5;</code>
+       * <code>optional .netmsg.QueryMsg query = 6;</code>
        */
       public Builder mergeQuery(netmsg.Netmsg.QueryMsg value) {
         if (queryBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010) &&
+          if (((bitField0_ & 0x00000020) == 0x00000020) &&
               query_ != netmsg.Netmsg.QueryMsg.getDefaultInstance()) {
             query_ =
               netmsg.Netmsg.QueryMsg.newBuilder(query_).mergeFrom(value).buildPartial();
@@ -1857,11 +2046,11 @@ public final class Netmsg {
         } else {
           queryBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryMsg query = 5;</code>
+       * <code>optional .netmsg.QueryMsg query = 6;</code>
        */
       public Builder clearQuery() {
         if (queryBuilder_ == null) {
@@ -1870,19 +2059,19 @@ public final class Netmsg {
         } else {
           queryBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryMsg query = 5;</code>
+       * <code>optional .netmsg.QueryMsg query = 6;</code>
        */
       public netmsg.Netmsg.QueryMsg.Builder getQueryBuilder() {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         onChanged();
         return getQueryFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .netmsg.QueryMsg query = 5;</code>
+       * <code>optional .netmsg.QueryMsg query = 6;</code>
        */
       public netmsg.Netmsg.QueryMsgOrBuilder getQueryOrBuilder() {
         if (queryBuilder_ != null) {
@@ -1892,7 +2081,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryMsg query = 5;</code>
+       * <code>optional .netmsg.QueryMsg query = 6;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryMsg, netmsg.Netmsg.QueryMsg.Builder, netmsg.Netmsg.QueryMsgOrBuilder> 
@@ -1912,13 +2101,13 @@ public final class Netmsg {
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.AddMsg, netmsg.Netmsg.AddMsg.Builder, netmsg.Netmsg.AddMsgOrBuilder> addBuilder_;
       /**
-       * <code>optional .netmsg.AddMsg add = 6;</code>
+       * <code>optional .netmsg.AddMsg add = 7;</code>
        */
       public boolean hasAdd() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
+        return ((bitField0_ & 0x00000040) == 0x00000040);
       }
       /**
-       * <code>optional .netmsg.AddMsg add = 6;</code>
+       * <code>optional .netmsg.AddMsg add = 7;</code>
        */
       public netmsg.Netmsg.AddMsg getAdd() {
         if (addBuilder_ == null) {
@@ -1928,7 +2117,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.AddMsg add = 6;</code>
+       * <code>optional .netmsg.AddMsg add = 7;</code>
        */
       public Builder setAdd(netmsg.Netmsg.AddMsg value) {
         if (addBuilder_ == null) {
@@ -1940,11 +2129,11 @@ public final class Netmsg {
         } else {
           addBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
-       * <code>optional .netmsg.AddMsg add = 6;</code>
+       * <code>optional .netmsg.AddMsg add = 7;</code>
        */
       public Builder setAdd(
           netmsg.Netmsg.AddMsg.Builder builderForValue) {
@@ -1954,15 +2143,15 @@ public final class Netmsg {
         } else {
           addBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
-       * <code>optional .netmsg.AddMsg add = 6;</code>
+       * <code>optional .netmsg.AddMsg add = 7;</code>
        */
       public Builder mergeAdd(netmsg.Netmsg.AddMsg value) {
         if (addBuilder_ == null) {
-          if (((bitField0_ & 0x00000020) == 0x00000020) &&
+          if (((bitField0_ & 0x00000040) == 0x00000040) &&
               add_ != netmsg.Netmsg.AddMsg.getDefaultInstance()) {
             add_ =
               netmsg.Netmsg.AddMsg.newBuilder(add_).mergeFrom(value).buildPartial();
@@ -1973,11 +2162,11 @@ public final class Netmsg {
         } else {
           addBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         return this;
       }
       /**
-       * <code>optional .netmsg.AddMsg add = 6;</code>
+       * <code>optional .netmsg.AddMsg add = 7;</code>
        */
       public Builder clearAdd() {
         if (addBuilder_ == null) {
@@ -1986,19 +2175,19 @@ public final class Netmsg {
         } else {
           addBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
       /**
-       * <code>optional .netmsg.AddMsg add = 6;</code>
+       * <code>optional .netmsg.AddMsg add = 7;</code>
        */
       public netmsg.Netmsg.AddMsg.Builder getAddBuilder() {
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         onChanged();
         return getAddFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .netmsg.AddMsg add = 6;</code>
+       * <code>optional .netmsg.AddMsg add = 7;</code>
        */
       public netmsg.Netmsg.AddMsgOrBuilder getAddOrBuilder() {
         if (addBuilder_ != null) {
@@ -2008,7 +2197,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.AddMsg add = 6;</code>
+       * <code>optional .netmsg.AddMsg add = 7;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.AddMsg, netmsg.Netmsg.AddMsg.Builder, netmsg.Netmsg.AddMsgOrBuilder> 
@@ -2028,13 +2217,13 @@ public final class Netmsg {
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryMsgResult, netmsg.Netmsg.QueryMsgResult.Builder, netmsg.Netmsg.QueryMsgResultOrBuilder> querymsgresultBuilder_;
       /**
-       * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+       * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
        */
       public boolean hasQuerymsgresult() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00000080) == 0x00000080);
       }
       /**
-       * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+       * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
        */
       public netmsg.Netmsg.QueryMsgResult getQuerymsgresult() {
         if (querymsgresultBuilder_ == null) {
@@ -2044,7 +2233,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+       * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
        */
       public Builder setQuerymsgresult(netmsg.Netmsg.QueryMsgResult value) {
         if (querymsgresultBuilder_ == null) {
@@ -2056,11 +2245,11 @@ public final class Netmsg {
         } else {
           querymsgresultBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+       * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
        */
       public Builder setQuerymsgresult(
           netmsg.Netmsg.QueryMsgResult.Builder builderForValue) {
@@ -2070,15 +2259,15 @@ public final class Netmsg {
         } else {
           querymsgresultBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+       * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
        */
       public Builder mergeQuerymsgresult(netmsg.Netmsg.QueryMsgResult value) {
         if (querymsgresultBuilder_ == null) {
-          if (((bitField0_ & 0x00000040) == 0x00000040) &&
+          if (((bitField0_ & 0x00000080) == 0x00000080) &&
               querymsgresult_ != netmsg.Netmsg.QueryMsgResult.getDefaultInstance()) {
             querymsgresult_ =
               netmsg.Netmsg.QueryMsgResult.newBuilder(querymsgresult_).mergeFrom(value).buildPartial();
@@ -2089,11 +2278,11 @@ public final class Netmsg {
         } else {
           querymsgresultBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+       * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
        */
       public Builder clearQuerymsgresult() {
         if (querymsgresultBuilder_ == null) {
@@ -2102,19 +2291,19 @@ public final class Netmsg {
         } else {
           querymsgresultBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+       * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
        */
       public netmsg.Netmsg.QueryMsgResult.Builder getQuerymsgresultBuilder() {
-        bitField0_ |= 0x00000040;
+        bitField0_ |= 0x00000080;
         onChanged();
         return getQuerymsgresultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+       * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
        */
       public netmsg.Netmsg.QueryMsgResultOrBuilder getQuerymsgresultOrBuilder() {
         if (querymsgresultBuilder_ != null) {
@@ -2124,7 +2313,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryMsgResult querymsgresult = 7;</code>
+       * <code>optional .netmsg.QueryMsgResult querymsgresult = 8;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryMsgResult, netmsg.Netmsg.QueryMsgResult.Builder, netmsg.Netmsg.QueryMsgResultOrBuilder> 
@@ -2144,13 +2333,13 @@ public final class Netmsg {
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.AddMsgResult, netmsg.Netmsg.AddMsgResult.Builder, netmsg.Netmsg.AddMsgResultOrBuilder> addmsgresultBuilder_;
       /**
-       * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+       * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
        */
       public boolean hasAddmsgresult() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00000100) == 0x00000100);
       }
       /**
-       * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+       * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
        */
       public netmsg.Netmsg.AddMsgResult getAddmsgresult() {
         if (addmsgresultBuilder_ == null) {
@@ -2160,7 +2349,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+       * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
        */
       public Builder setAddmsgresult(netmsg.Netmsg.AddMsgResult value) {
         if (addmsgresultBuilder_ == null) {
@@ -2172,11 +2361,11 @@ public final class Netmsg {
         } else {
           addmsgresultBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         return this;
       }
       /**
-       * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+       * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
        */
       public Builder setAddmsgresult(
           netmsg.Netmsg.AddMsgResult.Builder builderForValue) {
@@ -2186,15 +2375,15 @@ public final class Netmsg {
         } else {
           addmsgresultBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         return this;
       }
       /**
-       * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+       * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
        */
       public Builder mergeAddmsgresult(netmsg.Netmsg.AddMsgResult value) {
         if (addmsgresultBuilder_ == null) {
-          if (((bitField0_ & 0x00000080) == 0x00000080) &&
+          if (((bitField0_ & 0x00000100) == 0x00000100) &&
               addmsgresult_ != netmsg.Netmsg.AddMsgResult.getDefaultInstance()) {
             addmsgresult_ =
               netmsg.Netmsg.AddMsgResult.newBuilder(addmsgresult_).mergeFrom(value).buildPartial();
@@ -2205,11 +2394,11 @@ public final class Netmsg {
         } else {
           addmsgresultBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         return this;
       }
       /**
-       * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+       * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
        */
       public Builder clearAddmsgresult() {
         if (addmsgresultBuilder_ == null) {
@@ -2218,19 +2407,19 @@ public final class Netmsg {
         } else {
           addmsgresultBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
       /**
-       * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+       * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
        */
       public netmsg.Netmsg.AddMsgResult.Builder getAddmsgresultBuilder() {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00000100;
         onChanged();
         return getAddmsgresultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+       * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
        */
       public netmsg.Netmsg.AddMsgResultOrBuilder getAddmsgresultOrBuilder() {
         if (addmsgresultBuilder_ != null) {
@@ -2240,7 +2429,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.AddMsgResult addmsgresult = 8;</code>
+       * <code>optional .netmsg.AddMsgResult addmsgresult = 9;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.AddMsgResult, netmsg.Netmsg.AddMsgResult.Builder, netmsg.Netmsg.AddMsgResultOrBuilder> 
@@ -2260,13 +2449,13 @@ public final class Netmsg {
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.ExcuteSqlMsg, netmsg.Netmsg.ExcuteSqlMsg.Builder, netmsg.Netmsg.ExcuteSqlMsgOrBuilder> excutesqlmsgBuilder_;
       /**
-       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
        */
       public boolean hasExcutesqlmsg() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
+        return ((bitField0_ & 0x00000200) == 0x00000200);
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
        */
       public netmsg.Netmsg.ExcuteSqlMsg getExcutesqlmsg() {
         if (excutesqlmsgBuilder_ == null) {
@@ -2276,7 +2465,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
        */
       public Builder setExcutesqlmsg(netmsg.Netmsg.ExcuteSqlMsg value) {
         if (excutesqlmsgBuilder_ == null) {
@@ -2288,11 +2477,11 @@ public final class Netmsg {
         } else {
           excutesqlmsgBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         return this;
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
        */
       public Builder setExcutesqlmsg(
           netmsg.Netmsg.ExcuteSqlMsg.Builder builderForValue) {
@@ -2302,15 +2491,15 @@ public final class Netmsg {
         } else {
           excutesqlmsgBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         return this;
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
        */
       public Builder mergeExcutesqlmsg(netmsg.Netmsg.ExcuteSqlMsg value) {
         if (excutesqlmsgBuilder_ == null) {
-          if (((bitField0_ & 0x00000100) == 0x00000100) &&
+          if (((bitField0_ & 0x00000200) == 0x00000200) &&
               excutesqlmsg_ != netmsg.Netmsg.ExcuteSqlMsg.getDefaultInstance()) {
             excutesqlmsg_ =
               netmsg.Netmsg.ExcuteSqlMsg.newBuilder(excutesqlmsg_).mergeFrom(value).buildPartial();
@@ -2321,11 +2510,11 @@ public final class Netmsg {
         } else {
           excutesqlmsgBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         return this;
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
        */
       public Builder clearExcutesqlmsg() {
         if (excutesqlmsgBuilder_ == null) {
@@ -2334,19 +2523,19 @@ public final class Netmsg {
         } else {
           excutesqlmsgBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
        */
       public netmsg.Netmsg.ExcuteSqlMsg.Builder getExcutesqlmsgBuilder() {
-        bitField0_ |= 0x00000100;
+        bitField0_ |= 0x00000200;
         onChanged();
         return getExcutesqlmsgFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
        */
       public netmsg.Netmsg.ExcuteSqlMsgOrBuilder getExcutesqlmsgOrBuilder() {
         if (excutesqlmsgBuilder_ != null) {
@@ -2356,7 +2545,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;</code>
+       * <code>optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.ExcuteSqlMsg, netmsg.Netmsg.ExcuteSqlMsg.Builder, netmsg.Netmsg.ExcuteSqlMsgOrBuilder> 
@@ -2376,13 +2565,13 @@ public final class Netmsg {
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.ExcuteSqlMsgResult, netmsg.Netmsg.ExcuteSqlMsgResult.Builder, netmsg.Netmsg.ExcuteSqlMsgResultOrBuilder> excutesqlmsgresultBuilder_;
       /**
-       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
        */
       public boolean hasExcutesqlmsgresult() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
+        return ((bitField0_ & 0x00000400) == 0x00000400);
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
        */
       public netmsg.Netmsg.ExcuteSqlMsgResult getExcutesqlmsgresult() {
         if (excutesqlmsgresultBuilder_ == null) {
@@ -2392,7 +2581,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
        */
       public Builder setExcutesqlmsgresult(netmsg.Netmsg.ExcuteSqlMsgResult value) {
         if (excutesqlmsgresultBuilder_ == null) {
@@ -2404,11 +2593,11 @@ public final class Netmsg {
         } else {
           excutesqlmsgresultBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
        */
       public Builder setExcutesqlmsgresult(
           netmsg.Netmsg.ExcuteSqlMsgResult.Builder builderForValue) {
@@ -2418,15 +2607,15 @@ public final class Netmsg {
         } else {
           excutesqlmsgresultBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
        */
       public Builder mergeExcutesqlmsgresult(netmsg.Netmsg.ExcuteSqlMsgResult value) {
         if (excutesqlmsgresultBuilder_ == null) {
-          if (((bitField0_ & 0x00000200) == 0x00000200) &&
+          if (((bitField0_ & 0x00000400) == 0x00000400) &&
               excutesqlmsgresult_ != netmsg.Netmsg.ExcuteSqlMsgResult.getDefaultInstance()) {
             excutesqlmsgresult_ =
               netmsg.Netmsg.ExcuteSqlMsgResult.newBuilder(excutesqlmsgresult_).mergeFrom(value).buildPartial();
@@ -2437,11 +2626,11 @@ public final class Netmsg {
         } else {
           excutesqlmsgresultBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         return this;
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
        */
       public Builder clearExcutesqlmsgresult() {
         if (excutesqlmsgresultBuilder_ == null) {
@@ -2450,19 +2639,19 @@ public final class Netmsg {
         } else {
           excutesqlmsgresultBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000200);
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
        */
       public netmsg.Netmsg.ExcuteSqlMsgResult.Builder getExcutesqlmsgresultBuilder() {
-        bitField0_ |= 0x00000200;
+        bitField0_ |= 0x00000400;
         onChanged();
         return getExcutesqlmsgresultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
        */
       public netmsg.Netmsg.ExcuteSqlMsgResultOrBuilder getExcutesqlmsgresultOrBuilder() {
         if (excutesqlmsgresultBuilder_ != null) {
@@ -2472,7 +2661,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;</code>
+       * <code>optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.ExcuteSqlMsgResult, netmsg.Netmsg.ExcuteSqlMsgResult.Builder, netmsg.Netmsg.ExcuteSqlMsgResultOrBuilder> 
@@ -2492,13 +2681,13 @@ public final class Netmsg {
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryDevSpeedMsg, netmsg.Netmsg.QueryDevSpeedMsg.Builder, netmsg.Netmsg.QueryDevSpeedMsgOrBuilder> querydevspeedmsgBuilder_;
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
        */
       public boolean hasQuerydevspeedmsg() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
+        return ((bitField0_ & 0x00000800) == 0x00000800);
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
        */
       public netmsg.Netmsg.QueryDevSpeedMsg getQuerydevspeedmsg() {
         if (querydevspeedmsgBuilder_ == null) {
@@ -2508,7 +2697,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
        */
       public Builder setQuerydevspeedmsg(netmsg.Netmsg.QueryDevSpeedMsg value) {
         if (querydevspeedmsgBuilder_ == null) {
@@ -2520,11 +2709,11 @@ public final class Netmsg {
         } else {
           querydevspeedmsgBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
        */
       public Builder setQuerydevspeedmsg(
           netmsg.Netmsg.QueryDevSpeedMsg.Builder builderForValue) {
@@ -2534,15 +2723,15 @@ public final class Netmsg {
         } else {
           querydevspeedmsgBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
        */
       public Builder mergeQuerydevspeedmsg(netmsg.Netmsg.QueryDevSpeedMsg value) {
         if (querydevspeedmsgBuilder_ == null) {
-          if (((bitField0_ & 0x00000400) == 0x00000400) &&
+          if (((bitField0_ & 0x00000800) == 0x00000800) &&
               querydevspeedmsg_ != netmsg.Netmsg.QueryDevSpeedMsg.getDefaultInstance()) {
             querydevspeedmsg_ =
               netmsg.Netmsg.QueryDevSpeedMsg.newBuilder(querydevspeedmsg_).mergeFrom(value).buildPartial();
@@ -2553,11 +2742,11 @@ public final class Netmsg {
         } else {
           querydevspeedmsgBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
        */
       public Builder clearQuerydevspeedmsg() {
         if (querydevspeedmsgBuilder_ == null) {
@@ -2566,19 +2755,19 @@ public final class Netmsg {
         } else {
           querydevspeedmsgBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000800);
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
        */
       public netmsg.Netmsg.QueryDevSpeedMsg.Builder getQuerydevspeedmsgBuilder() {
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000800;
         onChanged();
         return getQuerydevspeedmsgFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
        */
       public netmsg.Netmsg.QueryDevSpeedMsgOrBuilder getQuerydevspeedmsgOrBuilder() {
         if (querydevspeedmsgBuilder_ != null) {
@@ -2588,7 +2777,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryDevSpeedMsg, netmsg.Netmsg.QueryDevSpeedMsg.Builder, netmsg.Netmsg.QueryDevSpeedMsgOrBuilder> 
@@ -2608,13 +2797,13 @@ public final class Netmsg {
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryDevSpeedMsgResult, netmsg.Netmsg.QueryDevSpeedMsgResult.Builder, netmsg.Netmsg.QueryDevSpeedMsgResultOrBuilder> querydevspeedmsgresultBuilder_;
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
        */
       public boolean hasQuerydevspeedmsgresult() {
-        return ((bitField0_ & 0x00000800) == 0x00000800);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
        */
       public netmsg.Netmsg.QueryDevSpeedMsgResult getQuerydevspeedmsgresult() {
         if (querydevspeedmsgresultBuilder_ == null) {
@@ -2624,7 +2813,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
        */
       public Builder setQuerydevspeedmsgresult(netmsg.Netmsg.QueryDevSpeedMsgResult value) {
         if (querydevspeedmsgresultBuilder_ == null) {
@@ -2636,11 +2825,11 @@ public final class Netmsg {
         } else {
           querydevspeedmsgresultBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00001000;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
        */
       public Builder setQuerydevspeedmsgresult(
           netmsg.Netmsg.QueryDevSpeedMsgResult.Builder builderForValue) {
@@ -2650,15 +2839,15 @@ public final class Netmsg {
         } else {
           querydevspeedmsgresultBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00001000;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
        */
       public Builder mergeQuerydevspeedmsgresult(netmsg.Netmsg.QueryDevSpeedMsgResult value) {
         if (querydevspeedmsgresultBuilder_ == null) {
-          if (((bitField0_ & 0x00000800) == 0x00000800) &&
+          if (((bitField0_ & 0x00001000) == 0x00001000) &&
               querydevspeedmsgresult_ != netmsg.Netmsg.QueryDevSpeedMsgResult.getDefaultInstance()) {
             querydevspeedmsgresult_ =
               netmsg.Netmsg.QueryDevSpeedMsgResult.newBuilder(querydevspeedmsgresult_).mergeFrom(value).buildPartial();
@@ -2669,11 +2858,11 @@ public final class Netmsg {
         } else {
           querydevspeedmsgresultBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00001000;
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
        */
       public Builder clearQuerydevspeedmsgresult() {
         if (querydevspeedmsgresultBuilder_ == null) {
@@ -2682,19 +2871,19 @@ public final class Netmsg {
         } else {
           querydevspeedmsgresultBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
        */
       public netmsg.Netmsg.QueryDevSpeedMsgResult.Builder getQuerydevspeedmsgresultBuilder() {
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00001000;
         onChanged();
         return getQuerydevspeedmsgresultFieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
        */
       public netmsg.Netmsg.QueryDevSpeedMsgResultOrBuilder getQuerydevspeedmsgresultOrBuilder() {
         if (querydevspeedmsgresultBuilder_ != null) {
@@ -2704,7 +2893,7 @@ public final class Netmsg {
         }
       }
       /**
-       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;</code>
+       * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           netmsg.Netmsg.QueryDevSpeedMsgResult, netmsg.Netmsg.QueryDevSpeedMsgResult.Builder, netmsg.Netmsg.QueryDevSpeedMsgResultOrBuilder> 
@@ -2754,11 +2943,11 @@ public final class Netmsg {
     int getTotalPack();
 
     /**
-     * <code>required int32 packIndex = 3 [default = 1];</code>
+     * <code>required int32 packIndex = 3 [default = 0];</code>
      */
     boolean hasPackIndex();
     /**
-     * <code>required int32 packIndex = 3 [default = 1];</code>
+     * <code>required int32 packIndex = 3 [default = 0];</code>
      */
     int getPackIndex();
   }
@@ -2902,13 +3091,13 @@ public final class Netmsg {
     public static final int PACKINDEX_FIELD_NUMBER = 3;
     private int packIndex_;
     /**
-     * <code>required int32 packIndex = 3 [default = 1];</code>
+     * <code>required int32 packIndex = 3 [default = 0];</code>
      */
     public boolean hasPackIndex() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required int32 packIndex = 3 [default = 1];</code>
+     * <code>required int32 packIndex = 3 [default = 0];</code>
      */
     public int getPackIndex() {
       return packIndex_;
@@ -2917,7 +3106,7 @@ public final class Netmsg {
     private void initFields() {
       globalPackNumber_ = 1;
       totalPack_ = 1;
-      packIndex_ = 1;
+      packIndex_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3095,7 +3284,7 @@ public final class Netmsg {
         bitField0_ = (bitField0_ & ~0x00000001);
         totalPack_ = 1;
         bitField0_ = (bitField0_ & ~0x00000002);
-        packIndex_ = 1;
+        packIndex_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
@@ -3265,21 +3454,21 @@ public final class Netmsg {
         return this;
       }
 
-      private int packIndex_ = 1;
+      private int packIndex_ ;
       /**
-       * <code>required int32 packIndex = 3 [default = 1];</code>
+       * <code>required int32 packIndex = 3 [default = 0];</code>
        */
       public boolean hasPackIndex() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>required int32 packIndex = 3 [default = 1];</code>
+       * <code>required int32 packIndex = 3 [default = 0];</code>
        */
       public int getPackIndex() {
         return packIndex_;
       }
       /**
-       * <code>required int32 packIndex = 3 [default = 1];</code>
+       * <code>required int32 packIndex = 3 [default = 0];</code>
        */
       public Builder setPackIndex(int value) {
         bitField0_ |= 0x00000004;
@@ -3288,11 +3477,11 @@ public final class Netmsg {
         return this;
       }
       /**
-       * <code>required int32 packIndex = 3 [default = 1];</code>
+       * <code>required int32 packIndex = 3 [default = 0];</code>
        */
       public Builder clearPackIndex() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        packIndex_ = 1;
+        packIndex_ = 0;
         onChanged();
         return this;
       }
@@ -3320,6 +3509,43 @@ public final class Netmsg {
      * <code>required bool bDevice = 1;</code>
      */
     boolean getBDevice();
+
+    /**
+     * <code>required string ip = 2;</code>
+     */
+    boolean hasIp();
+    /**
+     * <code>required string ip = 2;</code>
+     */
+    java.lang.String getIp();
+    /**
+     * <code>required string ip = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getIpBytes();
+
+    /**
+     * <code>required string serverip = 3;</code>
+     */
+    boolean hasServerip();
+    /**
+     * <code>required string serverip = 3;</code>
+     */
+    java.lang.String getServerip();
+    /**
+     * <code>required string serverip = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getServeripBytes();
+
+    /**
+     * <code>required bool bNormal = 4;</code>
+     */
+    boolean hasBNormal();
+    /**
+     * <code>required bool bNormal = 4;</code>
+     */
+    boolean getBNormal();
   }
   /**
    * Protobuf type {@code netmsg.RegistTypeMsg}
@@ -3378,6 +3604,23 @@ public final class Netmsg {
               bDevice_ = input.readBool();
               break;
             }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              ip_ = bs;
+              break;
+            }
+            case 26: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000004;
+              serverip_ = bs;
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              bNormal_ = input.readBool();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -3433,8 +3676,110 @@ public final class Netmsg {
       return bDevice_;
     }
 
+    public static final int IP_FIELD_NUMBER = 2;
+    private java.lang.Object ip_;
+    /**
+     * <code>required string ip = 2;</code>
+     */
+    public boolean hasIp() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string ip = 2;</code>
+     */
+    public java.lang.String getIp() {
+      java.lang.Object ref = ip_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          ip_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string ip = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getIpBytes() {
+      java.lang.Object ref = ip_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        ip_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SERVERIP_FIELD_NUMBER = 3;
+    private java.lang.Object serverip_;
+    /**
+     * <code>required string serverip = 3;</code>
+     */
+    public boolean hasServerip() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string serverip = 3;</code>
+     */
+    public java.lang.String getServerip() {
+      java.lang.Object ref = serverip_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          serverip_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string serverip = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getServeripBytes() {
+      java.lang.Object ref = serverip_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        serverip_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BNORMAL_FIELD_NUMBER = 4;
+    private boolean bNormal_;
+    /**
+     * <code>required bool bNormal = 4;</code>
+     */
+    public boolean hasBNormal() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required bool bNormal = 4;</code>
+     */
+    public boolean getBNormal() {
+      return bNormal_;
+    }
+
     private void initFields() {
       bDevice_ = false;
+      ip_ = "";
+      serverip_ = "";
+      bNormal_ = false;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3443,6 +3788,18 @@ public final class Netmsg {
       if (isInitialized == 0) return false;
 
       if (!hasBDevice()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasIp()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasServerip()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBNormal()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3456,6 +3813,15 @@ public final class Netmsg {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         output.writeBool(1, bDevice_);
       }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getIpBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getServeripBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBool(4, bNormal_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -3468,6 +3834,18 @@ public final class Netmsg {
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(1, bDevice_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getIpBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getServeripBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, bNormal_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3588,6 +3966,12 @@ public final class Netmsg {
         super.clear();
         bDevice_ = false;
         bitField0_ = (bitField0_ & ~0x00000001);
+        ip_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        serverip_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        bNormal_ = false;
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -3620,6 +4004,18 @@ public final class Netmsg {
           to_bitField0_ |= 0x00000001;
         }
         result.bDevice_ = bDevice_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.ip_ = ip_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.serverip_ = serverip_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.bNormal_ = bNormal_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3639,12 +4035,37 @@ public final class Netmsg {
         if (other.hasBDevice()) {
           setBDevice(other.getBDevice());
         }
+        if (other.hasIp()) {
+          bitField0_ |= 0x00000002;
+          ip_ = other.ip_;
+          onChanged();
+        }
+        if (other.hasServerip()) {
+          bitField0_ |= 0x00000004;
+          serverip_ = other.serverip_;
+          onChanged();
+        }
+        if (other.hasBNormal()) {
+          setBNormal(other.getBNormal());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
 
       public final boolean isInitialized() {
         if (!hasBDevice()) {
+          
+          return false;
+        }
+        if (!hasIp()) {
+          
+          return false;
+        }
+        if (!hasServerip()) {
+          
+          return false;
+        }
+        if (!hasBNormal()) {
           
           return false;
         }
@@ -3702,6 +4123,190 @@ public final class Netmsg {
         return this;
       }
 
+      private java.lang.Object ip_ = "";
+      /**
+       * <code>required string ip = 2;</code>
+       */
+      public boolean hasIp() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string ip = 2;</code>
+       */
+      public java.lang.String getIp() {
+        java.lang.Object ref = ip_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            ip_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string ip = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getIpBytes() {
+        java.lang.Object ref = ip_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          ip_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string ip = 2;</code>
+       */
+      public Builder setIp(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        ip_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string ip = 2;</code>
+       */
+      public Builder clearIp() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        ip_ = getDefaultInstance().getIp();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string ip = 2;</code>
+       */
+      public Builder setIpBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        ip_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object serverip_ = "";
+      /**
+       * <code>required string serverip = 3;</code>
+       */
+      public boolean hasServerip() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string serverip = 3;</code>
+       */
+      public java.lang.String getServerip() {
+        java.lang.Object ref = serverip_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            serverip_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string serverip = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getServeripBytes() {
+        java.lang.Object ref = serverip_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          serverip_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string serverip = 3;</code>
+       */
+      public Builder setServerip(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        serverip_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string serverip = 3;</code>
+       */
+      public Builder clearServerip() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        serverip_ = getDefaultInstance().getServerip();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string serverip = 3;</code>
+       */
+      public Builder setServeripBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        serverip_ = value;
+        onChanged();
+        return this;
+      }
+
+      private boolean bNormal_ ;
+      /**
+       * <code>required bool bNormal = 4;</code>
+       */
+      public boolean hasBNormal() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required bool bNormal = 4;</code>
+       */
+      public boolean getBNormal() {
+        return bNormal_;
+      }
+      /**
+       * <code>required bool bNormal = 4;</code>
+       */
+      public Builder setBNormal(boolean value) {
+        bitField0_ |= 0x00000008;
+        bNormal_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required bool bNormal = 4;</code>
+       */
+      public Builder clearBNormal() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        bNormal_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:netmsg.RegistTypeMsg)
     }
 
@@ -3711,6 +4316,319 @@ public final class Netmsg {
     }
 
     // @@protoc_insertion_point(class_scope:netmsg.RegistTypeMsg)
+  }
+
+  public interface RegistTypeMsgResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:netmsg.RegistTypeMsgResult)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code netmsg.RegistTypeMsgResult}
+   */
+  public static final class RegistTypeMsgResult extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:netmsg.RegistTypeMsgResult)
+      RegistTypeMsgResultOrBuilder {
+    // Use RegistTypeMsgResult.newBuilder() to construct.
+    private RegistTypeMsgResult(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private RegistTypeMsgResult(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final RegistTypeMsgResult defaultInstance;
+    public static RegistTypeMsgResult getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public RegistTypeMsgResult getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private RegistTypeMsgResult(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return netmsg.Netmsg.internal_static_netmsg_RegistTypeMsgResult_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return netmsg.Netmsg.internal_static_netmsg_RegistTypeMsgResult_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              netmsg.Netmsg.RegistTypeMsgResult.class, netmsg.Netmsg.RegistTypeMsgResult.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<RegistTypeMsgResult> PARSER =
+        new com.google.protobuf.AbstractParser<RegistTypeMsgResult>() {
+      public RegistTypeMsgResult parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new RegistTypeMsgResult(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<RegistTypeMsgResult> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static netmsg.Netmsg.RegistTypeMsgResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static netmsg.Netmsg.RegistTypeMsgResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static netmsg.Netmsg.RegistTypeMsgResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static netmsg.Netmsg.RegistTypeMsgResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static netmsg.Netmsg.RegistTypeMsgResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static netmsg.Netmsg.RegistTypeMsgResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static netmsg.Netmsg.RegistTypeMsgResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static netmsg.Netmsg.RegistTypeMsgResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static netmsg.Netmsg.RegistTypeMsgResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static netmsg.Netmsg.RegistTypeMsgResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(netmsg.Netmsg.RegistTypeMsgResult prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code netmsg.RegistTypeMsgResult}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:netmsg.RegistTypeMsgResult)
+        netmsg.Netmsg.RegistTypeMsgResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return netmsg.Netmsg.internal_static_netmsg_RegistTypeMsgResult_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return netmsg.Netmsg.internal_static_netmsg_RegistTypeMsgResult_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                netmsg.Netmsg.RegistTypeMsgResult.class, netmsg.Netmsg.RegistTypeMsgResult.Builder.class);
+      }
+
+      // Construct using netmsg.Netmsg.RegistTypeMsgResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return netmsg.Netmsg.internal_static_netmsg_RegistTypeMsgResult_descriptor;
+      }
+
+      public netmsg.Netmsg.RegistTypeMsgResult getDefaultInstanceForType() {
+        return netmsg.Netmsg.RegistTypeMsgResult.getDefaultInstance();
+      }
+
+      public netmsg.Netmsg.RegistTypeMsgResult build() {
+        netmsg.Netmsg.RegistTypeMsgResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public netmsg.Netmsg.RegistTypeMsgResult buildPartial() {
+        netmsg.Netmsg.RegistTypeMsgResult result = new netmsg.Netmsg.RegistTypeMsgResult(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof netmsg.Netmsg.RegistTypeMsgResult) {
+          return mergeFrom((netmsg.Netmsg.RegistTypeMsgResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(netmsg.Netmsg.RegistTypeMsgResult other) {
+        if (other == netmsg.Netmsg.RegistTypeMsgResult.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        netmsg.Netmsg.RegistTypeMsgResult parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (netmsg.Netmsg.RegistTypeMsgResult) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:netmsg.RegistTypeMsgResult)
+    }
+
+    static {
+      defaultInstance = new RegistTypeMsgResult(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:netmsg.RegistTypeMsgResult)
   }
 
   public interface QueryDevCntMsgOrBuilder extends
@@ -8907,6 +9825,11 @@ public final class Netmsg {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_netmsg_RegistTypeMsg_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_netmsg_RegistTypeMsgResult_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_netmsg_RegistTypeMsgResult_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_netmsg_QueryDevCntMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -8965,35 +9888,38 @@ public final class Netmsg {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014netmsg.proto\022\006netmsg\"\261\004\n\007MsgPack\022\035\n\004he" +
+      "\n\014netmsg.proto\022\006netmsg\"\353\004\n\007MsgPack\022\035\n\004he" +
       "ad\030\001 \002(\0132\017.netmsg.MsgHead\022)\n\nregisttype\030" +
-      "\002 \001(\0132\025.netmsg.RegistTypeMsg\022.\n\016querydev" +
-      "cntmsg\030\003 \001(\0132\026.netmsg.QueryDevCntMsg\022:\n\024" +
-      "querydevcntmsgresult\030\004 \001(\0132\034.netmsg.Quer" +
-      "yDevCntMsgResult\022\037\n\005query\030\005 \001(\0132\020.netmsg" +
-      ".QueryMsg\022\033\n\003add\030\006 \001(\0132\016.netmsg.AddMsg\022." +
-      "\n\016querymsgresult\030\007 \001(\0132\026.netmsg.QueryMsg" +
-      "Result\022*\n\014addmsgresult\030\010 \001(\0132\024.netmsg.Ad" +
-      "dMsgResult\022*\n\014excutesqlmsg\030\t \001(\0132\024.netms",
-      "g.ExcuteSqlMsg\0226\n\022excutesqlmsgresult\030\n \001" +
-      "(\0132\032.netmsg.ExcuteSqlMsgResult\0222\n\020queryd" +
-      "evspeedmsg\030\013 \001(\0132\030.netmsg.QueryDevSpeedM" +
-      "sg\022>\n\026querydevspeedmsgresult\030\014 \001(\0132\036.net" +
-      "msg.QueryDevSpeedMsgResult\"R\n\007MsgHead\022\033\n" +
-      "\020globalPackNumber\030\001 \002(\r:\0011\022\024\n\ttotalPack\030" +
-      "\002 \002(\005:\0011\022\024\n\tpackIndex\030\003 \002(\005:\0011\" \n\rRegist" +
-      "TypeMsg\022\017\n\007bDevice\030\001 \002(\010\"\020\n\016QueryDevCntM" +
-      "sg\"&\n\024QueryDevCntMsgResult\022\016\n\006devCnt\030\001 \002" +
-      "(\005\"\027\n\010QueryMsg\022\013\n\003Msg\030\001 \002(\t\"9\n\016QueryMsgR",
-      "esult\022\022\n\nresultData\030\001 \002(\t\022\023\n\013resultError" +
-      "\030\002 \002(\t\"(\n\006AddMsg\022\021\n\tTableName\030\001 \002(\t\022\013\n\003M" +
-      "sg\030\002 \002(\t\"#\n\014AddMsgResult\022\023\n\013resultError\030" +
-      "\001 \002(\t\"\033\n\014ExcuteSqlMsg\022\013\n\003Msg\030\001 \002(\t\")\n\022Ex" +
-      "cuteSqlMsgResult\022\023\n\013resultError\030\001 \002(\t\"G\n" +
-      "\020QueryDevSpeedMsg\022\r\n\005ipStr\030\001 \002(\t\022\021\n\taskU" +
-      "serID\030\002 \002(\005\022\021\n\tstartTime\030\003 \002(\003\"<\n\026QueryD" +
-      "evSpeedMsgResult\022\r\n\005speed\030\001 \002(\005\022\023\n\013resul" +
-      "tError\030\002 \002(\t"
+      "\002 \001(\0132\025.netmsg.RegistTypeMsg\0228\n\023registty" +
+      "pemsgresult\030\003 \001(\0132\033.netmsg.RegistTypeMsg" +
+      "Result\022.\n\016querydevcntmsg\030\004 \001(\0132\026.netmsg." +
+      "QueryDevCntMsg\022:\n\024querydevcntmsgresult\030\005" +
+      " \001(\0132\034.netmsg.QueryDevCntMsgResult\022\037\n\005qu" +
+      "ery\030\006 \001(\0132\020.netmsg.QueryMsg\022\033\n\003add\030\007 \001(\013" +
+      "2\016.netmsg.AddMsg\022.\n\016querymsgresult\030\010 \001(\013" +
+      "2\026.netmsg.QueryMsgResult\022*\n\014addmsgresult",
+      "\030\t \001(\0132\024.netmsg.AddMsgResult\022*\n\014excutesq" +
+      "lmsg\030\n \001(\0132\024.netmsg.ExcuteSqlMsg\0226\n\022excu" +
+      "tesqlmsgresult\030\013 \001(\0132\032.netmsg.ExcuteSqlM" +
+      "sgResult\0222\n\020querydevspeedmsg\030\014 \001(\0132\030.net" +
+      "msg.QueryDevSpeedMsg\022>\n\026querydevspeedmsg" +
+      "result\030\r \001(\0132\036.netmsg.QueryDevSpeedMsgRe" +
+      "sult\"R\n\007MsgHead\022\033\n\020globalPackNumber\030\001 \002(" +
+      "\r:\0011\022\024\n\ttotalPack\030\002 \002(\005:\0011\022\024\n\tpackIndex\030" +
+      "\003 \002(\005:\0010\"O\n\rRegistTypeMsg\022\017\n\007bDevice\030\001 \002" +
+      "(\010\022\n\n\002ip\030\002 \002(\t\022\020\n\010serverip\030\003 \002(\t\022\017\n\007bNor",
+      "mal\030\004 \002(\010\"\025\n\023RegistTypeMsgResult\"\020\n\016Quer" +
+      "yDevCntMsg\"&\n\024QueryDevCntMsgResult\022\016\n\006de" +
+      "vCnt\030\001 \002(\005\"\027\n\010QueryMsg\022\013\n\003Msg\030\001 \002(\t\"9\n\016Q" +
+      "ueryMsgResult\022\022\n\nresultData\030\001 \002(\t\022\023\n\013res" +
+      "ultError\030\002 \002(\t\"(\n\006AddMsg\022\021\n\tTableName\030\001 " +
+      "\002(\t\022\013\n\003Msg\030\002 \002(\t\"#\n\014AddMsgResult\022\023\n\013resu" +
+      "ltError\030\001 \002(\t\"\033\n\014ExcuteSqlMsg\022\013\n\003Msg\030\001 \002" +
+      "(\t\")\n\022ExcuteSqlMsgResult\022\023\n\013resultError\030" +
+      "\001 \002(\t\"G\n\020QueryDevSpeedMsg\022\r\n\005ipStr\030\001 \002(\t" +
+      "\022\021\n\taskUserID\030\002 \002(\005\022\021\n\tstartTime\030\003 \002(\003\"<",
+      "\n\026QueryDevSpeedMsgResult\022\r\n\005speed\030\001 \002(\005\022" +
+      "\023\n\013resultError\030\002 \002(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9012,7 +9938,7 @@ public final class Netmsg {
     internal_static_netmsg_MsgPack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_MsgPack_descriptor,
-        new java.lang.String[] { "Head", "Registtype", "Querydevcntmsg", "Querydevcntmsgresult", "Query", "Add", "Querymsgresult", "Addmsgresult", "Excutesqlmsg", "Excutesqlmsgresult", "Querydevspeedmsg", "Querydevspeedmsgresult", });
+        new java.lang.String[] { "Head", "Registtype", "Registtypemsgresult", "Querydevcntmsg", "Querydevcntmsgresult", "Query", "Add", "Querymsgresult", "Addmsgresult", "Excutesqlmsg", "Excutesqlmsgresult", "Querydevspeedmsg", "Querydevspeedmsgresult", });
     internal_static_netmsg_MsgHead_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_netmsg_MsgHead_fieldAccessorTable = new
@@ -9024,63 +9950,69 @@ public final class Netmsg {
     internal_static_netmsg_RegistTypeMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_RegistTypeMsg_descriptor,
-        new java.lang.String[] { "BDevice", });
-    internal_static_netmsg_QueryDevCntMsg_descriptor =
+        new java.lang.String[] { "BDevice", "Ip", "Serverip", "BNormal", });
+    internal_static_netmsg_RegistTypeMsgResult_descriptor =
       getDescriptor().getMessageTypes().get(3);
+    internal_static_netmsg_RegistTypeMsgResult_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_netmsg_RegistTypeMsgResult_descriptor,
+        new java.lang.String[] { });
+    internal_static_netmsg_QueryDevCntMsg_descriptor =
+      getDescriptor().getMessageTypes().get(4);
     internal_static_netmsg_QueryDevCntMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryDevCntMsg_descriptor,
         new java.lang.String[] { });
     internal_static_netmsg_QueryDevCntMsgResult_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_netmsg_QueryDevCntMsgResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryDevCntMsgResult_descriptor,
         new java.lang.String[] { "DevCnt", });
     internal_static_netmsg_QueryMsg_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_netmsg_QueryMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryMsg_descriptor,
         new java.lang.String[] { "Msg", });
     internal_static_netmsg_QueryMsgResult_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_netmsg_QueryMsgResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryMsgResult_descriptor,
         new java.lang.String[] { "ResultData", "ResultError", });
     internal_static_netmsg_AddMsg_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(8);
     internal_static_netmsg_AddMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_AddMsg_descriptor,
         new java.lang.String[] { "TableName", "Msg", });
     internal_static_netmsg_AddMsgResult_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_netmsg_AddMsgResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_AddMsgResult_descriptor,
         new java.lang.String[] { "ResultError", });
     internal_static_netmsg_ExcuteSqlMsg_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_netmsg_ExcuteSqlMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_ExcuteSqlMsg_descriptor,
         new java.lang.String[] { "Msg", });
     internal_static_netmsg_ExcuteSqlMsgResult_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_netmsg_ExcuteSqlMsgResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_ExcuteSqlMsgResult_descriptor,
         new java.lang.String[] { "ResultError", });
     internal_static_netmsg_QueryDevSpeedMsg_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_netmsg_QueryDevSpeedMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryDevSpeedMsg_descriptor,
         new java.lang.String[] { "IpStr", "AskUserID", "StartTime", });
     internal_static_netmsg_QueryDevSpeedMsgResult_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_netmsg_QueryDevSpeedMsgResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryDevSpeedMsgResult_descriptor,

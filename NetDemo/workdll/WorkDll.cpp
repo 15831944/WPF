@@ -28,11 +28,15 @@ bool isServerStoped()
 	return CServer::GetInstance()->ServerStoped();
 }
 
-int curServerConnections()
+int cntServerConnections()
 {
-	return CServer::GetInstance()->CurServerConnections();
+	return CServer::GetInstance()->CntConnections();
 }
 
+const char* curConnectionsStr()
+{
+	return CServer::GetInstance()->CurConnections();
+}
 /***************************************Client*******************************************/
 bool startClient(char *ip, int port, bool bDevice)
 {
@@ -98,4 +102,9 @@ void excuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync)
 void queryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSync)
 {
 	CClient::GetInstance()->QueryDevSpeed(ipStr, callBack, bSync);
+}
+
+void updateClientStatus(bool bNormal, bool bSync)
+{
+	CClient::GetInstance()->UpdateClientStatus(bNormal, bSync);
 }

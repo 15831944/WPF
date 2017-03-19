@@ -36,6 +36,7 @@ void protobuf_ShutdownFile_netmsg_2eproto();
 class MsgPack;
 class MsgHead;
 class RegistTypeMsg;
+class RegistTypeMsgResult;
 class QueryDevCntMsg;
 class QueryDevCntMsgResult;
 class QueryMsg;
@@ -120,91 +121,100 @@ class MsgPack : public ::google::protobuf::Message {
   inline ::netmsg::RegistTypeMsg* release_registtype();
   inline void set_allocated_registtype(::netmsg::RegistTypeMsg* registtype);
 
-  // optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;
+  // optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;
+  inline bool has_registtypemsgresult() const;
+  inline void clear_registtypemsgresult();
+  static const int kRegisttypemsgresultFieldNumber = 3;
+  inline const ::netmsg::RegistTypeMsgResult& registtypemsgresult() const;
+  inline ::netmsg::RegistTypeMsgResult* mutable_registtypemsgresult();
+  inline ::netmsg::RegistTypeMsgResult* release_registtypemsgresult();
+  inline void set_allocated_registtypemsgresult(::netmsg::RegistTypeMsgResult* registtypemsgresult);
+
+  // optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;
   inline bool has_querydevcntmsg() const;
   inline void clear_querydevcntmsg();
-  static const int kQuerydevcntmsgFieldNumber = 3;
+  static const int kQuerydevcntmsgFieldNumber = 4;
   inline const ::netmsg::QueryDevCntMsg& querydevcntmsg() const;
   inline ::netmsg::QueryDevCntMsg* mutable_querydevcntmsg();
   inline ::netmsg::QueryDevCntMsg* release_querydevcntmsg();
   inline void set_allocated_querydevcntmsg(::netmsg::QueryDevCntMsg* querydevcntmsg);
 
-  // optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;
+  // optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;
   inline bool has_querydevcntmsgresult() const;
   inline void clear_querydevcntmsgresult();
-  static const int kQuerydevcntmsgresultFieldNumber = 4;
+  static const int kQuerydevcntmsgresultFieldNumber = 5;
   inline const ::netmsg::QueryDevCntMsgResult& querydevcntmsgresult() const;
   inline ::netmsg::QueryDevCntMsgResult* mutable_querydevcntmsgresult();
   inline ::netmsg::QueryDevCntMsgResult* release_querydevcntmsgresult();
   inline void set_allocated_querydevcntmsgresult(::netmsg::QueryDevCntMsgResult* querydevcntmsgresult);
 
-  // optional .netmsg.QueryMsg query = 5;
+  // optional .netmsg.QueryMsg query = 6;
   inline bool has_query() const;
   inline void clear_query();
-  static const int kQueryFieldNumber = 5;
+  static const int kQueryFieldNumber = 6;
   inline const ::netmsg::QueryMsg& query() const;
   inline ::netmsg::QueryMsg* mutable_query();
   inline ::netmsg::QueryMsg* release_query();
   inline void set_allocated_query(::netmsg::QueryMsg* query);
 
-  // optional .netmsg.AddMsg add = 6;
+  // optional .netmsg.AddMsg add = 7;
   inline bool has_add() const;
   inline void clear_add();
-  static const int kAddFieldNumber = 6;
+  static const int kAddFieldNumber = 7;
   inline const ::netmsg::AddMsg& add() const;
   inline ::netmsg::AddMsg* mutable_add();
   inline ::netmsg::AddMsg* release_add();
   inline void set_allocated_add(::netmsg::AddMsg* add);
 
-  // optional .netmsg.QueryMsgResult querymsgresult = 7;
+  // optional .netmsg.QueryMsgResult querymsgresult = 8;
   inline bool has_querymsgresult() const;
   inline void clear_querymsgresult();
-  static const int kQuerymsgresultFieldNumber = 7;
+  static const int kQuerymsgresultFieldNumber = 8;
   inline const ::netmsg::QueryMsgResult& querymsgresult() const;
   inline ::netmsg::QueryMsgResult* mutable_querymsgresult();
   inline ::netmsg::QueryMsgResult* release_querymsgresult();
   inline void set_allocated_querymsgresult(::netmsg::QueryMsgResult* querymsgresult);
 
-  // optional .netmsg.AddMsgResult addmsgresult = 8;
+  // optional .netmsg.AddMsgResult addmsgresult = 9;
   inline bool has_addmsgresult() const;
   inline void clear_addmsgresult();
-  static const int kAddmsgresultFieldNumber = 8;
+  static const int kAddmsgresultFieldNumber = 9;
   inline const ::netmsg::AddMsgResult& addmsgresult() const;
   inline ::netmsg::AddMsgResult* mutable_addmsgresult();
   inline ::netmsg::AddMsgResult* release_addmsgresult();
   inline void set_allocated_addmsgresult(::netmsg::AddMsgResult* addmsgresult);
 
-  // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;
+  // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;
   inline bool has_excutesqlmsg() const;
   inline void clear_excutesqlmsg();
-  static const int kExcutesqlmsgFieldNumber = 9;
+  static const int kExcutesqlmsgFieldNumber = 10;
   inline const ::netmsg::ExcuteSqlMsg& excutesqlmsg() const;
   inline ::netmsg::ExcuteSqlMsg* mutable_excutesqlmsg();
   inline ::netmsg::ExcuteSqlMsg* release_excutesqlmsg();
   inline void set_allocated_excutesqlmsg(::netmsg::ExcuteSqlMsg* excutesqlmsg);
 
-  // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;
+  // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;
   inline bool has_excutesqlmsgresult() const;
   inline void clear_excutesqlmsgresult();
-  static const int kExcutesqlmsgresultFieldNumber = 10;
+  static const int kExcutesqlmsgresultFieldNumber = 11;
   inline const ::netmsg::ExcuteSqlMsgResult& excutesqlmsgresult() const;
   inline ::netmsg::ExcuteSqlMsgResult* mutable_excutesqlmsgresult();
   inline ::netmsg::ExcuteSqlMsgResult* release_excutesqlmsgresult();
   inline void set_allocated_excutesqlmsgresult(::netmsg::ExcuteSqlMsgResult* excutesqlmsgresult);
 
-  // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;
+  // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;
   inline bool has_querydevspeedmsg() const;
   inline void clear_querydevspeedmsg();
-  static const int kQuerydevspeedmsgFieldNumber = 11;
+  static const int kQuerydevspeedmsgFieldNumber = 12;
   inline const ::netmsg::QueryDevSpeedMsg& querydevspeedmsg() const;
   inline ::netmsg::QueryDevSpeedMsg* mutable_querydevspeedmsg();
   inline ::netmsg::QueryDevSpeedMsg* release_querydevspeedmsg();
   inline void set_allocated_querydevspeedmsg(::netmsg::QueryDevSpeedMsg* querydevspeedmsg);
 
-  // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;
+  // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;
   inline bool has_querydevspeedmsgresult() const;
   inline void clear_querydevspeedmsgresult();
-  static const int kQuerydevspeedmsgresultFieldNumber = 12;
+  static const int kQuerydevspeedmsgresultFieldNumber = 13;
   inline const ::netmsg::QueryDevSpeedMsgResult& querydevspeedmsgresult() const;
   inline ::netmsg::QueryDevSpeedMsgResult* mutable_querydevspeedmsgresult();
   inline ::netmsg::QueryDevSpeedMsgResult* release_querydevspeedmsgresult();
@@ -216,6 +226,8 @@ class MsgPack : public ::google::protobuf::Message {
   inline void clear_has_head();
   inline void set_has_registtype();
   inline void clear_has_registtype();
+  inline void set_has_registtypemsgresult();
+  inline void clear_has_registtypemsgresult();
   inline void set_has_querydevcntmsg();
   inline void clear_has_querydevcntmsg();
   inline void set_has_querydevcntmsgresult();
@@ -243,6 +255,7 @@ class MsgPack : public ::google::protobuf::Message {
   mutable int _cached_size_;
   ::netmsg::MsgHead* head_;
   ::netmsg::RegistTypeMsg* registtype_;
+  ::netmsg::RegistTypeMsgResult* registtypemsgresult_;
   ::netmsg::QueryDevCntMsg* querydevcntmsg_;
   ::netmsg::QueryDevCntMsgResult* querydevcntmsgresult_;
   ::netmsg::QueryMsg* query_;
@@ -329,7 +342,7 @@ class MsgHead : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 totalpack() const;
   inline void set_totalpack(::google::protobuf::int32 value);
 
-  // required int32 packIndex = 3 [default = 1];
+  // required int32 packIndex = 3 [default = 0];
   inline bool has_packindex() const;
   inline void clear_packindex();
   static const int kPackIndexFieldNumber = 3;
@@ -421,22 +434,131 @@ class RegistTypeMsg : public ::google::protobuf::Message {
   inline bool bdevice() const;
   inline void set_bdevice(bool value);
 
+  // required string ip = 2;
+  inline bool has_ip() const;
+  inline void clear_ip();
+  static const int kIpFieldNumber = 2;
+  inline const ::std::string& ip() const;
+  inline void set_ip(const ::std::string& value);
+  inline void set_ip(const char* value);
+  inline void set_ip(const char* value, size_t size);
+  inline ::std::string* mutable_ip();
+  inline ::std::string* release_ip();
+  inline void set_allocated_ip(::std::string* ip);
+
+  // required string serverip = 3;
+  inline bool has_serverip() const;
+  inline void clear_serverip();
+  static const int kServeripFieldNumber = 3;
+  inline const ::std::string& serverip() const;
+  inline void set_serverip(const ::std::string& value);
+  inline void set_serverip(const char* value);
+  inline void set_serverip(const char* value, size_t size);
+  inline ::std::string* mutable_serverip();
+  inline ::std::string* release_serverip();
+  inline void set_allocated_serverip(::std::string* serverip);
+
+  // required bool bNormal = 4;
+  inline bool has_bnormal() const;
+  inline void clear_bnormal();
+  static const int kBNormalFieldNumber = 4;
+  inline bool bnormal() const;
+  inline void set_bnormal(bool value);
+
   // @@protoc_insertion_point(class_scope:netmsg.RegistTypeMsg)
  private:
   inline void set_has_bdevice();
   inline void clear_has_bdevice();
+  inline void set_has_ip();
+  inline void clear_has_ip();
+  inline void set_has_serverip();
+  inline void clear_has_serverip();
+  inline void set_has_bnormal();
+  inline void clear_has_bnormal();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint32 _has_bits_[1];
   mutable int _cached_size_;
+  ::std::string* ip_;
+  ::std::string* serverip_;
   bool bdevice_;
+  bool bnormal_;
   friend void  protobuf_AddDesc_netmsg_2eproto();
   friend void protobuf_AssignDesc_netmsg_2eproto();
   friend void protobuf_ShutdownFile_netmsg_2eproto();
 
   void InitAsDefaultInstance();
   static RegistTypeMsg* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class RegistTypeMsgResult : public ::google::protobuf::Message {
+ public:
+  RegistTypeMsgResult();
+  virtual ~RegistTypeMsgResult();
+
+  RegistTypeMsgResult(const RegistTypeMsgResult& from);
+
+  inline RegistTypeMsgResult& operator=(const RegistTypeMsgResult& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const RegistTypeMsgResult& default_instance();
+
+  void Swap(RegistTypeMsgResult* other);
+
+  // implements Message ----------------------------------------------
+
+  RegistTypeMsgResult* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const RegistTypeMsgResult& from);
+  void MergeFrom(const RegistTypeMsgResult& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:netmsg.RegistTypeMsgResult)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static RegistTypeMsgResult* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -1407,15 +1529,56 @@ inline void MsgPack::set_allocated_registtype(::netmsg::RegistTypeMsg* registtyp
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.registtype)
 }
 
-// optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;
-inline bool MsgPack::has_querydevcntmsg() const {
+// optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;
+inline bool MsgPack::has_registtypemsgresult() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void MsgPack::set_has_querydevcntmsg() {
+inline void MsgPack::set_has_registtypemsgresult() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void MsgPack::clear_has_querydevcntmsg() {
+inline void MsgPack::clear_has_registtypemsgresult() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void MsgPack::clear_registtypemsgresult() {
+  if (registtypemsgresult_ != NULL) registtypemsgresult_->::netmsg::RegistTypeMsgResult::Clear();
+  clear_has_registtypemsgresult();
+}
+inline const ::netmsg::RegistTypeMsgResult& MsgPack::registtypemsgresult() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.registtypemsgresult)
+  return registtypemsgresult_ != NULL ? *registtypemsgresult_ : *default_instance_->registtypemsgresult_;
+}
+inline ::netmsg::RegistTypeMsgResult* MsgPack::mutable_registtypemsgresult() {
+  set_has_registtypemsgresult();
+  if (registtypemsgresult_ == NULL) registtypemsgresult_ = new ::netmsg::RegistTypeMsgResult;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.registtypemsgresult)
+  return registtypemsgresult_;
+}
+inline ::netmsg::RegistTypeMsgResult* MsgPack::release_registtypemsgresult() {
+  clear_has_registtypemsgresult();
+  ::netmsg::RegistTypeMsgResult* temp = registtypemsgresult_;
+  registtypemsgresult_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_registtypemsgresult(::netmsg::RegistTypeMsgResult* registtypemsgresult) {
+  delete registtypemsgresult_;
+  registtypemsgresult_ = registtypemsgresult;
+  if (registtypemsgresult) {
+    set_has_registtypemsgresult();
+  } else {
+    clear_has_registtypemsgresult();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.registtypemsgresult)
+}
+
+// optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;
+inline bool MsgPack::has_querydevcntmsg() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void MsgPack::set_has_querydevcntmsg() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void MsgPack::clear_has_querydevcntmsg() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void MsgPack::clear_querydevcntmsg() {
   if (querydevcntmsg_ != NULL) querydevcntmsg_->::netmsg::QueryDevCntMsg::Clear();
@@ -1448,15 +1611,15 @@ inline void MsgPack::set_allocated_querydevcntmsg(::netmsg::QueryDevCntMsg* quer
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.querydevcntmsg)
 }
 
-// optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;
+// optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;
 inline bool MsgPack::has_querydevcntmsgresult() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void MsgPack::set_has_querydevcntmsgresult() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void MsgPack::clear_has_querydevcntmsgresult() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void MsgPack::clear_querydevcntmsgresult() {
   if (querydevcntmsgresult_ != NULL) querydevcntmsgresult_->::netmsg::QueryDevCntMsgResult::Clear();
@@ -1489,15 +1652,15 @@ inline void MsgPack::set_allocated_querydevcntmsgresult(::netmsg::QueryDevCntMsg
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.querydevcntmsgresult)
 }
 
-// optional .netmsg.QueryMsg query = 5;
+// optional .netmsg.QueryMsg query = 6;
 inline bool MsgPack::has_query() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void MsgPack::set_has_query() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void MsgPack::clear_has_query() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void MsgPack::clear_query() {
   if (query_ != NULL) query_->::netmsg::QueryMsg::Clear();
@@ -1530,15 +1693,15 @@ inline void MsgPack::set_allocated_query(::netmsg::QueryMsg* query) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.query)
 }
 
-// optional .netmsg.AddMsg add = 6;
+// optional .netmsg.AddMsg add = 7;
 inline bool MsgPack::has_add() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void MsgPack::set_has_add() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void MsgPack::clear_has_add() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void MsgPack::clear_add() {
   if (add_ != NULL) add_->::netmsg::AddMsg::Clear();
@@ -1571,15 +1734,15 @@ inline void MsgPack::set_allocated_add(::netmsg::AddMsg* add) {
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.add)
 }
 
-// optional .netmsg.QueryMsgResult querymsgresult = 7;
+// optional .netmsg.QueryMsgResult querymsgresult = 8;
 inline bool MsgPack::has_querymsgresult() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000080u) != 0;
 }
 inline void MsgPack::set_has_querymsgresult() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000080u;
 }
 inline void MsgPack::clear_has_querymsgresult() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000080u;
 }
 inline void MsgPack::clear_querymsgresult() {
   if (querymsgresult_ != NULL) querymsgresult_->::netmsg::QueryMsgResult::Clear();
@@ -1612,15 +1775,15 @@ inline void MsgPack::set_allocated_querymsgresult(::netmsg::QueryMsgResult* quer
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.querymsgresult)
 }
 
-// optional .netmsg.AddMsgResult addmsgresult = 8;
+// optional .netmsg.AddMsgResult addmsgresult = 9;
 inline bool MsgPack::has_addmsgresult() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void MsgPack::set_has_addmsgresult() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void MsgPack::clear_has_addmsgresult() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void MsgPack::clear_addmsgresult() {
   if (addmsgresult_ != NULL) addmsgresult_->::netmsg::AddMsgResult::Clear();
@@ -1653,15 +1816,15 @@ inline void MsgPack::set_allocated_addmsgresult(::netmsg::AddMsgResult* addmsgre
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.addmsgresult)
 }
 
-// optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;
+// optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;
 inline bool MsgPack::has_excutesqlmsg() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void MsgPack::set_has_excutesqlmsg() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void MsgPack::clear_has_excutesqlmsg() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void MsgPack::clear_excutesqlmsg() {
   if (excutesqlmsg_ != NULL) excutesqlmsg_->::netmsg::ExcuteSqlMsg::Clear();
@@ -1694,15 +1857,15 @@ inline void MsgPack::set_allocated_excutesqlmsg(::netmsg::ExcuteSqlMsg* excutesq
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.excutesqlmsg)
 }
 
-// optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;
+// optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;
 inline bool MsgPack::has_excutesqlmsgresult() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void MsgPack::set_has_excutesqlmsgresult() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void MsgPack::clear_has_excutesqlmsgresult() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void MsgPack::clear_excutesqlmsgresult() {
   if (excutesqlmsgresult_ != NULL) excutesqlmsgresult_->::netmsg::ExcuteSqlMsgResult::Clear();
@@ -1735,15 +1898,15 @@ inline void MsgPack::set_allocated_excutesqlmsgresult(::netmsg::ExcuteSqlMsgResu
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.excutesqlmsgresult)
 }
 
-// optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;
+// optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;
 inline bool MsgPack::has_querydevspeedmsg() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void MsgPack::set_has_querydevspeedmsg() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void MsgPack::clear_has_querydevspeedmsg() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void MsgPack::clear_querydevspeedmsg() {
   if (querydevspeedmsg_ != NULL) querydevspeedmsg_->::netmsg::QueryDevSpeedMsg::Clear();
@@ -1776,15 +1939,15 @@ inline void MsgPack::set_allocated_querydevspeedmsg(::netmsg::QueryDevSpeedMsg* 
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.querydevspeedmsg)
 }
 
-// optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;
+// optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;
 inline bool MsgPack::has_querydevspeedmsgresult() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void MsgPack::set_has_querydevspeedmsgresult() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void MsgPack::clear_has_querydevspeedmsgresult() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void MsgPack::clear_querydevspeedmsgresult() {
   if (querydevspeedmsgresult_ != NULL) querydevspeedmsgresult_->::netmsg::QueryDevSpeedMsgResult::Clear();
@@ -1869,7 +2032,7 @@ inline void MsgHead::set_totalpack(::google::protobuf::int32 value) {
   // @@protoc_insertion_point(field_set:netmsg.MsgHead.totalPack)
 }
 
-// required int32 packIndex = 3 [default = 1];
+// required int32 packIndex = 3 [default = 0];
 inline bool MsgHead::has_packindex() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1880,7 +2043,7 @@ inline void MsgHead::clear_has_packindex() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void MsgHead::clear_packindex() {
-  packindex_ = 1;
+  packindex_ = 0;
   clear_has_packindex();
 }
 inline ::google::protobuf::int32 MsgHead::packindex() const {
@@ -1920,6 +2083,186 @@ inline void RegistTypeMsg::set_bdevice(bool value) {
   bdevice_ = value;
   // @@protoc_insertion_point(field_set:netmsg.RegistTypeMsg.bDevice)
 }
+
+// required string ip = 2;
+inline bool RegistTypeMsg::has_ip() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void RegistTypeMsg::set_has_ip() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void RegistTypeMsg::clear_has_ip() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void RegistTypeMsg::clear_ip() {
+  if (ip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ip_->clear();
+  }
+  clear_has_ip();
+}
+inline const ::std::string& RegistTypeMsg::ip() const {
+  // @@protoc_insertion_point(field_get:netmsg.RegistTypeMsg.ip)
+  return *ip_;
+}
+inline void RegistTypeMsg::set_ip(const ::std::string& value) {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ip_ = new ::std::string;
+  }
+  ip_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.RegistTypeMsg.ip)
+}
+inline void RegistTypeMsg::set_ip(const char* value) {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ip_ = new ::std::string;
+  }
+  ip_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.RegistTypeMsg.ip)
+}
+inline void RegistTypeMsg::set_ip(const char* value, size_t size) {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ip_ = new ::std::string;
+  }
+  ip_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.RegistTypeMsg.ip)
+}
+inline ::std::string* RegistTypeMsg::mutable_ip() {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ip_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.RegistTypeMsg.ip)
+  return ip_;
+}
+inline ::std::string* RegistTypeMsg::release_ip() {
+  clear_has_ip();
+  if (ip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = ip_;
+    ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RegistTypeMsg::set_allocated_ip(::std::string* ip) {
+  if (ip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete ip_;
+  }
+  if (ip) {
+    set_has_ip();
+    ip_ = ip;
+  } else {
+    clear_has_ip();
+    ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.RegistTypeMsg.ip)
+}
+
+// required string serverip = 3;
+inline bool RegistTypeMsg::has_serverip() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void RegistTypeMsg::set_has_serverip() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void RegistTypeMsg::clear_has_serverip() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void RegistTypeMsg::clear_serverip() {
+  if (serverip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    serverip_->clear();
+  }
+  clear_has_serverip();
+}
+inline const ::std::string& RegistTypeMsg::serverip() const {
+  // @@protoc_insertion_point(field_get:netmsg.RegistTypeMsg.serverip)
+  return *serverip_;
+}
+inline void RegistTypeMsg::set_serverip(const ::std::string& value) {
+  set_has_serverip();
+  if (serverip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    serverip_ = new ::std::string;
+  }
+  serverip_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.RegistTypeMsg.serverip)
+}
+inline void RegistTypeMsg::set_serverip(const char* value) {
+  set_has_serverip();
+  if (serverip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    serverip_ = new ::std::string;
+  }
+  serverip_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.RegistTypeMsg.serverip)
+}
+inline void RegistTypeMsg::set_serverip(const char* value, size_t size) {
+  set_has_serverip();
+  if (serverip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    serverip_ = new ::std::string;
+  }
+  serverip_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.RegistTypeMsg.serverip)
+}
+inline ::std::string* RegistTypeMsg::mutable_serverip() {
+  set_has_serverip();
+  if (serverip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    serverip_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.RegistTypeMsg.serverip)
+  return serverip_;
+}
+inline ::std::string* RegistTypeMsg::release_serverip() {
+  clear_has_serverip();
+  if (serverip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = serverip_;
+    serverip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void RegistTypeMsg::set_allocated_serverip(::std::string* serverip) {
+  if (serverip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete serverip_;
+  }
+  if (serverip) {
+    set_has_serverip();
+    serverip_ = serverip;
+  } else {
+    clear_has_serverip();
+    serverip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.RegistTypeMsg.serverip)
+}
+
+// required bool bNormal = 4;
+inline bool RegistTypeMsg::has_bnormal() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void RegistTypeMsg::set_has_bnormal() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void RegistTypeMsg::clear_has_bnormal() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void RegistTypeMsg::clear_bnormal() {
+  bnormal_ = false;
+  clear_has_bnormal();
+}
+inline bool RegistTypeMsg::bnormal() const {
+  // @@protoc_insertion_point(field_get:netmsg.RegistTypeMsg.bNormal)
+  return bnormal_;
+}
+inline void RegistTypeMsg::set_bnormal(bool value) {
+  set_has_bnormal();
+  bnormal_ = value;
+  // @@protoc_insertion_point(field_set:netmsg.RegistTypeMsg.bNormal)
+}
+
+// -------------------------------------------------------------------
+
+// RegistTypeMsgResult
 
 // -------------------------------------------------------------------
 

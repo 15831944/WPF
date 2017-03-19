@@ -164,3 +164,21 @@ int server::getidbyip(string ip)
 
 	return 0;
 }
+
+const char* server::getipbyid(int id)
+{
+	static string ipStr = "";
+	ipStr = "";
+	boost::mutex::scoped_lock Lock(m_sessionsMutex);
+	for (list<session_ptr>::iterator it = m_sessions.begin(); it != m_sessions.end(); ++it)
+	{
+		if (int((*it).get()) == id)
+		{
+			ipStr = (*it)->socket().remote_endpoint().address().to_string();
+			break;
+		}
+	}
+	Lock.unlock();
+
+	return ipStr.size() > 0 ?ipStr.c_str():nullptr;
+}

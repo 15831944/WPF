@@ -67,6 +67,14 @@ int getClientIDByIP(char* ip)
 	return 0;
 }
 
+const char* getClientIPByID(int ID)
+{
+	if (g_serverPtr != nullptr)
+		return g_serverPtr->getipbyid(ID);
+
+	return 0;
+}
+
 boost::mutex									m_sockMutexclient;				//asio::socket不是线程安全的，一把大锁解决问题
 boost::asio::io_service							g_io_service_client;
 unique_ptr<client>								g_clientPtr;

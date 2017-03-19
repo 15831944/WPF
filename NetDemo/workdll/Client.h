@@ -25,8 +25,9 @@ protected:
 	DWORD								m_globalPackNumber;	//×ÜµÄ°üºÅ
 	ThreadMap<DWORD, void*>				m_requestMap;
 	bool								m_bDevice;
+	vector<string>						m_ipList;
+	string								m_ipStr;
 
-	void								RegistType(bool bDevice);
 public:
 	static CClient* 					GetInstance();
 	static void 						ReleaseInstance();
@@ -39,6 +40,7 @@ public:
 	void								QueryOnlieDevCnt(QueryTableCallBack callBack, bool bSync);
 	void								ExcuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync);
 	void								QueryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSync);
+	void								UpdateClientStatus(bool bNormal, bool bSync);
 };
 
 #pragma  once

@@ -6,7 +6,8 @@ EXPORTS
 		startServer
 		stopServer
 		isServerStoped
-		curServerConnections
+		cntServerConnections
+		curConnectionsStr
 
 		startClient
 		stopClient

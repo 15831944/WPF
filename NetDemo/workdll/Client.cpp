@@ -1,62 +1,5 @@
 #include "stdafx.h"
 #include "Client.h"
-#include <WinSock2.h>
-#include <imagehlp.h>
-#include <IPHlpApi.h>
-#pragma comment(lib, "wsock32.lib")
-#pragma comment(lib, "imagehlp.lib")
-#pragma comment(lib, "Iphlpapi.lib")
-
-bool GetAvalibleIpAddress(vector<string> &ipArray)
-{
-	ipArray.clear();
-
-	// 	CStringArray ipAddresses;
-
-	ULONG ulTalbeSize = 0;
-	DWORD res = ::GetIpAddrTable(NULL, &ulTalbeSize, TRUE);
-	MIB_IPADDRTABLE *pIpAddTalbe = (MIB_IPADDRTABLE*)new BYTE[ulTalbeSize];
-	DWORD ret = ::GetIpAddrTable(pIpAddTalbe, &ulTalbeSize, TRUE);
-	if (NO_ERROR == ret)
-	{
-		DWORD ipAddress = 0;
-		for (UINT i = 0; i < pIpAddTalbe->dwNumEntries; i++)
-		{
-			ipAddress = pIpAddTalbe->table[i].dwAddr;
-			if (0 == ipAddress)
-				continue;
-
-			// 			ipAddresses.Add(Dword2IpString(pIpAddTalbe->table[i].dwAddr));
-			// MIB_IPADDRROW has a dwBCastAddr member but docs say it is broken (and it is!)
-			// addr | ~mask = broadcast
-			//ipAddress |= ~(pIpAddTalbe->table[i].dwMask);
-
-			ipAddress = ntohl(ipAddress);
-
-			char ch[MAX_PATH] ={ 0 };
-			sprintf_s(ch, MAX_PATH, "%d.%d.%d.%d",
-				(ipAddress>>24)&0x000000ff,
-				(ipAddress>>16)&0x000000ff,
-				(ipAddress>>8)&0x000000ff,
-				ipAddress&0x000000ff);
-
-			ipArray.push_back(ch);
-		}
-
-		if (pIpAddTalbe)
-			delete[] pIpAddTalbe;
-		pIpAddTalbe = NULL;
-
-		return true;
-	}
-	else{
-
-		if (pIpAddTalbe)
-			delete[] pIpAddTalbe;
-		pIpAddTalbe = NULL;
-		return false;
-	}
-}
 
 CClient* CClient::m_pClient				= NULL;
 
@@ -68,6 +11,15 @@ CClient::CClient()
 	m_stopClientFunc					= (_stopClientType)GetProcAddress(hNetDll, "stopClient");
 	m_isClientStopedFunc				= (_isClientStoped)GetProcAddress(hNetDll, "isClientStoped");
 
+	GetAvalibleIpAddress(m_ipList);
+	for (int i = 0; i < m_ipList.size(); ++i)
+	{
+		if (m_ipList[i] != "127.0.0.1")
+		{
+			m_ipStr = m_ipList[i];
+			break;
+		}
+	}
 	m_globalPackNumber					= 0;
 }
 
@@ -87,9 +39,21 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 		{
 			pair<DWORD, void*> pairValue;
 			DWORD key = msgPack.head().globalpacknumber();
-			if (CClient::GetInstance()->m_requestMap.Pop(key, pairValue))
+
+			if (msgPack.has_querydevspeedmsg())
 			{
-				if (msgPack.has_querymsgresult())
+				int msgLen			= msgPack.ByteSize();
+				LPBYTE pBuffer		= new BYTE[msgLen];
+				msgPack.SerializeToArray(pBuffer, msgLen);
+				CClient::GetInstance()->m_sendDataFunc(pBuffer, msgLen);
+				delete[] pBuffer;
+			}
+			else if (CClient::GetInstance()->m_requestMap.Pop(key, pairValue))
+			{
+				if (msgPack.has_registtypemsgresult())
+				{
+				}
+				else if (msgPack.has_querymsgresult())
 				{
 					string resultstr = msgPack.querymsgresult().resultdata();
 					string resulterror = msgPack.querymsgresult().resulterror();
@@ -126,14 +90,6 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 						((QueryTableCallBack)pairValue.second)(ch, (char*)resulterror.c_str());
 				}
 			}
-			else if (msgPack.has_querydevspeedmsg()) 
-			{
-				int msgLen			= msgPack.ByteSize();
-				LPBYTE pBuffer		= new BYTE[msgLen];
-				msgPack.SerializeToArray(pBuffer, msgLen);
-				CClient::GetInstance()->m_sendDataFunc(pBuffer, msgLen);
-				delete[] pBuffer;
-			}
 		}
 		else
 		{
@@ -168,7 +124,8 @@ bool CClient::StartClient(char *ip, int port, bool bDevice)
 	// TODO:  在此添加控件通知处理程序代码
 	if (m_startClientFunc && m_startClientFunc(ip, port, CClient::OnReceiveCallBackFunc, m_sendDataFunc))
 	{
-		RegistType(bDevice);
+		m_bDevice = bDevice;
+		UpdateClientStatus(true, false);
 		return true;
 	}
 
@@ -198,16 +155,21 @@ bool CClient::ClientStoped()
 	return false;
 }
 
-void CClient::RegistType(bool bDevice)
+void CClient::UpdateClientStatus(bool bNormal, bool bSync)
 {
 	if (m_sendDataFunc)
 	{
+		DWORD numberTemp				= InterlockedIncrement(&m_globalPackNumber);
+		m_requestMap.Push(numberTemp, nullptr);
 		netmsg::MsgPack pack;
-		pack.mutable_head()->set_globalpacknumber(0xFFFFFFFF);
+		pack.mutable_head()->set_globalpacknumber(numberTemp);
 		pack.mutable_head()->set_totalpack(1);
 		pack.mutable_head()->set_packindex(0);
 
-		pack.mutable_registtype()->set_bdevice(bDevice);
+		pack.mutable_registtype()->set_bdevice(m_bDevice);
+		pack.mutable_registtype()->set_ip(m_ipStr);
+		pack.mutable_registtype()->set_serverip("");
+		pack.mutable_registtype()->set_bnormal(bNormal);
 
 		int msgLen			= pack.ByteSize();
 		LPBYTE pBuffer		= new BYTE[msgLen];
@@ -215,9 +177,22 @@ void CClient::RegistType(bool bDevice)
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
+
+		if (bSync)
+		{
+			MSG msg;
+			while (m_requestMap.Exist(numberTemp))
+			{
+				if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+				{
+					::TranslateMessage(&msg);
+					::DispatchMessage(&msg);
+				}
+				Sleep(100);
+			}
+		}
 	}
 }
-
 
 void CClient::QueryOnlieDevCnt(QueryTableCallBack callBack, bool bSync)
 {

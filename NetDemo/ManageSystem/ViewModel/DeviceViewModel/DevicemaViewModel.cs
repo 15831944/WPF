@@ -3,6 +3,7 @@ using ManageSystem.Server;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -11,6 +12,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Xml;
 using ExcutesqlCallBackDelegate = ManageSystem.Server.AddTableCallBackDelegate;
 
 namespace ManageSystem.ViewModel.DeviceViewModel
@@ -36,6 +38,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
     class DevicemaViewModel : NotificationObject
     {
+        public static string                _sitesString = "";
         public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
         public AddTableCallBackDelegate     _addtablecallbackdelegate = null;
         public ExcutesqlCallBackDelegate    _excutesqlCallBackDelegate = null;
@@ -429,6 +432,13 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             tableList.Clear();
             WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
 
+            XmlDocument doc = new XmlDocument();
+            XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
+            doc.AppendChild(dec);
+            XmlElement root = doc.CreateElement("xml");
+            doc.AppendChild(root);
+            XmlElement data = doc.CreateElement("data");
+
             Dictionary<string, Dictionary<string, Dictionary<string, HashSet<string>>>> _devicelistMap = new Dictionary<string, Dictionary<string, Dictionary<string, HashSet<string>>>>();
             foreach (SHEBEIGUANLIModel modelTemp in tableList)
             {
@@ -440,7 +450,32 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                     _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao] = new HashSet<string>();
 
                 _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao].Add(modelTemp.IP);
+
+                XmlElement site     = doc.CreateElement("site");
+
+                XmlElement type     = doc.CreateElement("type");
+                type.InnerText      = "1";
+                XmlElement name     = doc.CreateElement("name");
+                name.InnerText      = modelTemp.Shiyongdanweibianhao;
+                XmlElement lon      = doc.CreateElement("lon");
+                lon.InnerText       = modelTemp.Jingdu;
+                XmlElement lat      = doc.CreateElement("lat");
+                lat.InnerText       = modelTemp.Weidu;
+                XmlElement desc     = doc.CreateElement("desc");
+                desc.InnerText      = modelTemp.Shiyongdanweibianhao;
+
+
+                site.AppendChild(type);
+                site.AppendChild(name);
+                site.AppendChild(lon);
+                site.AppendChild(lat);
+                site.AppendChild(desc);
+                data.AppendChild(site); 
             }
+
+            root.AppendChild(data);
+            _sitesString = doc.InnerXml;
+
 
             foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<string>>>> kvp0 in _devicelistMap)
             {

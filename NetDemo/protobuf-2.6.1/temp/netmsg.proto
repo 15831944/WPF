@@ -4,21 +4,22 @@ message MsgPack
 {
 	required	MsgHead								head							= 1;
 	optional 	RegistTypeMsg						registtype						= 2;
-	
-	optional 	QueryDevCntMsg						querydevcntmsg					= 3;
-	optional 	QueryDevCntMsgResult				querydevcntmsgresult			= 4;
-			
-	optional	QueryMsg  							query							= 5;
-	optional	AddMsg  							add								= 6;
+	optional	RegistTypeMsgResult					registtypemsgresult				= 3;
+																					  
+	optional 	QueryDevCntMsg						querydevcntmsg					= 4;
+	optional 	QueryDevCntMsgResult				querydevcntmsgresult			= 5;
 
-	optional	QueryMsgResult  					querymsgresult					= 7;
-	optional	AddMsgResult  						addmsgresult					= 8;
-	
-	optional	ExcuteSqlMsg  						excutesqlmsg					= 9;
-	optional	ExcuteSqlMsgResult  				excutesqlmsgresult				= 10;
+	optional	QueryMsg  							query							= 6;
+	optional	AddMsg  							add								= 7;
 
-	optional	QueryDevSpeedMsg  					querydevspeedmsg				= 11;
-	optional	QueryDevSpeedMsgResult  			querydevspeedmsgresult			= 12;
+	optional	QueryMsgResult  					querymsgresult					= 8;
+	optional	AddMsgResult  						addmsgresult					= 9;
+
+	optional	ExcuteSqlMsg  						excutesqlmsg					= 10;
+	optional	ExcuteSqlMsgResult  				excutesqlmsgresult				= 11;
+
+	optional	QueryDevSpeedMsg  					querydevspeedmsg				= 12;
+	optional	QueryDevSpeedMsgResult  			querydevspeedmsgresult			= 13;
 }
 
 message MsgHead{
@@ -29,6 +30,13 @@ message MsgHead{
 
 message RegistTypeMsg{
 	required	bool				bDevice					= 1;
+	required	string				ip						= 2;
+	required	string				serverip				= 3;
+	required	bool				bNormal					= 4;
+}
+
+message RegistTypeMsgResult{
+
 }
 
 message QueryDevCntMsg{

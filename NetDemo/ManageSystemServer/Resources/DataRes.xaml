@@ -4,6 +4,7 @@
                     xmlns:viewModel="clr-namespace:ManageSystemServer.ViewModel"
                     >
 
+    <viewModel:DataGridItemSourceConvert x:Key="DataGridItemSourceConvert"/>
     <viewModel:MainWindowViewModel x:Key="MainWindowViewModelKey"/>
 
     <LinearGradientBrush x:Key="DataGridHeaderBorderBackground" EndPoint="0,1" StartPoint="0,0">

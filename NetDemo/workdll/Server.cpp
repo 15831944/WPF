@@ -16,6 +16,7 @@ CServer::CServer()
 	m_isServerStopedFunc				= (_isServerStoped)GetProcAddress(hNetDll, "isServerStoped");
 	m_curServerConnectionsFunc			= (_curServerConnections)GetProcAddress(hNetDll, "curServerConnections");
 	m_getIdByIPFunc						= (_getIdByIP)GetProcAddress(hNetDll, "getClientIDByIP");
+	m_getIPByIDFunc						= (_getIPByID)GetProcAddress(hNetDll, "getClientIPByID");
 }
 
 CServer::~CServer()
@@ -39,9 +40,13 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 
 				if (msgPack.has_registtype())
 				{
+					msgPack.mutable_registtype()->set_serverip(CServer::GetInstance()->m_getIPByIDFunc(userID));
 					WaitForSingleObject(CServer::GetInstance()->m_mutexHandle, INFINITE);
-					CServer::GetInstance()->m_mapDevice[userID] = msgPack.registtype().bdevice();
+					CServer::GetInstance()->m_mapDevice[userID] = msgPack.registtype();
 					ReleaseMutex(CServer::GetInstance()->m_mutexHandle);
+
+					packResult.mutable_registtypemsgresult();
+					CServer::GetInstance()->SendMsgBuf(userID, packResult);
 				}
 				else if (msgPack.has_query())
 				{
@@ -94,9 +99,9 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 				{
 					WaitForSingleObject(CServer::GetInstance()->m_mutexHandle, INFINITE);
 					int cnt = 0;
-					for (std::map<DWORD, bool>::iterator it = CServer::GetInstance()->m_mapDevice.begin(); it != CServer::GetInstance()->m_mapDevice.end(); ++it)
+					for (std::map<DWORD, netmsg::RegistTypeMsg>::iterator it = CServer::GetInstance()->m_mapDevice.begin(); it != CServer::GetInstance()->m_mapDevice.end(); ++it)
 					{
-						if (it->second == true) cnt++;
+						if (it->second.bdevice() == true) cnt++;
 					}
 					ReleaseMutex(CServer::GetInstance()->m_mutexHandle);
 
@@ -179,7 +184,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 	else
 	{
 		WaitForSingleObject(CServer::GetInstance()->m_mutexHandle, INFINITE);
-		std::map<DWORD, bool>::iterator it = CServer::GetInstance()->m_mapDevice.find(userID);
+		std::map<DWORD, netmsg::RegistTypeMsg>::iterator it = CServer::GetInstance()->m_mapDevice.find(userID);
 		if (it != CServer::GetInstance()->m_mapDevice.end()) CServer::GetInstance()->m_mapDevice.erase(it);
 		ReleaseMutex(CServer::GetInstance()->m_mutexHandle);
 	}
@@ -238,25 +243,35 @@ bool CServer::ServerStoped()
 	return true;
 }
 
-int CServer::CurServerConnections()
+int CServer::CntConnections()
 {
 	if (m_curServerConnectionsFunc)
 		return m_curServerConnectionsFunc();
 	return 0;
 }
 
+const char* CServer::CurConnections()
+{
+	m_connectionsStr = ""; 
+	WaitForSingleObject(CServer::GetInstance()->m_mutexHandle, INFINITE);
+	for (std::map<DWORD, netmsg::RegistTypeMsg>::iterator it = CServer::GetInstance()->m_mapDevice.begin(); it != CServer::GetInstance()->m_mapDevice.end(); ++it)
+	{
+		char ch[1000] = { 0 }; 
+		bool bDevice = it->second.bdevice();
+		bool bNormal = it->second.bnormal();
+		
+		sprintf_s(ch, 1000, "bDevice:%d,ip:%s,serverip:%s,bNormal:%d,;", it->second.bdevice(), it->second.ip().c_str(), it->second.serverip().c_str(), it->second.bnormal());
+		m_connectionsStr += ch;
+	}
+	ReleaseMutex(CServer::GetInstance()->m_mutexHandle);
+
+	return m_connectionsStr.size() > 0 ?m_connectionsStr.c_str():nullptr;
+}
+
 void CServer::SendMsgBuf(long userID, ::google::protobuf::Message& msg)
 {
 	if (m_sendDataFunc)
 	{
-		//int msgLen			= msg.ByteSize();
-		//LPBYTE pBuffer		= new BYTE[msgLen + 4];
-		//msg.SerializeToArray(pBuffer + 4, msgLen);
-		//(*(int*)pBuffer)	= msgLen;
-
-		//m_sendDataFunc(pBuffer, msgLen + 4);
-
-
 		int msgLen			= msg.ByteSize();
 		LPBYTE pBuffer		= new BYTE[msgLen];
 		msg.SerializeToArray(pBuffer, msgLen);

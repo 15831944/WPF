@@ -454,7 +454,7 @@ namespace ManageSystem.ViewModel
             _businesstype                               = new ObservableCollection<string>();
 
             //_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_WebBrowser;
             _titleheight                                = 25;
             _leftWidth                                  = 60;
             _progressValue                              = 0;

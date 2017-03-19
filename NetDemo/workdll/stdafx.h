@@ -28,3 +28,12 @@
 #include "../database/database.h"
 #include "netmsg.pb.h"
 
+#include <WinSock2.h>
+#include <imagehlp.h>
+#include <IPHlpApi.h>
+#pragma comment(lib, "wsock32.lib")
+#pragma comment(lib, "imagehlp.lib")
+#pragma comment(lib, "Iphlpapi.lib")
+
+
+bool	 GetAvalibleIpAddress(vector<string> &ipArray);

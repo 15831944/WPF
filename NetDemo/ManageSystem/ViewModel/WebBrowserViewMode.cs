@@ -1,9 +1,11 @@
-﻿using System;
+﻿using ManageSystem.ViewModel.DeviceViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml;
 
 namespace ManageSystem.ViewModel
 {
@@ -44,6 +46,7 @@ namespace ManageSystem.ViewModel
             LoadedCommand                               = new DelegateCommand<object>(new Action<object>(this.Loaded));
             LoadCompletedCommand                        = new DelegateCommand<object>(new Action<object>(this.LoadCompleted));
 
+            _url                                        = "http://120.76.148.9/testgis/map/gis.html";
         }
 
         private void LoadCompleted(object obj)
@@ -62,6 +65,8 @@ namespace ManageSystem.ViewModel
             string urlTemp = "http://120.76.148.9/testgis/map/gis.html";
             if(url != urlTemp)
                 url = urlTemp;
+
+            webbrowser.InvokeScript("LoadData", DevicemaViewModel._sitesString);
         }
     }
 }

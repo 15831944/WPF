@@ -27,4 +27,5 @@ public:
 	bool											stoped();
 	int												connections();
 	int												getidbyip(string ip);
+	const char*										getipbyid(int id);
 };

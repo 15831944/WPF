@@ -29,6 +29,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* RegistTypeMsg_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   RegistTypeMsg_reflection_ = NULL;
+const ::google::protobuf::Descriptor* RegistTypeMsgResult_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  RegistTypeMsgResult_reflection_ = NULL;
 const ::google::protobuf::Descriptor* QueryDevCntMsg_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   QueryDevCntMsg_reflection_ = NULL;
@@ -70,9 +73,10 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       "netmsg.proto");
   GOOGLE_CHECK(file != NULL);
   MsgPack_descriptor_ = file->message_type(0);
-  static const int MsgPack_offsets_[12] = {
+  static const int MsgPack_offsets_[13] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, head_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, registtype_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, registtypemsgresult_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, querydevcntmsg_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, querydevcntmsgresult_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(MsgPack, query_),
@@ -113,8 +117,11 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(MsgHead));
   RegistTypeMsg_descriptor_ = file->message_type(2);
-  static const int RegistTypeMsg_offsets_[1] = {
+  static const int RegistTypeMsg_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegistTypeMsg, bdevice_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegistTypeMsg, ip_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegistTypeMsg, serverip_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegistTypeMsg, bnormal_),
   };
   RegistTypeMsg_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -127,7 +134,21 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(RegistTypeMsg));
-  QueryDevCntMsg_descriptor_ = file->message_type(3);
+  RegistTypeMsgResult_descriptor_ = file->message_type(3);
+  static const int RegistTypeMsgResult_offsets_[1] = {
+  };
+  RegistTypeMsgResult_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      RegistTypeMsgResult_descriptor_,
+      RegistTypeMsgResult::default_instance_,
+      RegistTypeMsgResult_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegistTypeMsgResult, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(RegistTypeMsgResult, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(RegistTypeMsgResult));
+  QueryDevCntMsg_descriptor_ = file->message_type(4);
   static const int QueryDevCntMsg_offsets_[1] = {
   };
   QueryDevCntMsg_reflection_ =
@@ -141,7 +162,7 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(QueryDevCntMsg));
-  QueryDevCntMsgResult_descriptor_ = file->message_type(4);
+  QueryDevCntMsgResult_descriptor_ = file->message_type(5);
   static const int QueryDevCntMsgResult_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QueryDevCntMsgResult, devcnt_),
   };
@@ -156,7 +177,7 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(QueryDevCntMsgResult));
-  QueryMsg_descriptor_ = file->message_type(5);
+  QueryMsg_descriptor_ = file->message_type(6);
   static const int QueryMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QueryMsg, msg_),
   };
@@ -171,7 +192,7 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(QueryMsg));
-  QueryMsgResult_descriptor_ = file->message_type(6);
+  QueryMsgResult_descriptor_ = file->message_type(7);
   static const int QueryMsgResult_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QueryMsgResult, resultdata_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QueryMsgResult, resulterror_),
@@ -187,7 +208,7 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(QueryMsgResult));
-  AddMsg_descriptor_ = file->message_type(7);
+  AddMsg_descriptor_ = file->message_type(8);
   static const int AddMsg_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AddMsg, tablename_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AddMsg, msg_),
@@ -203,7 +224,7 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AddMsg));
-  AddMsgResult_descriptor_ = file->message_type(8);
+  AddMsgResult_descriptor_ = file->message_type(9);
   static const int AddMsgResult_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(AddMsgResult, resulterror_),
   };
@@ -218,7 +239,7 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(AddMsgResult));
-  ExcuteSqlMsg_descriptor_ = file->message_type(9);
+  ExcuteSqlMsg_descriptor_ = file->message_type(10);
   static const int ExcuteSqlMsg_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExcuteSqlMsg, msg_),
   };
@@ -233,7 +254,7 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExcuteSqlMsg));
-  ExcuteSqlMsgResult_descriptor_ = file->message_type(10);
+  ExcuteSqlMsgResult_descriptor_ = file->message_type(11);
   static const int ExcuteSqlMsgResult_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(ExcuteSqlMsgResult, resulterror_),
   };
@@ -248,7 +269,7 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ExcuteSqlMsgResult));
-  QueryDevSpeedMsg_descriptor_ = file->message_type(11);
+  QueryDevSpeedMsg_descriptor_ = file->message_type(12);
   static const int QueryDevSpeedMsg_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QueryDevSpeedMsg, ipstr_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QueryDevSpeedMsg, askuserid_),
@@ -265,7 +286,7 @@ void protobuf_AssignDesc_netmsg_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(QueryDevSpeedMsg));
-  QueryDevSpeedMsgResult_descriptor_ = file->message_type(12);
+  QueryDevSpeedMsgResult_descriptor_ = file->message_type(13);
   static const int QueryDevSpeedMsgResult_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QueryDevSpeedMsgResult, speed_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(QueryDevSpeedMsgResult, resulterror_),
@@ -300,6 +321,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     RegistTypeMsg_descriptor_, &RegistTypeMsg::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    RegistTypeMsgResult_descriptor_, &RegistTypeMsgResult::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     QueryDevCntMsg_descriptor_, &QueryDevCntMsg::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     QueryDevCntMsgResult_descriptor_, &QueryDevCntMsgResult::default_instance());
@@ -330,6 +353,8 @@ void protobuf_ShutdownFile_netmsg_2eproto() {
   delete MsgHead_reflection_;
   delete RegistTypeMsg::default_instance_;
   delete RegistTypeMsg_reflection_;
+  delete RegistTypeMsgResult::default_instance_;
+  delete RegistTypeMsgResult_reflection_;
   delete QueryDevCntMsg::default_instance_;
   delete QueryDevCntMsg_reflection_;
   delete QueryDevCntMsgResult::default_instance_;
@@ -359,40 +384,44 @@ void protobuf_AddDesc_netmsg_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\014netmsg.proto\022\006netmsg\"\261\004\n\007MsgPack\022\035\n\004he"
+    "\n\014netmsg.proto\022\006netmsg\"\353\004\n\007MsgPack\022\035\n\004he"
     "ad\030\001 \002(\0132\017.netmsg.MsgHead\022)\n\nregisttype\030"
-    "\002 \001(\0132\025.netmsg.RegistTypeMsg\022.\n\016querydev"
-    "cntmsg\030\003 \001(\0132\026.netmsg.QueryDevCntMsg\022:\n\024"
-    "querydevcntmsgresult\030\004 \001(\0132\034.netmsg.Quer"
-    "yDevCntMsgResult\022\037\n\005query\030\005 \001(\0132\020.netmsg"
-    ".QueryMsg\022\033\n\003add\030\006 \001(\0132\016.netmsg.AddMsg\022."
-    "\n\016querymsgresult\030\007 \001(\0132\026.netmsg.QueryMsg"
-    "Result\022*\n\014addmsgresult\030\010 \001(\0132\024.netmsg.Ad"
-    "dMsgResult\022*\n\014excutesqlmsg\030\t \001(\0132\024.netms"
-    "g.ExcuteSqlMsg\0226\n\022excutesqlmsgresult\030\n \001"
-    "(\0132\032.netmsg.ExcuteSqlMsgResult\0222\n\020queryd"
-    "evspeedmsg\030\013 \001(\0132\030.netmsg.QueryDevSpeedM"
-    "sg\022>\n\026querydevspeedmsgresult\030\014 \001(\0132\036.net"
-    "msg.QueryDevSpeedMsgResult\"R\n\007MsgHead\022\033\n"
-    "\020globalPackNumber\030\001 \002(\r:\0011\022\024\n\ttotalPack\030"
-    "\002 \002(\005:\0011\022\024\n\tpackIndex\030\003 \002(\005:\0011\" \n\rRegist"
-    "TypeMsg\022\017\n\007bDevice\030\001 \002(\010\"\020\n\016QueryDevCntM"
-    "sg\"&\n\024QueryDevCntMsgResult\022\016\n\006devCnt\030\001 \002"
-    "(\005\"\027\n\010QueryMsg\022\013\n\003Msg\030\001 \002(\t\"9\n\016QueryMsgR"
-    "esult\022\022\n\nresultData\030\001 \002(\t\022\023\n\013resultError"
-    "\030\002 \002(\t\"(\n\006AddMsg\022\021\n\tTableName\030\001 \002(\t\022\013\n\003M"
-    "sg\030\002 \002(\t\"#\n\014AddMsgResult\022\023\n\013resultError\030"
-    "\001 \002(\t\"\033\n\014ExcuteSqlMsg\022\013\n\003Msg\030\001 \002(\t\")\n\022Ex"
-    "cuteSqlMsgResult\022\023\n\013resultError\030\001 \002(\t\"G\n"
-    "\020QueryDevSpeedMsg\022\r\n\005ipStr\030\001 \002(\t\022\021\n\taskU"
-    "serID\030\002 \002(\005\022\021\n\tstartTime\030\003 \002(\003\"<\n\026QueryD"
-    "evSpeedMsgResult\022\r\n\005speed\030\001 \002(\005\022\023\n\013resul"
-    "tError\030\002 \002(\t", 1132);
+    "\002 \001(\0132\025.netmsg.RegistTypeMsg\0228\n\023registty"
+    "pemsgresult\030\003 \001(\0132\033.netmsg.RegistTypeMsg"
+    "Result\022.\n\016querydevcntmsg\030\004 \001(\0132\026.netmsg."
+    "QueryDevCntMsg\022:\n\024querydevcntmsgresult\030\005"
+    " \001(\0132\034.netmsg.QueryDevCntMsgResult\022\037\n\005qu"
+    "ery\030\006 \001(\0132\020.netmsg.QueryMsg\022\033\n\003add\030\007 \001(\013"
+    "2\016.netmsg.AddMsg\022.\n\016querymsgresult\030\010 \001(\013"
+    "2\026.netmsg.QueryMsgResult\022*\n\014addmsgresult"
+    "\030\t \001(\0132\024.netmsg.AddMsgResult\022*\n\014excutesq"
+    "lmsg\030\n \001(\0132\024.netmsg.ExcuteSqlMsg\0226\n\022excu"
+    "tesqlmsgresult\030\013 \001(\0132\032.netmsg.ExcuteSqlM"
+    "sgResult\0222\n\020querydevspeedmsg\030\014 \001(\0132\030.net"
+    "msg.QueryDevSpeedMsg\022>\n\026querydevspeedmsg"
+    "result\030\r \001(\0132\036.netmsg.QueryDevSpeedMsgRe"
+    "sult\"R\n\007MsgHead\022\033\n\020globalPackNumber\030\001 \002("
+    "\r:\0011\022\024\n\ttotalPack\030\002 \002(\005:\0011\022\024\n\tpackIndex\030"
+    "\003 \002(\005:\0010\"O\n\rRegistTypeMsg\022\017\n\007bDevice\030\001 \002"
+    "(\010\022\n\n\002ip\030\002 \002(\t\022\020\n\010serverip\030\003 \002(\t\022\017\n\007bNor"
+    "mal\030\004 \002(\010\"\025\n\023RegistTypeMsgResult\"\020\n\016Quer"
+    "yDevCntMsg\"&\n\024QueryDevCntMsgResult\022\016\n\006de"
+    "vCnt\030\001 \002(\005\"\027\n\010QueryMsg\022\013\n\003Msg\030\001 \002(\t\"9\n\016Q"
+    "ueryMsgResult\022\022\n\nresultData\030\001 \002(\t\022\023\n\013res"
+    "ultError\030\002 \002(\t\"(\n\006AddMsg\022\021\n\tTableName\030\001 "
+    "\002(\t\022\013\n\003Msg\030\002 \002(\t\"#\n\014AddMsgResult\022\023\n\013resu"
+    "ltError\030\001 \002(\t\"\033\n\014ExcuteSqlMsg\022\013\n\003Msg\030\001 \002"
+    "(\t\")\n\022ExcuteSqlMsgResult\022\023\n\013resultError\030"
+    "\001 \002(\t\"G\n\020QueryDevSpeedMsg\022\r\n\005ipStr\030\001 \002(\t"
+    "\022\021\n\taskUserID\030\002 \002(\005\022\021\n\tstartTime\030\003 \002(\003\"<"
+    "\n\026QueryDevSpeedMsgResult\022\r\n\005speed\030\001 \002(\005\022"
+    "\023\n\013resultError\030\002 \002(\t", 1260);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "netmsg.proto", &protobuf_RegisterTypes);
   MsgPack::default_instance_ = new MsgPack();
   MsgHead::default_instance_ = new MsgHead();
   RegistTypeMsg::default_instance_ = new RegistTypeMsg();
+  RegistTypeMsgResult::default_instance_ = new RegistTypeMsgResult();
   QueryDevCntMsg::default_instance_ = new QueryDevCntMsg();
   QueryDevCntMsgResult::default_instance_ = new QueryDevCntMsgResult();
   QueryMsg::default_instance_ = new QueryMsg();
@@ -406,6 +435,7 @@ void protobuf_AddDesc_netmsg_2eproto() {
   MsgPack::default_instance_->InitAsDefaultInstance();
   MsgHead::default_instance_->InitAsDefaultInstance();
   RegistTypeMsg::default_instance_->InitAsDefaultInstance();
+  RegistTypeMsgResult::default_instance_->InitAsDefaultInstance();
   QueryDevCntMsg::default_instance_->InitAsDefaultInstance();
   QueryDevCntMsgResult::default_instance_->InitAsDefaultInstance();
   QueryMsg::default_instance_->InitAsDefaultInstance();
@@ -431,6 +461,7 @@ struct StaticDescriptorInitializer_netmsg_2eproto {
 #ifndef _MSC_VER
 const int MsgPack::kHeadFieldNumber;
 const int MsgPack::kRegisttypeFieldNumber;
+const int MsgPack::kRegisttypemsgresultFieldNumber;
 const int MsgPack::kQuerydevcntmsgFieldNumber;
 const int MsgPack::kQuerydevcntmsgresultFieldNumber;
 const int MsgPack::kQueryFieldNumber;
@@ -452,6 +483,7 @@ MsgPack::MsgPack()
 void MsgPack::InitAsDefaultInstance() {
   head_ = const_cast< ::netmsg::MsgHead*>(&::netmsg::MsgHead::default_instance());
   registtype_ = const_cast< ::netmsg::RegistTypeMsg*>(&::netmsg::RegistTypeMsg::default_instance());
+  registtypemsgresult_ = const_cast< ::netmsg::RegistTypeMsgResult*>(&::netmsg::RegistTypeMsgResult::default_instance());
   querydevcntmsg_ = const_cast< ::netmsg::QueryDevCntMsg*>(&::netmsg::QueryDevCntMsg::default_instance());
   querydevcntmsgresult_ = const_cast< ::netmsg::QueryDevCntMsgResult*>(&::netmsg::QueryDevCntMsgResult::default_instance());
   query_ = const_cast< ::netmsg::QueryMsg*>(&::netmsg::QueryMsg::default_instance());
@@ -475,6 +507,7 @@ void MsgPack::SharedCtor() {
   _cached_size_ = 0;
   head_ = NULL;
   registtype_ = NULL;
+  registtypemsgresult_ = NULL;
   querydevcntmsg_ = NULL;
   querydevcntmsgresult_ = NULL;
   query_ = NULL;
@@ -497,6 +530,7 @@ void MsgPack::SharedDtor() {
   if (this != default_instance_) {
     delete head_;
     delete registtype_;
+    delete registtypemsgresult_;
     delete querydevcntmsg_;
     delete querydevcntmsgresult_;
     delete query_;
@@ -539,6 +573,9 @@ void MsgPack::Clear() {
     if (has_registtype()) {
       if (registtype_ != NULL) registtype_->::netmsg::RegistTypeMsg::Clear();
     }
+    if (has_registtypemsgresult()) {
+      if (registtypemsgresult_ != NULL) registtypemsgresult_->::netmsg::RegistTypeMsgResult::Clear();
+    }
     if (has_querydevcntmsg()) {
       if (querydevcntmsg_ != NULL) querydevcntmsg_->::netmsg::QueryDevCntMsg::Clear();
     }
@@ -554,11 +591,11 @@ void MsgPack::Clear() {
     if (has_querymsgresult()) {
       if (querymsgresult_ != NULL) querymsgresult_->::netmsg::QueryMsgResult::Clear();
     }
+  }
+  if (_has_bits_[8 / 32] & 7936) {
     if (has_addmsgresult()) {
       if (addmsgresult_ != NULL) addmsgresult_->::netmsg::AddMsgResult::Clear();
     }
-  }
-  if (_has_bits_[8 / 32] & 3840) {
     if (has_excutesqlmsg()) {
       if (excutesqlmsg_ != NULL) excutesqlmsg_->::netmsg::ExcuteSqlMsg::Clear();
     }
@@ -607,130 +644,143 @@ bool MsgPack::MergePartialFromCodedStream(
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(26)) goto parse_querydevcntmsg;
+        if (input->ExpectTag(26)) goto parse_registtypemsgresult;
         break;
       }
 
-      // optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;
+      // optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;
       case 3: {
         if (tag == 26) {
+         parse_registtypemsgresult:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_registtypemsgresult()));
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(34)) goto parse_querydevcntmsg;
+        break;
+      }
+
+      // optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;
+      case 4: {
+        if (tag == 34) {
          parse_querydevcntmsg:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_querydevcntmsg()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(34)) goto parse_querydevcntmsgresult;
+        if (input->ExpectTag(42)) goto parse_querydevcntmsgresult;
         break;
       }
 
-      // optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;
-      case 4: {
-        if (tag == 34) {
+      // optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;
+      case 5: {
+        if (tag == 42) {
          parse_querydevcntmsgresult:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_querydevcntmsgresult()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(42)) goto parse_query;
+        if (input->ExpectTag(50)) goto parse_query;
         break;
       }
 
-      // optional .netmsg.QueryMsg query = 5;
-      case 5: {
-        if (tag == 42) {
+      // optional .netmsg.QueryMsg query = 6;
+      case 6: {
+        if (tag == 50) {
          parse_query:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_query()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(50)) goto parse_add;
+        if (input->ExpectTag(58)) goto parse_add;
         break;
       }
 
-      // optional .netmsg.AddMsg add = 6;
-      case 6: {
-        if (tag == 50) {
+      // optional .netmsg.AddMsg add = 7;
+      case 7: {
+        if (tag == 58) {
          parse_add:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_add()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(58)) goto parse_querymsgresult;
+        if (input->ExpectTag(66)) goto parse_querymsgresult;
         break;
       }
 
-      // optional .netmsg.QueryMsgResult querymsgresult = 7;
-      case 7: {
-        if (tag == 58) {
+      // optional .netmsg.QueryMsgResult querymsgresult = 8;
+      case 8: {
+        if (tag == 66) {
          parse_querymsgresult:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_querymsgresult()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(66)) goto parse_addmsgresult;
+        if (input->ExpectTag(74)) goto parse_addmsgresult;
         break;
       }
 
-      // optional .netmsg.AddMsgResult addmsgresult = 8;
-      case 8: {
-        if (tag == 66) {
+      // optional .netmsg.AddMsgResult addmsgresult = 9;
+      case 9: {
+        if (tag == 74) {
          parse_addmsgresult:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_addmsgresult()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(74)) goto parse_excutesqlmsg;
+        if (input->ExpectTag(82)) goto parse_excutesqlmsg;
         break;
       }
 
-      // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;
-      case 9: {
-        if (tag == 74) {
+      // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;
+      case 10: {
+        if (tag == 82) {
          parse_excutesqlmsg:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_excutesqlmsg()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(82)) goto parse_excutesqlmsgresult;
+        if (input->ExpectTag(90)) goto parse_excutesqlmsgresult;
         break;
       }
 
-      // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;
-      case 10: {
-        if (tag == 82) {
+      // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;
+      case 11: {
+        if (tag == 90) {
          parse_excutesqlmsgresult:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_excutesqlmsgresult()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(90)) goto parse_querydevspeedmsg;
+        if (input->ExpectTag(98)) goto parse_querydevspeedmsg;
         break;
       }
 
-      // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;
-      case 11: {
-        if (tag == 90) {
+      // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;
+      case 12: {
+        if (tag == 98) {
          parse_querydevspeedmsg:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_querydevspeedmsg()));
         } else {
           goto handle_unusual;
         }
-        if (input->ExpectTag(98)) goto parse_querydevspeedmsgresult;
+        if (input->ExpectTag(106)) goto parse_querydevspeedmsgresult;
         break;
       }
 
-      // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;
-      case 12: {
-        if (tag == 98) {
+      // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;
+      case 13: {
+        if (tag == 106) {
          parse_querydevspeedmsgresult:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_querydevspeedmsgresult()));
@@ -778,64 +828,70 @@ void MsgPack::SerializeWithCachedSizes(
       2, this->registtype(), output);
   }
 
-  // optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;
+  // optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;
+  if (has_registtypemsgresult()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->registtypemsgresult(), output);
+  }
+
+  // optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;
   if (has_querydevcntmsg()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->querydevcntmsg(), output);
+      4, this->querydevcntmsg(), output);
   }
 
-  // optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;
+  // optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;
   if (has_querydevcntmsgresult()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->querydevcntmsgresult(), output);
+      5, this->querydevcntmsgresult(), output);
   }
 
-  // optional .netmsg.QueryMsg query = 5;
+  // optional .netmsg.QueryMsg query = 6;
   if (has_query()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->query(), output);
+      6, this->query(), output);
   }
 
-  // optional .netmsg.AddMsg add = 6;
+  // optional .netmsg.AddMsg add = 7;
   if (has_add()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->add(), output);
+      7, this->add(), output);
   }
 
-  // optional .netmsg.QueryMsgResult querymsgresult = 7;
+  // optional .netmsg.QueryMsgResult querymsgresult = 8;
   if (has_querymsgresult()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      7, this->querymsgresult(), output);
+      8, this->querymsgresult(), output);
   }
 
-  // optional .netmsg.AddMsgResult addmsgresult = 8;
+  // optional .netmsg.AddMsgResult addmsgresult = 9;
   if (has_addmsgresult()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, this->addmsgresult(), output);
+      9, this->addmsgresult(), output);
   }
 
-  // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;
+  // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;
   if (has_excutesqlmsg()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      9, this->excutesqlmsg(), output);
+      10, this->excutesqlmsg(), output);
   }
 
-  // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;
+  // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;
   if (has_excutesqlmsgresult()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      10, this->excutesqlmsgresult(), output);
+      11, this->excutesqlmsgresult(), output);
   }
 
-  // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;
+  // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;
   if (has_querydevspeedmsg()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      11, this->querydevspeedmsg(), output);
+      12, this->querydevspeedmsg(), output);
   }
 
-  // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;
+  // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;
   if (has_querydevspeedmsgresult()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      12, this->querydevspeedmsgresult(), output);
+      13, this->querydevspeedmsgresult(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -862,74 +918,81 @@ void MsgPack::SerializeWithCachedSizes(
         2, this->registtype(), target);
   }
 
-  // optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;
+  // optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;
+  if (has_registtypemsgresult()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->registtypemsgresult(), target);
+  }
+
+  // optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;
   if (has_querydevcntmsg()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->querydevcntmsg(), target);
+        4, this->querydevcntmsg(), target);
   }
 
-  // optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;
+  // optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;
   if (has_querydevcntmsgresult()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, this->querydevcntmsgresult(), target);
+        5, this->querydevcntmsgresult(), target);
   }
 
-  // optional .netmsg.QueryMsg query = 5;
+  // optional .netmsg.QueryMsg query = 6;
   if (has_query()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, this->query(), target);
+        6, this->query(), target);
   }
 
-  // optional .netmsg.AddMsg add = 6;
+  // optional .netmsg.AddMsg add = 7;
   if (has_add()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        6, this->add(), target);
+        7, this->add(), target);
   }
 
-  // optional .netmsg.QueryMsgResult querymsgresult = 7;
+  // optional .netmsg.QueryMsgResult querymsgresult = 8;
   if (has_querymsgresult()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        7, this->querymsgresult(), target);
+        8, this->querymsgresult(), target);
   }
 
-  // optional .netmsg.AddMsgResult addmsgresult = 8;
+  // optional .netmsg.AddMsgResult addmsgresult = 9;
   if (has_addmsgresult()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        8, this->addmsgresult(), target);
+        9, this->addmsgresult(), target);
   }
 
-  // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;
+  // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;
   if (has_excutesqlmsg()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        9, this->excutesqlmsg(), target);
+        10, this->excutesqlmsg(), target);
   }
 
-  // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;
+  // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;
   if (has_excutesqlmsgresult()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        10, this->excutesqlmsgresult(), target);
+        11, this->excutesqlmsgresult(), target);
   }
 
-  // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;
+  // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;
   if (has_querydevspeedmsg()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        11, this->querydevspeedmsg(), target);
+        12, this->querydevspeedmsg(), target);
   }
 
-  // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;
+  // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;
   if (has_querydevspeedmsgresult()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        12, this->querydevspeedmsgresult(), target);
+        13, this->querydevspeedmsgresult(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -958,72 +1021,79 @@ int MsgPack::ByteSize() const {
           this->registtype());
     }
 
-    // optional .netmsg.QueryDevCntMsg querydevcntmsg = 3;
+    // optional .netmsg.RegistTypeMsgResult registtypemsgresult = 3;
+    if (has_registtypemsgresult()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->registtypemsgresult());
+    }
+
+    // optional .netmsg.QueryDevCntMsg querydevcntmsg = 4;
     if (has_querydevcntmsg()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->querydevcntmsg());
     }
 
-    // optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 4;
+    // optional .netmsg.QueryDevCntMsgResult querydevcntmsgresult = 5;
     if (has_querydevcntmsgresult()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->querydevcntmsgresult());
     }
 
-    // optional .netmsg.QueryMsg query = 5;
+    // optional .netmsg.QueryMsg query = 6;
     if (has_query()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->query());
     }
 
-    // optional .netmsg.AddMsg add = 6;
+    // optional .netmsg.AddMsg add = 7;
     if (has_add()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->add());
     }
 
-    // optional .netmsg.QueryMsgResult querymsgresult = 7;
+    // optional .netmsg.QueryMsgResult querymsgresult = 8;
     if (has_querymsgresult()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->querymsgresult());
     }
 
-    // optional .netmsg.AddMsgResult addmsgresult = 8;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional .netmsg.AddMsgResult addmsgresult = 9;
     if (has_addmsgresult()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->addmsgresult());
     }
 
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 9;
+    // optional .netmsg.ExcuteSqlMsg excutesqlmsg = 10;
     if (has_excutesqlmsg()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->excutesqlmsg());
     }
 
-    // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 10;
+    // optional .netmsg.ExcuteSqlMsgResult excutesqlmsgresult = 11;
     if (has_excutesqlmsgresult()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->excutesqlmsgresult());
     }
 
-    // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 11;
+    // optional .netmsg.QueryDevSpeedMsg querydevspeedmsg = 12;
     if (has_querydevspeedmsg()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->querydevspeedmsg());
     }
 
-    // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 12;
+    // optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;
     if (has_querydevspeedmsgresult()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1063,6 +1133,9 @@ void MsgPack::MergeFrom(const MsgPack& from) {
     if (from.has_registtype()) {
       mutable_registtype()->::netmsg::RegistTypeMsg::MergeFrom(from.registtype());
     }
+    if (from.has_registtypemsgresult()) {
+      mutable_registtypemsgresult()->::netmsg::RegistTypeMsgResult::MergeFrom(from.registtypemsgresult());
+    }
     if (from.has_querydevcntmsg()) {
       mutable_querydevcntmsg()->::netmsg::QueryDevCntMsg::MergeFrom(from.querydevcntmsg());
     }
@@ -1078,11 +1151,11 @@ void MsgPack::MergeFrom(const MsgPack& from) {
     if (from.has_querymsgresult()) {
       mutable_querymsgresult()->::netmsg::QueryMsgResult::MergeFrom(from.querymsgresult());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_addmsgresult()) {
       mutable_addmsgresult()->::netmsg::AddMsgResult::MergeFrom(from.addmsgresult());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_excutesqlmsg()) {
       mutable_excutesqlmsg()->::netmsg::ExcuteSqlMsg::MergeFrom(from.excutesqlmsg());
     }
@@ -1154,6 +1227,7 @@ void MsgPack::Swap(MsgPack* other) {
   if (other != this) {
     std::swap(head_, other->head_);
     std::swap(registtype_, other->registtype_);
+    std::swap(registtypemsgresult_, other->registtypemsgresult_);
     std::swap(querydevcntmsg_, other->querydevcntmsg_);
     std::swap(querydevcntmsgresult_, other->querydevcntmsgresult_);
     std::swap(query_, other->query_);
@@ -1207,7 +1281,7 @@ void MsgHead::SharedCtor() {
   _cached_size_ = 0;
   globalpacknumber_ = 1u;
   totalpack_ = 1;
-  packindex_ = 1;
+  packindex_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1246,7 +1320,7 @@ void MsgHead::Clear() {
   if (_has_bits_[0 / 32] & 7) {
     globalpacknumber_ = 1u;
     totalpack_ = 1;
-    packindex_ = 1;
+    packindex_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1291,7 +1365,7 @@ bool MsgHead::MergePartialFromCodedStream(
         break;
       }
 
-      // required int32 packIndex = 3 [default = 1];
+      // required int32 packIndex = 3 [default = 0];
       case 3: {
         if (tag == 24) {
          parse_packIndex:
@@ -1341,7 +1415,7 @@ void MsgHead::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->totalpack(), output);
   }
 
-  // required int32 packIndex = 3 [default = 1];
+  // required int32 packIndex = 3 [default = 0];
   if (has_packindex()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->packindex(), output);
   }
@@ -1366,7 +1440,7 @@ void MsgHead::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->totalpack(), target);
   }
 
-  // required int32 packIndex = 3 [default = 1];
+  // required int32 packIndex = 3 [default = 0];
   if (has_packindex()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->packindex(), target);
   }
@@ -1397,7 +1471,7 @@ int MsgHead::ByteSize() const {
           this->totalpack());
     }
 
-    // required int32 packIndex = 3 [default = 1];
+    // required int32 packIndex = 3 [default = 0];
     if (has_packindex()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
@@ -1486,6 +1560,9 @@ void MsgHead::Swap(MsgHead* other) {
 
 #ifndef _MSC_VER
 const int RegistTypeMsg::kBDeviceFieldNumber;
+const int RegistTypeMsg::kIpFieldNumber;
+const int RegistTypeMsg::kServeripFieldNumber;
+const int RegistTypeMsg::kBNormalFieldNumber;
 #endif  // !_MSC_VER
 
 RegistTypeMsg::RegistTypeMsg()
@@ -1505,8 +1582,12 @@ RegistTypeMsg::RegistTypeMsg(const RegistTypeMsg& from)
 }
 
 void RegistTypeMsg::SharedCtor() {
+  ::google::protobuf::internal::GetEmptyString();
   _cached_size_ = 0;
   bdevice_ = false;
+  ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  serverip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  bnormal_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1516,6 +1597,12 @@ RegistTypeMsg::~RegistTypeMsg() {
 }
 
 void RegistTypeMsg::SharedDtor() {
+  if (ip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete ip_;
+  }
+  if (serverip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete serverip_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -1542,7 +1629,33 @@ RegistTypeMsg* RegistTypeMsg::New() const {
 }
 
 void RegistTypeMsg::Clear() {
-  bdevice_ = false;
+#define OFFSET_OF_FIELD_(f) (reinterpret_cast<char*>(      \
+  &reinterpret_cast<RegistTypeMsg*>(16)->f) - \
+   reinterpret_cast<char*>(16))
+
+#define ZR_(first, last) do {                              \
+    size_t f = OFFSET_OF_FIELD_(first);                    \
+    size_t n = OFFSET_OF_FIELD_(last) - f + sizeof(last);  \
+    ::memset(&first, 0, n);                                \
+  } while (0)
+
+  if (_has_bits_[0 / 32] & 15) {
+    ZR_(bdevice_, bnormal_);
+    if (has_ip()) {
+      if (ip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        ip_->clear();
+      }
+    }
+    if (has_serverip()) {
+      if (serverip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+        serverip_->clear();
+      }
+    }
+  }
+
+#undef OFFSET_OF_FIELD_
+#undef ZR_
+
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1564,6 +1677,55 @@ bool RegistTypeMsg::MergePartialFromCodedStream(
                    bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
                  input, &bdevice_)));
           set_has_bdevice();
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(18)) goto parse_ip;
+        break;
+      }
+
+      // required string ip = 2;
+      case 2: {
+        if (tag == 18) {
+         parse_ip:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_ip()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->ip().data(), this->ip().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "ip");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(26)) goto parse_serverip;
+        break;
+      }
+
+      // required string serverip = 3;
+      case 3: {
+        if (tag == 26) {
+         parse_serverip:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_serverip()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+            this->serverip().data(), this->serverip().length(),
+            ::google::protobuf::internal::WireFormat::PARSE,
+            "serverip");
+        } else {
+          goto handle_unusual;
+        }
+        if (input->ExpectTag(32)) goto parse_bNormal;
+        break;
+      }
+
+      // required bool bNormal = 4;
+      case 4: {
+        if (tag == 32) {
+         parse_bNormal:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &bnormal_)));
+          set_has_bnormal();
         } else {
           goto handle_unusual;
         }
@@ -1601,6 +1763,31 @@ void RegistTypeMsg::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->bdevice(), output);
   }
 
+  // required string ip = 2;
+  if (has_ip()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->ip().data(), this->ip().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "ip");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      2, this->ip(), output);
+  }
+
+  // required string serverip = 3;
+  if (has_serverip()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->serverip().data(), this->serverip().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "serverip");
+    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
+      3, this->serverip(), output);
+  }
+
+  // required bool bNormal = 4;
+  if (has_bnormal()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(4, this->bnormal(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1614,6 +1801,33 @@ void RegistTypeMsg::SerializeWithCachedSizes(
   // required bool bDevice = 1;
   if (has_bdevice()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->bdevice(), target);
+  }
+
+  // required string ip = 2;
+  if (has_ip()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->ip().data(), this->ip().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "ip");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        2, this->ip(), target);
+  }
+
+  // required string serverip = 3;
+  if (has_serverip()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
+      this->serverip().data(), this->serverip().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE,
+      "serverip");
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->serverip(), target);
+  }
+
+  // required bool bNormal = 4;
+  if (has_bnormal()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(4, this->bnormal(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1630,6 +1844,25 @@ int RegistTypeMsg::ByteSize() const {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     // required bool bDevice = 1;
     if (has_bdevice()) {
+      total_size += 1 + 1;
+    }
+
+    // required string ip = 2;
+    if (has_ip()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->ip());
+    }
+
+    // required string serverip = 3;
+    if (has_serverip()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->serverip());
+    }
+
+    // required bool bNormal = 4;
+    if (has_bnormal()) {
       total_size += 1 + 1;
     }
 
@@ -1663,6 +1896,15 @@ void RegistTypeMsg::MergeFrom(const RegistTypeMsg& from) {
     if (from.has_bdevice()) {
       set_bdevice(from.bdevice());
     }
+    if (from.has_ip()) {
+      set_ip(from.ip());
+    }
+    if (from.has_serverip()) {
+      set_serverip(from.serverip());
+    }
+    if (from.has_bnormal()) {
+      set_bnormal(from.bnormal());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1680,7 +1922,7 @@ void RegistTypeMsg::CopyFrom(const RegistTypeMsg& from) {
 }
 
 bool RegistTypeMsg::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000001) != 0x00000001) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
 
   return true;
 }
@@ -1688,6 +1930,9 @@ bool RegistTypeMsg::IsInitialized() const {
 void RegistTypeMsg::Swap(RegistTypeMsg* other) {
   if (other != this) {
     std::swap(bdevice_, other->bdevice_);
+    std::swap(ip_, other->ip_);
+    std::swap(serverip_, other->serverip_);
+    std::swap(bnormal_, other->bnormal_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1699,6 +1944,180 @@ void RegistTypeMsg::Swap(RegistTypeMsg* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = RegistTypeMsg_descriptor_;
   metadata.reflection = RegistTypeMsg_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+RegistTypeMsgResult::RegistTypeMsgResult()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  // @@protoc_insertion_point(constructor:netmsg.RegistTypeMsgResult)
+}
+
+void RegistTypeMsgResult::InitAsDefaultInstance() {
+}
+
+RegistTypeMsgResult::RegistTypeMsgResult(const RegistTypeMsgResult& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+  // @@protoc_insertion_point(copy_constructor:netmsg.RegistTypeMsgResult)
+}
+
+void RegistTypeMsgResult::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+RegistTypeMsgResult::~RegistTypeMsgResult() {
+  // @@protoc_insertion_point(destructor:netmsg.RegistTypeMsgResult)
+  SharedDtor();
+}
+
+void RegistTypeMsgResult::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void RegistTypeMsgResult::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* RegistTypeMsgResult::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return RegistTypeMsgResult_descriptor_;
+}
+
+const RegistTypeMsgResult& RegistTypeMsgResult::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_netmsg_2eproto();
+  return *default_instance_;
+}
+
+RegistTypeMsgResult* RegistTypeMsgResult::default_instance_ = NULL;
+
+RegistTypeMsgResult* RegistTypeMsgResult::New() const {
+  return new RegistTypeMsgResult;
+}
+
+void RegistTypeMsgResult::Clear() {
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool RegistTypeMsgResult::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) goto failure
+  ::google::protobuf::uint32 tag;
+  // @@protoc_insertion_point(parse_start:netmsg.RegistTypeMsgResult)
+  for (;;) {
+    ::std::pair< ::google::protobuf::uint32, bool> p = input->ReadTagWithCutoff(127);
+    tag = p.first;
+    if (!p.second) goto handle_unusual;
+  handle_unusual:
+    if (tag == 0 ||
+        ::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      goto success;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, mutable_unknown_fields()));
+  }
+success:
+  // @@protoc_insertion_point(parse_success:netmsg.RegistTypeMsgResult)
+  return true;
+failure:
+  // @@protoc_insertion_point(parse_failure:netmsg.RegistTypeMsgResult)
+  return false;
+#undef DO_
+}
+
+void RegistTypeMsgResult::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // @@protoc_insertion_point(serialize_start:netmsg.RegistTypeMsgResult)
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+  // @@protoc_insertion_point(serialize_end:netmsg.RegistTypeMsgResult)
+}
+
+::google::protobuf::uint8* RegistTypeMsgResult::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // @@protoc_insertion_point(serialize_to_array_start:netmsg.RegistTypeMsgResult)
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:netmsg.RegistTypeMsgResult)
+  return target;
+}
+
+int RegistTypeMsgResult::ByteSize() const {
+  int total_size = 0;
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void RegistTypeMsgResult::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const RegistTypeMsgResult* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const RegistTypeMsgResult*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void RegistTypeMsgResult::MergeFrom(const RegistTypeMsgResult& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void RegistTypeMsgResult::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void RegistTypeMsgResult::CopyFrom(const RegistTypeMsgResult& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool RegistTypeMsgResult::IsInitialized() const {
+
+  return true;
+}
+
+void RegistTypeMsgResult::Swap(RegistTypeMsgResult* other) {
+  if (other != this) {
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata RegistTypeMsgResult::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = RegistTypeMsgResult_descriptor_;
+  metadata.reflection = RegistTypeMsgResult_reflection_;
   return metadata;
 }
 

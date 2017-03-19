@@ -32,5 +32,26 @@
         <TextBox x:Name="bindPortBox" Canvas.Left="120" Canvas.Top="70"  HorizontalAlignment="Left" VerticalAlignment="Center">60000</TextBox>
         <Button Canvas.Left="170" Canvas.Top="64" Width="100" Height="30" Name="butStartServer" Content="butStartServer" Command="{Binding Path=StartServerCommand}" />
         <Button Canvas.Left="290" Canvas.Top="63" Width="100" Height="30" Name="butStopServer"  Content="butStopServer" Command="{Binding Path=StopServerCommand}"/>
+        <DataGrid Canvas.Left="21" Canvas.Top="100" Width="751" Height="400"
+                              BorderThickness="0" ColumnHeaderHeight="25" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
+                              RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                              CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 
+                              AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True" SelectionMode="Single"
+                              ItemsSource="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource DataGridItemSourceConvert}}"
+                              
+                              >
+            <DataGrid.CellStyle>
+                <Style TargetType="DataGridCell">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Background" Value="LightBlue"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.CellStyle>
+        </DataGrid>
     </Canvas>
 </Window>
