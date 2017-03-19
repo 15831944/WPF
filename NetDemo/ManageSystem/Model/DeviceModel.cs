@@ -69,5 +69,47 @@ namespace ManageSystem.Model
                 this.RaisePropertyChanged("Text");
             }
         }
+
+        private string _lonstr;
+        public string lonstr
+        {
+            get
+            {
+                return _lonstr;
+            }
+            set
+            {
+                _lonstr = value;
+                this.RaisePropertyChanged("lonstr");
+            }
+        }
+
+        private string _latstr;
+        public string latstr
+        {
+            get
+            {
+                return _latstr;
+            }
+            set
+            {
+                _latstr = value;
+                this.RaisePropertyChanged("latstr");
+            }
+        }
+
+        private int _bStatus;
+        public int bStatus
+        {
+            get
+            {
+                return _bStatus;
+            }
+            set
+            {
+                _bStatus = value;
+                this.RaisePropertyChanged("bStatus");
+            }
+        }
     }
 }

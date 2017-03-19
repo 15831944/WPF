@@ -174,6 +174,23 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 						}
 					}
 				}
+				else if (msgPack.has_queryconnectionsstrmsg())
+				{
+					const char *pChar = CServer::GetInstance()->CurConnections();
+					
+					if (pChar)
+					{
+						packResult.mutable_queryconnectionsstrmsgresult()->set_resultdata(pChar);
+						packResult.mutable_queryconnectionsstrmsgresult()->set_resulterror("");
+					}
+					else
+					{
+						packResult.mutable_queryconnectionsstrmsgresult()->set_resultdata("");
+						packResult.mutable_queryconnectionsstrmsgresult()->set_resulterror("没有设备！");
+					}
+
+					CServer::GetInstance()->SendMsgBuf(userID, packResult);
+				}
 				else
 				{
 

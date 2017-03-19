@@ -89,6 +89,14 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					if (pairValue.second)
 						((QueryTableCallBack)pairValue.second)(ch, (char*)resulterror.c_str());
 				}
+				else if (msgPack.has_queryconnectionsstrmsgresult())
+				{
+					string resultstr	= msgPack.queryconnectionsstrmsgresult().resultdata();
+					string resulterror	= msgPack.queryconnectionsstrmsgresult().resulterror();
+
+					if (pairValue.second)
+						((QueryTableCallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
+				}
 			}
 		}
 		else
@@ -353,6 +361,42 @@ void  CClient::QueryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSyn
 		pack.mutable_querydevspeedmsg()->set_ipstr(ipStr);
 		pack.mutable_querydevspeedmsg()->set_askuserid(-1);
 		pack.mutable_querydevspeedmsg()->set_starttime(-1);
+
+		int msgLen			= pack.ByteSize();
+		LPBYTE pBuffer		= new BYTE[msgLen];
+		pack.SerializeToArray(pBuffer, msgLen);
+
+		m_sendDataFunc(pBuffer, msgLen);
+		delete[] pBuffer;
+
+		if (bSync)
+		{
+			MSG msg;
+			while (m_requestMap.Exist(numberTemp))
+			{
+				if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+				{
+					::TranslateMessage(&msg);
+					::DispatchMessage(&msg);
+				}
+				Sleep(100);
+			}
+		}
+	}
+}
+
+void  CClient::QueryConnectionsStr(QueryTableCallBack callBack, bool bSync)
+{
+	if (m_sendDataFunc)
+	{
+		netmsg::MsgPack pack;
+		DWORD numberTemp			= InterlockedIncrement(&m_globalPackNumber);
+		m_requestMap.Push(numberTemp, callBack);
+		pack.mutable_head()->set_globalpacknumber(numberTemp);
+		pack.mutable_head()->set_totalpack(1);
+		pack.mutable_head()->set_packindex(0);
+
+		pack.mutable_queryconnectionsstrmsg();
 
 		int msgLen			= pack.ByteSize();
 		LPBYTE pBuffer		= new BYTE[msgLen];

@@ -41,6 +41,7 @@ public:
 	void								ExcuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync);
 	void								QueryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSync);
 	void								UpdateClientStatus(bool bNormal, bool bSync);
+	void								QueryConnectionsStr(QueryTableCallBack callBack, bool bSync);
 };
 
 #pragma  once

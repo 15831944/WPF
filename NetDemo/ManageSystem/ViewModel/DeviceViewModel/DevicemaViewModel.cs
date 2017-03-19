@@ -38,7 +38,6 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
     class DevicemaViewModel : NotificationObject
     {
-        public static string                _sitesString = "";
         public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
         public AddTableCallBackDelegate     _addtablecallbackdelegate = null;
         public ExcutesqlCallBackDelegate    _excutesqlCallBackDelegate = null;
@@ -432,70 +431,41 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             tableList.Clear();
             WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
 
-            XmlDocument doc = new XmlDocument();
-            XmlDeclaration dec = doc.CreateXmlDeclaration("1.0", "UTF-8", null);
-            doc.AppendChild(dec);
-            XmlElement root = doc.CreateElement("xml");
-            doc.AppendChild(root);
-            XmlElement data = doc.CreateElement("data");
-
-            Dictionary<string, Dictionary<string, Dictionary<string, HashSet<string>>>> _devicelistMap = new Dictionary<string, Dictionary<string, Dictionary<string, HashSet<string>>>>();
+            Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>> _devicelistMap = new Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>>();
             foreach (SHEBEIGUANLIModel modelTemp in tableList)
             {
                 if (!_devicelistMap.Keys.Contains(modelTemp.Chengshibianhao))
-                    _devicelistMap[modelTemp.Chengshibianhao] = new Dictionary<string, Dictionary<string, HashSet<string>>>();
+                    _devicelistMap[modelTemp.Chengshibianhao] = new Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>();
                 if (!_devicelistMap[modelTemp.Chengshibianhao].Keys.Contains(modelTemp.Jubianhao))
-                    _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao] = new Dictionary<string, HashSet<string>>();
+                    _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao] = new Dictionary<string, HashSet<SHEBEIGUANLIModel>>();
                 if (!_devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao].Keys.Contains(modelTemp.Shiyongdanweibianhao))
-                    _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao] = new HashSet<string>();
+                    _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao] = new HashSet<SHEBEIGUANLIModel>();
 
-                _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao].Add(modelTemp.IP);
-
-                XmlElement site     = doc.CreateElement("site");
-
-                XmlElement type     = doc.CreateElement("type");
-                type.InnerText      = "1";
-                XmlElement name     = doc.CreateElement("name");
-                name.InnerText      = modelTemp.Shiyongdanweibianhao;
-                XmlElement lon      = doc.CreateElement("lon");
-                lon.InnerText       = modelTemp.Jingdu;
-                XmlElement lat      = doc.CreateElement("lat");
-                lat.InnerText       = modelTemp.Weidu;
-                XmlElement desc     = doc.CreateElement("desc");
-                desc.InnerText      = modelTemp.Shiyongdanweibianhao;
-
-
-                site.AppendChild(type);
-                site.AppendChild(name);
-                site.AppendChild(lon);
-                site.AppendChild(lat);
-                site.AppendChild(desc);
-                data.AppendChild(site); 
+                _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao].Add(modelTemp);
             }
 
-            root.AppendChild(data);
-            _sitesString = doc.InnerXml;
 
-
-            foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<string>>>> kvp0 in _devicelistMap)
+            foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>> kvp0 in _devicelistMap)
             {
                 DeviceModel device0                 = new DeviceModel();
                 device0.text                        = kvp0.Key;
                 device0.leftMargin                  = "0,0,0,0";
-                foreach (KeyValuePair<string, Dictionary<string, HashSet<string>>> kvp1 in kvp0.Value)
+                foreach (KeyValuePair<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>> kvp1 in kvp0.Value)
                 {
                     DeviceModel device1             = new DeviceModel();
                     device1.text                    = kvp1.Key;
                     device1.leftMargin              = "16, 0, 0, 0";
-                    foreach (KeyValuePair<string, HashSet<string>> kvp2 in kvp1.Value)
+                    foreach (KeyValuePair<string, HashSet<SHEBEIGUANLIModel>> kvp2 in kvp1.Value)
                     {
                         DeviceModel device2         = new DeviceModel();
                         device2.text                = kvp2.Key;
                         device2.leftMargin          = "32, 0, 0, 0";
-                        foreach (string ipstr in kvp2.Value)
+                        foreach (SHEBEIGUANLIModel model in kvp2.Value)
                         {
                             DeviceModel device3     = new DeviceModel();
-                            device3.text            = ipstr;
+                            device3.lonstr          = model.Jingdu;
+                            device3.latstr          = model.Weidu;
+                            device3.text            = model.IP;
                             device3.leftMargin      = "48, 0, 0, 0";
                             device2.Children.Add(device3);
                         }

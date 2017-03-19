@@ -33,3 +33,4 @@ void				addTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool 
 void				excuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync);
 void				queryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSync);
 void				updateClientStatus(bool bNormal, bool bSync);
+void				queryConnectionsStr(QueryTableCallBack callBack, bool bSync);

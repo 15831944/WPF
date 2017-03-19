@@ -20,6 +20,9 @@ message MsgPack
 
 	optional	QueryDevSpeedMsg  					querydevspeedmsg				= 12;
 	optional	QueryDevSpeedMsgResult  			querydevspeedmsgresult			= 13;
+
+	optional	QueryConnectionsStrMsg  			queryconnectionsstrmsg			= 14;
+	optional	QueryConnectionsStrMsgResult  		queryconnectionsstrmsgresult	= 15;
 }
 
 message MsgHead{
@@ -45,6 +48,15 @@ message QueryDevCntMsg{
 
 message QueryDevCntMsgResult{
 	required	int32				devCnt					= 1;
+}
+
+message QueryConnectionsStrMsg{
+
+}
+
+message QueryConnectionsStrMsgResult{
+	required	string				resultData				= 1;
+	required	string				resultError				= 2;
 }
 
 message QueryMsg{

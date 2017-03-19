@@ -180,6 +180,32 @@ public final class Netmsg {
      * <code>optional .netmsg.QueryDevSpeedMsgResult querydevspeedmsgresult = 13;</code>
      */
     netmsg.Netmsg.QueryDevSpeedMsgResultOrBuilder getQuerydevspeedmsgresultOrBuilder();
+
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+     */
+    boolean hasQueryconnectionsstrmsg();
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+     */
+    netmsg.Netmsg.QueryConnectionsStrMsg getQueryconnectionsstrmsg();
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+     */
+    netmsg.Netmsg.QueryConnectionsStrMsgOrBuilder getQueryconnectionsstrmsgOrBuilder();
+
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+     */
+    boolean hasQueryconnectionsstrmsgresult();
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+     */
+    netmsg.Netmsg.QueryConnectionsStrMsgResult getQueryconnectionsstrmsgresult();
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+     */
+    netmsg.Netmsg.QueryConnectionsStrMsgResultOrBuilder getQueryconnectionsstrmsgresultOrBuilder();
   }
   /**
    * Protobuf type {@code netmsg.MsgPack}
@@ -400,6 +426,32 @@ public final class Netmsg {
                 querydevspeedmsgresult_ = subBuilder.buildPartial();
               }
               bitField0_ |= 0x00001000;
+              break;
+            }
+            case 114: {
+              netmsg.Netmsg.QueryConnectionsStrMsg.Builder subBuilder = null;
+              if (((bitField0_ & 0x00002000) == 0x00002000)) {
+                subBuilder = queryconnectionsstrmsg_.toBuilder();
+              }
+              queryconnectionsstrmsg_ = input.readMessage(netmsg.Netmsg.QueryConnectionsStrMsg.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(queryconnectionsstrmsg_);
+                queryconnectionsstrmsg_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00002000;
+              break;
+            }
+            case 122: {
+              netmsg.Netmsg.QueryConnectionsStrMsgResult.Builder subBuilder = null;
+              if (((bitField0_ & 0x00004000) == 0x00004000)) {
+                subBuilder = queryconnectionsstrmsgresult_.toBuilder();
+              }
+              queryconnectionsstrmsgresult_ = input.readMessage(netmsg.Netmsg.QueryConnectionsStrMsgResult.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(queryconnectionsstrmsgresult_);
+                queryconnectionsstrmsgresult_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00004000;
               break;
             }
           }
@@ -715,6 +767,48 @@ public final class Netmsg {
       return querydevspeedmsgresult_;
     }
 
+    public static final int QUERYCONNECTIONSSTRMSG_FIELD_NUMBER = 14;
+    private netmsg.Netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg_;
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+     */
+    public boolean hasQueryconnectionsstrmsg() {
+      return ((bitField0_ & 0x00002000) == 0x00002000);
+    }
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+     */
+    public netmsg.Netmsg.QueryConnectionsStrMsg getQueryconnectionsstrmsg() {
+      return queryconnectionsstrmsg_;
+    }
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+     */
+    public netmsg.Netmsg.QueryConnectionsStrMsgOrBuilder getQueryconnectionsstrmsgOrBuilder() {
+      return queryconnectionsstrmsg_;
+    }
+
+    public static final int QUERYCONNECTIONSSTRMSGRESULT_FIELD_NUMBER = 15;
+    private netmsg.Netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult_;
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+     */
+    public boolean hasQueryconnectionsstrmsgresult() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+     */
+    public netmsg.Netmsg.QueryConnectionsStrMsgResult getQueryconnectionsstrmsgresult() {
+      return queryconnectionsstrmsgresult_;
+    }
+    /**
+     * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+     */
+    public netmsg.Netmsg.QueryConnectionsStrMsgResultOrBuilder getQueryconnectionsstrmsgresultOrBuilder() {
+      return queryconnectionsstrmsgresult_;
+    }
+
     private void initFields() {
       head_ = netmsg.Netmsg.MsgHead.getDefaultInstance();
       registtype_ = netmsg.Netmsg.RegistTypeMsg.getDefaultInstance();
@@ -729,6 +823,8 @@ public final class Netmsg {
       excutesqlmsgresult_ = netmsg.Netmsg.ExcuteSqlMsgResult.getDefaultInstance();
       querydevspeedmsg_ = netmsg.Netmsg.QueryDevSpeedMsg.getDefaultInstance();
       querydevspeedmsgresult_ = netmsg.Netmsg.QueryDevSpeedMsgResult.getDefaultInstance();
+      queryconnectionsstrmsg_ = netmsg.Netmsg.QueryConnectionsStrMsg.getDefaultInstance();
+      queryconnectionsstrmsgresult_ = netmsg.Netmsg.QueryConnectionsStrMsgResult.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -804,6 +900,12 @@ public final class Netmsg {
           return false;
         }
       }
+      if (hasQueryconnectionsstrmsgresult()) {
+        if (!getQueryconnectionsstrmsgresult().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -849,6 +951,12 @@ public final class Netmsg {
       }
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
         output.writeMessage(13, querydevspeedmsgresult_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        output.writeMessage(14, queryconnectionsstrmsg_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        output.writeMessage(15, queryconnectionsstrmsgresult_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -910,6 +1018,14 @@ public final class Netmsg {
       if (((bitField0_ & 0x00001000) == 0x00001000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(13, querydevspeedmsgresult_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, queryconnectionsstrmsg_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, queryconnectionsstrmsgresult_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1033,6 +1149,8 @@ public final class Netmsg {
           getExcutesqlmsgresultFieldBuilder();
           getQuerydevspeedmsgFieldBuilder();
           getQuerydevspeedmsgresultFieldBuilder();
+          getQueryconnectionsstrmsgFieldBuilder();
+          getQueryconnectionsstrmsgresultFieldBuilder();
         }
       }
       private static Builder create() {
@@ -1119,6 +1237,18 @@ public final class Netmsg {
           querydevspeedmsgresultBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00001000);
+        if (queryconnectionsstrmsgBuilder_ == null) {
+          queryconnectionsstrmsg_ = netmsg.Netmsg.QueryConnectionsStrMsg.getDefaultInstance();
+        } else {
+          queryconnectionsstrmsgBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00002000);
+        if (queryconnectionsstrmsgresultBuilder_ == null) {
+          queryconnectionsstrmsgresult_ = netmsg.Netmsg.QueryConnectionsStrMsgResult.getDefaultInstance();
+        } else {
+          queryconnectionsstrmsgresultBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00004000);
         return this;
       }
 
@@ -1251,6 +1381,22 @@ public final class Netmsg {
         } else {
           result.querydevspeedmsgresult_ = querydevspeedmsgresultBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00002000;
+        }
+        if (queryconnectionsstrmsgBuilder_ == null) {
+          result.queryconnectionsstrmsg_ = queryconnectionsstrmsg_;
+        } else {
+          result.queryconnectionsstrmsg_ = queryconnectionsstrmsgBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
+        }
+        if (queryconnectionsstrmsgresultBuilder_ == null) {
+          result.queryconnectionsstrmsgresult_ = queryconnectionsstrmsgresult_;
+        } else {
+          result.queryconnectionsstrmsgresult_ = queryconnectionsstrmsgresultBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1305,6 +1451,12 @@ public final class Netmsg {
         }
         if (other.hasQuerydevspeedmsgresult()) {
           mergeQuerydevspeedmsgresult(other.getQuerydevspeedmsgresult());
+        }
+        if (other.hasQueryconnectionsstrmsg()) {
+          mergeQueryconnectionsstrmsg(other.getQueryconnectionsstrmsg());
+        }
+        if (other.hasQueryconnectionsstrmsgresult()) {
+          mergeQueryconnectionsstrmsgresult(other.getQueryconnectionsstrmsgresult());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1375,6 +1527,12 @@ public final class Netmsg {
         }
         if (hasQuerydevspeedmsgresult()) {
           if (!getQuerydevspeedmsgresult().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasQueryconnectionsstrmsgresult()) {
+          if (!getQueryconnectionsstrmsgresult().isInitialized()) {
             
             return false;
           }
@@ -2907,6 +3065,238 @@ public final class Netmsg {
           querydevspeedmsgresult_ = null;
         }
         return querydevspeedmsgresultBuilder_;
+      }
+
+      private netmsg.Netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg_ = netmsg.Netmsg.QueryConnectionsStrMsg.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          netmsg.Netmsg.QueryConnectionsStrMsg, netmsg.Netmsg.QueryConnectionsStrMsg.Builder, netmsg.Netmsg.QueryConnectionsStrMsgOrBuilder> queryconnectionsstrmsgBuilder_;
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+       */
+      public boolean hasQueryconnectionsstrmsg() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+       */
+      public netmsg.Netmsg.QueryConnectionsStrMsg getQueryconnectionsstrmsg() {
+        if (queryconnectionsstrmsgBuilder_ == null) {
+          return queryconnectionsstrmsg_;
+        } else {
+          return queryconnectionsstrmsgBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+       */
+      public Builder setQueryconnectionsstrmsg(netmsg.Netmsg.QueryConnectionsStrMsg value) {
+        if (queryconnectionsstrmsgBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          queryconnectionsstrmsg_ = value;
+          onChanged();
+        } else {
+          queryconnectionsstrmsgBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00002000;
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+       */
+      public Builder setQueryconnectionsstrmsg(
+          netmsg.Netmsg.QueryConnectionsStrMsg.Builder builderForValue) {
+        if (queryconnectionsstrmsgBuilder_ == null) {
+          queryconnectionsstrmsg_ = builderForValue.build();
+          onChanged();
+        } else {
+          queryconnectionsstrmsgBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00002000;
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+       */
+      public Builder mergeQueryconnectionsstrmsg(netmsg.Netmsg.QueryConnectionsStrMsg value) {
+        if (queryconnectionsstrmsgBuilder_ == null) {
+          if (((bitField0_ & 0x00002000) == 0x00002000) &&
+              queryconnectionsstrmsg_ != netmsg.Netmsg.QueryConnectionsStrMsg.getDefaultInstance()) {
+            queryconnectionsstrmsg_ =
+              netmsg.Netmsg.QueryConnectionsStrMsg.newBuilder(queryconnectionsstrmsg_).mergeFrom(value).buildPartial();
+          } else {
+            queryconnectionsstrmsg_ = value;
+          }
+          onChanged();
+        } else {
+          queryconnectionsstrmsgBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00002000;
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+       */
+      public Builder clearQueryconnectionsstrmsg() {
+        if (queryconnectionsstrmsgBuilder_ == null) {
+          queryconnectionsstrmsg_ = netmsg.Netmsg.QueryConnectionsStrMsg.getDefaultInstance();
+          onChanged();
+        } else {
+          queryconnectionsstrmsgBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00002000);
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+       */
+      public netmsg.Netmsg.QueryConnectionsStrMsg.Builder getQueryconnectionsstrmsgBuilder() {
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return getQueryconnectionsstrmsgFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+       */
+      public netmsg.Netmsg.QueryConnectionsStrMsgOrBuilder getQueryconnectionsstrmsgOrBuilder() {
+        if (queryconnectionsstrmsgBuilder_ != null) {
+          return queryconnectionsstrmsgBuilder_.getMessageOrBuilder();
+        } else {
+          return queryconnectionsstrmsg_;
+        }
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsg queryconnectionsstrmsg = 14;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          netmsg.Netmsg.QueryConnectionsStrMsg, netmsg.Netmsg.QueryConnectionsStrMsg.Builder, netmsg.Netmsg.QueryConnectionsStrMsgOrBuilder> 
+          getQueryconnectionsstrmsgFieldBuilder() {
+        if (queryconnectionsstrmsgBuilder_ == null) {
+          queryconnectionsstrmsgBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              netmsg.Netmsg.QueryConnectionsStrMsg, netmsg.Netmsg.QueryConnectionsStrMsg.Builder, netmsg.Netmsg.QueryConnectionsStrMsgOrBuilder>(
+                  getQueryconnectionsstrmsg(),
+                  getParentForChildren(),
+                  isClean());
+          queryconnectionsstrmsg_ = null;
+        }
+        return queryconnectionsstrmsgBuilder_;
+      }
+
+      private netmsg.Netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult_ = netmsg.Netmsg.QueryConnectionsStrMsgResult.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          netmsg.Netmsg.QueryConnectionsStrMsgResult, netmsg.Netmsg.QueryConnectionsStrMsgResult.Builder, netmsg.Netmsg.QueryConnectionsStrMsgResultOrBuilder> queryconnectionsstrmsgresultBuilder_;
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+       */
+      public boolean hasQueryconnectionsstrmsgresult() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+       */
+      public netmsg.Netmsg.QueryConnectionsStrMsgResult getQueryconnectionsstrmsgresult() {
+        if (queryconnectionsstrmsgresultBuilder_ == null) {
+          return queryconnectionsstrmsgresult_;
+        } else {
+          return queryconnectionsstrmsgresultBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+       */
+      public Builder setQueryconnectionsstrmsgresult(netmsg.Netmsg.QueryConnectionsStrMsgResult value) {
+        if (queryconnectionsstrmsgresultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          queryconnectionsstrmsgresult_ = value;
+          onChanged();
+        } else {
+          queryconnectionsstrmsgresultBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00004000;
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+       */
+      public Builder setQueryconnectionsstrmsgresult(
+          netmsg.Netmsg.QueryConnectionsStrMsgResult.Builder builderForValue) {
+        if (queryconnectionsstrmsgresultBuilder_ == null) {
+          queryconnectionsstrmsgresult_ = builderForValue.build();
+          onChanged();
+        } else {
+          queryconnectionsstrmsgresultBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00004000;
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+       */
+      public Builder mergeQueryconnectionsstrmsgresult(netmsg.Netmsg.QueryConnectionsStrMsgResult value) {
+        if (queryconnectionsstrmsgresultBuilder_ == null) {
+          if (((bitField0_ & 0x00004000) == 0x00004000) &&
+              queryconnectionsstrmsgresult_ != netmsg.Netmsg.QueryConnectionsStrMsgResult.getDefaultInstance()) {
+            queryconnectionsstrmsgresult_ =
+              netmsg.Netmsg.QueryConnectionsStrMsgResult.newBuilder(queryconnectionsstrmsgresult_).mergeFrom(value).buildPartial();
+          } else {
+            queryconnectionsstrmsgresult_ = value;
+          }
+          onChanged();
+        } else {
+          queryconnectionsstrmsgresultBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00004000;
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+       */
+      public Builder clearQueryconnectionsstrmsgresult() {
+        if (queryconnectionsstrmsgresultBuilder_ == null) {
+          queryconnectionsstrmsgresult_ = netmsg.Netmsg.QueryConnectionsStrMsgResult.getDefaultInstance();
+          onChanged();
+        } else {
+          queryconnectionsstrmsgresultBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00004000);
+        return this;
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+       */
+      public netmsg.Netmsg.QueryConnectionsStrMsgResult.Builder getQueryconnectionsstrmsgresultBuilder() {
+        bitField0_ |= 0x00004000;
+        onChanged();
+        return getQueryconnectionsstrmsgresultFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+       */
+      public netmsg.Netmsg.QueryConnectionsStrMsgResultOrBuilder getQueryconnectionsstrmsgresultOrBuilder() {
+        if (queryconnectionsstrmsgresultBuilder_ != null) {
+          return queryconnectionsstrmsgresultBuilder_.getMessageOrBuilder();
+        } else {
+          return queryconnectionsstrmsgresult_;
+        }
+      }
+      /**
+       * <code>optional .netmsg.QueryConnectionsStrMsgResult queryconnectionsstrmsgresult = 15;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          netmsg.Netmsg.QueryConnectionsStrMsgResult, netmsg.Netmsg.QueryConnectionsStrMsgResult.Builder, netmsg.Netmsg.QueryConnectionsStrMsgResultOrBuilder> 
+          getQueryconnectionsstrmsgresultFieldBuilder() {
+        if (queryconnectionsstrmsgresultBuilder_ == null) {
+          queryconnectionsstrmsgresultBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              netmsg.Netmsg.QueryConnectionsStrMsgResult, netmsg.Netmsg.QueryConnectionsStrMsgResult.Builder, netmsg.Netmsg.QueryConnectionsStrMsgResultOrBuilder>(
+                  getQueryconnectionsstrmsgresult(),
+                  getParentForChildren(),
+                  isClean());
+          queryconnectionsstrmsgresult_ = null;
+        }
+        return queryconnectionsstrmsgresultBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:netmsg.MsgPack)
@@ -5347,6 +5737,968 @@ public final class Netmsg {
     }
 
     // @@protoc_insertion_point(class_scope:netmsg.QueryDevCntMsgResult)
+  }
+
+  public interface QueryConnectionsStrMsgOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:netmsg.QueryConnectionsStrMsg)
+      com.google.protobuf.MessageOrBuilder {
+  }
+  /**
+   * Protobuf type {@code netmsg.QueryConnectionsStrMsg}
+   */
+  public static final class QueryConnectionsStrMsg extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:netmsg.QueryConnectionsStrMsg)
+      QueryConnectionsStrMsgOrBuilder {
+    // Use QueryConnectionsStrMsg.newBuilder() to construct.
+    private QueryConnectionsStrMsg(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private QueryConnectionsStrMsg(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final QueryConnectionsStrMsg defaultInstance;
+    public static QueryConnectionsStrMsg getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public QueryConnectionsStrMsg getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private QueryConnectionsStrMsg(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return netmsg.Netmsg.internal_static_netmsg_QueryConnectionsStrMsg_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return netmsg.Netmsg.internal_static_netmsg_QueryConnectionsStrMsg_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              netmsg.Netmsg.QueryConnectionsStrMsg.class, netmsg.Netmsg.QueryConnectionsStrMsg.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<QueryConnectionsStrMsg> PARSER =
+        new com.google.protobuf.AbstractParser<QueryConnectionsStrMsg>() {
+      public QueryConnectionsStrMsg parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new QueryConnectionsStrMsg(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QueryConnectionsStrMsg> getParserForType() {
+      return PARSER;
+    }
+
+    private void initFields() {
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static netmsg.Netmsg.QueryConnectionsStrMsg parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsg parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsg parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsg parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsg parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsg parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsg parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsg parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsg parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsg parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(netmsg.Netmsg.QueryConnectionsStrMsg prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code netmsg.QueryConnectionsStrMsg}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:netmsg.QueryConnectionsStrMsg)
+        netmsg.Netmsg.QueryConnectionsStrMsgOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return netmsg.Netmsg.internal_static_netmsg_QueryConnectionsStrMsg_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return netmsg.Netmsg.internal_static_netmsg_QueryConnectionsStrMsg_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                netmsg.Netmsg.QueryConnectionsStrMsg.class, netmsg.Netmsg.QueryConnectionsStrMsg.Builder.class);
+      }
+
+      // Construct using netmsg.Netmsg.QueryConnectionsStrMsg.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return netmsg.Netmsg.internal_static_netmsg_QueryConnectionsStrMsg_descriptor;
+      }
+
+      public netmsg.Netmsg.QueryConnectionsStrMsg getDefaultInstanceForType() {
+        return netmsg.Netmsg.QueryConnectionsStrMsg.getDefaultInstance();
+      }
+
+      public netmsg.Netmsg.QueryConnectionsStrMsg build() {
+        netmsg.Netmsg.QueryConnectionsStrMsg result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public netmsg.Netmsg.QueryConnectionsStrMsg buildPartial() {
+        netmsg.Netmsg.QueryConnectionsStrMsg result = new netmsg.Netmsg.QueryConnectionsStrMsg(this);
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof netmsg.Netmsg.QueryConnectionsStrMsg) {
+          return mergeFrom((netmsg.Netmsg.QueryConnectionsStrMsg)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(netmsg.Netmsg.QueryConnectionsStrMsg other) {
+        if (other == netmsg.Netmsg.QueryConnectionsStrMsg.getDefaultInstance()) return this;
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        netmsg.Netmsg.QueryConnectionsStrMsg parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (netmsg.Netmsg.QueryConnectionsStrMsg) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:netmsg.QueryConnectionsStrMsg)
+    }
+
+    static {
+      defaultInstance = new QueryConnectionsStrMsg(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:netmsg.QueryConnectionsStrMsg)
+  }
+
+  public interface QueryConnectionsStrMsgResultOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:netmsg.QueryConnectionsStrMsgResult)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>required string resultData = 1;</code>
+     */
+    boolean hasResultData();
+    /**
+     * <code>required string resultData = 1;</code>
+     */
+    java.lang.String getResultData();
+    /**
+     * <code>required string resultData = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getResultDataBytes();
+
+    /**
+     * <code>required string resultError = 2;</code>
+     */
+    boolean hasResultError();
+    /**
+     * <code>required string resultError = 2;</code>
+     */
+    java.lang.String getResultError();
+    /**
+     * <code>required string resultError = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getResultErrorBytes();
+  }
+  /**
+   * Protobuf type {@code netmsg.QueryConnectionsStrMsgResult}
+   */
+  public static final class QueryConnectionsStrMsgResult extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:netmsg.QueryConnectionsStrMsgResult)
+      QueryConnectionsStrMsgResultOrBuilder {
+    // Use QueryConnectionsStrMsgResult.newBuilder() to construct.
+    private QueryConnectionsStrMsgResult(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private QueryConnectionsStrMsgResult(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final QueryConnectionsStrMsgResult defaultInstance;
+    public static QueryConnectionsStrMsgResult getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public QueryConnectionsStrMsgResult getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private QueryConnectionsStrMsgResult(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000001;
+              resultData_ = bs;
+              break;
+            }
+            case 18: {
+              com.google.protobuf.ByteString bs = input.readBytes();
+              bitField0_ |= 0x00000002;
+              resultError_ = bs;
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return netmsg.Netmsg.internal_static_netmsg_QueryConnectionsStrMsgResult_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return netmsg.Netmsg.internal_static_netmsg_QueryConnectionsStrMsgResult_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              netmsg.Netmsg.QueryConnectionsStrMsgResult.class, netmsg.Netmsg.QueryConnectionsStrMsgResult.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<QueryConnectionsStrMsgResult> PARSER =
+        new com.google.protobuf.AbstractParser<QueryConnectionsStrMsgResult>() {
+      public QueryConnectionsStrMsgResult parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new QueryConnectionsStrMsgResult(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<QueryConnectionsStrMsgResult> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    public static final int RESULTDATA_FIELD_NUMBER = 1;
+    private java.lang.Object resultData_;
+    /**
+     * <code>required string resultData = 1;</code>
+     */
+    public boolean hasResultData() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string resultData = 1;</code>
+     */
+    public java.lang.String getResultData() {
+      java.lang.Object ref = resultData_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          resultData_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string resultData = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getResultDataBytes() {
+      java.lang.Object ref = resultData_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        resultData_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RESULTERROR_FIELD_NUMBER = 2;
+    private java.lang.Object resultError_;
+    /**
+     * <code>required string resultError = 2;</code>
+     */
+    public boolean hasResultError() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string resultError = 2;</code>
+     */
+    public java.lang.String getResultError() {
+      java.lang.Object ref = resultError_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          resultError_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string resultError = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getResultErrorBytes() {
+      java.lang.Object ref = resultError_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        resultError_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      resultData_ = "";
+      resultError_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      if (!hasResultData()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasResultError()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getResultDataBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getResultErrorBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getResultDataBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getResultErrorBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static netmsg.Netmsg.QueryConnectionsStrMsgResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsgResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsgResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsgResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsgResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsgResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsgResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsgResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsgResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static netmsg.Netmsg.QueryConnectionsStrMsgResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(netmsg.Netmsg.QueryConnectionsStrMsgResult prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code netmsg.QueryConnectionsStrMsgResult}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:netmsg.QueryConnectionsStrMsgResult)
+        netmsg.Netmsg.QueryConnectionsStrMsgResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return netmsg.Netmsg.internal_static_netmsg_QueryConnectionsStrMsgResult_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return netmsg.Netmsg.internal_static_netmsg_QueryConnectionsStrMsgResult_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                netmsg.Netmsg.QueryConnectionsStrMsgResult.class, netmsg.Netmsg.QueryConnectionsStrMsgResult.Builder.class);
+      }
+
+      // Construct using netmsg.Netmsg.QueryConnectionsStrMsgResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        resultData_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        resultError_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return netmsg.Netmsg.internal_static_netmsg_QueryConnectionsStrMsgResult_descriptor;
+      }
+
+      public netmsg.Netmsg.QueryConnectionsStrMsgResult getDefaultInstanceForType() {
+        return netmsg.Netmsg.QueryConnectionsStrMsgResult.getDefaultInstance();
+      }
+
+      public netmsg.Netmsg.QueryConnectionsStrMsgResult build() {
+        netmsg.Netmsg.QueryConnectionsStrMsgResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public netmsg.Netmsg.QueryConnectionsStrMsgResult buildPartial() {
+        netmsg.Netmsg.QueryConnectionsStrMsgResult result = new netmsg.Netmsg.QueryConnectionsStrMsgResult(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.resultData_ = resultData_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.resultError_ = resultError_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof netmsg.Netmsg.QueryConnectionsStrMsgResult) {
+          return mergeFrom((netmsg.Netmsg.QueryConnectionsStrMsgResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(netmsg.Netmsg.QueryConnectionsStrMsgResult other) {
+        if (other == netmsg.Netmsg.QueryConnectionsStrMsgResult.getDefaultInstance()) return this;
+        if (other.hasResultData()) {
+          bitField0_ |= 0x00000001;
+          resultData_ = other.resultData_;
+          onChanged();
+        }
+        if (other.hasResultError()) {
+          bitField0_ |= 0x00000002;
+          resultError_ = other.resultError_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasResultData()) {
+          
+          return false;
+        }
+        if (!hasResultError()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        netmsg.Netmsg.QueryConnectionsStrMsgResult parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (netmsg.Netmsg.QueryConnectionsStrMsgResult) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object resultData_ = "";
+      /**
+       * <code>required string resultData = 1;</code>
+       */
+      public boolean hasResultData() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string resultData = 1;</code>
+       */
+      public java.lang.String getResultData() {
+        java.lang.Object ref = resultData_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            resultData_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string resultData = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getResultDataBytes() {
+        java.lang.Object ref = resultData_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          resultData_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string resultData = 1;</code>
+       */
+      public Builder setResultData(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        resultData_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string resultData = 1;</code>
+       */
+      public Builder clearResultData() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        resultData_ = getDefaultInstance().getResultData();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string resultData = 1;</code>
+       */
+      public Builder setResultDataBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        resultData_ = value;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object resultError_ = "";
+      /**
+       * <code>required string resultError = 2;</code>
+       */
+      public boolean hasResultError() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string resultError = 2;</code>
+       */
+      public java.lang.String getResultError() {
+        java.lang.Object ref = resultError_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            resultError_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string resultError = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getResultErrorBytes() {
+        java.lang.Object ref = resultError_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          resultError_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string resultError = 2;</code>
+       */
+      public Builder setResultError(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        resultError_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string resultError = 2;</code>
+       */
+      public Builder clearResultError() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        resultError_ = getDefaultInstance().getResultError();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string resultError = 2;</code>
+       */
+      public Builder setResultErrorBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        resultError_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:netmsg.QueryConnectionsStrMsgResult)
+    }
+
+    static {
+      defaultInstance = new QueryConnectionsStrMsgResult(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:netmsg.QueryConnectionsStrMsgResult)
   }
 
   public interface QueryMsgOrBuilder extends
@@ -9840,6 +11192,16 @@ public final class Netmsg {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_netmsg_QueryDevCntMsgResult_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_netmsg_QueryConnectionsStrMsg_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_netmsg_QueryConnectionsStrMsg_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_netmsg_QueryConnectionsStrMsgResult_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_netmsg_QueryConnectionsStrMsgResult_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_netmsg_QueryMsg_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -9888,7 +11250,7 @@ public final class Netmsg {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014netmsg.proto\022\006netmsg\"\353\004\n\007MsgPack\022\035\n\004he" +
+      "\n\014netmsg.proto\022\006netmsg\"\367\005\n\007MsgPack\022\035\n\004he" +
       "ad\030\001 \002(\0132\017.netmsg.MsgHead\022)\n\nregisttype\030" +
       "\002 \001(\0132\025.netmsg.RegistTypeMsg\0228\n\023registty" +
       "pemsgresult\030\003 \001(\0132\033.netmsg.RegistTypeMsg" +
@@ -9904,22 +11266,28 @@ public final class Netmsg {
       "sgResult\0222\n\020querydevspeedmsg\030\014 \001(\0132\030.net" +
       "msg.QueryDevSpeedMsg\022>\n\026querydevspeedmsg" +
       "result\030\r \001(\0132\036.netmsg.QueryDevSpeedMsgRe" +
-      "sult\"R\n\007MsgHead\022\033\n\020globalPackNumber\030\001 \002(" +
-      "\r:\0011\022\024\n\ttotalPack\030\002 \002(\005:\0011\022\024\n\tpackIndex\030" +
-      "\003 \002(\005:\0010\"O\n\rRegistTypeMsg\022\017\n\007bDevice\030\001 \002" +
-      "(\010\022\n\n\002ip\030\002 \002(\t\022\020\n\010serverip\030\003 \002(\t\022\017\n\007bNor",
-      "mal\030\004 \002(\010\"\025\n\023RegistTypeMsgResult\"\020\n\016Quer" +
-      "yDevCntMsg\"&\n\024QueryDevCntMsgResult\022\016\n\006de" +
-      "vCnt\030\001 \002(\005\"\027\n\010QueryMsg\022\013\n\003Msg\030\001 \002(\t\"9\n\016Q" +
-      "ueryMsgResult\022\022\n\nresultData\030\001 \002(\t\022\023\n\013res" +
-      "ultError\030\002 \002(\t\"(\n\006AddMsg\022\021\n\tTableName\030\001 " +
-      "\002(\t\022\013\n\003Msg\030\002 \002(\t\"#\n\014AddMsgResult\022\023\n\013resu" +
-      "ltError\030\001 \002(\t\"\033\n\014ExcuteSqlMsg\022\013\n\003Msg\030\001 \002" +
-      "(\t\")\n\022ExcuteSqlMsgResult\022\023\n\013resultError\030" +
-      "\001 \002(\t\"G\n\020QueryDevSpeedMsg\022\r\n\005ipStr\030\001 \002(\t" +
-      "\022\021\n\taskUserID\030\002 \002(\005\022\021\n\tstartTime\030\003 \002(\003\"<",
-      "\n\026QueryDevSpeedMsgResult\022\r\n\005speed\030\001 \002(\005\022" +
-      "\023\n\013resultError\030\002 \002(\t"
+      "sult\022>\n\026queryconnectionsstrmsg\030\016 \001(\0132\036.n" +
+      "etmsg.QueryConnectionsStrMsg\022J\n\034querycon" +
+      "nectionsstrmsgresult\030\017 \001(\0132$.netmsg.Quer" +
+      "yConnectionsStrMsgResult\"R\n\007MsgHead\022\033\n\020g",
+      "lobalPackNumber\030\001 \002(\r:\0011\022\024\n\ttotalPack\030\002 " +
+      "\002(\005:\0011\022\024\n\tpackIndex\030\003 \002(\005:\0010\"O\n\rRegistTy" +
+      "peMsg\022\017\n\007bDevice\030\001 \002(\010\022\n\n\002ip\030\002 \002(\t\022\020\n\010se" +
+      "rverip\030\003 \002(\t\022\017\n\007bNormal\030\004 \002(\010\"\025\n\023RegistT" +
+      "ypeMsgResult\"\020\n\016QueryDevCntMsg\"&\n\024QueryD" +
+      "evCntMsgResult\022\016\n\006devCnt\030\001 \002(\005\"\030\n\026QueryC" +
+      "onnectionsStrMsg\"G\n\034QueryConnectionsStrM" +
+      "sgResult\022\022\n\nresultData\030\001 \002(\t\022\023\n\013resultEr" +
+      "ror\030\002 \002(\t\"\027\n\010QueryMsg\022\013\n\003Msg\030\001 \002(\t\"9\n\016Qu" +
+      "eryMsgResult\022\022\n\nresultData\030\001 \002(\t\022\023\n\013resu",
+      "ltError\030\002 \002(\t\"(\n\006AddMsg\022\021\n\tTableName\030\001 \002" +
+      "(\t\022\013\n\003Msg\030\002 \002(\t\"#\n\014AddMsgResult\022\023\n\013resul" +
+      "tError\030\001 \002(\t\"\033\n\014ExcuteSqlMsg\022\013\n\003Msg\030\001 \002(" +
+      "\t\")\n\022ExcuteSqlMsgResult\022\023\n\013resultError\030\001" +
+      " \002(\t\"G\n\020QueryDevSpeedMsg\022\r\n\005ipStr\030\001 \002(\t\022" +
+      "\021\n\taskUserID\030\002 \002(\005\022\021\n\tstartTime\030\003 \002(\003\"<\n" +
+      "\026QueryDevSpeedMsgResult\022\r\n\005speed\030\001 \002(\005\022\023" +
+      "\n\013resultError\030\002 \002(\t"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -9938,7 +11306,7 @@ public final class Netmsg {
     internal_static_netmsg_MsgPack_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_MsgPack_descriptor,
-        new java.lang.String[] { "Head", "Registtype", "Registtypemsgresult", "Querydevcntmsg", "Querydevcntmsgresult", "Query", "Add", "Querymsgresult", "Addmsgresult", "Excutesqlmsg", "Excutesqlmsgresult", "Querydevspeedmsg", "Querydevspeedmsgresult", });
+        new java.lang.String[] { "Head", "Registtype", "Registtypemsgresult", "Querydevcntmsg", "Querydevcntmsgresult", "Query", "Add", "Querymsgresult", "Addmsgresult", "Excutesqlmsg", "Excutesqlmsgresult", "Querydevspeedmsg", "Querydevspeedmsgresult", "Queryconnectionsstrmsg", "Queryconnectionsstrmsgresult", });
     internal_static_netmsg_MsgHead_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_netmsg_MsgHead_fieldAccessorTable = new
@@ -9969,50 +11337,62 @@ public final class Netmsg {
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryDevCntMsgResult_descriptor,
         new java.lang.String[] { "DevCnt", });
-    internal_static_netmsg_QueryMsg_descriptor =
+    internal_static_netmsg_QueryConnectionsStrMsg_descriptor =
       getDescriptor().getMessageTypes().get(6);
+    internal_static_netmsg_QueryConnectionsStrMsg_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_netmsg_QueryConnectionsStrMsg_descriptor,
+        new java.lang.String[] { });
+    internal_static_netmsg_QueryConnectionsStrMsgResult_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_netmsg_QueryConnectionsStrMsgResult_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_netmsg_QueryConnectionsStrMsgResult_descriptor,
+        new java.lang.String[] { "ResultData", "ResultError", });
+    internal_static_netmsg_QueryMsg_descriptor =
+      getDescriptor().getMessageTypes().get(8);
     internal_static_netmsg_QueryMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryMsg_descriptor,
         new java.lang.String[] { "Msg", });
     internal_static_netmsg_QueryMsgResult_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_netmsg_QueryMsgResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryMsgResult_descriptor,
         new java.lang.String[] { "ResultData", "ResultError", });
     internal_static_netmsg_AddMsg_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_netmsg_AddMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_AddMsg_descriptor,
         new java.lang.String[] { "TableName", "Msg", });
     internal_static_netmsg_AddMsgResult_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_netmsg_AddMsgResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_AddMsgResult_descriptor,
         new java.lang.String[] { "ResultError", });
     internal_static_netmsg_ExcuteSqlMsg_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_netmsg_ExcuteSqlMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_ExcuteSqlMsg_descriptor,
         new java.lang.String[] { "Msg", });
     internal_static_netmsg_ExcuteSqlMsgResult_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_netmsg_ExcuteSqlMsgResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_ExcuteSqlMsgResult_descriptor,
         new java.lang.String[] { "ResultError", });
     internal_static_netmsg_QueryDevSpeedMsg_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_netmsg_QueryDevSpeedMsg_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryDevSpeedMsg_descriptor,
         new java.lang.String[] { "IpStr", "AskUserID", "StartTime", });
     internal_static_netmsg_QueryDevSpeedMsgResult_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_netmsg_QueryDevSpeedMsgResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_netmsg_QueryDevSpeedMsgResult_descriptor,

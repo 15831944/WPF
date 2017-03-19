@@ -108,3 +108,8 @@ void updateClientStatus(bool bNormal, bool bSync)
 {
 	CClient::GetInstance()->UpdateClientStatus(bNormal, bSync);
 }
+
+void queryConnectionsStr(QueryTableCallBack callBack, bool bSync)
+{
+	return CClient::GetInstance()->QueryConnectionsStr(callBack, bSync);
+}
