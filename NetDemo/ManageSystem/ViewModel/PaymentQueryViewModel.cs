@@ -13,7 +13,7 @@ using System.Windows.Controls;
 
 namespace ManageSystem.ViewModel
 {
-    class PaymentQueryViewModel : NotificationObject
+   public  class PaymentQueryViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
         public Dictionary<string, string>               _columnNameMap = new Dictionary<string, string>

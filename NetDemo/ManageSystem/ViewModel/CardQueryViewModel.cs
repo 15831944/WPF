@@ -13,7 +13,7 @@ using System.Windows.Controls;
 
 namespace ManageSystem.ViewModel
 {
-    class CardQueryViewModel : NotificationObject
+    public class CardQueryViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
         public Dictionary<string, string>               _columnNameMap = new Dictionary<string, string>

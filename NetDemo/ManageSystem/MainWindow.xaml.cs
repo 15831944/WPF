@@ -241,14 +241,14 @@ namespace ManageSystem
         private void Window_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
 
-            if(rbuttonclick >= 5)
-            {
-                addwnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
-                addwnd.Owner = this;
-                addwnd.Show();
-            }
-            else
-                rbuttonclick++;
+            //if(rbuttonclick >= 0)
+            //{
+            //    addwnd.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterScreen;
+            //    addwnd.Owner = this;
+            //    addwnd.Show();
+            //}
+            //else
+            //    rbuttonclick++;
         }
 
     }

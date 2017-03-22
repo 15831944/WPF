@@ -36,7 +36,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         #endregion
     }
 
-    class DevicemaViewModel : NotificationObject
+   public  class DevicemaViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
         public AddTableCallBackDelegate     _addtablecallbackdelegate = null;
@@ -391,8 +391,9 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                                         case "Riqi":
                                         case "Chushengriqi":
                                         case "Jiaoyiriqi":
+                                        case "Chuangjianshijian":
                                             DateTime datetime = Common.ConvertIntDateTime(Convert.ToInt64(keyvalue[1]));
-                                            item.SetValue(model, datetime.ToShortDateString(), null);
+                                            item.SetValue(model, datetime.ToString("yyyy-MM-dd HH:mm:ss"), null);
                                             break;
                                         case "IP":
                                             if(keyvalue[1].Length > 0)

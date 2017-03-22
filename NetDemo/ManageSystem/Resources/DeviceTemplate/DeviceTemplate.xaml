@@ -11,10 +11,12 @@
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
             <Grid Grid.Column="1" >
                 <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="80"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Grid Grid.Row="0" Background="#34343E">
+                <TextBlock Grid.Row="0" FontSize="25">设备基本信息</TextBlock>
+                <Grid Grid.Row="1" Background="#34343E">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
@@ -137,11 +139,21 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="1.5*"/>
                             </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Center">创建时间</TextBlock>
+                            <Toolkit:DateTimePicker Grid.Column="1" Foreground="White" Background="#444450"
+                                 VerticalAlignment="Center"
+                                 IsReadOnly="False"
+                                 Format="Custom"
+                                 FormatString="yyyy-MM-dd HH:mm:ss"
+                                 TimeFormat="Custom"
+                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
+                                 Text="{Binding Path=customInfo.Chuangjianshijian}"
+                                 />
                         </Grid>
                     </Grid>
                     <!--<Button Grid.Column="4" Style="{StaticResource Style_QueryBtn}" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>-->
                 </Grid>
-                <Grid Grid.Row="1">
+                <Grid Grid.Row="2">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition/>
@@ -152,7 +164,7 @@
                         <Button Margin="10,0,10,0" Command="{Binding Path=ModifyCommand}" >修改设备信息</Button>
                     </StackPanel>
                     <DataGrid Grid.Row="1"
-                              BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
+                              BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                               CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 

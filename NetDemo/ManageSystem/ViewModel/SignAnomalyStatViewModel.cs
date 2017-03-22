@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace ManageSystem.ViewModel
 {
-    class SignAnomalyStatViewModel : NotificationObject
+   public  class SignAnomalyStatViewModel : NotificationObject
     {
         public enum QueryOperate
         {

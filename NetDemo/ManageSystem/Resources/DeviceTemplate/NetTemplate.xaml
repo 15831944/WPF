@@ -54,6 +54,8 @@
             <StackPanel Grid.Row="2" Orientation="Horizontal">
                 <Button Margin="10,0,10,0" Command="{Binding Path=TestCommand}" >测试网速</Button>
                 <TextBlock Margin="10,0,10,0" Text="{Binding Path=statusText}"></TextBlock>
+                <Button Margin="10,0,10,0" Command="{Binding Path=ExportExcelCommand}" >导出到Excel</Button>
+                <Button Margin="10,0,10,0" Command="{Binding Path=ExportTXTCommand}" >导出到TXT</Button>
             </StackPanel>
             <DataGrid Grid.Row="3"
                               DataContext="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._DevicemaViewModel}"

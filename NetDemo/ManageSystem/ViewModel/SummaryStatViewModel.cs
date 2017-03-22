@@ -13,7 +13,7 @@ using System.Windows;
 
 namespace ManageSystem.ViewModel
 {
-    class SummaryStatViewModel : NotificationObject
+   public  class SummaryStatViewModel : NotificationObject
     {
         public enum QueryOperate
         {

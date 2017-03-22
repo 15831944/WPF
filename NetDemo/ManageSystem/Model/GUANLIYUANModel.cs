@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ManageSystem.Model
 {
-    class GUANLIYUANModel : NotificationObject
+    public class GUANLIYUANModel : NotificationObject
     {
         private int _Xuhao;
         public int Xuhao

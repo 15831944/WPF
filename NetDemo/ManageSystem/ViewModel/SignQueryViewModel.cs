@@ -16,7 +16,7 @@ using ManageSystem.ViewModel.DeviceViewModel;
 
 namespace ManageSystem.ViewModel
 {
-    class SignQueryViewModel : NotificationObject
+   public  class SignQueryViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
         public Dictionary<string, string>               _columnNameMap = new Dictionary<string, string>

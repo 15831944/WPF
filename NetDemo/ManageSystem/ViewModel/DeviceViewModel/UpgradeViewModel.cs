@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ManageSystem.ViewModel.DeviceViewModel
 {
-    class UpgradeViewModel : NotificationObject
+   public  class UpgradeViewModel : NotificationObject
     {
         private SHEBEIGUANLIModel _customInfo;
         public SHEBEIGUANLIModel customInfo

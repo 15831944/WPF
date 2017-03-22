@@ -14,7 +14,7 @@ using System.Windows.Controls;
 
 namespace ManageSystem.ViewModel
 {
-    class PreAcceptQueryViewModel : NotificationObject
+   public  class PreAcceptQueryViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate _querytablecallbackdelegate = null;
         public Dictionary<string, string> _columnNameMap = new Dictionary<string, string>

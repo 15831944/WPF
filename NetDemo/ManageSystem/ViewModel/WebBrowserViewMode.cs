@@ -14,21 +14,7 @@ using System.Xml;
 
 namespace ManageSystem.ViewModel
 {
-    [System.Runtime.InteropServices.ComVisible(true)]
-    public class ObjectForScripingHelper
-    {
-        public ObjectForScripingHelper()
-        {
-
-        }
-
-        public void CallBack(string msg)
-        {
-            MessageBox.Show("msg");
-        }
-    }
-
-    class DeviceStatus : NotificationObject
+   public  class DeviceStatus : NotificationObject
     {
         private string _ip;
         public string ip
@@ -75,8 +61,7 @@ namespace ManageSystem.ViewModel
             }
         }
     }
-
-    class WebBrowserViewMode : NotificationObject
+   public  class WebBrowserViewMode : NotificationObject
     {
         public static string                            _connectionsStr = "";
         WebBrowser webbrowser;
@@ -111,6 +96,17 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private string _xmlData;
+        public string xmlData
+        {
+            get { return _xmlData; }
+            set
+            {
+                _xmlData = value;
+                this.RaisePropertyChanged("xmlData");
+            }
+        }
+
         public WebBrowserViewMode()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
@@ -119,6 +115,7 @@ namespace ManageSystem.ViewModel
             LoadCompletedCommand                        = new DelegateCommand<object>(new Action<object>(this.LoadCompleted));
 
             _url                                        = "http://120.76.148.9/testgis/map/gis.html";
+            _xmlData                                    = "";
         }
 
         public void QueryTableCallBack(string resultStr, string errorStr)
@@ -282,22 +279,57 @@ namespace ManageSystem.ViewModel
                             }
 
                             XmlElement option0             = doc.CreateElement("option");
-                            option0.SetAttribute("callback", "CallBack");
+                            option0.SetAttribute("img", "汇总统计.png");
+                            option0.SetAttribute("callback", "汇总统计");
                             option0.SetAttribute("param", "id,sid");
                             XmlElement option1             = doc.CreateElement("option");
-                            option1.SetAttribute("callback", "CallBack");
+                            option1.SetAttribute("img", "制签统计.png");
+                            option1.SetAttribute("callback", "制签统计");
                             option1.SetAttribute("param", "id,sid");
                             XmlElement option2             = doc.CreateElement("option");
-                            option2.SetAttribute("callback", "CallBack");
+                            option2.SetAttribute("img", "制签异常统计.png");
+                            option2.SetAttribute("callback", "制签异常统计");
                             option2.SetAttribute("param", "id,sid");
+
                             XmlElement option3             = doc.CreateElement("option");
-                            option3.SetAttribute("callback", "CallBack");
+                            option3.SetAttribute("img", "制签记录查询.png");
+                            option3.SetAttribute("callback", "制签记录查询");
                             option3.SetAttribute("param", "id,sid");
+                            XmlElement option4             = doc.CreateElement("option");
+                            option4.SetAttribute("img", "收证记录查询.png");
+                            option4.SetAttribute("callback", "收证记录查询");
+                            option4.SetAttribute("param", "id,sid");
+                            XmlElement option5             = doc.CreateElement("option");
+                            option5.SetAttribute("img", "签注记录查询.png");
+                            option5.SetAttribute("callback", "签注记录查询");
+                            option5.SetAttribute("param", "id,sid");
+                            XmlElement option6             = doc.CreateElement("option");
+                            option6.SetAttribute("img", "缴款记录查询.png");
+                            option6.SetAttribute("callback", "缴款记录查询");
+                            option6.SetAttribute("param", "id,sid");
+                            XmlElement option7             = doc.CreateElement("option");
+                            option7.SetAttribute("img", "查询记录查询.png");
+                            option7.SetAttribute("callback", "查询记录查询");
+                            option7.SetAttribute("param", "id,sid");
+                            XmlElement option8             = doc.CreateElement("option");
+                            option8.SetAttribute("img", "预受理记录查询.png");
+                            option8.SetAttribute("callback", "预受理记录查询");
+                            option8.SetAttribute("param", "id,sid");
+                            XmlElement option9             = doc.CreateElement("option");
+                            option9.SetAttribute("img", "设备管理.png");
+                            option9.SetAttribute("callback", "设备管理");
+                            option9.SetAttribute("param", "id,sid");
 
                             item.AppendChild(option0); 
                             item.AppendChild(option1); 
-                            item.AppendChild(option2); 
-                            item.AppendChild(option3); 
+                            item.AppendChild(option2);
+                            item.AppendChild(option3);
+                            item.AppendChild(option4);
+                            item.AppendChild(option5);
+                            item.AppendChild(option6);
+                            item.AppendChild(option7);
+                            item.AppendChild(option8);
+                            item.AppendChild(option9); 
                             items.AppendChild(item); 
                         }
 
@@ -323,14 +355,15 @@ namespace ManageSystem.ViewModel
                     }
                 }
             }
-            Application.Current.Dispatcher.Invoke(
-            new Action(() =>
-            {
-                webbrowser.InvokeScript("LoadData", doc.InnerXml);
-            }));
+            //Application.Current.Dispatcher.Invoke(
+            //new Action(() =>
+            //{
+            //    webbrowser.InvokeScript("LoadData", doc.InnerXml);
+            //}));
+            xmlData = doc.InnerXml;
         }
 
-        public void QueryShebeiguanli(object obj)
+        public void QueryConnectionsStatu(object obj)
         {
             foreach (DeviceModel model0 in DevicemaViewModel._deviceList)
             {//市
@@ -350,13 +383,10 @@ namespace ManageSystem.ViewModel
 
         private void LoadCompleted(object obj)
         {
-            object objj = webbrowser.InvokeScript("Get");
         }
 
         public void Loaded(object obj)
         {
-            webbrowser = obj as WebBrowser;
-            webbrowser.ObjectForScripting   = new ObjectForScripingHelper();
         }
 
         public void DoLogon()
@@ -367,7 +397,7 @@ namespace ManageSystem.ViewModel
 
             //int a = IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("192.168.1.106"));
 
-            QueryShebeiguanli(null);
+            QueryConnectionsStatu(null);
         }
     }
 }

@@ -5,10 +5,10 @@ using System.Text;
 
 namespace ManageSystem.Model
 {
-    class SHEBEIYICHANGSHUJUModel : NotificationObject
+   public  class SHEBEIYICHANGSHUJUModel : NotificationObject
     {
-        private int _Xuhao;
-        public int Xuhao
+        private Int32 _Xuhao;
+        public Int32 Xuhao
         {
             get
             {

@@ -6,7 +6,7 @@ using ManageSystem.ViewModel.DeviceViewModel;
 
 namespace ManageSystem.ViewModel
 {
-    enum DeviceVisibleEnum
+    public enum DeviceVisibleEnum
     {
         DeviceVisibleEnum_None,
         DeviceVisibleEnum_Device,
@@ -16,7 +16,7 @@ namespace ManageSystem.ViewModel
         DeviceVisibleEnum_Abnormal,
     }
 
-    class DeviceManageViewModel : NotificationObject
+    public class DeviceManageViewModel : NotificationObject
     {
         public DelegateCommand<object> DevicemaCommand { get; set; }
         public DelegateCommand<object> UseCommand { get; set; }
@@ -61,7 +61,7 @@ namespace ManageSystem.ViewModel
 
 
 
-            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Upgrade;
+            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Abnormal;
         }
 
         private void AbnormalShow(object obj)

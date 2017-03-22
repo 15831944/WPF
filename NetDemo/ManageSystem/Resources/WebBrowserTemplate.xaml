@@ -10,7 +10,8 @@
     <!--http://120.76.148.9/testgis/map/gis.html-->
     <DataTemplate DataType="{x:Type viewModel:WebBrowserViewMode}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <WebBrowser WebBrowserA:WebBrowserAttach.Url="{Binding Path=url, Mode=TwoWay}">
+            <WebBrowser WebBrowserA:WebBrowserAttach.Url="{Binding Path=url, Mode=TwoWay}" WebBrowserA:WebBrowserAttach.xmlData="{Binding Path=xmlData}"
+                        WebBrowserA:WebBrowserAttach.ObjectForScript="{Binding Source={StaticResource MainWindowViewModelKey}, Path=scripinghelper}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=WebBrowser}}" />

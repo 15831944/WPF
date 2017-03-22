@@ -15,7 +15,7 @@ using System.Windows;
 
 namespace ManageSystem.ViewModel
 {
-    class SignStatViewModel : NotificationObject
+   public  class SignStatViewModel : NotificationObject
     {
         int                                             _lineCharIndex;
         int                                             _histogramCharIndex;

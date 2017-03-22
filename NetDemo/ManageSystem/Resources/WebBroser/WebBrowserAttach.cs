@@ -7,11 +7,8 @@ using System.Windows.Controls;
 
 namespace ManageSystem.Resources.WebBrowserAttach
 {
-    class WebBrowserAttach : DependencyObject
-    {
-        private delegate void NavigateDelegate(string url);
-        private static  NavigateDelegate _delegate;
-        
+    public class WebBrowserAttach : DependencyObject
+    {    
         public static string GetUrl(DependencyObject obj)
         {
             return (string)obj.GetValue(UrlProperty);
@@ -28,36 +25,58 @@ namespace ManageSystem.Resources.WebBrowserAttach
 
         private static void OnUrlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var pb = d as WebBrowser;
+            var webbrowser = d as WebBrowser;
 
             string url = e.NewValue as string;
             if(url != null && url != "")
-                pb.Navigate(url);
+                webbrowser.Navigate(url);
         }
 
-        public static bool GetbAttach(DependencyObject obj)
+
+
+        public static string GetxmlData(DependencyObject obj)
         {
-            return (bool)obj.GetValue(bAttachProperty);
+            return (string)obj.GetValue(xmlDataProperty);
         }
 
-        public static void SetbAttach(DependencyObject obj, bool value)
+        public static void SetxmlData(DependencyObject obj, string value)
         {
-            obj.SetValue(bAttachProperty, value);
+            obj.SetValue(xmlDataProperty, value);
         }
 
-        // Using a DependencyProperty as the backing store for bAttach.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty bAttachProperty =
-    DependencyProperty.RegisterAttached("bAttach", typeof(bool), typeof(WebBrowserAttach), new PropertyMetadata(false, OnIsAttachChanged));
+        // Using a DependencyProperty as the backing store for xmlData.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty xmlDataProperty =
+    DependencyProperty.RegisterAttached("xmlData", typeof(string), typeof(WebBrowserAttach), new PropertyMetadata("", OnxmlDataChanged));
 
-         private static void OnIsAttachChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        private static void OnxmlDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var pb = d as WebBrowser;
-            if (pb == null)
-            {
-                return;
-            }
+            var webbrowser = d as WebBrowser;
 
-            _delegate = pb.Navigate;
+            string xmlData = e.NewValue as string;
+            if (xmlData != null && xmlData != "")
+                webbrowser.InvokeScript("LoadData", xmlData);
+        }
+
+
+
+        public static object GetObjectForScript(DependencyObject obj)
+        {
+            return (object)obj.GetValue(ObjectForScriptProperty);
+        }
+
+        public static void SetObjectForScript(DependencyObject obj, object value)
+        {
+            obj.SetValue(ObjectForScriptProperty, value);
+        }
+
+        // Using a DependencyProperty as the backing store for ObjectForScript.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty ObjectForScriptProperty =
+    DependencyProperty.RegisterAttached("ObjectForScript", typeof(object), typeof(WebBrowserAttach), new PropertyMetadata(null, OnObjectForScriptChanged));
+
+        private static void OnObjectForScriptChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var webbrowser = d as WebBrowser; 
+            webbrowser.ObjectForScripting = e.NewValue;
         }
     }
 }

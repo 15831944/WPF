@@ -50,6 +50,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -120,6 +123,7 @@
     <Compile Include="Server\OccupancyChartServer.cs" />
     <Compile Include="Server\PieChartServer.cs" />
     <Compile Include="Server\WorkServer.cs" />
+    <Compile Include="ViewModel\AddWndViewModel.cs" />
     <Compile Include="ViewModel\CardQueryViewModel.cs" />
     <Compile Include="ViewModel\DeviceManageViewModel.cs" />
     <Compile Include="ViewModel\DeviceViewModel\AbnormalViewModel.cs" />

@@ -16,9 +16,10 @@ using System.Configuration;
 using System.Windows.Threading;
 using System.Threading;
 using ManageSystem.ViewModel.DeviceViewModel;
+using System.Xml;
 namespace ManageSystem.ViewModel
 {
-    enum PageVisibleEnum
+    public enum PageVisibleEnum
     {
         PageVisibleEnum_Logon,
         PageVisibleEnum_Home,
@@ -35,7 +36,7 @@ namespace ManageSystem.ViewModel
         PageVisibleEnum_DeviceManage,
     }
 
-    enum ShowChartEnum
+    public enum ShowChartEnum
     {
         ShowChartEnum_Pie,
         ShowChartEnum_Line,
@@ -106,9 +107,23 @@ namespace ManageSystem.ViewModel
                 else if (grid.DataContext.GetType() == typeof(UserViewModel))
                 {
                     UserViewModel model = grid.DataContext as UserViewModel;
-                    grid.AutoGeneratingColumn += UserViewModel.DG1_AutoGeneratingColumn;
+                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
 
                     return model.tableList;
+                }
+                else if (grid.DataContext.GetType() == typeof(AbnormalViewModel))
+                {
+                    AbnormalViewModel model = grid.DataContext as AbnormalViewModel;
+                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
+
+                    return model.tableList;
+                }
+                else if (grid.DataContext.GetType() == typeof(AddWndViewModel))
+                {
+                    AddWndViewModel model = grid.DataContext as AddWndViewModel;
+                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
+
+                    return parameter;
                 }
             }
 
@@ -121,7 +136,109 @@ namespace ManageSystem.ViewModel
         #endregion
     }
 
-    class MainWindowViewModel : NotificationObject
+    [System.Runtime.InteropServices.ComVisible(true)]
+    public class ObjectForScripingHelper
+    {
+        MainWindowViewModel mainwindowviewmodel = null;
+        public ObjectForScripingHelper(MainWindowViewModel model)
+        {
+            mainwindowviewmodel = model;
+        }
+
+        public void ExternalCallBack4Gis(string callback, string msg)
+        {
+           if(msg != null && msg.Length > 0 && mainwindowviewmodel != null)
+           {
+               XmlDocument doc = new XmlDocument();
+               doc.LoadXml(msg);
+               XmlElement xml = doc.DocumentElement;;
+               string ip = xml.GetElementsByTagName("id")[0].InnerText;
+               string stationName = xml.GetElementsByTagName("sid")[0].InnerText;
+
+               foreach (DeviceModel model0 in DevicemaViewModel._deviceList)
+               {//市
+                   foreach (DeviceModel model1 in model0.Children)
+                   {//局
+                       foreach (DeviceModel model2 in model1.Children)
+                       {//单位
+                           foreach (DeviceModel model3 in model2.Children)
+                           {//IP
+                               model0.isSel = false;
+                               model1.isSel = false;
+                               model2.isSel = false;
+                               model3.isSel = false;
+                           }
+                       }
+                   }
+               }
+
+               foreach (DeviceModel model0 in DevicemaViewModel._deviceList)
+               {//市
+                   foreach (DeviceModel model1 in model0.Children)
+                   {//局
+                       foreach (DeviceModel model2 in model1.Children)
+                       {//单位
+                           foreach (DeviceModel model3 in model2.Children)
+                           {//IP
+                               if (model2.text == stationName && model3.text == ip)
+                               {
+                                   model0.isSel = true;
+                                   model1.isSel = true;
+                                   model2.isSel = true;
+                                   model3.isSel = true;
+                               }
+                           }
+                       }
+                   }
+               }
+
+               switch(callback)
+               {
+                   case "汇总统计":
+                       mainwindowviewmodel.statisticsIndex = 0;
+                       mainwindowviewmodel.StatisticsShow(null);
+                       break;
+                   case "制签统计":
+                       mainwindowviewmodel.statisticsIndex = 1;
+                       mainwindowviewmodel.StatisticsShow(null);
+                       break;
+                   case "制签异常统计":
+                       mainwindowviewmodel.statisticsIndex = 2;
+                       mainwindowviewmodel.StatisticsShow(null);
+                       break;
+                   case "制签记录查询":
+                       mainwindowviewmodel.queryIndex = 0;
+                       mainwindowviewmodel.QueryShow(null);
+                       break;
+                   case "收证记录查询":
+                       mainwindowviewmodel.queryIndex = 1;
+                       mainwindowviewmodel.QueryShow(null);
+                       break;
+                   case "签注记录查询":
+                       mainwindowviewmodel.queryIndex = 2;
+                       mainwindowviewmodel.QueryShow(null);
+                       break;
+                   case "缴款记录查询":
+                       mainwindowviewmodel.queryIndex = 3;
+                       mainwindowviewmodel.QueryShow(null);
+                       break;
+                   case "查询记录查询":
+                       mainwindowviewmodel.queryIndex = 4;
+                       mainwindowviewmodel.QueryShow(null);
+                       break;
+                   case "预受理记录查询":
+                       mainwindowviewmodel.queryIndex = 5;
+                       mainwindowviewmodel.QueryShow(null);
+                       break;
+                   case "设备管理":
+                       mainwindowviewmodel.DeviceManageShow(null);
+                       break;
+               }
+           }
+        }
+    }
+
+    public class MainWindowViewModel : NotificationObject
     {  
         public enum QueryOperate
         {
@@ -410,6 +527,17 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private ObjectForScripingHelper  _scripinghelper;
+        public ObjectForScripingHelper scripinghelper
+        {
+            get { return _scripinghelper; }
+            set
+            {
+                _scripinghelper = value;
+                this.RaisePropertyChanged("scripinghelper");
+            }
+        }
+
         public MainWindowViewModel()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
@@ -463,6 +591,8 @@ namespace ManageSystem.ViewModel
             _queryIndex                                 = 0;
             _statisticsStrs                             = new ObservableCollection<string>();
             _queryStrs                                  = new ObservableCollection<string>();
+            _scripinghelper                             = new ObjectForScripingHelper(this);
+
             _statisticsStrs.Add("汇总统计");
             _statisticsStrs.Add("制签统计");
             _statisticsStrs.Add("异常统计");
@@ -917,6 +1047,7 @@ namespace ManageSystem.ViewModel
             QueryYingshebiao(null);
             _DeviceManageViewModel._DevicemaViewModel.QueryShebeiguanli(null);
             _DeviceManageViewModel._UserViewModel.QueryYongHuguanli(null);
+            _DeviceManageViewModel._AbnormalViewModel.Query(null);
 
             _SummaryStatViewModel.DoLogon();
             _SignStatViewModel.DoLogon();
@@ -954,7 +1085,7 @@ namespace ManageSystem.ViewModel
             _SignAnomalyStatViewModel.ResizeShowCharts();
         }
 
-        private void StatisticsShow(object obj)
+        public void StatisticsShow(object obj)
         {
             StatisticsSelected(obj);
         }
@@ -987,7 +1118,7 @@ namespace ManageSystem.ViewModel
         }
 
 
-        private void QueryShow(object obj)
+        public void QueryShow(object obj)
         {
             QuerySelected(obj);
         }
@@ -1057,7 +1188,7 @@ namespace ManageSystem.ViewModel
             _WebBrowserViewMode.DoLogon();
         }
 
-        private void DeviceManageShow(object obj)
+        public void DeviceManageShow(object obj)
         {
             bShowPage                                   = PageVisibleEnum.PageVisibleEnum_DeviceManage;
             _HomePageViewModel.ResizeShowCharts();

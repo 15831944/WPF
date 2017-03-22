@@ -13,7 +13,7 @@ using ExcutesqlCallBackDelegate = ManageSystem.Server.AddTableCallBackDelegate;
 
 namespace ManageSystem.ViewModel.DeviceViewModel
 {
-    class UserViewModel : NotificationObject
+   public  class UserViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
         public AddTableCallBackDelegate     _addtablecallbackdelegate = null;
@@ -76,7 +76,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             _tableList                          = new ObservableCollection<GUANLIYUANModel>();
         }
         //Access and update columns during autogeneration
-        public static void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        public void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string headername = e.Column.Header.ToString();
             //Cancel the column you don't want to generate

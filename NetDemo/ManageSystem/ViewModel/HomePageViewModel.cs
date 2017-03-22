@@ -12,7 +12,7 @@ using System.Windows;
 
 namespace ManageSystem.ViewModel
 {
-    class HomePageViewModel : NotificationObject
+    public class HomePageViewModel : NotificationObject
     {
         public enum QueryOperate
         {

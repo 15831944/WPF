@@ -9,6 +9,7 @@
     <deviceViewModel:DataGridSelectConvert x:Key="DataGridSelectConvert"/>
 
     <viewModel:MainWindowViewModel x:Key="MainWindowViewModelKey"/>
+    <viewModel:AddWndViewModel x:Key="AddWndViewModelKey"/>
     <!--<ObjectDataProvider x:Key="DATA_ButtonKey" ObjectType="{x:Type local:SerialUIDataFactory}" MethodName="GetButtonSeiralTreeData"/>-->
 
     <LinearGradientBrush x:Key="DataGridHeaderBorderBackground" EndPoint="0,1" StartPoint="0,0">
