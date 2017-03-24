@@ -18,6 +18,7 @@
                 <Button Height="50" Command="{Binding Path=NetCommand     }">网络状态</Button>
                 <Button Height="50" Command="{Binding Path=UpgradeCommand }">软件信息</Button>
                 <Button Height="50" Command="{Binding Path=AbnormalCommand}">故障查询</Button>
+                <Button Height="50" Command="{Binding Path=HardwareCommand}">硬件信息</Button>
             </StackPanel>
             <GridSplitter Width="1"></GridSplitter>
             <ContentControl Grid.Column="1" Content="{Binding _DevicemaViewModel}"/>
@@ -25,6 +26,7 @@
             <ContentControl Grid.Column="1" Content="{Binding _NetViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _UpgradeViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _AbnormalViewModel}"/>
+            <ContentControl Grid.Column="1" Content="{Binding _HardwareViewModel}"/>
         </Grid>
         <DataTemplate.Triggers>
             <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_DeviceManage}">

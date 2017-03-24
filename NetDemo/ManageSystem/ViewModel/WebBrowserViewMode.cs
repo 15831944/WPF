@@ -146,7 +146,7 @@ namespace ManageSystem.ViewModel
                     foreach (string cell in cells)
                     {
                         string[] keyvalue = cell.Split(':');
-                        if (keyvalue.Length != 2)
+                        if (keyvalue.Length != 2 || keyvalue[1] == null || keyvalue[1].Length == 0)
                             continue;
 
                         foreach (System.Reflection.PropertyInfo item in properties)
@@ -378,7 +378,7 @@ namespace ManageSystem.ViewModel
                     }
                 }
             }
-            WorkServer.queryConnectionsStr(Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
+            WorkServer.queryConnectionsStr(Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), false);
         }
 
         private void LoadCompleted(object obj)

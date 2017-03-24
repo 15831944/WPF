@@ -128,6 +128,7 @@
     <Compile Include="ViewModel\DeviceManageViewModel.cs" />
     <Compile Include="ViewModel\DeviceViewModel\AbnormalViewModel.cs" />
     <Compile Include="ViewModel\DeviceViewModel\DevicemaViewModel.cs" />
+    <Compile Include="ViewModel\DeviceViewModel\HardwareViewModel.cs" />
     <Compile Include="ViewModel\DeviceViewModel\NetViewModel.cs" />
     <Compile Include="ViewModel\DeviceViewModel\UpgradeViewModel.cs" />
     <Compile Include="ViewModel\DeviceViewModel\UserViewModel.cs" />
@@ -189,6 +190,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\DeviceManageTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\DeviceTemplate\HardwareTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

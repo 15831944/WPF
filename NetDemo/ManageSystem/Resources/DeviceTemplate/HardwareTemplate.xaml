@@ -1,30 +1,26 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                     xmlns:deviceViewModel="clr-namespace:ManageSystem.ViewModel.DeviceViewModel"
                     xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
                     xmlns:Model="clr-namespace:ManageSystem.Model"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
+                    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                     >
-    <DataTemplate DataType="{x:Type deviceViewModel:UpgradeViewModel}">
+    <DataTemplate DataType="{x:Type deviceViewModel:HardwareViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition Height="200"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" FontSize="25">软件信息</TextBlock>
+            <TextBlock Grid.Row="0" FontSize="25">硬件信息</TextBlock>
             <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <TextBlock Margin="0,0,0,5" Grid.Column="0" Text="{Binding Path=customInfo.Ruanjianxinxi}">
+                <TextBlock Margin="0,0,0,5" Grid.Row="0" Text="{Binding Path=customInfo.Yingjianxinxi}">
                     <TextBlock.Resources>
                         <VisualBrush x:Key="waterMarkBrush" TileMode="None" Stretch="None" AlignmentX="Left">
                             <VisualBrush.Visual>
-                                <TextBlock FontStyle="Normal" Foreground="Gray" Text="显示软件件信息"/>
+                                <TextBlock FontStyle="Normal" Foreground="Gray" Text="显示硬件信息"/>
                             </VisualBrush.Visual>
                         </VisualBrush>
                     </TextBlock.Resources>
@@ -41,17 +37,6 @@
                         </Style>
                     </TextBlock.Style>
                 </TextBlock>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition Height="50"/>
-                    </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" ItemsSource="{Binding Path=versionList}"></ListBox>
-                    <StackPanel Grid.Row="1" Orientation="Horizontal">
-                        <Button Margin="10,0,10,0" Command="{Binding Path=TestCommand}" >升级</Button>
-                        <Button Margin="10,0,10,0" Command="{Binding Path=TestCommand}" >强制升级</Button>
-                    </StackPanel>
-                </Grid>
             </Grid>
             <DataGrid Grid.Row="2"
                               DataContext="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._DevicemaViewModel}"
@@ -61,7 +46,7 @@
                               CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 
                               AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True" SelectionMode="Single"
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
-                              SelectedValue="{Binding BindsDirectlyToSource=True, Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._UpgradeViewModel.customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
+                              SelectedValue="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._HardwareViewModel.customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
                               ItemsSource="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource DataGridItemSourceConvert}}"
                               >
                 <DataGrid.CellStyle>
@@ -78,7 +63,7 @@
             </DataGrid>
         </Grid>
         <DataTemplate.Triggers>
-            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel.bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Upgrade}">
+            <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel.bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Hardware}">
                 <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
             </DataTrigger>
         </DataTemplate.Triggers>

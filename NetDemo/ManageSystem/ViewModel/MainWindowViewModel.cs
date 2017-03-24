@@ -240,16 +240,7 @@ namespace ManageSystem.ViewModel
 
     public class MainWindowViewModel : NotificationObject
     {  
-        public enum QueryOperate
-        {
-            QueryOperate_None,
-            QueryOperate_YingSheTable,
-            QueryOperate_GuanLiYuan,
-        }
-
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
-        public QueryOperate                             _queryoperate = QueryOperate.QueryOperate_None;
-        public Dictionary<string, GUANLIYUANModel>      _guliyuanList               = new Dictionary<string, GUANLIYUANModel>();
  
         public DelegateCommand<object>                  HomePageCommand { get; set; }
         public DelegateCommand<object>                  StatisticsCommand { get; set; }
@@ -581,8 +572,8 @@ namespace ManageSystem.ViewModel
             _devicePosition                             = new ObservableCollection<string>();
             _businesstype                               = new ObservableCollection<string>();
 
-            //_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_WebBrowser;
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
+            //_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
             _titleheight                                = 25;
             _leftWidth                                  = 60;
             _progressValue                              = 0;
@@ -596,7 +587,7 @@ namespace ManageSystem.ViewModel
             _statisticsStrs.Add("汇总统计");
             _statisticsStrs.Add("制签统计");
             _statisticsStrs.Add("异常统计");
-            _queryStrs.Add("签记录查询");
+            _queryStrs.Add("制签记录查询");
             _queryStrs.Add("收证记录查询");
             _queryStrs.Add("签注记录查询");
             _queryStrs.Add("缴款记录查询");
@@ -628,20 +619,7 @@ namespace ManageSystem.ViewModel
 
         public void QueryTableCallBack(string resultStr, string errorStr)
         {
-            
-            Type type = null;
-            switch(_queryoperate)
-            {
-                case QueryOperate.QueryOperate_YingSheTable:
-                    type = typeof(YINGSHEBIAOModel);
-                    break;
-                case QueryOperate.QueryOperate_GuanLiYuan:
-                    type = typeof(GUANLIYUANModel);
-                    break;
-            }
-
-            if(type == null)
-                return;
+            Type type = typeof(YINGSHEBIAOModel);
 
             System.Reflection.PropertyInfo[] properties = type.GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
 
@@ -656,7 +634,7 @@ namespace ManageSystem.ViewModel
                     foreach (string cell in cells)
                     {
                         string[] keyvalue = cell.Split(':');
-                        if (keyvalue.Length != 2)
+                        if (keyvalue.Length != 2 || keyvalue[1] == null || keyvalue[1].Length == 0)
                             continue;
 
                         foreach (System.Reflection.PropertyInfo item in properties)
@@ -714,29 +692,14 @@ namespace ManageSystem.ViewModel
                         }
                     }
 
-                    switch (_queryoperate)
-                    {
-                        case QueryOperate.QueryOperate_YingSheTable:
-                            {
-                                YINGSHEBIAOModel modelTemp = model as YINGSHEBIAOModel;
-                                _yingshelList[modelTemp.Bianhao] = modelTemp.Mingcheng;
-                            }
-                            break;
-                        case QueryOperate.QueryOperate_GuanLiYuan:
-                            {
-                                GUANLIYUANModel modelTemp = model as GUANLIYUANModel;
-                                _guliyuanList[modelTemp.Yonghuming] = modelTemp;
-                            }
-                            break;
-                    }
+                    YINGSHEBIAOModel modelTemp = model as YINGSHEBIAOModel;
+                    _yingshelList[modelTemp.Bianhao] = modelTemp.Mingcheng;
                 }
             }
-            _queryoperate = QueryOperate.QueryOperate_None;
         }
 
         public void QueryYingshebiao(object obj)
         {
-            _queryoperate = QueryOperate.QueryOperate_YingSheTable;
             _yingshelList.Clear();
             cardstatus.Clear();
             businesstype.Clear();
@@ -768,12 +731,6 @@ namespace ManageSystem.ViewModel
                     certificateType.Add(kvp0.Value);
                 }
             }
-        }
-        public void QueryGuanliyuan(object obj)
-        {
-            _queryoperate = QueryOperate.QueryOperate_GuanLiYuan;
-            _guliyuanList.Clear();
-            WorkServer.QueryTable("select * from Guanliyuan", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
 
         public void StatisticsSelected(object obj)
@@ -921,13 +878,13 @@ namespace ManageSystem.ViewModel
             {
                 bOnline         = true;
                 displayMsg      = "连接服务端成功!";
-                QueryGuanliyuan(null);
+                 _DeviceManageViewModel._UserViewModel.DoLogon();
 
-                if (_guliyuanList.Keys.Count > 0)
+                if (_DeviceManageViewModel._UserViewModel._guliyuanList.Keys.Count > 0)
                 {
-                    if (_guliyuanList.Keys.Contains(logonName))
+                    if (_DeviceManageViewModel._UserViewModel._guliyuanList.Keys.Contains(logonName))
                     {
-                        if (_guliyuanList[logonName].Mima == logonPassword)
+                        if (_DeviceManageViewModel._UserViewModel._guliyuanList[logonName].Mima == logonPassword)
                         {
 
                             Thread thread = new Thread(new ThreadStart(() =>
@@ -935,10 +892,10 @@ namespace ManageSystem.ViewModel
                                 double progress = 0;
                                 displayMsg      = "0" + "%";
 
-                                progress        += 20;
+                                progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
-                                Thread.Sleep(10);
+                                Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -948,17 +905,17 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
-                                Thread.Sleep(10);
+                                Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
                                 {
-                                    _DeviceManageViewModel._DevicemaViewModel.QueryShebeiguanli(null);
+                                    _DeviceManageViewModel._DevicemaViewModel.DoLogon();
                                 }));
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      = progress + "%";
-                                Thread.Sleep(10);
+                                Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -968,7 +925,17 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
-                                Thread.Sleep(10);
+                                Thread.Sleep(100);
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                    _DeviceManageViewModel._AbnormalViewModel.DoLogon();
+                                }));
+                                progress        += 10;
+                                progressValue   = progress;
+                                displayMsg      =  progress + "%";
+                                Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -978,7 +945,7 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
-                                Thread.Sleep(10);
+                                Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -988,7 +955,7 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
-                                Thread.Sleep(10);
+                                Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -998,22 +965,22 @@ namespace ManageSystem.ViewModel
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
-                                Thread.Sleep(10);
+                                Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
                                 {
-                                    //_WebBrowserViewMode.DoLogon();
+                                    _WebBrowserViewMode.DoLogon();
                                 }));
                                 progress        += 10;
                                 progressValue   = progress;
                                 displayMsg      =  progress + "%";
-                                Thread.Sleep(10);
+                                Thread.Sleep(100);
 
                                 progress        = 100;
                                 progressValue   = progress;
                                 displayMsg      = progress + "%";
-                                Thread.Sleep(10);
+                                Thread.Sleep(100);
 
 
                                 Application.Current.Dispatcher.Invoke(
@@ -1043,15 +1010,15 @@ namespace ManageSystem.ViewModel
 
         public void Loaded(object obj)
         {
-            WorkServer.startClient(IP, port, true);
-            QueryYingshebiao(null);
-            _DeviceManageViewModel._DevicemaViewModel.QueryShebeiguanli(null);
-            _DeviceManageViewModel._UserViewModel.QueryYongHuguanli(null);
-            _DeviceManageViewModel._AbnormalViewModel.Query(null);
+            //WorkServer.startClient(IP, port, true);
+            //QueryYingshebiao(null);
+            //_DeviceManageViewModel._DevicemaViewModel.DoLogon();
+            //_DeviceManageViewModel._UserViewModel.DoLogon();
+            //_DeviceManageViewModel._AbnormalViewModel.DoLogon();
 
-            _SummaryStatViewModel.DoLogon();
-            _SignStatViewModel.DoLogon();
-            _SignAnomalyStatViewModel.DoLogon();
+            //_SummaryStatViewModel.DoLogon();
+            //_SignStatViewModel.DoLogon();
+            //_SignAnomalyStatViewModel.DoLogon();
         }
 
         private void MaxWnd(object obj)
@@ -1185,7 +1152,7 @@ namespace ManageSystem.ViewModel
             _SignStatViewModel.ResizeShowCharts();
             _SignAnomalyStatViewModel.ResizeShowCharts();
 
-            _WebBrowserViewMode.DoLogon();
+            //_WebBrowserViewMode.DoLogon();
         }
 
         public void DeviceManageShow(object obj)

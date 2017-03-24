@@ -22,6 +22,7 @@
                 <ResourceDictionary Source="Resources/DeviceTemplate/NetTemplate.xaml" />
                 <ResourceDictionary Source="Resources/DeviceTemplate/UpgradeTemplate.xaml" />
                 <ResourceDictionary Source="Resources/DeviceTemplate/UserTemplate.xaml" />
+                <ResourceDictionary Source="Resources/DeviceTemplate/HardwareTemplate.xaml" />
 
                 <ResourceDictionary Source="Resources/LogonTemplate.xaml" />
                 <ResourceDictionary Source="Resources/HomePageTemplate.xaml" />

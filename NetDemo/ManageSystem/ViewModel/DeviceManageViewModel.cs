@@ -14,6 +14,7 @@ namespace ManageSystem.ViewModel
         DeviceVisibleEnum_Net,
         DeviceVisibleEnum_Upgrade,
         DeviceVisibleEnum_Abnormal,
+        DeviceVisibleEnum_Hardware,
     }
 
     public class DeviceManageViewModel : NotificationObject
@@ -23,6 +24,7 @@ namespace ManageSystem.ViewModel
         public DelegateCommand<object> NetCommand { get; set; }
         public DelegateCommand<object> UpgradeCommand { get; set; }
         public DelegateCommand<object> AbnormalCommand { get; set; }
+        public DelegateCommand<object> HardwareCommand { get; set; }
 
 
         public DevicemaViewModel                _DevicemaViewModel { get; set; }
@@ -30,6 +32,7 @@ namespace ManageSystem.ViewModel
         public NetViewModel                     _NetViewModel { get; set; }
         public UpgradeViewModel                 _UpgradeViewModel { get; set; }
         public AbnormalViewModel                _AbnormalViewModel { get; set; }
+        public HardwareViewModel                _HardwareViewModel { get; set; }
 
 
         private DeviceVisibleEnum _bShowPage;
@@ -50,23 +53,30 @@ namespace ManageSystem.ViewModel
             NetCommand                      = new DelegateCommand<object>(NetShow);
             UpgradeCommand                  = new DelegateCommand<object>(UpgradeShow);
             AbnormalCommand                 = new DelegateCommand<object>(AbnormalShow);
-
+            HardwareCommand                 = new DelegateCommand<object>(HardwareShow);
 
             _DevicemaViewModel              = new DevicemaViewModel();
             _UserViewModel                  = new UserViewModel();
             _NetViewModel                   = new NetViewModel();
             _UpgradeViewModel               = new UpgradeViewModel();
-            _AbnormalViewModel              = new AbnormalViewModel();
+            _AbnormalViewModel              = new AbnormalViewModel(); 
+            _HardwareViewModel              = new HardwareViewModel();
 
 
 
+            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Device;
+        }
 
-            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Abnormal;
+        private void HardwareShow(object obj)
+        {
+            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Hardware;
+            //_HardwareViewModel.
         }
 
         private void AbnormalShow(object obj)
         {
             bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Abnormal;
+            //_AbnormalViewModel.DoLogon();
         }
 
         private void UpgradeShow(object obj)

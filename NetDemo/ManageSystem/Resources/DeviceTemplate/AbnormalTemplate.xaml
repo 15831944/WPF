@@ -162,7 +162,7 @@
                 </Grid>
             </Grid>
             <StackPanel Grid.Row="2" Orientation="Horizontal">
-                <Button Margin="10,0,10,0" Command="{Binding Path=TestCommand}" >查询</Button>
+                <Button Margin="10,0,10,0" Command="{Binding Path=QueryCommand}" >查询</Button>
                 <Button Margin="10,0,10,0" Command="{Binding Path=ExportExcelCommand}" >导出到Excel</Button>
                 <Button Margin="10,0,10,0" Command="{Binding Path=ExportTXTCommand}" >导出到TXT</Button>
             </StackPanel>

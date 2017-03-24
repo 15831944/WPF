@@ -28,6 +28,9 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             {"Youxiaoqijieshu",	"有效期截至"},
             {"Quanxianjibie",	"权限级别"},
         };
+        public Dictionary<string, GUANLIYUANModel>      _guliyuanList           = new Dictionary<string, GUANLIYUANModel>();
+        private ObservableCollection<GUANLIYUANModel> _tableListTemp            = new ObservableCollection<GUANLIYUANModel>();
+
 
         public DelegateCommand<object> AddCommand { get; set; }
         public DelegateCommand<object> DeleteCommand { get; set; }
@@ -122,7 +125,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                     foreach (string cell in cells)
                     {
                         string[] keyvalue = cell.Split(':');
-                        if (keyvalue.Length != 2)
+                        if (keyvalue.Length != 2 || keyvalue[1] == null || keyvalue[1].Length == 0)
                             continue;
 
                         foreach (System.Reflection.PropertyInfo item in properties)
@@ -181,7 +184,8 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                     }
 
                     GUANLIYUANModel modelTemp = model as GUANLIYUANModel;
-                    tableList.Add(modelTemp);
+                    _guliyuanList[modelTemp.Yonghuming] = modelTemp;
+                    _tableListTemp.Add(modelTemp);
                 }
             }
         }
@@ -189,7 +193,17 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         public void QueryYongHuguanli(object obj)
         {
             tableList.Clear();
+            _tableListTemp.Clear();
             WorkServer.QueryTable("select * from Guanliyuan", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
+
+            foreach(var model in _tableListTemp)
+                tableList.Add(model);
+        }
+
+        public void DoLogon()
+        {
+            _guliyuanList.Clear();
+            QueryYongHuguanli(null);
         }
 
         private void Add(object obj)

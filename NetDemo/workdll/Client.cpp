@@ -48,7 +48,7 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 				CClient::GetInstance()->m_sendDataFunc(pBuffer, msgLen);
 				delete[] pBuffer;
 			}
-			else if (CClient::GetInstance()->m_requestMap.Pop(key, pairValue))
+			else if (CClient::GetInstance()->m_requestMap.Query(key, pairValue))
 			{
 				if (msgPack.has_registtypemsgresult())
 				{
@@ -97,6 +97,8 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					if (pairValue.second)
 						((QueryTableCallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
 				}
+
+				CClient::GetInstance()->m_requestMap.Pop(key, pairValue);
 			}
 		}
 		else

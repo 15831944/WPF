@@ -6,11 +6,11 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Reflection;
 using System.Text;
+using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
 
 namespace ManageSystem.ViewModel.DeviceViewModel
 {
@@ -33,6 +33,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             {"Yichangxiangxineirong",	"异常详细内容"},	
         };
 
+        public DelegateCommand<object> QueryCommand { get; set; }
         public DelegateCommand<object> ExportExcelCommand { get; set; }
         public DelegateCommand<object> ExportTXTCommand { get; set; }
 
@@ -69,6 +70,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         public AbnormalViewModel()
         {
             _querytablecallbackdelegate         = new QueryTableCallBackDelegate(QueryTableCallBack);
+            QueryCommand                        = new DelegateCommand<object>(Query);
             ExportExcelCommand                  = new DelegateCommand<object>(ExportExcel);
             ExportTXTCommand                    = new DelegateCommand<object>(ExportTXT);
 
@@ -78,10 +80,10 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
         private void ExportTXT(object obj)
         {
-            SaveFileDialog opf = new SaveFileDialog();
+            System.Windows.Forms.SaveFileDialog opf = new System.Windows.Forms.SaveFileDialog();
             opf.FileName = DateTime.Now.ToString("yyyyMMddHHmmss");
             opf.Filter = "*.txt|*.txt|所有文件(*.*)|*.*";
-            if (opf.ShowDialog() == DialogResult.OK)
+            if (opf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string filepath = opf.FileName;
                 StreamWriter writer = new StreamWriter(filepath);
@@ -133,10 +135,10 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
         private void ExportExcel(object obj)
         {
-            SaveFileDialog opf = new SaveFileDialog();
+            System.Windows.Forms.SaveFileDialog opf = new System.Windows.Forms.SaveFileDialog();
             opf.FileName = DateTime.Now.ToString("yyyyMMddHHmmss");
             opf.Filter = "*.xls|*.xls|所有文件(*.*)|*.*";
-            if (opf.ShowDialog() == DialogResult.OK)
+            if (opf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 string filepath = opf.FileName;
 
@@ -265,7 +267,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                     foreach (string cell in cells)
                     {
                         string[] keyvalue = cell.Split(':');
-                        if (keyvalue.Length != 2)
+                        if (keyvalue.Length != 2 || keyvalue[1] == null || keyvalue[1].Length == 0)
                             continue;
 
                         foreach (System.Reflection.PropertyInfo item in properties)
@@ -325,15 +327,24 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                         }
                     }
 
-                    SHEBEIYICHANGSHUJUModel modelTemp = model as SHEBEIYICHANGSHUJUModel;
-                    tableList.Add(modelTemp);
+                    Application.Current.Dispatcher.Invoke(
+                    new Action(() =>
+                    {
+                        tableList.Add(model as SHEBEIYICHANGSHUJUModel);
+                    }));
                 }
             }
         }
 
         public void Query(object obj)
         {
-            WorkServer.QueryTable("select * from Shebeiyichangshuju", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
+            tableList.Clear();
+            WorkServer.QueryTable("select * from Shebeiyichangshuju", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+        }
+
+        public void DoLogon()
+        {
+            Query(null);
         }
     }
 }

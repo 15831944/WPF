@@ -45,7 +45,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">统计类型</TextBlock>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">查询类型</TextBlock>
                             <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450"
                                       VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="{Binding Source={StaticResource MainWindowViewModelKey}, Path=queryIndex}"
                                       ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=queryStrs}"

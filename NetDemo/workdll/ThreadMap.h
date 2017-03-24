@@ -9,10 +9,10 @@ public:
 	bool isEmpty();
 	void Push(const keyType& obj1, const valueType& obj2);
 	bool Pop(keyType& obj1, pair<keyType, valueType>& pairValue);
+	bool Query(keyType& obj1, pair<keyType, valueType>& pairValue);
 	bool Exist(keyType& obj1);
 	void Clear();
 	int Size();
-
 private:
 	std::map<keyType, valueType> _Map;
 	int  size;
@@ -58,6 +58,23 @@ bool ThreadMap<keyType, valueType>::Pop(keyType& obj1, pair<keyType, valueType>&
 		pairValue.first		= it->first;
 		pairValue.second	= it->second;
 		_Map.erase(it);
+	}
+	size = _Map.size();
+	ReleaseMutex(mutexHandle);
+
+	return bret;
+}
+
+template<class keyType, class valueType>
+bool ThreadMap<keyType, valueType>::Query(keyType& obj1, pair<keyType, valueType>& pairValue)
+{
+	WaitForSingleObject(mutexHandle, INFINITE);
+	map<keyType, valueType>::iterator it = _Map.find(obj1);
+	bool bret = it != _Map.end();
+	if (bret)
+	{
+		pairValue.first		= it->first;
+		pairValue.second	= it->second;
 	}
 	size = _Map.size();
 	ReleaseMutex(mutexHandle);

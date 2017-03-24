@@ -58,6 +58,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             {"Ruanjianxinxi",			"软件信息"},	
             {"Ruanjianshengjixinxi",	"软件升级信息"},	
         };
+        private ObservableCollection<SHEBEIGUANLIModel> _tableListTemp = new ObservableCollection<SHEBEIGUANLIModel>();
 
         public DelegateCommand<object> AddCommand { get; set; }
         public DelegateCommand<object> DeleteCommand { get; set; }
@@ -239,6 +240,9 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                                         }
                                     }
                                     break;
+                                case "Chuangjianshijian":
+                                    addXml += Common.ConvertDateTimeInt(DateTime.Now);
+                                    break;
                                 default:
                                     addXml += item.GetValue(customInfo, null);
                                     break;
@@ -357,7 +361,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                     foreach (string cell in cells)
                     {
                         string[] keyvalue = cell.Split(':');
-                        if (keyvalue.Length != 2)
+                        if (keyvalue.Length != 2 || keyvalue[1] == null || keyvalue[1].Length == 0)
                             continue;
 
                         foreach (System.Reflection.PropertyInfo item in properties)
@@ -417,8 +421,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                         }
                     }
 
-                    SHEBEIGUANLIModel modelTemp = model as SHEBEIGUANLIModel;
-                    tableList.Add(modelTemp); 
+                    _tableListTemp.Add(model as SHEBEIGUANLIModel);
                 }
             }
         }
@@ -429,12 +432,21 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             ju.Clear();
             danwei.Clear();
             deviceList.Clear();
+            _tableListTemp.Clear();
             tableList.Clear();
             WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
+            foreach (var model in _tableListTemp)
+                tableList.Add(model);
 
             Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>> _devicelistMap = new Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>>();
             foreach (SHEBEIGUANLIModel modelTemp in tableList)
             {
+                if (modelTemp.Chengshibianhao == null       || modelTemp.Chengshibianhao.Length == 0        ||
+                    modelTemp.Jubianhao == null             || modelTemp.Jubianhao.Length == 0              ||
+                    modelTemp.Shiyongdanweibianhao == null  || modelTemp.Shiyongdanweibianhao.Length == 0
+                    )
+                    continue;
+
                 if (!_devicelistMap.Keys.Contains(modelTemp.Chengshibianhao))
                     _devicelistMap[modelTemp.Chengshibianhao] = new Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>();
                 if (!_devicelistMap[modelTemp.Chengshibianhao].Keys.Contains(modelTemp.Jubianhao))
@@ -486,6 +498,11 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                 if (kvp.Key >= 3001 && kvp.Key < 4000)
                     danwei.Add(kvp.Value);
             }
+        }
+
+        public void DoLogon()
+        {
+            QueryShebeiguanli(null);
         }
 
     }

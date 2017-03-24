@@ -193,7 +193,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                         foreach (string cell in cells)
                         {
                             string[] keyvalue = cell.Split(':');
-                            if (keyvalue.Length != 2)
+                            if (keyvalue.Length != 2 || keyvalue[1] == null || keyvalue[1].Length == 0)
                                 continue;
 
                             if(keyvalue[0] == "speed")

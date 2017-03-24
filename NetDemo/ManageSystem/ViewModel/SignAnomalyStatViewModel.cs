@@ -181,7 +181,7 @@ namespace ManageSystem.ViewModel
                     foreach (string cell in cells)
                     {
                         string[] keyvalue = cell.Split(':');
-                        if (keyvalue.Length != 2)
+                        if (keyvalue.Length != 2 || keyvalue[1] == null || keyvalue[1].Length == 0)
                             continue;
 
                         LineChartServer.SetCurvePointInfo(_lineCharIndex, Convert.ToInt32(keyvalue[0]), Convert.ToInt32(keyvalue[1]));
