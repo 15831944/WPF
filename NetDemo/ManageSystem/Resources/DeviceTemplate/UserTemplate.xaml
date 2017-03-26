@@ -6,6 +6,7 @@
                     xmlns:Model="clr-namespace:ManageSystem.Model"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
+                    xmlns:DataGridRes="clr-namespace:ManageSystem.Resources.DataGridRes"
                     >
     <DataTemplate DataType="{x:Type deviceViewModel:UserViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
@@ -55,6 +56,7 @@
                 </Grid>
             </Grid>
             <DataGrid Grid.Row="2"
+                              DataGridRes:DataGridAttach.GeneratColumnObj="{Binding}"
                               BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
@@ -62,7 +64,7 @@
                               AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True" SelectionMode="Single"
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
                               SelectedValuePath="Xuhao" SelectedValue="{Binding Path=customInfo.Xuhao, Mode=TwoWay}"
-                              ItemsSource="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource DataGridItemSourceConvert}}"
+                              ItemsSource="{Binding Path=tableList}"
                               >
                 <DataGrid.CellStyle>
                     <Style TargetType="DataGridCell">

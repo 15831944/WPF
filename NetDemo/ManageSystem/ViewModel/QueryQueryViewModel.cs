@@ -16,21 +16,6 @@ namespace ManageSystem.ViewModel
    public  class QueryQueryViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
-        public Dictionary<string, string>               _columnNameMap = new Dictionary<string, string>
-        {
-           {"Xuhao",						"序号"},			
-           {"Chengshibianhao",		        "城市编号"},		
-           {"Jubianhao",					"局编号"},		
-           {"Shiyongdanweibianhao",	        "使用单位编号"},	
-           {"IP",							"ip地址"},		
-           {"Bendiyewu",					"是否本地业务"},	
-           {"Shebeibaifangweizhi",	        "设备摆放位置"},	
-           {"Riqi",					        "日期"},			
-           {"Chaxunhaoma",				    "查询号码"},		
-           {"Chaxunleixing",			    "查询类型"},		
-           {"Shifouchaxunchenggong",	    "是否查询成功"},	
-           {"Chuangjianshijian",		    "创建时间"},		
-        };
         public DelegateCommand<object>                  QueryCommand { get; set; }
 
         private string _queryNumber;
@@ -99,17 +84,6 @@ namespace ManageSystem.ViewModel
 
             startTime                                   = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
             endTime                                     = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
-        }
-
-        //Access and update columns during autogeneration
-        public void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            string headername = e.Column.Header.ToString();
-            //Cancel the column you don't want to generate
-            if (_columnNameMap.ContainsKey(headername))
-            {
-                e.Column.Header = _columnNameMap[headername];
-            }
         }
    
         public void QueryTableCallBack(string resultStr, string errorStr)
@@ -184,11 +158,11 @@ namespace ManageSystem.ViewModel
                             }
                         }
                     }
-                    Application.Current.Dispatcher.Invoke(
-                    new Action(() =>
+                    Application.Current.Dispatcher.BeginInvoke(
+                    new Action<object>((modeltemp) =>
                     {
                         tableList.Add(model);
-                    }));
+                    }), model);
                 }
             }
         }

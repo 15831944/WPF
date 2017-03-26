@@ -26,26 +26,30 @@ bool session::bstarted() const
 	return m_bStarted;
 }
 
-void session::start()
+void session::start(bool bSendHeart)
 {
 	{
 		char remote[256] ={ 0 };
-		_itoa_s(m_socket.remote_endpoint().port(), remote, 10);
+		_itoa_s(m_socket.remote_endpoint().port(), remote, 10); 
 		char local[256] ={ 0 };
 		_itoa_s(m_socket.remote_endpoint().port(), local, 10);
 		m_logbase = string("\nlocal:") + m_socket.local_endpoint().address().to_string() + ":" + local + "  remote:" + m_socket.remote_endpoint().address().to_string() + ":" + remote;
 
 		string str = m_logbase + "   Connected!";
-		OutputDebugStringA(str.c_str());
+		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
 	}
 
-
+	 
 	m_lastdatatime		= clock();
 	m_bStarted			= true;
 	m_socket.async_read_some(m_ReadBuffer.prepare(4096), boost::bind(&session::receive_handler,
 		this, boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
-	m_hearpackTimer.expires_from_now(boost::posix_time::seconds(5));
-	m_hearpackTimer.async_wait(boost::bind(&session::heartpack_handler, this, boost::asio::placeholders::error));
+
+	if (bSendHeart)
+	{
+		m_hearpackTimer.expires_from_now(boost::posix_time::seconds(5));
+		m_hearpackTimer.async_wait(boost::bind(&session::heartpack_handler, this, boost::asio::placeholders::error));
+	}
 }
 
 void session::heartpack_handler(const boost::system::error_code& ec)
@@ -55,30 +59,20 @@ void session::heartpack_handler(const boost::system::error_code& ec)
 		if (ec == boost::asio::error::basic_errors::operation_aborted)
 			return;
 		string str = m_logbase + "   " + ec.message();
-		OutputDebugStringA(str.c_str());
+		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
 
 		m_bStarted		= false;
 		if (m_pReceiveCallBack)//会话终止
 			m_pReceiveCallBack((long)this, NULL, 0, ec.value(), ec.message().c_str());
 		return;
 	}
-	return;
+
 	if (!bstarted())
 		return;
 
 	if (clock() - m_lastdatatime > 10000)
 	{
-		boost::mutex::scoped_lock Lock(m_writebufMutex);
-		PACKAGEHEAD packHead;
-		packHead.head1		= 0xff;
-		packHead.head2		= 0xfe;
-		packHead.packType	= PackTypeEnum_heart;
-		packHead.len		= 0;
-
-		m_WriteBuffer.prepare(sizeof(PACKAGEHEAD));
-		m_WriteBuffer.sputn((char*)&packHead, sizeof(PACKAGEHEAD));
-		write1500();
-		Lock.unlock();
+		sendheart();
 	}
 
 	m_hearpackTimer.expires_from_now(boost::posix_time::seconds(5));
@@ -91,7 +85,7 @@ void session::receive_handler(const boost::system::error_code &ec, std::size_t b
 	if (ec)
 	{
 		string str = m_logbase + "   " + ec.message();
-		OutputDebugStringA(str.c_str());
+		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
 
 		m_bStarted		= false;
 		if (m_pReceiveCallBack)//会话终止
@@ -110,7 +104,7 @@ void session::receive_handler(const boost::system::error_code &ec, std::size_t b
 		str +=	string("  receivetotalbyte:") + buf;
 		_itoa_s(bytes_transferred, buf, 10);
 		str +=	string("  receivebyte:") + buf;
-		OutputDebugStringA(str.c_str());
+		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
 	}
 
 	{
@@ -128,7 +122,8 @@ void session::receive_handler(const boost::system::error_code &ec, std::size_t b
 
 		int		packHeadLen					= sizeof(PACKAGEHEAD);
 		int		curBufferLen				= m_ReadBuffer.size();
-		if (curBufferLen > packHeadLen)
+		int		leftdataLen					= 0;
+		while (curBufferLen > packHeadLen) 
 		{
 			PACKAGEHEAD *pPackageHead = (PACKAGEHEAD *)boost::asio::buffer_cast<LPCSTR>(m_ReadBuffer.data());
 
@@ -151,24 +146,31 @@ void session::receive_handler(const boost::system::error_code &ec, std::size_t b
 							m_pReceiveCallBack((long)this, pRealBuf, realBufLen, ec.value(), ec.message().c_str());
 						m_ReadBuffer.consume(packHeadLen + pPackageHead->len);	///删除数据
 					}
-					else if (pPackageHead->packType == PackTypeEnum_heart)
+					else if (pPackageHead->packType == PackTypeEnum_heart) 
 					{
-						OutputDebugStringA("pPackageHead->packType == PackTypeEnum_heart");
-					};
+						OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, "pPackageHead->packType == PackTypeEnum_heart");
+						m_ReadBuffer.consume(packHeadLen + pPackageHead->len);	///删除数据
+					}; 
 				}
 				else
 				{
-					{
-						string str = m_logbase + "   ";
-						str +=	string("  接收数据错误！");
-						OutputDebugStringA(str.c_str());
-					}
+					string str = m_logbase + "   ";
+					str +=	string("  接收数据错误！");
+					OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
 					//AfxMessageBox(_T("数据接收错误！"));
+					m_ReadBuffer.consume(curBufferLen);	///删除数据
 				}
 			}
+			else
+			{
+				leftdataLen = (pPackageHead->len + packHeadLen) - m_ReadBuffer.size();
+				break;
+			}
+
+			curBufferLen				= m_ReadBuffer.size();
 		}
 
-		m_socket.async_read_some(m_ReadBuffer.prepare(4096), boost::bind(&session::receive_handler,
+		m_socket.async_read_some(m_ReadBuffer.prepare(leftdataLen > 4096 ? (leftdataLen + 1):4096), boost::bind(&session::receive_handler,
 			this, boost::asio::placeholders::error, boost::asio::placeholders::bytes_transferred));
 	}
 
@@ -191,7 +193,7 @@ void session::send_handler(const boost::system::error_code &ec, const size_t byt
 	if (ec)
 	{//发送不成功的处理 
 		string str = m_logbase + "   " + ec.message();
-		OutputDebugStringA(str.c_str());
+		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
 
 		m_bStarted = false;
 		if (m_pReceiveCallBack)//会话终止
@@ -240,14 +242,40 @@ void session::write1500()
 	}
 }
 
+void session::sendheart()
+{
+	PACKAGEHEAD packHead;
+	packHead.head1			= 0xff;
+	packHead.head2			= 0xfe;
+	packHead.packType		= PackTypeEnum_heart;
+	packHead.bcompressed	= false;
+	packHead.len			= 0;
+
+	boost::mutex::scoped_lock Lock(m_writebufMutex);
+
+	if (m_WriteBuffer.size() == 0)
+	{// outstanding async_write
+		string str =__FUNCTION__;
+		m_WriteBuffer.prepare(sizeof(PACKAGEHEAD));
+		m_WriteBuffer.sputn((char*)&packHead, sizeof(PACKAGEHEAD));
+		write1500();
+	}
+	else
+	{
+		m_WriteBuffer.prepare(sizeof(PACKAGEHEAD));
+		m_WriteBuffer.sputn((char*)&packHead, sizeof(PACKAGEHEAD));
+	}
+	Lock.unlock();
+}
+
 void session::send(BYTE* SendBuf, int dataLen)
 {
 
 	LPBYTE	pRealBuf	= NULL;
-	DWORD	realBufLen	= 0;
+	DWORD	realBufLen	= 0; 
 
 	CZipData zipdata;
-	if (dataLen >= 0x10000)//压缩数据
+	if (dataLen >= 10000)//压缩数据 
 		zipdata.compressdata(SendBuf, dataLen, &pRealBuf, realBufLen);
 
 	PACKAGEHEAD packHead;
@@ -257,7 +285,7 @@ void session::send(BYTE* SendBuf, int dataLen)
 
 	if (realBufLen == 0){
 		packHead.bcompressed	= false;
-		pRealBuf				= SendBuf;
+		pRealBuf				= SendBuf; 
 		realBufLen				= dataLen;
 	}
 	else
@@ -273,7 +301,6 @@ void session::send(BYTE* SendBuf, int dataLen)
 		m_WriteBuffer.sputn((char*)&packHead, sizeof(PACKAGEHEAD));
 		m_WriteBuffer.sputn((char*)pRealBuf, realBufLen);
 		write1500();
-		return;
 	}
 	else
 	{

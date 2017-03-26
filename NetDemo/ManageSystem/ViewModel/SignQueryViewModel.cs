@@ -19,25 +19,6 @@ namespace ManageSystem.ViewModel
    public  class SignQueryViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
-        public Dictionary<string, string>               _columnNameMap = new Dictionary<string, string>
-        {
-           {"Xuhao",				"序号"},
-           {"Chengshibianhao",		"城市编号"},
-           {"Jubianhao",			"局编号"},
-           {"Shiyongdanweibianhao",	"使用单位编号"},
-           {"IP",					"ip地址"},
-           {"Bendiyewu",			"是否本地业务"},
-           {"Shebeibaifangweizhi",	"设备摆放位置"},
-           {"Riqi",					"日期"},
-           {"Yewubianhao",			"业务编号"},
-           {"YuanZhengjianhaoma",	"原证件号码"},
-           {"Xingming",				"姓名"},
-           {"Qianzhuzhonglei",		"签注种类"},
-           {"ZhikaZhuangtai",		"制卡状态"},
-           {"Zhengjianhaoma",		"证件号码"},
-           {"Jiekoufanhuijieguo",	"接口返回结果"},
-           {"Lianxidianhua",		"联系电话"},
-        };
         public DelegateCommand<object>                  QueryCommand { get; set; }
 
         private string _cardNumber;
@@ -130,16 +111,6 @@ namespace ManageSystem.ViewModel
             endTime                                     = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
         }
 
-        //Access and update columns during autogeneration
-        public void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            string headername = e.Column.Header.ToString();
-            //Cancel the column you don't want to generate
-            if (_columnNameMap.ContainsKey(headername))
-            {
-                e.Column.Header = _columnNameMap[headername];
-            }
-        }
         public void QueryTableCallBack(string resultStr, string errorStr)
         {
             System.Reflection.PropertyInfo[] properties = typeof(ZHIQIANSHUJUModel).GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
@@ -212,11 +183,11 @@ namespace ManageSystem.ViewModel
                             }
                         }
                     }
-                    Application.Current.Dispatcher.Invoke(
-                    new Action(() =>
+                    Application.Current.Dispatcher.BeginInvoke(
+                    new Action<object>((modeltemp) =>
                     {
                         tableList.Add(model);
-                    }));
+                    }), model);
                 }
             }
         }

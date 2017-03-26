@@ -6,6 +6,7 @@
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
                     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+                    xmlns:DataGridRes="clr-namespace:ManageSystem.Resources.DataGridRes"
                     >
     <DataTemplate DataType="{x:Type deviceViewModel:HardwareViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
@@ -39,7 +40,7 @@
                 </TextBlock>
             </Grid>
             <DataGrid Grid.Row="2"
-                              DataContext="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._DevicemaViewModel}"
+                              DataGridRes:DataGridAttach.GeneratColumnObj="{Binding}"
                               BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
@@ -47,7 +48,7 @@
                               AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True" SelectionMode="Single"
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
                               SelectedValue="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._HardwareViewModel.customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
-                              ItemsSource="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource DataGridItemSourceConvert}}"
+                              ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._DevicemaViewModel.tableList}"
                               >
                 <DataGrid.CellStyle>
                     <Style TargetType="DataGridCell">

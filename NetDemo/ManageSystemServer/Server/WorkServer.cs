@@ -20,8 +20,8 @@ namespace ManageSystem.Server
         public static extern bool isServerStoped();
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "cntServerConnections")]
         public static extern int cntServerConnections();
-        [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "curConnectionsStr")]
-        public static extern string curConnectionsStr();
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "curConnectionsStr")]
+        public static extern IntPtr curConnectionsStr();
 
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "startClient")]
         public static extern bool startClient(string ip, int port, bool bDevice);

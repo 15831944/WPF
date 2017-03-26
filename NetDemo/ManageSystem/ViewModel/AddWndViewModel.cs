@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,31 +15,16 @@ namespace ManageSystem.ViewModel
 {
     public class AddWndViewModel : NotificationObject
     {
-        string  tableName   = "Zhiqianshuju";
-        public Dictionary<string, string>               _columnNameMap = new Dictionary<string, string>
-        {
-           {"Xuhao",				"序号"},
-           {"Chengshibianhao",		"城市编号"},
-           {"Jubianhao",			"局编号"},
-           {"Shiyongdanweibianhao",	"使用单位编号"},
-           {"IP",					"ip地址"},
-           {"Bendiyewu",			"是否本地业务"},
-           {"Shebeibaifangweizhi",	"设备摆放位置"},
-           {"Riqi",					"日期"},
-           {"Yewubianhao",			"业务编号"},
-           {"YuanZhengjianhaoma",	"原证件号码"},
-           {"Xingming",				"姓名"},
-           {"Qianzhuzhonglei",		"签注种类"},
-           {"ZhikaZhuangtai",		"制卡状态"},
-           {"Zhengjianhaoma",		"证件号码"},
-           {"Jiekoufanhuijieguo",	"接口返回结果"},
-           {"Lianxidianhua",		"联系电话"},
-        };
+        public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
+        public AddTableCallBackDelegate     _addtablecallbackdelegate = null;
 
+        string  tableName   = "Zhiqianshuju";
         public DelegateCommand<object> SelectedCommand { get; set; }
         public DelegateCommand<object> AddCommand { get; set; }
+        public DelegateCommand<object> QueryCommand { get; set; }
         public DelegateCommand<object> ConvertCommand { get; set; }
         public DelegateCommand<object> AddItemCommand { get; set; }
+        public DelegateCommand<object> CopyItemCommand { get; set; }
         public DelegateCommand<object> DeleteItemCommand { get; set; }
 
 
@@ -53,6 +39,34 @@ namespace ManageSystem.ViewModel
             {
                 _visible = value;
                 this.RaisePropertyChanged("visible");
+            }
+        }
+
+        private string _curCnt;
+        public string curCnt
+        {
+            get
+            {
+                return _curCnt;
+            }
+            set
+            {
+                _curCnt = value;
+                this.RaisePropertyChanged("curCnt");
+            }
+        }
+
+        private string _status;
+        public string status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
+                this.RaisePropertyChanged("status");
             }
         }
 
@@ -98,6 +112,20 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private object _customInfo;
+        public object customInfo
+        {
+            get
+            {
+                return _customInfo;
+            }
+            set
+            {
+                _customInfo = value;
+                this.RaisePropertyChanged("customInfo");
+            }
+        }
+
         private ObservableCollection<object> _tableList0;
         public ObservableCollection<object> tableList0
         {
@@ -114,11 +142,17 @@ namespace ManageSystem.ViewModel
 
         public AddWndViewModel()
         {
-            SelectedCommand             = new DelegateCommand<object>(Selected);
-            AddCommand                  = new DelegateCommand<object>(Add);
-            ConvertCommand              = new DelegateCommand<object>(ConvertData);
-            AddItemCommand              = new DelegateCommand<object>(AddItem);
-            DeleteItemCommand           = new DelegateCommand<object>(DeleteItem);
+            _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
+            _addtablecallbackdelegate                   = new AddTableCallBackDelegate(AddTableCallBack);
+
+
+            SelectedCommand                             = new DelegateCommand<object>(Selected);
+            AddCommand                                  = new DelegateCommand<object>(Add);
+            QueryCommand                                = new DelegateCommand<object>(Query);
+            ConvertCommand                              = new DelegateCommand<object>(ConvertData);
+            AddItemCommand                              = new DelegateCommand<object>(AddItem);
+            CopyItemCommand                             = new DelegateCommand<object>(CopyItem);
+            DeleteItemCommand                           = new DelegateCommand<object>(DeleteItem);
 
             bool bAddWnd = false;
             foreach (string key in ConfigurationManager.AppSettings)
@@ -136,12 +170,200 @@ namespace ManageSystem.ViewModel
 
             _tableList0 = new ObservableCollection<object>();
             _tableList0.Add(new ZHIQIANSHUJUModel());
+
+            curCnt = "当前数量：" + tableList0.Count;
+        }
+
+        private void AddTableCallBack(string errorStr)
+        {
+            if (errorStr != null && errorStr.Length != 0)
+            {
+                status = errorStr;
+            }
+            else
+            {
+                status = "操作成功";
+            }
+        }
+        public void QueryTableCallBack(string resultStr, string errorStr)
+        {
+            Type type = typeof(SHEBEIGUANLIModel);
+            switch (selvalue)
+            {
+                case "制签详细数据":
+                    type = typeof(ZHIQIANSHUJUModel);
+                    break;
+                case "收证详细数据":
+                    type = typeof(SHOUZHENGSHUJUModel);
+                    break;
+                case "签注详细数据":
+                    type = typeof(QIANZHUSHUJUModel);
+                    break;
+                case "缴款详细数据":
+                    type = typeof(JIAOKUANSHUJUModel);
+                    break;
+                case "查询详细数据":
+                    type = typeof(CHAXUNSHUJUModel);
+                    break;
+                case "预受理详细数据":
+                    type = typeof(YUSHOULISHUJUModel);
+                    break;
+                case "自助设备状态表":
+                    type = typeof(SHEBEIZHUANGTAIModel);
+                    break;
+                case "自助设备异常详细数据":
+                    type = typeof(SHEBEIYICHANGSHUJUModel);
+                    break;
+                case "管理员":
+                    type = typeof(GUANLIYUANModel);
+                    break;
+                case "管理员操作记录":
+                    type = typeof(GUANLIYUANCAOZUOJILUModel);
+                    break;
+                case "设备管理":
+                    type = typeof(SHEBEIGUANLIModel);
+                    break;
+                case "映射表":
+                    type = typeof(YINGSHEBIAOModel);
+                    break;
+            }
+
+            if (type == null)
+                return;
+
+            System.Reflection.PropertyInfo[] properties = type.GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+
+            string[] rows = resultStr.Split(';');
+            foreach (string row in rows)
+            {
+                if (row.Length > 0)
+                {
+                    var model= Activator.CreateInstance(type);
+
+                    string[] cells = row.Split(',');
+                    foreach (string cell in cells)
+                    {
+                        string[] keyvalue = cell.Split(':');
+                        if (keyvalue.Length != 2 || keyvalue[1] == null || keyvalue[1].Length == 0)
+                            continue;
+
+                        foreach (System.Reflection.PropertyInfo item in properties)
+                        {
+                            if (item.Name == keyvalue[0])
+                            {
+                                if (item.PropertyType.Name.StartsWith("Int32"))
+                                {
+                                    item.SetValue(model, Convert.ToInt32(keyvalue[1]), null);
+                                }
+                                else if (item.PropertyType.Name.StartsWith("Int64"))
+                                {
+                                    item.SetValue(model, Convert.ToInt64(keyvalue[1]), null);
+                                }
+                                else if (item.PropertyType.Name.StartsWith("String"))
+                                {
+                                    switch (item.Name)
+                                    {
+                                        case "Chengshibianhao":
+                                        case "Jubianhao":
+                                        case "Shiyongdanweibianhao":
+                                        case "Shebeibaifangweizhi":
+                                        case "Qianzhuzhonglei":
+                                        case "ZhikaZhuangtai":
+                                        case "Zhengjianleixing":
+                                        case "Xingbie":
+                                        case "Yewuleixing":
+                                            if (MainWindowViewModel._yingshelList.Keys.Contains(Convert.ToInt32(keyvalue[1])))
+                                                item.SetValue(model, MainWindowViewModel._yingshelList[Convert.ToInt32(keyvalue[1])], null);
+                                            break;
+                                        case "Riqi":
+                                        case "Chushengriqi":
+                                        case "Jiaoyiriqi":
+                                        case "Chuangjianshijian":
+                                            DateTime datetime = Common.ConvertIntDateTime(Convert.ToInt64(keyvalue[1]));
+                                            item.SetValue(model, datetime.ToString("yyyy-MM-dd HH:mm:ss"), null);
+                                            break;
+                                        case "IP":
+                                            if (keyvalue[1].Length > 0)
+                                                item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder(Convert.ToInt32(keyvalue[1]))), null);
+                                            break;
+                                        default:
+                                            item.SetValue(model, keyvalue[1], null);
+                                            break;
+                                    }
+                                }
+                                else if (item.PropertyType.Name.StartsWith("Boolean"))
+                                {
+                                    item.SetValue(model, Convert.ToBoolean(Convert.ToInt32(keyvalue[1])), null);
+                                }
+                                else
+                                {
+                                    ;
+                                }
+                                break;
+                            }
+                        }
+                    }
+
+                    Application.Current.Dispatcher.BeginInvoke(
+                    new Action<object>((modeltemp) =>
+                    {
+                        tableList0.Add(modeltemp);
+                        curCnt = "当前数量：" + tableList0.Count;
+                    }), model);
+                }
+            }
+
+            if (errorStr != null && errorStr.Length != 0)
+            {
+                status = errorStr;
+            }
+            else
+            {
+                status = "操作成功";
+            }
+        }
+
+        private void Query(object obj)
+        {
+            status = "";
+            tableList0.Clear();
+            string sql = "select * from " + tableName;
+            WorkServer.QueryTable(sql, Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+
+        }
+
+        private void CopyItem(object obj)
+        {
+            DataGrid grid = obj as DataGrid;
+
+            ObservableCollection<object> temp = new ObservableCollection<object>();
+            foreach (var item in grid.SelectedItems)
+            {
+                temp.Add(item);
+            }
+            foreach (var item in temp)
+            {
+                tableList0.Add(item);
+            }
+
+            curCnt = "当前数量：" + tableList0.Count;
         }
 
         private void DeleteItem(object obj)
         {
-            if(tableList0.Count > 0)
-                tableList0.Remove(tableList0.Last());
+            DataGrid grid = obj as DataGrid;
+
+            ObservableCollection<object> temp = new ObservableCollection<object>();
+            foreach(var item in grid.SelectedItems)
+            {
+                temp.Add(item);
+            }
+            foreach (var item in temp)
+            {
+                tableList0.Remove(item);
+            }
+
+            curCnt = "当前数量：" + tableList0.Count;
         }
 
         private void AddItem(object obj)
@@ -185,6 +407,7 @@ namespace ManageSystem.ViewModel
                         tableList0.Add(new YINGSHEBIAOModel());
                     break;
             }
+            curCnt = "当前数量：" + tableList0.Count;
         }
 
         private void ConvertData(object obj)
@@ -228,9 +451,9 @@ namespace ManageSystem.ViewModel
                             addXml += ":";
                             switch (item.Name)
                             {
-                                case "Xuhao":
-                                    addXml += "0";
-                                    break;
+                                //case "Xuhao":
+                                //    addXml += "0";
+                                //    break;
                                 default:
                                     addXml += item.GetValue(modelTemp, null);
                                     break;
@@ -310,19 +533,9 @@ namespace ManageSystem.ViewModel
                     addXml += ";";
                 }
 
+                status = "";
                 if (tableName != null && tableName.Length != 0)
-                   WorkServer.addTable(tableName, addXml, IntPtr.Zero, true);
-            }
-        }
-
-        //Access and update columns during autogeneration
-        public void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            string headername = e.Column.Header.ToString();
-            //Cancel the column you don't want to generate
-            if (_columnNameMap.ContainsKey(headername))
-            {
-                e.Column.Header = _columnNameMap[headername];
+                   WorkServer.addTable(tableName, addXml, Marshal.GetFunctionPointerForDelegate(_addtablecallbackdelegate), true);
             }
         }
 
@@ -426,6 +639,7 @@ namespace ManageSystem.ViewModel
                         tableList0.Add(new YINGSHEBIAOModel());
                     }
                     break;
+                    curCnt = "当前数量：" + tableList0.Count;
             }
         }
 

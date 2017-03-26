@@ -30,7 +30,15 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                 return Activator.CreateInstance(targetType);
             else
             {
-                return Common.DeepCopy(value);
+                object retval = Activator.CreateInstance(value.GetType());
+                FieldInfo[] fields = value.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                foreach (FieldInfo field in fields)
+                {
+                    try { field.SetValue(retval, field.GetValue(value)); }
+                    catch { }
+                }
+                return  retval;
+                //return Common.DeepCopy(value);
             }
         }
         #endregion
@@ -41,23 +49,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
         public AddTableCallBackDelegate     _addtablecallbackdelegate = null;
         public ExcutesqlCallBackDelegate    _excutesqlCallBackDelegate = null;
-        public Dictionary<string, string> _columnNameMap = new Dictionary<string, string>
-        {
-            {"Xuhao",					"序号"},
-            {"Chengshibianhao",			"城市编号"},
-            {"Jubianhao",				"局编号"},
-            {"Shiyongdanweibianhao",	"使用单位编号"},
-            {"IP",						"ip地址"},
-            {"Shebeichangjia",			"设备厂家"},		
-            {"Shebeimingcheng",		    "设备名称"},		
-            {"Shebeileixing",			"设备类型"},		
-            {"Jingdu",					"经度"},			
-            {"Weidu",					"纬度"},			
-            {"Chuangjianshijian",		"创建时间"},		
-            {"Yingjianxinxi",			"硬件信息"},	
-            {"Ruanjianxinxi",			"软件信息"},	
-            {"Ruanjianshengjixinxi",	"软件升级信息"},	
-        };
+
         private ObservableCollection<SHEBEIGUANLIModel> _tableListTemp = new ObservableCollection<SHEBEIGUANLIModel>();
 
         public DelegateCommand<object> AddCommand { get; set; }
@@ -265,6 +257,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
                 if (tableName != null && tableName.Length != 0)
                 {
+                    customInfo.Xuhao = -1;
                     WorkServer.addTable(tableName, addXml, Marshal.GetFunctionPointerForDelegate(_addtablecallbackdelegate), true);
                     QueryShebeiguanli(null);
                 }
@@ -327,17 +320,6 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                 customInfo.Xuhao = -1;
                 WorkServer.excuteSql(sqlStr, Marshal.GetFunctionPointerForDelegate(_excutesqlCallBackDelegate), true);
                 QueryShebeiguanli(null);
-            }
-        }
-
-        //Access and update columns during autogeneration
-        public void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            string headername = e.Column.Header.ToString();
-            //Cancel the column you don't want to generate
-            if (_columnNameMap.ContainsKey(headername))
-            {
-                e.Column.Header = _columnNameMap[headername];
             }
         }
 
@@ -421,22 +403,14 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                         }
                     }
 
-                    _tableListTemp.Add(model as SHEBEIGUANLIModel);
+                    Application.Current.Dispatcher.Invoke(
+                    new Action<object>((modeltemp) =>
+                    {
+                        tableList.Add(model as SHEBEIGUANLIModel);
+                    }), model);
                 }
             }
-        }
 
-        public void QueryShebeiguanli(object obj)
-        {
-            city.Clear();
-            ju.Clear();
-            danwei.Clear();
-            deviceList.Clear();
-            _tableListTemp.Clear();
-            tableList.Clear();
-            WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
-            foreach (var model in _tableListTemp)
-                tableList.Add(model);
 
             Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>> _devicelistMap = new Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>>();
             foreach (SHEBEIGUANLIModel modelTemp in tableList)
@@ -457,47 +431,62 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                 _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao].Add(modelTemp);
             }
 
-
-            foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>> kvp0 in _devicelistMap)
+            Application.Current.Dispatcher.Invoke(
+            new Action(() =>
             {
-                DeviceModel device0                 = new DeviceModel();
-                device0.text                        = kvp0.Key;
-                device0.leftMargin                  = "0,0,0,0";
-                foreach (KeyValuePair<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>> kvp1 in kvp0.Value)
+                foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>> kvp0 in _devicelistMap)
                 {
-                    DeviceModel device1             = new DeviceModel();
-                    device1.text                    = kvp1.Key;
-                    device1.leftMargin              = "16, 0, 0, 0";
-                    foreach (KeyValuePair<string, HashSet<SHEBEIGUANLIModel>> kvp2 in kvp1.Value)
+                    DeviceModel device0                 = new DeviceModel();
+                    device0.text                        = kvp0.Key;
+                    device0.leftMargin                  = "0,0,0,0";
+                    foreach (KeyValuePair<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>> kvp1 in kvp0.Value)
                     {
-                        DeviceModel device2         = new DeviceModel();
-                        device2.text                = kvp2.Key;
-                        device2.leftMargin          = "32, 0, 0, 0";
-                        foreach (SHEBEIGUANLIModel model in kvp2.Value)
+                        DeviceModel device1             = new DeviceModel();
+                        device1.text                    = kvp1.Key;
+                        device1.leftMargin              = "16, 0, 0, 0";
+                        foreach (KeyValuePair<string, HashSet<SHEBEIGUANLIModel>> kvp2 in kvp1.Value)
                         {
-                            DeviceModel device3     = new DeviceModel();
-                            device3.lonstr          = model.Jingdu;
-                            device3.latstr          = model.Weidu;
-                            device3.text            = model.IP;
-                            device3.leftMargin      = "48, 0, 0, 0";
-                            device2.Children.Add(device3);
+                            DeviceModel device2         = new DeviceModel();
+                            device2.text                = kvp2.Key;
+                            device2.leftMargin          = "32, 0, 0, 0";
+                            foreach (SHEBEIGUANLIModel model in kvp2.Value)
+                            {
+                                DeviceModel device3     = new DeviceModel();
+                                device3.lonstr          = model.Jingdu;
+                                device3.latstr          = model.Weidu;
+                                device3.text            = model.IP;
+                                device3.leftMargin      = "48, 0, 0, 0";
+                                device2.Children.Add(device3);
+                            }
+                            device1.Children.Add(device2);
                         }
-                        device1.Children.Add(device2);
+                        device0.Children.Add(device1);
                     }
-                    device0.Children.Add(device1);
+                    deviceList.Add(device0);
                 }
-                deviceList.Add(device0);
-            }
 
-            foreach (KeyValuePair<int ,string> kvp in MainWindowViewModel._yingshelList)
-            {
-                if (kvp.Key >= 0 && kvp.Key < 2000)
-                    city.Add(kvp.Value);
-                if (kvp.Key >= 2001 && kvp.Key < 3000)
-                    ju.Add(kvp.Value);
-                if (kvp.Key >= 3001 && kvp.Key < 4000)
-                    danwei.Add(kvp.Value);
-            }
+                foreach (KeyValuePair<int ,string> kvp in MainWindowViewModel._yingshelList)
+                {
+                    if (kvp.Key >= 0 && kvp.Key < 2000)
+                        city.Add(kvp.Value);
+                    if (kvp.Key >= 2001 && kvp.Key < 3000)
+                        ju.Add(kvp.Value);
+                    if (kvp.Key >= 3001 && kvp.Key < 4000)
+                        danwei.Add(kvp.Value);
+                }
+
+            }));
+        }
+
+        public void QueryShebeiguanli(object obj)
+        {
+            city.Clear();
+            ju.Clear();
+            danwei.Clear();
+            deviceList.Clear();
+            _tableListTemp.Clear();
+            tableList.Clear();
+            WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
         }
 
         public void DoLogon()

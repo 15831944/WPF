@@ -47,6 +47,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 
 					packResult.mutable_registtypemsgresult();
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
+					OutputDebugStringA("\ntest: SendMsgBuf：mutable_registtypemsgresult");
 				}
 				else if (msgPack.has_query())
 				{
@@ -76,6 +77,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					}
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
+					OutputDebugStringA("\ntest: SendMsgBuf：mutable_querymsgresult");
 				}
 				else if (msgPack.has_add())
 				{
@@ -94,6 +96,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					}
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
+					OutputDebugStringA("\ntest: SendMsgBuf：mutable_addmsgresult");
 				}
 				else if (msgPack.has_querydevcntmsg())
 				{
@@ -108,6 +111,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					packResult.mutable_querydevcntmsgresult()->set_devcnt(cnt);
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
+					OutputDebugStringA("\ntest: SendMsgBuf：mutable_querydevcntmsgresult");
 				}
 				else if (msgPack.has_excutesqlmsg())
 				{
@@ -125,6 +129,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					}
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
+					OutputDebugStringA("\ntest: SendMsgBuf：mutable_excutesqlmsgresult");
 				}
 				else if (msgPack.has_querydevspeedmsg())
 				{
@@ -140,6 +145,8 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 							packResult.mutable_querydevspeedmsgresult()->set_speed(0);
 							packResult.mutable_querydevspeedmsgresult()->set_resulterror("设备不在线");
 							CServer::GetInstance()->SendMsgBuf(userID, packResult);
+
+							OutputDebugStringA("\ntest: SendMsgBuf：mutable_querydevspeedmsgresult");
 						}
 						else
 						{
@@ -147,7 +154,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 							msgPack.mutable_head()->set_totalpack(1);
 
 							string ipData;
-							ipData.resize(150000);
+							ipData.resize(9000);
 							msgPack.mutable_querydevspeedmsg()->set_ipstr(ipData);
 							msgPack.mutable_querydevspeedmsg()->set_askuserid(userID);
 							msgPack.mutable_querydevspeedmsg()->set_starttime(startTime);
@@ -155,6 +162,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 							msgPack.mutable_head()->set_packindex(0);
 							CServer::GetInstance()->SendMsgBuf(desid, msgPack);
 
+							OutputDebugStringA("\ntest: SendMsgBuf：mutable_querydevspeedmsgresult");
 						}
 					}
 					else
@@ -171,6 +179,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 							packResult.mutable_querydevspeedmsgresult()->set_speed(speed);
 							packResult.mutable_querydevspeedmsgresult()->set_resulterror("");
 							CServer::GetInstance()->SendMsgBuf(souraskuserID, packResult);
+							OutputDebugStringA("\ntest: SendMsgBuf：mutable_querydevspeedmsgresult");
 						}
 					}
 				}
@@ -190,6 +199,8 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					}
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
+
+					OutputDebugStringA("\ntest: SendMsgBuf：mutable_queryconnectionsstrmsgresult");
 				}
 				else
 				{
@@ -267,23 +278,32 @@ int CServer::CntConnections()
 	return 0;
 }
 
+//#pragma optimize( "", off )
 const char* CServer::CurConnections()
 {
-	m_connectionsStr = ""; 
+	static string connectionsStr = "";
+	connectionsStr.resize(0);
 	WaitForSingleObject(CServer::GetInstance()->m_mutexHandle, INFINITE);
 	for (std::map<DWORD, netmsg::RegistTypeMsg>::iterator it = CServer::GetInstance()->m_mapDevice.begin(); it != CServer::GetInstance()->m_mapDevice.end(); ++it)
 	{
-		char ch[1000] = { 0 }; 
+		char ch[1000] ={ 0 };
 		bool bDevice = it->second.bdevice();
 		bool bNormal = it->second.bnormal();
-		
+
 		sprintf_s(ch, 1000, "bDevice:%d,ip:%s,serverip:%s,bNormal:%d,;", it->second.bdevice(), it->second.ip().c_str(), it->second.serverip().c_str(), it->second.bnormal());
-		m_connectionsStr += ch;
+		connectionsStr += ch;
 	}
 	ReleaseMutex(CServer::GetInstance()->m_mutexHandle);
 
-	return m_connectionsStr.size() > 0 ?m_connectionsStr.c_str():nullptr;
+
+	{
+		char ch[1000] ={ 0 };
+		sprintf_s(ch, 1000, "\nconnectionsStr size:%d,", connectionsStr.size());
+		OutputDebugStringA(ch);
+	}
+	return connectionsStr.c_str();
 }
+//#pragma optimize( "", on ) 
 
 void CServer::SendMsgBuf(long userID, ::google::protobuf::Message& msg)
 {

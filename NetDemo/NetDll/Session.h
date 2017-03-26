@@ -79,12 +79,13 @@ private:
 	void											send_handler(const boost::system::error_code &ec, const size_t bytesTransferred);
 	void											receive_handler(const boost::system::error_code &ec, std::size_t bytes_transferred);
 	void											write1500();
+	void											sendheart();
 
 public:
 	boost::asio::ip::tcp::socket &					socket();
 	bool											bstarted() const;
 
-	void											start();
+	void											start(bool bSendHeart);
 	void											stop();
 	void											send(BYTE* SendBuf, int dataLen);
 };

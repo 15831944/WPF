@@ -11,27 +11,13 @@ using System.Reflection;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Threading;
 
 namespace ManageSystem.ViewModel.DeviceViewModel
 {
     public class AbnormalViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
-        public Dictionary<string, string> _columnNameMap = new Dictionary<string, string>
-        {
-            {"Xuhao",	                "序号"},			
-            {"Chengshibianhao",	        "城市编号"},		
-            {"Jubianhao",	            "局编号"},			
-            {"Shiyongdanweibianhao",	"使用单位编号"},	
-            {"IP",	                    "ip地址"},			
-            {"Bendiyewu",	            "是否本地业务"},	
-            {"Shebeibaifangweizhi",     "设备摆放位置"},
-            {"Riqi",	                "日期"},
-            {"Yichangleixing",	        "异常类型"},		
-            {"Yichangshejimokuai",	    "异常涉及模块"},	
-            {"Yichangyuanyin",	        "异常原因"},		
-            {"Yichangxiangxineirong",	"异常详细内容"},	
-        };
 
         public DelegateCommand<object> QueryCommand { get; set; }
         public DelegateCommand<object> ExportExcelCommand { get; set; }
@@ -104,7 +90,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
                         if (j == 0)
                         {
-                            writer.Write(_columnNameMap[item.Name] + "\t");
+                            writer.Write(FunctionServer._columnNameMap[item.Name] + "\t");
                         }
                         else if (item.PropertyType.Name.StartsWith("Int32"))
                         {
@@ -142,108 +128,101 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             {
                 string filepath = opf.FileName;
 
-                object missing = System.Reflection.Missing.Value;
-                Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
-                //创建一个Application对象并使其不可见
-                app.Visible=false;
-                //创建一个WorkBook对象
-                Microsoft.Office.Interop.Excel.Workbook workBook = app.Workbooks.Add(missing);
-                Microsoft.Office.Interop.Excel.Worksheet workSheet = null;
-                Microsoft.Office.Interop.Excel.Range range = null;
+                new Thread(() => {
 
-                workSheet = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Worksheets.Add(
-                                                                                            Type.Missing,
-                                                                                            workBook.ActiveSheet,
-                                                                                            Type.Missing,
-                                                                                            Type.Missing);
-                Type type = typeof(SHEBEIYICHANGSHUJUModel);
-                int rowCount = tableList.Count + 1;  //DataTable行数+GirdHead
-                int colCount = type.GetProperties().Count(); //DataTable列数
-                FieldInfo[] members = type.GetFields();
-                PropertyInfo[] info = type.GetProperties(); 
-                //利用二维数组批量写入
-                string[,] arr = new string[rowCount, colCount];
+                    object missing = System.Reflection.Missing.Value;
+                    Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                    //创建一个Application对象并使其不可见
+                    app.Visible=false;
+                    //创建一个WorkBook对象
+                    Microsoft.Office.Interop.Excel.Workbook workBook = app.Workbooks.Add(missing);
+                    Microsoft.Office.Interop.Excel.Worksheet workSheet = null;
+                    Microsoft.Office.Interop.Excel.Range range = null;
 
-                for (int j = 0; j < rowCount; j++)
-                {
-                    for(int k = 0; k < info.Count(); ++k)
+                    workSheet = (Microsoft.Office.Interop.Excel.Worksheet)workBook.Worksheets.Add(
+                                                                                                Type.Missing,
+                                                                                                workBook.ActiveSheet,
+                                                                                                Type.Missing,
+                                                                                                Type.Missing);
+                    Type type = typeof(SHEBEIYICHANGSHUJUModel);
+                    int rowCount = tableList.Count + 1;  //DataTable行数+GirdHead
+                    int colCount = type.GetProperties().Count(); //DataTable列数
+                    FieldInfo[] members = type.GetFields();
+                    PropertyInfo[] info = type.GetProperties();
+                    //利用二维数组批量写入
+                    string[,] arr = new string[rowCount, colCount];
+
+                    for (int j = 0; j < rowCount; j++)
                     {
-                        System.Reflection.PropertyInfo item = (System.Reflection.PropertyInfo)info.ElementAt(k);
+                        for (int k = 0; k < info.Count(); ++k)
+                        {
+                            System.Reflection.PropertyInfo item = (System.Reflection.PropertyInfo)info.ElementAt(k);
 
-                        if (j == 0)
-                        {
-                            arr[j, k] = _columnNameMap[item.Name];
-                        }
-                        else if (item.PropertyType.Name.StartsWith("Int32"))
-                        {
-                            arr[j, k] += item.GetValue(tableList[j -1], null);
-                        }
-                        else if (item.PropertyType.Name.StartsWith("Int64"))
-                        {
-                            arr[j, k] += item.GetValue(tableList[j -1], null);
-                        }
-                        else if (item.PropertyType.Name.StartsWith("String"))
-                        {
-                            arr[j, k] += item.GetValue(tableList[j -1], null);
-                        }
-                        else if (item.PropertyType.Name.StartsWith("Boolean"))
-                        {
-                            arr[j, k] += item.GetValue(tableList[j -1], null);
-                        }
-                        else
-                        {
-                            ;
+                            if (j == 0)
+                            {
+                                arr[j, k] = FunctionServer._columnNameMap[item.Name];
+                            }
+                            else if (item.PropertyType.Name.StartsWith("Int32"))
+                            {
+                                arr[j, k] += item.GetValue(tableList[j -1], null);
+                            }
+                            else if (item.PropertyType.Name.StartsWith("Int64"))
+                            {
+                                arr[j, k] += item.GetValue(tableList[j -1], null);
+                            }
+                            else if (item.PropertyType.Name.StartsWith("String"))
+                            {
+                                arr[j, k] += item.GetValue(tableList[j -1], null);
+                            }
+                            else if (item.PropertyType.Name.StartsWith("Boolean"))
+                            {
+                                arr[j, k] += item.GetValue(tableList[j -1], null);
+                            }
+                            else
+                            {
+                                ;
+                            }
                         }
                     }
-                }
 
-                range           = (Microsoft.Office.Interop.Excel.Range)workSheet.Cells[1, 1]; //写入Exel的坐标
-                range           = range.get_Resize(rowCount, colCount);
-                range.Value2    = arr;
+                    range           = (Microsoft.Office.Interop.Excel.Range)workSheet.Cells[1, 1]; //写入Exel的坐标
+                    range           = range.get_Resize(rowCount, colCount);
+                    range.Value2    = arr;
 
-                workBook.SaveAs(filepath, missing, missing, missing, missing, missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing, missing);
+                    workBook.SaveAs(filepath, missing, missing, missing, missing, missing, Microsoft.Office.Interop.Excel.XlSaveAsAccessMode.xlExclusive, missing, missing, missing, missing, missing);
 
-                if (workBook.Saved)
-                {
-                    workBook.Close(null, null, null);
-                    app.Workbooks.Close();
-                    app.Quit();
-                }
+                    if (workBook.Saved)
+                    {
+                        workBook.Close(null, null, null);
+                        app.Workbooks.Close();
+                        app.Quit();
+                    }
 
-                if (range != null)
-                {
-                    System.Runtime.InteropServices.Marshal.ReleaseComObject(range);
-                    range = null;
-                }
+                    if (range != null)
+                    {
+                        System.Runtime.InteropServices.Marshal.ReleaseComObject(range);
+                        range = null;
+                    }
 
-                if (workSheet != null)
-                {
-                    System.Runtime.InteropServices.Marshal.ReleaseComObject(workSheet);
-                    workSheet = null;
-                }
-                if (workBook != null)
-                {
-                    System.Runtime.InteropServices.Marshal.ReleaseComObject(workBook);
-                    workBook = null;
-                }
-                if (app != null)
-                {
-                    System.Runtime.InteropServices.Marshal.ReleaseComObject(app);
-                    app = null;
-                }
+                    if (workSheet != null)
+                    {
+                        System.Runtime.InteropServices.Marshal.ReleaseComObject(workSheet);
+                        workSheet = null;
+                    }
+                    if (workBook != null)
+                    {
+                        System.Runtime.InteropServices.Marshal.ReleaseComObject(workBook);
+                        workBook = null;
+                    }
+                    if (app != null)
+                    {
+                        System.Runtime.InteropServices.Marshal.ReleaseComObject(app);
+                        app = null;
+                    }
 
-                GC.Collect();//强制代码垃圾回收
-            }
-        }
+                    GC.Collect();//强制代码垃圾回收
 
-        //Access and update columns during autogeneration
-        public void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            string headername = e.Column.Header.ToString();
-            //Cancel the column you don't want to generate
-            if (_columnNameMap.ContainsKey(headername))
-            {
-                e.Column.Header = _columnNameMap[headername];
+                }).Start();
             }
         }
 
@@ -327,11 +306,11 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                         }
                     }
 
-                    Application.Current.Dispatcher.Invoke(
-                    new Action(() =>
+                    Application.Current.Dispatcher.BeginInvoke(
+                    new Action<object>((modeltemp) =>
                     {
-                        tableList.Add(model as SHEBEIYICHANGSHUJUModel);
-                    }));
+                        tableList.Add(modeltemp as SHEBEIYICHANGSHUJUModel);
+                    }), model);
                 }
             }
         }

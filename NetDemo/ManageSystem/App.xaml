@@ -18,7 +18,7 @@
                 <ResourceDictionary Source="Resources/Styles.xaml" />
 
                 <ResourceDictionary Source="Resources/DeviceTemplate/AbnormalTemplate.xaml" />
-                <ResourceDictionary Source="Resources/DeviceTemplate/DeviceTemplate.xaml" />
+                <ResourceDictionary Source="Resources/DeviceTemplate/DevicemaTemplate.xaml" />
                 <ResourceDictionary Source="Resources/DeviceTemplate/NetTemplate.xaml" />
                 <ResourceDictionary Source="Resources/DeviceTemplate/UpgradeTemplate.xaml" />
                 <ResourceDictionary Source="Resources/DeviceTemplate/UserTemplate.xaml" />

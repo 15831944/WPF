@@ -19,15 +19,6 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         public AddTableCallBackDelegate     _addtablecallbackdelegate = null;
         public ExcutesqlCallBackDelegate    _excutesqlCallBackDelegate = null;
 
-        public static Dictionary<string, string> _columnNameMap = new Dictionary<string, string>
-        {
-            {"Xuhao",	        "序号"},
-            {"Yonghuming",	    "用户名"},
-            {"Mima",	        "密码"},
-            {"Youxiaoqikaishi",	"有效期起始"},
-            {"Youxiaoqijieshu",	"有效期截至"},
-            {"Quanxianjibie",	"权限级别"},
-        };
         public Dictionary<string, GUANLIYUANModel>      _guliyuanList           = new Dictionary<string, GUANLIYUANModel>();
         private ObservableCollection<GUANLIYUANModel> _tableListTemp            = new ObservableCollection<GUANLIYUANModel>();
 
@@ -77,16 +68,6 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
             _customInfo                         = new GUANLIYUANModel();
             _tableList                          = new ObservableCollection<GUANLIYUANModel>();
-        }
-        //Access and update columns during autogeneration
-        public void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            string headername = e.Column.Header.ToString();
-            //Cancel the column you don't want to generate
-            if (_columnNameMap.ContainsKey(headername))
-            {
-                e.Column.Header = _columnNameMap[headername];
-            }
         }
 
         private void ExcutesqlCallBack(string errorStr)

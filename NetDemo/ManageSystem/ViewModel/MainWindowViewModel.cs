@@ -17,6 +17,7 @@ using System.Windows.Threading;
 using System.Threading;
 using ManageSystem.ViewModel.DeviceViewModel;
 using System.Xml;
+using System.ComponentModel;
 namespace ManageSystem.ViewModel
 {
     public enum PageVisibleEnum
@@ -35,105 +36,12 @@ namespace ManageSystem.ViewModel
         PageVisibleEnum_WebBrowser,
         PageVisibleEnum_DeviceManage,
     }
-
     public enum ShowChartEnum
     {
         ShowChartEnum_Pie,
         ShowChartEnum_Line,
         ShowChartEnum_Histogram,
         ShowChartEnum_Occupancy,
-    }
-
-    public class DataGridItemSourceConvert : IValueConverter
-    {
-        #region IValueConverter 成员
-        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            string str = value.GetType().ToString();
-            if (value.GetType() == typeof(DataGrid))
-            {
-                DataGrid grid = value as DataGrid;
-
-                string strtype = grid.DataContext.GetType().ToString();
-                if (grid.DataContext.GetType() == typeof(SignQueryViewModel))
-                {
-                    SignQueryViewModel model = grid.DataContext as SignQueryViewModel;
-                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
-
-                    return model.tableList;
-                }
-                else if (grid.DataContext.GetType() == typeof(CardQueryViewModel))
-                {
-                    CardQueryViewModel model = grid.DataContext as CardQueryViewModel;
-                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;    
-
-                    return model.tableList;
-                }
-                else if (grid.DataContext.GetType() == typeof(EndorsementQueryViewModel))
-                {
-                    EndorsementQueryViewModel model = grid.DataContext as EndorsementQueryViewModel;
-                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
-
-                    return model.tableList;
-                }
-                else if (grid.DataContext.GetType() == typeof(PaymentQueryViewModel))
-                {
-                    PaymentQueryViewModel model = grid.DataContext as PaymentQueryViewModel;
-                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
-
-                    return model.tableList;
-                }
-                else if (grid.DataContext.GetType() == typeof(QueryQueryViewModel))
-                {
-                    QueryQueryViewModel model = grid.DataContext as QueryQueryViewModel;
-                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
-
-                    return model.tableList;
-                }
-                else if (grid.DataContext.GetType() == typeof(PreAcceptQueryViewModel))
-                {
-                    PreAcceptQueryViewModel model = grid.DataContext as PreAcceptQueryViewModel;
-                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
-
-                    return model.tableList;
-                }
-                else if (grid.DataContext.GetType() == typeof(DevicemaViewModel))
-                {
-                    DevicemaViewModel model = grid.DataContext as DevicemaViewModel;
-                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
-
-                    return model.tableList;
-                }
-                else if (grid.DataContext.GetType() == typeof(UserViewModel))
-                {
-                    UserViewModel model = grid.DataContext as UserViewModel;
-                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
-
-                    return model.tableList;
-                }
-                else if (grid.DataContext.GetType() == typeof(AbnormalViewModel))
-                {
-                    AbnormalViewModel model = grid.DataContext as AbnormalViewModel;
-                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
-
-                    return model.tableList;
-                }
-                else if (grid.DataContext.GetType() == typeof(AddWndViewModel))
-                {
-                    AddWndViewModel model = grid.DataContext as AddWndViewModel;
-                    grid.AutoGeneratingColumn += model.DG1_AutoGeneratingColumn;
-
-                    return parameter;
-                }
-            }
-
-            return null;
-        }
-        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
-        {
-            return null;
-        }
-        #endregion
     }
 
     [System.Runtime.InteropServices.ComVisible(true)]
@@ -518,6 +426,17 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private bool  _bDevice;
+        public bool bDevice
+        {
+            get { return _bDevice; }
+            set
+            {
+                _bDevice = value;
+                this.RaisePropertyChanged("bDevice");
+            }
+        }
+
         private ObjectForScripingHelper  _scripinghelper;
         public ObjectForScripingHelper scripinghelper
         {
@@ -600,9 +519,13 @@ namespace ManageSystem.ViewModel
                 {
                     _IP = ConfigurationManager.AppSettings[key];
                 }
-                else if (key == "ServerPort")
+                else if (key == "ServerPort") 
                 {
                     _port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
+                }
+                else if (key == "bDevice")
+                {
+                    _bDevice = Convert.ToBoolean(ConfigurationManager.AppSettings[key]);
                 }
             }
 
@@ -874,7 +797,7 @@ namespace ManageSystem.ViewModel
                 return;
             }
 
-            if (WorkServer.startClient(IP, port, true))
+            if (WorkServer.startClient(IP, port, bDevice))
             {
                 bOnline         = true;
                 displayMsg      = "连接服务端成功!";
@@ -886,16 +809,13 @@ namespace ManageSystem.ViewModel
                     {
                         if (_DeviceManageViewModel._UserViewModel._guliyuanList[logonName].Mima == logonPassword)
                         {
+                            BackgroundWorker bgw= new BackgroundWorker();
+                            bgw.WorkerSupportsCancellation = true;
+                            bgw.WorkerReportsProgress = true;
 
-                            Thread thread = new Thread(new ThreadStart(() =>
-                            {
-                                double progress = 0;
+                            bgw.DoWork += (object sender, DoWorkEventArgs e) => {
+                                int progress = 0;
                                 displayMsg      = "0" + "%";
-
-                                progress        += 10;
-                                progressValue   = progress;
-                                displayMsg      =  progress + "%";
-                                Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -903,8 +823,7 @@ namespace ManageSystem.ViewModel
                                     QueryYingshebiao(null);
                                 }));
                                 progress        += 10;
-                                progressValue   = progress;
-                                displayMsg      =  progress + "%";
+                                (sender as BackgroundWorker) .ReportProgress(progress);
                                 Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
@@ -913,9 +832,9 @@ namespace ManageSystem.ViewModel
                                     _DeviceManageViewModel._DevicemaViewModel.DoLogon();
                                 }));
                                 progress        += 10;
-                                progressValue   = progress;
-                                displayMsg      = progress + "%";
+                                (sender as BackgroundWorker).ReportProgress(progress);
                                 Thread.Sleep(100);
+
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
@@ -923,18 +842,16 @@ namespace ManageSystem.ViewModel
                                     //_HomePageViewModel.DoLogon();
                                 }));
                                 progress        += 10;
-                                progressValue   = progress;
-                                displayMsg      =  progress + "%";
+                                (sender as BackgroundWorker).ReportProgress(progress);
                                 Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
                                 new Action(() =>
                                 {
-                                    _DeviceManageViewModel._AbnormalViewModel.DoLogon();
+                                    //_DeviceManageViewModel._AbnormalViewModel.DoLogon();
                                 }));
                                 progress        += 10;
-                                progressValue   = progress;
-                                displayMsg      =  progress + "%";
+                                (sender as BackgroundWorker).ReportProgress(progress);
                                 Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
@@ -943,8 +860,7 @@ namespace ManageSystem.ViewModel
                                     _SummaryStatViewModel.DoLogon();
                                 }));
                                 progress        += 10;
-                                progressValue   = progress;
-                                displayMsg      =  progress + "%";
+                                (sender as BackgroundWorker).ReportProgress(progress);
                                 Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
@@ -953,8 +869,7 @@ namespace ManageSystem.ViewModel
                                     _SignStatViewModel.DoLogon();
                                 }));
                                 progress        += 10;
-                                progressValue   = progress;
-                                displayMsg      =  progress + "%";
+                                (sender as BackgroundWorker).ReportProgress(progress);
                                 Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
@@ -963,8 +878,7 @@ namespace ManageSystem.ViewModel
                                     _SignAnomalyStatViewModel.DoLogon();
                                 }));
                                 progress        += 10;
-                                progressValue   = progress;
-                                displayMsg      =  progress + "%";
+                                (sender as BackgroundWorker).ReportProgress(progress);
                                 Thread.Sleep(100);
 
                                 Application.Current.Dispatcher.Invoke(
@@ -973,27 +887,27 @@ namespace ManageSystem.ViewModel
                                     _WebBrowserViewMode.DoLogon();
                                 }));
                                 progress        += 10;
-                                progressValue   = progress;
-                                displayMsg      =  progress + "%";
+                                (sender as BackgroundWorker).ReportProgress(progress);
                                 Thread.Sleep(100);
 
                                 progress        = 100;
-                                progressValue   = progress;
-                                displayMsg      = progress + "%";
+                                (sender as BackgroundWorker).ReportProgress(progress);
                                 Thread.Sleep(100);
-
-
-                                Application.Current.Dispatcher.Invoke(
-                                new Action(() =>
+                            };
+                            bgw.ProgressChanged += (object sender, ProgressChangedEventArgs e)=>
                                 {
-                                    //mainPageShow(null);
+                                    progressValue   = e.ProgressPercentage;
+                                    displayMsg      =  e.ProgressPercentage + "%";
+                                };
+                            bgw.RunWorkerCompleted += (object sender, RunWorkerCompletedEventArgs e) =>
+                                {
                                     WebBrowserShow(null);
-                                }));
 
-                                progressValue = 0;
-                                displayMsg =  "";
-                            }));
-                            thread.Start();
+                                    progressValue = 0;
+                                    displayMsg =  "";
+                                };
+
+                            bgw.RunWorkerAsync();  
                         }
                         else
                             displayMsg = "密码错误!";

@@ -6,6 +6,7 @@
                     xmlns:Model="clr-namespace:ManageSystem.Model"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
+                    xmlns:DataGridRes="clr-namespace:ManageSystem.Resources.DataGridRes"
                     >
     <DataTemplate DataType="{x:Type deviceViewModel:AbnormalViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
@@ -167,6 +168,7 @@
                 <Button Margin="10,0,10,0" Command="{Binding Path=ExportTXTCommand}" >导出到TXT</Button>
             </StackPanel>
             <DataGrid Grid.Row="3"
+                              DataGridRes:DataGridAttach.GeneratColumnObj="{Binding}"
                               BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
@@ -174,7 +176,7 @@
                               AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True" SelectionMode="Single"
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
                               SelectedValue="{Binding Path=customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
-                              ItemsSource="{Binding RelativeSource={RelativeSource Self}, Converter={StaticResource DataGridItemSourceConvert}}"
+                              ItemsSource="{Binding Path=tableList}"
                               >
                 <DataGrid.CellStyle>
                     <Style TargetType="DataGridCell">

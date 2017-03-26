@@ -292,135 +292,145 @@ bool AddTable(char* tableName, char* dataStr, string &strError)
 	strError	= "";
 
 	g_ReadWriteLock.lock(CReadWriteLock::LOCK_LEVEL_WRITE);
-	do
+	try
 	{
-		std::auto_ptr<CSqlite>  lpSQlite(new CSqlite);
-		if (!lpSQlite->Open(RIM_RTK_BSD_DB_FILE, false, true))
+		do 
 		{
-			strError = "打开基础支撑数据库失败";
-			bOk = false;
-			break;
-		}
-
-		sqlite3_stmt   *lpStmt0		=  NULL;
-		const char* beginSQL = "BEGIN TRANSACTION";
-		if (sqlite3_prepare_v2(lpSQlite->Handle(), beginSQL, -1, &lpStmt0, NULL) != SQLITE_OK)
-		{
-			if (lpStmt0) sqlite3_finalize(lpStmt0);
-			bOk = false; char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
-			strError = ch;
-			bOk = false;
-			break;
-		}
-
-		if (sqlite3_step(lpStmt0) != SQLITE_DONE) {
-			if (lpStmt0) sqlite3_finalize(lpStmt0);
-			bOk = false; char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
-			strError = ch;
-			break;
-		}
-		if (lpStmt0) sqlite3_finalize(lpStmt0);
-
-		std::string	lstrSQL	= "";
-		vector<std::pair<std::string, int>> fieldsTypeMap;
-		makeFieldsTypeMap(tableName, fieldsTypeMap);
-		makeInsertSql(tableName, fieldsTypeMap, lstrSQL);
-
-		sqlite3_stmt   *lpStmt1		=  NULL;
-		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt1, NULL) != SQLITE_OK)
-		{
-			if (lpStmt1) sqlite3_finalize(lpStmt1);
-			bOk = false;
-			char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
-			strError = ch;
-			break;
-		}
-
-		string str = ASCIItoUTF8(dataStr);
-		vector<string> rows; rows.reserve(1000);
-		vector<string> cells; cells.reserve(1000);
-		split(dataStr, rows, ";");
-		for (int rowIndex = 0; rowIndex < rows.size(); ++rowIndex)
-		{
-			string& row = rows[rowIndex];
-			if (row.length() > 0)
+			std::auto_ptr<CSqlite>  lpSQlite(new CSqlite);
+			if (!lpSQlite->Open(RIM_RTK_BSD_DB_FILE, false, true))
 			{
-				cells.clear();
-				split(row, cells, ",");
-				for (int colIndex = 0; colIndex < cells.size(); ++colIndex){
-					string& cell = cells[colIndex];
-					vector<string> keyvalue;
-					split(cell, keyvalue, ":");
-					if (keyvalue.size() != 2)
-						continue;
+				strError = "打开基础支撑数据库失败";
+				bOk = false;
+				break;
+			}
 
-					for (UINT index = 0; index < fieldsTypeMap.size(); ++index){
-						std::pair<std::string, int> it = fieldsTypeMap.at(index);
-						if (sqlite3_strnicmp(it.first.c_str(), keyvalue[0].c_str(), 256) == 0){
-							int rc;
-							switch (it.second){
-								case SQLITE_INTEGER:
-									if (it.first == "Xuhao" && keyvalue[1]== "0")
+			sqlite3_stmt   *lpStmt0		=  NULL;
+			const char* beginSQL = "BEGIN TRANSACTION";
+			if (sqlite3_prepare_v2(lpSQlite->Handle(), beginSQL, -1, &lpStmt0, NULL) != SQLITE_OK)
+			{
+				if (lpStmt0) sqlite3_finalize(lpStmt0);
+				bOk = false; char ch[512] ={ 0 };
+				sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+				strError = ch;
+				bOk = false;
+				break;
+			}
+
+			if (sqlite3_step(lpStmt0) != SQLITE_DONE) {
+				if (lpStmt0) sqlite3_finalize(lpStmt0);
+				bOk = false; char ch[512] ={ 0 };
+				sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+				strError = ch;
+				break;
+			}
+			if (lpStmt0) sqlite3_finalize(lpStmt0);
+
+			std::string	lstrSQL	= "";
+			vector<std::pair<std::string, int>> fieldsTypeMap;
+			makeFieldsTypeMap(tableName, fieldsTypeMap);
+			makeInsertSql(tableName, fieldsTypeMap, lstrSQL);
+
+			sqlite3_stmt   *lpStmt1		=  NULL;
+			if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(lstrSQL).c_str(), -1, &lpStmt1, NULL) != SQLITE_OK)
+			{
+				if (lpStmt1) sqlite3_finalize(lpStmt1);
+				bOk = false;
+				char ch[512] ={ 0 };
+				sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+				strError = ch;
+				break;
+			}
+
+			string str = ASCIItoUTF8(dataStr);
+			vector<string> rows; rows.reserve(1000);
+			vector<string> cells; cells.reserve(1000);
+			split(dataStr, rows, ";");
+			for (int rowIndex = 0; rowIndex < rows.size(); ++rowIndex)
+			{
+				string& row = rows[rowIndex];
+				if (row.length() > 0)
+				{
+					cells.clear();
+					split(row, cells, ",");
+					for (int colIndex = 0; colIndex < cells.size(); ++colIndex){
+						string& cell = cells[colIndex];
+						vector<string> keyvalue;
+						split(cell, keyvalue, ":");
+						if (keyvalue.size() != 2)
+							continue;
+
+						for (UINT index = 0; index < fieldsTypeMap.size(); ++index){
+							std::pair<std::string, int> it = fieldsTypeMap.at(index);
+							if (sqlite3_strnicmp(it.first.c_str(), keyvalue[0].c_str(), 256) == 0){
+								int rc;
+								switch (it.second){
+									case SQLITE_INTEGER:
+										if (it.first == "Xuhao" && keyvalue[1]== "0")
+											break;
+										rc = sqlite3_bind_int64(lpStmt1, index, _atoi64(keyvalue[1].c_str()));
 										break;
-									rc = sqlite3_bind_int64(lpStmt1, index, _atoi64(keyvalue[1].c_str()));
-									break;
-								case SQLITE_FLOAT:
-									rc = sqlite3_bind_double(lpStmt1, index, atof(keyvalue[1].c_str()));
-									break;
-								case SQLITE_BLOB:
-									;
-									break;
-								case SQLITE_TEXT:
-									rc = sqlite3_bind_text(lpStmt1, index, ASCIItoUTF8(keyvalue[1]).c_str(), -1, SQLITE_STATIC);
-									break;
-								default:
-									rc = sqlite3_bind_null(lpStmt1, index);
-									break;
+									case SQLITE_FLOAT:
+										rc = sqlite3_bind_double(lpStmt1, index, atof(keyvalue[1].c_str()));
+										break;
+									case SQLITE_BLOB:
+										;
+										break;
+									case SQLITE_TEXT:
+										rc = sqlite3_bind_text(lpStmt1, index, ASCIItoUTF8(keyvalue[1]).c_str(), -1, SQLITE_STATIC);
+										break;
+									default:
+										rc = sqlite3_bind_null(lpStmt1, index);
+										break;
+								}
+								break;
 							}
-							break;
 						}
 					}
-				}
 
-				int dd = sqlite3_step(lpStmt1);
-				if (dd != SQLITE_ROW) {
-					if (lpStmt1) sqlite3_finalize(lpStmt1);
-					bOk = false; char ch[512] ={ 0 };
-					sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
-					strError = ch;
-					break;
+					int dd = sqlite3_step(lpStmt1);
+					if (dd != SQLITE_ROW) {
+						if (lpStmt1) sqlite3_finalize(lpStmt1);
+						bOk = false; char ch[512] ={ 0 };
+						sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+						strError = ch;
+						break;
+					}
+					//重新初始化该sqlite3_stmt对象绑定的变量。
+					sqlite3_reset(lpStmt1);
 				}
-				//重新初始化该sqlite3_stmt对象绑定的变量。
-				sqlite3_reset(lpStmt1);
 			}
-		}
-		if (lpStmt1) sqlite3_finalize(lpStmt1);
+			if (bOk == false)
+				break;
 
-		sqlite3_stmt   *lpStmt2			=  NULL;
-		const char*		commitSQL		= "COMMIT";
-		if (sqlite3_prepare_v2(lpSQlite->Handle(), commitSQL, strlen(commitSQL), &lpStmt2, NULL) != SQLITE_OK) {
-			if (lpStmt2) sqlite3_finalize(lpStmt2);
-			bOk = false; char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
-			strError = ch;
-			break;
-		}
+			if (lpStmt1) sqlite3_finalize(lpStmt1);
 
-		if (sqlite3_step(lpStmt2) != SQLITE_DONE) {
-			if (lpStmt2) sqlite3_finalize(lpStmt2);
-			bOk = false; char ch[512] ={ 0 };
-			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
-			strError = ch;
-			break;
-		}
-		sqlite3_finalize(lpStmt2);
+			sqlite3_stmt   *lpStmt2			=  NULL;
+			const char*		commitSQL		= "COMMIT";
+			if (sqlite3_prepare_v2(lpSQlite->Handle(), commitSQL, strlen(commitSQL), &lpStmt2, NULL) != SQLITE_OK) {
+				if (lpStmt2) sqlite3_finalize(lpStmt2);
+				bOk = false; char ch[512] ={ 0 };
+				sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+				strError = ch;
+				break;
+			}
+
+			if (sqlite3_step(lpStmt2) != SQLITE_DONE) {
+				if (lpStmt2) sqlite3_finalize(lpStmt2);
+				bOk = false; char ch[512] ={ 0 };
+				sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+				strError = ch;
+				break;
+			}
+			sqlite3_finalize(lpStmt2);
 
 
-		sqlite3_release_memory((int)sqlite3_memory_used());
-	}while (0);
+			sqlite3_release_memory((int)sqlite3_memory_used());
+		} while (0);
+	}
+	catch (...)
+	{
+	}
+	
 	g_ReadWriteLock.unlock();
 
 	return bOk;
@@ -493,6 +503,9 @@ bool AddZHIQIANSHUJU(tagZHIQIANSHUJU  data, string &strError)
 			sqlite3_reset(lpStmt0);
 		}
 
+		if (bOk == false)
+			break;
+
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -564,7 +577,8 @@ bool AddSHOUZHENGSHUJU(tagSHOUZHENGSHUJU  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -641,7 +655,8 @@ bool AddQIANZHUSHUJU(tagQIANZHUSHUJU  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -714,7 +729,8 @@ bool AddJIAOKUANSHUJU(tagJIAOKUANSHUJU  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -784,7 +800,8 @@ bool AddCHAXUNSHUJU(tagCHAXUNSHUJU  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -862,7 +879,8 @@ bool AddYUSHOULISHUJU(tagYUSHOULISHUJU  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -929,7 +947,8 @@ bool AddSHEBEIZHUANGTAI(tagSHEBEIZHUANGTAI  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -999,7 +1018,8 @@ bool AddSHEBEIYICHANGSHUJU(tagSHEBEIYICHANGSHUJU  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -1063,7 +1083,8 @@ bool AddGUANLIYUAN(tagGUANLIYUAN  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -1126,7 +1147,8 @@ bool AddGUANLIYUANCAOZUOJILU(tagGUANLIYUANCAOZUOJILU  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -1198,7 +1220,8 @@ bool AddSHEBEIGUANLI(tagSHEBEIGUANLI  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
@@ -1257,7 +1280,8 @@ bool AddYINGSHEBIAO(tagYINGSHEBIAO  data, string &strError)
 			//重新初始化该sqlite3_stmt对象绑定的变量。
 			sqlite3_reset(lpStmt0);
 		}
-
+		if (bOk == false)
+			break;
 		sqlite3_finalize(lpStmt0);
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);

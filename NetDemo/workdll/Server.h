@@ -30,7 +30,6 @@ protected:
 	HANDLE											m_mutexHandle;
 	void											SendMsgBuf(long userID, ::google::protobuf::Message& msg);
 
-	string											m_connectionsStr;
 public:
 	static CServer* 								GetInstance();
 	static void 									ReleaseInstance();

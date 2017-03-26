@@ -5,7 +5,6 @@
                     xmlns:deviceViewModel="clr-namespace:ManageSystem.ViewModel.DeviceViewModel"
                     xmlns:Local="clr-namespace:ManageSystem"
                     >
-    <viewModel:DataGridItemSourceConvert x:Key="DataGridItemSourceConvert"/>
     <deviceViewModel:DataGridSelectConvert x:Key="DataGridSelectConvert"/>
 
     <viewModel:MainWindowViewModel x:Key="MainWindowViewModelKey"/>

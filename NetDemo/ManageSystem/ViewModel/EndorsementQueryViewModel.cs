@@ -16,27 +16,6 @@ namespace ManageSystem.ViewModel
    public  class EndorsementQueryViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
-        public Dictionary<string, string>               _columnNameMap = new Dictionary<string, string>
-        {
-           {"Xuhao",					"序号"},			
-           {"Chengshibianhao",		    "城市编号"},		
-           {"Jubianhao",				"局编号"},			
-           {"Shiyongdanweibianhao",	    "使用单位编号"},	
-           {"IP",						"ip地址"},			
-           {"Bendiyewu",				"是否本地业务"},	
-           {"Shebeibaifangweizhi",	    "设备摆放位置"},	
-           {"Riqi",					    "日期"},			
-           {"YuanZhengjianhaoma",		"原证件号码"},	
-           {"Xingming",				    "姓名"},			
-           {"Xingbie",				    "性别"},			
-           {"Chushengriqi",			    "出生日期"},		
-           {"Lianxidianhua",			"联系电话"},		
-           {"Yewuleixing",			    "业务类型"},		
-           {"Shouliren",				"受理人"},			
-           {"Zhengjianleixing",			"证件类型"},			
-           {"Yewubianhao",				"业务编号"},			
-           {"Shifoucharudajizhong",		"是否插入大集中"},			
-        };
 
         public DelegateCommand<object>                  QueryCommand { get; set; }
 
@@ -139,17 +118,6 @@ namespace ManageSystem.ViewModel
             endTime                                     = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
         }
 
-        //Access and update columns during autogeneration
-        public void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-        {
-            string headername = e.Column.Header.ToString();
-            //Cancel the column you don't want to generate
-            if (_columnNameMap.ContainsKey(headername))
-            {
-                e.Column.Header = _columnNameMap[headername];
-            }
-        }
-
         public void QueryTableCallBack(string resultStr, string errorStr)
         {
             System.Reflection.PropertyInfo[] properties = typeof(QIANZHUSHUJUModel).GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
@@ -222,11 +190,11 @@ namespace ManageSystem.ViewModel
                             }
                         }
                     }
-                    Application.Current.Dispatcher.Invoke(
-                    new Action(() =>
+                    Application.Current.Dispatcher.BeginInvoke(
+                    new Action<object>((modeltemp) =>
                     {
                         tableList.Add(model);
-                    }));
+                    }), model);
                 }
             }
         }

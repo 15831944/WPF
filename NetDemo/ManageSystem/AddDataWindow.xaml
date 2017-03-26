@@ -1,23 +1,18 @@
 ﻿<Window x:Class="ManageSystem.AddDataWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="AddDataWindow" Height="600" Width="800" 
+        Title="AddDataWindow" Height="720" Width="1280" 
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         DataContext="{StaticResource AddWndViewModelKey}" Visibility="{Binding Path=visible}"
+        xmlns:DataGridRes="clr-namespace:ManageSystem.Resources.DataGridRes"
         >
     <Grid Background="Gray">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal">
-            <TextBlock Margin="25,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">IP</TextBlock>
-            <TextBox Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Text="{Binding Path=ip0}"></TextBox>
-            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">Convert</TextBlock>
-            <TextBox Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Text="{Binding Path=ip1}"></TextBox>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=ConvertCommand}">转换</Button>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=AddItemCommand}">AddItem</Button>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=DeleteItemCommand}">DeleteItem</Button>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
             <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" x:Name="selComb" SelectedIndex="0" Canvas.Left="10" Canvas.Top="52"
                   SelectedValue="{Binding Path=selvalue}" SelectedValuePath="Content">
                 <ComboBoxItem Content="制签详细数据"></ComboBoxItem>
@@ -39,18 +34,46 @@
                 </i:Interaction.Triggers>
             </ComboBox>
             <Button Command="{Binding Path=AddCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="添加数据" Canvas.Left="327" Canvas.Top="53" Width="89"></Button>
+            <Button Command="{Binding Path=QueryCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="查询数据" Canvas.Left="327" Canvas.Top="53" Width="89"></Button>
+            <TextBlock Margin="25,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=curCnt}"></TextBlock>
+            <TextBlock Margin="25,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=status}"></TextBlock>
         </StackPanel>
-
-        <Grid Grid.Row="1">
-            <DataGrid
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Margin="25,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">IP</TextBlock>
+            <TextBox Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Text="{Binding Path=ip0}"></TextBox>
+            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">Convert</TextBlock>
+            <TextBox Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Text="{Binding Path=ip1}"></TextBox>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=ConvertCommand}">转换</Button>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=AddItemCommand}">AddItem</Button>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=CopyItemCommand}"
+                    CommandParameter="{Binding ElementName=grid}">CopyItems</Button>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=DeleteItemCommand}" 
+                    CommandParameter="{Binding ElementName=grid}">DeleteItems</Button>
+        </StackPanel>
+        <Grid Grid.Row="2">
+            <DataGrid         x:Name="grid"
+                              DataGridRes:DataGridAttach.GeneratColumnObj="{Binding}"
                               BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                               CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 
                               AutoGenerateColumns="True" EnableRowVirtualization="True"
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
+                              SelectedValue="{Binding Path=customInfo}"
+                
                               ItemsSource="{Binding tableList0}"
                               >
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="LightBlue"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
             </DataGrid>
         </Grid>
     </Grid>

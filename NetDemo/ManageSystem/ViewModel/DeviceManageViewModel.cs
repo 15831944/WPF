@@ -76,7 +76,6 @@ namespace ManageSystem.ViewModel
         private void AbnormalShow(object obj)
         {
             bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Abnormal;
-            //_AbnormalViewModel.DoLogon();
         }
 
         private void UpgradeShow(object obj)

@@ -19,5 +19,6 @@ typedef struct tagPACKAGEHEAD
 	bool											bcompressed;	//是否压缩
 	INT												len;			//包长度
 }PACKAGEHEAD;
-
 #pragma pack(pop)
+
+void OutDebugLogs(string file, int line, string func, string log);

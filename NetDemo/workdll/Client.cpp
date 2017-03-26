@@ -47,11 +47,13 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 				msgPack.SerializeToArray(pBuffer, msgLen);
 				CClient::GetInstance()->m_sendDataFunc(pBuffer, msgLen);
 				delete[] pBuffer;
+				OutputDebugStringA("\ntest: client.receive£ºhas_querydevspeedmsg");
 			}
 			else if (CClient::GetInstance()->m_requestMap.Query(key, pairValue))
 			{
 				if (msgPack.has_registtypemsgresult())
 				{
+					OutputDebugStringA("\ntest: client.receive£ºhas_registtypemsgresult");
 				}
 				else if (msgPack.has_querymsgresult())
 				{
@@ -59,11 +61,13 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					string resulterror = msgPack.querymsgresult().resulterror();
 					if (pairValue.second)
 						((QueryTableCallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
+					OutputDebugStringA("\ntest: client.receive£ºhas_querymsgresult");
 				}
 				else if (msgPack.has_addmsgresult())
 				{
 					if (pairValue.second)
 						((AddDataCallBack)pairValue.second)((char*)msgPack.addmsgresult().resulterror().c_str());
+					OutputDebugStringA("\ntest: client.receive£ºhas_addmsgresult");
 				}
 				else if (msgPack.has_querydevcntmsgresult())
 				{
@@ -72,12 +76,14 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					sprintf_s(ch, "count:%d,;", cnt);
 					if (pairValue.second)
 						((QueryTableCallBack)pairValue.second)(ch, "");
+					OutputDebugStringA("\ntest: client.receive£ºhas_querydevcntmsgresult");
 				}
 				else if (msgPack.has_excutesqlmsgresult())
 				{
 					string resulterror = msgPack.excutesqlmsgresult().resulterror();
 					if (pairValue.second)
 						((ExcuteSqlCallBack)pairValue.second)((char*)resulterror.c_str());
+					OutputDebugStringA("\ntest: client.receive£ºhas_excutesqlmsgresult");
 				}
 				else if (msgPack.has_querydevspeedmsgresult())
 				{
@@ -88,6 +94,7 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					sprintf_s(ch, "speed:%d,;", speed);
 					if (pairValue.second)
 						((QueryTableCallBack)pairValue.second)(ch, (char*)resulterror.c_str());
+					OutputDebugStringA("\ntest: client.receive£ºhas_querydevspeedmsgresult");
 				}
 				else if (msgPack.has_queryconnectionsstrmsgresult())
 				{
@@ -96,6 +103,8 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 
 					if (pairValue.second)
 						((QueryTableCallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
+
+					OutputDebugStringA("\ntest: client.receive£ºhas_queryconnectionsstrmsgresult");
 				}
 
 				CClient::GetInstance()->m_requestMap.Pop(key, pairValue);
@@ -187,6 +196,7 @@ void CClient::UpdateClientStatus(bool bNormal, bool bSync)
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
+		OutputDebugStringA("\ntest: client.send£ºmutable_registtype");
 
 		if (bSync)
 		{
@@ -223,6 +233,7 @@ void CClient::QueryOnlieDevCnt(QueryTableCallBack callBack, bool bSync)
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
+		OutputDebugStringA("\ntest: client.send£ºmutable_querydevcntmsg");
 
 		if (bSync)
 		{
@@ -259,6 +270,7 @@ void CClient::QueryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
+		OutputDebugStringA("\ntest: client.send£ºmutable_query");
 
 		if (bSync)
 		{
@@ -296,6 +308,7 @@ void CClient::AddTable(char* tableName, char* dataStr, AddDataCallBack callBack,
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
+		OutputDebugStringA("\ntest: client.send£ºmutable_add");
 
 		if (bSync)
 		{
@@ -332,6 +345,7 @@ void CClient::ExcuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync)
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
+		OutputDebugStringA("\ntest: client.send£ºmutable_excutesqlmsg");
 
 		if (bSync)
 		{
@@ -370,6 +384,7 @@ void  CClient::QueryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSyn
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
+		OutputDebugStringA("\ntest: client.send£ºmutable_querydevspeedmsg");
 
 		if (bSync)
 		{
@@ -406,6 +421,7 @@ void  CClient::QueryConnectionsStr(QueryTableCallBack callBack, bool bSync)
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
+		OutputDebugStringA("\ntest: client.send£ºmutable_queryconnectionsstrmsg");
 
 		if (bSync)
 		{

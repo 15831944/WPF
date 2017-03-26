@@ -45,7 +45,7 @@
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>$(ProjectDir)..\..\output\$(AssemblyName)\$(Configuration)\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -94,6 +94,7 @@
     <Compile Include="Model\YINGSHEBIAOModel.cs" />
     <Compile Include="Model\YUSHOULISHUJUModel.cs" />
     <Compile Include="Model\ZHIQIANSHUJUModel.cs" />
+    <Compile Include="Resources\DataGridRes\DataGridAttach.cs" />
     <Compile Include="Resources\DateTimer\ButtonSpinner.cs" />
     <Compile Include="Resources\DateTimer\DateTimeFormat.cs" />
     <Compile Include="Resources\DateTimer\DateTimeInfo.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Model\SHOUZHENGSHUJUModel.cs" />
     <Compile Include="Resources\PasswordBox\PasswordBoxWaterMark.cs" />
     <Compile Include="Resources\WebBroser\WebBrowserAttach.cs" />
+    <Compile Include="Server\FunctionServer.cs" />
     <Compile Include="Server\HistogramServer.cs" />
     <Compile Include="Server\LineChartServer.cs" />
     <Compile Include="Server\OccupancyChartServer.cs" />
@@ -213,7 +215,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\DeviceTemplate\DeviceTemplate.xaml">
+    <Page Include="Resources\DeviceTemplate\DevicemaTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

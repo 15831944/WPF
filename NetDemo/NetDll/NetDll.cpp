@@ -45,34 +45,41 @@ bool stopServer()
 }
 bool isServerStoped()
 {
-	if (g_serverPtr != nullptr)
-		return g_serverPtr->stoped();
+	bool bRet = true;
 
-	return true;
+	if (g_serverPtr != nullptr)
+		bRet	= g_serverPtr->stoped();
+
+	return bRet;
 }
 
 int curServerConnections()
 {
-	if (g_serverPtr != nullptr)
-		return g_serverPtr->connections();
+	int Ret = 0;
 
-	return 0;
+	if (g_serverPtr != nullptr)
+		Ret = g_serverPtr->connections();
+
+	return Ret;
 }
 
 int getClientIDByIP(char* ip)
 {
-	if (g_serverPtr != nullptr)
-		return g_serverPtr->getidbyip(ip);
+	int Ret = 0;
 
-	return 0;
+	if (g_serverPtr != nullptr)
+		Ret = g_serverPtr->getidbyip(ip);
+
+	return Ret;
 }
 
 const char* getClientIPByID(int ID)
 {
+	const char* pRet = nullptr;
 	if (g_serverPtr != nullptr)
-		return g_serverPtr->getipbyid(ID);
+		pRet = g_serverPtr->getipbyid(ID);
 
-	return 0;
+	return pRet;
 }
 
 boost::mutex									m_sockMutexclient;				//asio::socket不是线程安全的，一把大锁解决问题
@@ -80,6 +87,7 @@ boost::asio::io_service							g_io_service_client;
 unique_ptr<client>								g_clientPtr;
 bool startClient(char *ip, int port, OnReceiveCallBack callback, OUT ClientSendData& CallSendData)
 {
+	bool bRet = true;
 	boost::mutex::scoped_lock Lock(m_sockMutexclient);
 	if (g_clientPtr == nullptr || isClientStoped())
 	{
@@ -90,14 +98,17 @@ bool startClient(char *ip, int port, OnReceiveCallBack callback, OUT ClientSendD
 		if (!g_clientPtr->m_pSession->bstarted())
 		{
 			g_clientPtr->stop();
-			g_clientPtr					= nullptr;
-			return false;
+			g_clientPtr				= nullptr;
+			bRet					= false;
 		}
-		g_clientPtr->run();
-		CallSendData = client::send;
+		else
+		{
+			g_clientPtr->run();
+			CallSendData = client::send;
+		}
 	}
 
-	return true;
+	return bRet;
 }
 bool stopClient()
 {

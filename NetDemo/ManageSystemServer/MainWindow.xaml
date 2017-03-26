@@ -13,26 +13,35 @@
             <i:InvokeCommandAction Command="{Binding ExitCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Canvas Background="Gray" >
-        <ContentControl Canvas.Left="10" Canvas.Top="10" Width="18" Height="18" >
-            <ContentControl.Template>
-                <ControlTemplate TargetType="{x:Type ContentControl}">
-                    <Ellipse x:Name="rect" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Fill="Red"/>
-                    <ControlTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Path=bOnline}" Value="True">
-                            <Setter Property="Fill" TargetName="rect" Value="Green"/>
-                        </DataTrigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </ContentControl.Template>
-        </ContentControl>
-        <TextBlock Canvas.Left="50" Canvas.Top="12" HorizontalAlignment="Right" VerticalAlignment="Center">当前连接数量:</TextBlock>
-        <TextBlock  Canvas.Left="139" Canvas.Top="12"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=curConnections}"></TextBlock>
-        <TextBlock Canvas.Left="50" Canvas.Top="70" HorizontalAlignment="Right" VerticalAlignment="Center">BindPort:</TextBlock>
-        <TextBox x:Name="bindPortBox" Canvas.Left="120" Canvas.Top="70"  HorizontalAlignment="Left" VerticalAlignment="Center">60000</TextBox>
-        <Button Canvas.Left="170" Canvas.Top="64" Width="100" Height="30" Name="butStartServer" Content="butStartServer" Command="{Binding Path=StartServerCommand}" />
-        <Button Canvas.Left="290" Canvas.Top="63" Width="100" Height="30" Name="butStopServer"  Content="butStopServer" Command="{Binding Path=StopServerCommand}"/>
-        <DataGrid Canvas.Left="21" Canvas.Top="100" Width="751" Height="400"
+    <Grid Background="Gray" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <ContentControl Margin="25,0,0,0" Canvas.Left="10" Canvas.Top="10" Width="18" Height="18" >
+                <ContentControl.Template>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Ellipse x:Name="rect" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" Fill="Red"/>
+                        <ControlTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Path=bOnline}" Value="True">
+                                <Setter Property="Fill" TargetName="rect" Value="Green"/>
+                            </DataTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </ContentControl.Template>
+            </ContentControl>
+            <TextBlock Margin="25,0,0,0" Canvas.Left="50" Canvas.Top="12" HorizontalAlignment="Right" VerticalAlignment="Center">当前连接数量:</TextBlock>
+            <TextBlock  Margin="25,0,0,0" Canvas.Left="139" Canvas.Top="12"  HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=curConnections}"></TextBlock>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Margin="25,0,0,0" HorizontalAlignment="Right" VerticalAlignment="Center">BindPort:</TextBlock>
+            <TextBox Margin="25,0,0,0" x:Name="bindPortBox"  HorizontalAlignment="Left" VerticalAlignment="Center">60000</TextBox>
+            <Button Margin="25,0,0,0"  Width="100" Height="30" Name="butStartServer" Content="butStartServer" Command="{Binding Path=StartServerCommand}" />
+            <Button Margin="25,0,0,0"  Width="100" Height="30" Name="butStopServer"  Content="butStopServer" Command="{Binding Path=StopServerCommand}"/>
+        </StackPanel>
+        <DataGrid Grid.Row="2" 
                               BorderThickness="0" ColumnHeaderHeight="25" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
@@ -53,5 +62,5 @@
                 </Style>
             </DataGrid.CellStyle>
         </DataGrid>
-    </Canvas>
+    </Grid>
 </Window>

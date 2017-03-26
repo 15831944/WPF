@@ -12,7 +12,7 @@ client::client(boost::asio::io_service &io_service, boost::asio::ip::tcp::endpoi
 	boost::system::error_code ec;
 	m_pSession->socket().connect(endpoint, ec);
 	if (ec == 0)
-		m_pSession->start();
+		m_pSession->start(true);
 }
 
 void client::run() {

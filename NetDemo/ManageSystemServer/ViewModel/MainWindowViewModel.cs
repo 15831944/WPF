@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -172,12 +173,13 @@ namespace ManageSystemServer.ViewModel
             bOnline         = WorkServer.isServerStoped() == false;
             curConnections  = WorkServer.cntServerConnections() + "个";
 
-            string resultStr = WorkServer.curConnectionsStr();
-            if(resultStr != _connectionsStr)
+            IntPtr strPtr = WorkServer.curConnectionsStr();
+            string resultStr =  Marshal.PtrToStringAnsi(strPtr);
+            if (resultStr != _connectionsStr)
             {
                 _connectionsStr = resultStr;
                 tableList.Clear();
-                QueryTableCallBack(resultStr, "");
+                QueryTableCallBack(_connectionsStr, "");
             }
         }
 

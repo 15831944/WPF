@@ -52,7 +52,7 @@ void server::handle_accept(session_ptr new_session, const boost::system::error_c
 	m_sessions.push_back(new_session);
 	Lock.unlock();
 
-	new_session->start();
+	new_session->start(false);
 	session_ptr next_session(new session(m_io_service, &server::OnServerCallBack));
 
 	m_acceptor.async_accept(next_session->socket(),

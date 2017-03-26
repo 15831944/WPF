@@ -637,7 +637,7 @@ bool QuerySHEBEIGUANLI(string QuerySql, std::vector<tagSHEBEIGUANLI> &lcArray, s
 		{
 			strError = "打开基础支撑数据库失败";
 			bOk = false;
-			break;
+			break; 
 		}
 		sqlite3_stmt   *lpStmt0   =  NULL;
 		std::string     lstrSQL  =  QuerySql;
