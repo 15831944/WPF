@@ -7,6 +7,20 @@ namespace ManageSystem.Model
 {
    public  class SHEBEIGUANLIModel : NotificationObject
     {
+        private bool _bSel = false;
+        public bool bSel
+        {
+            get
+            {
+                return _bSel;
+            }
+            set
+            {
+                _bSel = value;
+                this.RaisePropertyChanged("bSel");
+            }
+        }
+
         private int _Xuhao;
         public int Xuhao
         {

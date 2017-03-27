@@ -255,7 +255,6 @@ void session::sendheart()
 
 	if (m_WriteBuffer.size() == 0)
 	{// outstanding async_write
-		string str =__FUNCTION__;
 		m_WriteBuffer.prepare(sizeof(PACKAGEHEAD));
 		m_WriteBuffer.sputn((char*)&packHead, sizeof(PACKAGEHEAD));
 		write1500();

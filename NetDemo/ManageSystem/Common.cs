@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
+using System.Windows.Media;
 
 namespace ManageSystem
 {
@@ -154,6 +155,45 @@ namespace ManageSystem
             }
             return (T)retval;
         }
+
+        public static T GetChildObject<T>(DependencyObject obj, string name) where T : FrameworkElement
+        {
+            DependencyObject child = null;
+            T grandChild = null;
+
+            for (int i = 0; i <= VisualTreeHelper.GetChildrenCount(obj) - 1; i++)
+            {
+                child = VisualTreeHelper.GetChild(obj, i);
+
+                if (child is T && (((T)child).Name == name | string.IsNullOrEmpty(name)))
+                {
+                    return (T)child;
+                }
+                else
+                {
+                    grandChild = GetChildObject<T>(child, name);
+                    if (grandChild != null)
+                        return grandChild;
+                }
+            }
+            return null;
+        }
+
+        public static T GetParentObject<T>(DependencyObject obj, string name) where T : FrameworkElement
+        {
+            DependencyObject parent = VisualTreeHelper.GetParent(obj);
+
+            while (parent != null)
+            {
+                if (parent is T && (((T)parent).Name == name | string.IsNullOrEmpty(name)))
+                {
+                    return (T)parent;
+                }
+                parent = VisualTreeHelper.GetParent(parent);
+            }
+            return null;
+        }
+
 
         /// <summary>
         /// 将Unix时间戳转换为DateTime类型时间

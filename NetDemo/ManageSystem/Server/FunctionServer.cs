@@ -75,6 +75,8 @@ namespace ManageSystem.Server
             {"Yichangshejimokuai",	    "异常涉及模块"},	
             {"Yichangyuanyin",	        "异常原因"},		
             {"Yichangxiangxineirong",	"异常详细内容"},	
+
+            {"bSel",	""},	
         };
 
         //Access and update columns during autogeneration

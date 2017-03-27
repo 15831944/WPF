@@ -41,7 +41,7 @@ void server::handle_accept(session_ptr new_session, const boost::system::error_c
 	if (error) 
 	{
 		string str = string("\nhandle_accept:") + error.message();
-		OutputDebugStringA(str.c_str());
+		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
 		return;
 	}
 
@@ -91,7 +91,7 @@ void server::WorkThread()
 	catch (std::exception &e)
 	{
 		string str = string("\nIOCP:") + e.what();
-		OutputDebugStringA(str.c_str());
+		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
 	}
 }
 
@@ -133,9 +133,9 @@ void server::send(long userID, BYTE* SendBuf, int dataLen)
 			Lock.unlock();
 		}
 	}
-	catch (...)
+	catch (exception ex)
 	{
-		OutputDebugStringA("·¢ËÍ³ö´íÁË£¡");
+		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, ex.what());
 	}
 }
 
