@@ -16,11 +16,12 @@
                     <RowDefinition Height="80"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" FontSize="25">设备基本信息</TextBlock>
+                <TextBlock Grid.Row="0" VerticalAlignment="Center" Foreground="Red" FontSize="25">设备基本信息</TextBlock>
                 <Grid Grid.Row="1" Background="#34343E">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
@@ -36,17 +37,15 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">城市编号</TextBlock>
-                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=customInfo.Chengshibianhao}"
-                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Path=city}" >
-                            </ComboBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Chengshibianhao}"></TextBox>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备厂家</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeichangjia}"></TextBox>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备名称</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeimingcheng}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -60,17 +59,16 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">局编号</TextBlock>
-                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=customInfo.Jubianhao}"
-                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Path=ju}" >
-                            </ComboBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Jubianhao}"></TextBox>
                         </Grid>
+ 
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备名称</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeimingcheng}"></TextBox>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备类型</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeileixing}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="2" >
@@ -81,20 +79,20 @@
                         <Grid Grid.Row="0" >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Center">使用单位</TextBlock>
-                            <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=customInfo.Shiyongdanweibianhao}"
-                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Path=danwei}" >
-                            </ComboBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shiyongdanweibianhao}"></TextBox>
                         </Grid>
+              
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备类型</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeileixing}"></TextBox>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">经度</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Jingdu}"></TextBox>
+
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="3">
@@ -105,20 +103,20 @@
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">IP</TextBlock>
                             <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.IP}"></TextBox>
 
                         </Grid>
+
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">经度</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Jingdu}"></TextBox>
-
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">纬度</TextBlock>
+                            <TextBox Margin="0,0,5,0" Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Weidu}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="4">
@@ -126,33 +124,17 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">纬度</TextBlock>
-                            <TextBox Margin="0,0,5,0" Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Weidu}"></TextBox>
-
-                        </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition Width="1.5*"/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Center">创建时间</TextBlock>
-                            <Toolkit:DateTimePicker Grid.Column="1" Foreground="White" Background="#444450"
-                                 VerticalAlignment="Center"
-                                 IsReadOnly="False"
-                                 Format="Custom"
-                                 FormatString="yyyy-MM-dd HH:mm:ss"
-                                 TimeFormat="Custom"
-                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
-                                 Text="{Binding Path=customInfo.Chuangjianshijian}"
-                                 />
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备厂商</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeichangjia}"></TextBox>
                         </Grid>
+
                     </Grid>
-                    <!--<Button Grid.Column="4" Style="{StaticResource Style_QueryBtn}" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>-->
+                    <Button Grid.Column="5" Style="{StaticResource Style_QueryBtn}" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.RowDefinitions>
@@ -163,6 +145,7 @@
                         <Button Margin="10,0,10,0" Command="{Binding Path=AddCommand}" >增加设备</Button>
                         <Button Margin="10,0,10,0" Command="{Binding Path=DeleteCommand}" >删除设备</Button>
                         <Button Margin="10,0,10,0" Command="{Binding Path=ModifyCommand}" >修改设备信息</Button>
+                        <Button Margin="10,0,10,0" Command="{Binding Path=QueryCommand}" >查询</Button>
                     </StackPanel>
                     <DataGrid Grid.Row="1"
                               DataGridRes:DataGridAttach.GeneratColumnObj="{Binding}"

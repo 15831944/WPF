@@ -102,43 +102,13 @@ namespace ManageSystem.ViewModel
 
                switch(callback)
                {
-                   case "汇总统计":
-                       mainwindowviewmodel.statisticsIndex = 0;
-                       mainwindowviewmodel.StatisticsShow(null);
+                   case "统计":
+                       mainwindowviewmodel.StatisticsSelected(null);
                        break;
-                   case "制签统计":
-                       mainwindowviewmodel.statisticsIndex = 1;
-                       mainwindowviewmodel.StatisticsShow(null);
+                   case "查询":
+                       mainwindowviewmodel.QuerySelected(null);
                        break;
-                   case "制签异常统计":
-                       mainwindowviewmodel.statisticsIndex = 2;
-                       mainwindowviewmodel.StatisticsShow(null);
-                       break;
-                   case "制签记录查询":
-                       mainwindowviewmodel.queryIndex = 0;
-                       mainwindowviewmodel.QueryShow(null);
-                       break;
-                   case "收证记录查询":
-                       mainwindowviewmodel.queryIndex = 1;
-                       mainwindowviewmodel.QueryShow(null);
-                       break;
-                   case "签注记录查询":
-                       mainwindowviewmodel.queryIndex = 2;
-                       mainwindowviewmodel.QueryShow(null);
-                       break;
-                   case "缴款记录查询":
-                       mainwindowviewmodel.queryIndex = 3;
-                       mainwindowviewmodel.QueryShow(null);
-                       break;
-                   case "查询记录查询":
-                       mainwindowviewmodel.queryIndex = 4;
-                       mainwindowviewmodel.QueryShow(null);
-                       break;
-                   case "预受理记录查询":
-                       mainwindowviewmodel.queryIndex = 5;
-                       mainwindowviewmodel.QueryShow(null);
-                       break;
-                   case "设备管理":
+                   case "管理":
                        mainwindowviewmodel.DeviceManageShow(null);
                        break;
                }
@@ -491,7 +461,7 @@ namespace ManageSystem.ViewModel
             _devicePosition                             = new ObservableCollection<string>();
             _businesstype                               = new ObservableCollection<string>();
 
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
             //_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
             _titleheight                                = 25;
             _leftWidth                                  = 60;
@@ -929,6 +899,40 @@ namespace ManageSystem.ViewModel
             //_DeviceManageViewModel._DevicemaViewModel.DoLogon();
             //_DeviceManageViewModel._UserViewModel.DoLogon();
             //_DeviceManageViewModel._AbnormalViewModel.DoLogon();
+            new Thread(() =>
+            {
+                 WorkServer.startClient(IP, port, true);
+                 Application.Current.Dispatcher.Invoke(
+                 new Action(() =>
+                 {
+                     QueryYingshebiao(null);
+                 }));
+
+                 Application.Current.Dispatcher.Invoke(
+                new Action(() =>
+                {
+                    _DeviceManageViewModel._DevicemaViewModel.DoLogon();
+                }));
+
+                 Application.Current.Dispatcher.Invoke(
+                new Action(() =>
+                {
+                    _DeviceManageViewModel._UserViewModel.DoLogon();
+                }));
+
+                 Application.Current.Dispatcher.Invoke(
+                new Action(() =>
+                {
+                    _DeviceManageViewModel._AbnormalViewModel.DoLogon();
+                }));
+
+                 Application.Current.Dispatcher.Invoke(
+                 new Action(() =>
+                 {
+                     _WebBrowserViewMode.DoLogon();
+                 }));
+            }).Start();
+
 
             //_SummaryStatViewModel.DoLogon();
             //_SignStatViewModel.DoLogon();

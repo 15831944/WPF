@@ -55,6 +55,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         public DelegateCommand<object> AddCommand { get; set; }
         public DelegateCommand<object> DeleteCommand { get; set; }
         public DelegateCommand<object> ModifyCommand { get; set; }
+        public DelegateCommand<object> QueryCommand { get; set; }
 
         public static ObservableCollection<DeviceModel> _deviceList;
         public ObservableCollection<DeviceModel> deviceList
@@ -145,6 +146,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
              AddCommand                                 = new DelegateCommand<object>(Add);
              DeleteCommand                              = new DelegateCommand<object>(Delete);
              ModifyCommand                              = new DelegateCommand<object>(Modify);
+            QueryCommand                                = new DelegateCommand<object>(QueryShebeiguanli);
 
             _deviceList                                 = new ObservableCollection<DeviceModel>();
             _city                                       = new ObservableCollection<string>();
@@ -406,34 +408,36 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                     Application.Current.Dispatcher.Invoke(
                     new Action<object>((modeltemp) =>
                     {
-                        tableList.Add(model as SHEBEIGUANLIModel);
+                        _tableListTemp.Add(model as SHEBEIGUANLIModel);
                     }), model);
                 }
-            }
-
-
-            Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>> _devicelistMap = new Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>>();
-            foreach (SHEBEIGUANLIModel modelTemp in tableList)
-            {
-                if (modelTemp.Chengshibianhao == null       || modelTemp.Chengshibianhao.Length == 0        ||
-                    modelTemp.Jubianhao == null             || modelTemp.Jubianhao.Length == 0              ||
-                    modelTemp.Shiyongdanweibianhao == null  || modelTemp.Shiyongdanweibianhao.Length == 0
-                    )
-                    continue;
-
-                if (!_devicelistMap.Keys.Contains(modelTemp.Chengshibianhao))
-                    _devicelistMap[modelTemp.Chengshibianhao] = new Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>();
-                if (!_devicelistMap[modelTemp.Chengshibianhao].Keys.Contains(modelTemp.Jubianhao))
-                    _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao] = new Dictionary<string, HashSet<SHEBEIGUANLIModel>>();
-                if (!_devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao].Keys.Contains(modelTemp.Shiyongdanweibianhao))
-                    _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao] = new HashSet<SHEBEIGUANLIModel>();
-
-                _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao].Add(modelTemp);
             }
 
             Application.Current.Dispatcher.Invoke(
             new Action(() =>
             {
+                foreach (var model in _tableListTemp)
+                    tableList.Add(model);
+
+                Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>> _devicelistMap = new Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>>();
+                foreach (SHEBEIGUANLIModel modelTemp in tableList)
+                {
+                    if (modelTemp.Chengshibianhao == null       || modelTemp.Chengshibianhao.Length == 0        ||
+                    modelTemp.Jubianhao == null             || modelTemp.Jubianhao.Length == 0              ||
+                    modelTemp.Shiyongdanweibianhao == null  || modelTemp.Shiyongdanweibianhao.Length == 0
+                        )
+                        continue;
+
+                    if (!_devicelistMap.Keys.Contains(modelTemp.Chengshibianhao))
+                        _devicelistMap[modelTemp.Chengshibianhao] = new Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>();
+                    if (!_devicelistMap[modelTemp.Chengshibianhao].Keys.Contains(modelTemp.Jubianhao))
+                        _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao] = new Dictionary<string, HashSet<SHEBEIGUANLIModel>>();
+                    if (!_devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao].Keys.Contains(modelTemp.Shiyongdanweibianhao))
+                        _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao] = new HashSet<SHEBEIGUANLIModel>();
+
+                    _devicelistMap[modelTemp.Chengshibianhao][modelTemp.Jubianhao][modelTemp.Shiyongdanweibianhao].Add(modelTemp);
+                }
+
                 foreach (KeyValuePair<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>> kvp0 in _devicelistMap)
                 {
                     DeviceModel device0                 = new DeviceModel();
@@ -486,7 +490,42 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             deviceList.Clear();
             _tableListTemp.Clear();
             tableList.Clear();
-            WorkServer.QueryTable("select * from Shebeiguanli", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+        }
+
+        string MakeQuerySql(object obj)
+        {
+            string str = "select * from Shebeiguanli where Xuhao>=-1";
+
+            foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+            {
+                if (kvp0.Value == customInfo.Chengshibianhao)
+                    str += " and Shebeiguanli.[Chengshibianhao]=" + kvp0.Key.ToString();
+                if (kvp0.Value == customInfo.Jubianhao)
+                    str += " and Shebeiguanli.[Jubianhao]=" + kvp0.Key.ToString();
+                if (kvp0.Value == customInfo.Shiyongdanweibianhao)
+                    str += " and Shebeiguanli.[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+            }
+
+            if (!string.IsNullOrEmpty(customInfo.IP))
+                str += " and Shebeiguanli.[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo.IP)));
+
+            if (!string.IsNullOrEmpty(customInfo.Shebeichangjia))
+                str += " and Shebeiguanli.[Shebeichangjia]=" + customInfo.Shebeichangjia;
+
+            if (!string.IsNullOrEmpty(customInfo.Shebeimingcheng))
+                str += " and Shebeiguanli.[Shebeimingcheng]=" + customInfo.Shebeimingcheng;
+
+            if (!string.IsNullOrEmpty(customInfo.Shebeileixing))
+                str += " and Shebeiguanli.[Shebeileixing]=" + customInfo.Shebeileixing;
+
+            if (!string.IsNullOrEmpty(customInfo.Jingdu))
+                str += " and Shebeiguanli.[Jingdu]=" + customInfo.Jingdu;
+
+            if (!string.IsNullOrEmpty(customInfo.Weidu))
+                str += " and Shebeiguanli.[Weidu]=" + customInfo.Weidu;
+
+            return str;
         }
 
         public void DoLogon()
