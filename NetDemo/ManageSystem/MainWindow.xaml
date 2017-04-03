@@ -100,6 +100,19 @@
             <ContentControl Grid.Column="1" Content="{Binding _PreAcceptQueryViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _WebBrowserViewMode}"/>
             <ContentControl Grid.Column="1" Content="{Binding _DeviceManageViewModel}"/>
+
+            <AdornerDecorator Grid.Column="1">
+                <Rectangle Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Left">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush  StartPoint="0,0" EndPoint="1,0">
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStop Color="#808080" Offset="0.0"/>
+                                <GradientStop Color="#00808080" Offset="1.0"/>
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+            </AdornerDecorator>
         </Grid>
         <ContentControl Grid.Row="1" Content="{Binding}"/>
     </Grid>

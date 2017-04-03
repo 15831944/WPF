@@ -6,17 +6,29 @@
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
                     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
-                    xmlns:DataGridRes="clr-namespace:ManageSystem.Resources.DataGridRes"
+                    xmlns:DataGridAttachResA="clr-namespace:ManageSystem.Resources.DataGridAttachRes"
+                    xmlns:Animation="clr-namespace:ManageSystem.Resources.AnimationAttachRes"
                     >
     <DataTemplate DataType="{x:Type deviceViewModel:DevicemaViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
-            <Grid Grid.Column="1" >
+            <Grid Grid.Column="0" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="80"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" VerticalAlignment="Center" Foreground="Red" FontSize="25">设备基本信息</TextBlock>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Margin="5,0,0,0" Height="50" VerticalAlignment="Center" Foreground="Red" FontSize="25">设备基本信息</TextBlock>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Margin="10,0,10,0" VerticalAlignment="Center" Template="{StaticResource btndevicemaAdd_Template}" Command="{Binding Path=AddCommand}"
+                                DataGridAttachResA:DataGridAttach.AttachGridAnimation="{Binding ElementName=rightgrid}"/>
+                        <Button Margin="10,0,10,0" VerticalAlignment="Center" Template="{StaticResource btndevicemaDelete_Template}" Command="{Binding Path=DeleteCommand}" />
+                    </StackPanel>
+                </Grid>
                 <Grid Grid.Row="1" Background="#34343E">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
@@ -37,7 +49,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">城市编号</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Chengshibianhao}"></TextBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Chengshibianhao}"></TextBox>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -45,7 +57,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备名称</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeimingcheng}"></TextBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeimingcheng}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="1">
@@ -59,7 +71,7 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">局编号</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Jubianhao}"></TextBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Jubianhao}"></TextBox>
                         </Grid>
  
                         <Grid Grid.Row="1">
@@ -68,7 +80,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备类型</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeileixing}"></TextBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeileixing}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="2" >
@@ -81,8 +93,8 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Foreground="White" Background="#444450" VerticalAlignment="Center" HorizontalAlignment="Center">使用单位</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shiyongdanweibianhao}"></TextBox>
+                            <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">使用单位</TextBlock>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shiyongdanweibianhao}"></TextBox>
                         </Grid>
               
                         <Grid Grid.Row="1">
@@ -91,7 +103,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">经度</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Jingdu}"></TextBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Jingdu}"></TextBox>
 
                         </Grid>
                     </Grid>
@@ -106,7 +118,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">IP</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.IP}"></TextBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.IP}"></TextBox>
 
                         </Grid>
 
@@ -116,7 +128,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">纬度</TextBlock>
-                            <TextBox Margin="0,0,5,0" Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Weidu}"></TextBox>
+                            <TextBox Margin="0,0,5,0" Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Weidu}"></TextBox>
                         </Grid>
                     </Grid>
                     <Grid Grid.Column="4">
@@ -124,13 +136,13 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="1">
+                        <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">设备厂商</TextBlock>
-                            <TextBox Grid.Column="1" Foreground="White" Background="#444450"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeichangjia}"></TextBox>
+                            <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Shebeichangjia}"></TextBox>
                         </Grid>
 
                     </Grid>
@@ -138,18 +150,20 @@
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="50"/>
-                        <RowDefinition/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition />
+                        <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
-                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                        <Button Margin="10,0,10,0" Command="{Binding Path=AddCommand}" >增加设备</Button>
-                        <Button Margin="10,0,10,0" Command="{Binding Path=DeleteCommand}" >删除设备</Button>
-                        <Button Margin="10,0,10,0" Command="{Binding Path=ModifyCommand}" >修改设备信息</Button>
-                        <Button Margin="10,0,10,0" Command="{Binding Path=QueryCommand}" >查询</Button>
-                    </StackPanel>
-                    <DataGrid Grid.Row="1"
-                              DataGridRes:DataGridAttach.GeneratColumnObj="{Binding}"
-                              DataGridRes:DataGridAttach.GridBeginEditFunc="{Binding}"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="0" x:Name="rightgrid"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid Grid.Row="1" Grid.Column="0"
+                              DataGridAttachResA:DataGridAttach.GeneratColumnObj="{Binding}"
+                              DataGridAttachResA:DataGridAttach.GridBeginEditFunc="{Binding}"
+                              DataGridAttachResA:DataGridAttach.NumOfPage="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
+                              DataGridAttachResA:DataGridAttach.OperateCellStyle="{StaticResource OperateCellStyle}"
+                              
                               BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
@@ -159,6 +173,11 @@
                               SelectedValue="{Binding Path=customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
                               ItemsSource="{Binding Path=tableList}"
                               >
+                        <DataGrid.RowStyle>
+                            <Style  TargetType="{x:Type DataGridRow}">
+                                <Setter Property="IsSelected" Value="{Binding Path=bSel}"/>
+                            </Style>
+                        </DataGrid.RowStyle>
                         <DataGrid.CellStyle>
                             <Style TargetType="DataGridCell">
                                 <Setter Property="BorderThickness" Value="0"/>
@@ -171,10 +190,114 @@
                             </Style>
                         </DataGrid.CellStyle>
                     </DataGrid>
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button Command="{Binding Path=FirstPageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="首页"></Button>
+                        <Button Command="{Binding Path=PrePageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="上一页" />
+                        <TextBlock x:Name="percent" Margin="0,0,10,0" VerticalAlignment="Center" Text="{Binding Path=pagePercent}" />
+                        <Button Command="{Binding Path=NextPageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="下一页" />
+                        <TextBox Width="50" Text="0" >
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Return" Command="{Binding GotoPageCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=Text}"/>
+                            </TextBox.InputBindings>
+                        </TextBox>
+                        <TextBlock  Margin="0,0,50,0" Text="页"/>
+                    </StackPanel>
+                    <Grid Grid.RowSpan="3" Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="80"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" x:Name="rightheader" Height="50" VerticalAlignment="Center" Foreground="Red" FontSize="25"></TextBlock>
+                        <Grid Grid.Row="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">城市编号</TextBlock>
+                            <TextBox Grid.Row="0" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Chengshibianhao}"></TextBox>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">局编号</TextBlock>
+                            <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Jubianhao}"></TextBox>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">使用单位编号</TextBlock>
+                            <TextBox Grid.Row="2" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Shiyongdanweibianhao}"></TextBox>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">IP地址</TextBlock>
+                            <TextBox Grid.Row="3" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.IP}"></TextBox>
+
+                            <Separator Grid.Row="4" Grid.ColumnSpan="2"></Separator>
+
+                            <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">设备厂商</TextBlock>
+                            <TextBox Grid.Row="5" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Shebeichangjia}"></TextBox>
+
+                            <TextBlock Grid.Row="6" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">设备名称</TextBlock>
+                            <TextBox Grid.Row="6" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Shebeimingcheng}"></TextBox>
+
+                            <TextBlock Grid.Row="7" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">设备类型</TextBlock>
+                            <TextBox Grid.Row="7" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Shebeileixing}"></TextBox>
+
+                            <TextBlock Grid.Row="8" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">经度</TextBlock>
+                            <TextBox Grid.Row="8" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Jingdu}"></TextBox>
+
+                            <TextBlock Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">纬度</TextBlock>
+                            <TextBox Grid.Row="9" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Weidu}"></TextBox>
+
+                            <Separator Grid.Row="10" Grid.ColumnSpan="2"></Separator>
+
+                            <TextBlock Grid.Row="11" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">软件信息</TextBlock>
+                            <TextBox Grid.Row="11" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Ruanjianxinxi}"></TextBox>
+
+                            <TextBlock Grid.Row="12" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">硬件信息</TextBlock>
+                            <TextBox Grid.Row="12" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Yingjianxinxi}"></TextBox>
+                        </Grid>
+                        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                            <Button Margin="0,0,5,0" Width="80" Height="30" VerticalAlignment="Center" Template="{StaticResource btndevicemaSure_Template}" Command="{Binding Path=OperateCommand}">确认</Button>
+                            <Button Margin="0,0,5,0" Width="80" Height="30" VerticalAlignment="Center" Template="{StaticResource btndevicemaCancel_Template}">取消
+                                <Button.Triggers>
+                                    <EventTrigger RoutedEvent="Button.Click">
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <Animation:GridLengthAnimation  Duration="0:0:0.5" 
+                                                                            AutoReverse="False"
+                                                                            Storyboard.TargetName="rightgrid" 
+                                                                            Storyboard.TargetProperty="Width"
+                                                                            From="{Binding ElementName=rightgrid, Path=Width}"
+                                                                            To="0.0"
+                                                                           />
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </EventTrigger>
+                                </Button.Triggers>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
         <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=operateenum}" Value="{x:Static deviceViewModel:OperateEnum.OperateEnum_Add}">
+                <Setter Property="Text" TargetName="rightheader" Value="增加设备"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=operateenum}" Value="{x:Static deviceViewModel:OperateEnum.OperateEnum_Modify}">
+                <Setter Property="Text" TargetName="rightheader" Value="修改设备"/>
+            </DataTrigger>
             <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel.bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Device}">
                 <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
             </DataTrigger>

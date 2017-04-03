@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace ManageSystem.Resources.WebBrowserAttach
+namespace ManageSystem.Resources.WebBroserAttachRes
 {
     public class WebBrowserAttach : DependencyObject
     {    
@@ -25,11 +25,15 @@ namespace ManageSystem.Resources.WebBrowserAttach
 
         private static void OnUrlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var webbrowser = d as WebBrowser;
+            try
+            {
+                WebBrowser webbrowser = (WebBrowser)d;
 
-            string url = e.NewValue as string;
-            if(url != null && url != "")
-                webbrowser.Navigate(url);
+                string url = (string)e.NewValue;
+                if (url != null && url != "")
+                    webbrowser.Navigate(url);
+            }
+            catch { }
         }
 
 
@@ -75,8 +79,12 @@ namespace ManageSystem.Resources.WebBrowserAttach
 
         private static void OnObjectForScriptChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var webbrowser = d as WebBrowser; 
-            webbrowser.ObjectForScripting = e.NewValue;
+            try
+            {
+                var webbrowser = d as WebBrowser;
+                webbrowser.ObjectForScripting = e.NewValue;
+            }
+            catch { }
         }
     }
 }

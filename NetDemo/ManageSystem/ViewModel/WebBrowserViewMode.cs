@@ -65,7 +65,6 @@ namespace ManageSystem.ViewModel
    public  class WebBrowserViewMode : NotificationObject
     {
         public static string                            _connectionsStr = "";
-        WebBrowser webbrowser;
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
 
         public DelegateCommand<object>                  LoadedCommand { get; set; }

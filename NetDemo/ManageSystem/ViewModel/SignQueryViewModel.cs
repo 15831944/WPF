@@ -13,13 +13,49 @@ using System.Windows.Data;
 using ManageSystem.Model;
 using ManageSystem.Server;
 using ManageSystem.ViewModel.DeviceViewModel;
+using System.Threading.Tasks;
 
 namespace ManageSystem.ViewModel
 {
    public  class SignQueryViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate               _querytablecallbackdelegate = null;
-        public DelegateCommand<object>                  QueryCommand { get; set; }
+        public ObservableCollection<ZHIQIANSHUJUModel> _tableListTemp = new ObservableCollection<ZHIQIANSHUJUModel>();
+
+
+        public DelegateCommand<object> QueryCommand { get; set; }
+        public DelegateCommand<object> FirstPageCommand { get; set; }
+        public DelegateCommand<object> PrePageCommand { get; set; }
+        public DelegateCommand<object> NextPageCommand { get; set; }
+        public DelegateCommand<object> GotoPageCommand { get; set; }
+
+        private int _numofpage;
+        public int numofpage
+        {
+            get
+            {
+                return _numofpage;
+            }
+            set
+            {
+                _numofpage = value;
+                this.RaisePropertyChanged("numofpage");
+            }
+        }
+
+        private string _pagePercent;
+        public string pagePercent
+        {
+            get
+            {
+                return _pagePercent;
+            }
+            set
+            {
+                _pagePercent = value;
+                this.RaisePropertyChanged("pagePercent");
+            }
+        }
 
         private string _cardNumber;
         public string cardNumber
@@ -105,10 +141,78 @@ namespace ManageSystem.ViewModel
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
             QueryCommand                                = new DelegateCommand<object>(new Action<object>(this.Query));
+
+            FirstPageCommand                            = new DelegateCommand<object>(FirstPage);
+            PrePageCommand                              = new DelegateCommand<object>(PrePage);
+            NextPageCommand                             = new DelegateCommand<object>(NextPage);
+            GotoPageCommand                             = new DelegateCommand<object>(GotoPage);
+
             _tableList                                  = new ObservableCollection<ZHIQIANSHUJUModel>();
+            _pagePercent                                = "0/0";
 
             startTime                                   = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
             endTime                                     = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
+        }
+
+        public void ShowPage(int pageindex)
+        {
+            App.Current.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                if (numofpage > 0)
+                {
+                    int count = _tableListTemp.Count;            //获取记录总数  
+                    int pageSize = 0;                       //pageSize表示总页数  
+                    if (count % numofpage == 0)
+                        pageSize = count / numofpage;
+                    else
+                        pageSize = count / numofpage + 1;
+
+                    if (pageindex < 1 || pageindex > pageSize)
+                        return;
+
+                    tableList = new ObservableCollection<ZHIQIANSHUJUModel>(_tableListTemp.Take(numofpage * pageindex).Skip(numofpage * (pageindex - 1)).ToList());   //刷选第currentSize页要显示的记录集  
+                    pagePercent = pageindex + "/" + pageSize;
+                }
+            }));
+        }  
+
+        private void GotoPage(object obj)
+        {
+            try
+            {
+                int Number = Convert.ToInt32(obj);
+                ShowPage(Number);
+            }
+            catch { }
+        }
+
+        private void NextPage(object obj)
+        {
+            try
+            {
+                string[] str = pagePercent.Split('/');
+                ShowPage(Convert.ToInt32(str[0]) + 1);
+            }
+            catch { }
+        }
+
+        private void PrePage(object obj)
+        {
+            try
+            {
+                string[] str = pagePercent.Split('/');
+                ShowPage(Convert.ToInt32(str[0]) - 1);
+            }
+            catch { }
+        }
+
+        private void FirstPage(object obj)
+        {
+            try
+            {
+                ShowPage(1);
+            }
+            catch { }
         }
 
         public void QueryTableCallBack(string resultStr, string errorStr)
@@ -183,17 +287,19 @@ namespace ManageSystem.ViewModel
                             }
                         }
                     }
-                    Application.Current.Dispatcher.BeginInvoke(
-                    new Action<object>((modeltemp) =>
-                    {
-                        tableList.Add(model);
-                    }), model);
+                    _tableListTemp.Add(model);
                 }
             }
+            Application.Current.Dispatcher.Invoke(
+             new Action(() =>
+             {
+                 ShowPage(1);
+             }));
         }
         
         public void Query(object obj)
         {
+            _tableListTemp.Clear();
             tableList.Clear();
             WorkServer.QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
         }

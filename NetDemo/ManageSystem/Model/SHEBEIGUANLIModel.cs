@@ -5,6 +5,56 @@ using System.Text;
 
 namespace ManageSystem.Model
 {
+   public enum OperateModelEnum
+   {
+       OperateModel_None,
+       OperateModel_Modify,
+       OperateModel_UserModify,
+       OperateModel_Upgrade,
+       OperateModel_TestSpeed
+   }
+   public  class OperateInfoModel : NotificationObject
+   {
+       private OperateModelEnum _operatemodel;
+       public OperateModelEnum operatemodel
+       {
+           get
+           {
+               return _operatemodel;
+           }
+           set
+           {
+               _operatemodel = value;
+               this.RaisePropertyChanged("operatemodel");
+           }
+       }
+
+       private string  _operatedisplayText = "选择升级版本";
+       public string operatedisplayText
+       {
+           get { return _operatedisplayText; }
+           set
+           {
+               _operatedisplayText = value;
+               this.RaisePropertyChanged("operatedisplayText");
+           }
+       }
+
+       private int _progess = 0;
+       public int progess
+       {
+           get
+           {
+               return _progess;
+           }
+           set
+           {
+               _progess = value;
+               this.RaisePropertyChanged("progess");
+           }
+       }
+   }
+
    public  class SHEBEIGUANLIModel : NotificationObject
     {
         private bool _bSel = false;
@@ -214,6 +264,20 @@ namespace ManageSystem.Model
             {
                 _Ruanjianshengjixinxi = value;
                 this.RaisePropertyChanged("Ruanjianshengjixinxi");
+            }
+        }
+
+        private OperateInfoModel _operateinfomodel = new OperateInfoModel();
+        public OperateInfoModel operateinfomodel
+        {
+            get
+            {
+                return _operateinfomodel;
+            }
+            set
+            {
+                _operateinfomodel = value;
+                this.RaisePropertyChanged("operateinfomodel");
             }
         }
     }

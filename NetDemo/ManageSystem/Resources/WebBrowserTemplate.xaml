@@ -4,9 +4,10 @@
                     xmlns:Model="clr-namespace:ManageSystem.Model"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
-                    xmlns:WebBrowserA="clr-namespace:ManageSystem.Resources.WebBrowserAttach"
+                    xmlns:WebBrowserA="clr-namespace:ManageSystem.Resources.WebBroserAttachRes"
                     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                    >
+    
     <!--http://120.76.148.9/testgis/map/gis.html-->
     <DataTemplate DataType="{x:Type viewModel:WebBrowserViewMode}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">

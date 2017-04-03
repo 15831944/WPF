@@ -63,44 +63,64 @@ namespace ManageSystem.ViewModel
                string ip = xml.GetElementsByTagName("id")[0].InnerText;
                string stationName = xml.GetElementsByTagName("sid")[0].InnerText;
 
-               foreach (DeviceModel model0 in DevicemaViewModel._deviceList)
-               {//市
-                   foreach (DeviceModel model1 in model0.Children)
-                   {//局
-                       foreach (DeviceModel model2 in model1.Children)
-                       {//单位
-                           foreach (DeviceModel model3 in model2.Children)
-                           {//IP
-                               model0.isSel = false;
-                               model1.isSel = false;
-                               model2.isSel = false;
-                               model3.isSel = false;
-                           }
-                       }
-                   }
-               }
 
-               foreach (DeviceModel model0 in DevicemaViewModel._deviceList)
-               {//市
-                   foreach (DeviceModel model1 in model0.Children)
-                   {//局
-                       foreach (DeviceModel model2 in model1.Children)
-                       {//单位
-                           foreach (DeviceModel model3 in model2.Children)
-                           {//IP
-                               if (model2.text == stationName && model3.text == ip)
-                               {
-                                   model0.isSel = true;
-                                   model1.isSel = true;
-                                   model2.isSel = true;
-                                   model3.isSel = true;
+               switch(callback)
+               {
+                   case "统计":
+                   case "查询":
+                        foreach (DeviceModel model0 in DevicemaViewModel._deviceList)
+                       {//市
+                           foreach (DeviceModel model1 in model0.Children)
+                           {//局
+                               foreach (DeviceModel model2 in model1.Children)
+                               {//单位
+                                   foreach (DeviceModel model3 in model2.Children)
+                                   {//IP
+                                       model0.isSel = false;
+                                       model1.isSel = false;
+                                       model2.isSel = false;
+                                       model3.isSel = false;
+                                   }
                                }
                            }
                        }
-                   }
+
+                       foreach (DeviceModel model0 in DevicemaViewModel._deviceList)
+                       {//市
+                           foreach (DeviceModel model1 in model0.Children)
+                           {//局
+                               foreach (DeviceModel model2 in model1.Children)
+                               {//单位
+                                   foreach (DeviceModel model3 in model2.Children)
+                                   {//IP
+                                       if (model2.text == stationName && model3.text == ip)
+                                       {
+                                           model0.isSel = true;
+                                           model1.isSel = true;
+                                           model2.isSel = true;
+                                           model3.isSel = true;
+                                       }
+                                   }
+                               }
+                           }
+                       }
+                       break;
+                   case "管理":
+                       {
+                           mainwindowviewmodel._DeviceManageViewModel._DevicemaViewModel.tableList.Clear();
+                           foreach(var model in mainwindowviewmodel._DeviceManageViewModel._DevicemaViewModel._tableListTemp)
+                           {
+                               if (model.Shiyongdanweibianhao == stationName && model.IP == ip)
+                               {
+                                   mainwindowviewmodel._DeviceManageViewModel._DevicemaViewModel.tableList.Add(model);
+                               }
+                           }
+                       }
+                       break;
                }
 
-               switch(callback)
+
+               switch (callback)
                {
                    case "统计":
                        mainwindowviewmodel.StatisticsSelected(null);
@@ -109,6 +129,7 @@ namespace ManageSystem.ViewModel
                        mainwindowviewmodel.QuerySelected(null);
                        break;
                    case "管理":
+                       mainwindowviewmodel._DeviceManageViewModel.bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Device;
                        mainwindowviewmodel.DeviceManageShow(null);
                        break;
                }
@@ -461,8 +482,8 @@ namespace ManageSystem.ViewModel
             _devicePosition                             = new ObservableCollection<string>();
             _businesstype                               = new ObservableCollection<string>();
 
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
-            //_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
+            ////_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
             _titleheight                                = 25;
             _leftWidth                                  = 60;
             _progressValue                              = 0;
@@ -483,20 +504,27 @@ namespace ManageSystem.ViewModel
             _queryStrs.Add("查询业务");
             _queryStrs.Add("预受理记录查询");
 
-            foreach (string key in ConfigurationManager.AppSettings)
-            {    //检索当前选中的分辨率
-                if (key == "ServerIP")
+            try
+            {
+                foreach (string key in ConfigurationManager.AppSettings)
                 {
-                    _IP = ConfigurationManager.AppSettings[key];
+                    if (key == "ServerIP")
+                    {
+                        IP = ConfigurationManager.AppSettings[key];
+                    }
+                    else if (key == "ServerPort")
+                    {
+                        port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
+                    }
+                    else if (key == "bDevice")
+                    {
+                        bDevice = Convert.ToBoolean(ConfigurationManager.AppSettings[key]);
+                    }
                 }
-                else if (key == "ServerPort") 
-                {
-                    _port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
-                }
-                else if (key == "bDevice")
-                {
-                    _bDevice = Convert.ToBoolean(ConfigurationManager.AppSettings[key]);
-                }
+            }
+            catch
+            {
+
             }
 
             var _timer                                  = new DispatcherTimer();
@@ -507,7 +535,11 @@ namespace ManageSystem.ViewModel
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            bOnline         = WorkServer.isClientStoped() == false;
+            try
+            {
+                bOnline         = WorkServer.isClientStoped() == false;
+            }
+            catch { }
         }
 
         public void QueryTableCallBack(string resultStr, string errorStr)
@@ -805,48 +837,11 @@ namespace ManageSystem.ViewModel
                                 (sender as BackgroundWorker).ReportProgress(progress);
                                 Thread.Sleep(100);
 
-
                                 Application.Current.Dispatcher.Invoke(
-                                new Action(() =>
-                                {
-                                    //_HomePageViewModel.DoLogon();
-                                }));
-                                progress        += 10;
-                                (sender as BackgroundWorker).ReportProgress(progress);
-                                Thread.Sleep(100);
-
-                                Application.Current.Dispatcher.Invoke(
-                                new Action(() =>
-                                {
-                                    //_DeviceManageViewModel._AbnormalViewModel.DoLogon();
-                                }));
-                                progress        += 10;
-                                (sender as BackgroundWorker).ReportProgress(progress);
-                                Thread.Sleep(100);
-
-                                Application.Current.Dispatcher.Invoke(
-                                new Action(() =>
-                                {
-                                    _SummaryStatViewModel.DoLogon();
-                                }));
-                                progress        += 10;
-                                (sender as BackgroundWorker).ReportProgress(progress);
-                                Thread.Sleep(100);
-
-                                Application.Current.Dispatcher.Invoke(
-                                new Action(() =>
-                                {
-                                    _SignStatViewModel.DoLogon();
-                                }));
-                                progress        += 10;
-                                (sender as BackgroundWorker).ReportProgress(progress);
-                                Thread.Sleep(100);
-
-                                Application.Current.Dispatcher.Invoke(
-                                new Action(() =>
-                                {
-                                    _SignAnomalyStatViewModel.DoLogon();
-                                }));
+                               new Action(() =>
+                               {
+                                   _DeviceManageViewModel._UpgradeViewModel.DoLogon();
+                               }));
                                 progress        += 10;
                                 (sender as BackgroundWorker).ReportProgress(progress);
                                 Thread.Sleep(100);
@@ -855,6 +850,30 @@ namespace ManageSystem.ViewModel
                                 new Action(() =>
                                 {
                                     _WebBrowserViewMode.DoLogon();
+                                }));
+                                progress        += 10;
+                                (sender as BackgroundWorker).ReportProgress(progress);
+                                Thread.Sleep(100);
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                }));
+                                progress        += 10;
+                                (sender as BackgroundWorker).ReportProgress(progress);
+                                Thread.Sleep(100);
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
+                                }));
+                                progress        += 10;
+                                (sender as BackgroundWorker).ReportProgress(progress);
+                                Thread.Sleep(100);
+
+                                Application.Current.Dispatcher.Invoke(
+                                new Action(() =>
+                                {
                                 }));
                                 progress        += 10;
                                 (sender as BackgroundWorker).ReportProgress(progress);
@@ -894,44 +913,59 @@ namespace ManageSystem.ViewModel
 
         public void Loaded(object obj)
         {
-            //WorkServer.startClient(IP, port, true);
-            //QueryYingshebiao(null);
-            //_DeviceManageViewModel._DevicemaViewModel.DoLogon();
-            //_DeviceManageViewModel._UserViewModel.DoLogon();
-            //_DeviceManageViewModel._AbnormalViewModel.DoLogon();
-            new Thread(() =>
-            {
-                 WorkServer.startClient(IP, port, true);
-                 Application.Current.Dispatcher.Invoke(
-                 new Action(() =>
-                 {
-                     QueryYingshebiao(null);
-                 }));
+            //new Thread(() =>
+            //{
+            //     WorkServer.startClient(IP, port, true);
 
-                 Application.Current.Dispatcher.Invoke(
-                new Action(() =>
-                {
-                    _DeviceManageViewModel._DevicemaViewModel.DoLogon();
-                }));
+            //     Application.Current.Dispatcher.Invoke(
+            //    new Action(() =>
+            //    {
+            //        _DeviceManageViewModel._UserViewModel.DoLogon();
+            //    }));
 
-                 Application.Current.Dispatcher.Invoke(
-                new Action(() =>
-                {
-                    _DeviceManageViewModel._UserViewModel.DoLogon();
-                }));
+            //     Application.Current.Dispatcher.Invoke(
+            //     new Action(() =>
+            //     {
+            //         QueryYingshebiao(null);
+            //     }));
 
-                 Application.Current.Dispatcher.Invoke(
-                new Action(() =>
-                {
-                    _DeviceManageViewModel._AbnormalViewModel.DoLogon();
-                }));
+            //     Application.Current.Dispatcher.Invoke(
+            //    new Action(() =>
+            //    {
+            //        _DeviceManageViewModel._DevicemaViewModel.DoLogon();
+            //    }));
 
-                 Application.Current.Dispatcher.Invoke(
-                 new Action(() =>
-                 {
-                     _WebBrowserViewMode.DoLogon();
-                 }));
-            }).Start();
+            //     Application.Current.Dispatcher.Invoke(
+            //    new Action(() =>
+            //    {
+            //        _DeviceManageViewModel._UpgradeViewModel.DoLogon();
+            //    }));
+
+            //     Application.Current.Dispatcher.Invoke(
+            //     new Action(() =>
+            //     {
+            //         _WebBrowserViewMode.DoLogon();
+            //     }));
+
+            //    // Application.Current.Dispatcher.Invoke(
+            //    //new Action(() =>
+            //    //{
+            //    //    _DeviceManageViewModel._NetViewModel.DoLogon();
+            //    //}));
+                 
+            //    // Application.Current.Dispatcher.Invoke(
+            //    //new Action(() =>
+            //    //{
+            //    //    _DeviceManageViewModel._AbnormalViewModel.DoLogon();
+            //    //}));
+
+            //     //Application.Current.Dispatcher.Invoke(
+            //     //new Action(() =>
+            //     //{
+            //     //    _DeviceManageViewModel._HardwareViewModel.DoLogon();
+            //     //}));
+
+            //}).Start();
 
 
             //_SummaryStatViewModel.DoLogon();
@@ -1098,7 +1132,7 @@ namespace ManageSystem.ViewModel
            if(args.ChangedButton == MouseButton.Left)
            {
                System.Windows.Point pp = Mouse.GetPosition(Application.Current.MainWindow);//WPF方法
-               if (pp.Y > 0 && pp.Y < titleheight)
+               if (pp.Y >= 0 && pp.Y < titleheight)
                {
                    MaxWnd(null);
                }

@@ -4,6 +4,7 @@
                     xmlns:viewModel="clr-namespace:ManageSystem.ViewModel"
                     xmlns:Model="clr-namespace:ManageSystem.Model"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+                    xmlns:ComboxAttachRes ="clr-namespace:ManageSystem.Resources.ComboxAttachRes"
                     >
     <HierarchicalDataTemplate DataType="{x:Type Model:DeviceModel}" ItemsSource="{Binding Path=Children}">
         <Border x:Name="itemGrid">
@@ -120,8 +121,259 @@
         </Button>
     </DataTemplate>
 
-    
-    <DataTemplate x:Key="DataGridColumCell0" DataType="{x:Type Model:ZHIQIANSHUJUModel}">
-        <TextBlock Background="Transparent" Text="{Binding}"/>
+    <DataTemplate x:Key="btndevice0_Template" DataType="{x:Type viewModel:DeviceManageViewModel}">
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=DevicemaCommand}" ToolTip="设备管理">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+                        <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+                        <TextBlock VerticalAlignment="Center">设备管理</TextBlock>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Device}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/汇总统计-选中.png"/>
+                            <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
     </DataTemplate>
+
+    <DataTemplate x:Key="btndevice1_Template" DataType="{x:Type viewModel:DeviceManageViewModel}">
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=UseCommand}" ToolTip="用户管理">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+                        <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+                        <TextBlock VerticalAlignment="Center">用户管理</TextBlock>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_User}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/汇总统计-选中.png"/>
+                            <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </DataTemplate>
+
+    <DataTemplate x:Key="btndevice2_Template" DataType="{x:Type viewModel:DeviceManageViewModel}">
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=NetCommand}" ToolTip="网络状态">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+                        <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+                        <TextBlock VerticalAlignment="Center">网络状态</TextBlock>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Net}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/汇总统计-选中.png"/>
+                            <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </DataTemplate>
+
+    <DataTemplate x:Key="btndevice3_Template" DataType="{x:Type viewModel:DeviceManageViewModel}">
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=UpgradeCommand}" ToolTip="软件信息">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+                        <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+                        <TextBlock VerticalAlignment="Center">软件信息</TextBlock>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Upgrade}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/汇总统计-选中.png"/>
+                            <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </DataTemplate>
+
+    <DataTemplate x:Key="btndevice4_Template" DataType="{x:Type viewModel:DeviceManageViewModel}">
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=AbnormalCommand}" ToolTip="故障查询">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+                        <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+                        <TextBlock VerticalAlignment="Center">故障查询</TextBlock>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Abnormal}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/汇总统计-选中.png"/>
+                            <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </DataTemplate>
+
+    <DataTemplate x:Key="btndevice5_Template" DataType="{x:Type viewModel:DeviceManageViewModel}">
+        <Button x:Name="btn" Grid.Row="0" BorderThickness="0" Margin="0,0,0,0" Command="{Binding Path=HardwareCommand}" ToolTip="硬件信息">
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+                        <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+                        <TextBlock VerticalAlignment="Center">硬件信息</TextBlock>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_Hardware}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/汇总统计-选中.png"/>
+                            <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+                        </DataTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </DataTemplate>
+
+    <ControlTemplate x:Key="btndevicemaAdd_Template" TargetType="{x:Type Button}">
+        <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+            <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+            <TextBlock VerticalAlignment="Center">添加</TextBlock>
+        </StackPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="btndevicemaDelete_Template" TargetType="{x:Type Button}">
+        <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+            <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+            <TextBlock VerticalAlignment="Center">删除</TextBlock>
+        </StackPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="btndevicemaModify_Template" TargetType="{x:Type Button}">
+        <Border x:Name="panel" BorderBrush="Red" BorderThickness="1" Background="White" CornerRadius="15,15,15,15">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" >修改</TextBlock>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="btnuserModify_Template" TargetType="{x:Type Button}">
+        <Border x:Name="panel" BorderBrush="Red" BorderThickness="1" Background="White" CornerRadius="15,15,15,15">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" >修改</TextBlock>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="btndevicemaSure_Template" TargetType="{x:Type Button}">
+        <Border x:Name="panel" BorderBrush="Red" BorderThickness="1" Background="White" CornerRadius="15,15,15,15">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" >确认</TextBlock>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="btndevicemaCancel_Template" TargetType="{x:Type Button}">
+        <Border x:Name="panel" BorderBrush="Gray" BorderThickness="1" Background="White" CornerRadius="15,15,15,15">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" >取消</TextBlock>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="btnupgradeversion_Template" TargetType="{x:Type Button}">
+        <Border x:Name="panel" BorderBrush="Red" BorderThickness="1" Background="White" CornerRadius="15,15,15,15">
+            <ComboBox Style="{StaticResource ComboBoxStyle2}" BorderBrush="Red"  Background="White"
+                          ComboxAttachRes:ComboxAttach.AttachUpdate="{Binding RelativeSource={RelativeSource Self}, Path=SelectedItem}"
+                          Text="{Binding Path=operateinfomodel.operatedisplayText}" 
+                          ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._UpgradeViewModel.ruanjianList}" DisplayMemberPath="Banbenhao">
+            </ComboBox>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="btndevicemaTestSpeed_Template" TargetType="{x:Type Button}">
+        <Border x:Name="panel" BorderBrush="Red" BorderThickness="1" Background="White" CornerRadius="15,15,15,15">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" >测试网速</TextBlock>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="btnupgradeUpgrade_Template" TargetType="{x:Type Button}">
+        <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+            <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+            <TextBlock VerticalAlignment="Center">升级</TextBlock>
+        </StackPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="btnupgradePower_Template" TargetType="{x:Type Button}">
+        <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+            <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+            <TextBlock VerticalAlignment="Center">强制更新</TextBlock>
+        </StackPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="btnupgradeExcel_Template" TargetType="{x:Type Button}">
+        <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+            <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+            <TextBlock VerticalAlignment="Center">导出到Excel</TextBlock>
+        </StackPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="btnupgradeTxt_Template" TargetType="{x:Type Button}">
+        <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+            <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+            <TextBlock VerticalAlignment="Center">导出到TXT</TextBlock>
+        </StackPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
 </ResourceDictionary>

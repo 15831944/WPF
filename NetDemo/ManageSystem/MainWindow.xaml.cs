@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WinInterop = System.Windows.Interop;  
-using System.Runtime.InteropServices;  
 
 namespace ManageSystem
 {

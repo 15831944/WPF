@@ -7,6 +7,20 @@ namespace ManageSystem.Model
 {
     public class GUANLIYUANModel : NotificationObject
     {
+        private bool _bSel = false;
+        public bool bSel
+        {
+            get
+            {
+                return _bSel;
+            }
+            set
+            {
+                _bSel = value;
+                this.RaisePropertyChanged("bSel");
+            }
+        }
+
         private int _Xuhao;
         public int Xuhao
         {
@@ -88,6 +102,20 @@ namespace ManageSystem.Model
             {
                 _Quanxianjibie = value;
                 this.RaisePropertyChanged("Quanxianjibie");
+            }
+        }
+
+        private OperateInfoModel _operateinfomodel = new OperateInfoModel();
+        public OperateInfoModel operateinfomodel
+        {
+            get
+            {
+                return _operateinfomodel;
+            }
+            set
+            {
+                _operateinfomodel = value;
+                this.RaisePropertyChanged("operateinfomodel");
             }
         }
     }

@@ -12,6 +12,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Threading;
+using ManageSystem.Resources.DataGridAttachRes;
 
 namespace ManageSystem.ViewModel.DeviceViewModel
 {
@@ -19,10 +20,16 @@ namespace ManageSystem.ViewModel.DeviceViewModel
     {
         public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
 
+        private ObservableCollection<SHEBEIYICHANGSHUJUModel> _tableListTemp = new ObservableCollection<SHEBEIYICHANGSHUJUModel>();
+
         public DelegateCommand<object> QueryCommand { get; set; }
         public DelegateCommand<object> ExportExcelCommand { get; set; }
         public DelegateCommand<object> ExportTXTCommand { get; set; }
 
+        public DelegateCommand<object> FirstPageCommand { get; set; }
+        public DelegateCommand<object> PrePageCommand { get; set; }
+        public DelegateCommand<object> NextPageCommand { get; set; }
+        public DelegateCommand<object> GotoPageCommand { get; set; }
 
         private ObservableCollection<SHEBEIYICHANGSHUJUModel> _tableList;
         public ObservableCollection<SHEBEIYICHANGSHUJUModel> tableList
@@ -52,16 +59,109 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             }
         }
 
+        private int _numofpage;
+        public int numofpage
+        {
+            get
+            {
+                return _numofpage;
+            }
+            set
+            {
+                _numofpage = value;
+                this.RaisePropertyChanged("numofpage");
+            }
+        }
 
+        private string _pagePercent;
+        public string pagePercent
+        {
+            get
+            {
+                return _pagePercent;
+            }
+            set
+            {
+                _pagePercent = value;
+                this.RaisePropertyChanged("pagePercent");
+            }
+        }
         public AbnormalViewModel()
         {
-            _querytablecallbackdelegate         = new QueryTableCallBackDelegate(QueryTableCallBack);
-            QueryCommand                        = new DelegateCommand<object>(Query);
-            ExportExcelCommand                  = new DelegateCommand<object>(ExportExcel);
-            ExportTXTCommand                    = new DelegateCommand<object>(ExportTXT);
+            _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
+            QueryCommand                                = new DelegateCommand<object>(Query);
+            ExportExcelCommand                          = new DelegateCommand<object>(ExportExcel);
+            ExportTXTCommand                            = new DelegateCommand<object>(ExportTXT);
 
-            _tableList                          = new ObservableCollection<SHEBEIYICHANGSHUJUModel>();
-            _customInfo                         = new SHEBEIYICHANGSHUJUModel();
+            FirstPageCommand                            = new DelegateCommand<object>(FirstPage);
+            PrePageCommand                              = new DelegateCommand<object>(PrePage);
+            NextPageCommand                             = new DelegateCommand<object>(NextPage);
+            GotoPageCommand                             = new DelegateCommand<object>(GotoPage);
+
+            _tableList                                  = new ObservableCollection<SHEBEIYICHANGSHUJUModel>();
+            _customInfo                                 = new SHEBEIYICHANGSHUJUModel();
+            _pagePercent                                = "0/0";
+        }
+
+        public void ShowPage(int pageindex)
+        {
+            App.Current.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                if (numofpage > 0)
+                {
+                    int count = _tableListTemp.Count;            //获取记录总数  
+                    int pageSize = 0;                       //pageSize表示总页数  
+                    if (count % numofpage == 0)
+                        pageSize = count / numofpage;
+                    else
+                        pageSize = count / numofpage + 1;
+
+                    if (pageindex < 1 || pageindex > pageSize)
+                        return;
+
+                    tableList = new ObservableCollection<SHEBEIYICHANGSHUJUModel>(_tableListTemp.Take(numofpage * pageindex).Skip(numofpage * (pageindex - 1)).ToList());   //刷选第currentSize页要显示的记录集  
+                    pagePercent = pageindex + "/" + pageSize;
+                }
+            }));
+        }
+
+        private void GotoPage(object obj)
+        {
+            try
+            {
+                int Number = Convert.ToInt32(obj);
+                ShowPage(Number);
+            }
+            catch { }
+        }
+
+        private void NextPage(object obj)
+        {
+            try
+            {
+                string[] str = pagePercent.Split('/');
+                ShowPage(Convert.ToInt32(str[0]) + 1);
+            }
+            catch { }
+        }
+
+        private void PrePage(object obj)
+        {
+            try
+            {
+                string[] str = pagePercent.Split('/');
+                ShowPage(Convert.ToInt32(str[0]) - 1);
+            }
+            catch { }
+        }
+
+        private void FirstPage(object obj)
+        {
+            try
+            {
+                ShowPage(1);
+            }
+            catch { }
         }
 
         private void ExportTXT(object obj)
@@ -90,7 +190,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
                         if (j == 0)
                         {
-                            writer.Write(FunctionServer._columnNameMap[item.Name] + "\t");
+                            writer.Write(DataGridAttach._columnNameMap[item.Name] + "\t");
                         }
                         else if (item.PropertyType.Name.StartsWith("Int32"))
                         {
@@ -160,7 +260,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
                             if (j == 0)
                             {
-                                arr[j, k] = FunctionServer._columnNameMap[item.Name];
+                                arr[j, k] = DataGridAttach._columnNameMap[item.Name];
                             }
                             else if (item.PropertyType.Name.StartsWith("Int32"))
                             {
@@ -305,20 +405,63 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                             }
                         }
                     }
-
-                    Application.Current.Dispatcher.BeginInvoke(
-                    new Action<object>((modeltemp) =>
-                    {
-                        tableList.Add(modeltemp as SHEBEIYICHANGSHUJUModel);
-                    }), model);
+                    _tableListTemp.Add(model as SHEBEIYICHANGSHUJUModel);
                 }
             }
+
+            Application.Current.Dispatcher.Invoke(
+            new Action(() =>
+            {
+                ShowPage(1);
+            }), null);
         }
 
         public void Query(object obj)
         {
             tableList.Clear();
-            WorkServer.QueryTable("select * from Shebeiyichangshuju", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+            WorkServer.QueryTable(MakeQuerySql(null), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
+        }
+
+        string MakeQuerySql(object obj)
+        {
+            string str = "select * from Shebeiyichangshuju where Xuhao>=-1";
+
+            foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+            {
+                if (kvp0.Value == customInfo.Chengshibianhao)
+                    str += " and Shebeiyichangshuju.[Chengshibianhao]=" + kvp0.Key.ToString();
+                if (kvp0.Value == customInfo.Jubianhao)
+                    str += " and Shebeiyichangshuju.[Jubianhao]=" + kvp0.Key.ToString();
+                if (kvp0.Value == customInfo.Shiyongdanweibianhao)
+                    str += " and Shebeiyichangshuju.[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+            }
+
+            if (!string.IsNullOrEmpty(customInfo.IP))
+                str += " and Shebeiyichangshuju.[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo.IP)));
+
+            //if (customInfo.Bendiyewu != null)
+            //    str += " and Shebeiyichangshuju.[Bendiyewu]=" + Convert.ToInt32((customInfo.Bendiyewu == true)?1:0);
+
+            if (!string.IsNullOrEmpty(customInfo.Shebeibaifangweizhi))
+                str += " and Shebeiyichangshuju.[Shebeibaifangweizhi]=" + customInfo.Shebeibaifangweizhi;
+
+            //if (!string.IsNullOrEmpty(customInfo.Riqi))
+            //    str += " and Shebeiyichangshuju.[Riqi]=" + Common.ConvertDateTimeInt(DateTime.Parse(customInfo.Riqi));                
+
+            if (!string.IsNullOrEmpty(customInfo.Yichangleixing))
+                str += " and Shebeiyichangshuju.[Yichangleixing]=" + customInfo.Yichangleixing;
+
+            if (!string.IsNullOrEmpty(customInfo.Yichangshejimokuai))
+                str += " and Shebeiyichangshuju.[Yichangshejimokuai]=" + customInfo.Yichangshejimokuai;
+
+            if (!string.IsNullOrEmpty(customInfo.Yichangyuanyin))
+                str += " and Shebeiyichangshuju.[Yichangyuanyin]=" + customInfo.Yichangyuanyin;
+
+            if (!string.IsNullOrEmpty(customInfo.Yichangxiangxineirong))
+                str += " and Shebeiyichangshuju.[Yichangxiangxineirong]=" + customInfo.Yichangxiangxineirong;
+
+
+            return str;
         }
 
         public void DoLogon()

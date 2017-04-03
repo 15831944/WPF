@@ -7,7 +7,7 @@
                     xmlns:Local="clr-namespace:ManageSystem"
                     xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
-                    xmlns:DataGridRes="clr-namespace:ManageSystem.Resources.DataGridRes"
+                    xmlns:DataGridAttachResA="clr-namespace:ManageSystem.Resources.DataGridAttachRes"
                     >
     <DataTemplate DataType="{x:Type viewModel:SignQueryViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
@@ -18,6 +18,7 @@
             <TreeView Grid.Column="0" Grid.IsSharedSizeScope="True" AlternationCount="2" 
                       MinHeight="100" VerticalContentAlignment="Center"
                       Background="#CFD6DC"
+                      VirtualizingStackPanel.IsVirtualizing="True"
                       ItemsSource="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel._DevicemaViewModel.deviceList}"
                       ItemContainerStyle="{DynamicResource TreeViewItemStyle1}">
 
@@ -114,7 +115,7 @@
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
-                                <ColumnDefinition/>
+                                <ColumnDefinition Width="1.5*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">制卡状态</TextBlock>
                             <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450" Text="{Binding Path=cardStatuText}"
@@ -149,19 +150,46 @@
                     <Grid.RowDefinitions>
                         <RowDefinition Height="50"/>
                         <RowDefinition/>
+                        <RowDefinition Height="20"/>
                     </Grid.RowDefinitions>
                     <TextBlock Margin="50,0,0,0" Foreground="Red" VerticalAlignment="Center" FontSize="25" Grid.Row="0" FontWeight="Bold">查询结果</TextBlock>
                     <DataGrid Grid.Row="1"
-                              DataGridRes:DataGridAttach.GeneratColumnObj="{Binding}"
-                              BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
+                              DataGridAttachResA:DataGridAttach.GeneratColumnObj="{Binding}"
+                              DataGridAttachResA:DataGridAttach.GridBeginEditFunc="{Binding}"
+                              DataGridAttachResA:DataGridAttach.NumOfPage="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
+                              
+                              BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                               CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 
-                              AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True"
+                              AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="False" SelectionMode="Extended"
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
                               ItemsSource="{Binding Path=tableList}"
                               >
+                        <DataGrid.CellStyle>
+                            <Style TargetType="DataGridCell">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="LightBlue"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.CellStyle>
                     </DataGrid>
+                    <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                        <Button Command="{Binding Path=FirstPageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="首页"></Button>
+                        <Button Command="{Binding Path=PrePageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="上一页" />
+                        <TextBlock x:Name="percent" Margin="0,0,10,0" VerticalAlignment="Center" Text="{Binding Path=pagePercent}" />
+                        <Button Command="{Binding Path=NextPageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="下一页" />
+                        <TextBox Width="50" Text="0" >
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Return" Command="{Binding GotoPageCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=Text}"/>
+                            </TextBox.InputBindings>
+                        </TextBox>
+                        <TextBlock  Margin="0,0,50,0" Text="页"/>
+                    </StackPanel>
                 </Grid>
             </Grid>
         </Grid>

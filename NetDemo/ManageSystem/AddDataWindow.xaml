@@ -4,7 +4,7 @@
         Title="AddDataWindow" Height="720" Width="1280" 
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         DataContext="{StaticResource AddWndViewModelKey}" Visibility="{Binding Path=visible}"
-        xmlns:DataGridRes="clr-namespace:ManageSystem.Resources.DataGridRes"
+        xmlns:DataGridAttachResA="clr-namespace:ManageSystem.Resources.DataGridAttachRes"
         >
     <Grid Background="Gray">
         <Grid.RowDefinitions>
@@ -52,7 +52,7 @@
         </StackPanel>
         <Grid Grid.Row="2">
             <DataGrid         x:Name="grid"
-                              DataGridRes:DataGridAttach.GeneratColumnObj="{Binding}"
+                              DataGridAttachResA:DataGridAttach.GeneratColumnObj="{Binding}"
                               BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"

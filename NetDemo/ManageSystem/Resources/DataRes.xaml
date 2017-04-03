@@ -5,10 +5,10 @@
                     xmlns:deviceViewModel="clr-namespace:ManageSystem.ViewModel.DeviceViewModel"
                     xmlns:Local="clr-namespace:ManageSystem"
                     >
-    <deviceViewModel:DataGridSelectConvert x:Key="DataGridSelectConvert"/>
-
     <viewModel:MainWindowViewModel x:Key="MainWindowViewModelKey"/>
     <viewModel:AddWndViewModel x:Key="AddWndViewModelKey"/>
+    <deviceViewModel:DataGridSelectConvert x:Key="DataGridSelectConvert"/>
+
     <!--<ObjectDataProvider x:Key="DATA_ButtonKey" ObjectType="{x:Type local:SerialUIDataFactory}" MethodName="GetButtonSeiralTreeData"/>-->
 
     <LinearGradientBrush x:Key="DataGridHeaderBorderBackground" EndPoint="0,1" StartPoint="0,0">

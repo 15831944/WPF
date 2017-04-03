@@ -50,6 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Expression.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
@@ -88,13 +89,16 @@
     <Compile Include="Model\GUANLIYUANModel.cs" />
     <Compile Include="Model\JIAOKUANSHUJUModel.cs" />
     <Compile Include="Model\QIANZHUSHUJUModel.cs" />
+    <Compile Include="Model\RUANJIANBAOModel.cs" />
     <Compile Include="Model\SHEBEIGUANLIModel.cs" />
     <Compile Include="Model\SHEBEIYICHANGSHUJUModel.cs" />
     <Compile Include="Model\SHEBEIZHUANGTAIModel.cs" />
     <Compile Include="Model\YINGSHEBIAOModel.cs" />
     <Compile Include="Model\YUSHOULISHUJUModel.cs" />
     <Compile Include="Model\ZHIQIANSHUJUModel.cs" />
-    <Compile Include="Resources\DataGridRes\DataGridAttach.cs" />
+    <Compile Include="Resources\AnimationAttachRes\GridLengthAnimation.cs" />
+    <Compile Include="Resources\ComboxAttachRes\ComboxAttach.cs" />
+    <Compile Include="Resources\DataGridAttachRes\DataGridAttach.cs" />
     <Compile Include="Resources\DateTimer\ButtonSpinner.cs" />
     <Compile Include="Resources\DateTimer\DateTimeFormat.cs" />
     <Compile Include="Resources\DateTimer\DateTimeInfo.cs" />
@@ -118,7 +122,7 @@
     <Compile Include="Resources\DateTimer\WatermarkTextBox.cs" />
     <Compile Include="Model\SHOUZHENGSHUJUModel.cs" />
     <Compile Include="Resources\PasswordBox\PasswordBoxWaterMark.cs" />
-    <Compile Include="Resources\WebBroser\WebBrowserAttach.cs" />
+    <Compile Include="Resources\WebBrowserAttach.cs" />
     <Compile Include="Server\FunctionServer.cs" />
     <Compile Include="Server\HistogramServer.cs" />
     <Compile Include="Server\LineChartServer.cs" />
@@ -310,6 +314,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Resources\WebBroserAttachRes\" />
     <Folder Include="View\" />
   </ItemGroup>
   <ItemGroup>

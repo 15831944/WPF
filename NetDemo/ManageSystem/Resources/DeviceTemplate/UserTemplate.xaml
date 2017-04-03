@@ -6,80 +6,248 @@
                     xmlns:Model="clr-namespace:ManageSystem.Model"
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
-                    xmlns:DataGridRes="clr-namespace:ManageSystem.Resources.DataGridRes"
+                    xmlns:DataGridAttachResA="clr-namespace:ManageSystem.Resources.DataGridAttachRes"
+                    xmlns:Animation="clr-namespace:ManageSystem.Resources.AnimationAttachRes"
                     >
     <DataTemplate DataType="{x:Type deviceViewModel:UserViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
-                <RowDefinition />
+                <RowDefinition Height="80" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" FontSize="25">用户管理</TextBlock>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="2*"/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="1">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition Width="150"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBlock  Margin="0,0,5,5" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right">管理员:</TextBlock>
-                        <TextBlock  Margin="0,5,5,5" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right">管理权限:</TextBlock>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Margin="5,0,0,0" Height="50" VerticalAlignment="Center" Foreground="Red" FontSize="25">用户管理</TextBlock>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Margin="10,0,10,0" VerticalAlignment="Center" Template="{StaticResource btndevicemaAdd_Template}" Command="{Binding Path=AddCommand}"
+                                DataGridAttachResA:DataGridAttach.AttachGridAnimation="{Binding ElementName=rightgrid}"/>
+                    <Button Margin="10,0,10,0" VerticalAlignment="Center" Template="{StaticResource btndevicemaDelete_Template}" Command="{Binding Path=DeleteCommand}" />
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="1" Background="#34343E">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">用户名</TextBlock>
+                        <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Yonghuming}"></TextBox>
                     </Grid>
-                    <Grid Grid.Column="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
-                        <TextBox Margin="0,0,0,5" Grid.Row="0" VerticalAlignment="Bottom" Text="{Binding Path=customInfo.Yonghuming}">
-                        </TextBox>
-                        <TextBox Margin="0,0,0,5" Grid.Row="1" VerticalAlignment="Top" Text="{Binding Path=customInfo.Quanxianjibie}">
-                        </TextBox>
-                        <StackPanel Grid.Row="2" Orientation="Horizontal">
-                            <Button Margin="20,0,0,0" Grid.Column="2" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Left" Command="{Binding Path=AddCommand}">增加</Button>
-                            <Button Margin="20,0,0,0" Grid.Column="2" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Left" Command="{Binding Path=ModifyCommand}">修改</Button>
-                        </StackPanel>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">权限级别</TextBlock>
+                        <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Quanxianjibie}"></TextBox>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">密码</TextBlock>
+                        <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Mima}"></TextBox>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="2" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">有效期始</TextBlock>
+                        <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Youxiaoqikaishi}"></TextBox>
                     </Grid>
 
                 </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">有效期止</TextBlock>
+                        <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Youxiaoqijieshu}"></TextBox>
+
+                    </Grid>
+
+                </Grid>
+                <Grid Grid.Column="4">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                </Grid>
+                <Button Grid.Column="5" Style="{StaticResource Style_QueryBtn}" Width="50" Background="Red" Command="{Binding Path=QueryCommand}" CommandParameter="{Binding Source={StaticResource MainWindowViewModelKey}}" Height="50">查询</Button>
             </Grid>
-            <DataGrid Grid.Row="2"
-                              DataGridRes:DataGridAttach.GeneratColumnObj="{Binding}"
-                              BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition />
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="0" x:Name="rightgrid"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid Grid.Row="1" Grid.Column="0"
+                              DataGridAttachResA:DataGridAttach.GeneratColumnObj="{Binding}"
+                              DataGridAttachResA:DataGridAttach.GridBeginEditFunc="{Binding}"
+                              DataGridAttachResA:DataGridAttach.NumOfPage="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}"
+                              DataGridAttachResA:DataGridAttach.OperateCellStyle="{StaticResource OperateCellStyle}"
+                              
+                              BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                               CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 
-                              AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="True" SelectionMode="Single"
+                              AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="False" SelectionMode="Extended"
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
-                              SelectedValuePath="Xuhao" SelectedValue="{Binding Path=customInfo.Xuhao, Mode=TwoWay}"
+                              SelectedValue="{Binding Path=customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
                               ItemsSource="{Binding Path=tableList}"
                               >
-                <DataGrid.CellStyle>
-                    <Style TargetType="DataGridCell">
-                        <Setter Property="BorderThickness" Value="0"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="LightBlue"/>
-                                <Setter Property="Foreground" Value="White"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </DataGrid.CellStyle>
-            </DataGrid>
+                    <DataGrid.RowStyle>
+                        <Style  TargetType="{x:Type DataGridRow}">
+                            <Setter Property="IsSelected" Value="{Binding Path=bSel}"/>
+                        </Style>
+                    </DataGrid.RowStyle>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="BorderThickness" Value="0"/>
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="LightBlue"/>
+                                    <Setter Property="Foreground" Value="White"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
+                </DataGrid>
+                <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Command="{Binding Path=FirstPageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="首页"></Button>
+                    <Button Command="{Binding Path=PrePageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="上一页" />
+                    <TextBlock x:Name="percent" Margin="0,0,10,0" VerticalAlignment="Center" Text="{Binding Path=pagePercent}" />
+                    <Button Command="{Binding Path=NextPageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="下一页" />
+                    <TextBox Width="50" Text="0" >
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Return" Command="{Binding GotoPageCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=TextBox}, Path=Text}"/>
+                        </TextBox.InputBindings>
+                    </TextBox>
+                    <TextBlock  Margin="0,0,50,0" Text="页"/>
+                </StackPanel>
+                <Grid Grid.RowSpan="3" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" x:Name="rightheader" Height="50" VerticalAlignment="Center" Foreground="Red" FontSize="25"></TextBlock>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.4*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">用户名</TextBlock>
+                        <TextBox Grid.Row="0" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Yonghuming}"></TextBox>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">密码</TextBlock>
+                        <TextBox Grid.Row="1" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Mima}"></TextBox>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">有效期起始</TextBlock>
+                        <Toolkit:DateTimePicker Grid.Row="2" Grid.Column="1"  Margin="5,0,10,0"
+                                 VerticalAlignment="Center"
+                                 IsReadOnly="False"
+                                 Text="{Binding Path=customInfo1.Youxiaoqikaishi}"
+                                 Format="Custom"
+                                 FormatString="yyyy-MM-dd HH:mm:ss"
+                                 TimeFormat="Custom"
+                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
+                                 />
+                        
+                        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">有效期截止</TextBlock>
+                        <Toolkit:DateTimePicker Grid.Row="3" Grid.Column="1"  Margin="5,0,10,0"
+                                 VerticalAlignment="Center"
+                                 IsReadOnly="False"
+                                 Text="{Binding Path=customInfo1.Youxiaoqijieshu}"
+                                 Format="Custom"
+                                 FormatString="yyyy-MM-dd HH:mm:ss"
+                                 TimeFormat="Custom"
+                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
+                                 />
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Right">权限级别</TextBlock>
+                        <TextBox Grid.Row="4" Grid.Column="1" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=customInfo1.Quanxianjibie}"></TextBox>
+                    </Grid>
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Margin="0,0,5,0" Width="80" Height="30" VerticalAlignment="Center" Template="{StaticResource btndevicemaSure_Template}" Command="{Binding Path=OperateCommand}">确认</Button>
+                        <Button Margin="0,0,5,0" Width="80" Height="30" VerticalAlignment="Center" Template="{StaticResource btndevicemaCancel_Template}">取消
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <Animation:GridLengthAnimation  Duration="0:0:0.5" 
+                                                                            AutoReverse="False"
+                                                                            Storyboard.TargetName="rightgrid" 
+                                                                            Storyboard.TargetProperty="Width"
+                                                                            From="{Binding ElementName=rightgrid, Path=Width}"
+                                                                            To="0.0"
+                                                                           />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
         </Grid>
         <DataTemplate.Triggers>
+            <DataTrigger Binding="{Binding Path=operateenum}" Value="{x:Static deviceViewModel:OperateEnum.OperateEnum_Add}">
+                <Setter Property="Text" TargetName="rightheader" Value="增加用户"/>
+            </DataTrigger>
+            <DataTrigger Binding="{Binding Path=operateenum}" Value="{x:Static deviceViewModel:OperateEnum.OperateEnum_Modify}">
+                <Setter Property="Text" TargetName="rightheader" Value="修改用户信息"/>
+            </DataTrigger>
             <DataTrigger Binding="{Binding Source={StaticResource MainWindowViewModelKey}, Path=_DeviceManageViewModel.bShowPage}" Value="{x:Static viewModel:DeviceVisibleEnum.DeviceVisibleEnum_User}">
                 <Setter Property="Visibility" TargetName="showhideCtrl" Value="Visible"/>
             </DataTrigger>

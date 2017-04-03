@@ -12,6 +12,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Threading;
 using System.Xml;
 using ExcutesqlCallBackDelegate = ManageSystem.Server.AddTableCallBackDelegate;
 
@@ -43,19 +44,71 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         }
         #endregion
     }
-
+    public enum OperateEnum
+    {
+        OperateEnum_Add,
+        OperateEnum_Modify,
+    }
    public  class DevicemaViewModel : NotificationObject
     {
         public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
         public AddTableCallBackDelegate     _addtablecallbackdelegate = null;
         public ExcutesqlCallBackDelegate    _excutesqlCallBackDelegate = null;
 
-        private ObservableCollection<SHEBEIGUANLIModel> _tableListTemp = new ObservableCollection<SHEBEIGUANLIModel>();
+        public ObservableCollection<SHEBEIGUANLIModel> _tableListTemp = new ObservableCollection<SHEBEIGUANLIModel>();
 
         public DelegateCommand<object> AddCommand { get; set; }
-        public DelegateCommand<object> DeleteCommand { get; set; }
         public DelegateCommand<object> ModifyCommand { get; set; }
+        public DelegateCommand<object> OperateCommand { get; set; }
+
+        public DelegateCommand<object> DeleteCommand { get; set; }
         public DelegateCommand<object> QueryCommand { get; set; }
+        public DelegateCommand<object> FirstPageCommand { get; set; }
+        public DelegateCommand<object> PrePageCommand { get; set; }
+        public DelegateCommand<object> NextPageCommand { get; set; }
+        public DelegateCommand<object> GotoPageCommand { get; set; }
+
+        private int _numofpage;
+        public int numofpage
+        {
+            get
+            {
+                return _numofpage;
+            }
+            set
+            {
+                _numofpage = value;
+                this.RaisePropertyChanged("numofpage");
+            }
+        }
+
+        private string _pagePercent;
+        public string pagePercent
+        {
+            get
+            {
+                return _pagePercent;
+            }
+            set
+            {
+                _pagePercent = value;
+                this.RaisePropertyChanged("pagePercent");
+            }
+        }
+
+        private OperateEnum _operateenum;
+        public OperateEnum operateenum
+        {
+            get
+            {
+                return _operateenum;
+            }
+            set
+            {
+                _operateenum = value;
+                this.RaisePropertyChanged("operateenum");
+            }
+        }
 
         public static ObservableCollection<DeviceModel> _deviceList;
         public ObservableCollection<DeviceModel> deviceList
@@ -93,6 +146,20 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             {
                 _customInfo = value;
                 this.RaisePropertyChanged("customInfo");
+            }
+        }
+
+        private SHEBEIGUANLIModel _customInfo1;
+        public SHEBEIGUANLIModel customInfo1
+        {
+            get
+            {
+                return _customInfo1;
+            }
+            set
+            {
+                _customInfo1 = value;
+                this.RaisePropertyChanged("customInfo1");
             }
         }
 
@@ -138,15 +205,25 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             }
         }
 
+
+
         public DevicemaViewModel()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
             _addtablecallbackdelegate                   = new AddTableCallBackDelegate(AddTableCallBack);
             _excutesqlCallBackDelegate                  = new ExcutesqlCallBackDelegate(ExcutesqlCallBack);
              AddCommand                                 = new DelegateCommand<object>(Add);
-             DeleteCommand                              = new DelegateCommand<object>(Delete);
              ModifyCommand                              = new DelegateCommand<object>(Modify);
+             OperateCommand                             = new DelegateCommand<object>(Operate);
+             DeleteCommand                              = new DelegateCommand<object>(Delete);
             QueryCommand                                = new DelegateCommand<object>(QueryShebeiguanli);
+
+            FirstPageCommand                            = new DelegateCommand<object>(FirstPage);
+            PrePageCommand                              = new DelegateCommand<object>(PrePage);
+            NextPageCommand                             = new DelegateCommand<object>(NextPage);
+            GotoPageCommand                             = new DelegateCommand<object>(GotoPage);
+
+
 
             _deviceList                                 = new ObservableCollection<DeviceModel>();
             _city                                       = new ObservableCollection<string>();
@@ -154,6 +231,70 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             _danwei                                     = new ObservableCollection<string>();
             _tableList                                  = new ObservableCollection<SHEBEIGUANLIModel>();
             _customInfo                                 = new SHEBEIGUANLIModel();
+            _customInfo1                                = new SHEBEIGUANLIModel();
+            _pagePercent                                = "0/0";
+
+        }
+ 
+        public void ShowPage(int pageindex)
+        {
+            App.Current.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                if (numofpage > 0)
+                {
+                    int count = _tableListTemp.Count;            //获取记录总数  
+                    int pageSize = 0;                       //pageSize表示总页数  
+                    if (count % numofpage == 0)
+                        pageSize = count / numofpage;
+                    else
+                        pageSize = count / numofpage + 1;
+
+                    if (pageindex < 1 || pageindex > pageSize)
+                        return;
+
+                    tableList = new ObservableCollection<SHEBEIGUANLIModel>(_tableListTemp.Take(numofpage * pageindex).Skip(numofpage * (pageindex - 1)).ToList());   //刷选第currentSize页要显示的记录集  
+                    pagePercent = pageindex + "/" + pageSize;
+                }
+            }));
+        }  
+
+        private void GotoPage(object obj)
+        {
+            try
+            {
+                int Number = Convert.ToInt32(obj);
+                ShowPage(Number);
+            }
+            catch { }
+        }
+
+        private void NextPage(object obj)
+        {
+            try
+            {
+                string[] str = pagePercent.Split('/');
+                ShowPage(Convert.ToInt32(str[0]) + 1);
+            }
+            catch { }
+        }
+
+        private void PrePage(object obj)
+        {
+            try
+            {
+                string[] str = pagePercent.Split('/');
+                ShowPage(Convert.ToInt32(str[0]) - 1);
+            }
+            catch { }
+        }
+
+        private void FirstPage(object obj)
+        {
+            try
+            {
+                ShowPage(1);
+            }
+            catch { }
         }
 
         private void ExcutesqlCallBack(string errorStr)
@@ -174,152 +315,211 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
         private void Add(object obj)
         {
-            string tableName    = "Shebeiguanli";
-            int     addCount    = 1;
-            Random ran          = new Random();
-            Type type           = typeof(SHEBEIGUANLIModel);
-
-            if (type != null)
-            {
-                System.Reflection.PropertyInfo[] properties = type.GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
-
-                DateTime time = DateTime.Now;
-                string addXml = "";
-                for (int i = 0; i < addCount; ++i)
-                {
-                    foreach (System.Reflection.PropertyInfo item in properties)
-                    {
-                        if (item.PropertyType.Name.StartsWith("Int32"))
-                        {
-                            addXml += item.Name;
-                            addXml += ":";
-                            switch (item.Name)
-                            {
-                                case "Xuhao":
-                                    addXml += "0";
-                                    break;
-                                default:
-                                    addXml += ran.Next().ToString();
-                                    break;
-                            }
-                        }
-                        else if (item.PropertyType.Name.StartsWith("Int64"))
-                        {
-                            addXml += item.Name;
-                            addXml += ":";
-                            addXml += ran.Next().ToString();
-                        }
-                        else if (item.PropertyType.Name.StartsWith("Single"))
-                        {
-                            addXml += item.Name;
-                            addXml += ":";
-                            addXml += ran.Next().ToString();
-                        }
-                        else if (item.PropertyType.Name.StartsWith("String"))
-                        {
-                            addXml += item.Name;
-                            addXml += ":";
-
-                            switch (item.Name)
-                            {
-                                case "Chengshibianhao":
-                                case "Jubianhao":
-                                case "Shiyongdanweibianhao":
-                                    {
-                                        string temp = (string)item.GetValue(customInfo, null);
-                                        foreach (KeyValuePair<int, string> kvp in MainWindowViewModel._yingshelList)
-                                        {
-                                            if (kvp.Value == temp)
-                                                addXml += kvp.Key;
-                                        }
-                                    }
-                                    break;
-                                case "Chuangjianshijian":
-                                    addXml += Common.ConvertDateTimeInt(DateTime.Now);
-                                    break;
-                                default:
-                                    addXml += item.GetValue(customInfo, null);
-                                    break;
-                            }
-                        }
-                        else if (item.PropertyType.Name.StartsWith("Boolean"))
-                        {
-                            addXml += item.Name;
-                            addXml += ":";
-                            addXml += (i%2 == 0) ? "0" : "1";
-                        }
-                        else
-                        {
-                            ;
-                        }
-                        addXml += ",";
-                    }
-                    addXml += ";";
-                }
-
-                if (tableName != null && tableName.Length != 0)
-                {
-                    customInfo.Xuhao = -1;
-                    WorkServer.addTable(tableName, addXml, Marshal.GetFunctionPointerForDelegate(_addtablecallbackdelegate), true);
-                    QueryShebeiguanli(null);
-                }
-            }
+           operateenum = OperateEnum.OperateEnum_Add;
         }
 
         private void Modify(object obj)
         {
-            string sqlStr = "update shebeiguanli set ";
+            operateenum = OperateEnum.OperateEnum_Modify;
+        }
 
-            int begin = 0;
-            foreach (KeyValuePair<int, string> kvp in MainWindowViewModel._yingshelList)
+        private void Operate(object obj)
+        {
+            switch (operateenum)
             {
-                if (kvp.Value == customInfo.Chengshibianhao)
-                    sqlStr  += "Chengshibianhao='" + kvp.Key + "'";
-            }
+                case OperateEnum.OperateEnum_Add:
+                    {
+                        string tableName    = "Shebeiguanli";
+                        int     addCount    = 1;
+                        Random ran          = new Random();
+                        Type type           = typeof(SHEBEIGUANLIModel);
+
+                        if (type != null)
+                        {
+                            System.Reflection.PropertyInfo[] properties = type.GetProperties(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public);
+
+                            DateTime time = DateTime.Now;
+                            string addXml = "";
+                            for (int i = 0; i < addCount; ++i)
+                            {
+                                foreach (System.Reflection.PropertyInfo item in properties)
+                                {
+                                    if (item.PropertyType.Name.StartsWith("Int32"))
+                                    {
+                                        addXml += item.Name;
+                                        addXml += ":";
+                                        switch (item.Name)
+                                        {
+                                            case "Xuhao":
+                                                addXml += "0";
+                                                break;
+                                            default:
+                                                addXml += item.GetValue(customInfo1, null);
+                                                break;
+                                        }
+                                    }
+                                    else if (item.PropertyType.Name.StartsWith("Int64"))
+                                    {
+                                        addXml += item.Name;
+                                        addXml += ":";
+                                        addXml += item.GetValue(customInfo1, null);
+                                    }
+                                    else if (item.PropertyType.Name.StartsWith("Single"))
+                                    {
+                                        addXml += item.Name;
+                                        addXml += ":";
+                                        addXml += item.GetValue(customInfo1, null);
+                                    }
+                                    else if (item.PropertyType.Name.StartsWith("String"))
+                                    {
+                                        addXml += item.Name;
+                                        addXml += ":";
+
+                                        switch (item.Name)
+                                        {
+                                            case "Chengshibianhao":
+                                            case "Jubianhao":
+                                            case "Shiyongdanweibianhao":
+                                                {
+                                                    string temp = (string)item.GetValue(customInfo1, null);
+                                                    foreach (KeyValuePair<int, string> kvp in MainWindowViewModel._yingshelList)
+                                                    {
+                                                        if (kvp.Value == temp)
+                                                            addXml += kvp.Key;
+                                                    }
+                                                }
+                                                break;
+                                            case "IP":
+                                                {
+                                                    string temp = (string)item.GetValue(customInfo1, null);
+                                                    IPAddress addr;
+                                                    if (customInfo1.IP != null && customInfo1.IP.Length != 0 && IPAddress.TryParse(temp, out addr))
+                                                        addXml += Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(temp)));
+                                                }
+                                                break;
+                                            case "Chuangjianshijian":
+                                                addXml += Common.ConvertDateTimeInt(DateTime.Now);
+                                                break;
+                                            default:
+                                                addXml += item.GetValue(customInfo1, null);
+                                                break;
+                                        }
+                                    }
+                                    else if (item.PropertyType.Name.StartsWith("Boolean"))
+                                    {
+                                        addXml += item.Name;
+                                        addXml += ":";
+                                        addXml += (i%2 == 0) ? "0" : "1";
+                                    }
+                                    else
+                                    {
+                                        ;
+                                    }
+                                    addXml += ",";
+                                }
+                                addXml += ";";
+                            }
+
+                            if (tableName != null && tableName.Length != 0)
+                            {
+                                customInfo1.Xuhao = -1;
+                                WorkServer.addTable(tableName, addXml, Marshal.GetFunctionPointerForDelegate(_addtablecallbackdelegate), true);
+                                QueryShebeiguanli(null);
+                            }
+                        }
+                    }
+                    break;
+                case OperateEnum.OperateEnum_Modify:
+                    {
+                        string sqlStr = "update shebeiguanli set ";
+
+                        int begin = 0;
+                        foreach (KeyValuePair<int, string> kvp in MainWindowViewModel._yingshelList)
+                        {
+                            if (kvp.Value == customInfo1.Chengshibianhao)
+                                sqlStr  += "Chengshibianhao='" + kvp.Key + "'";
+                        }
+
+                        foreach (KeyValuePair<int, string> kvp in MainWindowViewModel._yingshelList)
+                        {
+                            if (kvp.Value == customInfo1.Jubianhao)
+                                sqlStr  += ",Jubianhao='" + kvp.Key + "'";
+                            else if (kvp.Value == customInfo1.Shiyongdanweibianhao)
+                                sqlStr  += ",Shiyongdanweibianhao='" + kvp.Key + "'";
+                        }
 
 
-            foreach (KeyValuePair<int, string> kvp in MainWindowViewModel._yingshelList)
-            {
-                if (kvp.Value == customInfo.Jubianhao)
-                    sqlStr  += ",Jubianhao='" + kvp.Key + "'";
-                else if (kvp.Value == customInfo.Shiyongdanweibianhao)
-                    sqlStr  += ",Shiyongdanweibianhao='" + kvp.Key + "'";
-            }
+                        IPAddress addr;
+                        if (!string.IsNullOrEmpty(customInfo1.IP) && IPAddress.TryParse(customInfo1.IP, out addr))
+                            sqlStr  += ",IP='" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo1.IP))) + "'";
 
-            IPAddress addr;
-            if(customInfo.IP != null && customInfo.IP.Length != 0 && IPAddress.TryParse(customInfo.IP, out addr))
-                sqlStr  += ",IP='" + customInfo.IP + "'";
+                        if (!string.IsNullOrEmpty(customInfo1.Shebeichangjia))
+                            sqlStr  += ",Shebeichangjia='" + customInfo1.Shebeichangjia + "'";
 
-            if (customInfo.Shebeichangjia != null && customInfo.Shebeichangjia.Length != 0)
-                sqlStr  += ",Shebeichangjia='" + customInfo.Shebeichangjia + "'";
+                        if (!string.IsNullOrEmpty(customInfo1.Shebeimingcheng))
+                            sqlStr  += ",Shebeimingcheng='" + customInfo1.Shebeimingcheng + "'";
 
-            if (customInfo.Shebeimingcheng != null && customInfo.Shebeimingcheng.Length != 0)
-                sqlStr  += ",Shebeimingcheng='" + customInfo.Shebeimingcheng + "'";
+                        if (!string.IsNullOrEmpty(customInfo1.Shebeileixing))
+                            sqlStr  += ",Shebeileixing='" + customInfo1.Shebeileixing + "'";
 
-            if (customInfo.Shebeileixing != null && customInfo.Shebeileixing.Length != 0)
-                sqlStr  += ",Shebeileixing='" + customInfo.Shebeileixing + "'";
+                        if (!string.IsNullOrEmpty(customInfo1.Jingdu))
+                            sqlStr  += ",Jingdu='" + customInfo1.Jingdu + "'";
 
-            if (customInfo.Jingdu != null && customInfo.Jingdu.Length != 0)
-                sqlStr  += ",Jingdu='" + customInfo.Jingdu + "'";
+                        if (!string.IsNullOrEmpty(customInfo1.Weidu))
+                            sqlStr  += ",Weidu='" + customInfo1.Weidu + "'";
 
-            if (customInfo.Weidu != null && customInfo.Weidu.Length != 0)
-                sqlStr  += ",Weidu='" + customInfo.Weidu + "'";
+                        if (!string.IsNullOrEmpty(customInfo1.Ruanjianxinxi))
+                            sqlStr  += ",Ruanjianxinxi='" + customInfo1.Ruanjianxinxi + "'";
 
-            sqlStr += " where shebeiguanli.[Xuhao]=" + customInfo.Xuhao;
-            if(customInfo.Xuhao >= 0)
-            {
-                customInfo.Xuhao = -1;
-                WorkServer.excuteSql(sqlStr, Marshal.GetFunctionPointerForDelegate(_excutesqlCallBackDelegate), true);
-                QueryShebeiguanli(null);
+                        if (!string.IsNullOrEmpty(customInfo1.Yingjianxinxi))
+                            sqlStr  += ",Yingjianxinxi='" + customInfo1.Yingjianxinxi + "'";
+
+                        sqlStr += " where ";
+                        int index = 0;
+                        foreach (var item in tableList)
+                        {
+                            if (item.bSel)
+                            {
+                                if (index == 0)
+                                    sqlStr += " Shebeiguanli.[Xuhao]=" + item.Xuhao;
+                                else
+                                    sqlStr += " or Shebeiguanli.[Xuhao]=" + item.Xuhao;
+
+                                index++;
+                            }
+                        }
+
+                        if (index >= 0)
+                        {
+                            WorkServer.excuteSql(sqlStr, Marshal.GetFunctionPointerForDelegate(_excutesqlCallBackDelegate), true);
+                            QueryShebeiguanli(null);
+                        }
+                    }
+                    break;
             }
         }
 
         private void Delete(object obj)
         {
-            string sqlStr = "delete from shebeiguanli where shebeiguanli.[Xuhao]=" + customInfo.Xuhao;
-            if (customInfo.Xuhao >= 0)
+            string sqlStr = "delete from shebeiguanli where ";
+
+            int index = 0;
+            foreach(var item in tableList)
             {
-                customInfo.Xuhao = -1;
+                if(item.bSel)
+                {
+                    if(index == 0)
+                        sqlStr += " Shebeiguanli.[Xuhao]=" + item.Xuhao;
+                    else
+                        sqlStr += " or Shebeiguanli.[Xuhao]=" + item.Xuhao;
+
+                    index++;
+                }
+            }
+
+
+            if (index > 0)
+            {
                 WorkServer.excuteSql(sqlStr, Marshal.GetFunctionPointerForDelegate(_excutesqlCallBackDelegate), true);
                 QueryShebeiguanli(null);
             }
@@ -385,7 +585,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                                             break;
                                         case "IP":
                                             if(keyvalue[1].Length > 0)
-                                                item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder(Convert.ToInt32(keyvalue[1]))), null);
+                                                item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder((Int32)Convert.ToInt64(keyvalue[1]))), null);
                                             break;
                                         default:
                                             item.SetValue(model, keyvalue[1], null);
@@ -404,23 +604,18 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                             }
                         }
                     }
-
-                    Application.Current.Dispatcher.Invoke(
-                    new Action<object>((modeltemp) =>
-                    {
-                        _tableListTemp.Add(model as SHEBEIGUANLIModel);
-                    }), model);
+                    (model as SHEBEIGUANLIModel).operateinfomodel.operatemodel = OperateModelEnum.OperateModel_Modify;
+                    _tableListTemp.Add(model as SHEBEIGUANLIModel);
                 }
             }
 
             Application.Current.Dispatcher.Invoke(
             new Action(() =>
             {
-                foreach (var model in _tableListTemp)
-                    tableList.Add(model);
+                ShowPage(1);
 
                 Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>> _devicelistMap = new Dictionary<string, Dictionary<string, Dictionary<string, HashSet<SHEBEIGUANLIModel>>>>();
-                foreach (SHEBEIGUANLIModel modelTemp in tableList)
+                foreach (SHEBEIGUANLIModel modelTemp in _tableListTemp)
                 {
                     if (modelTemp.Chengshibianhao == null       || modelTemp.Chengshibianhao.Length == 0        ||
                     modelTemp.Jubianhao == null             || modelTemp.Jubianhao.Length == 0              ||
@@ -530,7 +725,13 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
         public void DoLogon()
         {
-            QueryShebeiguanli(null);
+            city.Clear();
+            ju.Clear();
+            danwei.Clear();
+            deviceList.Clear();
+            _tableListTemp.Clear();
+            tableList.Clear();
+            WorkServer.QueryTable(MakeQuerySql(null), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
 
     }
