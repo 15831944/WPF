@@ -7,7 +7,19 @@
 // TODO:  在 STDAFX.H 中
 // 引用任何所需的附加头文件，而不是在此文件中引用
 
-
+void OutDebugLineLogs(string file, int line, string func, string log)
+{
+	try
+	{
+		char ch[256] ={ 0 };
+		sprintf_s(ch, 256, "%d", line);
+		string str = string("\n") + file + "(" + ch + "):" + func + ":" + log;
+		OutputDebugStringA(str.c_str());
+	}
+	catch (...)
+	{
+	}
+}
 bool GetAvalibleIpAddress(vector<string> &ipArray)
 {
 	ipArray.clear();

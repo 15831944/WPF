@@ -21,4 +21,4 @@ typedef struct tagPACKAGEHEAD
 }PACKAGEHEAD;
 #pragma pack(pop)
 
-void OutDebugLogs(string file, int line, string func, string log);
+void OutDebugLineLogs(string file, int line, string func, string log);

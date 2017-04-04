@@ -47,7 +47,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 
 					packResult.mutable_registtypemsgresult();
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
-					OutputDebugStringA("\ntest: SendMsgBuf：mutable_registtypemsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"server: SendMsgBuf：mutable_registtypemsgresult");
 				}
 				else if (msgPack.has_query())
 				{
@@ -77,7 +77,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					}
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
-					OutputDebugStringA("\ntest: SendMsgBuf：mutable_querymsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"server: SendMsgBuf：mutable_querymsgresult");
 				}
 				else if (msgPack.has_add())
 				{
@@ -96,7 +96,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					}
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
-					OutputDebugStringA("\ntest: SendMsgBuf：mutable_addmsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"server: SendMsgBuf：mutable_addmsgresult");
 				}
 				else if (msgPack.has_querydevcntmsg())
 				{
@@ -111,7 +111,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					packResult.mutable_querydevcntmsgresult()->set_devcnt(cnt);
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
-					OutputDebugStringA("\ntest: SendMsgBuf：mutable_querydevcntmsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"server: SendMsgBuf：mutable_querydevcntmsgresult");
 				}
 				else if (msgPack.has_excutesqlmsg())
 				{
@@ -129,7 +129,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					}
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
-					OutputDebugStringA("\ntest: SendMsgBuf：mutable_excutesqlmsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"server: SendMsgBuf：mutable_excutesqlmsgresult");
 				}
 				else if (msgPack.has_querydevspeedmsg())
 				{
@@ -146,7 +146,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 							packResult.mutable_querydevspeedmsgresult()->set_resulterror("设备不在线");
 							CServer::GetInstance()->SendMsgBuf(userID, packResult);
 
-							OutputDebugStringA("\ntest: SendMsgBuf：mutable_querydevspeedmsgresult");
+							OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"server: SendMsgBuf：mutable_querydevspeedmsgresult");
 						}
 						else
 						{
@@ -162,7 +162,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 							msgPack.mutable_head()->set_packindex(0);
 							CServer::GetInstance()->SendMsgBuf(desid, msgPack);
 
-							OutputDebugStringA("\ntest: SendMsgBuf：mutable_querydevspeedmsgresult");
+							OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"server: SendMsgBuf：mutable_querydevspeedmsgresult");
 						}
 					}
 					else
@@ -179,7 +179,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 							packResult.mutable_querydevspeedmsgresult()->set_speed(speed);
 							packResult.mutable_querydevspeedmsgresult()->set_resulterror("");
 							CServer::GetInstance()->SendMsgBuf(souraskuserID, packResult);
-							OutputDebugStringA("\ntest: SendMsgBuf：mutable_querydevspeedmsgresult");
+							OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"server: SendMsgBuf：mutable_querydevspeedmsgresult");
 						}
 					}
 				}
@@ -200,7 +200,7 @@ void CServer::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 
 					CServer::GetInstance()->SendMsgBuf(userID, packResult);
 
-					OutputDebugStringA("\ntest: SendMsgBuf：mutable_queryconnectionsstrmsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"server: SendMsgBuf：mutable_queryconnectionsstrmsgresult");
 				}
 				else
 				{
@@ -295,12 +295,6 @@ const char* CServer::CurConnections()
 	}
 	ReleaseMutex(CServer::GetInstance()->m_mutexHandle);
 
-
-	{
-		char ch[1000] ={ 0 };
-		sprintf_s(ch, 1000, "\nconnectionsStr size:%d,", connectionsStr.size());
-		OutputDebugStringA(ch);
-	}
 	return connectionsStr.c_str();
 }
 //#pragma optimize( "", on ) 

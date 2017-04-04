@@ -33,10 +33,10 @@ void session::start(bool bSendHeart)
 		_itoa_s(m_socket.remote_endpoint().port(), remote, 10); 
 		char local[256] ={ 0 };
 		_itoa_s(m_socket.remote_endpoint().port(), local, 10);
-		m_logbase = string("\nlocal:") + m_socket.local_endpoint().address().to_string() + ":" + local + "  remote:" + m_socket.remote_endpoint().address().to_string() + ":" + remote;
+		m_logbase = string("local:") + m_socket.local_endpoint().address().to_string() + ":" + local + "  remote:" + m_socket.remote_endpoint().address().to_string() + ":" + remote;
 
 		string str = m_logbase + "   Connected!";
-		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, str);
 	}
 
 	 
@@ -56,14 +56,15 @@ void session::heartpack_handler(const boost::system::error_code& ec)
 {
 	if (ec)
 	{
+		string str = m_logbase + "   " + ec.message();
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, str);
+
 		if (ec == boost::asio::error::basic_errors::operation_aborted)
 			return;
-		string str = m_logbase + "   " + ec.message();
-		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
 
 		m_bStarted		= false;
-		if (m_pReceiveCallBack)//会话终止
-			m_pReceiveCallBack((long)this, NULL, 0, ec.value(), ec.message().c_str());
+		//if (m_pReceiveCallBack)//会话终止
+		//	m_pReceiveCallBack((long)this, NULL, 0, ec.value(), ec.message().c_str());
 		return;
 	}
 
@@ -73,10 +74,12 @@ void session::heartpack_handler(const boost::system::error_code& ec)
 	if (clock() - m_lastdatatime > 10000)
 	{
 		sendheart();
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "heartpack_handler");
 	}
 
 	m_hearpackTimer.expires_from_now(boost::posix_time::seconds(5));
 	m_hearpackTimer.async_wait(boost::bind(&session::heartpack_handler, this, boost::asio::placeholders::error));
+	OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "heartpack_handler");
 }
 
 void session::receive_handler(const boost::system::error_code &ec, std::size_t bytes_transferred)
@@ -85,7 +88,7 @@ void session::receive_handler(const boost::system::error_code &ec, std::size_t b
 	if (ec)
 	{
 		string str = m_logbase + "   " + ec.message();
-		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, str);
 
 		m_bStarted		= false;
 		if (m_pReceiveCallBack)//会话终止
@@ -104,7 +107,7 @@ void session::receive_handler(const boost::system::error_code &ec, std::size_t b
 		str +=	string("  receivetotalbyte:") + buf;
 		_itoa_s(bytes_transferred, buf, 10);
 		str +=	string("  receivebyte:") + buf;
-		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, str);
 	}
 
 	{
@@ -148,7 +151,7 @@ void session::receive_handler(const boost::system::error_code &ec, std::size_t b
 					}
 					else if (pPackageHead->packType == PackTypeEnum_heart) 
 					{
-						OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, "pPackageHead->packType == PackTypeEnum_heart");
+						OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "pPackageHead->packType == PackTypeEnum_heart");
 						m_ReadBuffer.consume(packHeadLen + pPackageHead->len);	///删除数据
 					}; 
 				}
@@ -156,7 +159,7 @@ void session::receive_handler(const boost::system::error_code &ec, std::size_t b
 				{
 					string str = m_logbase + "   ";
 					str +=	string("  接收数据错误！");
-					OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, str);
 					//AfxMessageBox(_T("数据接收错误！"));
 					m_ReadBuffer.consume(curBufferLen);	///删除数据
 				}
@@ -193,11 +196,11 @@ void session::send_handler(const boost::system::error_code &ec, const size_t byt
 	if (ec)
 	{//发送不成功的处理 
 		string str = m_logbase + "   " + ec.message();
-		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, str);
 
 		m_bStarted = false;
-		if (m_pReceiveCallBack)//会话终止
-			m_pReceiveCallBack((long)this, NULL, 0, ec.value(), ec.message().c_str());
+		//if (m_pReceiveCallBack)//会话终止
+		//	m_pReceiveCallBack((long)this, NULL, 0, ec.value(), ec.message().c_str());
 		return;
 	}
 

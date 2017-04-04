@@ -320,6 +320,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
         private void Modify(object obj)
         {
+            customInfo1 = customInfo;
             operateenum = OperateEnum.OperateEnum_Modify;
         }
 

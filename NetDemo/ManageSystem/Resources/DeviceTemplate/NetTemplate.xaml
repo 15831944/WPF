@@ -212,6 +212,28 @@
                         </Grid.RowDefinitions>
                         <shapes:Arc Grid.Row="0" Fill="#CED4D8" StartAngle="-130" EndAngle="130" Width="120" Height="120" Stretch="None" ArcThicknessUnit="Percent" ArcThickness="0.2" HorizontalAlignment="Center" VerticalAlignment="Bottom"></shapes:Arc>
                         <shapes:Arc Grid.Row="0" Fill="Green" StartAngle="-130" EndAngle="{Binding Path=Angle}" Width="120" Height="120"  Stretch="None" ArcThicknessUnit="Percent" ArcThickness="0.2" HorizontalAlignment="Center" VerticalAlignment="Bottom"></shapes:Arc>
+                        <Path Grid.Row="0" Width="120" Height="120" Fill="Green" Stroke="Green" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                            <Path.Data>
+                                <CombinedGeometry>
+                                    <CombinedGeometry.Geometry1>
+                                        <PathGeometry>
+                                            <PathFigure StartPoint="55, 60">
+                                                <PathFigure.Segments>
+                                                    <PolyLineSegment Points="65,60 60,15"/>
+                                                </PathFigure.Segments>
+                                            </PathFigure>
+                                            <PathGeometry.Transform>
+                                                <RotateTransform CenterX="60" CenterY="60" Angle="{Binding Path=Angle}"/>
+                                            </PathGeometry.Transform>
+                                        </PathGeometry>
+                                    </CombinedGeometry.Geometry1>
+                                    <CombinedGeometry.Geometry2>
+                                        <EllipseGeometry RadiusX="10" RadiusY="10" Center="60,60"/>
+                                    </CombinedGeometry.Geometry2>
+                                </CombinedGeometry>
+                            </Path.Data>
+                        </Path>
+                        <Ellipse Grid.Row="0" Margin="0,0,0,55" Fill="White"  Width="10" Height="10" HorizontalAlignment="Center" VerticalAlignment="Bottom"></Ellipse>
                         <TextBlock Grid.Row="1" FontSize="20" Width="150" Foreground="Red" Text="{Binding statusText}" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
                     </Grid>
                     <Grid Grid.Row="2">

@@ -27,7 +27,7 @@
             <ContentControl Grid.Column="1" Content="{Binding _UpgradeViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _AbnormalViewModel}"/>
             <ContentControl Grid.Column="1" Content="{Binding _HardwareViewModel}"/>
-            <AdornerDecorator Grid.Column="1">
+            <AdornerDecorator Grid.Column="1" IsHitTestVisible="False">
                 <Rectangle Width="15" VerticalAlignment="Stretch" HorizontalAlignment="Left">
                     <Rectangle.Fill>
                         <LinearGradientBrush  StartPoint="0,0" EndPoint="1,0">

@@ -47,13 +47,13 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 				msgPack.SerializeToArray(pBuffer, msgLen);
 				CClient::GetInstance()->m_sendDataFunc(pBuffer, msgLen);
 				delete[] pBuffer;
-				OutputDebugStringA("\ntest: client.receive：has_querydevspeedmsg");
+				OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive：has_querydevspeedmsg");
 			}
 			else if (CClient::GetInstance()->m_requestMap.Query(key, pairValue))
 			{
 				if (msgPack.has_registtypemsgresult())
 				{
-					OutputDebugStringA("\ntest: client.receive：has_registtypemsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive：has_registtypemsgresult");
 				}
 				else if (msgPack.has_querymsgresult())
 				{
@@ -61,13 +61,13 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					string resulterror = msgPack.querymsgresult().resulterror();
 					if (pairValue.second)
 						((QueryTableCallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
-					OutputDebugStringA("\ntest: client.receive：has_querymsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive：has_querymsgresult");
 				}
 				else if (msgPack.has_addmsgresult())
 				{
 					if (pairValue.second)
 						((AddDataCallBack)pairValue.second)((char*)msgPack.addmsgresult().resulterror().c_str());
-					OutputDebugStringA("\ntest: client.receive：has_addmsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive：has_addmsgresult");
 				}
 				else if (msgPack.has_querydevcntmsgresult())
 				{
@@ -76,14 +76,14 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					sprintf_s(ch, "count:%d,;", cnt);
 					if (pairValue.second)
 						((QueryTableCallBack)pairValue.second)(ch, "");
-					OutputDebugStringA("\ntest: client.receive：has_querydevcntmsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive：has_querydevcntmsgresult");
 				}
 				else if (msgPack.has_excutesqlmsgresult())
 				{
 					string resulterror = msgPack.excutesqlmsgresult().resulterror();
 					if (pairValue.second)
 						((ExcuteSqlCallBack)pairValue.second)((char*)resulterror.c_str());
-					OutputDebugStringA("\ntest: client.receive：has_excutesqlmsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive：has_excutesqlmsgresult");
 				}
 				else if (msgPack.has_querydevspeedmsgresult())
 				{
@@ -94,7 +94,7 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					sprintf_s(ch, "speed:%d,;", speed);
 					if (pairValue.second)
 						((QueryTableCallBack)pairValue.second)(ch, (char*)resulterror.c_str());
-					OutputDebugStringA("\ntest: client.receive：has_querydevspeedmsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive：has_querydevspeedmsgresult");
 				}
 				else if (msgPack.has_queryconnectionsstrmsgresult())
 				{
@@ -104,7 +104,7 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					if (pairValue.second)
 						((QueryTableCallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
 
-					OutputDebugStringA("\ntest: client.receive：has_queryconnectionsstrmsgresult");
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive：has_queryconnectionsstrmsgresult");
 				}
 
 				CClient::GetInstance()->m_requestMap.Pop(key, pairValue);
@@ -112,12 +112,12 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 		}
 		else
 		{
-			OutputDebugStringA("\n Work.dll错误数据包");
+			OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__," Work.dll错误数据包");
 		}
 	}
 	else
 	{
-		OutputDebugStringA("\n Work.dll没有数据");
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__," Work.dll没有数据");
 	}
 }
 
@@ -196,7 +196,7 @@ void CClient::UpdateClientStatus(bool bNormal, bool bSync)
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
-		OutputDebugStringA("\ntest: client.send：mutable_registtype");
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send：mutable_registtype");
 
 		if (bSync)
 		{
@@ -233,7 +233,7 @@ void CClient::QueryOnlieDevCnt(QueryTableCallBack callBack, bool bSync)
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
-		OutputDebugStringA("\ntest: client.send：mutable_querydevcntmsg");
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send：mutable_querydevcntmsg");
 
 		if (bSync)
 		{
@@ -270,7 +270,7 @@ void CClient::QueryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
-		OutputDebugStringA("\ntest: client.send：mutable_query");
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send：mutable_query");
 
 		if (bSync)
 		{
@@ -308,7 +308,7 @@ void CClient::AddTable(char* tableName, char* dataStr, AddDataCallBack callBack,
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
-		OutputDebugStringA("\ntest: client.send：mutable_add");
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send：mutable_add");
 
 		if (bSync)
 		{
@@ -345,7 +345,7 @@ void CClient::ExcuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync)
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
-		OutputDebugStringA("\ntest: client.send：mutable_excutesqlmsg");
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send：mutable_excutesqlmsg");
 
 		if (bSync)
 		{
@@ -384,7 +384,7 @@ void  CClient::QueryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSyn
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
-		OutputDebugStringA("\ntest: client.send：mutable_querydevspeedmsg");
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send：mutable_querydevspeedmsg");
 
 		if (bSync)
 		{
@@ -421,7 +421,7 @@ void  CClient::QueryConnectionsStr(QueryTableCallBack callBack, bool bSync)
 
 		m_sendDataFunc(pBuffer, msgLen);
 		delete[] pBuffer;
-		OutputDebugStringA("\ntest: client.send：mutable_queryconnectionsstrmsg");
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send：mutable_queryconnectionsstrmsg");
 
 		if (bSync)
 		{

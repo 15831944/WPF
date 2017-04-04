@@ -170,17 +170,21 @@ namespace ManageSystemServer.ViewModel
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            bOnline         = WorkServer.isServerStoped() == false;
-            curConnections  = WorkServer.cntServerConnections() + "个";
-
-            IntPtr strPtr = WorkServer.curConnectionsStr();
-            string resultStr =  Marshal.PtrToStringAnsi(strPtr);
-            if (resultStr != _connectionsStr)
+            try
             {
-                _connectionsStr = resultStr;
-                tableList.Clear();
-                QueryTableCallBack(_connectionsStr, "");
+                bOnline         = WorkServer.isServerStoped() == false;
+                curConnections  = WorkServer.cntServerConnections() + "个";
+
+                IntPtr strPtr = WorkServer.curConnectionsStr();
+                string resultStr =  Marshal.PtrToStringAnsi(strPtr);
+                if (resultStr != _connectionsStr)
+                {
+                    _connectionsStr = resultStr;
+                    tableList.Clear();
+                    QueryTableCallBack(_connectionsStr, "");
+                }
             }
+            catch { }
         }
 
         public void QueryTableCallBack(string resultStr, string errorStr)

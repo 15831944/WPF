@@ -101,7 +101,7 @@
             <ContentControl Grid.Column="1" Content="{Binding _WebBrowserViewMode}"/>
             <ContentControl Grid.Column="1" Content="{Binding _DeviceManageViewModel}"/>
 
-            <AdornerDecorator Grid.Column="1">
+            <AdornerDecorator Grid.Column="1" IsHitTestVisible="False">
                 <Rectangle Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Left">
                     <Rectangle.Fill>
                         <LinearGradientBrush  StartPoint="0,0" EndPoint="1,0">

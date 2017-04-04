@@ -26,7 +26,11 @@ void server::OnServerCallBack(OUT long userID /*Only for Server*/, OUT BYTE* buf
 		for (list<session_ptr>::iterator it = m_sessions.begin(); it != m_sessions.end();)////清除已无用的连接对象
 		{	
 			if (!(*it)->bstarted() || int((*it).get()) == userID)
+			{
+				(*it)->stop();
 				it = m_sessions.erase(it);
+				OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "m_sessions.erase(it)");
+			}
 			else
 				++it;
 		}
@@ -41,7 +45,7 @@ void server::handle_accept(session_ptr new_session, const boost::system::error_c
 	if (error) 
 	{
 		string str = string("\nhandle_accept:") + error.message();
-		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, str);
 		return;
 	}
 
@@ -91,7 +95,7 @@ void server::WorkThread()
 	catch (std::exception &e)
 	{
 		string str = string("\nIOCP:") + e.what();
-		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, str);
 	}
 }
 
@@ -127,6 +131,7 @@ void server::send(long userID, BYTE* SendBuf, int dataLen)
 					if (pSession->bstarted() == 1)
 					{
 						pSession->send(SendBuf, dataLen);
+						OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "send success!");
 					}
 				}
 			}
@@ -135,7 +140,7 @@ void server::send(long userID, BYTE* SendBuf, int dataLen)
 	}
 	catch (exception ex)
 	{
-		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, ex.what());
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, ex.what());
 	}
 }
 

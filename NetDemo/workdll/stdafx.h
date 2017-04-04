@@ -36,4 +36,5 @@
 #pragma comment(lib, "Iphlpapi.lib")
 
 
-bool	 GetAvalibleIpAddress(vector<string> &ipArray);
+bool		GetAvalibleIpAddress(vector<string> &ipArray);
+void		OutDebugLineLogs(string file, int line, string func, string log);

@@ -29,7 +29,7 @@ void client::WorkThread()
 	catch (std::exception &e)
 	{
 		string str = string("\nIOCP:") + e.what();
-		OutDebugLogs(__FILE__, __LINE__, __FUNCTION__, str);
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, str);
 	}
 }
 
