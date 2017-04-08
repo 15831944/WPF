@@ -82,6 +82,9 @@ namespace ManageSystem.Resources.DataGridAttachRes
             {"Yichangyuanyin",	        "异常原因"},		
             {"Yichangxiangxineirong",	"异常详细内容"},	
 
+            {"Bianhao",	                "编号"},		
+            {"Mingcheng",	            "名称"},	
+
             {"operateinfomodel",	        "操作"},	
             {"bSel",	""},	
         };
@@ -102,6 +105,14 @@ namespace ManageSystem.Resources.DataGridAttachRes
                     else
                         e.Cancel = true;
                 }
+                //else if (headername == "bSel")
+                //{
+                //    var obj = DataGridAttach.GetOperateCellStyle(sender as DependencyObject);
+                //    if (obj != null)
+                //        e.Column.CellStyle = obj;
+                //    else
+                //        e.Cancel = true;
+                //}
                 e.Column.Header = _columnNameMap[headername];
             }
             else

@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using ExcutesqlCallBackDelegate = ManageSystem.Server.AddTableCallBackDelegate;
 
 namespace ManageSystem.ViewModel
 {
@@ -17,11 +18,13 @@ namespace ManageSystem.ViewModel
     {
         public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
         public AddTableCallBackDelegate     _addtablecallbackdelegate = null;
+        public ExcutesqlCallBackDelegate    _excutesqlCallBackDelegate = null;
 
         string  tableName   = "Zhiqianshuju";
         public DelegateCommand<object> SelectedCommand { get; set; }
         public DelegateCommand<object> AddCommand { get; set; }
         public DelegateCommand<object> QueryCommand { get; set; }
+        public DelegateCommand<object> DeleteCommand { get; set; }
         public DelegateCommand<object> ConvertCommand { get; set; }
         public DelegateCommand<object> AddItemCommand { get; set; }
         public DelegateCommand<object> CopyItemCommand { get; set; }
@@ -140,10 +143,40 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private bool _ignoreXuhao;
+        public bool ignoreXuhao
+        {
+            get
+            {
+                return _ignoreXuhao;
+            }
+            set
+            {
+                _ignoreXuhao = value;
+                this.RaisePropertyChanged("ignoreXuhao");
+            }
+        }
+
+        private bool _bSetAllcurtime;
+        public bool bSetAllcurtime
+        {
+            get
+            {
+                return _bSetAllcurtime;
+            }
+            set
+            {
+                _bSetAllcurtime = value;
+                this.RaisePropertyChanged("bSetAllcurtime");
+            }
+        }
+
+
         public AddWndViewModel()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
             _addtablecallbackdelegate                   = new AddTableCallBackDelegate(AddTableCallBack);
+            _excutesqlCallBackDelegate                  = new ExcutesqlCallBackDelegate(ExcutesqlCallBack);
 
 
             SelectedCommand                             = new DelegateCommand<object>(Selected);
@@ -151,6 +184,7 @@ namespace ManageSystem.ViewModel
             QueryCommand                                = new DelegateCommand<object>(Query);
             ConvertCommand                              = new DelegateCommand<object>(ConvertData);
             AddItemCommand                              = new DelegateCommand<object>(AddItem);
+            DeleteCommand                               = new DelegateCommand<object>(Delete);
             CopyItemCommand                             = new DelegateCommand<object>(CopyItem);
             DeleteItemCommand                           = new DelegateCommand<object>(DeleteItem);
 
@@ -172,6 +206,8 @@ namespace ManageSystem.ViewModel
             _tableList0.Add(new ZHIQIANSHUJUModel());
 
             curCnt = "当前数量：" + tableList0.Count;
+            _ignoreXuhao = true;
+            _bSetAllcurtime = true;
         }
 
         private void AddTableCallBack(string errorStr)
@@ -185,6 +221,18 @@ namespace ManageSystem.ViewModel
                 status = "操作成功";
             }
         }
+        private void ExcutesqlCallBack(string errorStr)
+        {
+            if (errorStr != null && errorStr.Length != 0)
+            {
+                status = errorStr;
+            }
+            else
+            {
+                status = "操作成功";
+            }
+        }
+
         public void QueryTableCallBack(string resultStr, string errorStr)
         {
             Type type = typeof(SHEBEIGUANLIModel);
@@ -332,82 +380,39 @@ namespace ManageSystem.ViewModel
 
         }
 
-        private void CopyItem(object obj)
+        private void Delete(object obj)
         {
+            string sqlStr = "delete from " + tableName + " where ";
+
             DataGrid grid = obj as DataGrid;
 
-            ObservableCollection<object> temp = new ObservableCollection<object>();
+            int index = 0;
             foreach (var item in grid.SelectedItems)
             {
-                temp.Add(item);
+                if(item.GetType() != typeof(YINGSHEBIAOModel))
+                {
+                    if (index == 0)
+                        sqlStr += " " + tableName + ".[Xuhao]=" + item.GetType().GetProperty("Xuhao").GetValue(item, null);
+                    else
+                        sqlStr += " or" + " " + tableName + ".[Xuhao]=" + item.GetType().GetProperty("Xuhao").GetValue(item, null);
+                }
+                else
+                {
+                    if (index == 0)
+                        sqlStr += " " + tableName + ".[Bianhao]=" + item.GetType().GetProperty("Bianhao").GetValue(item, null);
+                    else
+                        sqlStr += " or" + " " + tableName + ".[Bianhao]=" + item.GetType().GetProperty("Bianhao").GetValue(item, null);
+                }
+
+                index++;
             }
-            foreach (var item in temp)
+
+
+            if (index > 0)
             {
-                tableList0.Add(item);
+                WorkServer.excuteSql(sqlStr, Marshal.GetFunctionPointerForDelegate(_excutesqlCallBackDelegate), true);
+                Query(null);
             }
-
-            curCnt = "当前数量：" + tableList0.Count;
-        }
-
-        private void DeleteItem(object obj)
-        {
-            DataGrid grid = obj as DataGrid;
-
-            ObservableCollection<object> temp = new ObservableCollection<object>();
-            foreach(var item in grid.SelectedItems)
-            {
-                temp.Add(item);
-            }
-            foreach (var item in temp)
-            {
-                tableList0.Remove(item);
-            }
-
-            curCnt = "当前数量：" + tableList0.Count;
-        }
-
-        private void AddItem(object obj)
-        {
-            switch (selvalue)
-            {
-                case "制签详细数据":
-                        tableList0.Add(new ZHIQIANSHUJUModel());
-                    break;
-                case "收证详细数据":
-                        tableList0.Add(new SHOUZHENGSHUJUModel());
-                    break;
-                case "签注详细数据":
-                        tableList0.Add(new QIANZHUSHUJUModel());
-                    break;
-                case "缴款详细数据":
-                        tableList0.Add(new JIAOKUANSHUJUModel());
-                    break;
-                case "查询详细数据":
-                        tableList0.Add(new CHAXUNSHUJUModel());
-                    break;
-                case "预受理详细数据":
-                        tableList0.Add(new YUSHOULISHUJUModel());
-                    break;
-                case "自助设备状态表":
-                        tableList0.Add(new SHEBEIZHUANGTAIModel());
-                    break;
-                case "自助设备异常详细数据":
-                        tableList0.Add(new SHEBEIYICHANGSHUJUModel());
-                    break;
-                case "管理员":
-                        tableList0.Add(new GUANLIYUANModel());
-                    break;
-                case "管理员操作记录":
-                        tableList0.Add(new GUANLIYUANCAOZUOJILUModel());
-                    break;
-                case "设备管理":
-                        tableList0.Add(new SHEBEIGUANLIModel());
-                    break;
-                case "映射表":
-                        tableList0.Add(new YINGSHEBIAOModel());
-                    break;
-            }
-            curCnt = "当前数量：" + tableList0.Count;
         }
 
         private void ConvertData(object obj)
@@ -428,10 +433,12 @@ namespace ManageSystem.ViewModel
 
         private void Add(object obj)
         {
-            if(_tableList0.Count == 0)
+            DataGrid grid = obj as DataGrid;
+            if (grid.SelectedItems.Count == 0)
                 return;
-            Type    type        = _tableList0[0].GetType();
-            int     addCount    = _tableList0.Count;
+
+            Type    type        = grid.SelectedItems[0].GetType();
+            int     addCount    = grid.SelectedItems.Count;
 
             if (type != null)
             {
@@ -441,7 +448,7 @@ namespace ManageSystem.ViewModel
                 string addXml = "";
                 for (int i = 0; i < addCount; ++i)
                 {
-                    object  modelTemp   = _tableList0[i];
+                    object  modelTemp   = grid.SelectedItems[i];
 
                     foreach (System.Reflection.PropertyInfo item in properties)
                     {
@@ -451,9 +458,12 @@ namespace ManageSystem.ViewModel
                             addXml += ":";
                             switch (item.Name)
                             {
-                                //case "Xuhao":
-                                //    addXml += "0";
-                                //    break;
+                                case "Xuhao":
+                                    if (ignoreXuhao)
+                                        addXml += "0";
+                                    else
+                                        addXml += item.GetValue(modelTemp, null);
+                                    break;
                                 default:
                                     addXml += item.GetValue(modelTemp, null);
                                     break;
@@ -478,41 +488,52 @@ namespace ManageSystem.ViewModel
                             switch (item.Name)
                             {
                                 case "Chengshibianhao":
-                                    addXml += item.GetValue(modelTemp, null);
-                                    break;
                                 case "Jubianhao":
-                                    addXml += item.GetValue(modelTemp, null);
-                                    break;
                                 case "Shiyongdanweibianhao":
-                                    addXml += item.GetValue(modelTemp, null);
+                                case "Shebeibaifangweizhi":
+                                case "Qianzhuzhonglei":
+                                case "ZhikaZhuangtai":
+                                case "Zhengjianleixing":
+                                case "Xingbie":
+                                case "Yewuleixing":
+                                    {
+                                        string temp = (string)item.GetValue(modelTemp, null);
+                                        foreach (KeyValuePair<int, string> kvp in MainWindowViewModel._yingshelList)
+                                        {
+                                            if (kvp.Value == temp)
+                                                addXml += kvp.Key;
+                                        }
+                                    }
                                     break;
                                 case "IP":
-                                    addXml += item.GetValue(modelTemp, null);
-                                    break;
-                                case "Yewuleixing":
-                                    addXml += item.GetValue(modelTemp, null);
-                                    break;
-                                case "Shebeibaifangweizhi":
-                                    addXml += item.GetValue(modelTemp, null);
+                                    {
+                                        string temp = (string)item.GetValue(modelTemp, null);
+                                        IPAddress addr;
+                                        if (temp != null && temp.Length != 0 && IPAddress.TryParse(temp, out addr))
+                                            addXml += Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(temp)));
+                                    }
                                     break;
                                 case "Riqi":
-                                    addXml += Common.ConvertDateTimeInt(DateTime.Now);
-                                    break;
-                                case "Qianzhuzhonglei":
-                                    addXml += item.GetValue(modelTemp, null);
-                                    break;
-                                case "ZhikaZhuangtai":
-                                    addXml += item.GetValue(modelTemp, null);
-                                    break;
-                                case "Xingbie":
-                                    addXml += item.GetValue(modelTemp, null);
-                                    break;
-                                case "Zhengjianleixing":
-                                    addXml += item.GetValue(modelTemp, null);
-                                    break;
-                                case "Yichangleixing":
-                                    addXml += item.GetValue(modelTemp, null);
-                                    break;
+                                case "Chushengriqi":
+                                case "Jiaoyiriqi":
+                                case "Chuangjianshijian":
+                                    {
+                                        if(bSetAllcurtime)
+                                        {
+                                            addXml += Common.ConvertDateTimeInt(DateTime.Now);
+                                        }
+                                        else
+                                        {
+                                            string temp = (string)item.GetValue(modelTemp, null);
+                                            if (temp != null && temp.Length != 0)
+                                            {
+                                                DateTime val;
+                                                if (DateTime.TryParse(temp, out val))
+                                                    addXml += Common.ConvertDateTimeInt(val);
+                                            }
+                                        }
+                                    }
+                                    break; 
                                 default:
                                     addXml += item.GetValue(modelTemp, null);
                                     break;
@@ -534,8 +555,11 @@ namespace ManageSystem.ViewModel
                 }
 
                 status = "";
-                if (tableName != null && tableName.Length != 0)
-                   WorkServer.addTable(tableName, addXml, Marshal.GetFunctionPointerForDelegate(_addtablecallbackdelegate), true);
+                if (tableName != null && tableName.Length != 0 && addCount > 0)
+                {
+                    WorkServer.addTable(tableName, addXml, Marshal.GetFunctionPointerForDelegate(_addtablecallbackdelegate), true);
+                    Query(null);
+                }
             }
         }
 
@@ -643,7 +667,83 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private void CopyItem(object obj)
+        {
+            DataGrid grid = obj as DataGrid;
 
+            ObservableCollection<object> temp = new ObservableCollection<object>();
+            foreach (var item in grid.SelectedItems)
+            {
+                temp.Add(item);
+            }
+            foreach (var item in temp)
+            {
+                tableList0.Add(item);
+            }
+
+            curCnt = "当前数量：" + tableList0.Count;
+        }
+
+        private void DeleteItem(object obj)
+        {
+            DataGrid grid = obj as DataGrid;
+
+            ObservableCollection<object> temp = new ObservableCollection<object>();
+            foreach (var item in grid.SelectedItems)
+            {
+                temp.Add(item);
+            }
+            foreach (var item in temp)
+            {
+                tableList0.Remove(item);
+            }
+
+            curCnt = "当前数量：" + tableList0.Count;
+        }
+
+        private void AddItem(object obj)
+        {
+            switch (selvalue)
+            {
+                case "制签详细数据":
+                    tableList0.Add(new ZHIQIANSHUJUModel());
+                    break;
+                case "收证详细数据":
+                    tableList0.Add(new SHOUZHENGSHUJUModel());
+                    break;
+                case "签注详细数据":
+                    tableList0.Add(new QIANZHUSHUJUModel());
+                    break;
+                case "缴款详细数据":
+                    tableList0.Add(new JIAOKUANSHUJUModel());
+                    break;
+                case "查询详细数据":
+                    tableList0.Add(new CHAXUNSHUJUModel());
+                    break;
+                case "预受理详细数据":
+                    tableList0.Add(new YUSHOULISHUJUModel());
+                    break;
+                case "自助设备状态表":
+                    tableList0.Add(new SHEBEIZHUANGTAIModel());
+                    break;
+                case "自助设备异常详细数据":
+                    tableList0.Add(new SHEBEIYICHANGSHUJUModel());
+                    break;
+                case "管理员":
+                    tableList0.Add(new GUANLIYUANModel());
+                    break;
+                case "管理员操作记录":
+                    tableList0.Add(new GUANLIYUANCAOZUOJILUModel());
+                    break;
+                case "设备管理":
+                    tableList0.Add(new SHEBEIGUANLIModel());
+                    break;
+                case "映射表":
+                    tableList0.Add(new YINGSHEBIAOModel());
+                    break;
+            }
+            curCnt = "当前数量：" + tableList0.Count;
+        }
 
 
 

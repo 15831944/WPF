@@ -8,12 +8,16 @@
         >
     <Grid Background="Gray">
         <Grid.RowDefinitions>
+            <RowDefinition Height="18"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <ComboBox HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" x:Name="selComb" SelectedIndex="0" Canvas.Left="10" Canvas.Top="52"
+        <TextBlock Grid.Row="0" Margin="5,0,0,0" Foreground="Wheat" HorizontalAlignment="Left" VerticalAlignment="Top">
+            注：用于开发时方便使用, 所有操作根据文字描述判断， 1.时间默认为当前时间, 不先中设置时取字符串格式如果格式无效则为空   2.每个单元格都可以编辑，表中多出的字段并不影响数据库操作。
+        </TextBlock>
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <ComboBox Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Grid.Column="0" x:Name="selComb" SelectedIndex="0" Canvas.Left="10" Canvas.Top="52"
                   SelectedValue="{Binding Path=selvalue}" SelectedValuePath="Content">
                 <ComboBoxItem Content="制签详细数据"></ComboBoxItem>
                 <ComboBoxItem Content="收证详细数据"></ComboBoxItem>
@@ -33,27 +37,31 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </ComboBox>
-            <Button Command="{Binding Path=AddCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="添加数据" Canvas.Left="327" Canvas.Top="53" Width="89"></Button>
-            <Button Command="{Binding Path=QueryCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="查询数据" Canvas.Left="327" Canvas.Top="53" Width="89"></Button>
+            <CheckBox Margin="5,0,0,0" IsChecked="{Binding Path=ignoreXuhao}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="添加时忽略序号" Canvas.Left="327" Canvas.Top="53" MinWidth="89"></CheckBox>
+            <CheckBox Margin="5,0,0,0" IsChecked="{Binding Path=bSetAllcurtime}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="设置所有时间为当前时间" Canvas.Left="327" Canvas.Top="53" MinWidth="89"></CheckBox>
+            <Button Margin="5,0,0,0" Command="{Binding Path=AddCommand}" CommandParameter="{Binding ElementName=grid}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="添加选中数据到数据库" Canvas.Left="327" Canvas.Top="53" MinWidth="89"></Button>
+            <Button Margin="5,0,0,0" Command="{Binding Path=QueryCommand}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="查询数据库表" Canvas.Left="327" Canvas.Top="53" MinWidth="89"></Button>
+            <Button Margin="5,0,0,0" Command="{Binding Path=DeleteCommand}" CommandParameter="{Binding ElementName=grid}" HorizontalAlignment="Center" VerticalAlignment="Center" Content="删除选中数据" Canvas.Left="327" Canvas.Top="53" Width="89"></Button>
             <TextBlock Margin="25,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=curCnt}"></TextBlock>
             <TextBlock Margin="25,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=status}"></TextBlock>
         </StackPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBlock Margin="25,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">IP</TextBlock>
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">IP</TextBlock>
             <TextBox Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Text="{Binding Path=ip0}"></TextBox>
             <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">Convert</TextBlock>
             <TextBox Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Text="{Binding Path=ip1}"></TextBox>
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=ConvertCommand}">转换</Button>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=AddItemCommand}">AddItem</Button>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=CopyItemCommand}"
-                    CommandParameter="{Binding ElementName=grid}">CopyItems</Button>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=DeleteItemCommand}" 
-                    CommandParameter="{Binding ElementName=grid}">DeleteItems</Button>
+            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">表操作:</TextBlock>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Command="{Binding Path=AddItemCommand}">AddItem</Button>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Command="{Binding Path=CopyItemCommand}"
+                    CommandParameter="{Binding ElementName=grid}">CopySelectedItems</Button>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Command="{Binding Path=DeleteItemCommand}" 
+                    CommandParameter="{Binding ElementName=grid}">DeleteSelectedItems</Button>
         </StackPanel>
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="3">
             <DataGrid         x:Name="grid"
                               DataGridAttachResA:DataGridAttach.GeneratColumnObj="{Binding}"
-                              BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" ColumnWidth="*" RowHeight="30"
+                              BorderThickness="0" ColumnHeaderHeight="50" RowHeaderWidth="0" MinColumnWidth="80" RowHeight="30"
                               RowBackground="Transparent" AlternatingRowBackground="#FFE5E9EC" AlternationCount="2" Background="White"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                               CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 
