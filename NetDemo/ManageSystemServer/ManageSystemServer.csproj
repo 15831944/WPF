@@ -20,6 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
+	<PdbFile>$(ProjectDir)..\..\output\pdb\$(AssemblyName).pdb</PdbFile>	
     <OutputPath>..\..\output\ManageSystem\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -29,6 +30,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+	<PdbFile>$(ProjectDir)..\..\output\pdb\$(AssemblyName).pdb</PdbFile>	
     <OutputPath>..\..\output\ManageSystem\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>

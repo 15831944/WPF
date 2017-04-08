@@ -67,6 +67,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>WorkDll.def</ModuleDefinitionFile>
+      <ProgramDatabaseFile>$(ProjectDir)..\..\output\pdb\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
@@ -91,6 +92,7 @@ xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configur
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>WorkDll.def</ModuleDefinitionFile>
+      <ProgramDatabaseFile>$(ProjectDir)..\..\output\pdb\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y

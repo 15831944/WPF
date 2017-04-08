@@ -66,6 +66,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>NetDll.def</ModuleDefinitionFile>
+      <ProgramDatabaseFile>$(ProjectDir)..\..\output\pdb\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
@@ -90,6 +91,7 @@ xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\MFCDemo\$(Configuration
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>NetDll.def</ModuleDefinitionFile>
+      <ProgramDatabaseFile>$(ProjectDir)..\..\output\pdb\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y

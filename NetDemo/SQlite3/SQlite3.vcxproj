@@ -65,7 +65,7 @@
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <ModuleDefinitionFile>./SQlite3.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(ProjectDir)..\..\output\pdb\$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
@@ -99,6 +99,7 @@ xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\database\$(Configuration)\
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
+      <ProgramDatabaseFile>$(ProjectDir)..\..\output\pdb\$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
