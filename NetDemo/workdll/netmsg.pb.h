@@ -49,6 +49,12 @@ class ExcuteSqlMsg;
 class ExcuteSqlMsgResult;
 class QueryDevSpeedMsg;
 class QueryDevSpeedMsgResult;
+class UpgradeMsg;
+class AddVersionMsg;
+class AddVersionMsgResult;
+class UpgradeDownLoadMsg;
+class UpgradeDownLoadMsgResult;
+class UpgradeMsgResult;
 
 // ===================================================================
 
@@ -240,6 +246,60 @@ class MsgPack : public ::google::protobuf::Message {
   inline ::netmsg::QueryConnectionsStrMsgResult* release_queryconnectionsstrmsgresult();
   inline void set_allocated_queryconnectionsstrmsgresult(::netmsg::QueryConnectionsStrMsgResult* queryconnectionsstrmsgresult);
 
+  // optional .netmsg.AddVersionMsg addversionmsg = 20;
+  inline bool has_addversionmsg() const;
+  inline void clear_addversionmsg();
+  static const int kAddversionmsgFieldNumber = 20;
+  inline const ::netmsg::AddVersionMsg& addversionmsg() const;
+  inline ::netmsg::AddVersionMsg* mutable_addversionmsg();
+  inline ::netmsg::AddVersionMsg* release_addversionmsg();
+  inline void set_allocated_addversionmsg(::netmsg::AddVersionMsg* addversionmsg);
+
+  // optional .netmsg.AddVersionMsgResult addversionmsgresult = 21;
+  inline bool has_addversionmsgresult() const;
+  inline void clear_addversionmsgresult();
+  static const int kAddversionmsgresultFieldNumber = 21;
+  inline const ::netmsg::AddVersionMsgResult& addversionmsgresult() const;
+  inline ::netmsg::AddVersionMsgResult* mutable_addversionmsgresult();
+  inline ::netmsg::AddVersionMsgResult* release_addversionmsgresult();
+  inline void set_allocated_addversionmsgresult(::netmsg::AddVersionMsgResult* addversionmsgresult);
+
+  // optional .netmsg.UpgradeMsg upgrademsg = 50;
+  inline bool has_upgrademsg() const;
+  inline void clear_upgrademsg();
+  static const int kUpgrademsgFieldNumber = 50;
+  inline const ::netmsg::UpgradeMsg& upgrademsg() const;
+  inline ::netmsg::UpgradeMsg* mutable_upgrademsg();
+  inline ::netmsg::UpgradeMsg* release_upgrademsg();
+  inline void set_allocated_upgrademsg(::netmsg::UpgradeMsg* upgrademsg);
+
+  // optional .netmsg.UpgradeDownLoadMsg upgradedownloadmsg = 51;
+  inline bool has_upgradedownloadmsg() const;
+  inline void clear_upgradedownloadmsg();
+  static const int kUpgradedownloadmsgFieldNumber = 51;
+  inline const ::netmsg::UpgradeDownLoadMsg& upgradedownloadmsg() const;
+  inline ::netmsg::UpgradeDownLoadMsg* mutable_upgradedownloadmsg();
+  inline ::netmsg::UpgradeDownLoadMsg* release_upgradedownloadmsg();
+  inline void set_allocated_upgradedownloadmsg(::netmsg::UpgradeDownLoadMsg* upgradedownloadmsg);
+
+  // optional .netmsg.UpgradeDownLoadMsgResult upgradedownloadmsgresult = 52;
+  inline bool has_upgradedownloadmsgresult() const;
+  inline void clear_upgradedownloadmsgresult();
+  static const int kUpgradedownloadmsgresultFieldNumber = 52;
+  inline const ::netmsg::UpgradeDownLoadMsgResult& upgradedownloadmsgresult() const;
+  inline ::netmsg::UpgradeDownLoadMsgResult* mutable_upgradedownloadmsgresult();
+  inline ::netmsg::UpgradeDownLoadMsgResult* release_upgradedownloadmsgresult();
+  inline void set_allocated_upgradedownloadmsgresult(::netmsg::UpgradeDownLoadMsgResult* upgradedownloadmsgresult);
+
+  // optional .netmsg.UpgradeMsgResult upgrademsgresult = 53;
+  inline bool has_upgrademsgresult() const;
+  inline void clear_upgrademsgresult();
+  static const int kUpgrademsgresultFieldNumber = 53;
+  inline const ::netmsg::UpgradeMsgResult& upgrademsgresult() const;
+  inline ::netmsg::UpgradeMsgResult* mutable_upgrademsgresult();
+  inline ::netmsg::UpgradeMsgResult* release_upgrademsgresult();
+  inline void set_allocated_upgrademsgresult(::netmsg::UpgradeMsgResult* upgrademsgresult);
+
   // @@protoc_insertion_point(class_scope:netmsg.MsgPack)
  private:
   inline void set_has_head();
@@ -272,6 +332,18 @@ class MsgPack : public ::google::protobuf::Message {
   inline void clear_has_queryconnectionsstrmsg();
   inline void set_has_queryconnectionsstrmsgresult();
   inline void clear_has_queryconnectionsstrmsgresult();
+  inline void set_has_addversionmsg();
+  inline void clear_has_addversionmsg();
+  inline void set_has_addversionmsgresult();
+  inline void clear_has_addversionmsgresult();
+  inline void set_has_upgrademsg();
+  inline void clear_has_upgrademsg();
+  inline void set_has_upgradedownloadmsg();
+  inline void clear_has_upgradedownloadmsg();
+  inline void set_has_upgradedownloadmsgresult();
+  inline void clear_has_upgradedownloadmsgresult();
+  inline void set_has_upgrademsgresult();
+  inline void clear_has_upgrademsgresult();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -292,6 +364,12 @@ class MsgPack : public ::google::protobuf::Message {
   ::netmsg::QueryDevSpeedMsgResult* querydevspeedmsgresult_;
   ::netmsg::QueryConnectionsStrMsg* queryconnectionsstrmsg_;
   ::netmsg::QueryConnectionsStrMsgResult* queryconnectionsstrmsgresult_;
+  ::netmsg::AddVersionMsg* addversionmsg_;
+  ::netmsg::AddVersionMsgResult* addversionmsgresult_;
+  ::netmsg::UpgradeMsg* upgrademsg_;
+  ::netmsg::UpgradeDownLoadMsg* upgradedownloadmsg_;
+  ::netmsg::UpgradeDownLoadMsgResult* upgradedownloadmsgresult_;
+  ::netmsg::UpgradeMsgResult* upgrademsgresult_;
   friend void  protobuf_AddDesc_netmsg_2eproto();
   friend void protobuf_AssignDesc_netmsg_2eproto();
   friend void protobuf_ShutdownFile_netmsg_2eproto();
@@ -1634,6 +1712,615 @@ class QueryDevSpeedMsgResult : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static QueryDevSpeedMsgResult* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class UpgradeMsg : public ::google::protobuf::Message {
+ public:
+  UpgradeMsg();
+  virtual ~UpgradeMsg();
+
+  UpgradeMsg(const UpgradeMsg& from);
+
+  inline UpgradeMsg& operator=(const UpgradeMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UpgradeMsg& default_instance();
+
+  void Swap(UpgradeMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  UpgradeMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UpgradeMsg& from);
+  void MergeFrom(const UpgradeMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string ip = 1;
+  inline bool has_ip() const;
+  inline void clear_ip();
+  static const int kIpFieldNumber = 1;
+  inline const ::std::string& ip() const;
+  inline void set_ip(const ::std::string& value);
+  inline void set_ip(const char* value);
+  inline void set_ip(const char* value, size_t size);
+  inline ::std::string* mutable_ip();
+  inline ::std::string* release_ip();
+  inline void set_allocated_ip(::std::string* ip);
+
+  // required string version = 2;
+  inline bool has_version() const;
+  inline void clear_version();
+  static const int kVersionFieldNumber = 2;
+  inline const ::std::string& version() const;
+  inline void set_version(const ::std::string& value);
+  inline void set_version(const char* value);
+  inline void set_version(const char* value, size_t size);
+  inline ::std::string* mutable_version();
+  inline ::std::string* release_version();
+  inline void set_allocated_version(::std::string* version);
+
+  // @@protoc_insertion_point(class_scope:netmsg.UpgradeMsg)
+ private:
+  inline void set_has_ip();
+  inline void clear_has_ip();
+  inline void set_has_version();
+  inline void clear_has_version();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* ip_;
+  ::std::string* version_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static UpgradeMsg* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class AddVersionMsg : public ::google::protobuf::Message {
+ public:
+  AddVersionMsg();
+  virtual ~AddVersionMsg();
+
+  AddVersionMsg(const AddVersionMsg& from);
+
+  inline AddVersionMsg& operator=(const AddVersionMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AddVersionMsg& default_instance();
+
+  void Swap(AddVersionMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  AddVersionMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const AddVersionMsg& from);
+  void MergeFrom(const AddVersionMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string Bianhao = 1;
+  inline bool has_bianhao() const;
+  inline void clear_bianhao();
+  static const int kBianhaoFieldNumber = 1;
+  inline const ::std::string& bianhao() const;
+  inline void set_bianhao(const ::std::string& value);
+  inline void set_bianhao(const char* value);
+  inline void set_bianhao(const char* value, size_t size);
+  inline ::std::string* mutable_bianhao();
+  inline ::std::string* release_bianhao();
+  inline void set_allocated_bianhao(::std::string* bianhao);
+
+  // required string Banbenhao = 2;
+  inline bool has_banbenhao() const;
+  inline void clear_banbenhao();
+  static const int kBanbenhaoFieldNumber = 2;
+  inline const ::std::string& banbenhao() const;
+  inline void set_banbenhao(const ::std::string& value);
+  inline void set_banbenhao(const char* value);
+  inline void set_banbenhao(const char* value, size_t size);
+  inline ::std::string* mutable_banbenhao();
+  inline ::std::string* release_banbenhao();
+  inline void set_allocated_banbenhao(::std::string* banbenhao);
+
+  // required bytes Anzhuangbao = 3;
+  inline bool has_anzhuangbao() const;
+  inline void clear_anzhuangbao();
+  static const int kAnzhuangbaoFieldNumber = 3;
+  inline const ::std::string& anzhuangbao() const;
+  inline void set_anzhuangbao(const ::std::string& value);
+  inline void set_anzhuangbao(const char* value);
+  inline void set_anzhuangbao(const void* value, size_t size);
+  inline ::std::string* mutable_anzhuangbao();
+  inline ::std::string* release_anzhuangbao();
+  inline void set_allocated_anzhuangbao(::std::string* anzhuangbao);
+
+  // @@protoc_insertion_point(class_scope:netmsg.AddVersionMsg)
+ private:
+  inline void set_has_bianhao();
+  inline void clear_has_bianhao();
+  inline void set_has_banbenhao();
+  inline void clear_has_banbenhao();
+  inline void set_has_anzhuangbao();
+  inline void clear_has_anzhuangbao();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* bianhao_;
+  ::std::string* banbenhao_;
+  ::std::string* anzhuangbao_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static AddVersionMsg* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class AddVersionMsgResult : public ::google::protobuf::Message {
+ public:
+  AddVersionMsgResult();
+  virtual ~AddVersionMsgResult();
+
+  AddVersionMsgResult(const AddVersionMsgResult& from);
+
+  inline AddVersionMsgResult& operator=(const AddVersionMsgResult& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const AddVersionMsgResult& default_instance();
+
+  void Swap(AddVersionMsgResult* other);
+
+  // implements Message ----------------------------------------------
+
+  AddVersionMsgResult* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const AddVersionMsgResult& from);
+  void MergeFrom(const AddVersionMsgResult& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string resultData = 1;
+  inline bool has_resultdata() const;
+  inline void clear_resultdata();
+  static const int kResultDataFieldNumber = 1;
+  inline const ::std::string& resultdata() const;
+  inline void set_resultdata(const ::std::string& value);
+  inline void set_resultdata(const char* value);
+  inline void set_resultdata(const char* value, size_t size);
+  inline ::std::string* mutable_resultdata();
+  inline ::std::string* release_resultdata();
+  inline void set_allocated_resultdata(::std::string* resultdata);
+
+  // required string resultError = 2;
+  inline bool has_resulterror() const;
+  inline void clear_resulterror();
+  static const int kResultErrorFieldNumber = 2;
+  inline const ::std::string& resulterror() const;
+  inline void set_resulterror(const ::std::string& value);
+  inline void set_resulterror(const char* value);
+  inline void set_resulterror(const char* value, size_t size);
+  inline ::std::string* mutable_resulterror();
+  inline ::std::string* release_resulterror();
+  inline void set_allocated_resulterror(::std::string* resulterror);
+
+  // @@protoc_insertion_point(class_scope:netmsg.AddVersionMsgResult)
+ private:
+  inline void set_has_resultdata();
+  inline void clear_has_resultdata();
+  inline void set_has_resulterror();
+  inline void clear_has_resulterror();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* resultdata_;
+  ::std::string* resulterror_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static AddVersionMsgResult* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UpgradeDownLoadMsg : public ::google::protobuf::Message {
+ public:
+  UpgradeDownLoadMsg();
+  virtual ~UpgradeDownLoadMsg();
+
+  UpgradeDownLoadMsg(const UpgradeDownLoadMsg& from);
+
+  inline UpgradeDownLoadMsg& operator=(const UpgradeDownLoadMsg& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UpgradeDownLoadMsg& default_instance();
+
+  void Swap(UpgradeDownLoadMsg* other);
+
+  // implements Message ----------------------------------------------
+
+  UpgradeDownLoadMsg* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UpgradeDownLoadMsg& from);
+  void MergeFrom(const UpgradeDownLoadMsg& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required bytes seteupData = 1;
+  inline bool has_seteupdata() const;
+  inline void clear_seteupdata();
+  static const int kSeteupDataFieldNumber = 1;
+  inline const ::std::string& seteupdata() const;
+  inline void set_seteupdata(const ::std::string& value);
+  inline void set_seteupdata(const char* value);
+  inline void set_seteupdata(const void* value, size_t size);
+  inline ::std::string* mutable_seteupdata();
+  inline ::std::string* release_seteupdata();
+  inline void set_allocated_seteupdata(::std::string* seteupdata);
+
+  // required string resultError = 2;
+  inline bool has_resulterror() const;
+  inline void clear_resulterror();
+  static const int kResultErrorFieldNumber = 2;
+  inline const ::std::string& resulterror() const;
+  inline void set_resulterror(const ::std::string& value);
+  inline void set_resulterror(const char* value);
+  inline void set_resulterror(const char* value, size_t size);
+  inline ::std::string* mutable_resulterror();
+  inline ::std::string* release_resulterror();
+  inline void set_allocated_resulterror(::std::string* resulterror);
+
+  // @@protoc_insertion_point(class_scope:netmsg.UpgradeDownLoadMsg)
+ private:
+  inline void set_has_seteupdata();
+  inline void clear_has_seteupdata();
+  inline void set_has_resulterror();
+  inline void clear_has_resulterror();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* seteupdata_;
+  ::std::string* resulterror_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static UpgradeDownLoadMsg* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UpgradeDownLoadMsgResult : public ::google::protobuf::Message {
+ public:
+  UpgradeDownLoadMsgResult();
+  virtual ~UpgradeDownLoadMsgResult();
+
+  UpgradeDownLoadMsgResult(const UpgradeDownLoadMsgResult& from);
+
+  inline UpgradeDownLoadMsgResult& operator=(const UpgradeDownLoadMsgResult& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UpgradeDownLoadMsgResult& default_instance();
+
+  void Swap(UpgradeDownLoadMsgResult* other);
+
+  // implements Message ----------------------------------------------
+
+  UpgradeDownLoadMsgResult* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UpgradeDownLoadMsgResult& from);
+  void MergeFrom(const UpgradeDownLoadMsgResult& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string resultData = 1;
+  inline bool has_resultdata() const;
+  inline void clear_resultdata();
+  static const int kResultDataFieldNumber = 1;
+  inline const ::std::string& resultdata() const;
+  inline void set_resultdata(const ::std::string& value);
+  inline void set_resultdata(const char* value);
+  inline void set_resultdata(const char* value, size_t size);
+  inline ::std::string* mutable_resultdata();
+  inline ::std::string* release_resultdata();
+  inline void set_allocated_resultdata(::std::string* resultdata);
+
+  // required string resultError = 2;
+  inline bool has_resulterror() const;
+  inline void clear_resulterror();
+  static const int kResultErrorFieldNumber = 2;
+  inline const ::std::string& resulterror() const;
+  inline void set_resulterror(const ::std::string& value);
+  inline void set_resulterror(const char* value);
+  inline void set_resulterror(const char* value, size_t size);
+  inline ::std::string* mutable_resulterror();
+  inline ::std::string* release_resulterror();
+  inline void set_allocated_resulterror(::std::string* resulterror);
+
+  // @@protoc_insertion_point(class_scope:netmsg.UpgradeDownLoadMsgResult)
+ private:
+  inline void set_has_resultdata();
+  inline void clear_has_resultdata();
+  inline void set_has_resulterror();
+  inline void clear_has_resulterror();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* resultdata_;
+  ::std::string* resulterror_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static UpgradeDownLoadMsgResult* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class UpgradeMsgResult : public ::google::protobuf::Message {
+ public:
+  UpgradeMsgResult();
+  virtual ~UpgradeMsgResult();
+
+  UpgradeMsgResult(const UpgradeMsgResult& from);
+
+  inline UpgradeMsgResult& operator=(const UpgradeMsgResult& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const UpgradeMsgResult& default_instance();
+
+  void Swap(UpgradeMsgResult* other);
+
+  // implements Message ----------------------------------------------
+
+  UpgradeMsgResult* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const UpgradeMsgResult& from);
+  void MergeFrom(const UpgradeMsgResult& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required string resultData = 1;
+  inline bool has_resultdata() const;
+  inline void clear_resultdata();
+  static const int kResultDataFieldNumber = 1;
+  inline const ::std::string& resultdata() const;
+  inline void set_resultdata(const ::std::string& value);
+  inline void set_resultdata(const char* value);
+  inline void set_resultdata(const char* value, size_t size);
+  inline ::std::string* mutable_resultdata();
+  inline ::std::string* release_resultdata();
+  inline void set_allocated_resultdata(::std::string* resultdata);
+
+  // required string resultError = 2;
+  inline bool has_resulterror() const;
+  inline void clear_resulterror();
+  static const int kResultErrorFieldNumber = 2;
+  inline const ::std::string& resulterror() const;
+  inline void set_resulterror(const ::std::string& value);
+  inline void set_resulterror(const char* value);
+  inline void set_resulterror(const char* value, size_t size);
+  inline ::std::string* mutable_resulterror();
+  inline ::std::string* release_resulterror();
+  inline void set_allocated_resulterror(::std::string* resulterror);
+
+  // @@protoc_insertion_point(class_scope:netmsg.UpgradeMsgResult)
+ private:
+  inline void set_has_resultdata();
+  inline void clear_has_resultdata();
+  inline void set_has_resulterror();
+  inline void clear_has_resulterror();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint32 _has_bits_[1];
+  mutable int _cached_size_;
+  ::std::string* resultdata_;
+  ::std::string* resulterror_;
+  friend void  protobuf_AddDesc_netmsg_2eproto();
+  friend void protobuf_AssignDesc_netmsg_2eproto();
+  friend void protobuf_ShutdownFile_netmsg_2eproto();
+
+  void InitAsDefaultInstance();
+  static UpgradeMsgResult* default_instance_;
+};
 // ===================================================================
 
 
@@ -2254,6 +2941,252 @@ inline void MsgPack::set_allocated_queryconnectionsstrmsgresult(::netmsg::QueryC
     clear_has_queryconnectionsstrmsgresult();
   }
   // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.queryconnectionsstrmsgresult)
+}
+
+// optional .netmsg.AddVersionMsg addversionmsg = 20;
+inline bool MsgPack::has_addversionmsg() const {
+  return (_has_bits_[0] & 0x00008000u) != 0;
+}
+inline void MsgPack::set_has_addversionmsg() {
+  _has_bits_[0] |= 0x00008000u;
+}
+inline void MsgPack::clear_has_addversionmsg() {
+  _has_bits_[0] &= ~0x00008000u;
+}
+inline void MsgPack::clear_addversionmsg() {
+  if (addversionmsg_ != NULL) addversionmsg_->::netmsg::AddVersionMsg::Clear();
+  clear_has_addversionmsg();
+}
+inline const ::netmsg::AddVersionMsg& MsgPack::addversionmsg() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.addversionmsg)
+  return addversionmsg_ != NULL ? *addversionmsg_ : *default_instance_->addversionmsg_;
+}
+inline ::netmsg::AddVersionMsg* MsgPack::mutable_addversionmsg() {
+  set_has_addversionmsg();
+  if (addversionmsg_ == NULL) addversionmsg_ = new ::netmsg::AddVersionMsg;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.addversionmsg)
+  return addversionmsg_;
+}
+inline ::netmsg::AddVersionMsg* MsgPack::release_addversionmsg() {
+  clear_has_addversionmsg();
+  ::netmsg::AddVersionMsg* temp = addversionmsg_;
+  addversionmsg_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_addversionmsg(::netmsg::AddVersionMsg* addversionmsg) {
+  delete addversionmsg_;
+  addversionmsg_ = addversionmsg;
+  if (addversionmsg) {
+    set_has_addversionmsg();
+  } else {
+    clear_has_addversionmsg();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.addversionmsg)
+}
+
+// optional .netmsg.AddVersionMsgResult addversionmsgresult = 21;
+inline bool MsgPack::has_addversionmsgresult() const {
+  return (_has_bits_[0] & 0x00010000u) != 0;
+}
+inline void MsgPack::set_has_addversionmsgresult() {
+  _has_bits_[0] |= 0x00010000u;
+}
+inline void MsgPack::clear_has_addversionmsgresult() {
+  _has_bits_[0] &= ~0x00010000u;
+}
+inline void MsgPack::clear_addversionmsgresult() {
+  if (addversionmsgresult_ != NULL) addversionmsgresult_->::netmsg::AddVersionMsgResult::Clear();
+  clear_has_addversionmsgresult();
+}
+inline const ::netmsg::AddVersionMsgResult& MsgPack::addversionmsgresult() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.addversionmsgresult)
+  return addversionmsgresult_ != NULL ? *addversionmsgresult_ : *default_instance_->addversionmsgresult_;
+}
+inline ::netmsg::AddVersionMsgResult* MsgPack::mutable_addversionmsgresult() {
+  set_has_addversionmsgresult();
+  if (addversionmsgresult_ == NULL) addversionmsgresult_ = new ::netmsg::AddVersionMsgResult;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.addversionmsgresult)
+  return addversionmsgresult_;
+}
+inline ::netmsg::AddVersionMsgResult* MsgPack::release_addversionmsgresult() {
+  clear_has_addversionmsgresult();
+  ::netmsg::AddVersionMsgResult* temp = addversionmsgresult_;
+  addversionmsgresult_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_addversionmsgresult(::netmsg::AddVersionMsgResult* addversionmsgresult) {
+  delete addversionmsgresult_;
+  addversionmsgresult_ = addversionmsgresult;
+  if (addversionmsgresult) {
+    set_has_addversionmsgresult();
+  } else {
+    clear_has_addversionmsgresult();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.addversionmsgresult)
+}
+
+// optional .netmsg.UpgradeMsg upgrademsg = 50;
+inline bool MsgPack::has_upgrademsg() const {
+  return (_has_bits_[0] & 0x00020000u) != 0;
+}
+inline void MsgPack::set_has_upgrademsg() {
+  _has_bits_[0] |= 0x00020000u;
+}
+inline void MsgPack::clear_has_upgrademsg() {
+  _has_bits_[0] &= ~0x00020000u;
+}
+inline void MsgPack::clear_upgrademsg() {
+  if (upgrademsg_ != NULL) upgrademsg_->::netmsg::UpgradeMsg::Clear();
+  clear_has_upgrademsg();
+}
+inline const ::netmsg::UpgradeMsg& MsgPack::upgrademsg() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.upgrademsg)
+  return upgrademsg_ != NULL ? *upgrademsg_ : *default_instance_->upgrademsg_;
+}
+inline ::netmsg::UpgradeMsg* MsgPack::mutable_upgrademsg() {
+  set_has_upgrademsg();
+  if (upgrademsg_ == NULL) upgrademsg_ = new ::netmsg::UpgradeMsg;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.upgrademsg)
+  return upgrademsg_;
+}
+inline ::netmsg::UpgradeMsg* MsgPack::release_upgrademsg() {
+  clear_has_upgrademsg();
+  ::netmsg::UpgradeMsg* temp = upgrademsg_;
+  upgrademsg_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_upgrademsg(::netmsg::UpgradeMsg* upgrademsg) {
+  delete upgrademsg_;
+  upgrademsg_ = upgrademsg;
+  if (upgrademsg) {
+    set_has_upgrademsg();
+  } else {
+    clear_has_upgrademsg();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.upgrademsg)
+}
+
+// optional .netmsg.UpgradeDownLoadMsg upgradedownloadmsg = 51;
+inline bool MsgPack::has_upgradedownloadmsg() const {
+  return (_has_bits_[0] & 0x00040000u) != 0;
+}
+inline void MsgPack::set_has_upgradedownloadmsg() {
+  _has_bits_[0] |= 0x00040000u;
+}
+inline void MsgPack::clear_has_upgradedownloadmsg() {
+  _has_bits_[0] &= ~0x00040000u;
+}
+inline void MsgPack::clear_upgradedownloadmsg() {
+  if (upgradedownloadmsg_ != NULL) upgradedownloadmsg_->::netmsg::UpgradeDownLoadMsg::Clear();
+  clear_has_upgradedownloadmsg();
+}
+inline const ::netmsg::UpgradeDownLoadMsg& MsgPack::upgradedownloadmsg() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.upgradedownloadmsg)
+  return upgradedownloadmsg_ != NULL ? *upgradedownloadmsg_ : *default_instance_->upgradedownloadmsg_;
+}
+inline ::netmsg::UpgradeDownLoadMsg* MsgPack::mutable_upgradedownloadmsg() {
+  set_has_upgradedownloadmsg();
+  if (upgradedownloadmsg_ == NULL) upgradedownloadmsg_ = new ::netmsg::UpgradeDownLoadMsg;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.upgradedownloadmsg)
+  return upgradedownloadmsg_;
+}
+inline ::netmsg::UpgradeDownLoadMsg* MsgPack::release_upgradedownloadmsg() {
+  clear_has_upgradedownloadmsg();
+  ::netmsg::UpgradeDownLoadMsg* temp = upgradedownloadmsg_;
+  upgradedownloadmsg_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_upgradedownloadmsg(::netmsg::UpgradeDownLoadMsg* upgradedownloadmsg) {
+  delete upgradedownloadmsg_;
+  upgradedownloadmsg_ = upgradedownloadmsg;
+  if (upgradedownloadmsg) {
+    set_has_upgradedownloadmsg();
+  } else {
+    clear_has_upgradedownloadmsg();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.upgradedownloadmsg)
+}
+
+// optional .netmsg.UpgradeDownLoadMsgResult upgradedownloadmsgresult = 52;
+inline bool MsgPack::has_upgradedownloadmsgresult() const {
+  return (_has_bits_[0] & 0x00080000u) != 0;
+}
+inline void MsgPack::set_has_upgradedownloadmsgresult() {
+  _has_bits_[0] |= 0x00080000u;
+}
+inline void MsgPack::clear_has_upgradedownloadmsgresult() {
+  _has_bits_[0] &= ~0x00080000u;
+}
+inline void MsgPack::clear_upgradedownloadmsgresult() {
+  if (upgradedownloadmsgresult_ != NULL) upgradedownloadmsgresult_->::netmsg::UpgradeDownLoadMsgResult::Clear();
+  clear_has_upgradedownloadmsgresult();
+}
+inline const ::netmsg::UpgradeDownLoadMsgResult& MsgPack::upgradedownloadmsgresult() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.upgradedownloadmsgresult)
+  return upgradedownloadmsgresult_ != NULL ? *upgradedownloadmsgresult_ : *default_instance_->upgradedownloadmsgresult_;
+}
+inline ::netmsg::UpgradeDownLoadMsgResult* MsgPack::mutable_upgradedownloadmsgresult() {
+  set_has_upgradedownloadmsgresult();
+  if (upgradedownloadmsgresult_ == NULL) upgradedownloadmsgresult_ = new ::netmsg::UpgradeDownLoadMsgResult;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.upgradedownloadmsgresult)
+  return upgradedownloadmsgresult_;
+}
+inline ::netmsg::UpgradeDownLoadMsgResult* MsgPack::release_upgradedownloadmsgresult() {
+  clear_has_upgradedownloadmsgresult();
+  ::netmsg::UpgradeDownLoadMsgResult* temp = upgradedownloadmsgresult_;
+  upgradedownloadmsgresult_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_upgradedownloadmsgresult(::netmsg::UpgradeDownLoadMsgResult* upgradedownloadmsgresult) {
+  delete upgradedownloadmsgresult_;
+  upgradedownloadmsgresult_ = upgradedownloadmsgresult;
+  if (upgradedownloadmsgresult) {
+    set_has_upgradedownloadmsgresult();
+  } else {
+    clear_has_upgradedownloadmsgresult();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.upgradedownloadmsgresult)
+}
+
+// optional .netmsg.UpgradeMsgResult upgrademsgresult = 53;
+inline bool MsgPack::has_upgrademsgresult() const {
+  return (_has_bits_[0] & 0x00100000u) != 0;
+}
+inline void MsgPack::set_has_upgrademsgresult() {
+  _has_bits_[0] |= 0x00100000u;
+}
+inline void MsgPack::clear_has_upgrademsgresult() {
+  _has_bits_[0] &= ~0x00100000u;
+}
+inline void MsgPack::clear_upgrademsgresult() {
+  if (upgrademsgresult_ != NULL) upgrademsgresult_->::netmsg::UpgradeMsgResult::Clear();
+  clear_has_upgrademsgresult();
+}
+inline const ::netmsg::UpgradeMsgResult& MsgPack::upgrademsgresult() const {
+  // @@protoc_insertion_point(field_get:netmsg.MsgPack.upgrademsgresult)
+  return upgrademsgresult_ != NULL ? *upgrademsgresult_ : *default_instance_->upgrademsgresult_;
+}
+inline ::netmsg::UpgradeMsgResult* MsgPack::mutable_upgrademsgresult() {
+  set_has_upgrademsgresult();
+  if (upgrademsgresult_ == NULL) upgrademsgresult_ = new ::netmsg::UpgradeMsgResult;
+  // @@protoc_insertion_point(field_mutable:netmsg.MsgPack.upgrademsgresult)
+  return upgrademsgresult_;
+}
+inline ::netmsg::UpgradeMsgResult* MsgPack::release_upgrademsgresult() {
+  clear_has_upgrademsgresult();
+  ::netmsg::UpgradeMsgResult* temp = upgrademsgresult_;
+  upgrademsgresult_ = NULL;
+  return temp;
+}
+inline void MsgPack::set_allocated_upgrademsgresult(::netmsg::UpgradeMsgResult* upgrademsgresult) {
+  delete upgrademsgresult_;
+  upgrademsgresult_ = upgrademsgresult;
+  if (upgrademsgresult) {
+    set_has_upgrademsgresult();
+  } else {
+    clear_has_upgrademsgresult();
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.MsgPack.upgrademsgresult)
 }
 
 // -------------------------------------------------------------------
@@ -3594,6 +4527,1018 @@ inline void QueryDevSpeedMsgResult::set_allocated_resulterror(::std::string* res
     resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
   }
   // @@protoc_insertion_point(field_set_allocated:netmsg.QueryDevSpeedMsgResult.resultError)
+}
+
+// -------------------------------------------------------------------
+
+// UpgradeMsg
+
+// required string ip = 1;
+inline bool UpgradeMsg::has_ip() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UpgradeMsg::set_has_ip() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UpgradeMsg::clear_has_ip() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UpgradeMsg::clear_ip() {
+  if (ip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ip_->clear();
+  }
+  clear_has_ip();
+}
+inline const ::std::string& UpgradeMsg::ip() const {
+  // @@protoc_insertion_point(field_get:netmsg.UpgradeMsg.ip)
+  return *ip_;
+}
+inline void UpgradeMsg::set_ip(const ::std::string& value) {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ip_ = new ::std::string;
+  }
+  ip_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.UpgradeMsg.ip)
+}
+inline void UpgradeMsg::set_ip(const char* value) {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ip_ = new ::std::string;
+  }
+  ip_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.UpgradeMsg.ip)
+}
+inline void UpgradeMsg::set_ip(const char* value, size_t size) {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ip_ = new ::std::string;
+  }
+  ip_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.UpgradeMsg.ip)
+}
+inline ::std::string* UpgradeMsg::mutable_ip() {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    ip_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.UpgradeMsg.ip)
+  return ip_;
+}
+inline ::std::string* UpgradeMsg::release_ip() {
+  clear_has_ip();
+  if (ip_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = ip_;
+    ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void UpgradeMsg::set_allocated_ip(::std::string* ip) {
+  if (ip_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete ip_;
+  }
+  if (ip) {
+    set_has_ip();
+    ip_ = ip;
+  } else {
+    clear_has_ip();
+    ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.UpgradeMsg.ip)
+}
+
+// required string version = 2;
+inline bool UpgradeMsg::has_version() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UpgradeMsg::set_has_version() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UpgradeMsg::clear_has_version() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UpgradeMsg::clear_version() {
+  if (version_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    version_->clear();
+  }
+  clear_has_version();
+}
+inline const ::std::string& UpgradeMsg::version() const {
+  // @@protoc_insertion_point(field_get:netmsg.UpgradeMsg.version)
+  return *version_;
+}
+inline void UpgradeMsg::set_version(const ::std::string& value) {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    version_ = new ::std::string;
+  }
+  version_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.UpgradeMsg.version)
+}
+inline void UpgradeMsg::set_version(const char* value) {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    version_ = new ::std::string;
+  }
+  version_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.UpgradeMsg.version)
+}
+inline void UpgradeMsg::set_version(const char* value, size_t size) {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    version_ = new ::std::string;
+  }
+  version_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.UpgradeMsg.version)
+}
+inline ::std::string* UpgradeMsg::mutable_version() {
+  set_has_version();
+  if (version_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    version_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.UpgradeMsg.version)
+  return version_;
+}
+inline ::std::string* UpgradeMsg::release_version() {
+  clear_has_version();
+  if (version_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = version_;
+    version_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void UpgradeMsg::set_allocated_version(::std::string* version) {
+  if (version_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete version_;
+  }
+  if (version) {
+    set_has_version();
+    version_ = version;
+  } else {
+    clear_has_version();
+    version_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.UpgradeMsg.version)
+}
+
+// -------------------------------------------------------------------
+
+// AddVersionMsg
+
+// required string Bianhao = 1;
+inline bool AddVersionMsg::has_bianhao() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void AddVersionMsg::set_has_bianhao() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void AddVersionMsg::clear_has_bianhao() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void AddVersionMsg::clear_bianhao() {
+  if (bianhao_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    bianhao_->clear();
+  }
+  clear_has_bianhao();
+}
+inline const ::std::string& AddVersionMsg::bianhao() const {
+  // @@protoc_insertion_point(field_get:netmsg.AddVersionMsg.Bianhao)
+  return *bianhao_;
+}
+inline void AddVersionMsg::set_bianhao(const ::std::string& value) {
+  set_has_bianhao();
+  if (bianhao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    bianhao_ = new ::std::string;
+  }
+  bianhao_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.AddVersionMsg.Bianhao)
+}
+inline void AddVersionMsg::set_bianhao(const char* value) {
+  set_has_bianhao();
+  if (bianhao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    bianhao_ = new ::std::string;
+  }
+  bianhao_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.AddVersionMsg.Bianhao)
+}
+inline void AddVersionMsg::set_bianhao(const char* value, size_t size) {
+  set_has_bianhao();
+  if (bianhao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    bianhao_ = new ::std::string;
+  }
+  bianhao_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.AddVersionMsg.Bianhao)
+}
+inline ::std::string* AddVersionMsg::mutable_bianhao() {
+  set_has_bianhao();
+  if (bianhao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    bianhao_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.AddVersionMsg.Bianhao)
+  return bianhao_;
+}
+inline ::std::string* AddVersionMsg::release_bianhao() {
+  clear_has_bianhao();
+  if (bianhao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = bianhao_;
+    bianhao_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void AddVersionMsg::set_allocated_bianhao(::std::string* bianhao) {
+  if (bianhao_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete bianhao_;
+  }
+  if (bianhao) {
+    set_has_bianhao();
+    bianhao_ = bianhao;
+  } else {
+    clear_has_bianhao();
+    bianhao_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.AddVersionMsg.Bianhao)
+}
+
+// required string Banbenhao = 2;
+inline bool AddVersionMsg::has_banbenhao() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void AddVersionMsg::set_has_banbenhao() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void AddVersionMsg::clear_has_banbenhao() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void AddVersionMsg::clear_banbenhao() {
+  if (banbenhao_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    banbenhao_->clear();
+  }
+  clear_has_banbenhao();
+}
+inline const ::std::string& AddVersionMsg::banbenhao() const {
+  // @@protoc_insertion_point(field_get:netmsg.AddVersionMsg.Banbenhao)
+  return *banbenhao_;
+}
+inline void AddVersionMsg::set_banbenhao(const ::std::string& value) {
+  set_has_banbenhao();
+  if (banbenhao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    banbenhao_ = new ::std::string;
+  }
+  banbenhao_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.AddVersionMsg.Banbenhao)
+}
+inline void AddVersionMsg::set_banbenhao(const char* value) {
+  set_has_banbenhao();
+  if (banbenhao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    banbenhao_ = new ::std::string;
+  }
+  banbenhao_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.AddVersionMsg.Banbenhao)
+}
+inline void AddVersionMsg::set_banbenhao(const char* value, size_t size) {
+  set_has_banbenhao();
+  if (banbenhao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    banbenhao_ = new ::std::string;
+  }
+  banbenhao_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.AddVersionMsg.Banbenhao)
+}
+inline ::std::string* AddVersionMsg::mutable_banbenhao() {
+  set_has_banbenhao();
+  if (banbenhao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    banbenhao_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.AddVersionMsg.Banbenhao)
+  return banbenhao_;
+}
+inline ::std::string* AddVersionMsg::release_banbenhao() {
+  clear_has_banbenhao();
+  if (banbenhao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = banbenhao_;
+    banbenhao_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void AddVersionMsg::set_allocated_banbenhao(::std::string* banbenhao) {
+  if (banbenhao_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete banbenhao_;
+  }
+  if (banbenhao) {
+    set_has_banbenhao();
+    banbenhao_ = banbenhao;
+  } else {
+    clear_has_banbenhao();
+    banbenhao_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.AddVersionMsg.Banbenhao)
+}
+
+// required bytes Anzhuangbao = 3;
+inline bool AddVersionMsg::has_anzhuangbao() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void AddVersionMsg::set_has_anzhuangbao() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void AddVersionMsg::clear_has_anzhuangbao() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void AddVersionMsg::clear_anzhuangbao() {
+  if (anzhuangbao_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    anzhuangbao_->clear();
+  }
+  clear_has_anzhuangbao();
+}
+inline const ::std::string& AddVersionMsg::anzhuangbao() const {
+  // @@protoc_insertion_point(field_get:netmsg.AddVersionMsg.Anzhuangbao)
+  return *anzhuangbao_;
+}
+inline void AddVersionMsg::set_anzhuangbao(const ::std::string& value) {
+  set_has_anzhuangbao();
+  if (anzhuangbao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    anzhuangbao_ = new ::std::string;
+  }
+  anzhuangbao_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.AddVersionMsg.Anzhuangbao)
+}
+inline void AddVersionMsg::set_anzhuangbao(const char* value) {
+  set_has_anzhuangbao();
+  if (anzhuangbao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    anzhuangbao_ = new ::std::string;
+  }
+  anzhuangbao_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.AddVersionMsg.Anzhuangbao)
+}
+inline void AddVersionMsg::set_anzhuangbao(const void* value, size_t size) {
+  set_has_anzhuangbao();
+  if (anzhuangbao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    anzhuangbao_ = new ::std::string;
+  }
+  anzhuangbao_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.AddVersionMsg.Anzhuangbao)
+}
+inline ::std::string* AddVersionMsg::mutable_anzhuangbao() {
+  set_has_anzhuangbao();
+  if (anzhuangbao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    anzhuangbao_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.AddVersionMsg.Anzhuangbao)
+  return anzhuangbao_;
+}
+inline ::std::string* AddVersionMsg::release_anzhuangbao() {
+  clear_has_anzhuangbao();
+  if (anzhuangbao_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = anzhuangbao_;
+    anzhuangbao_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void AddVersionMsg::set_allocated_anzhuangbao(::std::string* anzhuangbao) {
+  if (anzhuangbao_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete anzhuangbao_;
+  }
+  if (anzhuangbao) {
+    set_has_anzhuangbao();
+    anzhuangbao_ = anzhuangbao;
+  } else {
+    clear_has_anzhuangbao();
+    anzhuangbao_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.AddVersionMsg.Anzhuangbao)
+}
+
+// -------------------------------------------------------------------
+
+// AddVersionMsgResult
+
+// required string resultData = 1;
+inline bool AddVersionMsgResult::has_resultdata() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void AddVersionMsgResult::set_has_resultdata() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void AddVersionMsgResult::clear_has_resultdata() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void AddVersionMsgResult::clear_resultdata() {
+  if (resultdata_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_->clear();
+  }
+  clear_has_resultdata();
+}
+inline const ::std::string& AddVersionMsgResult::resultdata() const {
+  // @@protoc_insertion_point(field_get:netmsg.AddVersionMsgResult.resultData)
+  return *resultdata_;
+}
+inline void AddVersionMsgResult::set_resultdata(const ::std::string& value) {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  resultdata_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.AddVersionMsgResult.resultData)
+}
+inline void AddVersionMsgResult::set_resultdata(const char* value) {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  resultdata_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.AddVersionMsgResult.resultData)
+}
+inline void AddVersionMsgResult::set_resultdata(const char* value, size_t size) {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  resultdata_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.AddVersionMsgResult.resultData)
+}
+inline ::std::string* AddVersionMsgResult::mutable_resultdata() {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.AddVersionMsgResult.resultData)
+  return resultdata_;
+}
+inline ::std::string* AddVersionMsgResult::release_resultdata() {
+  clear_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = resultdata_;
+    resultdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void AddVersionMsgResult::set_allocated_resultdata(::std::string* resultdata) {
+  if (resultdata_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete resultdata_;
+  }
+  if (resultdata) {
+    set_has_resultdata();
+    resultdata_ = resultdata;
+  } else {
+    clear_has_resultdata();
+    resultdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.AddVersionMsgResult.resultData)
+}
+
+// required string resultError = 2;
+inline bool AddVersionMsgResult::has_resulterror() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void AddVersionMsgResult::set_has_resulterror() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void AddVersionMsgResult::clear_has_resulterror() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void AddVersionMsgResult::clear_resulterror() {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_->clear();
+  }
+  clear_has_resulterror();
+}
+inline const ::std::string& AddVersionMsgResult::resulterror() const {
+  // @@protoc_insertion_point(field_get:netmsg.AddVersionMsgResult.resultError)
+  return *resulterror_;
+}
+inline void AddVersionMsgResult::set_resulterror(const ::std::string& value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.AddVersionMsgResult.resultError)
+}
+inline void AddVersionMsgResult::set_resulterror(const char* value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.AddVersionMsgResult.resultError)
+}
+inline void AddVersionMsgResult::set_resulterror(const char* value, size_t size) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.AddVersionMsgResult.resultError)
+}
+inline ::std::string* AddVersionMsgResult::mutable_resulterror() {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.AddVersionMsgResult.resultError)
+  return resulterror_;
+}
+inline ::std::string* AddVersionMsgResult::release_resulterror() {
+  clear_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = resulterror_;
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void AddVersionMsgResult::set_allocated_resulterror(::std::string* resulterror) {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete resulterror_;
+  }
+  if (resulterror) {
+    set_has_resulterror();
+    resulterror_ = resulterror;
+  } else {
+    clear_has_resulterror();
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.AddVersionMsgResult.resultError)
+}
+
+// -------------------------------------------------------------------
+
+// UpgradeDownLoadMsg
+
+// required bytes seteupData = 1;
+inline bool UpgradeDownLoadMsg::has_seteupdata() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UpgradeDownLoadMsg::set_has_seteupdata() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UpgradeDownLoadMsg::clear_has_seteupdata() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UpgradeDownLoadMsg::clear_seteupdata() {
+  if (seteupdata_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    seteupdata_->clear();
+  }
+  clear_has_seteupdata();
+}
+inline const ::std::string& UpgradeDownLoadMsg::seteupdata() const {
+  // @@protoc_insertion_point(field_get:netmsg.UpgradeDownLoadMsg.seteupData)
+  return *seteupdata_;
+}
+inline void UpgradeDownLoadMsg::set_seteupdata(const ::std::string& value) {
+  set_has_seteupdata();
+  if (seteupdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    seteupdata_ = new ::std::string;
+  }
+  seteupdata_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.UpgradeDownLoadMsg.seteupData)
+}
+inline void UpgradeDownLoadMsg::set_seteupdata(const char* value) {
+  set_has_seteupdata();
+  if (seteupdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    seteupdata_ = new ::std::string;
+  }
+  seteupdata_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.UpgradeDownLoadMsg.seteupData)
+}
+inline void UpgradeDownLoadMsg::set_seteupdata(const void* value, size_t size) {
+  set_has_seteupdata();
+  if (seteupdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    seteupdata_ = new ::std::string;
+  }
+  seteupdata_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.UpgradeDownLoadMsg.seteupData)
+}
+inline ::std::string* UpgradeDownLoadMsg::mutable_seteupdata() {
+  set_has_seteupdata();
+  if (seteupdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    seteupdata_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.UpgradeDownLoadMsg.seteupData)
+  return seteupdata_;
+}
+inline ::std::string* UpgradeDownLoadMsg::release_seteupdata() {
+  clear_has_seteupdata();
+  if (seteupdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = seteupdata_;
+    seteupdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void UpgradeDownLoadMsg::set_allocated_seteupdata(::std::string* seteupdata) {
+  if (seteupdata_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete seteupdata_;
+  }
+  if (seteupdata) {
+    set_has_seteupdata();
+    seteupdata_ = seteupdata;
+  } else {
+    clear_has_seteupdata();
+    seteupdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.UpgradeDownLoadMsg.seteupData)
+}
+
+// required string resultError = 2;
+inline bool UpgradeDownLoadMsg::has_resulterror() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UpgradeDownLoadMsg::set_has_resulterror() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UpgradeDownLoadMsg::clear_has_resulterror() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UpgradeDownLoadMsg::clear_resulterror() {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_->clear();
+  }
+  clear_has_resulterror();
+}
+inline const ::std::string& UpgradeDownLoadMsg::resulterror() const {
+  // @@protoc_insertion_point(field_get:netmsg.UpgradeDownLoadMsg.resultError)
+  return *resulterror_;
+}
+inline void UpgradeDownLoadMsg::set_resulterror(const ::std::string& value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.UpgradeDownLoadMsg.resultError)
+}
+inline void UpgradeDownLoadMsg::set_resulterror(const char* value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.UpgradeDownLoadMsg.resultError)
+}
+inline void UpgradeDownLoadMsg::set_resulterror(const char* value, size_t size) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.UpgradeDownLoadMsg.resultError)
+}
+inline ::std::string* UpgradeDownLoadMsg::mutable_resulterror() {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.UpgradeDownLoadMsg.resultError)
+  return resulterror_;
+}
+inline ::std::string* UpgradeDownLoadMsg::release_resulterror() {
+  clear_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = resulterror_;
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void UpgradeDownLoadMsg::set_allocated_resulterror(::std::string* resulterror) {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete resulterror_;
+  }
+  if (resulterror) {
+    set_has_resulterror();
+    resulterror_ = resulterror;
+  } else {
+    clear_has_resulterror();
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.UpgradeDownLoadMsg.resultError)
+}
+
+// -------------------------------------------------------------------
+
+// UpgradeDownLoadMsgResult
+
+// required string resultData = 1;
+inline bool UpgradeDownLoadMsgResult::has_resultdata() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UpgradeDownLoadMsgResult::set_has_resultdata() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UpgradeDownLoadMsgResult::clear_has_resultdata() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UpgradeDownLoadMsgResult::clear_resultdata() {
+  if (resultdata_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_->clear();
+  }
+  clear_has_resultdata();
+}
+inline const ::std::string& UpgradeDownLoadMsgResult::resultdata() const {
+  // @@protoc_insertion_point(field_get:netmsg.UpgradeDownLoadMsgResult.resultData)
+  return *resultdata_;
+}
+inline void UpgradeDownLoadMsgResult::set_resultdata(const ::std::string& value) {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  resultdata_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.UpgradeDownLoadMsgResult.resultData)
+}
+inline void UpgradeDownLoadMsgResult::set_resultdata(const char* value) {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  resultdata_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.UpgradeDownLoadMsgResult.resultData)
+}
+inline void UpgradeDownLoadMsgResult::set_resultdata(const char* value, size_t size) {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  resultdata_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.UpgradeDownLoadMsgResult.resultData)
+}
+inline ::std::string* UpgradeDownLoadMsgResult::mutable_resultdata() {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.UpgradeDownLoadMsgResult.resultData)
+  return resultdata_;
+}
+inline ::std::string* UpgradeDownLoadMsgResult::release_resultdata() {
+  clear_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = resultdata_;
+    resultdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void UpgradeDownLoadMsgResult::set_allocated_resultdata(::std::string* resultdata) {
+  if (resultdata_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete resultdata_;
+  }
+  if (resultdata) {
+    set_has_resultdata();
+    resultdata_ = resultdata;
+  } else {
+    clear_has_resultdata();
+    resultdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.UpgradeDownLoadMsgResult.resultData)
+}
+
+// required string resultError = 2;
+inline bool UpgradeDownLoadMsgResult::has_resulterror() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UpgradeDownLoadMsgResult::set_has_resulterror() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UpgradeDownLoadMsgResult::clear_has_resulterror() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UpgradeDownLoadMsgResult::clear_resulterror() {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_->clear();
+  }
+  clear_has_resulterror();
+}
+inline const ::std::string& UpgradeDownLoadMsgResult::resulterror() const {
+  // @@protoc_insertion_point(field_get:netmsg.UpgradeDownLoadMsgResult.resultError)
+  return *resulterror_;
+}
+inline void UpgradeDownLoadMsgResult::set_resulterror(const ::std::string& value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.UpgradeDownLoadMsgResult.resultError)
+}
+inline void UpgradeDownLoadMsgResult::set_resulterror(const char* value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.UpgradeDownLoadMsgResult.resultError)
+}
+inline void UpgradeDownLoadMsgResult::set_resulterror(const char* value, size_t size) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.UpgradeDownLoadMsgResult.resultError)
+}
+inline ::std::string* UpgradeDownLoadMsgResult::mutable_resulterror() {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.UpgradeDownLoadMsgResult.resultError)
+  return resulterror_;
+}
+inline ::std::string* UpgradeDownLoadMsgResult::release_resulterror() {
+  clear_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = resulterror_;
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void UpgradeDownLoadMsgResult::set_allocated_resulterror(::std::string* resulterror) {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete resulterror_;
+  }
+  if (resulterror) {
+    set_has_resulterror();
+    resulterror_ = resulterror;
+  } else {
+    clear_has_resulterror();
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.UpgradeDownLoadMsgResult.resultError)
+}
+
+// -------------------------------------------------------------------
+
+// UpgradeMsgResult
+
+// required string resultData = 1;
+inline bool UpgradeMsgResult::has_resultdata() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void UpgradeMsgResult::set_has_resultdata() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void UpgradeMsgResult::clear_has_resultdata() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void UpgradeMsgResult::clear_resultdata() {
+  if (resultdata_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_->clear();
+  }
+  clear_has_resultdata();
+}
+inline const ::std::string& UpgradeMsgResult::resultdata() const {
+  // @@protoc_insertion_point(field_get:netmsg.UpgradeMsgResult.resultData)
+  return *resultdata_;
+}
+inline void UpgradeMsgResult::set_resultdata(const ::std::string& value) {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  resultdata_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.UpgradeMsgResult.resultData)
+}
+inline void UpgradeMsgResult::set_resultdata(const char* value) {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  resultdata_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.UpgradeMsgResult.resultData)
+}
+inline void UpgradeMsgResult::set_resultdata(const char* value, size_t size) {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  resultdata_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.UpgradeMsgResult.resultData)
+}
+inline ::std::string* UpgradeMsgResult::mutable_resultdata() {
+  set_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resultdata_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.UpgradeMsgResult.resultData)
+  return resultdata_;
+}
+inline ::std::string* UpgradeMsgResult::release_resultdata() {
+  clear_has_resultdata();
+  if (resultdata_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = resultdata_;
+    resultdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void UpgradeMsgResult::set_allocated_resultdata(::std::string* resultdata) {
+  if (resultdata_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete resultdata_;
+  }
+  if (resultdata) {
+    set_has_resultdata();
+    resultdata_ = resultdata;
+  } else {
+    clear_has_resultdata();
+    resultdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.UpgradeMsgResult.resultData)
+}
+
+// required string resultError = 2;
+inline bool UpgradeMsgResult::has_resulterror() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void UpgradeMsgResult::set_has_resulterror() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void UpgradeMsgResult::clear_has_resulterror() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void UpgradeMsgResult::clear_resulterror() {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_->clear();
+  }
+  clear_has_resulterror();
+}
+inline const ::std::string& UpgradeMsgResult::resulterror() const {
+  // @@protoc_insertion_point(field_get:netmsg.UpgradeMsgResult.resultError)
+  return *resulterror_;
+}
+inline void UpgradeMsgResult::set_resulterror(const ::std::string& value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set:netmsg.UpgradeMsgResult.resultError)
+}
+inline void UpgradeMsgResult::set_resulterror(const char* value) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(value);
+  // @@protoc_insertion_point(field_set_char:netmsg.UpgradeMsgResult.resultError)
+}
+inline void UpgradeMsgResult::set_resulterror(const char* value, size_t size) {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  resulterror_->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:netmsg.UpgradeMsgResult.resultError)
+}
+inline ::std::string* UpgradeMsgResult::mutable_resulterror() {
+  set_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    resulterror_ = new ::std::string;
+  }
+  // @@protoc_insertion_point(field_mutable:netmsg.UpgradeMsgResult.resultError)
+  return resulterror_;
+}
+inline ::std::string* UpgradeMsgResult::release_resulterror() {
+  clear_has_resulterror();
+  if (resulterror_ == &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    return NULL;
+  } else {
+    ::std::string* temp = resulterror_;
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+    return temp;
+  }
+}
+inline void UpgradeMsgResult::set_allocated_resulterror(::std::string* resulterror) {
+  if (resulterror_ != &::google::protobuf::internal::GetEmptyStringAlreadyInited()) {
+    delete resulterror_;
+  }
+  if (resulterror) {
+    set_has_resulterror();
+    resulterror_ = resulterror;
+  } else {
+    clear_has_resulterror();
+    resulterror_ = const_cast< ::std::string*>(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
+  }
+  // @@protoc_insertion_point(field_set_allocated:netmsg.UpgradeMsgResult.resultError)
 }
 
 

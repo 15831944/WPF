@@ -9,7 +9,9 @@ CSqliteData::CSqliteData()
 	HMODULE hDataBaseDll				= LoadLibrary(_T("database.dll"));
 
 	m_QueryTableFunc					= (_QueryTable)GetProcAddress(hDataBaseDll, "QueryTable");
+	m_QueryVersionFunc					= (_QueryVersion)GetProcAddress(hDataBaseDll, "QueryVersion");
 	m_AddTableFunc						= (_AddTable)GetProcAddress(hDataBaseDll, "AddTable");
+	m_AddVersionFunc					= (_AddVersion)GetProcAddress(hDataBaseDll, "AddVersion");
 	m_ExcuteSqlFunc						= (_ExcuteSql)GetProcAddress(hDataBaseDll, "ExcuteSql");
 
 	m_AddZHIQIANSHUJUFunc				= (_AddZHIQIANSHUJU)GetProcAddress(hDataBaseDll, "AddZHIQIANSHUJU");
@@ -57,10 +59,24 @@ bool CSqliteData::QueryTable(string QuerySql, string &dataStr, string &strError)
 	return false;
 }
 
+bool CSqliteData::QueryVersion(string QuerySql, string &Bianhao, string &Banbenhao, string &Anzhuangbao, string &strError)
+{
+	if (m_QueryVersionFunc)
+		return m_QueryVersionFunc(QuerySql, Bianhao, Banbenhao, Anzhuangbao, strError);
+	return false;
+}
+
 bool CSqliteData::AddTable(char* tableName, char* dataStr, string &strError)
 {
 	if (m_AddTableFunc)
 		return m_AddTableFunc(tableName, dataStr, strError);
+	return false;
+}
+
+bool CSqliteData::AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, string &strError)
+{
+	if (m_AddVersionFunc)
+		return m_AddVersionFunc(Bianhao, Banbenhao, Anzhuangbao, datalen, strError);
 	return false;
 }
 

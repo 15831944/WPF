@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-	<PdbFile>$(ProjectDir)..\..\output\pdb\$(AssemblyName).pdb</PdbFile>	
+    <PdbFile>$(ProjectDir)..\..\output\pdb\$(AssemblyName).pdb</PdbFile>
     <OutputPath>..\..\output\ManageSystem\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -30,7 +30,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-	<PdbFile>$(ProjectDir)..\..\output\pdb\$(AssemblyName).pdb</PdbFile>	
+    <PdbFile>$(ProjectDir)..\..\output\pdb\$(AssemblyName).pdb</PdbFile>
     <OutputPath>..\..\output\ManageSystem\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,6 +60,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common.cs" />
+    <Compile Include="MiniDumpUtil.cs" />
     <Compile Include="Server\WorkServer.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Page Include="MainWindow.xaml">

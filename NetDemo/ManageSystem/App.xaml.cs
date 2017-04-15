@@ -1,4 +1,5 @@
 ﻿using ManageSystem.Server;
+using MiniDumpUtilNameSpace;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -13,8 +14,18 @@ namespace ManageSystem
     /// </summary>
     public partial class App : Application
     {
+        void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            string dtNow = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+            string file = dtNow + ".dmp";
+            MiniDumpUtil.TryWriteMiniDump(System.Windows.Forms.Application.StartupPath + "\\" + file,
+                MiniDumpType.MiniDumpWithFullMemory);
+        }
+
         protected override void OnStartup(StartupEventArgs e)
         {
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
+
             LineChartServer.InitializeCurveModule();
             HistogramServer.InitializeHistogramModule();
             OccupancyChartServer.InitializeOccupancyModule();

@@ -84,6 +84,8 @@ private:
 public:
 	boost::asio::ip::tcp::socket &					socket();
 	bool											bstarted() const;
+	int												curreadlen() const;
+	int												cursendlen() const;
 
 	void											start(bool bSendHeart);
 	void											stop();

@@ -33,7 +33,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         BackgroundWorker                speedbgw = new BackgroundWorker();
 
         public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
-        private QueryEnum                    _queryEnum = QueryEnum.QueryEnum_None;
+        private OperateEnum                    _queryEnum = OperateEnum.OperateEnum_None;
 
         private ObservableCollection<SHEBEIGUANLIModel> _tableListTemp = new ObservableCollection<SHEBEIGUANLIModel>();
 
@@ -192,7 +192,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
             TestCommand                                 = new DelegateCommand<object>(QuerySpeed);
             QueryCommand                                = new DelegateCommand<object>(QueryShebeiguanli);
-            OperateCommand                             = new DelegateCommand<object>(Operate);
+            OperateCommand                              = new DelegateCommand<object>(Operate);
 
             FirstPageCommand                            = new DelegateCommand<object>(FirstPage);
             PrePageCommand                              = new DelegateCommand<object>(PrePage);
@@ -397,10 +397,10 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             Type type = null;
             switch (_queryEnum)
             {
-                case QueryEnum.QueryEnum_Device:
+                case OperateEnum.OperateEnum_QueryDevice:
                     type = typeof(SHEBEIGUANLIModel);
                     break;
-                case QueryEnum.QueryEnum_TestSpeed:
+                case OperateEnum.OperateEnum_QueryTestSpeed:
                     type = typeof(object);
                     break;
             }
@@ -427,7 +427,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
                         switch(_queryEnum)
                         {
-                            case QueryEnum.QueryEnum_TestSpeed:
+                            case OperateEnum.OperateEnum_QueryTestSpeed:
                                 Application.Current.Dispatcher.Invoke(
                                  new Action(() =>
                                  {
@@ -532,7 +532,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                                      }
                                  }));
                                 break;
-                            case QueryEnum.QueryEnum_Device:
+                            case OperateEnum.OperateEnum_QueryDevice:
                                 foreach (System.Reflection.PropertyInfo item in properties)
                                 {
                                     if (item.Name == keyvalue[0])
@@ -593,7 +593,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                     }
                     switch (_queryEnum)
                     {
-                        case QueryEnum.QueryEnum_Device:
+                        case OperateEnum.OperateEnum_QueryDevice:
                             (model as SHEBEIGUANLIModel).operateinfomodel.operatemodel = OperateModelEnum.OperateModel_TestSpeed;
                             _tableListTemp.Add(model as SHEBEIGUANLIModel);
                             break;
@@ -603,23 +603,23 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
             switch (_queryEnum)
             {
-                case QueryEnum.QueryEnum_Device:
+                case OperateEnum.OperateEnum_QueryDevice:
                     Application.Current.Dispatcher.Invoke(
                      new Action(() =>
                      {
                          ShowPage(1);
                      }));
                     break;
-                case QueryEnum.QueryEnum_Upgrade:
+                case OperateEnum.OperateEnum_QueryUpgrade:
                     break;
             }
 
-            _queryEnum = QueryEnum.QueryEnum_None;
+            _queryEnum = OperateEnum.OperateEnum_None;
         }
 
         public void QueryShebeiguanli(object obj)
         {
-            _queryEnum = QueryEnum.QueryEnum_Device;
+            _queryEnum = OperateEnum.OperateEnum_QueryDevice;
             _tableListTemp.Clear();
             tableList.Clear();
             WorkServer.QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
@@ -634,7 +634,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         {
             if(speedbgw!=null && !speedbgw.IsBusy)
             {
-                _queryEnum  = QueryEnum.QueryEnum_TestSpeed;
+                _queryEnum  = OperateEnum.OperateEnum_QueryTestSpeed;
                 statusText  = "测速中……";
                 Angle       = -130;
                 IPAddress addr;

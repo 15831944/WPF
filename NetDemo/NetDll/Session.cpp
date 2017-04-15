@@ -20,6 +20,15 @@ session::~session()
 {
 
 }
+int session::curreadlen() const
+{
+	return m_ReadBuffer.size();
+}
+
+int session::cursendlen() const
+{
+	return m_WriteBuffer.size();
+}
 
 bool session::bstarted() const
 {
@@ -206,6 +215,10 @@ void session::send_handler(const boost::system::error_code &ec, const size_t byt
 
 	if (!bstarted())
 		return;
+
+	//char ch[MAX_PATH] ={ 0 };
+	//sprintf_s(ch, MAX_PATH, "send_handler:m_WriteBuffer.size():%d", m_WriteBuffer.size());
+	//OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, ch);
 
 	boost::mutex::scoped_lock Lock(m_writebufMutex);
 	m_WriteBuffer.consume(bytesTransferred);

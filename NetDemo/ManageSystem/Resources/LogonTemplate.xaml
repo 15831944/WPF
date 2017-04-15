@@ -9,35 +9,36 @@
                    >
     <DataTemplate DataType="{x:Type viewModel:MainWindowViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden" Background="#34343E">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
                 <RowDefinition Height="2*"/>
-                <RowDefinition/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="150"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Column="0">
+            <Image Grid.Row="0" Grid.Column="1" Stretch="None" Source="/ManageSystem;component/Resources/imgs/logo.png"/>
+            <TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" Text="自助设备信息管理系统" FontSize="30" Foreground="White"></TextBlock>
+            <Image Grid.Row="2" Grid.Column="0" Stretch="None" Source="/ManageSystem;component/Resources/imgs/左.png"/>
+            <Image Grid.Row="2" Grid.Column="2" Stretch="None" Source="/ManageSystem;component/Resources/imgs/右.png"/>
+            <Border Grid.Row="2" Grid.Column="1" Background="White" CornerRadius="10">
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <TextBlock Foreground="White" Margin="0,0,5,5" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right">姓名:</TextBlock>
-                    <TextBlock Foreground="White" Margin="0,5,5,5" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Right">密码:</TextBlock>
-                </Grid>
-                <Grid Grid.Column="1">
-                    <Grid.RowDefinitions>
                         <RowDefinition/>
                         <RowDefinition/>
+                        <RowDefinition Height="50"/>
                     </Grid.RowDefinitions>
-                    <TextBox Margin="0,0,0,5" Grid.Row="0" VerticalAlignment="Bottom" Text="{Binding Path=logonName}">
+                    <TextBlock Margin="30,20,0,0" Grid.Row="0" Text="登 录" FontSize="25" Foreground="Red"></TextBlock>
+                    <TextBox Grid.Row="1" Margin="50,0,50,0" Height="40" FontSize="30" HorizontalAlignment="Stretch"  VerticalAlignment="Center" Text="{Binding Path=logonName}">
                         <TextBox.Resources>
                             <VisualBrush x:Key="waterMarkBrush" TileMode="None" Stretch="None" AlignmentX="Left">
                                 <VisualBrush.Visual>
-                                    <TextBlock FontStyle="Normal" Foreground="Gray" Text="请输入用户名"/>
+                                    <TextBlock FontStyle="Normal" Foreground="Gray" Text="用户名"/>
                                 </VisualBrush.Visual>
                             </VisualBrush>
                         </TextBox.Resources>
@@ -54,7 +55,7 @@
                             </Style>
                         </TextBox.Style>
                     </TextBox>
-                    <PasswordBox Margin="0,5,0,0" PasswordBoxMark:PasswordBoxWaterMark.PassWordStr="{Binding Path=logonPassword, Mode=TwoWay}" Grid.Row="1" VerticalAlignment="Top">
+                    <PasswordBox Grid.Row="2" Margin="50,0,50,0" Height="40" FontSize="30" HorizontalAlignment="Stretch"  VerticalAlignment="Center" PasswordBoxMark:PasswordBoxWaterMark.PassWordStr="{Binding Path=logonPassword, Mode=TwoWay}">
                         <PasswordBox.Resources>
                             <LinearGradientBrush x:Key="TextBoxBorder" EndPoint="0,20" MappingMode="Absolute" StartPoint="0,0">
                                 <GradientStop Color="#ABADB3" Offset="0.05"/>
@@ -71,7 +72,7 @@
                                             <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                                                 <Grid>
                                                     <ScrollViewer x:Name="PART_ContentHost" Focusable="False" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
-                                                    <TextBox Background="Transparent" BorderThickness="0" x:Name="WaterMark"  Foreground="Gray" Focusable="False" Visibility="Collapsed" Text="请输入密码"/>
+                                                    <TextBox Background="Transparent" VerticalAlignment="{TemplateBinding VerticalAlignment}" BorderThickness="0" x:Name="WaterMark"  Foreground="Gray" Focusable="False" Visibility="Collapsed" Text="密码"/>
                                                 </Grid>
                                             </Border>
                                             <ControlTemplate.Triggers>
@@ -89,24 +90,51 @@
                             </Style>
                         </PasswordBox.Style>
                     </PasswordBox>
+                    <Button Grid.Row="3" Margin="50,0,50,0" Height="50" FontSize="30" HorizontalContentAlignment="Center" Foreground="White"  HorizontalAlignment="Stretch" VerticalAlignment="Center" Command="{Binding Path=LogonCommand}">
+                        <Button.Template>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border x:Name="panel"  CornerRadius="0,0,0,0">
+                                    <TextBlock VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Background="Transparent" >登 陆</TextBlock>
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                            <GradientStop Color="#ff5251" Offset="0.0"/>
+                                            <GradientStop Color="#ffa152" Offset="1.0"/>
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsPressed" Value="True">
+                                        <Setter Property="Background" TargetName="panel">
+                                            <Setter.Value>
+                                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                                    <GradientStop Color="#ff5251" Offset="1.0"/>
+                                                    <GradientStop Color="#ffa152" Offset="0.0"/>
+                                                </LinearGradientBrush>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
+                    <TextBlock Grid.Row="4" Grid.ColumnSpan="3" Margin="10,0,0,0" FontSize="15" Text="{Binding Path=displayMsg}" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                        <TextBlock.Style>
+                            <Style TargetType="{x:Type TextBlock}">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding Path=bOnline}" Value="False">
+                                        <Setter Property="Foreground" Value="Red"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding Path=bOnline}" Value="True">
+                                        <Setter Property="Foreground" Value="Green"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBlock.Style>
+                    </TextBlock>
                 </Grid>
-                <Button Margin="20,0,0,0" Grid.Column="2" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Left" Command="{Binding Path=LogonCommand}">登陆</Button>
-            </Grid>
-            <TextBlock Grid.Row="1" Margin="10,0,0,0" Text="{Binding Path=displayMsg}" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                <TextBlock.Style>
-                    <Style TargetType="{x:Type TextBlock}">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Path=bOnline}" Value="False">
-                                <Setter Property="Foreground" Value="Red"/>
-                            </DataTrigger>
-                            <DataTrigger Binding="{Binding Path=bOnline}" Value="True">
-                                <Setter Property="Foreground" Value="Green"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBlock.Style>
-            </TextBlock>
-            <ProgressBar Grid.Row="2" Foreground="Green" Minimum="0" Maximum="100"  Height="10" HorizontalAlignment="Stretch" VerticalAlignment="Top" Value="{Binding Path=progressValue, Mode=TwoWay}">
+            </Border>
+
+            <ProgressBar Grid.Row="3" Grid.ColumnSpan="3" Foreground="Green" Minimum="0" Maximum="100"  Height="10" HorizontalAlignment="Stretch" VerticalAlignment="Center" Value="{Binding Path=progressValue, Mode=TwoWay}">
                 <ProgressBar.Style>
                     <Style TargetType="{x:Type ProgressBar}">
                         <Style.Triggers>

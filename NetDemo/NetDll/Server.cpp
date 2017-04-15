@@ -187,3 +187,20 @@ const char* server::getipbyid(int id)
 
 	return ipStr.size() > 0 ?ipStr.c_str():nullptr;
 }
+
+int server::curwritebufLen(int id)
+{
+	int len = 0;
+	boost::mutex::scoped_lock Lock(m_sessionsMutex);
+	for (list<session_ptr>::iterator it = m_sessions.begin(); it != m_sessions.end(); ++it)
+	{
+		if (int((*it).get()) == id)
+		{
+			len = (*it)->cursendlen();
+			break;
+		}
+	}
+	Lock.unlock();
+
+	return len;
+}

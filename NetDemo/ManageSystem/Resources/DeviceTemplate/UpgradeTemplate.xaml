@@ -7,6 +7,8 @@
                     xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
                     xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
                     xmlns:DataGridAttachResA="clr-namespace:ManageSystem.Resources.DataGridAttachRes"
+                    xmlns:Animation="clr-namespace:ManageSystem.Resources.AnimationAttachRes"
+                    xmlns:shapes="http://schemas.microsoft.com/expression/2010/drawing"
                     >
     <DataTemplate DataType="{x:Type deviceViewModel:UpgradeViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
@@ -23,6 +25,8 @@
                 <TextBlock Grid.Column="0" Margin="5,0,0,0" Height="50" VerticalAlignment="Center" Foreground="Red" FontSize="25">软件信息</TextBlock>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                     <!--<Button Margin="10,0,10,0" VerticalAlignment="Center" Command="{Binding Path=ModifyCommand}" >编辑</Button>-->
+                    <Button Margin="10,0,10,0" VerticalAlignment="Center" Template="{StaticResource btnupgradeVersion_Template}" Command="{Binding Path=UpgradeVersionCommand}"
+                             DataGridAttachResA:DataGridAttach.AttachGridAnimation="{Binding ElementName=rightgrid}"/>
                     <Button Margin="10,0,10,0" VerticalAlignment="Center" Template="{StaticResource btnupgradeUpgrade_Template}" Command="{Binding Path=UpgradeCommand}"
                              />
                     <Button Margin="10,0,10,0" VerticalAlignment="Center" Template="{StaticResource btnupgradePower_Template}" Command="{Binding Path=PowerUpgradeCommand}" 
@@ -157,23 +161,12 @@
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
                               SelectedValue="{Binding BindsDirectlyToSource=True, Path=customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
                               ItemsSource="{Binding Path=tableList}"
-                              >
+                              >           
                     <DataGrid.RowStyle>
                         <Style  TargetType="{x:Type DataGridRow}">
                             <Setter Property="IsSelected" Value="{Binding Path=bSel}"/>
                         </Style>
                     </DataGrid.RowStyle>
-                    <DataGrid.CellStyle>
-                        <Style TargetType="DataGridCell">
-                            <Setter Property="BorderThickness" Value="0"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="LightBlue"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.CellStyle>
                 </DataGrid>
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Button Command="{Binding Path=FirstPageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="首页"></Button>
@@ -187,6 +180,122 @@
                     </TextBox>
                     <TextBlock  Margin="0,0,50,0" Text="页"/>
                 </StackPanel>
+                <Grid Grid.RowSpan="3" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" x:Name="rightheader" Height="50" VerticalAlignment="Center" Foreground="Red" FontSize="25">升级</TextBlock>
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="80"/>
+                        </Grid.RowDefinitions>
+                        <shapes:Arc Grid.Row="0" Fill="#CED4D8" StartAngle="0" EndAngle="360" Width="120" Height="120" Stretch="None" ArcThicknessUnit="Percent" ArcThickness="0.2" HorizontalAlignment="Center" VerticalAlignment="Bottom"></shapes:Arc>
+                        <shapes:Arc Grid.Row="0" Fill="Red" StartAngle="-130" EndAngle="{Binding Path=Angle}" Width="120" Height="120"  Stretch="None" ArcThicknessUnit="Percent" ArcThickness="0.2" HorizontalAlignment="Center" VerticalAlignment="Bottom"></shapes:Arc>
+                        <Image Stretch="None" Source="/ManageSystem;component/Resources/imgs/直方图－选中.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Row="0" Grid.Column="0" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=version}">
+                            <TextBox.Resources>
+                                <VisualBrush x:Key="waterMarkBrush" TileMode="None" Stretch="None" AlignmentX="Left">
+                                    <VisualBrush.Visual>
+                                        <TextBlock FontStyle="Normal" Foreground="Gray" Text="版本号"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </TextBox.Resources>
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}">
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="{x:Null}">
+                                            <Setter Property="Background" Value="{StaticResource waterMarkBrush}"/>
+                                        </Trigger>
+                                        <Trigger Property="Text" Value="">
+                                            <Setter Property="Background" Value="{StaticResource waterMarkBrush}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+
+                        <TextBox Grid.Row="1" Grid.Column="0" Margin="5,0,10,0" VerticalAlignment="Center" Text="{Binding Path=filePath}">
+                            <TextBox.Resources>
+                                <VisualBrush x:Key="waterMarkBrush" TileMode="None" Stretch="None" AlignmentX="Left">
+                                    <VisualBrush.Visual>
+                                        <TextBlock FontStyle="Normal" Foreground="Gray" Text="文件路径"/>
+                                    </VisualBrush.Visual>
+                                </VisualBrush>
+                            </TextBox.Resources>
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}">
+                                    <Style.Triggers>
+                                        <Trigger Property="Text" Value="{x:Null}">
+                                            <Setter Property="Background" Value="{StaticResource waterMarkBrush}"/>
+                                        </Trigger>
+                                        <Trigger Property="Text" Value="">
+                                            <Setter Property="Background" Value="{StaticResource waterMarkBrush}"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+                        <Button Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Command="{Binding Path=SelectSteupCommand}">
+                            <Button.Template>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border x:Name="panel" BorderBrush="Red" BorderThickness="1" Background="White" CornerRadius="15,15,15,15">
+                                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" >先择安装包</TextBlock>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsPressed" Value="True">
+                                            <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+
+                        <TextBlock Grid.Row="2" Grid.ColumnSpan="3" Foreground="Red" Margin="10,0,0,0" FontSize="15" Text="{Binding Path=displayMsg}" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                            <TextBlock.Style>
+                                <Style TargetType="{x:Type TextBlock}">
+                                    <Style.Triggers>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+                    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Button Margin="0,0,5,0" Width="80" Height="30" VerticalAlignment="Center" Template="{StaticResource btndevicemaSure_Template}" Command="{Binding Path=OperateCommand}">测试</Button>
+                        <Button Margin="0,0,5,0" Width="80" Height="30" VerticalAlignment="Center" Template="{StaticResource btndevicemaCancel_Template}">取消
+                            <Button.Triggers>
+                                <EventTrigger RoutedEvent="Button.Click">
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <Animation:GridLengthAnimation  Duration="0:0:0.5" 
+                                                                            AutoReverse="False"
+                                                                            Storyboard.TargetName="rightgrid" 
+                                                                            Storyboard.TargetProperty="Width"
+                                                                            From="{Binding ElementName=rightgrid, Path=Width}"
+                                                                            To="0.0"
+                                                                           />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Button.Triggers>
+                        </Button>
+                    </StackPanel>
+                </Grid>
             </Grid>
         </Grid>
         <DataTemplate.Triggers>

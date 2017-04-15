@@ -7,7 +7,9 @@ protected:
 	CSqliteData();
 
 	typedef bool(*_QueryTable)(string QuerySql, string &dataStr, string &strError);
+	typedef bool(*_QueryVersion)(string QuerySql, string &Bianhao, string &Banbenhao, string &Anzhuangbao, string &strError);
 	typedef bool(*_AddTable)(char* tableName, char* dataStr, string &strError);
+	typedef bool(*_AddVersion)(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, string &strError);
 	typedef bool(*_ExcuteSql)(char* sqlStr, string &strError);
 
 	typedef bool(*_AddZHIQIANSHUJU)(tagZHIQIANSHUJU  data, string &strError);
@@ -35,7 +37,9 @@ protected:
 	typedef bool(*_AddYINGSHEBIAO)(tagYINGSHEBIAO  data, string &strError);
 	
 	_QueryTable								m_QueryTableFunc;
+	_QueryVersion							m_QueryVersionFunc;
 	_AddTable								m_AddTableFunc;
+	_AddVersion								m_AddVersionFunc;
 	_ExcuteSql								m_ExcuteSqlFunc;
 
 	_AddZHIQIANSHUJU						m_AddZHIQIANSHUJUFunc;
@@ -58,7 +62,9 @@ public:
 	static void 							ReleaseInstance();
 
 	bool									QueryTable(string QuerySql, string &dataStr, string &strError);
+	bool									QueryVersion(string QuerySql, string &Bianhao, string &Banbenhao, string &Anzhuangbao, string &strError);
 	bool									AddTable(char* tableName, char* dataStr, string &strError);
+	bool									AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, string &strError);
 	bool									ExcuteSql(char* sqlStr, string &strError);
 
 	bool									AddZHIQIANSHUJU(tagZHIQIANSHUJU  data, string &strError);

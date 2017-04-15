@@ -11,7 +11,11 @@ namespace ManageSystem.Server
     [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
     public delegate void QueryTableCallBackDelegate(string resultStr, string errorStr);
     [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
-    public delegate void AddTableCallBackDelegate(string errorStr);
+    public delegate void QueryTableCallBackDelegate1(IntPtr resultStr, string errorStr);
+    [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+    public delegate void AddTableCallBackDelegate(string resultStr, string errorStr);
+    [UnmanagedFunctionPointerAttribute(CallingConvention.Cdecl, CharSet = CharSet.Ansi)]
+    public delegate void UpgradeCallBackDelegate(string resultStr, string errorStr);
 
     public sealed class WorkServer
     {
@@ -44,12 +48,24 @@ namespace ManageSystem.Server
                         string dataStr,
                         IntPtr callback,
                         bool bSync);
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "addVersion")]
+        public static extern void addVersion(
+                        string bianhao,
+                        string banbenhao,
+                        IntPtr Anzhuangbao,
+                        int datalen,
+                        IntPtr callback,
+                        bool bSync);
+
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "excuteSql")]
         public static extern void excuteSql(string sqlStr, IntPtr callBack, bool bSync);
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryDevSpeed")]
         public static extern int queryDevSpeed(string ipStr, IntPtr callBack, bool bSync);
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryConnectionsStr")]
         public static extern int queryConnectionsStr(IntPtr callBack, bool bSync);
+
+        [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "upgrade")]
+        public static extern int upgrade(string dataStr,IntPtr callBack, bool bSync);
 
         public static void QueryTable(string querySqlStr, IntPtr callback, bool bSync = false)
         {//可以避免 直接绑定到Command上面 导致axml找不到模块

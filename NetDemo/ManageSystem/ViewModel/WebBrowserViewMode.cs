@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
@@ -114,8 +115,22 @@ namespace ManageSystem.ViewModel
             LoadedCommand                               = new DelegateCommand<object>(new Action<object>(this.Loaded));
             LoadCompletedCommand                        = new DelegateCommand<object>(new Action<object>(this.LoadCompleted));
 
-            _url                                        = "http://120.76.148.9/testgis/map/gis.html";
             _xmlData                                    = "";
+
+            try
+            {
+                foreach (string key in ConfigurationManager.AppSettings)
+                {
+                    if (key == "url")
+                    {
+                        _url = ConfigurationManager.AppSettings[key];
+                    }
+                }
+            }
+            catch
+            {
+
+            }
         }
 
         public void QueryTableCallBack(string resultStr, string errorStr)
@@ -185,7 +200,7 @@ namespace ManageSystem.ViewModel
                                             break;
                                         case "IP":
                                             if (keyvalue[1].Length > 0)
-                                                item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder(Convert.ToInt32(keyvalue[1]))), null);
+                                                item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder((Int32)Convert.ToInt64(keyvalue[1]))), null);
                                             break;
                                         default:
                                             item.SetValue(model, keyvalue[1], null);

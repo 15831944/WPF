@@ -173,17 +173,6 @@
                             <Setter Property="IsSelected" Value="{Binding Path=bSel}"/>
                         </Style>
                     </DataGrid.RowStyle>
-                    <DataGrid.CellStyle>
-                        <Style TargetType="DataGridCell">
-                            <Setter Property="BorderThickness" Value="0"/>
-                            <Style.Triggers>
-                                <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="LightBlue"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </DataGrid.CellStyle>
                 </DataGrid>
                 <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                     <Button Command="{Binding Path=FirstPageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="首页"></Button>
@@ -211,8 +200,8 @@
                             <RowDefinition Height="80"/>
                         </Grid.RowDefinitions>
                         <shapes:Arc Grid.Row="0" Fill="#CED4D8" StartAngle="-130" EndAngle="130" Width="120" Height="120" Stretch="None" ArcThicknessUnit="Percent" ArcThickness="0.2" HorizontalAlignment="Center" VerticalAlignment="Bottom"></shapes:Arc>
-                        <shapes:Arc Grid.Row="0" Fill="Green" StartAngle="-130" EndAngle="{Binding Path=Angle}" Width="120" Height="120"  Stretch="None" ArcThicknessUnit="Percent" ArcThickness="0.2" HorizontalAlignment="Center" VerticalAlignment="Bottom"></shapes:Arc>
-                        <Path Grid.Row="0" Width="120" Height="120" Fill="Green" Stroke="Green" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                        <shapes:Arc Grid.Row="0" Fill="Red" StartAngle="-130" EndAngle="{Binding Path=Angle}" Width="120" Height="120"  Stretch="None" ArcThicknessUnit="Percent" ArcThickness="0.2" HorizontalAlignment="Center" VerticalAlignment="Bottom"></shapes:Arc>
+                        <Path Grid.Row="0" Width="120" Height="120" Fill="Red" Stroke="Red" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                             <Path.Data>
                                 <CombinedGeometry>
                                     <CombinedGeometry.Geometry1>

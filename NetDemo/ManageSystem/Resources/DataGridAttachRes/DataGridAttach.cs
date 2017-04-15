@@ -93,7 +93,7 @@ namespace ManageSystem.Resources.DataGridAttachRes
         public static void DG1_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             string headername = e.Column.Header.ToString();
-
+            string type = e.Column.GetType().ToString();
             //Cancel the column you don't want to generate
             if (_columnNameMap.ContainsKey(headername))
             {

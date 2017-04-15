@@ -28,4 +28,5 @@ public:
 	int												connections();
 	int												getidbyip(string ip);
 	const char*										getipbyid(int id);
+	int												curwritebufLen(int id);
 };

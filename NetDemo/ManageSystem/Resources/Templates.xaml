@@ -328,6 +328,19 @@
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
+
+    <ControlTemplate x:Key="btnupgradeVersion_Template" TargetType="{x:Type Button}">
+        <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">
+            <Image Name="btnbg" Stretch="None" Source="/ManageSystem;component/Resources/imgs/汇总统计.png" />
+            <TextBlock VerticalAlignment="Center">提交版本</TextBlock>
+        </StackPanel>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" TargetName="panel" Value="#C3CDD3"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
     
     <ControlTemplate x:Key="btnupgradeUpgrade_Template" TargetType="{x:Type Button}">
         <StackPanel x:Name="panel" Orientation="Horizontal" Background="#DEE2E4">

@@ -46,6 +46,12 @@ namespace ManageSystem.ViewModel.DeviceViewModel
     }
     public enum OperateEnum
     {
+        OperateEnum_None,
+        OperateEnum_QueryDevice,
+        OperateEnum_QueryUpgrade,
+        OperateEnum_QueryTestSpeed,
+
+        OperateEnum_UpgradeVersion,
         OperateEnum_Add,
         OperateEnum_Modify,
     }
@@ -297,7 +303,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             catch { }
         }
 
-        private void ExcutesqlCallBack(string errorStr)
+        private void ExcutesqlCallBack(string resultStr, string errorStr)
         {
             if (errorStr != null && errorStr.Length != 0)
             {
@@ -305,7 +311,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             }
         }
 
-        private void AddTableCallBack(string errorStr)
+        private void AddTableCallBack(string resultStr, string errorStr)
         {
             if(errorStr != null && errorStr.Length != 0)
             {

@@ -386,7 +386,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                                             break;
                                         case "IP":
                                             if (keyvalue[1].Length > 0)
-                                                item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder(Convert.ToInt32(keyvalue[1]))), null);
+                                                item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder((Int32)Convert.ToInt64(keyvalue[1]))), null);
                                             break;
                                         default:
                                             item.SetValue(model, keyvalue[1], null);

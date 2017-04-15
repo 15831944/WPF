@@ -4,6 +4,7 @@
         Title="AddDataWindow" Height="720" Width="1280" 
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         DataContext="{StaticResource AddWndViewModelKey}" Visibility="{Binding Path=visible}"
+        xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit"
         xmlns:DataGridAttachResA="clr-namespace:ManageSystem.Resources.DataGridAttachRes"
         >
     <Grid Background="Gray">
@@ -17,6 +18,7 @@
             注：用于开发时方便使用, 所有操作根据文字描述判断， 1.时间默认为当前时间, 不先中设置时取字符串格式如果格式无效则为空   2.每个单元格都可以编辑，表中多出的字段并不影响数据库操作。
         </TextBlock>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">数据库操作:</TextBlock>
             <ComboBox Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" Grid.Column="0" x:Name="selComb" SelectedIndex="0" Canvas.Left="10" Canvas.Top="52"
                   SelectedValue="{Binding Path=selvalue}" SelectedValuePath="Content">
                 <ComboBoxItem Content="制签详细数据"></ComboBoxItem>
@@ -46,16 +48,23 @@
             <TextBlock Margin="25,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=status}"></TextBlock>
         </StackPanel>
         <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">IP</TextBlock>
-            <TextBox Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Text="{Binding Path=ip0}"></TextBox>
-            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">Convert</TextBlock>
-            <TextBox Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Text="{Binding Path=ip1}"></TextBox>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" Command="{Binding Path=ConvertCommand}">转换</Button>
-            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">表操作:</TextBlock>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Command="{Binding Path=AddItemCommand}">AddItem</Button>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Command="{Binding Path=CopyItemCommand}"
+            <TextBlock Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">表格操作:</TextBlock>
+            <Toolkit:DateTimePicker Margin="5,0,0,0" Width="180" Grid.Column="1" Foreground="White" Background="#444450"
+                                 VerticalAlignment="Center"
+                                 IsReadOnly="False"
+                                 Text="{Binding Path=Riqi}"
+                                 Format="Custom"
+                                 FormatString="yyyy-MM-dd HH:mm:ss"
+                                 TimeFormat="Custom"
+                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
+                                 />
+            <Button Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Command="{Binding Path=UpdateAllRiqiCommand}"
+                     CommandParameter="{Binding ElementName=grid}">更新选中Riqi字段</Button>
+            <Button Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Command="{Binding Path=AddItemCommand}"
+                    CommandParameter="{Binding ElementName=grid}">AddItem</Button>
+            <Button Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Command="{Binding Path=CopyItemCommand}"
                     CommandParameter="{Binding ElementName=grid}">CopySelectedItems</Button>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Command="{Binding Path=DeleteItemCommand}" 
+            <Button Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="100" Command="{Binding Path=DeleteItemCommand}" 
                     CommandParameter="{Binding ElementName=grid}">DeleteSelectedItems</Button>
         </StackPanel>
         <Grid Grid.Row="3">

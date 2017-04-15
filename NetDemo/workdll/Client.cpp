@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Client.h"
-
+#include "atlbase.h"
+#include "atlstr.h"
 CClient* CClient::m_pClient				= NULL;
 
 CClient::CClient()
@@ -10,6 +11,7 @@ CClient::CClient()
 	m_startClientFunc					= (_startClientType)GetProcAddress(hNetDll, "startClient");
 	m_stopClientFunc					= (_stopClientType)GetProcAddress(hNetDll, "stopClient");
 	m_isClientStopedFunc				= (_isClientStoped)GetProcAddress(hNetDll, "isClientStoped");
+	m_clientSendBufLenFunc				= (_clientSendBufLen)GetProcAddress(hNetDll, "clientSendBufLen");
 
 	GetAvalibleIpAddress(m_ipList);
 	for (int i = 0; i < m_ipList.size(); ++i)
@@ -49,6 +51,29 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 				delete[] pBuffer;
 				OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive£ºhas_querydevspeedmsg");
 			}
+			else if (msgPack.has_upgradedownloadmsg())
+			{
+				string resulterror = msgPack.upgradedownloadmsg().resulterror();
+
+				TCHAR temppath[MAX_PATH] ={ 0 };
+				GetTempPath(MAX_PATH, temppath);
+				string setupFilePath = string(CT2A(temppath)) + "setup.exe";
+
+				ofstream stream(setupFilePath, ios::out|ios::trunc|ios::binary);
+				stream.write((char*)msgPack.upgradedownloadmsg().seteupdata().c_str(), msgPack.upgradedownloadmsg().seteupdata().size());
+				stream.close();
+
+				OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "client: client.receive£ºhas_upgradedownloadmsg");
+			}
+			else if (msgPack.has_upgradedownloadmsgresult())
+			{
+				CClient::GetInstance()->m_requestMap.Query(key, pairValue);
+				string resultstr = msgPack.upgradedownloadmsgresult().resultdata();
+				string resulterror = msgPack.upgradedownloadmsgresult().resulterror();
+				if (pairValue.second)
+					((CallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
+				OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "client: client.receive£ºhas_upgradedownloadmsgresult");
+			}
 			else if (CClient::GetInstance()->m_requestMap.Query(key, pairValue))
 			{
 				if (msgPack.has_registtypemsgresult())
@@ -60,13 +85,13 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					string resultstr = msgPack.querymsgresult().resultdata();
 					string resulterror = msgPack.querymsgresult().resulterror();
 					if (pairValue.second)
-						((QueryTableCallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
+						((CallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
 					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive£ºhas_querymsgresult");
 				}
 				else if (msgPack.has_addmsgresult())
 				{
 					if (pairValue.second)
-						((AddDataCallBack)pairValue.second)((char*)msgPack.addmsgresult().resulterror().c_str());
+						((CallBack)pairValue.second)("", (char*)msgPack.addmsgresult().resulterror().c_str());
 					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive£ºhas_addmsgresult");
 				}
 				else if (msgPack.has_querydevcntmsgresult())
@@ -75,14 +100,14 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					char ch[MAX_PATH] = {0};
 					sprintf_s(ch, "count:%d,;", cnt);
 					if (pairValue.second)
-						((QueryTableCallBack)pairValue.second)(ch, "");
+						((CallBack)pairValue.second)(ch, "");
 					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive£ºhas_querydevcntmsgresult");
 				}
 				else if (msgPack.has_excutesqlmsgresult())
 				{
 					string resulterror = msgPack.excutesqlmsgresult().resulterror();
 					if (pairValue.second)
-						((ExcuteSqlCallBack)pairValue.second)((char*)resulterror.c_str());
+						((CallBack)pairValue.second)("",(char*)resulterror.c_str());
 					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive£ºhas_excutesqlmsgresult");
 				}
 				else if (msgPack.has_querydevspeedmsgresult())
@@ -93,7 +118,7 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					char ch[MAX_PATH] ={ 0 };
 					sprintf_s(ch, "speed:%d,;", speed);
 					if (pairValue.second)
-						((QueryTableCallBack)pairValue.second)(ch, (char*)resulterror.c_str());
+						((CallBack)pairValue.second)(ch, (char*)resulterror.c_str());
 					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive£ºhas_querydevspeedmsgresult");
 				}
 				else if (msgPack.has_queryconnectionsstrmsgresult())
@@ -102,11 +127,20 @@ void CClient::OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorco
 					string resulterror	= msgPack.queryconnectionsstrmsgresult().resulterror();
 
 					if (pairValue.second)
-						((QueryTableCallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
+						((CallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
 
 					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.receive£ºhas_queryconnectionsstrmsgresult");
 				}
+				else if (msgPack.has_addversionmsgresult())
+				{
+					string resultstr	= msgPack.addversionmsgresult().resultdata();
+					string resulterror	= msgPack.addversionmsgresult().resulterror();
 
+					if (pairValue.second)
+						((CallBack)pairValue.second)((char*)resultstr.c_str(), (char*)resulterror.c_str());
+
+					OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "client: client.receive£ºhas_addversionmsgresult");
+				}
 				CClient::GetInstance()->m_requestMap.Pop(key, pairValue);
 			}
 		}
@@ -174,6 +208,18 @@ bool CClient::ClientStoped()
 	return false;
 }
 
+void CClient::ReportProgress(int packLen, CallBack callBack)
+{
+	if (m_clientSendBufLenFunc && callBack)
+	{
+		int len = m_clientSendBufLenFunc();
+
+		char ch[MAX_PATH] = { 0 };
+		sprintf_s(ch, MAX_PATH, "progress:%d,;", int((packLen - len) * 100.0 / packLen));
+		callBack(ch, "");
+	}
+}
+
 void CClient::UpdateClientStatus(bool bNormal, bool bSync)
 {
 	if (m_sendDataFunc)
@@ -214,7 +260,7 @@ void CClient::UpdateClientStatus(bool bNormal, bool bSync)
 	}
 }
 
-void CClient::QueryOnlieDevCnt(QueryTableCallBack callBack, bool bSync)
+void CClient::QueryOnlieDevCnt(CallBack callBack, bool bSync)
 {
 	if (m_sendDataFunc)
 	{
@@ -251,7 +297,7 @@ void CClient::QueryOnlieDevCnt(QueryTableCallBack callBack, bool bSync)
 	}
 }
 
-void CClient::QueryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync)
+void CClient::QueryTable(char* QuerySql, CallBack callBack, bool bSync)
 {
 	if (m_sendDataFunc)
 	{
@@ -288,7 +334,7 @@ void CClient::QueryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync
 	}
 }
 
-void CClient::AddTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool bSync)
+void CClient::AddTable(char* tableName, char* dataStr, CallBack callBack, bool bSync)
 {
 	if (m_sendDataFunc)
 	{
@@ -325,8 +371,46 @@ void CClient::AddTable(char* tableName, char* dataStr, AddDataCallBack callBack,
 		}
 	}
 }
+void CClient::AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, CallBack callBack, bool bSync)
+{
+	if (m_sendDataFunc)
+	{
+		netmsg::MsgPack pack;
+		DWORD numberTemp			= InterlockedIncrement(&m_globalPackNumber);
+		m_requestMap.Push(numberTemp, callBack);
+		pack.mutable_head()->set_globalpacknumber(numberTemp);
+		pack.mutable_head()->set_totalpack(1);
+		pack.mutable_head()->set_packindex(0);
 
-void CClient::ExcuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync)
+		pack.mutable_addversionmsg()->set_bianhao(Bianhao);
+		pack.mutable_addversionmsg()->set_banbenhao(Banbenhao);
+		pack.mutable_addversionmsg()->set_anzhuangbao(Anzhuangbao, datalen);
+
+		int msgLen			= pack.ByteSize();
+		LPBYTE pBuffer		= new BYTE[msgLen];
+		pack.SerializeToArray(pBuffer, msgLen);
+
+		m_sendDataFunc(pBuffer, msgLen);
+		delete[] pBuffer;
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "client: client.send£ºmutable_add");
+
+		if (bSync)
+		{
+			MSG msg;
+			while (m_requestMap.Exist(numberTemp))
+			{
+				if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+				{
+					::TranslateMessage(&msg);
+					::DispatchMessage(&msg);
+				}
+				ReportProgress(msgLen, callBack);
+				Sleep(10);
+			}
+		}
+	}
+}
+void CClient::ExcuteSql(char* sqlStr, CallBack callBack, bool bSync)
 {
 	if (m_sendDataFunc)
 	{
@@ -363,7 +447,7 @@ void CClient::ExcuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync)
 	}
 }
 
-void  CClient::QueryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSync)
+void  CClient::QueryDevSpeed(char* ipStr, CallBack callBack, bool bSync)
 {
 	if (m_sendDataFunc)
 	{
@@ -402,7 +486,7 @@ void  CClient::QueryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSyn
 	}
 }
 
-void  CClient::QueryConnectionsStr(QueryTableCallBack callBack, bool bSync)
+void  CClient::QueryConnectionsStr(CallBack callBack, bool bSync)
 {
 	if (m_sendDataFunc)
 	{
@@ -438,3 +522,64 @@ void  CClient::QueryConnectionsStr(QueryTableCallBack callBack, bool bSync)
 		}
 	}
 }
+
+void  CClient::Upgrade(char* dataStr, CallBack callBack, bool bSync)
+{
+	if (m_sendDataFunc)
+	{
+		netmsg::MsgPack pack;
+		DWORD numberTemp			= InterlockedIncrement(&m_globalPackNumber);
+		m_requestMap.Push(numberTemp, callBack);
+		pack.mutable_head()->set_globalpacknumber(numberTemp);
+		pack.mutable_head()->set_totalpack(1);
+		pack.mutable_head()->set_packindex(0);
+
+		vector<string> rows; rows.reserve(1000);
+		vector<string> cells; cells.reserve(1000);
+		vector<string> keyvalue;
+		split(dataStr, rows, ";");
+		for (int rowIndex = 0; rowIndex < rows.size(); ++rowIndex)
+		{
+			string& row = rows[rowIndex];
+			if (row.length() > 0)
+			{
+				cells.clear();
+				split(row, cells, ",");
+				for (int colIndex = 0; colIndex < cells.size(); ++colIndex){
+					string& cell = cells[colIndex];
+					keyvalue.clear();
+					split(cell, keyvalue, ":");
+					if (keyvalue.size() != 2)
+						continue;
+					if (keyvalue[0] == "version")
+						pack.mutable_upgrademsg()->set_version(keyvalue[1]);
+					else if (keyvalue[0] == "ip")
+						pack.mutable_upgrademsg()->set_ip(keyvalue[1]);
+				}
+			}
+		}
+
+		int msgLen			= pack.ByteSize();
+		LPBYTE pBuffer		= new BYTE[msgLen];
+		pack.SerializeToArray(pBuffer, msgLen);
+
+		m_sendDataFunc(pBuffer, msgLen);
+		delete[] pBuffer;
+		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "client: client.send£ºmutable_upgrademsg");
+
+		if (bSync)
+		{
+			MSG msg;
+			while (m_requestMap.Exist(numberTemp))
+			{
+				if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+				{
+					::TranslateMessage(&msg);
+					::DispatchMessage(&msg);
+				}
+				Sleep(100);
+			}
+		}
+	}
+}
+

@@ -482,8 +482,9 @@ namespace ManageSystem.ViewModel
             _devicePosition                             = new ObservableCollection<string>();
             _businesstype                               = new ObservableCollection<string>();
 
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
-            ////_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
+            //_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
+
             _titleheight                                = 25;
             _leftWidth                                  = 60;
             _progressValue                              = 0;
@@ -503,6 +504,16 @@ namespace ManageSystem.ViewModel
             _queryStrs.Add("缴款记录查询");
             _queryStrs.Add("查询业务");
             _queryStrs.Add("预受理记录查询");
+
+
+            IPAddress addr;
+            //string temp = "193.171.42.10";
+            string temp = "10.42.171.193";
+            int aa = 0;
+            if(IPAddress.TryParse(temp, out addr))
+                aa = Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(temp)));
+
+            Common.IntToIp(IPAddress.NetworkToHostOrder((Int32)Convert.ToInt64(aa)));
 
             try
             {
@@ -597,7 +608,7 @@ namespace ManageSystem.ViewModel
                                             item.SetValue(model, datetime.ToShortDateString(), null);
                                             break;
                                         case "IP":
-                                            item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder(Convert.ToInt32(keyvalue[1]))), null);
+                                            item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder((Int32)Convert.ToInt64(keyvalue[1]))), null);
                                             break;
                                         default:
                                             item.SetValue(model, keyvalue[1], null);
@@ -913,59 +924,59 @@ namespace ManageSystem.ViewModel
 
         public void Loaded(object obj)
         {
-            //new Thread(() =>
-            //{
-            //     WorkServer.startClient(IP, port, true);
+            new Thread(() =>
+            {
+                 WorkServer.startClient(IP, port, true);
 
-            //     Application.Current.Dispatcher.Invoke(
-            //    new Action(() =>
-            //    {
-            //        _DeviceManageViewModel._UserViewModel.DoLogon();
-            //    }));
+                 Application.Current.Dispatcher.Invoke(
+                new Action(() =>
+                {
+                    _DeviceManageViewModel._UserViewModel.DoLogon();
+                }));
 
-            //     Application.Current.Dispatcher.Invoke(
-            //     new Action(() =>
-            //     {
-            //         QueryYingshebiao(null);
-            //     }));
+                 Application.Current.Dispatcher.Invoke(
+                 new Action(() =>
+                 {
+                     QueryYingshebiao(null);
+                 }));
 
-            //     Application.Current.Dispatcher.Invoke(
-            //    new Action(() =>
-            //    {
-            //        _DeviceManageViewModel._DevicemaViewModel.DoLogon();
-            //    }));
+                 Application.Current.Dispatcher.Invoke(
+                new Action(() =>
+                {
+                    _DeviceManageViewModel._DevicemaViewModel.DoLogon();
+                }));
 
-            //     Application.Current.Dispatcher.Invoke(
-            //    new Action(() =>
-            //    {
-            //        _DeviceManageViewModel._UpgradeViewModel.DoLogon();
-            //    }));
+                 Application.Current.Dispatcher.Invoke(
+                new Action(() =>
+                {
+                    _DeviceManageViewModel._UpgradeViewModel.DoLogon();
+                }));
 
-            //     Application.Current.Dispatcher.Invoke(
-            //     new Action(() =>
-            //     {
-            //         _WebBrowserViewMode.DoLogon();
-            //     }));
+                 Application.Current.Dispatcher.Invoke(
+                 new Action(() =>
+                 {
+                     _WebBrowserViewMode.DoLogon();
+                 }));
 
-            //    // Application.Current.Dispatcher.Invoke(
-            //    //new Action(() =>
-            //    //{
-            //    //    _DeviceManageViewModel._NetViewModel.DoLogon();
-            //    //}));
+                // Application.Current.Dispatcher.Invoke(
+                //new Action(() =>
+                //{
+                //    _DeviceManageViewModel._NetViewModel.DoLogon();
+                //}));
                  
-            //    // Application.Current.Dispatcher.Invoke(
-            //    //new Action(() =>
-            //    //{
-            //    //    _DeviceManageViewModel._AbnormalViewModel.DoLogon();
-            //    //}));
+                // Application.Current.Dispatcher.Invoke(
+                //new Action(() =>
+                //{
+                //    _DeviceManageViewModel._AbnormalViewModel.DoLogon();
+                //}));
 
-            //     //Application.Current.Dispatcher.Invoke(
-            //     //new Action(() =>
-            //     //{
-            //     //    _DeviceManageViewModel._HardwareViewModel.DoLogon();
-            //     //}));
+                 //Application.Current.Dispatcher.Invoke(
+                 //new Action(() =>
+                 //{
+                 //    _DeviceManageViewModel._HardwareViewModel.DoLogon();
+                 //}));
 
-            //}).Start();
+            }).Start();
 
 
             //_SummaryStatViewModel.DoLogon();

@@ -35,9 +35,9 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-	<PdbFile>$(ProjectDir)..\..\output\pdb\$(AssemblyName).pdb</PdbFile>
+    <PdbFile>$(ProjectDir)..\..\output\pdb\$(AssemblyName).pdb</PdbFile>
     <OutputPath>$(ProjectDir)..\..\output\$(AssemblyName)\$(Configuration)\</OutputPath>
-	<DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -45,7 +45,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-	<PdbFile>$(ProjectDir)..\..\output\pdb\$(AssemblyName).pdb</PdbFile>
+    <PdbFile>$(ProjectDir)..\..\output\pdb\$(AssemblyName).pdb</PdbFile>
     <OutputPath>$(ProjectDir)..\..\output\$(AssemblyName)\$(Configuration)\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -85,6 +85,7 @@
       <DependentUpon>AddDataWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Dameer.cs" />
+    <Compile Include="MiniDumpUtil.cs" />
     <Compile Include="Model\CHAXUNSHUJUModel.cs" />
     <Compile Include="Model\DeviceModel.cs" />
     <Compile Include="Model\GUANLIYUANCAOZUOJILUModel.cs" />
@@ -387,6 +388,11 @@
     <Resource Include="Resources\imgs\直方图－选中.png" />
     <Resource Include="Resources\imgs\饼图－常态.png" />
     <Resource Include="Resources\imgs\饼图－选中.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\imgs\logo.png" />
+    <Resource Include="Resources\imgs\右.png" />
+    <Resource Include="Resources\imgs\左.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

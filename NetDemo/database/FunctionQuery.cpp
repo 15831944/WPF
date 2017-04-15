@@ -7,10 +7,9 @@ bool QueryTable(string QuerySql, string &dataStr, string &strError)
 	bool bOk	= true;
 	strError	= "";
 	dataStr		= "";
+	g_ReadWriteLock.lock(CReadWriteLock::LOCK_LEVEL_READ);
 	do
 	{
-		g_ReadWriteLock.lock(CReadWriteLock::LOCK_LEVEL_READ);
-
 		std::auto_ptr<CSqlite>  lpSQlite(new CSqlite);
 		if (!lpSQlite->Open(RIM_RTK_BSD_DB_FILE, false, true))
 		{
@@ -19,38 +18,167 @@ bool QueryTable(string QuerySql, string &dataStr, string &strError)
 			break;
 		}
 
-		char** pResult;
-		int nRow;
-		int nCol;
-		if (sqlite3_get_table(lpSQlite->Handle(), ASCIItoUTF8(QuerySql).c_str(), &pResult, &nRow, &nCol, NULL) != SQLITE_OK)
+		sqlite3_stmt   *lpStmt0		=  NULL;
+		const char* beginSQL = "BEGIN TRANSACTION";
+		if (sqlite3_prepare_v2(lpSQlite->Handle(), beginSQL, -1, &lpStmt0, NULL) != SQLITE_OK)
 		{
+			if (lpStmt0) sqlite3_finalize(lpStmt0);
+			bOk = false; char ch[512] ={ 0 };
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+			strError = ch;
 			bOk = false;
-			char ch[512] ={ 0 };
+			break;
+		}
+
+		if (sqlite3_step(lpStmt0) != SQLITE_DONE) {
+			if (lpStmt0) sqlite3_finalize(lpStmt0);
+			bOk = false; char ch[512] ={ 0 };
 			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
 			strError = ch;
 			break;
 		}
-		g_ReadWriteLock.unlock();
 
-		int nIndex = nCol;
-		for (int i=0; i<nRow; i++)
+		if (lpStmt0) sqlite3_finalize(lpStmt0);
+
+		sqlite3_stmt   *lpStmt1			=  NULL;
+		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(QuerySql).c_str(), -1, &lpStmt1, NULL) != SQLITE_OK) {
+			if (lpStmt1) sqlite3_finalize(lpStmt1);
+			bOk = false; char ch[512] ={ 0 };
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+			strError = ch;
+			break;
+		}
+
+		char temp[MAX_PATH] ={ 0 };
+		int nRtn = sqlite3_step(lpStmt1);
+		while (nRtn == SQLITE_ROW)
 		{
-			for (int j=0; j<nCol; j++)
+			for (int index = 0; index<sqlite3_column_count(lpStmt1); index++)
 			{
-				dataStr	+= UTF8toASCII(pResult[j]);
+				dataStr	+= sqlite3_column_name(lpStmt1, index);
 				dataStr	+= ":";
-				if (pResult[nIndex] != NULL)
-					dataStr	+= UTF8toASCII(pResult[nIndex]);
-				dataStr	+= ",";
+				int type = sqlite3_column_type(lpStmt1, index);
+				switch (type)
+				{
+					case SQLITE_INTEGER:
+						if (sqlite3_column_bytes(lpStmt1, index))
+						{
+							_i64toa_s(sqlite3_column_int64(lpStmt1, index), temp, MAX_PATH, 10);
+							dataStr += temp;
+						}
+						break;
+					case SQLITE_FLOAT:
+					case SQLITE_TEXT:
+						dataStr += sqlite3_column_bytes(lpStmt1, index)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt1, index)))		: "";
+						break;
+					case SQLITE_BLOB:
+						dataStr += std::string((char*)sqlite3_column_blob(lpStmt1, index), sqlite3_column_bytes(lpStmt1, index));
+						break;
 
-				++nIndex;
+					default:
+						dataStr += sqlite3_column_bytes(lpStmt1, index)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt1, index)))		: "";
+						break;
+				}
+				dataStr	+= ",";
 			}
 			dataStr += ";";
+			nRtn = sqlite3_step(lpStmt1);
 		}
-		sqlite3_free_table(pResult);  //使用完后务必释放为记录分配的内存，否则会内存泄漏
+
+		if (lpStmt1) sqlite3_finalize(lpStmt1);
+
 		sqlite3_release_memory((int)sqlite3_memory_used());
 	} while (0);
-	if (bOk == false) g_ReadWriteLock.unlock();
+	g_ReadWriteLock.unlock();
+
+	return bOk;
+}
+
+bool QueryVersion(string QuerySql, string &Bianhao, string &Banbenhao, string &Anzhuangbao, string &strError)
+{
+
+	bool bOk	= true;
+	strError	= "";
+	g_ReadWriteLock.lock(CReadWriteLock::LOCK_LEVEL_READ);
+	do
+	{
+		std::auto_ptr<CSqlite>  lpSQlite(new CSqlite);
+		if (!lpSQlite->Open(RIM_RTK_BSD_DB_FILE, false, true))
+		{
+			strError = "打开基础支撑数据库失败";
+			bOk = false;
+			break;
+		}
+
+		sqlite3_stmt   *lpStmt0		=  NULL;
+		const char* beginSQL = "BEGIN TRANSACTION";
+		if (sqlite3_prepare_v2(lpSQlite->Handle(), beginSQL, -1, &lpStmt0, NULL) != SQLITE_OK)
+		{
+			if (lpStmt0) sqlite3_finalize(lpStmt0);
+			bOk = false; char ch[512] ={ 0 };
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+			strError = ch;
+			bOk = false;
+			break;
+		}
+
+		if (sqlite3_step(lpStmt0) != SQLITE_DONE) {
+			if (lpStmt0) sqlite3_finalize(lpStmt0);
+			bOk = false; char ch[512] ={ 0 };
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+			strError = ch;
+			break;
+		}
+
+		if (lpStmt0) sqlite3_finalize(lpStmt0);
+
+		sqlite3_stmt   *lpStmt1			=  NULL;
+		if (sqlite3_prepare_v2(lpSQlite->Handle(), ASCIItoUTF8(QuerySql).c_str(), -1, &lpStmt1, NULL) != SQLITE_OK) {
+			if (lpStmt1) sqlite3_finalize(lpStmt1);
+			bOk = false; char ch[512] ={ 0 };
+			sprintf_s(ch, 512, "failure:%s\n", sqlite3_errmsg(lpSQlite->Handle()));
+			strError = ch;
+			break;
+		}
+
+		int nRtn = sqlite3_step(lpStmt1);
+		while (nRtn == SQLITE_ROW)
+		{
+			for (int index = 0; index<sqlite3_column_count(lpStmt1); index++)
+			{
+				string columnName = sqlite3_column_name(lpStmt1, index);
+				int type = sqlite3_column_type(lpStmt1, index);
+				switch (type)
+				{
+					case SQLITE_INTEGER:
+					case SQLITE_FLOAT:
+					case SQLITE_TEXT:
+					{
+						if (sqlite3_strnicmp(columnName.c_str(), "Bianhao", columnName.size()) == 0)
+							Bianhao = sqlite3_column_bytes(lpStmt1, index)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt1, index)))		: "";
+						else if (sqlite3_strnicmp(columnName.c_str(), "Banbenhao", columnName.size()) == 0)
+							Banbenhao = sqlite3_column_bytes(lpStmt1, index)	? (UTF8toASCII((char *)sqlite3_column_text(lpStmt1, index)))		: "";
+					}
+						break;
+					case SQLITE_BLOB:
+					{
+						int aa = sqlite3_column_bytes(lpStmt1, index);
+						Anzhuangbao = std::string((char*)sqlite3_column_blob(lpStmt1, index), sqlite3_column_bytes(lpStmt1, index));
+					}
+						break;
+
+					default:
+						break;
+				}
+			}
+			nRtn = sqlite3_step(lpStmt1);
+		}
+
+		if (lpStmt1) sqlite3_finalize(lpStmt1);
+
+		sqlite3_release_memory((int)sqlite3_memory_used());
+	} while (0);
+	g_ReadWriteLock.unlock();
 
 	return bOk;
 }

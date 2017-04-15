@@ -268,7 +268,7 @@ namespace ManageSystem.ViewModel
                                             item.SetValue(model, datetime.ToShortDateString(), null);
                                             break;
                                         case "IP":
-                                            item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder(Convert.ToInt32(keyvalue[1]))), null);
+                                            item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder((Int32)Convert.ToInt64(keyvalue[1]))), null);
                                             break;
                                         default:
                                             item.SetValue(model, keyvalue[1], null);

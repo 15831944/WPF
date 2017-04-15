@@ -118,7 +118,7 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">插入大集中</TextBlock>
                             <ComboBox Grid.Column="1" Foreground="White" Style="{StaticResource ComboBoxStyle1}" Background="#444450"  Text="{Binding Path=groupInsetText}"
-                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0" ItemsSource="{Binding Path=cardstatus}" >
+                                      VerticalAlignment="Center" HorizontalAlignment="Stretch" SelectedIndex="0">
                                 <ComboBoxItem>全部</ComboBoxItem>
                                 <ComboBoxItem>是</ComboBoxItem>
                                 <ComboBoxItem>否</ComboBoxItem>

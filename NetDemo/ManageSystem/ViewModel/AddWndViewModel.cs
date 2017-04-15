@@ -25,12 +25,11 @@ namespace ManageSystem.ViewModel
         public DelegateCommand<object> AddCommand { get; set; }
         public DelegateCommand<object> QueryCommand { get; set; }
         public DelegateCommand<object> DeleteCommand { get; set; }
-        public DelegateCommand<object> ConvertCommand { get; set; }
         public DelegateCommand<object> AddItemCommand { get; set; }
         public DelegateCommand<object> CopyItemCommand { get; set; }
         public DelegateCommand<object> DeleteItemCommand { get; set; }
-
-
+        public DelegateCommand<object> UpdateAllRiqiCommand { get; set; }
+        
         private Visibility _visible;
         public Visibility visible
         {
@@ -87,33 +86,6 @@ namespace ManageSystem.ViewModel
             }
         }
 
-        private string _ip0;
-        public string ip0
-        {
-            get
-            {
-                return _ip0;
-            }
-            set
-            {
-                _ip0 = value;
-                this.RaisePropertyChanged("ip0");
-            }
-        }
-
-        private string _ip1;
-        public string ip1
-        {
-            get
-            {
-                return _ip1;
-            }
-            set
-            {
-                _ip1 = value;
-                this.RaisePropertyChanged("ip1");
-            }
-        }
 
         private object _customInfo;
         public object customInfo
@@ -171,6 +143,16 @@ namespace ManageSystem.ViewModel
             }
         }
 
+        private string _Riqi;
+        public string Riqi
+        {
+            get { return _Riqi; }
+            set
+            {
+                _Riqi = value;
+                this.RaisePropertyChanged("Riqi");
+            }
+        }
 
         public AddWndViewModel()
         {
@@ -182,11 +164,11 @@ namespace ManageSystem.ViewModel
             SelectedCommand                             = new DelegateCommand<object>(Selected);
             AddCommand                                  = new DelegateCommand<object>(Add);
             QueryCommand                                = new DelegateCommand<object>(Query);
-            ConvertCommand                              = new DelegateCommand<object>(ConvertData);
             AddItemCommand                              = new DelegateCommand<object>(AddItem);
             DeleteCommand                               = new DelegateCommand<object>(Delete);
             CopyItemCommand                             = new DelegateCommand<object>(CopyItem);
             DeleteItemCommand                           = new DelegateCommand<object>(DeleteItem);
+            UpdateAllRiqiCommand                        = new DelegateCommand<object>(UpdateAllRiqi);
 
             bool bAddWnd = false;
             foreach (string key in ConfigurationManager.AppSettings)
@@ -208,9 +190,29 @@ namespace ManageSystem.ViewModel
             curCnt = "当前数量：" + tableList0.Count;
             _ignoreXuhao = true;
             _bSetAllcurtime = true;
+
+            Riqi                                   = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
+
         }
 
-        private void AddTableCallBack(string errorStr)
+        private void UpdateAllRiqi(object obj)
+        {
+            DataGrid grid = obj as DataGrid;
+
+            ObservableCollection<object> temp = new ObservableCollection<object>();
+            foreach (var item in grid.SelectedItems)
+            {
+                System.Reflection.PropertyInfo propertyinfo = item.GetType().GetProperty("Riqi");
+                if(propertyinfo == null)
+                    break;
+                else
+                {
+                    propertyinfo.SetValue(item, Riqi, null);
+                }
+            }
+        }
+
+        private void AddTableCallBack(string resultStr, string errorStr)
         {
             if (errorStr != null && errorStr.Length != 0)
             {
@@ -221,7 +223,7 @@ namespace ManageSystem.ViewModel
                 status = "操作成功";
             }
         }
-        private void ExcutesqlCallBack(string errorStr)
+        private void ExcutesqlCallBack(string resultStr, string errorStr)
         {
             if (errorStr != null && errorStr.Length != 0)
             {
@@ -332,7 +334,7 @@ namespace ManageSystem.ViewModel
                                             break;
                                         case "IP":
                                             if (keyvalue[1].Length > 0)
-                                                item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder(Convert.ToInt32(keyvalue[1]))), null);
+                                                item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder((Int32)Convert.ToInt64(keyvalue[1]))), null);
                                             break;
                                         default:
                                             item.SetValue(model, keyvalue[1], null);
@@ -412,22 +414,6 @@ namespace ManageSystem.ViewModel
             {
                 WorkServer.excuteSql(sqlStr, Marshal.GetFunctionPointerForDelegate(_excutesqlCallBackDelegate), true);
                 Query(null);
-            }
-        }
-
-        private void ConvertData(object obj)
-        {
-            try
-            {
-                ip1 = "";
-                if (ip0 != null && ip0.Length > 0)
-                {
-                    ip1 =  "" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(ip0)));
-                }
-            }
-            catch
-            {
-
             }
         }
 

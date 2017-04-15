@@ -18,7 +18,7 @@ _sym_db = _symbol_database.Default()
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='netmsg.proto',
   package='netmsg',
-  serialized_pb=_b('\n\x0cnetmsg.proto\x12\x06netmsg\"\xf7\x05\n\x07MsgPack\x12\x1d\n\x04head\x18\x01 \x02(\x0b\x32\x0f.netmsg.MsgHead\x12)\n\nregisttype\x18\x02 \x01(\x0b\x32\x15.netmsg.RegistTypeMsg\x12\x38\n\x13registtypemsgresult\x18\x03 \x01(\x0b\x32\x1b.netmsg.RegistTypeMsgResult\x12.\n\x0equerydevcntmsg\x18\x04 \x01(\x0b\x32\x16.netmsg.QueryDevCntMsg\x12:\n\x14querydevcntmsgresult\x18\x05 \x01(\x0b\x32\x1c.netmsg.QueryDevCntMsgResult\x12\x1f\n\x05query\x18\x06 \x01(\x0b\x32\x10.netmsg.QueryMsg\x12\x1b\n\x03\x61\x64\x64\x18\x07 \x01(\x0b\x32\x0e.netmsg.AddMsg\x12.\n\x0equerymsgresult\x18\x08 \x01(\x0b\x32\x16.netmsg.QueryMsgResult\x12*\n\x0c\x61\x64\x64msgresult\x18\t \x01(\x0b\x32\x14.netmsg.AddMsgResult\x12*\n\x0c\x65xcutesqlmsg\x18\n \x01(\x0b\x32\x14.netmsg.ExcuteSqlMsg\x12\x36\n\x12\x65xcutesqlmsgresult\x18\x0b \x01(\x0b\x32\x1a.netmsg.ExcuteSqlMsgResult\x12\x32\n\x10querydevspeedmsg\x18\x0c \x01(\x0b\x32\x18.netmsg.QueryDevSpeedMsg\x12>\n\x16querydevspeedmsgresult\x18\r \x01(\x0b\x32\x1e.netmsg.QueryDevSpeedMsgResult\x12>\n\x16queryconnectionsstrmsg\x18\x0e \x01(\x0b\x32\x1e.netmsg.QueryConnectionsStrMsg\x12J\n\x1cqueryconnectionsstrmsgresult\x18\x0f \x01(\x0b\x32$.netmsg.QueryConnectionsStrMsgResult\"R\n\x07MsgHead\x12\x1b\n\x10globalPackNumber\x18\x01 \x02(\r:\x01\x31\x12\x14\n\ttotalPack\x18\x02 \x02(\x05:\x01\x31\x12\x14\n\tpackIndex\x18\x03 \x02(\x05:\x01\x30\"O\n\rRegistTypeMsg\x12\x0f\n\x07\x62\x44\x65vice\x18\x01 \x02(\x08\x12\n\n\x02ip\x18\x02 \x02(\t\x12\x10\n\x08serverip\x18\x03 \x02(\t\x12\x0f\n\x07\x62Normal\x18\x04 \x02(\x08\"\x15\n\x13RegistTypeMsgResult\"\x10\n\x0eQueryDevCntMsg\"&\n\x14QueryDevCntMsgResult\x12\x0e\n\x06\x64\x65vCnt\x18\x01 \x02(\x05\"\x18\n\x16QueryConnectionsStrMsg\"G\n\x1cQueryConnectionsStrMsgResult\x12\x12\n\nresultData\x18\x01 \x02(\t\x12\x13\n\x0bresultError\x18\x02 \x02(\t\"\x17\n\x08QueryMsg\x12\x0b\n\x03Msg\x18\x01 \x02(\t\"9\n\x0eQueryMsgResult\x12\x12\n\nresultData\x18\x01 \x02(\t\x12\x13\n\x0bresultError\x18\x02 \x02(\t\"(\n\x06\x41\x64\x64Msg\x12\x11\n\tTableName\x18\x01 \x02(\t\x12\x0b\n\x03Msg\x18\x02 \x02(\t\"#\n\x0c\x41\x64\x64MsgResult\x12\x13\n\x0bresultError\x18\x01 \x02(\t\"\x1b\n\x0c\x45xcuteSqlMsg\x12\x0b\n\x03Msg\x18\x01 \x02(\t\")\n\x12\x45xcuteSqlMsgResult\x12\x13\n\x0bresultError\x18\x01 \x02(\t\"G\n\x10QueryDevSpeedMsg\x12\r\n\x05ipStr\x18\x01 \x02(\t\x12\x11\n\taskUserID\x18\x02 \x02(\x05\x12\x11\n\tstartTime\x18\x03 \x02(\x03\"<\n\x16QueryDevSpeedMsgResult\x12\r\n\x05speed\x18\x01 \x02(\x05\x12\x13\n\x0bresultError\x18\x02 \x02(\t')
+  serialized_pb=_b('\n\x0cnetmsg.proto\x12\x06netmsg\"\xb7\x08\n\x07MsgPack\x12\x1d\n\x04head\x18\x01 \x02(\x0b\x32\x0f.netmsg.MsgHead\x12)\n\nregisttype\x18\x02 \x01(\x0b\x32\x15.netmsg.RegistTypeMsg\x12\x38\n\x13registtypemsgresult\x18\x03 \x01(\x0b\x32\x1b.netmsg.RegistTypeMsgResult\x12.\n\x0equerydevcntmsg\x18\x04 \x01(\x0b\x32\x16.netmsg.QueryDevCntMsg\x12:\n\x14querydevcntmsgresult\x18\x05 \x01(\x0b\x32\x1c.netmsg.QueryDevCntMsgResult\x12\x1f\n\x05query\x18\x06 \x01(\x0b\x32\x10.netmsg.QueryMsg\x12\x1b\n\x03\x61\x64\x64\x18\x07 \x01(\x0b\x32\x0e.netmsg.AddMsg\x12.\n\x0equerymsgresult\x18\x08 \x01(\x0b\x32\x16.netmsg.QueryMsgResult\x12*\n\x0c\x61\x64\x64msgresult\x18\t \x01(\x0b\x32\x14.netmsg.AddMsgResult\x12*\n\x0c\x65xcutesqlmsg\x18\n \x01(\x0b\x32\x14.netmsg.ExcuteSqlMsg\x12\x36\n\x12\x65xcutesqlmsgresult\x18\x0b \x01(\x0b\x32\x1a.netmsg.ExcuteSqlMsgResult\x12\x32\n\x10querydevspeedmsg\x18\x0c \x01(\x0b\x32\x18.netmsg.QueryDevSpeedMsg\x12>\n\x16querydevspeedmsgresult\x18\r \x01(\x0b\x32\x1e.netmsg.QueryDevSpeedMsgResult\x12>\n\x16queryconnectionsstrmsg\x18\x0e \x01(\x0b\x32\x1e.netmsg.QueryConnectionsStrMsg\x12J\n\x1cqueryconnectionsstrmsgresult\x18\x0f \x01(\x0b\x32$.netmsg.QueryConnectionsStrMsgResult\x12,\n\raddversionmsg\x18\x14 \x01(\x0b\x32\x15.netmsg.AddVersionMsg\x12\x38\n\x13\x61\x64\x64versionmsgresult\x18\x15 \x01(\x0b\x32\x1b.netmsg.AddVersionMsgResult\x12&\n\nupgrademsg\x18\x32 \x01(\x0b\x32\x12.netmsg.UpgradeMsg\x12\x36\n\x12upgradedownloadmsg\x18\x33 \x01(\x0b\x32\x1a.netmsg.UpgradeDownLoadMsg\x12\x42\n\x18upgradedownloadmsgresult\x18\x34 \x01(\x0b\x32 .netmsg.UpgradeDownLoadMsgResult\x12\x32\n\x10upgrademsgresult\x18\x35 \x01(\x0b\x32\x18.netmsg.UpgradeMsgResult\"R\n\x07MsgHead\x12\x1b\n\x10globalPackNumber\x18\x01 \x02(\r:\x01\x31\x12\x14\n\ttotalPack\x18\x02 \x02(\x05:\x01\x31\x12\x14\n\tpackIndex\x18\x03 \x02(\x05:\x01\x30\"O\n\rRegistTypeMsg\x12\x0f\n\x07\x62\x44\x65vice\x18\x01 \x02(\x08\x12\n\n\x02ip\x18\x02 \x02(\t\x12\x10\n\x08serverip\x18\x03 \x02(\t\x12\x0f\n\x07\x62Normal\x18\x04 \x02(\x08\"\x15\n\x13RegistTypeMsgResult\"\x10\n\x0eQueryDevCntMsg\"&\n\x14QueryDevCntMsgResult\x12\x0e\n\x06\x64\x65vCnt\x18\x01 \x02(\x05\"\x18\n\x16QueryConnectionsStrMsg\"G\n\x1cQueryConnectionsStrMsgResult\x12\x12\n\nresultData\x18\x01 \x02(\t\x12\x13\n\x0bresultError\x18\x02 \x02(\t\"\x17\n\x08QueryMsg\x12\x0b\n\x03Msg\x18\x01 \x02(\t\"9\n\x0eQueryMsgResult\x12\x12\n\nresultData\x18\x01 \x02(\t\x12\x13\n\x0bresultError\x18\x02 \x02(\t\"(\n\x06\x41\x64\x64Msg\x12\x11\n\tTableName\x18\x01 \x02(\t\x12\x0b\n\x03Msg\x18\x02 \x02(\t\"#\n\x0c\x41\x64\x64MsgResult\x12\x13\n\x0bresultError\x18\x01 \x02(\t\"\x1b\n\x0c\x45xcuteSqlMsg\x12\x0b\n\x03Msg\x18\x01 \x02(\t\")\n\x12\x45xcuteSqlMsgResult\x12\x13\n\x0bresultError\x18\x01 \x02(\t\"G\n\x10QueryDevSpeedMsg\x12\r\n\x05ipStr\x18\x01 \x02(\t\x12\x11\n\taskUserID\x18\x02 \x02(\x05\x12\x11\n\tstartTime\x18\x03 \x02(\x03\"<\n\x16QueryDevSpeedMsgResult\x12\r\n\x05speed\x18\x01 \x02(\x05\x12\x13\n\x0bresultError\x18\x02 \x02(\t\")\n\nUpgradeMsg\x12\n\n\x02ip\x18\x01 \x02(\t\x12\x0f\n\x07version\x18\x02 \x02(\t\"H\n\rAddVersionMsg\x12\x0f\n\x07\x42ianhao\x18\x01 \x02(\t\x12\x11\n\tBanbenhao\x18\x02 \x02(\t\x12\x13\n\x0b\x41nzhuangbao\x18\x03 \x02(\x0c\">\n\x13\x41\x64\x64VersionMsgResult\x12\x12\n\nresultData\x18\x01 \x02(\t\x12\x13\n\x0bresultError\x18\x02 \x02(\t\"=\n\x12UpgradeDownLoadMsg\x12\x12\n\nseteupData\x18\x01 \x02(\x0c\x12\x13\n\x0bresultError\x18\x02 \x02(\t\"C\n\x18UpgradeDownLoadMsgResult\x12\x12\n\nresultData\x18\x01 \x02(\t\x12\x13\n\x0bresultError\x18\x02 \x02(\t\";\n\x10UpgradeMsgResult\x12\x12\n\nresultData\x18\x01 \x02(\t\x12\x13\n\x0bresultError\x18\x02 \x02(\t')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -137,6 +137,48 @@ _MSGPACK = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='addversionmsg', full_name='netmsg.MsgPack.addversionmsg', index=15,
+      number=20, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='addversionmsgresult', full_name='netmsg.MsgPack.addversionmsgresult', index=16,
+      number=21, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='upgrademsg', full_name='netmsg.MsgPack.upgrademsg', index=17,
+      number=50, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='upgradedownloadmsg', full_name='netmsg.MsgPack.upgradedownloadmsg', index=18,
+      number=51, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='upgradedownloadmsgresult', full_name='netmsg.MsgPack.upgradedownloadmsgresult', index=19,
+      number=52, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='upgrademsgresult', full_name='netmsg.MsgPack.upgrademsgresult', index=20,
+      number=53, type=11, cpp_type=10, label=1,
+      has_default_value=False, default_value=None,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -149,7 +191,7 @@ _MSGPACK = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=25,
-  serialized_end=784,
+  serialized_end=1104,
 )
 
 
@@ -192,8 +234,8 @@ _MSGHEAD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=786,
-  serialized_end=868,
+  serialized_start=1106,
+  serialized_end=1188,
 )
 
 
@@ -243,8 +285,8 @@ _REGISTTYPEMSG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=870,
-  serialized_end=949,
+  serialized_start=1190,
+  serialized_end=1269,
 )
 
 
@@ -266,8 +308,8 @@ _REGISTTYPEMSGRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=951,
-  serialized_end=972,
+  serialized_start=1271,
+  serialized_end=1292,
 )
 
 
@@ -289,8 +331,8 @@ _QUERYDEVCNTMSG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=974,
-  serialized_end=990,
+  serialized_start=1294,
+  serialized_end=1310,
 )
 
 
@@ -319,8 +361,8 @@ _QUERYDEVCNTMSGRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=992,
-  serialized_end=1030,
+  serialized_start=1312,
+  serialized_end=1350,
 )
 
 
@@ -342,8 +384,8 @@ _QUERYCONNECTIONSSTRMSG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1032,
-  serialized_end=1056,
+  serialized_start=1352,
+  serialized_end=1376,
 )
 
 
@@ -379,8 +421,8 @@ _QUERYCONNECTIONSSTRMSGRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1058,
-  serialized_end=1129,
+  serialized_start=1378,
+  serialized_end=1449,
 )
 
 
@@ -409,8 +451,8 @@ _QUERYMSG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1131,
-  serialized_end=1154,
+  serialized_start=1451,
+  serialized_end=1474,
 )
 
 
@@ -446,8 +488,8 @@ _QUERYMSGRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1156,
-  serialized_end=1213,
+  serialized_start=1476,
+  serialized_end=1533,
 )
 
 
@@ -483,8 +525,8 @@ _ADDMSG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1215,
-  serialized_end=1255,
+  serialized_start=1535,
+  serialized_end=1575,
 )
 
 
@@ -513,8 +555,8 @@ _ADDMSGRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1257,
-  serialized_end=1292,
+  serialized_start=1577,
+  serialized_end=1612,
 )
 
 
@@ -543,8 +585,8 @@ _EXCUTESQLMSG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1294,
-  serialized_end=1321,
+  serialized_start=1614,
+  serialized_end=1641,
 )
 
 
@@ -573,8 +615,8 @@ _EXCUTESQLMSGRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1323,
-  serialized_end=1364,
+  serialized_start=1643,
+  serialized_end=1684,
 )
 
 
@@ -617,8 +659,8 @@ _QUERYDEVSPEEDMSG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1366,
-  serialized_end=1437,
+  serialized_start=1686,
+  serialized_end=1757,
 )
 
 
@@ -654,8 +696,237 @@ _QUERYDEVSPEEDMSGRESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1439,
-  serialized_end=1499,
+  serialized_start=1759,
+  serialized_end=1819,
+)
+
+
+_UPGRADEMSG = _descriptor.Descriptor(
+  name='UpgradeMsg',
+  full_name='netmsg.UpgradeMsg',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='ip', full_name='netmsg.UpgradeMsg.ip', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='version', full_name='netmsg.UpgradeMsg.version', index=1,
+      number=2, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1821,
+  serialized_end=1862,
+)
+
+
+_ADDVERSIONMSG = _descriptor.Descriptor(
+  name='AddVersionMsg',
+  full_name='netmsg.AddVersionMsg',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='Bianhao', full_name='netmsg.AddVersionMsg.Bianhao', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='Banbenhao', full_name='netmsg.AddVersionMsg.Banbenhao', index=1,
+      number=2, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='Anzhuangbao', full_name='netmsg.AddVersionMsg.Anzhuangbao', index=2,
+      number=3, type=12, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1864,
+  serialized_end=1936,
+)
+
+
+_ADDVERSIONMSGRESULT = _descriptor.Descriptor(
+  name='AddVersionMsgResult',
+  full_name='netmsg.AddVersionMsgResult',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='resultData', full_name='netmsg.AddVersionMsgResult.resultData', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='resultError', full_name='netmsg.AddVersionMsgResult.resultError', index=1,
+      number=2, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=1938,
+  serialized_end=2000,
+)
+
+
+_UPGRADEDOWNLOADMSG = _descriptor.Descriptor(
+  name='UpgradeDownLoadMsg',
+  full_name='netmsg.UpgradeDownLoadMsg',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='seteupData', full_name='netmsg.UpgradeDownLoadMsg.seteupData', index=0,
+      number=1, type=12, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='resultError', full_name='netmsg.UpgradeDownLoadMsg.resultError', index=1,
+      number=2, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2002,
+  serialized_end=2063,
+)
+
+
+_UPGRADEDOWNLOADMSGRESULT = _descriptor.Descriptor(
+  name='UpgradeDownLoadMsgResult',
+  full_name='netmsg.UpgradeDownLoadMsgResult',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='resultData', full_name='netmsg.UpgradeDownLoadMsgResult.resultData', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='resultError', full_name='netmsg.UpgradeDownLoadMsgResult.resultError', index=1,
+      number=2, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2065,
+  serialized_end=2132,
+)
+
+
+_UPGRADEMSGRESULT = _descriptor.Descriptor(
+  name='UpgradeMsgResult',
+  full_name='netmsg.UpgradeMsgResult',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='resultData', full_name='netmsg.UpgradeMsgResult.resultData', index=0,
+      number=1, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='resultError', full_name='netmsg.UpgradeMsgResult.resultError', index=1,
+      number=2, type=9, cpp_type=9, label=2,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=2134,
+  serialized_end=2193,
 )
 
 _MSGPACK.fields_by_name['head'].message_type = _MSGHEAD
@@ -673,6 +944,12 @@ _MSGPACK.fields_by_name['querydevspeedmsg'].message_type = _QUERYDEVSPEEDMSG
 _MSGPACK.fields_by_name['querydevspeedmsgresult'].message_type = _QUERYDEVSPEEDMSGRESULT
 _MSGPACK.fields_by_name['queryconnectionsstrmsg'].message_type = _QUERYCONNECTIONSSTRMSG
 _MSGPACK.fields_by_name['queryconnectionsstrmsgresult'].message_type = _QUERYCONNECTIONSSTRMSGRESULT
+_MSGPACK.fields_by_name['addversionmsg'].message_type = _ADDVERSIONMSG
+_MSGPACK.fields_by_name['addversionmsgresult'].message_type = _ADDVERSIONMSGRESULT
+_MSGPACK.fields_by_name['upgrademsg'].message_type = _UPGRADEMSG
+_MSGPACK.fields_by_name['upgradedownloadmsg'].message_type = _UPGRADEDOWNLOADMSG
+_MSGPACK.fields_by_name['upgradedownloadmsgresult'].message_type = _UPGRADEDOWNLOADMSGRESULT
+_MSGPACK.fields_by_name['upgrademsgresult'].message_type = _UPGRADEMSGRESULT
 DESCRIPTOR.message_types_by_name['MsgPack'] = _MSGPACK
 DESCRIPTOR.message_types_by_name['MsgHead'] = _MSGHEAD
 DESCRIPTOR.message_types_by_name['RegistTypeMsg'] = _REGISTTYPEMSG
@@ -689,6 +966,12 @@ DESCRIPTOR.message_types_by_name['ExcuteSqlMsg'] = _EXCUTESQLMSG
 DESCRIPTOR.message_types_by_name['ExcuteSqlMsgResult'] = _EXCUTESQLMSGRESULT
 DESCRIPTOR.message_types_by_name['QueryDevSpeedMsg'] = _QUERYDEVSPEEDMSG
 DESCRIPTOR.message_types_by_name['QueryDevSpeedMsgResult'] = _QUERYDEVSPEEDMSGRESULT
+DESCRIPTOR.message_types_by_name['UpgradeMsg'] = _UPGRADEMSG
+DESCRIPTOR.message_types_by_name['AddVersionMsg'] = _ADDVERSIONMSG
+DESCRIPTOR.message_types_by_name['AddVersionMsgResult'] = _ADDVERSIONMSGRESULT
+DESCRIPTOR.message_types_by_name['UpgradeDownLoadMsg'] = _UPGRADEDOWNLOADMSG
+DESCRIPTOR.message_types_by_name['UpgradeDownLoadMsgResult'] = _UPGRADEDOWNLOADMSGRESULT
+DESCRIPTOR.message_types_by_name['UpgradeMsgResult'] = _UPGRADEMSGRESULT
 
 MsgPack = _reflection.GeneratedProtocolMessageType('MsgPack', (_message.Message,), dict(
   DESCRIPTOR = _MSGPACK,
@@ -801,6 +1084,48 @@ QueryDevSpeedMsgResult = _reflection.GeneratedProtocolMessageType('QueryDevSpeed
   # @@protoc_insertion_point(class_scope:netmsg.QueryDevSpeedMsgResult)
   ))
 _sym_db.RegisterMessage(QueryDevSpeedMsgResult)
+
+UpgradeMsg = _reflection.GeneratedProtocolMessageType('UpgradeMsg', (_message.Message,), dict(
+  DESCRIPTOR = _UPGRADEMSG,
+  __module__ = 'netmsg_pb2'
+  # @@protoc_insertion_point(class_scope:netmsg.UpgradeMsg)
+  ))
+_sym_db.RegisterMessage(UpgradeMsg)
+
+AddVersionMsg = _reflection.GeneratedProtocolMessageType('AddVersionMsg', (_message.Message,), dict(
+  DESCRIPTOR = _ADDVERSIONMSG,
+  __module__ = 'netmsg_pb2'
+  # @@protoc_insertion_point(class_scope:netmsg.AddVersionMsg)
+  ))
+_sym_db.RegisterMessage(AddVersionMsg)
+
+AddVersionMsgResult = _reflection.GeneratedProtocolMessageType('AddVersionMsgResult', (_message.Message,), dict(
+  DESCRIPTOR = _ADDVERSIONMSGRESULT,
+  __module__ = 'netmsg_pb2'
+  # @@protoc_insertion_point(class_scope:netmsg.AddVersionMsgResult)
+  ))
+_sym_db.RegisterMessage(AddVersionMsgResult)
+
+UpgradeDownLoadMsg = _reflection.GeneratedProtocolMessageType('UpgradeDownLoadMsg', (_message.Message,), dict(
+  DESCRIPTOR = _UPGRADEDOWNLOADMSG,
+  __module__ = 'netmsg_pb2'
+  # @@protoc_insertion_point(class_scope:netmsg.UpgradeDownLoadMsg)
+  ))
+_sym_db.RegisterMessage(UpgradeDownLoadMsg)
+
+UpgradeDownLoadMsgResult = _reflection.GeneratedProtocolMessageType('UpgradeDownLoadMsgResult', (_message.Message,), dict(
+  DESCRIPTOR = _UPGRADEDOWNLOADMSGRESULT,
+  __module__ = 'netmsg_pb2'
+  # @@protoc_insertion_point(class_scope:netmsg.UpgradeDownLoadMsgResult)
+  ))
+_sym_db.RegisterMessage(UpgradeDownLoadMsgResult)
+
+UpgradeMsgResult = _reflection.GeneratedProtocolMessageType('UpgradeMsgResult', (_message.Message,), dict(
+  DESCRIPTOR = _UPGRADEMSGRESULT,
+  __module__ = 'netmsg_pb2'
+  # @@protoc_insertion_point(class_scope:netmsg.UpgradeMsgResult)
+  ))
+_sym_db.RegisterMessage(UpgradeMsgResult)
 
 
 # @@protoc_insertion_point(module_scope)

@@ -16,6 +16,9 @@ EXPORTS
 		queryTable
 		queryOnlieDevCnt
 		addTable
+		addVersion
 		excuteSql
 		queryDevSpeed
 		queryConnectionsStr
+
+		upgrade

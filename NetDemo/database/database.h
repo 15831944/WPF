@@ -19,7 +19,10 @@ using namespace std;
 	propertyName3_0:propertyValue3_0,propertyName3_1:propertyValue3_1,propertyName3_2:propertyValue3_2,бнбн;
 */
 bool			QueryTable(string QuerySql, string &dataStr, string &strError);
-bool			AddTable(char* tableName, char* dataStr, string &strError);
+bool			QueryVersion(string QuerySql, string &Bianhao, string &Banbenhao, string &Anzhuangbao, string &strError);
+
+bool			AddTable(char* tableName, char* dataStr, int datalen, string &strError);
+bool			AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, string &strError);
 bool			ExcuteSql(char* sqlStr, string &strError);
 
 bool			QueryZHIQIANSHUJU(string QuerySql, std::vector<tagZHIQIANSHUJU> &lcArray, string &strError);

@@ -35,8 +35,8 @@ namespace ManageSystem.Model
             }
         }
 
-        private string _Anzhuangbao;
-        public string Anzhuangbao
+        private Byte[] _Anzhuangbao;
+        public Byte[] Anzhuangbao
         {
             get
             {

@@ -4,6 +4,7 @@
 
 void OutDebugLineLogs(string file, int line, string func, string log)
 {
+#ifdef _DEBUG
 	try
 	{
 		char ch[256] ={ 0 };
@@ -14,4 +15,6 @@ void OutDebugLineLogs(string file, int line, string func, string log)
 	catch (...)
 	{
 	}
+
+#endif
 }

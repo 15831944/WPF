@@ -57,3 +57,8 @@ bool client::stoped()
 {
 	return m_io_service.stopped();
 }
+
+int client::curwritebufLen()
+{
+	return g_clientPtr->m_pSession->cursendlen();
+}

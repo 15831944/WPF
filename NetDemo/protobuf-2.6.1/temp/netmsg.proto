@@ -23,6 +23,16 @@ message MsgPack
 
 	optional	QueryConnectionsStrMsg  			queryconnectionsstrmsg			= 14;
 	optional	QueryConnectionsStrMsgResult  		queryconnectionsstrmsgresult	= 15;
+
+	optional	AddVersionMsg  						addversionmsg					= 20;
+	optional	AddVersionMsgResult  				addversionmsgresult				= 21;
+
+	optional	UpgradeMsg  						upgrademsg						= 50;
+	optional	UpgradeDownLoadMsg  				upgradedownloadmsg				= 51;
+	optional	UpgradeDownLoadMsgResult  			upgradedownloadmsgresult		= 52;
+	optional	UpgradeMsgResult  					upgrademsgresult				= 53;
+	
+
 }
 
 message MsgHead{
@@ -93,5 +103,35 @@ message QueryDevSpeedMsg{
 
 message QueryDevSpeedMsgResult{
 	required	int32				speed					= 1;
+	required	string				resultError				= 2;
+}
+
+message UpgradeMsg{
+	required	string				ip					    = 1;
+	required	string				version					= 2;
+}
+
+message AddVersionMsg{
+	required	string				Bianhao					= 1;
+	required	string				Banbenhao				= 2;
+	required	bytes				Anzhuangbao				= 3;
+}
+message AddVersionMsgResult{
+	required	string				resultData				= 1;
+	required	string				resultError				= 2;
+}
+
+message UpgradeDownLoadMsg{
+	required	bytes				seteupData				= 1;
+	required	string				resultError				= 2;
+}
+
+message UpgradeDownLoadMsgResult{
+	required	string				resultData				= 1;
+	required	string				resultError				= 2;
+}
+
+message UpgradeMsgResult{
+	required	string				resultData				= 1;
 	required	string				resultError				= 2;
 }

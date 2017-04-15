@@ -9,7 +9,9 @@ EXPORTS
 		curServerConnections
 		getClientIDByIP
 		getClientIPByID
+		serverSendBufLen
 
 		startClient
 		stopClient
 		isClientStoped
+		clientSendBufLen

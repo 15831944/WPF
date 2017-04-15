@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -16,33 +17,32 @@ using System.Windows;
 
 namespace ManageSystem.ViewModel.DeviceViewModel
 {
-    public enum QueryEnum
-    {
-        QueryEnum_None,
-        QueryEnum_Device,
-        QueryEnum_Upgrade,
-        QueryEnum_TestSpeed,
-        //QueryEnum_Abnormal,
-        //QueryEnum_Hardware,
-    }
-
    public  class UpgradeViewModel : NotificationObject
     {
-        public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
-       private QueryEnum                    _queryEnum = QueryEnum.QueryEnum_None;
+       BackgroundWorker                     addbgw = new BackgroundWorker();
+
+       public QueryTableCallBackDelegate   _querytablecallbackdelegate = null;
+       public AddTableCallBackDelegate     _addtablecallbackdelegate = null;
+       public UpgradeCallBackDelegate      _upgradecallbackdelegate = null;
+       private OperateEnum                 _queryEnum = OperateEnum.OperateEnum_None;
 
        private ObservableCollection<SHEBEIGUANLIModel> _tableListTemp = new ObservableCollection<SHEBEIGUANLIModel>();
 
 
        public DelegateCommand<object> QueryCommand { get; set; }
+       public DelegateCommand<object> OperateCommand { get; set; }
+
        public DelegateCommand<object> FirstPageCommand { get; set; }
        public DelegateCommand<object> PrePageCommand { get; set; }
        public DelegateCommand<object> NextPageCommand { get; set; }
        public DelegateCommand<object> GotoPageCommand { get; set; }
+       public DelegateCommand<object> UpgradeVersionCommand { get; set; }
        public DelegateCommand<object> UpgradeCommand { get; set; }
        public DelegateCommand<object> PowerUpgradeCommand { get; set; }
        public DelegateCommand<object> ExportExcelCommand { get; set; }
        public DelegateCommand<object> ExportTXTCommand { get; set; }
+
+       public DelegateCommand<object> SelectSteupCommand { get; set; }
 
        private ObservableCollection<SHEBEIGUANLIModel> _tableList;
        public ObservableCollection<SHEBEIGUANLIModel> tableList
@@ -114,30 +114,282 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             }
         }
 
+        private string _testIP;
+        public string testIP
+        {
+            get
+            {
+                return _testIP;
+            }
+            set
+            {
+                _testIP = value;
+                this.RaisePropertyChanged("testIP");
+            }
+        }
+
+        private OperateEnum _operateenum;
+        public OperateEnum operateenum
+        {
+            get
+            {
+                return _operateenum;
+            }
+            set
+            {
+                _operateenum = value;
+                this.RaisePropertyChanged("operateenum");
+            }
+        }
+
+        private string _version;
+        public string version
+        {
+            get
+            {
+                return _version;
+            }
+            set
+            {
+                _version = value;
+                this.RaisePropertyChanged("version");
+            }
+        }
+
+        private string _filePath;
+        public string filePath
+        {
+            get
+            {
+                return _filePath;
+            }
+            set
+            {
+                _filePath = value;
+                this.RaisePropertyChanged("filePath");
+            }
+        }
+
+        private string _displayMsg;
+        public string displayMsg
+        {
+            get { return _displayMsg; }
+            set
+            {
+                _displayMsg = value;
+                this.RaisePropertyChanged("displayMsg");
+            }
+        }
+
+        private double _Angle;
+        public double Angle
+        {
+            get
+            {
+                return _Angle;
+            }
+            set
+            {
+                _Angle = value;
+                this.RaisePropertyChanged("Angle");
+            }
+        }
+
         public UpgradeViewModel()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
+            _addtablecallbackdelegate                   = new AddTableCallBackDelegate(AddTableCallBack);
+            _upgradecallbackdelegate                    = new UpgradeCallBackDelegate(UpgradeCallBack);
 
             QueryCommand                                = new DelegateCommand<object>(QueryShebeiguanli);
+            OperateCommand                              = new DelegateCommand<object>(Operate);
 
             FirstPageCommand                            = new DelegateCommand<object>(FirstPage);
             PrePageCommand                              = new DelegateCommand<object>(PrePage);
             NextPageCommand                             = new DelegateCommand<object>(NextPage);
             GotoPageCommand                             = new DelegateCommand<object>(GotoPage);
+            UpgradeVersionCommand                       = new DelegateCommand<object>(UpgradeVersion);
             UpgradeCommand                              = new DelegateCommand<object>(Upgrade);
             PowerUpgradeCommand                         = new DelegateCommand<object>(PowerUpgrade);
             ExportExcelCommand                          = new DelegateCommand<object>(ExportExcel);
             ExportTXTCommand                            = new DelegateCommand<object>(ExportTXT);
+            SelectSteupCommand                          = new DelegateCommand<object>(SelectSteup);
 
             _tableList                                  = new ObservableCollection<SHEBEIGUANLIModel>();
             _ruanjianList                               = new ObservableCollection<RUANJIANBAOModel>();
             _customInfo                                 = new SHEBEIGUANLIModel();
             _pagePercent                                = "0/0";
+
+            _operateenum                                = OperateEnum.OperateEnum_None;
+            _displayMsg                                 = "";
+            _version                                    = "";
+            _filePath                                   = "";
+            _Angle                                      = -130;
         }
 
+        private void AddTableCallBack(string resultStr, string errorStr)
+        {
+            if (errorStr != null && errorStr.Length != 0)
+            {
+                displayMsg = errorStr;
+            }
+            else
+            {
+                if(string.IsNullOrEmpty(resultStr))
+                {
+                    Angle = 360 + -130;
+                }
+                else
+                {
+                    string[] rows = resultStr.Split(';');
+                    foreach (string row in rows)
+                    {
+                        if (row.Length > 0)
+                        {
+                            ZHIQIANSHUJUModel model     = new ZHIQIANSHUJUModel();
+
+                            string[] cells = row.Split(',');
+                            foreach (string cell in cells)
+                            {
+                                string[] keyvalue = cell.Split(':');
+                                if (keyvalue.Length != 2 || keyvalue[1] == null || keyvalue[1].Length == 0)
+                                    continue;
+
+                                if (keyvalue[0] == "progress")
+                                {
+                                    double progress = Convert.ToDouble(keyvalue[1]);
+
+                                    Angle = progress * 3.6 + -130;
+                                    Debug.WriteLine(progress);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        private void Operate(object obj)
+        {
+            switch (operateenum)
+            {
+                case OperateEnum.OperateEnum_UpgradeVersion:
+                    {
+                        if ((Angle != -130) && Angle != (-130 + 360))
+                            break;
+
+                        new Thread(() =>
+                        {
+                            if (string.IsNullOrEmpty(version))
+                            {
+                                displayMsg = "版本号不能为空！";
+                                return;
+                            }
+                            foreach (var item in ruanjianList)
+                            {
+                                if (item.Banbenhao == version)
+                                {
+                                    displayMsg = "版本号已存在！";
+                                    return;
+                                }
+                            }
+
+                            if (!File.Exists(filePath))
+                            {
+                                displayMsg = "请输入有效文件路径！";
+                                return;
+                            }
+                            else
+                            {
+                                FileInfo fileinfo = new FileInfo(filePath);
+                                if (fileinfo.Length > 0x6400000)
+                                {
+                                    displayMsg = "文件不能大于100M";
+                                    return;
+                                }
+                            }
+
+                            displayMsg  = "";
+                            Angle       = -130 + 1;
+
+                            try
+                            {
+                                FileStream stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+
+                                byte[] array = new byte[stream.Length];
+                                stream.Read(array, 0, (int)stream.Length);
+                                stream.Close();
+
+                                WorkServer.addVersion("0", version, Marshal.UnsafeAddrOfPinnedArrayElement(array, 0), array.Length, Marshal.GetFunctionPointerForDelegate(_addtablecallbackdelegate), true);
+                                QueryRuanjianbao(null);
+                            }
+                            catch (Exception e)
+                            {
+                                string str = e.Message;
+                            }
+                        }).Start();
+                    }
+                    break;
+            }
+        }
+       
+        private void SelectSteup(object obj)
+        {
+            System.Windows.Forms.OpenFileDialog opf = new System.Windows.Forms.OpenFileDialog();
+            opf.FileName = DateTime.Now.ToString("yyyyMMddHHmmss");
+            opf.Filter = "*.exe|*.exe|所有文件(*.*)|*.*";
+            if (opf.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                filePath = opf.FileName;
+            }
+        }
+        private void UpgradeVersion(object obj)
+        {
+            operateenum = OperateEnum.OperateEnum_UpgradeVersion;
+        }
+        private void UpgradeCallBack(string resultStr, string errorStr)
+        {
+            if (errorStr != null && errorStr.Length != 0)
+            {
+                MessageBox.Show(errorStr);
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(resultStr))
+                {
+                    Angle = 360 + -130;
+                }
+                else
+                {
+                    string[] rows = resultStr.Split(';');
+                    foreach (string row in rows)
+                    {
+                        if (row.Length > 0)
+                        {
+                            ZHIQIANSHUJUModel model     = new ZHIQIANSHUJUModel();
+
+                            string[] cells = row.Split(',');
+                            foreach (string cell in cells)
+                            {
+                                string[] keyvalue = cell.Split(':');
+                                if (keyvalue.Length != 2 || keyvalue[1] == null || keyvalue[1].Length == 0)
+                                    continue;
+
+                                if (keyvalue[0] == "downloadprogress")
+                                {
+                                    double progress = Convert.ToDouble(keyvalue[1]);
+
+                                    Angle = progress * 3.6 + -130;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
         private void PowerUpgrade(object obj)
         {
-            Upgrade(null);
+            string str = "version:0.0.0.3,ip:192.168.1.107,;";
+            WorkServer.upgrade(str, Marshal.GetFunctionPointerForDelegate(_upgradecallbackdelegate), false);
         }
 
         private void Upgrade(object obj)
@@ -417,10 +669,10 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             Type type = null;
             switch (_queryEnum)
             {
-                case QueryEnum.QueryEnum_Device:
+                case OperateEnum.OperateEnum_QueryDevice:
                     type = typeof(SHEBEIGUANLIModel);
                     break;
-                case QueryEnum.QueryEnum_Upgrade:
+                case OperateEnum.OperateEnum_QueryUpgrade:
                     type = typeof(RUANJIANBAOModel);
                     break;
             }
@@ -503,11 +755,11 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                     }
                     switch(_queryEnum)
                     {
-                        case QueryEnum.QueryEnum_Device:
+                        case OperateEnum.OperateEnum_QueryDevice:
                             (model as SHEBEIGUANLIModel).operateinfomodel.operatemodel = OperateModelEnum.OperateModel_Upgrade;
                             _tableListTemp.Add(model as SHEBEIGUANLIModel);
                             break;
-                        case QueryEnum.QueryEnum_Upgrade:
+                        case OperateEnum.OperateEnum_QueryUpgrade:
                             Application.Current.Dispatcher.Invoke(
                              new Action(() =>
                              {
@@ -520,23 +772,23 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
             switch (_queryEnum)
             {
-                case QueryEnum.QueryEnum_Device:
+                case OperateEnum.OperateEnum_QueryDevice:
                     Application.Current.Dispatcher.Invoke(
                      new Action(() =>
                      {
                          ShowPage(1);
                      }));
                     break;
-                case QueryEnum.QueryEnum_Upgrade:
+                case OperateEnum.OperateEnum_QueryUpgrade:
                     break;
             }
 
-            _queryEnum = QueryEnum.QueryEnum_None;
+            _queryEnum = OperateEnum.OperateEnum_None;
         }
 
         public void QueryShebeiguanli(object obj)
         {
-            _queryEnum = QueryEnum.QueryEnum_Device;
+            _queryEnum = OperateEnum.OperateEnum_QueryDevice;
             _tableListTemp.Clear();
             tableList.Clear();
             WorkServer.QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
@@ -544,9 +796,9 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
         public void QueryRuanjianbao(object obj)
         {
-            _queryEnum = QueryEnum.QueryEnum_Upgrade;
+            _queryEnum = OperateEnum.OperateEnum_QueryUpgrade;
             ruanjianList.Clear();
-            WorkServer.QueryTable("select * from Ruanjianbao", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), false);
+            WorkServer.QueryTable("Select Bianhao as Bianhao,Banbenhao as Banbenhao From Ruanjianbao", Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), false);
         }
 
         string MakeQuerySql(object obj)

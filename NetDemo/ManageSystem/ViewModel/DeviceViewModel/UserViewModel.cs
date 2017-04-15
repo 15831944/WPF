@@ -207,7 +207,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             catch { }
         }
 
-        private void ExcutesqlCallBack(string errorStr)
+        private void ExcutesqlCallBack(string resultStr, string errorStr)
         {
             if (errorStr != null && errorStr.Length != 0)
             {
@@ -215,7 +215,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             }
         }
 
-        private void AddTableCallBack(string errorStr)
+        private void AddTableCallBack(string resultStr, string errorStr)
         {
             if (errorStr != null && errorStr.Length != 0)
             {
@@ -283,7 +283,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                                             item.SetValue(model, datetime.ToString("yyyy-MM-dd HH:mm:ss"), null);
                                             break;
                                         case "IP":
-                                            item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder(Convert.ToInt32(keyvalue[1]))), null);
+                                            item.SetValue(model, Common.IntToIp(IPAddress.NetworkToHostOrder((Int32)Convert.ToInt64(keyvalue[1]))), null);
                                             break;
                                         default:
                                             item.SetValue(model, keyvalue[1], null);

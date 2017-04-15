@@ -14,11 +14,13 @@ protected:
 
 	typedef bool						(*_startClientType)(char *ip, int port, IN OnReceiveCallBack callback, OUT ClientSendData& CallSendData);
 	typedef bool						(*_stopClientType)();
-	typedef bool						(*_isClientStoped)();
+	typedef bool(*_isClientStoped)();
+	typedef int(*_clientSendBufLen)();
 
 	_startClientType					m_startClientFunc;
 	_stopClientType						m_stopClientFunc;
 	_isClientStoped						m_isClientStopedFunc;
+	_clientSendBufLen					m_clientSendBufLenFunc;
 
 	ClientSendData						m_sendDataFunc;
 
@@ -35,13 +37,16 @@ public:
 	bool								StopClient();
 	bool								ClientStoped();
 
-	void								QueryTable(char* QuerySql, QueryTableCallBack callBack, bool bSync);
-	void								AddTable(char* tableName, char* dataStr, AddDataCallBack callBack, bool bSync);
-	void								QueryOnlieDevCnt(QueryTableCallBack callBack, bool bSync);
-	void								ExcuteSql(char* sqlStr, ExcuteSqlCallBack callBack, bool bSync);
-	void								QueryDevSpeed(char* ipStr, QueryTableCallBack callBack, bool bSync);
+	void								QueryTable(char* QuerySql, CallBack callBack, bool bSync);
+	void								AddTable(char* tableName, char* dataStr, CallBack callBack, bool bSync);
+	void								AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, CallBack callBack, bool bSync);
+	void								ReportProgress(int packLen, CallBack callBack);
+	void								QueryOnlieDevCnt(CallBack callBack, bool bSync);
+	void								ExcuteSql(char* sqlStr, CallBack callBack, bool bSync);
+	void								QueryDevSpeed(char* ipStr, CallBack callBack, bool bSync);
 	void								UpdateClientStatus(bool bNormal, bool bSync);
-	void								QueryConnectionsStr(QueryTableCallBack callBack, bool bSync);
+	void								QueryConnectionsStr(CallBack callBack, bool bSync);
+	void								Upgrade(char* dataStr, CallBack callBack, bool bSync);
 };
 
 #pragma  once

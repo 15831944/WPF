@@ -8,6 +8,7 @@ public:
 protected:
 	CServer();
 	static CServer*									m_pServer;	//内部实例指针
+	static unsigned __stdcall						ThreadUpgrade(LPVOID lParam);
 	static void										OnReceiveCallBackFunc(long userID, BYTE* buf, int len, int errorcode, const char* errormsg);
 
 	typedef bool									(*_startServerType)(char *ip, int port, IN OnReceiveCallBack callback, OUT ServerSendData& CallSendData);
@@ -16,6 +17,7 @@ protected:
 	typedef int										(*_curServerConnections)();
 	typedef int										(*_getIdByIP)(char *ip);
 	typedef const char*								(*_getIPByID)(int ID);
+	typedef int(*_serverSendBufLen)(int ID);
 
 	_startServerType								m_startServerFunc;
 	_stopServerType									m_stopServerFunc;
@@ -23,6 +25,7 @@ protected:
 	_curServerConnections							m_curServerConnectionsFunc;
 	_getIdByIP										m_getIdByIPFunc;
 	_getIPByID										m_getIPByIDFunc;
+	_serverSendBufLen								m_serverSendBufLenFunc;
 
 	ServerSendData									m_sendDataFunc;
 

@@ -10,8 +10,10 @@ bool				isServerStoped();
 int					curServerConnections();
 int					getClientIDByIP(char* ip);
 const char*			getClientIPByID(int ID);
+int					serverSendBufLen(int ID);
 
 
 bool				startClient(IN char *ip, IN int port, IN OnReceiveCallBack callback, OUT ClientSendData& CallSendData);
 bool				stopClient();
 bool				isClientStoped();
+int					clientSendBufLen();

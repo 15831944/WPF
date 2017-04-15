@@ -19,5 +19,6 @@ public:
 	void											stop();
 	static void										send(BYTE* SendBuf, int dataLen);
 	bool											stoped();
+	int												curwritebufLen();
 };
 extern unique_ptr<client>							g_clientPtr;

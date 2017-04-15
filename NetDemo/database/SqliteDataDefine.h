@@ -190,6 +190,12 @@
 #define T_YINGSHEBIAO_BIANHAO													"Bianhao"
 #define T_YINGSHEBIAO_MINGCHENG													"Mingcheng"
 
+/**软件包 */
+#define T_RUANJIANBAO															"Ruanjianbao"
+#define T_RUANJIANBAO_BIANHAO													"Bianhao"
+#define T_RUANJIANBAO_BANBENHAO													"Banbenhao"
+#define T_RUANJIANBAO_ANZHUANGBAO												"Anzhuangbao"
+
 #define  BOSD_RIM_XML_PARAM_FRAME "<?xml version=\"1.0\"  encoding=\"gb2312\" >\n"\
 	"<!-- 设备参数框架 -->"\
 	"<config>\n"\
@@ -661,4 +667,25 @@ public:
 	int							Bianhao;				//编号			
 	string						Mingcheng;				//名称		
 }YINGSHEBIAO, *LPYINGSHEBIAO;
+
+/**
+* @class  tagRUANJIANBAO
+*
+* @brief
+****************************************************************************
+*/
+typedef class tagRUANJIANBAO
+{
+public:
+	tagRUANJIANBAO::tagRUANJIANBAO()
+	{
+		Bianhao					= 0;
+		Banbenhao				= "";
+		Anzhuangbao				= "";
+	}
+
+	int							Bianhao;				//编号			
+	string						Banbenhao;				//版本号		
+	string						Anzhuangbao;			//安装包		
+}RUANJIANBAO, *LPRUANJIANBAO;
 ////////////////////////////////////////////////////////结构定义END////////////////////////////////////////////////////////
