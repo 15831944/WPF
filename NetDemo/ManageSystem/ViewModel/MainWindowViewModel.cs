@@ -482,8 +482,8 @@ namespace ManageSystem.ViewModel
             _devicePosition                             = new ObservableCollection<string>();
             _businesstype                               = new ObservableCollection<string>();
 
-            //_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
-            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
+            _bShowPage                                  = PageVisibleEnum.PageVisibleEnum_Logon;
+            //_bShowPage                                  = PageVisibleEnum.PageVisibleEnum_DeviceManage;
 
             _titleheight                                = 25;
             _leftWidth                                  = 60;
@@ -924,6 +924,8 @@ namespace ManageSystem.ViewModel
 
         public void Loaded(object obj)
         {
+            return;
+
             new Thread(() =>
             {
                  WorkServer.startClient(IP, port, true);

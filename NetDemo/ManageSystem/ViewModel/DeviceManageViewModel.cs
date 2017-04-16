@@ -64,7 +64,7 @@ namespace ManageSystem.ViewModel
 
 
 
-            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Upgrade;
+            bShowPage = DeviceVisibleEnum.DeviceVisibleEnum_Device;
         }
 
         private void HardwareShow(object obj)

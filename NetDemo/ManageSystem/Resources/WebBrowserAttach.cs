@@ -54,11 +54,15 @@ namespace ManageSystem.Resources.WebBroserAttachRes
 
         private static void OnxmlDataChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var webbrowser = d as WebBrowser;
+            try
+            {
+                var webbrowser = d as WebBrowser;
 
-            string xmlData = e.NewValue as string;
-            if (xmlData != null && xmlData != "")
-                webbrowser.InvokeScript("LoadData", xmlData);
+                string xmlData = e.NewValue as string;
+                if (xmlData != null && xmlData != "")
+                    webbrowser.InvokeScript("LoadData", xmlData);
+            }
+            catch { }
         }
 
 

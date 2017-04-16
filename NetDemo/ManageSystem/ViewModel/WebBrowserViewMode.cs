@@ -346,12 +346,9 @@ namespace ManageSystem.ViewModel
                     }
                 }
             }
-            //Application.Current.Dispatcher.Invoke(
-            //new Action(() =>
-            //{
-            //    webbrowser.InvokeScript("LoadData", doc.InnerXml);
-            //}));
-            xmlData = doc.InnerXml;
+
+            if(root.ChildNodes.Count > 1)
+                xmlData = doc.InnerXml;
         }
 
         public void QueryConnectionsStatu(object obj)
@@ -383,7 +380,7 @@ namespace ManageSystem.ViewModel
         public void DoLogon()
         {
             string urlTemp = "http://120.76.148.9/testgis/map/gis.html";
-            if(url != urlTemp)
+            if(string.IsNullOrEmpty(url))
                 url = urlTemp;
 
             //int a = IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("192.168.1.106"));

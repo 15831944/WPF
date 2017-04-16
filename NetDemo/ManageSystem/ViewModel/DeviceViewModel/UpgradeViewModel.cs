@@ -388,8 +388,9 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         }
         private void PowerUpgrade(object obj)
         {
-            string str = "version:0.0.0.3,ip:192.168.1.107,;";
-            WorkServer.upgrade(str, Marshal.GetFunctionPointerForDelegate(_upgradecallbackdelegate), false);
+            //string str = "version:0.0.0.3,ip:192.168.1.107,;";
+            //WorkServer.upgrade(str, Marshal.GetFunctionPointerForDelegate(_upgradecallbackdelegate), false);
+            Upgrade(obj);
         }
 
         private void Upgrade(object obj)
