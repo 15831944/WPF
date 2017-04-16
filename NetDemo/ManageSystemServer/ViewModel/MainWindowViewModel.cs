@@ -254,22 +254,28 @@ namespace ManageSystemServer.ViewModel
 
         private void StartServer(object obj)
         {
-            Configuration config                 = ConfigurationManager.OpenExeConfiguration("ManageSystem.exe");
-            string  ip      = "";
-            int     port    = 0;
-            foreach (KeyValueConfigurationElement kv0 in config.AppSettings.Settings)
-            {    //检索当前选中的分辨率
-                if (kv0.Key == "ServerIP")
+            try
+            {
+                string  ip      = "";
+                int     port    = 0;
+                foreach (string key in ConfigurationManager.AppSettings)
                 {
-                    ip = "";
+                    if (key == "ServerIP")
+                    {
+                        ip = ConfigurationManager.AppSettings[key];
+                    }
+                    else if (key == "ServerPort")
+                    {
+                        port = Convert.ToInt32(ConfigurationManager.AppSettings[key]);
+                    }
                 }
-                else if (kv0.Key  == "ServerPort")
-                {
-                    port = Convert.ToInt32(kv0.Value);
-                }
-            }
 
-            WorkServer.startServer(ip, port);
+                WorkServer.startServer(ip, port);
+            }
+            catch
+            {
+
+            }
         }
 
         public void ExitWnd(object obj)

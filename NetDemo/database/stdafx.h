@@ -27,9 +27,9 @@ using namespace std;
 #include "../SQLite3/sqlite3.h"
 
 #ifdef _DEBUG
-#pragma comment(lib,"../../output/database/Debug/sqlite3.lib")
+#pragma comment(lib,"../../output/SQlite3/Debug/sqlite3.lib")
 #else
-#pragma comment(lib,"../../output/database/Release/sqlite3.lib")
+#pragma comment(lib,"../../output/SQlite3/Release/sqlite3.lib")
 #endif
 
 #include "ReadWriteLock.h"

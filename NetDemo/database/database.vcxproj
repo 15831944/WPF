@@ -62,12 +62,12 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>database.def</ModuleDefinitionFile>
-      <ProgramDatabaseFile>$(ProjectDir)..\..\output\pdb\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\MFCDemo\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y</Command>
+      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
+xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -87,12 +87,12 @@ xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configur
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <ModuleDefinitionFile>database.def</ModuleDefinitionFile>
-      <ProgramDatabaseFile>$(ProjectDir)..\..\output\pdb\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\MFCDemo\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y</Command>
+      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
+xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

@@ -31,7 +31,7 @@ namespace ManageSystem
             OccupancyChartServer.InitializeOccupancyModule();
             PieChartServer.InitializePieModule();
 
-            base.OnStartup(e);
+            base.OnStartup(e); 
         }
 
         protected override void OnExit(ExitEventArgs e)

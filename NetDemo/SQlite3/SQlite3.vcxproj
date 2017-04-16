@@ -65,18 +65,15 @@
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <ModuleDefinitionFile>./SQlite3.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <ProgramDatabaseFile>$(ProjectDir)..\..\output\pdb\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
       <SubSystem>Windows</SubSystem>
       <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\MFCDemo\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\database\$(Configuration)\" /Y
-
-xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\database\$(Configuration)\" /Y</Command>
+      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
+xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -93,21 +90,18 @@ xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\database\$(Configuration)\
     <Link>
       <OutputFile>$(OutDir)$(TargetName)$(TargetExt)</OutputFile>
       <ModuleDefinitionFile>./SQlite3.def</ModuleDefinitionFile>
-      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <ImportLibrary>$(OutDir)$(TargetName).lib</ImportLibrary>
       <TargetMachine>MachineX86</TargetMachine>
-      <ProgramDatabaseFile>$(ProjectDir)..\..\output\pdb\$(TargetName).pdb</ProgramDatabaseFile>
+      <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\NetDemo\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\MFCDemo\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\database\$(Configuration)\" /Y
-
-xcopy "$(OutDir)$(TargetName).lib" "$(TargetDir)..\..\database\$(Configuration)\" /Y</Command>
+      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
+xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y
+</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
