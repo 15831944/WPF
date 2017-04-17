@@ -10,9 +10,9 @@ using namespace std;
 /*
 	1. 每个属性与对应的值之间以 ： 号分隔
 	2. 属性与属性之间以 , 号分隔
-	3. 每行以 ; 号分隔
+	3. 每行以 ; 号结尾
 	4. 行与行之间无字符
-	datastr Format:
+	datastr Format:(实际没有换行，只是为了方便显示)
 
 	propertyName1_0:propertyValue1_0,propertyName1_1:propertyValue1_1,propertyName1_2:propertyValue1_2,……;
 	propertyName2_0:propertyValue2_0,propertyName2_1:propertyValue2_1,propertyName2_2:propertyValue2_2,……;
