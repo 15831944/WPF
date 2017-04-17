@@ -410,6 +410,9 @@
     <Resource Include="Resources\imgs\右.png" />
     <Resource Include="Resources\imgs\左.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\imgs\升级.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

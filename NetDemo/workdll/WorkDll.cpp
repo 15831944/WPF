@@ -7,12 +7,6 @@
 
 #include "SqliteData.h"
 
-#ifdef _DEBUG
-#define _CONMIUNICATION_NET
-#else
-#define _CONMIUNICATION_LOCAL
-#endif // _DEBUG
-
 /***************************************Server*******************************************/
 bool startServer(char *ip, int port)
 {
@@ -86,7 +80,7 @@ void addTable(char* tableName, char* dataStr, CallBack callBack, bool bSync)
 	//}
 }
 
-void addVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, CallBack callBack, bool bSync)
+void addRuanjianbao(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, CallBack callBack, bool bSync)
 {
 	CClient::GetInstance()->AddVersion(Bianhao, Banbenhao, Anzhuangbao, datalen, callBack, bSync);
 
@@ -112,11 +106,6 @@ void excuteSql(char* sqlStr, CallBack callBack, bool bSync)
 	//}
 }
 
-void upgrade(char* dataStr, CallBack callBack, bool bSync)
-{
-	CClient::GetInstance()->Upgrade(dataStr, callBack, bSync);
-}
-
 void queryDevSpeed(char* ipStr, CallBack callBack, bool bSync)
 {
 	CClient::GetInstance()->QueryDevSpeed(ipStr, callBack, bSync);
@@ -131,3 +120,8 @@ void queryConnectionsStr(CallBack callBack, bool bSync)
 {
 	CClient::GetInstance()->QueryConnectionsStr(callBack, bSync);
 }
+
+//void upgrade(char* dataStr, CallBack callBack, bool bSync)
+//{
+//	CClient::GetInstance()->Upgrade(dataStr, callBack, bSync);
+//}

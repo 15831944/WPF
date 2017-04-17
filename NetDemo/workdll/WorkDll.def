@@ -16,9 +16,9 @@ EXPORTS
 		queryTable
 		queryOnlieDevCnt
 		addTable
-		addVersion
+		addRuanjianbao
 		excuteSql
 		queryDevSpeed
 		queryConnectionsStr
 
-		upgrade
+		;upgrade

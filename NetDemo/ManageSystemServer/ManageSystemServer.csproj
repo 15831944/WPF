@@ -74,7 +74,10 @@
     </ApplicationDefinition>
     <Compile Include="Common.cs" />
     <Compile Include="MiniDumpUtil.cs" />
-    <Compile Include="Server\WorkServer.cs" />
+    <Compile Include="Server\WorkServer.cs">
+      <SubType>
+      </SubType>
+    </Compile>
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -142,9 +145,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetFileName).config" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
-xcopy "$(TargetDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

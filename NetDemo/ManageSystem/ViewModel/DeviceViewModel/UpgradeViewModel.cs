@@ -319,7 +319,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                                 stream.Read(array, 0, (int)stream.Length);
                                 stream.Close();
 
-                                WorkServer.addVersion("0", version, Marshal.UnsafeAddrOfPinnedArrayElement(array, 0), array.Length, Marshal.GetFunctionPointerForDelegate(_addtablecallbackdelegate), true);
+                                WorkServer.addRuanjianbao("0", version, Marshal.UnsafeAddrOfPinnedArrayElement(array, 0), array.Length, Marshal.GetFunctionPointerForDelegate(_addtablecallbackdelegate), true);
                                 QueryRuanjianbao(null);
                             }
                             catch (Exception e)

@@ -45,6 +45,12 @@
     <ClInclude Include="ThreadQueue.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="WorkClient.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="WorkServer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

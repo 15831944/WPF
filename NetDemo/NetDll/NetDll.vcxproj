@@ -71,6 +71,8 @@
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
 xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y
+xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystemServer\$(Configuration)\" /Y
+xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystemServer\pdb\" /Y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -96,6 +98,8 @@ xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y
     <PostBuildEvent>
       <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
 xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y
+xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystemServer\$(Configuration)\" /Y
+xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystemServer\pdb\" /Y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

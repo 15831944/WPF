@@ -14,8 +14,8 @@ bool startServer(char *ip, int port, OnReceiveCallBack callback, OUT ServerSendD
 
 	if (g_serverPtr == nullptr || isServerStoped())
 	{
-		boost::asio::ip::address_v4 v4;
-		if (strlen(ip))
+		boost::asio::ip::address_v4 v4; 
+		if (ip != nullptr && strlen(ip))
 			v4 = boost::asio::ip::address_v4::from_string(ip);
 		else
 			v4 = boost::asio::ip::address_v4::any();

@@ -48,8 +48,8 @@ namespace ManageSystem.Server
                         string dataStr,
                         IntPtr callback,
                         bool bSync);
-        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "addVersion")]
-        public static extern void addVersion(
+        [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "addRuanjianbao")]
+        public static extern void addRuanjianbao(
                         string bianhao,
                         string banbenhao,
                         IntPtr Anzhuangbao,

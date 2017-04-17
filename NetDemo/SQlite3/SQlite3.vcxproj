@@ -71,8 +71,8 @@
       <TargetMachine>MachineX86</TargetMachine>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
-xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y
+      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystemServer\$(Configuration)\" /Y
+xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystemServer\pdb\" /Y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -99,8 +99,8 @@ xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y
       <ProgramDatabaseFile>$(OutDir)$(TargetName).pdb</ProgramDatabaseFile>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystem\$(Configuration)\" /Y
-xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystem\pdb\" /Y
+      <Command>xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)..\..\ManageSystemServer\$(Configuration)\" /Y
+xcopy "$(OutDir)$(TargetName).pdb" "$(TargetDir)..\..\ManageSystemServer\pdb\" /Y
 </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>

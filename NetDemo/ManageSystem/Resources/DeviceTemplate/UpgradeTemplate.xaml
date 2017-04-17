@@ -187,7 +187,7 @@
                         <RowDefinition Height="80"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" x:Name="rightheader" Height="50" VerticalAlignment="Center" Foreground="Red" FontSize="25">升级</TextBlock>
+                    <TextBlock Grid.Row="0" x:Name="rightheader" Height="50" VerticalAlignment="Center" Foreground="Red" FontSize="25">提交</TextBlock>
                     <Grid Grid.Row="1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -195,7 +195,7 @@
                         </Grid.RowDefinitions>
                         <shapes:Arc Grid.Row="0" Fill="#CED4D8" StartAngle="0" EndAngle="360" Width="120" Height="120" Stretch="None" ArcThicknessUnit="Percent" ArcThickness="0.2" HorizontalAlignment="Center" VerticalAlignment="Bottom"></shapes:Arc>
                         <shapes:Arc Grid.Row="0" Fill="Red" StartAngle="-130" EndAngle="{Binding Path=Angle}" Width="120" Height="120"  Stretch="None" ArcThicknessUnit="Percent" ArcThickness="0.2" HorizontalAlignment="Center" VerticalAlignment="Bottom"></shapes:Arc>
-                        <Image Stretch="None" Source="/ManageSystem;component/Resources/imgs/直方图－选中.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <Image Stretch="None" Source="/ManageSystem;component/Resources/imgs/升级.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                     </Grid>
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
@@ -275,9 +275,16 @@
                         </TextBlock>
                     </Grid>
 
-                    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
-                        <Button Margin="0,0,5,0" Width="80" Height="30" VerticalAlignment="Center" Template="{StaticResource btndevicemaSure_Template}" Command="{Binding Path=OperateCommand}">测试</Button>
-                        <Button Margin="0,0,5,0" Width="80" Height="30" VerticalAlignment="Center" Template="{StaticResource btndevicemaCancel_Template}">取消
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Margin="0,5,5,0" Width="80" Height="30" VerticalAlignment="Top" Template="{StaticResource btndevicemaSure_Template}" Command="{Binding Path=OperateCommand}">测试</Button>
+                        <Button Grid.Row="0" Grid.Column="1" Margin="5,5,0,0" Width="80" Height="30" VerticalAlignment="Top" Template="{StaticResource btndevicemaCancel_Template}">取消
                             <Button.Triggers>
                                 <EventTrigger RoutedEvent="Button.Click">
                                     <BeginStoryboard>
@@ -294,7 +301,7 @@
                                 </EventTrigger>
                             </Button.Triggers>
                         </Button>
-                    </StackPanel>
+                    </Grid>
                 </Grid>
             </Grid>
         </Grid>
