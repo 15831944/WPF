@@ -37,16 +37,16 @@ public:
 	bool								StopClient();
 	bool								ClientStoped();
 
-	void								QueryTable(char* QuerySql, CallBack callBack, bool bSync);
-	void								AddTable(char* tableName, char* dataStr, CallBack callBack, bool bSync);
-	void								AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, CallBack callBack, bool bSync);
+	void								QueryTable(char* QuerySql, CallBack callBack, bool bWait);
+	void								AddTable(char* tableName, char* dataStr, CallBack callBack, bool bWait);
+	void								AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, CallBack callBack, bool bWait);
 	void								ReportProgress(int packLen, CallBack callBack);
-	void								QueryOnlieDevCnt(CallBack callBack, bool bSync);
-	void								ExcuteSql(char* sqlStr, CallBack callBack, bool bSync);
-	void								QueryDevSpeed(char* ipStr, CallBack callBack, bool bSync);
-	void								UpdateClientStatus(bool bNormal, bool bSync);
-	void								QueryConnectionsStr(CallBack callBack, bool bSync);
-	void								Upgrade(char* dataStr, CallBack callBack, bool bSync);
+	void								QueryOnlieDevCnt(CallBack callBack, bool bWait);
+	void								ExcuteSql(char* sqlStr, CallBack callBack, bool bWait);
+	void								QueryDevSpeed(char* ipStr, CallBack callBack, bool bWait);
+	void								UpdateClientStatus(bool bNormal, bool bWait);
+	void								QueryConnectionsStr(CallBack callBack, bool bWait);
+	void								Upgrade(char* dataStr, CallBack callBack, bool bWait);
 };
 
 #pragma  once

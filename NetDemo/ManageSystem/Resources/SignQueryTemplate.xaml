@@ -166,7 +166,7 @@
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
                               ItemsSource="{Binding Path=tableList}"
                               >
-                        <DataGrid.CellStyle>
+                        <!--<DataGrid.CellStyle>
                             <Style TargetType="DataGridCell">
                                 <Setter Property="BorderThickness" Value="0"/>
                                 <Style.Triggers>
@@ -176,7 +176,7 @@
                                     </Trigger>
                                 </Style.Triggers>
                             </Style>
-                        </DataGrid.CellStyle>
+                        </DataGrid.CellStyle>-->
                     </DataGrid>
                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
                         <Button Command="{Binding Path=FirstPageCommand}" Margin="0,0,10,0" Style="{StaticResource Style_PageBtn}" Content="首页"></Button>

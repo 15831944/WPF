@@ -9,26 +9,26 @@
 // FullName:  startClient
 // Access:    public 
 // Returns:   bool
-// Qualifier:
-// Parameter: char * ip
-// Parameter: int port
-// Parameter: bool bDevice
+// Qualifier:					启动客户端网络连接
+// Parameter: char * ip			服务端IP
+// Parameter: int port			服务端端口
+// Parameter: bool bDevice		是否是设备
 //************************************
 bool				startClient(char *ip, int port, bool bDevice);
 //************************************
 // Method:    stopClient
 // FullName:  stopClient
 // Access:    public 
-// Returns:   bool
-// Qualifier:
+// Returns:   bool				True 执行成功， False 执行失败
+// Qualifier:					停止客户端网络连接
 //************************************
 bool				stopClient();
 //************************************
 // Method:    isClientStoped
 // FullName:  isClientStoped
 // Access:    public 
-// Returns:   bool
-// Qualifier:
+// Returns:   bool				True 已停止， False 未停止
+// Qualifier:					判断客户端网络连接是否停止
 //************************************
 bool				isClientStoped();
 
@@ -38,21 +38,21 @@ bool				isClientStoped();
 // FullName:  CallBack
 // Access:    public 
 // Returns:   void
-// Qualifier: 在随机线程中通过此回调函数返回相关信息给客户
+// Qualifier:					在随机线程中通过此回调函数返回相关信息给客户
 // Parameter: 
 
 /*
 1. 每个属性与对应的值之间以 ： 号分隔
 2. 属性与属性之间以 , 号分隔
-3. 每行以 ; 号分隔
+3. 每行以 ; 号结尾
 4. 行与行之间无字符
-datastr Format:
+datastr Format:(实际没有换行，只是为了方便显示)
 
 propertyName1_0:propertyValue1_0,propertyName1_1:propertyValue1_1,propertyName1_2:propertyValue1_2,……;
 propertyName2_0:propertyValue2_0,propertyName2_1:propertyValue2_1,propertyName2_2:propertyValue2_2,……;
 propertyName3_0:propertyValue3_0,propertyName3_1:propertyValue3_1,propertyName3_2:propertyValue3_2,……;
 */
-//errorStr : 错误信息
+//errorStr : 错误信息 根据长度判断，不为空即有错误
 //************************************
 typedef				void(__cdecl *CallBack)(
 	char*	  					dataStr,
@@ -67,7 +67,7 @@ typedef				void(__cdecl *CallBack)(
 // Parameter: char * QuerySql		ex:	select * from Zhiqianshuju where Xuhao>=-1
 // Parameter: CallBack callBack	
 //									ex:	dataStr= Xuhao:1, Chengshibianhao:0, Jubianhao:2001, Shiyongdanweibianhao:3001, ..., ; Xuhao:2, Chengshibianhao:1, Jubianhao:2002, Shiyongdanweibianhao:3002, ..., ;
-//									ex:  errorStr 根据长度判断，不为空即有错误
+//									ex: errorStr 根据长度判断，不为空即有错误
 // Parameter: bool bWait			是否同步执行
 //************************************
 void				queryTable(char* QuerySql, CallBack callBack, bool bWait);

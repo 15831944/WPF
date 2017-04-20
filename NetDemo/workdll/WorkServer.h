@@ -7,7 +7,7 @@
 // Method:    startServer
 // FullName:  startServer
 // Access:    public 
-// Returns:   bool
+// Returns:   bool						True 执行成功， False 执行失败
 // Qualifier:							启动服务	
 // Parameter: char * ip					服务要绑定的IP 可置NULL或 ""
 // Parameter: int port					服务要绑定的端口
@@ -17,7 +17,7 @@ bool				startServer(char *ip, int port);
 // Method:    stopServer
 // FullName:  stopServer
 // Access:    public 
-// Returns:   bool
+// Returns:   bool						True 执行成功， False 执行失败
 // Qualifier:							停止服务
 //************************************
 bool				stopServer();
@@ -25,7 +25,7 @@ bool				stopServer();
 // Method:    isServerStoped
 // FullName:  isServerStoped
 // Access:    public 
-// Returns:   bool
+// Returns:   bool						True 已停止， False 未停止
 // Qualifier:							判断服务是否停止
 //************************************
 bool				isServerStoped();

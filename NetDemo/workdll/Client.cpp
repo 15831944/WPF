@@ -220,7 +220,7 @@ void CClient::ReportProgress(int packLen, CallBack callBack)
 	}
 }
 
-void CClient::UpdateClientStatus(bool bNormal, bool bSync)
+void CClient::UpdateClientStatus(bool bNormal, bool bWait)
 {
 	if (m_sendDataFunc)
 	{
@@ -244,7 +244,7 @@ void CClient::UpdateClientStatus(bool bNormal, bool bSync)
 		delete[] pBuffer;
 		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send£ºmutable_registtype");
 
-		if (bSync)
+		if (bWait)
 		{
 			MSG msg;
 			while (m_requestMap.Exist(numberTemp))
@@ -260,7 +260,7 @@ void CClient::UpdateClientStatus(bool bNormal, bool bSync)
 	}
 }
 
-void CClient::QueryOnlieDevCnt(CallBack callBack, bool bSync)
+void CClient::QueryOnlieDevCnt(CallBack callBack, bool bWait)
 {
 	if (m_sendDataFunc)
 	{
@@ -281,7 +281,7 @@ void CClient::QueryOnlieDevCnt(CallBack callBack, bool bSync)
 		delete[] pBuffer;
 		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send£ºmutable_querydevcntmsg");
 
-		if (bSync)
+		if (bWait)
 		{
 			MSG msg;
 			while (m_requestMap.Exist(numberTemp))
@@ -297,7 +297,7 @@ void CClient::QueryOnlieDevCnt(CallBack callBack, bool bSync)
 	}
 }
 
-void CClient::QueryTable(char* QuerySql, CallBack callBack, bool bSync)
+void CClient::QueryTable(char* QuerySql, CallBack callBack, bool bWait)
 {
 	if (m_sendDataFunc)
 	{
@@ -318,7 +318,7 @@ void CClient::QueryTable(char* QuerySql, CallBack callBack, bool bSync)
 		delete[] pBuffer;
 		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send£ºmutable_query");
 
-		if (bSync)
+		if (bWait)
 		{
 			MSG msg;
 			while (m_requestMap.Exist(numberTemp))
@@ -334,7 +334,7 @@ void CClient::QueryTable(char* QuerySql, CallBack callBack, bool bSync)
 	}
 }
 
-void CClient::AddTable(char* tableName, char* dataStr, CallBack callBack, bool bSync)
+void CClient::AddTable(char* tableName, char* dataStr, CallBack callBack, bool bWait)
 {
 	if (m_sendDataFunc)
 	{
@@ -356,7 +356,7 @@ void CClient::AddTable(char* tableName, char* dataStr, CallBack callBack, bool b
 		delete[] pBuffer;
 		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send£ºmutable_add");
 
-		if (bSync)
+		if (bWait)
 		{
 			MSG msg;
 			while (m_requestMap.Exist(numberTemp))
@@ -371,7 +371,7 @@ void CClient::AddTable(char* tableName, char* dataStr, CallBack callBack, bool b
 		}
 	}
 }
-void CClient::AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, CallBack callBack, bool bSync)
+void CClient::AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, CallBack callBack, bool bWait)
 {
 	if (m_sendDataFunc)
 	{
@@ -394,7 +394,7 @@ void CClient::AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int
 		delete[] pBuffer;
 		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "client: client.send£ºmutable_add");
 
-		if (bSync)
+		if (bWait)
 		{
 			MSG msg;
 			while (m_requestMap.Exist(numberTemp))
@@ -410,7 +410,7 @@ void CClient::AddVersion(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int
 		}
 	}
 }
-void CClient::ExcuteSql(char* sqlStr, CallBack callBack, bool bSync)
+void CClient::ExcuteSql(char* sqlStr, CallBack callBack, bool bWait)
 {
 	if (m_sendDataFunc)
 	{
@@ -431,7 +431,7 @@ void CClient::ExcuteSql(char* sqlStr, CallBack callBack, bool bSync)
 		delete[] pBuffer;
 		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send£ºmutable_excutesqlmsg");
 
-		if (bSync)
+		if (bWait)
 		{
 			MSG msg;
 			while (m_requestMap.Exist(numberTemp))
@@ -447,7 +447,7 @@ void CClient::ExcuteSql(char* sqlStr, CallBack callBack, bool bSync)
 	}
 }
 
-void  CClient::QueryDevSpeed(char* ipStr, CallBack callBack, bool bSync)
+void  CClient::QueryDevSpeed(char* ipStr, CallBack callBack, bool bWait)
 {
 	if (m_sendDataFunc)
 	{
@@ -470,7 +470,7 @@ void  CClient::QueryDevSpeed(char* ipStr, CallBack callBack, bool bSync)
 		delete[] pBuffer;
 		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send£ºmutable_querydevspeedmsg");
 
-		if (bSync)
+		if (bWait)
 		{
 			MSG msg;
 			while (m_requestMap.Exist(numberTemp))
@@ -486,7 +486,7 @@ void  CClient::QueryDevSpeed(char* ipStr, CallBack callBack, bool bSync)
 	}
 }
 
-void  CClient::QueryConnectionsStr(CallBack callBack, bool bSync)
+void  CClient::QueryConnectionsStr(CallBack callBack, bool bWait)
 {
 	if (m_sendDataFunc)
 	{
@@ -507,7 +507,7 @@ void  CClient::QueryConnectionsStr(CallBack callBack, bool bSync)
 		delete[] pBuffer;
 		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__,"client: client.send£ºmutable_queryconnectionsstrmsg");
 
-		if (bSync)
+		if (bWait)
 		{
 			MSG msg;
 			while (m_requestMap.Exist(numberTemp))
@@ -523,7 +523,7 @@ void  CClient::QueryConnectionsStr(CallBack callBack, bool bSync)
 	}
 }
 
-void  CClient::Upgrade(char* dataStr, CallBack callBack, bool bSync)
+void  CClient::Upgrade(char* dataStr, CallBack callBack, bool bWait)
 {
 	if (m_sendDataFunc)
 	{
@@ -567,7 +567,7 @@ void  CClient::Upgrade(char* dataStr, CallBack callBack, bool bSync)
 		delete[] pBuffer;
 		OutDebugLineLogs(__FILE__, __LINE__, __FUNCTION__, "client: client.send£ºmutable_upgrademsg");
 
-		if (bSync)
+		if (bWait)
 		{
 			MSG msg;
 			while (m_requestMap.Exist(numberTemp))

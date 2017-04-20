@@ -47,9 +47,9 @@ bool isClientStoped()
 	return CClient::GetInstance()->ClientStoped();
 }
 
-void queryTable(char* QuerySql, CallBack callBack, bool bSync)
+void queryTable(char* QuerySql, CallBack callBack, bool bWait)
 {
-	CClient::GetInstance()->QueryTable(QuerySql, callBack, bSync);
+	CClient::GetInstance()->QueryTable(QuerySql, callBack, bWait);
 
 	//string strError = "";
 	//string resultStr = "";
@@ -62,14 +62,14 @@ void queryTable(char* QuerySql, CallBack callBack, bool bSync)
 	//}
 }
 
-void queryOnlieDevCnt(CallBack callBack, bool bSync)
+void queryOnlieDevCnt(CallBack callBack, bool bWait)
 {
-	CClient::GetInstance()->QueryOnlieDevCnt(callBack, bSync);
+	CClient::GetInstance()->QueryOnlieDevCnt(callBack, bWait);
 }
 
-void addTable(char* tableName, char* dataStr, CallBack callBack, bool bSync)
+void addTable(char* tableName, char* dataStr, CallBack callBack, bool bWait)
 {
-	CClient::GetInstance()->AddTable(tableName, dataStr, callBack, bSync);
+	CClient::GetInstance()->AddTable(tableName, dataStr, callBack, bWait);
 
 	//string strError = "";
 	//CSqliteData::GetInstance()->AddTable(tableName, dataStr, strError);
@@ -80,9 +80,9 @@ void addTable(char* tableName, char* dataStr, CallBack callBack, bool bSync)
 	//}
 }
 
-void addRuanjianbao(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, CallBack callBack, bool bSync)
+void addRuanjianbao(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int datalen, CallBack callBack, bool bWait)
 {
-	CClient::GetInstance()->AddVersion(Bianhao, Banbenhao, Anzhuangbao, datalen, callBack, bSync);
+	CClient::GetInstance()->AddVersion(Bianhao, Banbenhao, Anzhuangbao, datalen, callBack, bWait);
 
 	//string strError = "";
 	//CSqliteData::GetInstance()->AddTable(tableName, dataStr, strError);
@@ -93,9 +93,9 @@ void addRuanjianbao(char* Bianhao, char* Banbenhao, LPBYTE Anzhuangbao, int data
 	//}
 }
 
-void excuteSql(char* sqlStr, CallBack callBack, bool bSync)
+void excuteSql(char* sqlStr, CallBack callBack, bool bWait)
 {
-	CClient::GetInstance()->ExcuteSql(sqlStr, callBack, bSync);
+	CClient::GetInstance()->ExcuteSql(sqlStr, callBack, bWait);
 
 	//string strError = "";
 	//CSqliteData::GetInstance()->ExcuteSql(sqlStr, strError);
@@ -106,22 +106,22 @@ void excuteSql(char* sqlStr, CallBack callBack, bool bSync)
 	//}
 }
 
-void queryDevSpeed(char* ipStr, CallBack callBack, bool bSync)
+void queryDevSpeed(char* ipStr, CallBack callBack, bool bWait)
 {
-	CClient::GetInstance()->QueryDevSpeed(ipStr, callBack, bSync);
+	CClient::GetInstance()->QueryDevSpeed(ipStr, callBack, bWait);
 }
 
-void updateClientStatus(bool bNormal, bool bSync)
+void updateClientStatus(bool bNormal, bool bWait)
 {
-	CClient::GetInstance()->UpdateClientStatus(bNormal, bSync);
+	CClient::GetInstance()->UpdateClientStatus(bNormal, bWait);
 }
 
-void queryConnectionsStr(CallBack callBack, bool bSync)
+void queryConnectionsStr(CallBack callBack, bool bWait)
 {
-	CClient::GetInstance()->QueryConnectionsStr(callBack, bSync);
+	CClient::GetInstance()->QueryConnectionsStr(callBack, bWait);
 }
 
-//void upgrade(char* dataStr, CallBack callBack, bool bSync)
+//void upgrade(char* dataStr, CallBack callBack, bool bWait)
 //{
-//	CClient::GetInstance()->Upgrade(dataStr, callBack, bSync);
+//	CClient::GetInstance()->Upgrade(dataStr, callBack, bWait);
 //}

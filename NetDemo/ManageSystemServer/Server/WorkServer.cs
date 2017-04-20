@@ -31,14 +31,14 @@ namespace ManageSystem.Server
         public static extern bool isClientStoped();
 
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi,  CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryTable")]
-        private static extern bool queryTable(string querySqlStr, IntPtr callback, bool bSync);
+        private static extern bool queryTable(string querySqlStr, IntPtr callback, bool bWait);
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryOnlieDevCnt")]
-        public static extern int queryOnlieDevCnt(IntPtr callback, bool bSync);
+        public static extern int queryOnlieDevCnt(IntPtr callback, bool bWait);
 
-        public static bool QueryTable(string querySqlStr, IntPtr callback, bool bSync = false)
+        public static bool QueryTable(string querySqlStr, IntPtr callback, bool bWait = false)
         {//可以避免 直接绑定到Command上面 导致axml找不到模块
            return (bool)typeof(WorkServer).InvokeMember("queryTable",
-          BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.InvokeMethod, null, null, new object[] {querySqlStr, callback, bSync});
+          BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.InvokeMethod, null, null, new object[] {querySqlStr, callback, bWait});
         }
     }
 }

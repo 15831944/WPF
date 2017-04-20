@@ -38,16 +38,16 @@ namespace ManageSystem.Server
         public static extern bool isClientStoped();
 
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryOnlieDevCnt")]
-        public static extern void queryOnlieDevCnt(IntPtr callback, bool bSync);
+        public static extern void queryOnlieDevCnt(IntPtr callback, bool bWait);
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi,  CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryTable")]
-        private static extern void queryTable(string querySqlStr, IntPtr callback, bool bSync);
+        private static extern void queryTable(string querySqlStr, IntPtr callback, bool bWait);
 
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "addTable")]
         public static extern void addTable(
                         string tableName,
                         string dataStr,
                         IntPtr callback,
-                        bool bSync);
+                        bool bWait);
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "addRuanjianbao")]
         public static extern void addRuanjianbao(
                         string bianhao,
@@ -55,22 +55,22 @@ namespace ManageSystem.Server
                         IntPtr Anzhuangbao,
                         int datalen,
                         IntPtr callback,
-                        bool bSync);
+                        bool bWait);
 
         [DllImport("WorkDll.dll", CharSet=CharSet.Ansi, CallingConvention=CallingConvention.Cdecl, EntryPoint = "excuteSql")]
-        public static extern void excuteSql(string sqlStr, IntPtr callBack, bool bSync);
+        public static extern void excuteSql(string sqlStr, IntPtr callBack, bool bWait);
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryDevSpeed")]
-        public static extern int queryDevSpeed(string ipStr, IntPtr callBack, bool bSync);
+        public static extern int queryDevSpeed(string ipStr, IntPtr callBack, bool bWait);
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "queryConnectionsStr")]
-        public static extern int queryConnectionsStr(IntPtr callBack, bool bSync);
+        public static extern int queryConnectionsStr(IntPtr callBack, bool bWait);
 
         [DllImport("WorkDll.dll", CallingConvention=CallingConvention.Cdecl, EntryPoint = "upgrade")]
-        public static extern int upgrade(string dataStr,IntPtr callBack, bool bSync);
+        public static extern int upgrade(string dataStr,IntPtr callBack, bool bWait);
 
-        public static void QueryTable(string querySqlStr, IntPtr callback, bool bSync = false)
+        public static void QueryTable(string querySqlStr, IntPtr callback, bool bWait = false)
         {//可以避免 直接绑定到Command上面 导致axml找不到模块
            typeof(WorkServer).InvokeMember("queryTable",
-          BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.InvokeMethod, null, null, new object[] {querySqlStr, callback, bSync});
+          BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.InvokeMethod, null, null, new object[] {querySqlStr, callback, bWait});
         }
     }
 }

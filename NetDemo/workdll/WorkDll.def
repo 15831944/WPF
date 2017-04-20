@@ -19,6 +19,7 @@ EXPORTS
 		addRuanjianbao
 		excuteSql
 		queryDevSpeed
+		updateClientStatus
 		queryConnectionsStr
 
 		;upgrade
