@@ -37,6 +37,7 @@ namespace ManageSystem.ViewModel
         public DelegateCommand<object>                  ShowLineChartCommand { get; set; }
         public DelegateCommand<object>                  ShowHistogramChartCommand { get; set; }
         public DelegateCommand<object>                  StatisticsCommand { get; set; }
+        public DelegateCommand<object>                  VerifySelCommand { get; set; }
 
         private ShowChartEnum _bShowChart;
         public ShowChartEnum bShowChart
@@ -157,9 +158,10 @@ namespace ManageSystem.ViewModel
             ShowLineChartCommand                        = new DelegateCommand<object>(new Action<object>(this.ShowLineChart));
             ShowHistogramChartCommand                   = new DelegateCommand<object>(new Action<object>(this.ShowHistogramChart));
             StatisticsCommand                           = new DelegateCommand<object>(new Action<object>(this.Statistics));
+            VerifySelCommand                            = new DelegateCommand<object>(new Action<object>(this.VerifySel));
 
-            startTime                                   = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
-            endTime                                     = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
+            startTime                                   = DateTime.Now.AddDays(-7).ToString("yyyy-MM-dd HH:mm:ss");
+            endTime                                     = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd HH:mm:ss");
             _leftListWidth                              = 150;
             _topHeight                                  = 60;
             _regionTextHeight                           = 50;
@@ -168,6 +170,66 @@ namespace ManageSystem.ViewModel
             _lineCharIndex                              = -1;
             _histogramCharIndex                         = -1;
             _pieCharIndex                               = -1;
+        }
+
+        private void VerifySel(object obj)
+        {
+            int selindex = (int)obj;
+            switch (selindex)
+            {
+                case 0:
+                    VerifyDay();
+                    break;
+                case 1:
+                    VerifyWeek();
+                    break;
+                case 2:
+                    VerifyMonth();
+                    break;
+                case 3:
+                    VerifyYear();
+                    break;
+            }
+        }
+
+        private void VerifyDay()
+        {
+            DateTime realstartTime  = DateTime.Parse(startTime);
+            DateTime realendTime    = DateTime.Parse(endTime);
+
+            TimeSpan span           = realendTime - realstartTime;
+            if ((realstartTime.AddDays(2) > realendTime) || (realstartTime.AddDays(31) < realendTime))
+                System.Windows.MessageBox.Show("最小超过2天，最大只能允许31天!");
+        }
+
+        private void VerifyWeek()
+        {
+            DateTime realstartTime  = DateTime.Parse(startTime);
+            DateTime realendTime    = DateTime.Parse(endTime);
+
+            TimeSpan span           = realendTime - realstartTime;
+            if ((realstartTime.AddDays(2 * 7) > realendTime) || (realstartTime.AddDays(31 * 7) < realendTime))
+                System.Windows.MessageBox.Show("最小超过2周，最大只能选择31周!");
+        }
+
+        private void VerifyMonth()
+        {
+            DateTime realstartTime  = DateTime.Parse(startTime);
+            DateTime realendTime    = DateTime.Parse(endTime);
+
+            TimeSpan span           = realendTime - realstartTime;
+            if ((realstartTime.AddMonths(2) > realendTime) || (realstartTime.AddMonths(31) < realendTime))
+                System.Windows.MessageBox.Show("最小超过2月，最大只能允许31月!");
+        }
+
+        private void VerifyYear()
+        {
+            DateTime realstartTime  = DateTime.Parse(startTime);
+            DateTime realendTime    = DateTime.Parse(endTime);
+
+            TimeSpan span           = realendTime - realstartTime;
+            if ((realstartTime.AddYears(2) > realendTime) || (realstartTime.AddYears(31) < realendTime))
+                System.Windows.MessageBox.Show("最小超过2年，最大只能选择31年!");
         }
 
         private void QueryTableCallBack(string resultStr, string errorStr)
@@ -221,6 +283,7 @@ namespace ManageSystem.ViewModel
         public string MakeDeviceConditionSql(string tableName)
         {
             string str = "";
+            bool bSel0 = false;
             foreach (DeviceModel model0 in DevicemaViewModel._deviceList)
             {
                 if (model0.isSel)
@@ -228,10 +291,17 @@ namespace ManageSystem.ViewModel
                     foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                     {
                         if (kvp0.Value == model0.text)
-                            str += " and "+ tableName + ".[Chengshibianhao]=" + kvp0.Key.ToString();
+                        {
+                            if (bSel0)
+                                str += " or "+ tableName + ".[Chengshibianhao]=" + kvp0.Key.ToString();
+                            else
+                                str += " and ("+ tableName + ".[Chengshibianhao]=" + kvp0.Key.ToString();
+                            bSel0 = true;
+                        }
                     }
                 }
 
+                bool bSel1 = false;
                 foreach (DeviceModel model1 in model0.Children)
                 {
                     if (model1.isSel)
@@ -239,10 +309,17 @@ namespace ManageSystem.ViewModel
                         foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                         {
                             if (kvp0.Value == model1.text)
-                                str += " and "+ tableName + ".[Jubianhao]=" + kvp0.Key.ToString();
+                            {
+                                if (bSel1)
+                                    str += " or "+ tableName + ".[Jubianhao]=" + kvp0.Key.ToString();
+                                else
+                                    str += " and ("+ tableName + ".[Jubianhao]=" + kvp0.Key.ToString();
+                                bSel1 = true;
+                            }
                         }
                     }
 
+                    bool bSel2 = false;
                     foreach (DeviceModel model2 in model1.Children)
                     {
                         if (model2.isSel)
@@ -250,19 +327,58 @@ namespace ManageSystem.ViewModel
                             foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                             {
                                 if (kvp0.Value == model2.text)
-                                    str += " and "+ tableName + ".[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+                                {
+                                    if (bSel2)
+                                        str += " or "+ tableName + ".[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+                                    else
+                                        str += " and ("+ tableName + ".[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+                                    bSel2 = true;
+                                }
                             }
                         }
+
+                        bool bSel3 = false;    //  是否已有先中项
                         foreach (DeviceModel model3 in model2.Children)
                         {
                             if (model3.isSel)
                             {
-                                str += " and "+ tableName + ".[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(model3.text)));
+                                if (bSel3)
+                                    str += " or "+ tableName + ".[IP]=" + (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(model3.text)));
+                                else
+                                    str += " and ("+ tableName + ".[IP]=" + (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(model3.text)));
+                                bSel3 = true;
                             }
                         }
+
+                        if (bSel3)
+                            str += ")";
                     }
+                    if (bSel2)
+                        str += ")";
+                }
+                if (bSel1)
+                    str += ")";
+            }
+            if (bSel0)
+                str += ")";
+
+            if (!string.IsNullOrEmpty(devicePositionText))
+            {
+                foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                {
+                    if (kvp0.Value == devicePositionText)
+                        str += " and "+ tableName + ".[Shebeibaifangweizhi]=" + kvp0.Key.ToString();
                 }
             }
+
+            if (businessTypeText != null && businessTypeText.Length != 0 && businessTypeText != "全部")
+            {
+                if (businessTypeText == "本地业务")
+                    str += " and "+ tableName + ".[Bendiyewu]=" + "1";
+                else
+                    str += " and "+ tableName + ".[Bendiyewu]=" + "0";
+            }
+
             return str;
         }
         string MakeStatisticsQuerySql(object obj)

@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
@@ -191,7 +192,7 @@ namespace ManageSystem.ViewModel
             _ignoreXuhao = true;
             _bSetAllcurtime = true;
 
-            Riqi                                   = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
+            Riqi                                   = DateTime.Now.AddDays(-7).ToString("yyyy-MM-dd HH:mm:ss");
 
         }
 
@@ -496,7 +497,7 @@ namespace ManageSystem.ViewModel
                                         string temp = (string)item.GetValue(modelTemp, null);
                                         IPAddress addr;
                                         if (temp != null && temp.Length != 0 && IPAddress.TryParse(temp, out addr))
-                                            addXml += Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(temp)));
+                                            addXml += (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(temp)));
                                     }
                                     break;
                                 case "Riqi":
@@ -664,7 +665,15 @@ namespace ManageSystem.ViewModel
             }
             foreach (var item in temp)
             {
-                tableList0.Add(item);
+                object retval = Activator.CreateInstance(item.GetType());
+                FieldInfo[] fields = item.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                foreach (FieldInfo field in fields)
+                {
+                    try { field.SetValue(retval, field.GetValue(item)); }
+                    catch { }
+                }
+
+                tableList0.Add(retval);
             }
 
             curCnt = "当前数量：" + tableList0.Count;

@@ -174,7 +174,7 @@ namespace ManageSystem
         //                            addXml += ((i%2 == 0) ? 3001:3002).ToString();
         //                            break;
         //                        case "IP":
-        //                            addXml += Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1")));
+        //                            addXml += (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("127.0.0.1")));
         //                            break;
         //                        case "Yewuleixing":
         //                            addXml += ((i%2 == 0) ? 4001:4002).ToString();

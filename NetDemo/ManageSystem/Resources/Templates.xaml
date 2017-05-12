@@ -63,6 +63,12 @@
                         <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SummaryStat}">
                             <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/汇总统计-选中.png"/>
                         </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignStat}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/汇总统计-选中.png"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignAnomalyStat}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/汇总统计-选中.png"/>
+                        </DataTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
@@ -78,6 +84,21 @@
                     </StackPanel>
                     <ControlTemplate.Triggers>
                         <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_SignQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/制签记录查询-选中.png"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_CardQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/制签记录查询-选中.png"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_EndorsementQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/制签记录查询-选中.png"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_PaymentQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/制签记录查询-选中.png"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_QueryQuery}">
+                            <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/制签记录查询-选中.png"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Path=bShowPage}" Value="{x:Static viewModel:PageVisibleEnum.PageVisibleEnum_PreAcceptQuery}">
                             <Setter Property="Source" TargetName="btnbg" Value="/ManageSystem;component/Resources/imgs/制签记录查询-选中.png"/>
                         </DataTrigger>
                     </ControlTemplate.Triggers>

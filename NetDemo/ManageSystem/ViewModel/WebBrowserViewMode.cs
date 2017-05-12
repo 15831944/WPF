@@ -347,7 +347,7 @@ namespace ManageSystem.ViewModel
                 }
             }
 
-            if(root.ChildNodes.Count > 1)
+            if(root.ChildNodes.Count > 0)
                 xmlData = doc.InnerXml;
         }
 

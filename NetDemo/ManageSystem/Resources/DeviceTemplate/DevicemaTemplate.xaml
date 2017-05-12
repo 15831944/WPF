@@ -170,7 +170,7 @@
                               CanUserAddRows="False" CanUserResizeRows="False" CanUserSortColumns="True" 
                               AutoGenerateColumns="True" EnableRowVirtualization="True" IsReadOnly="False" SelectionMode="Extended"
                               ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle1}"
-                              SelectedValue="{Binding Path=customInfo, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
+                              SelectedValue="{Binding Path=customInfogrid, Mode=OneWayToSource, Converter={StaticResource DataGridSelectConvert}}"
                               ItemsSource="{Binding Path=tableList}"
                               >
                         <DataGrid.RowStyle>

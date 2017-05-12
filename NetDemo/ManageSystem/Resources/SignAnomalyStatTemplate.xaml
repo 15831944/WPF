@@ -82,6 +82,11 @@
                                 <ComboBoxItem>周统计</ComboBoxItem>
                                 <ComboBoxItem>月统计</ComboBoxItem>
                                 <ComboBoxItem>年统计</ComboBoxItem>
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding Path=VerifySelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ComboBox}, Path=SelectedIndex}"/>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </ComboBox>
                         </Grid>
                         <Grid Grid.Row="1">

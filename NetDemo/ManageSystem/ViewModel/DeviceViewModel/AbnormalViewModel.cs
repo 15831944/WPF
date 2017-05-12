@@ -419,6 +419,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         public void Query(object obj)
         {
             tableList.Clear();
+            _tableListTemp.Clear();
             WorkServer.QueryTable(MakeQuerySql(null), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
         }
 
@@ -437,28 +438,35 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             }
 
             if (!string.IsNullOrEmpty(customInfo.IP))
-                str += " and Shebeiyichangshuju.[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo.IP)));
+                str += " and Shebeiyichangshuju.[IP]=" + (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo.IP)));
 
             //if (customInfo.Bendiyewu != null)
             //    str += " and Shebeiyichangshuju.[Bendiyewu]=" + Convert.ToInt32((customInfo.Bendiyewu == true)?1:0);
 
+
             if (!string.IsNullOrEmpty(customInfo.Shebeibaifangweizhi))
-                str += " and Shebeiyichangshuju.[Shebeibaifangweizhi]=" + customInfo.Shebeibaifangweizhi;
+            {
+                foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
+                {
+                    if (kvp0.Value == customInfo.Shebeibaifangweizhi)
+                        str += " and Shebeiyichangshuju.[Shebeibaifangweizhi]=" + kvp0.Key.ToString();;
+                }
+            }
 
             //if (!string.IsNullOrEmpty(customInfo.Riqi))
             //    str += " and Shebeiyichangshuju.[Riqi]=" + Common.ConvertDateTimeInt(DateTime.Parse(customInfo.Riqi));                
 
             if (!string.IsNullOrEmpty(customInfo.Yichangleixing))
-                str += " and Shebeiyichangshuju.[Yichangleixing]=" + customInfo.Yichangleixing;
+                str += " and Shebeiyichangshuju.[Yichangleixing]=" + "'" + customInfo.Yichangleixing + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Yichangshejimokuai))
-                str += " and Shebeiyichangshuju.[Yichangshejimokuai]=" + customInfo.Yichangshejimokuai;
+                str += " and Shebeiyichangshuju.[Yichangshejimokuai]=" + "'" + customInfo.Yichangshejimokuai + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Yichangyuanyin))
-                str += " and Shebeiyichangshuju.[Yichangyuanyin]=" + customInfo.Yichangyuanyin;
+                str += " and Shebeiyichangshuju.[Yichangyuanyin]=" + "'" + customInfo.Yichangyuanyin + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Yichangxiangxineirong))
-                str += " and Shebeiyichangshuju.[Yichangxiangxineirong]=" + customInfo.Yichangxiangxineirong;
+                str += " and Shebeiyichangshuju.[Yichangxiangxineirong]=" + "'" + customInfo.Yichangxiangxineirong + "'";
 
 
             return str;

@@ -505,16 +505,6 @@ namespace ManageSystem.ViewModel
             _queryStrs.Add("查询业务");
             _queryStrs.Add("预受理记录查询");
 
-
-            IPAddress addr;
-            //string temp = "193.171.42.10";
-            string temp = "10.42.171.193";
-            int aa = 0;
-            if(IPAddress.TryParse(temp, out addr))
-                aa = Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(temp)));
-
-            Common.IntToIp(IPAddress.NetworkToHostOrder((Int32)Convert.ToInt64(aa)));
-
             try
             {
                 foreach (string key in ConfigurationManager.AppSettings)

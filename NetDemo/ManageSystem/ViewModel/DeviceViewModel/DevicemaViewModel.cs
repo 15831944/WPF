@@ -28,7 +28,10 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             if (value == null)
-                return Activator.CreateInstance(targetType);
+            {
+                return DependencyProperty.UnsetValue;
+                //return Activator.CreateInstance(targetType);
+            }
             else
             {
                 object retval = Activator.CreateInstance(value.GetType());
@@ -155,6 +158,20 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             }
         }
 
+        private SHEBEIGUANLIModel _customInfogrid;
+        public SHEBEIGUANLIModel customInfogrid
+        {
+            get
+            {
+                return _customInfogrid;
+            }
+            set
+            {
+                _customInfogrid = value;
+                this.RaisePropertyChanged("customInfogrid");
+            }
+        }
+
         private SHEBEIGUANLIModel _customInfo1;
         public SHEBEIGUANLIModel customInfo1
         {
@@ -237,6 +254,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             _danwei                                     = new ObservableCollection<string>();
             _tableList                                  = new ObservableCollection<SHEBEIGUANLIModel>();
             _customInfo                                 = new SHEBEIGUANLIModel();
+            _customInfogrid                             = new SHEBEIGUANLIModel();
             _customInfo1                                = new SHEBEIGUANLIModel();
             _pagePercent                                = "0/0";
 
@@ -322,11 +340,19 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         private void Add(object obj)
         {
            operateenum = OperateEnum.OperateEnum_Add;
+           customInfo1 = new SHEBEIGUANLIModel();
         }
 
         private void Modify(object obj)
         {
-            customInfo1 = customInfo;
+            object retval = Activator.CreateInstance(customInfogrid.GetType());
+            FieldInfo[] fields = customInfogrid.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            foreach (FieldInfo field in fields)
+            {
+                try { field.SetValue(retval, field.GetValue(customInfogrid)); }
+                catch { }
+            }
+            customInfo1 = retval as SHEBEIGUANLIModel;
             operateenum = OperateEnum.OperateEnum_Modify;
         }
 
@@ -401,7 +427,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                                                     string temp = (string)item.GetValue(customInfo1, null);
                                                     IPAddress addr;
                                                     if (customInfo1.IP != null && customInfo1.IP.Length != 0 && IPAddress.TryParse(temp, out addr))
-                                                        addXml += Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(temp)));
+                                                        addXml += (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(temp)));
                                                 }
                                                 break;
                                             case "Chuangjianshijian":
@@ -458,7 +484,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
 
                         IPAddress addr;
                         if (!string.IsNullOrEmpty(customInfo1.IP) && IPAddress.TryParse(customInfo1.IP, out addr))
-                            sqlStr  += ",IP='" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo1.IP))) + "'";
+                            sqlStr  += ",IP='" + (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo1.IP))) + "'";
 
                         if (!string.IsNullOrEmpty(customInfo1.Shebeichangjia))
                             sqlStr  += ",Shebeichangjia='" + customInfo1.Shebeichangjia + "'";
@@ -710,16 +736,16 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             }
 
             if (!string.IsNullOrEmpty(customInfo.IP))
-                str += " and Shebeiguanli.[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo.IP)));
+                str += " and Shebeiguanli.[IP]=" + (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo.IP)));
 
             if (!string.IsNullOrEmpty(customInfo.Shebeichangjia))
-                str += " and Shebeiguanli.[Shebeichangjia]=" + customInfo.Shebeichangjia;
+                str += " and Shebeiguanli.[Shebeichangjia]=" + "'" + customInfo.Shebeichangjia + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Shebeimingcheng))
-                str += " and Shebeiguanli.[Shebeimingcheng]=" + customInfo.Shebeimingcheng;
+                str += " and Shebeiguanli.[Shebeimingcheng]=" +  "'" + customInfo.Shebeimingcheng + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Shebeileixing))
-                str += " and Shebeiguanli.[Shebeileixing]=" + customInfo.Shebeileixing;
+                str += " and Shebeiguanli.[Shebeileixing]=" + "'" + customInfo.Shebeileixing + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Jingdu))
                 str += " and Shebeiguanli.[Jingdu]=" + customInfo.Jingdu;

@@ -123,8 +123,8 @@ namespace ManageSystem.ViewModel
             _tableList                                  = new ObservableCollection<JIAOKUANSHUJUModel>();
             _pagePercent                                = "0/0";
 
-            startTime                                   = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
-            endTime                                     = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
+            startTime                                   = DateTime.Now.AddDays(-7).ToString("yyyy-MM-dd HH:mm:ss");
+            endTime                                     = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd HH:mm:ss");
         }
 
         public void ShowPage(int pageindex)
@@ -273,12 +273,15 @@ namespace ManageSystem.ViewModel
         public void Query(object obj)
         {
             tableList.Clear();
+            _tableListTemp.Clear();
             WorkServer.QueryTable(MakeQuerySql(obj), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate));
         }
         string MakeQuerySql(object obj)
         {
             string str = "select * from Jiaokuanshuju where Xuhao>=-1";
 
+            string tableName = "Jiaokuanshuju";
+            bool bSel0 = false;
             foreach (DeviceModel model0 in DevicemaViewModel._deviceList)
             {
                 if (model0.isSel)
@@ -286,10 +289,17 @@ namespace ManageSystem.ViewModel
                     foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                     {
                         if (kvp0.Value == model0.text)
-                            str += " and Jiaokuanshuju.[Chengshibianhao]=" + kvp0.Key.ToString();
+                        {
+                            if (bSel0)
+                                str += " or "+ tableName + ".[Chengshibianhao]=" + kvp0.Key.ToString();
+                            else
+                                str += " and ("+ tableName + ".[Chengshibianhao]=" + kvp0.Key.ToString();
+                            bSel0 = true;
+                        }
                     }
                 }
 
+                bool bSel1 = false;
                 foreach (DeviceModel model1 in model0.Children)
                 {
                     if (model1.isSel)
@@ -297,10 +307,17 @@ namespace ManageSystem.ViewModel
                         foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                         {
                             if (kvp0.Value == model1.text)
-                                str += " and Jiaokuanshuju.[Jubianhao]=" + kvp0.Key.ToString();
+                            {
+                                if (bSel1)
+                                    str += " or "+ tableName + ".[Jubianhao]=" + kvp0.Key.ToString();
+                                else
+                                    str += " and ("+ tableName + ".[Jubianhao]=" + kvp0.Key.ToString();
+                                bSel1 = true;
+                            }
                         }
                     }
 
+                    bool bSel2 = false;
                     foreach (DeviceModel model2 in model1.Children)
                     {
                         if (model2.isSel)
@@ -308,19 +325,40 @@ namespace ManageSystem.ViewModel
                             foreach (KeyValuePair<int, string> kvp0 in MainWindowViewModel._yingshelList)
                             {
                                 if (kvp0.Value == model2.text)
-                                    str += " and Jiaokuanshuju.[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+                                {
+                                    if (bSel2)
+                                        str += " or "+ tableName + ".[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+                                    else
+                                        str += " and ("+ tableName + ".[Shiyongdanweibianhao]=" + kvp0.Key.ToString();
+                                    bSel2 = true;
+                                }
                             }
                         }
+
+                        bool bSel3 = false;    //  是否已有先中项
                         foreach (DeviceModel model3 in model2.Children)
                         {
                             if (model3.isSel)
                             {
-                                str += " and Jiaokuanshuju.[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(model3.text)));
+                                if (bSel3)
+                                    str += " or "+ tableName + ".[IP]=" + (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(model3.text)));
+                                else
+                                    str += " and ("+ tableName + ".[IP]=" + (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(model3.text)));
+                                bSel3 = true;
                             }
                         }
+
+                        if (bSel3)
+                            str += ")";
                     }
+                    if (bSel2)
+                        str += ")";
                 }
+                if (bSel1)
+                    str += ")";
             }
+            if (bSel0)
+                str += ")";
 
             if (paymentStatusText != null && paymentStatusText.Length != 0 && paymentStatusText != "全部")
             {
@@ -330,7 +368,7 @@ namespace ManageSystem.ViewModel
                         str += " and Jiaokuanshuju.[Jiaofeizhuangtai]=" + "0";
             }
             if (businessNumber != null && businessNumber.Length != 0)
-                str += " and Jiaokuanshuju.[Yewubianhao]=" + businessNumber;
+                str += " and Jiaokuanshuju.[Yewubianhao]=" + "'" + businessNumber + "'";
             if (startTime != null && startTime.Length != 0)
                 str += " and Jiaokuanshuju.[Riqi]>=" + Common.ConvertDateTimeInt(DateTime.Parse(startTime));
             if (endTime != null && endTime.Length != 0)

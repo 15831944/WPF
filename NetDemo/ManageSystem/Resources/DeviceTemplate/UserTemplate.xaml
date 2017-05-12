@@ -32,9 +32,9 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="0"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
                 <Grid Grid.Column="0">
@@ -81,10 +81,18 @@
                     <Grid Grid.Row="0" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.5*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">有效期始</TextBlock>
-                        <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Youxiaoqikaishi}"></TextBox>
+                        <Toolkit:DateTimePicker Grid.Column="1" Foreground="White" Background="#444450"
+                                 VerticalAlignment="Center"
+                                 IsReadOnly="False"
+                                 Format="Custom"
+                                 FormatString="yyyy-MM-dd HH:mm:ss"
+                                 TimeFormat="Custom"
+                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
+                                 Text="{Binding Path=customInfo.Youxiaoqikaishi}"
+                                 />
                     </Grid>
 
                 </Grid>
@@ -96,11 +104,18 @@
                     <Grid Grid.Row="0">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.5*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Foreground="White" VerticalAlignment="Center" HorizontalAlignment="Center">有效期止</TextBlock>
-                        <TextBox Grid.Column="1" Foreground="White" Background="#52525e"  VerticalAlignment="Center" HorizontalAlignment="Stretch" Text="{Binding Path=customInfo.Youxiaoqijieshu}"></TextBox>
-
+                        <Toolkit:DateTimePicker Grid.Column="1" Foreground="White" Background="#444450"
+                                 VerticalAlignment="Center"
+                                 IsReadOnly="False"
+                                 Format="Custom"
+                                 FormatString="yyyy-MM-dd HH:mm:ss"
+                                 TimeFormat="Custom"
+                                 TimeFormatString="yyyy-MM-dd HH:mm:ss"
+                                 Text="{Binding Path=customInfo.Youxiaoqijieshu}"
+                                 />
                     </Grid>
 
                 </Grid>

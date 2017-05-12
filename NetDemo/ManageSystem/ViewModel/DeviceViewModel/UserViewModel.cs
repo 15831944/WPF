@@ -140,8 +140,8 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             _tableList                              = new ObservableCollection<GUANLIYUANModel>();
             _customInfo                             = new GUANLIYUANModel();
             _customInfo1                            = new GUANLIYUANModel();
-            _customInfo1.Youxiaoqikaishi            = DateTime.Now.AddDays(-7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
-            _customInfo1.Youxiaoqijieshu            = DateTime.Now.AddDays(7).ToString("dddd, MMMM d, yyyy h:mm:ss tt");
+            _customInfo1.Youxiaoqikaishi            = DateTime.Now.AddDays(-7).ToString("yyyy-MM-dd HH:mm:ss");
+            _customInfo1.Youxiaoqijieshu            = DateTime.Now.AddDays(7).ToString("yyyy-MM-dd HH:mm:ss");
 
             _pagePercent                            = "0/0";
         }
@@ -308,8 +308,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                     modelTemp.operateinfomodel.operatemodel = OperateModelEnum.OperateModel_UserModify;
                     _tableListTemp.Add(modelTemp);
 
-                    if (_guliyuanList.Count == 0)
-                        _guliyuanList[modelTemp.Yonghuming] = modelTemp;
+                    _guliyuanList[modelTemp.Yonghuming] = modelTemp;
                 }
             }
 
@@ -324,6 +323,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         {
             tableList.Clear();
             _tableListTemp.Clear();
+            _guliyuanList.Clear();
             WorkServer.QueryTable(MakeQuerySql(null), Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), true);
         }
         string MakeQuerySql(object obj)
@@ -331,10 +331,10 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             string str = "select * from Guanliyuan where Xuhao>=-1";
 
             if (!string.IsNullOrEmpty(customInfo.Yonghuming))
-                str += " and Guanliyuan.[Yonghuming]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo.Yonghuming)));
+                str += " and Guanliyuan.[Yonghuming]=" + "'" + customInfo.Yonghuming + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Mima))
-                str += " and Guanliyuan.[Mima]=" + customInfo.Mima;
+                str += " and Guanliyuan.[Mima]="  + "'" + customInfo.Mima + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Youxiaoqikaishi))
                 str += " and Guanliyuan.[Youxiaoqikaishi]>=" + Common.ConvertDateTimeInt(DateTime.Parse(customInfo.Youxiaoqikaishi));
@@ -343,7 +343,7 @@ namespace ManageSystem.ViewModel.DeviceViewModel
                 str += " and Guanliyuan.[Youxiaoqikaishi]<=" + Common.ConvertDateTimeInt(DateTime.Parse(customInfo.Youxiaoqijieshu));
 
             if (!string.IsNullOrEmpty(customInfo.Quanxianjibie))
-                str += " and Guanliyuan.[Quanxianjibie]=" + customInfo.Quanxianjibie;
+                str += " and Guanliyuan.[Quanxianjibie]="  + "'" + customInfo.Quanxianjibie + "'";
 
             return str;
         }
@@ -356,18 +356,19 @@ namespace ManageSystem.ViewModel.DeviceViewModel
         private void Add(object obj)
         {
             operateenum = OperateEnum.OperateEnum_Add;
+            customInfo1 = new GUANLIYUANModel();
         }
 
         private void Modify(object obj)
         {
-           //customInfo1 = new GUANLIYUANModel();
-           // FieldInfo[] fields = customInfo.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
-           // foreach (FieldInfo field in fields)
-           // {
-           //     try { field.SetValue(customInfo1, field.GetValue(customInfo)); }
-           //     catch { }
-           // }
-            customInfo1 = customInfo;
+            object retval = Activator.CreateInstance(customInfo.GetType());
+            FieldInfo[] fields = customInfo.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            foreach (FieldInfo field in fields)
+            {
+                try { field.SetValue(retval, field.GetValue(customInfo)); }
+                catch { }
+            }
+            customInfo1 = retval as GUANLIYUANModel;
             operateenum = OperateEnum.OperateEnum_Modify;
         }
 

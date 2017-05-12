@@ -817,16 +817,16 @@ namespace ManageSystem.ViewModel.DeviceViewModel
             }
 
             if (!string.IsNullOrEmpty(customInfo.IP))
-                str += " and Shebeiguanli.[IP]=" + Convert.ToInt32(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo.IP)));
+                str += " and Shebeiguanli.[IP]=" + (UInt32)(IPAddress.HostToNetworkOrder((Int32)Common.IpToInt(customInfo.IP)));
 
             if (!string.IsNullOrEmpty(customInfo.Shebeichangjia))
-                str += " and Shebeiguanli.[Shebeichangjia]=" + customInfo.Shebeichangjia;
+                str += " and Shebeiguanli.[Shebeichangjia]=" + "'" + customInfo.Shebeichangjia + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Shebeimingcheng))
-                str += " and Shebeiguanli.[Shebeimingcheng]=" + customInfo.Shebeimingcheng;
+                str += " and Shebeiguanli.[Shebeimingcheng]=" + "'" + customInfo.Shebeimingcheng + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Shebeileixing))
-                str += " and Shebeiguanli.[Shebeileixing]=" + customInfo.Shebeileixing;
+                str += " and Shebeiguanli.[Shebeileixing]=" + "'" + customInfo.Shebeileixing + "'";
 
             if (!string.IsNullOrEmpty(customInfo.Jingdu))
                 str += " and Shebeiguanli.[Jingdu]=" + customInfo.Jingdu;
