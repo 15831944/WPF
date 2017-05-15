@@ -13,6 +13,9 @@
         <Grid x:Name="showhideCtrl" Visibility="Hidden">
             <WebBrowser WebBrowserA:WebBrowserAttach.Url="{Binding Path=url, Mode=TwoWay}" WebBrowserA:WebBrowserAttach.xmlData="{Binding Path=xmlData}"
                         WebBrowserA:WebBrowserAttach.ObjectForScript="{Binding Source={StaticResource MainWindowViewModelKey}, Path=scripinghelper}">
+                <WebBrowser.InputBindings>
+                    <KeyBinding Key="F5" Command="{x:Null}"/>
+                </WebBrowser.InputBindings>
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="Loaded">
                         <i:InvokeCommandAction Command="{Binding LoadedCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=WebBrowser}}" />

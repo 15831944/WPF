@@ -9,6 +9,9 @@
                    >
     <DataTemplate DataType="{x:Type viewModel:MainWindowViewModel}">
         <Grid x:Name="showhideCtrl" Visibility="Hidden" Background="#34343E">
+            <Grid.InputBindings>
+                <KeyBinding Key="Enter" Command="{Binding Path=LogonCommand}"/>
+            </Grid.InputBindings>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>

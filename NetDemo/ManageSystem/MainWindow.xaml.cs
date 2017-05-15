@@ -187,6 +187,14 @@ namespace ManageSystem
 
             this.SourceInitialized += new EventHandler(win_SourceInitialized);
             Application.Current.MainWindow = this;
+
+            PreviewKeyDown += MainWindow_PreviewKeyDown;
+        }
+
+        void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.F5)
+                e.Handled = true; ;
         }
 
 

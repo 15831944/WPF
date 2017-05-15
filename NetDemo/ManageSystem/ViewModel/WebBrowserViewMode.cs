@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Threading;
 using System.Xml;
 
 namespace ManageSystem.ViewModel
@@ -108,6 +109,18 @@ namespace ManageSystem.ViewModel
             }
         }
 
+
+        private bool _bDevice;
+        public bool bDevice
+        {
+            get { return _bDevice; }
+            set
+            {
+                _bDevice = value;
+                this.RaisePropertyChanged("bDevice");
+            }
+        }
+
         public WebBrowserViewMode()
         {
             _querytablecallbackdelegate                 = new QueryTableCallBackDelegate(QueryTableCallBack);
@@ -125,12 +138,25 @@ namespace ManageSystem.ViewModel
                     {
                         _url = ConfigurationManager.AppSettings[key];
                     }
+                    else if (key == "bDevice")
+                    {
+                        bDevice = Convert.ToBoolean(ConfigurationManager.AppSettings[key]);
+                    }
                 }
             }
             catch
             {
 
             }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                QueryConnectionsStatu(null);
+            }
+            catch { }
         }
 
         public void QueryTableCallBack(string resultStr, string errorStr)
@@ -366,6 +392,7 @@ namespace ManageSystem.ViewModel
                     }
                 }
             }
+
             WorkServer.queryConnectionsStr(Marshal.GetFunctionPointerForDelegate(_querytablecallbackdelegate), false);
         }
 
@@ -386,6 +413,14 @@ namespace ManageSystem.ViewModel
             //int a = IPAddress.HostToNetworkOrder((Int32)Common.IpToInt("192.168.1.106"));
 
             QueryConnectionsStatu(null);
+
+            if(!bDevice)
+            {
+                var _timer = new DispatcherTimer();
+                _timer.Interval = new TimeSpan(0, 0, 5);   //间隔1秒
+                _timer.Tick += new EventHandler(Timer_Tick);
+                _timer.Start();
+            }
         }
     }
 }
